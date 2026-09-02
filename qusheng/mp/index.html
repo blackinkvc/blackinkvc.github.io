@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>蛆生</title>
+<style>
+  :root{
+    --bg:#0e0c08; --panel:#1c1810; --ink:#ecdfc6; --muted:#9c8c72;
+    --line:#3a2c1c; --accent:#d9a441; --accent2:#8a6d2f;
+  }
+  *{box-sizing:border-box;}
+  html,body{height:100%;margin:0;}
+  body{
+    background:radial-gradient(120% 120% at 50% 0%,#241b12 0%,#0e0c08 100%);
+    color:var(--ink); font-family:"Noto Serif CJK SC",STKaiti,KaiTi,Georgia,serif;
+    display:flex; flex-direction:column; height:100vh; overflow:hidden;
+  }
+  header{
+    padding:12px 18px 10px; border-bottom:1px solid var(--line);
+    display:flex; align-items:baseline; gap:12px; flex-wrap:wrap;
+  }
+  header h1{font-size:22px; margin:0; letter-spacing:2px; color:var(--accent);}
+  header .sub{font-size:12px; color:var(--muted); flex:1 1 200px;}
+  #toggleLog{
+    background:var(--panel); color:var(--accent); border:1px solid var(--line);
+    border-radius:6px; padding:4px 10px; font-family:inherit; font-size:12px;
+    cursor:pointer; white-space:nowrap;
+  }
+  #toggleLog:hover{ border-color:var(--accent); }
+
+  /* 版本更新记录面板 */
+  .changelog{
+    border-top:1px solid var(--line); background:var(--panel);
+    max-height:230px; overflow:hidden; transition:max-height .25s ease;
+    display:flex; flex-direction:column; flex:0 0 auto;
+  }
+  .changelog.collapsed{ max-height:0; border-top:none; }
+  .cl-head{
+    padding:8px 18px; font-size:12px; color:var(--muted);
+    display:flex; justify-content:space-between; align-items:center; flex:0 0 auto;
+  }
+  .cl-list{ overflow-y:auto; padding:0 18px 12px; display:flex; flex-direction:column; gap:8px; }
+  .cl-item{
+    border:1px solid var(--line); border-radius:8px; padding:9px 12px;
+    cursor:pointer; transition:.15s; background:#15110b;
+  }
+  .cl-item:hover{ border-color:var(--accent); }
+  .cl-item.active{ border-color:var(--accent); background:#1d160d; box-shadow:0 0 0 1px var(--accent) inset; }
+  .cl-top{ display:flex; gap:10px; align-items:baseline; flex-wrap:wrap; }
+  .cl-item .v{ color:var(--accent); font-weight:bold; font-size:14px; }
+  .cl-item .t{ color:var(--muted); font-size:11px; }
+  .cl-item .d{ color:var(--muted); font-size:11px; margin-left:auto; }
+  .cl-item ul{ margin:7px 0 0; padding-left:18px; }
+  .cl-item li{ font-size:12px; color:var(--ink); line-height:1.55; }
+  /* 默认只显示约 3 条，超出折叠；点「展开」展开全部 */
+  .cl-ul.cl-collapsed{ max-height:5.4em; overflow:hidden; }
+  .cl-more{
+    margin-top:6px; background:transparent; border:1px solid var(--line);
+    color:var(--muted); border-radius:6px; padding:2px 9px; font-size:11px;
+    font-family:inherit; cursor:pointer;
+  }
+  .cl-more:hover{ color:var(--accent); border-color:var(--accent); }
+
+  #stage{
+    flex:1 1 auto; width:100%; border:none; background:#0a0805; min-height:0;
+  }
+
+  /* 版本进度条：缩短为一个居中的框 */
+  .vbar-wrap{
+    border:1px solid var(--line); border-radius:12px; background:var(--panel);
+    padding:14px 18px 16px; flex:0 0 auto;
+    max-width:460px; margin:8px auto 0;
+  }
+  /* 版本区：更新记录 + 进度条一起收起/展开；按钮居中 */
+  .version-panel.collapsed .changelog,
+  .version-panel.collapsed .vbar-wrap{ display:none; }
+  .vp-toggle{ display:flex; justify-content:center; padding:10px 0 2px; }
+  .vbar-head{
+    display:flex; justify-content:space-between; align-items:baseline;
+    margin-bottom:14px; flex-wrap:wrap; gap:6px;
+  }
+  .vbar-head .ttl{font-size:13px; color:var(--muted);}
+  .vbar-head .cur{font-size:15px; color:var(--accent); font-weight:bold;}
+  .vbar-right{display:flex; align-items:center; gap:12px;}
+  .vbar{ position:relative; padding:0 8px; }
+  .track{
+    position:absolute; left:8px; right:8px; top:11px; height:4px;
+    background:var(--line); border-radius:3px; overflow:hidden;
+  }
+  .fill{
+    height:100%; width:100%; background:linear-gradient(90deg,var(--accent2),var(--accent));
+    transition:width .25s ease;
+  }
+  .nodes{ position:relative; display:flex; justify-content:space-between; }
+  .vnode{
+    background:none; border:none; cursor:pointer; padding:0; font-family:inherit;
+    display:flex; flex-direction:column; align-items:center; gap:6px; flex:1;
+  }
+  .vnode .dot{
+    width:22px; height:22px; border-radius:50%; background:var(--bg);
+    border:3px solid var(--line); transition:.2s; position:relative; z-index:1;
+  }
+  .vnode .ver{font-size:13px; color:var(--ink); font-weight:bold;}
+  .vnode .nm{font-size:11px; color:var(--muted); text-align:center; line-height:1.3;}
+  .vnode:hover .dot{ border-color:var(--accent); }
+  .vnode.active .dot{ background:var(--accent); border-color:var(--accent); box-shadow:0 0 10px rgba(217,164,65,.6); }
+  .vnode.active .ver{ color:var(--accent); }
+  .hint{font-size:11px; color:var(--muted); text-align:center; margin-top:10px;}
+
+  /* 自杀按钮（展开更新记录标题栏右侧） */
+  .cl-head-right{display:flex; align-items:center; gap:10px;}
+  .suicide-btn{
+    background:transparent; color:#ff8a6b; border:1px solid #6b3a2f;
+    border-radius:6px; padding:3px 10px; font-family:inherit; font-size:12px;
+    cursor:pointer; white-space:nowrap;
+  }
+  .suicide-btn:hover{ background:#2a1410; border-color:#ff8a6b; }
+
+  /* 自杀确认弹窗：黑化遮罩 + 居中 modal */
+  .overlay{
+    position:fixed; inset:0; z-index:90; padding:18px;
+    background:rgba(8,6,4,.64); display:flex; align-items:center; justify-content:center;
+    animation:ovfade .18s ease;
+  }
+  @keyframes ovfade{from{opacity:0}to{opacity:1}}
+  .suicide-modal{
+    width:min(400px,92vw); background:var(--panel); border:1px solid var(--accent2);
+    border-radius:14px; padding:22px 22px; box-shadow:0 18px 50px rgba(0,0,0,.55);
+    text-align:center; animation:pop .22s cubic-bezier(.2,.9,.3,1.3);
+  }
+  @keyframes pop{from{transform:scale(.86) translateY(8px); opacity:0}to{transform:none; opacity:1}}
+  .suicide-modal .m-title{font-size:17px; color:var(--accent); font-weight:600; margin-bottom:8px;}
+  .suicide-modal .m-msg{font-size:14px; color:var(--ink); line-height:1.6; margin-bottom:20px;}
+  .suicide-modal .m-actions{display:flex; gap:12px; justify-content:center;}
+  .m-btn{
+    border:1px solid var(--line); border-radius:10px; padding:10px 22px;
+    font-size:14px; font-weight:700; cursor:pointer; font-family:inherit; transition:.15s;
+  }
+  .m-btn.primary{background:var(--accent); color:#0e0b06; border-color:var(--accent);}
+  .m-btn.primary:hover{filter:brightness(1.08);}
+  .m-btn.ghost{background:transparent; color:var(--muted);}
+  .m-btn.ghost:hover{color:var(--ink); border-color:var(--accent);}
+</style>
+</head>
+<body>
+  <header>
+    <h1>蛆生</h1>
+    <span class="sub">一条蛆的一生，几个版本的迭代。下方记录每个大版本的更新，最底部可点击切换。</span>
+  </header>
+
+  <iframe id="stage" src="game.html" title="蛆生游戏"></iframe>
+
+  <div class="version-panel collapsed" id="versionPanel">
+    <div class="vp-toggle">
+      <button id="toggleLog">展开更新记录 ▾</button>
+    </div>
+
+    <section id="changelog" class="changelog">
+      <div class="cl-head"><span>📜 版本更新记录（点击任意条目可切换版本）</span>
+        <span class="cl-head-right"><span id="clCount"></span><button id="suicideBtn" class="suicide-btn" type="button">☠ 自杀</button></span>
+      </div>
+      <div class="cl-list" id="clList"></div>
+    </section>
+
+    <div class="vbar-wrap">
+      <div class="vbar-head">
+        <span class="ttl">版本进度条（点击切换）</span>
+        <span class="cur" id="curName">v1.6 · 文字冒险 · 动态行动</span>
+      </div>
+      <div class="vbar">
+        <div class="track"><div class="fill" id="vfill"></div></div>
+        <div class="nodes" id="nodes"></div>
+      </div>
+      <div class="hint" id="hint">文字冒险版用鼠标点击按钮即可；Roguelike 版点击游戏区后用 方向键 / WASD 移动，空格等待。</div>
+    </div>
+  </div>
+
+<script>
+  /* 版本清单 + 每个大版本的更新记录（按时间顺序，构成进度条） */
+  const VERSIONS = [
+    { id:'v1.0', file:'game.html', ver:'v1.0', name:'文字冒险 · 初版',
+      date:'2026-08-23', time:'00:20', type:'文字冒险',
+      changes:[
+        '状态栏：饱食度 / 体力 / 体型 / 天数，每回合自然消耗，饿肚子掉血。',
+        '四种日常行动：🍖 啃食腐肉、🐜 钻入暗处、🌿 爬向落叶堆、🪵 滚向树皮缝。',
+        '随机天敌：蚂蚁、隐翅虫、蟾蜍、寄生蜂——体力越低越易被捕食。',
+        '世界事件：每 3 天触发暴雨冲刷、虫口夺食、意外大餐、烈日干旱。',
+        '化蛹 + 「深埋稳赢 / 仓促险拼」赌羽化，多结局 + 「再活一次」。',
+      ],
+      hint:'文字冒险版用鼠标点击按钮即可。' },
+    { id:'v2.0', file:'game.html', ver:'v2.0', name:'ROGUELIKE',
+      date:'2026-08-23', time:'01:10', type:'Roguelike',
+      changes:[
+        '从「回合选择叙事」重写为「键盘 / 触屏操作的 roguelike」。',
+        '程序生成网格地牢（腐肉 / 泥土生态），逐层向下，第 6 层为「化蛹之穴 Ω」。',
+        '撞怪战斗：蚂蚁、隐翅虫、蟾蜍、寄生蜂，怪物每回合 AI 行动。',
+        '道具拾取：食物（回饱食）、露珠（回体力）、碎壳（护甲）、蜕皮（体型）。',
+        '饥饿逐回合消耗；到达化蛹之穴后「深埋稳赢 / 仓促险拼」赌羽化。',
+        '永久死亡 + 即时重开；50 种事件转为「周遭骤变」环境危害。',
+      ],
+      hint:'Roguelike 版点击游戏区后用 方向键 / WASD 移动，空格等待。' },
+    { id:'v1.5', file:'game.html', ver:'v1.5', name:'文字冒险 · 回退版',
+      date:'2026-08-23', time:'01:45', type:'文字冒险',
+      changes:[
+        '应要求回退 Roguelike，恢复纯文字冒险（无网格 / 视觉操作系统）。',
+        '保留状态栏 + 四项日常行动 + 化蛹赌羽化的核心循环。',
+        '50 种随机事件池（天敌 / 天象 / 机缘 / 竞争 / 奇遇）。',
+        '每回合 55% 概率触发「周遭骤变」，触发即随机连发 3 种不同事件（按盈亏染色）。',
+        '逻辑从早期备份原样恢复，仅补文字冒险 HTML / CSS 外壳。',
+      ],
+      hint:'文字冒险版用鼠标点击按钮即可。' },
+    { id:'v1.6', file:'game.html', ver:'v1.8', name:'三轴体系 · 体型对决',
+      date:'2026-08-25', time:'00:50', type:'文字冒险',
+      changes:[
+        '状态体系重构为「体力 / 体型 / 探索」三轴：体力或体型任一归零即死。',
+        '体力起始 20、体型起始 1（可无限成长）、探索起始 0（类 SAN）。',
+        '天敌按「体型差」判定胜负——败则按体型差 × 天敌种类损失不同数量的体型；体型越大越强也越显眼。',
+        '探索过高（>75）触发克苏鲁事件：小概率古神祝福变异、中概率直接死亡、大概率损失大量体型。',
+        '在 v1.5 基础上扩充为 24 种行动池（原 4 种 + 新增 20 种）。',
+        '每回合根据概率、当前地点、状态、天数从行动池中刷新可选按钮（平常行动恒 3 个）。',
+        '新增：啜饮酸液、吞卵、晒太阳、装死、同类相食、吞卵、追蚂蚁、碎骨阴影、接晨露、食旧皮、追蝇蛆、躲羽毛、深挖树皮、静止等待、裹泥伪装、啃腐木、钻腐果、避暑、挑衅豪赌、贴地倾听等。',
+        '「伪装」行动可减半下一次事件伤害；触发事件后每个特殊事件都有专属「事件应对」行动，与平常行动分区呈现。',
+        '60 事件「周遭骤变」：每回合以概率触发 1 件，部分事件需「自身状态 / 以往已触发事件 / 已轮回」满足条件才会出现（事件链）。',
+        '新增「轮回」机制：羽化后可选继续探索 / 产卵重启轮回 / 主动终结；产卵后以全新蛆之躯醒来，部分事件需轮回之后才触发。',
+      '终章新增「生平日志」：汇总一生昼夜、轮回次数与名场面，可一键再活一次。',
+      '新增「探索值」状态：过低易被暗处天敌吞食，过高因探索过界遇险；隐蔽行动降、外出探索升，每回合缓慢回归中性。',
+      '新增「版本迭代」机制：版本号 vX.X 随进程自动演进——每存活 20 天 / 每见识 8 种不同特殊事件 / 每完成一次轮回，序号 +1（满 10 进位至 v2.0），触发时弹黑化遮罩提示并记入生平日志。',
+    ],
+      hint:'文字冒险版用鼠标点击按钮即可。' },
+    { id:'v3.0', file:'game.html', ver:'v3.0', name:'联机 · 群蛆乱舞',
+      date:'2026-08-25', time:'23:30', type:'联机对战',
+      changes:[
+        '封面延续「蛆生」古卷风，内核重写为 6 人无注册实时联机。',
+        '昵称 + 房间号即进，房主建房分享房间号拉人，最多 6 只蛆同场。',
+        '大家同屏在一块腐肉地图上爬行，🍖 抢食腐肉成长体型，体型越大越显眼。',
+        '🐜 蚂蚁天敌专盯最小最弱的蛆撕咬，逼你尽快抢食变强。',
+        '空格 / 按钮释放🌫️信息素，给同伴报点食物位置。',
+        '限时 90 秒，活到场上且体型最大者加冕「蛆王」。',
+      ],
+      hint:'PC：WASD / 方向键移动，空格放信息素；手机：左侧摇杆移动，右下按钮放信息素。' },
+  ];
+  const DEFAULT = 'v3.0';
+  const stage = document.getElementById('stage');
+  const nodesEl = document.getElementById('nodes');
+  const clList = document.getElementById('clList');
+  const fill = document.getElementById('vfill');
+  const curName = document.getElementById('curName');
+  const hintEl = document.getElementById('hint');
+  const changelog = document.getElementById('changelog');
+  const toggleLog = document.getElementById('toggleLog');
+  const clCount = document.getElementById('clCount');
+
+  /* 渲染「版本更新记录」面板 */
+  VERSIONS.forEach(v=>{
+    const el=document.createElement('div');
+    el.className='cl-item'; el.dataset.id=v.id;
+    const items = v.changes.map(c=>'<li>'+c+'</li>').join('');
+    const collapsed = v.changes.length > 3;
+    const more = collapsed
+      ? '<button class="cl-more" type="button">展开全部 '+v.changes.length+' 条 ▾</button>'
+      : '';
+    el.innerHTML =
+      '<div class="cl-top"><span class="v">'+v.ver+'</span>'+
+      '<span class="t">'+v.type+'</span>'+
+      '<span class="t">'+v.name+'</span>'+
+      '<span class="d">'+v.date+' '+v.time+'</span></div>'+
+      '<ul class="cl-ul'+(collapsed?' cl-collapsed':'')+'">'+items+'</ul>'+more;
+    el.onclick=()=>selectVersion(v.id);
+    if(collapsed){
+      const btn = el.querySelector('.cl-more');
+      btn.onclick=(e)=>{
+        e.stopPropagation();
+        const ul = el.querySelector('.cl-ul');
+        const isCollapsed = ul.classList.toggle('cl-collapsed');
+        btn.textContent = isCollapsed ? '展开全部 '+v.changes.length+' 条 ▾' : '收起 ▴';
+      };
+    }
+    clList.appendChild(el);
+  });
+  clCount.textContent = '共 '+VERSIONS.length+' 个大版本';
+
+  /* 渲染底部进度条节点 */
+  VERSIONS.forEach(v=>{
+    const b=document.createElement('button');
+    b.className='vnode'; b.dataset.id=v.id;
+    b.innerHTML='<span class="dot"></span><span class="ver">'+v.ver+'</span><span class="nm">'+v.name+'</span>';
+    b.onclick=()=>selectVersion(v.id);
+    nodesEl.appendChild(b);
+  });
+
+  function selectVersion(id){
+    const v = VERSIONS.find(x=>x.id===id);
+    if(!v) return;
+    stage.src = v.file;
+    curName.textContent = v.ver + ' · ' + v.name;
+    hintEl.textContent = v.hint;
+    const idx = VERSIONS.findIndex(x=>x.id===id);
+    fill.style.width = (idx/(VERSIONS.length-1))*100 + '%';
+    [...nodesEl.children].forEach(n=> n.classList.toggle('active', n.dataset.id===id));
+    [...clList.children].forEach(n=>{
+      const on = n.dataset.id===id;
+      n.classList.toggle('active', on);
+      if(on) n.scrollIntoView({block:'nearest', behavior:'smooth'});
+    });
+  }
+
+  /* 折叠 / 展开：更新记录 + 版本进度条一起收起 */
+  const versionPanel = document.getElementById('versionPanel');
+  toggleLog.onclick=()=>{
+    const collapsed = versionPanel.classList.toggle('collapsed');
+    toggleLog.textContent = collapsed ? '展开更新记录 ▾' : '收起更新记录 ▴';
+  };
+
+  /* 让 iframe 在加载后获得焦点（Roguelike 键盘操作需要） */
+  stage.addEventListener('load', ()=>{ try{ stage.contentWindow.focus(); }catch(e){} });
+  selectVersion(DEFAULT);
+
+  /* 自杀：弹出黑化确认窗，确定后让游戏回到初始页面（重开当前版本） */
+  const suicideBtn = document.getElementById('suicideBtn');
+  function openSuicide(){
+    const isOnline = stage.src.indexOf('game.html') >= 0;
+    const ov = document.createElement('div');
+    ov.className = 'overlay';
+    ov.innerHTML =
+      '<div class="suicide-modal">'
+      + '<div class="m-title">'+(isOnline?'☠ 离场':'☠ 自我了结')+'</div>'
+      + '<div class="m-msg">'+(isOnline
+          ? '确定要离开当前这局联机、回到大厅吗？<br>房间内的伙伴仍会继续这一局。'
+          : '确定要结束当前这一局、让这条蛆回到最初吗？<br>此前的阅历、轮回与版本演进将一并归零。')+'</div>'
+      + '<div class="m-actions">'
+      +   '<button class="m-btn ghost" id="suicideCancel" type="button">取消</button>'
+      +   '<button class="m-btn primary" id="suicideOk" type="button">确定</button>'
+      + '</div></div>';
+    document.body.appendChild(ov);
+    const close = ()=>{ if(ov.parentNode) ov.remove(); };
+    ov.querySelector('#suicideCancel').onclick = close;
+    ov.querySelector('#suicideOk').onclick = ()=>{ close(); doSuicide(); };
+    ov.addEventListener('click', (e)=>{ if(e.target===ov) close(); });
+  }
+  function doSuicide(){
+    const sw = stage.contentWindow;
+    try{
+      if(sw && typeof sw.returnToLobby === 'function'){ sw.returnToLobby(); } // 联机版：回大厅
+      else if(sw && typeof sw.start === 'function'){ sw.start(); }      // 重开当前版本到初始
+      else if(sw && sw.location){ sw.location.reload(true); }       // 退路：重载 iframe
+      else { stage.src = stage.src; }
+    }catch(e){ try{ stage.src = stage.src; }catch(_){} }            // 再退路：重置 src
+  }
+  suicideBtn.onclick = openSuicide;
+</script>
+</body>
+</html>
