@@ -1,68 +1,30 @@
-# 个人项目集（Jekyll + GitHub Pages）
+# 个人项目集
 
-一个用于陈列个人项目的静态站点：使用 Jekyll 构建、GitHub Pages 托管。
-首页自动从 `_projects/` 生成项目卡片，新增项目无需手动维护导航。
+这里收纳并展示我做过的一些个人项目，涵盖文字游戏与效率工具两类。每个项目都有独立页面，可点击进入查看详情。
 
-## 目录结构
+站点地址：**https://blackinkvc.github.io**
 
-```
-.
-├── _config.yml        # 站点与部署配置
-├── _layouts/          # 页面模板（default / project）
-├── _projects/         # 每个项目一个 .md，自动生成卡片
-├── assets/css/        # 样式
-├── index.html         # 首页（项目列表）
-├── Gemfile            # GitHub Pages 构建依赖
-└── README.md
-```
+## 项目一览
 
-## 本地预览
+### 蛆生 v1.6
+文字冒险游戏，以一只"蛆"为主角，体验轮回与转世。
 
-需要 Ruby 2.7+ 与 Bundler。macOS 建议用 rbenv / brew 安装新版本 Ruby
-（系统自带 Ruby 通常过旧，无法安装 github-pages gem）。
+- **核心数值系统**：饱食度、体力、体型、探索值（0–100，初始 50）、天数。
+- **探索值偏移机制**：低于 25 触发捕食风险，高于 75 进入广域危险，每回合向中位 50 漂移。
+- **轮回玩法**：每回合触发 1 次特殊事件，强化回合节奏与可读性。
+- **版本博物馆**：聚合 v1.0 / v1.5 / v1.6 子页面，含更新日志与版本进度条。
+- 纯前端单页应用，已部署至本站点。
 
-```bash
-# 安装依赖
-bundle install
-# 启动本地服务，访问 http://localhost:4000
-bundle exec jekyll serve
-```
+### 单文件排程 / 笔记应用
+一个零依赖的单文件 Web 应用，用于日常排程与笔记。
 
-## 部署到 GitHub Pages
+- **四层结构**：日期/周 → 分类（公司 / 行程 / 其他）→ 标题 + 进度 → 内容 + 总结。
+- 数据保存在本地，轻量、即时可用，适合随手记录与回顾。
 
-1. 在 GitHub 新建仓库。
-   - 若仓库名为 `用户名.github.io`，访问地址即 `https://用户名.github.io`。
-   - 若叫其他名字（如 `personal-site`），访问地址为 `https://用户名.github.io/personal-site`，
-     并需在 `_config.yml` 把 `baseurl` 改为 `/personal-site`。
-2. 推送代码：
+## 浏览方式
 
-   ```bash
-   git init
-   git add .
-   git commit -m "first commit"
-   git branch -M main
-   git remote add origin git@github.com:用户名/仓库名.git
-   git push -u origin main
-   ```
+打开 [https://blackinkvc.github.io](https://blackinkvc.github.io) 即可看到项目卡片列表，点击任意项目进入详情页。
 
-3. 仓库 → **Settings → Pages** → Source 选 `main` 分支、`/ (root)` → Save。
-4. 等待 1–2 分钟，访问分配的地址即可。
+## 新增项目
 
-## 新增一个项目
-
-在 `_projects/` 下新建 `项目名.md`，填写 front matter：
-
-```yaml
----
-layout: project
-title: 项目名
-date: 2026-09-01
-tags: [标签1, 标签2]
-summary: 一句话简介
-link: https://...   # 可选，留空则不显示按钮
----
-
-正文用 Markdown 书写。
-```
-
-首页会自动生成项目卡片，无需手动维护。
+在 `_projects/` 目录下新建一个 `.md` 文件，填写标题、标签、简介与正文，首页会自动生成卡片，无需手动维护导航。
