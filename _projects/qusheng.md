@@ -4,7 +4,7 @@ title: 蛆生 v1.6
 date: 2026-09-01
 tags: [文字冒险, 游戏, 数值设计]
 summary: 以"蛆"为主角的文字冒险游戏，含轮回/转世玩法、日常生活日志与核心数值系统。
-link: https://a76872772e7eaff1e7b.app.workbuddy.link
+link: /qusheng/
 ---
 
 ## 简介
@@ -20,4 +20,4 @@ link: https://a76872772e7eaff1e7b.app.workbuddy.link
 
 ## 技术
 
-纯前端单页应用，已部署至 WorkBuddy 预览环境。
+纯前端单页应用，已随本站点一同部署，点击「试玩 / 访问」即可直接游玩。
