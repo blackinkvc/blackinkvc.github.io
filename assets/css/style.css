@@ -1,0 +1,111 @@
+:root {
+  --bg: #fafafa;
+  --fg: #1a1a1a;
+  --muted: #666;
+  --line: #e5e5e5;
+  --accent: #2b6cb0;
+  --card: #fff;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  line-height: 1.6;
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--line);
+  background: #fff;
+}
+
+.site-title {
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--fg);
+  text-decoration: none;
+}
+
+.site-header nav a {
+  margin-left: 16px;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.site-header nav a:hover { color: var(--accent); }
+
+.site-main {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 32px 24px 64px;
+}
+
+.intro h1 { font-size: 28px; margin: 0 0 8px; }
+.intro p { color: var(--muted); margin: 0 0 28px; }
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 20px;
+  transition: transform .15s, box-shadow .15s;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, .06);
+}
+
+.card h2 { margin: 0 0 6px; font-size: 18px; }
+.card h2 a { color: var(--fg); text-decoration: none; }
+.card h2 a:hover { color: var(--accent); }
+
+.card .meta {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 0 0 10px;
+}
+
+.card p { margin: 0 0 14px; }
+
+.btn {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.btn:hover { opacity: .9; }
+
+.project-detail h1 { font-size: 26px; margin: 0 0 6px; }
+.project-detail .meta { color: var(--muted); font-size: 13px; margin: 0 0 20px; }
+.project-detail .back { margin: 0 0 16px; }
+.project-detail .back a { color: var(--muted); text-decoration: none; }
+.project-detail .back a:hover { color: var(--accent); }
+.project-detail p { margin: 0 0 14px; }
+.project-detail h2 { font-size: 20px; margin: 24px 0 8px; }
+
+.site-footer {
+  border-top: 1px solid var(--line);
+  padding: 20px 24px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+}

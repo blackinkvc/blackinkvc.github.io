@@ -1,0 +1,24 @@
+---
+layout: default
+title: 项目集
+---
+
+<section class="intro">
+  <h1>我的项目</h1>
+  <p>这里收录我做过的各类项目，按时间倒序排列。</p>
+</section>
+
+<section class="project-grid">
+  {% assign projects = site.projects | sort: 'date' | reverse %}
+  {% for p in projects %}
+  <article class="card">
+    <h2><a href="{{ p.url | relative_url }}">{{ p.title }}</a></h2>
+    <p class="meta">
+      {{ p.date | date: "%Y-%m-%d" }}
+      {% if p.tags %} · {{ p.tags | join: ", " }}{% endif %}
+    </p>
+    <p>{{ p.summary }}</p>
+    {% if p.link %}<a class="btn" href="{{ p.link }}">查看 / 试玩 →</a>{% endif %}
+  </article>
+  {% endfor %}
+</section>
