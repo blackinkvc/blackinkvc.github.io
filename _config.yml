@@ -1,13 +1,13 @@
 # 站点基础信息
 title: 我的项目集
 description: 个人项目存档与展示
-author: pamphile
+author: blackinkvc
 
 # 部署相关：
 # - 仓库名为 用户名.github.io 时，baseurl 留空（""）
 # - 仓库名是其他名字（如 personal-site）时，baseurl 改为 "/personal-site"
 baseurl: ""
-url: "https://pamphile.github.io"
+url: "https://blackinkvc.github.io"
 
 # 构建设置
 markdown: kramdown
