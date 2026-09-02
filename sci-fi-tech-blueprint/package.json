@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "copyfiles": "^2.4.1",
+    "leaflet": "^1.9.4"
+  }
+}

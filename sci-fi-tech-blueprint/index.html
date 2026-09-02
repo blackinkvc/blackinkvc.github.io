@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>科幻科技实现蓝图 · Blueprint of Sci-Fi Technology</title>
+  <meta name="description" content="逐条清点科幻作品中的技术：哪些已成现实，哪些仍在方程里沉睡，哪些只属于纸上的宇宙。">
+  <link rel="stylesheet" href="css/styles.css?v=3">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#/">
+        <span class="brand-mark">墨</span>
+        <span class="brand-text">
+          <strong>科幻科技实现蓝图</strong>
+          <small>BLUEPRINT OF SCI-FI TECHNOLOGY · ARCHIVE</small>
+        </span>
+      </a>
+      <nav class="site-nav" id="site-nav">
+        <a href="#/" data-nav="/">首页</a>
+        <a href="#/works" data-nav="/work">世界观档案</a>
+        <a href="#/category" data-nav="/category">科技检索</a>
+        <a href="#/techmap" data-nav="/techmap">科技星图</a>
+        <a href="#/plan" data-nav="/plan">补完计划</a>
+        <a href="#/sop" data-nav="/sop">研发SOP</a>
+        <a href="#/relations" data-nav="/relations">关联网络</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="app" class="container"></main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>科幻科技实现蓝图 · 卷宗 SF-TECH-BLUEPRINT</p>
+      <p class="muted">纸上的一切，终将接受物理的审问。</p>
+    </div>
+  </footer>
+
+  <!-- 数据层 -->
+  <script src="js/data/levels.js?v=3"></script>
+  <script src="js/data/domains.js?v=3"></script>
+  <script src="js/data/works.js?v=3"></script>
+  <script src="js/data/works-extra-1.js?v=3"></script>
+  <script src="js/data/works-extra-2.js?v=3"></script>
+  <script src="js/data/works-extra-3.js?v=3"></script>
+  <script src="js/data/works-extra-4.js?v=3"></script>
+  <script src="js/data/works-real.js?v=3"></script>
+  <script src="js/data/works-wh40k.js?v=3"></script>
+  <script src="js/data/works-pop.js?v=3"></script>
+  <script src="js/data/techs.js?v=3"></script>
+  <script src="js/data/techs-extra.js?v=3"></script>
+  <script src="js/data/techs-real.js?v=3"></script>
+  <script src="js/data/techs-wh40k.js?v=3"></script>
+  <script src="js/data/techs-b1.js?v=3"></script>
+  <script src="js/data/techs-pop.js?v=3"></script>
+  <script src="js/data/techs-placeholders.js?v=3"></script>
+  <script src="js/data/methods.js?v=3"></script>
+  <script src="js/data/feasibility.js?v=3"></script>
+  <script src="js/data/tree-template.js?v=3"></script>
+  <script src="js/data/relations.js?v=3"></script>
+  <script src="js/data/davinci.js?v=3"></script>
+  <script src="js/data/midtechs.js?v=3"></script>
+
+  <!-- 第三方：Leaflet（本地，离线可用，用于实现进度星图） -->
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css?v=3">
+  <script src="vendor/leaflet/leaflet.js?v=3"></script>
+
+  <!-- 视图层 -->
+  <script src="js/views/home.js?v=3"></script>
+  <script src="js/views/category.js?v=3"></script>
+  <script src="js/views/detail.js?v=3"></script>
+  <script src="js/views/work.js?v=3"></script>
+  <script src="js/views/work-tree.js?v=3"></script>
+  <script src="js/views/works.js?v=3"></script>
+  <script src="js/views/sop.js?v=3"></script>
+  <script src="js/views/tech-tree.js?v=3"></script>
+  <script src="js/views/progress-charts.js?v=3"></script>
+  <script src="js/views/map.js?v=3"></script>
+  <script src="js/views/techmap.js?v=3"></script>
+  <script src="js/views/relations.js?v=3"></script>
+  <script src="js/views/audit.js?v=3"></script>
+  <script src="js/views/plan.js?v=3"></script>
+  <script src="js/views/midtech.js?v=3"></script>
+
+  <!-- 路由与应用入口 -->
+  <script src="js/router.js?v=3"></script>
+  <script src="js/app.js?v=3"></script>
+</body>
+</html>
