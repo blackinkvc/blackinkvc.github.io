@@ -5,3 +5,9 @@ _site/
 .bundle/
 vendor/
 Gemfile.lock
+
+# macOS
+.DS_Store
+
+# WorkBuddy 内部数据（不对外公开）
+.workbuddy/
