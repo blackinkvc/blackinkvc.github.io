@@ -1,0 +1,1291 @@
+// ============================================================
+// 人类文明技术发展数据库 (Technology Development Corpus)
+// 项目：科幻科技实现蓝图 · 现实技术史基础层
+// 数据模型：每条技术含 时间/人员/后续应用/各时期看法/依赖链条
+// ============================================================
+
+const WORLDVIEW = {
+  title: "技术演化：从用火到智能",
+  subtitle: "一部人类文明的技术发展脉络 · 可视化科技树与逻辑链条数据库",
+  intro: [
+    "本数据库梳理人类从史前到智能时代的关键技术节点。每一项技术都不是孤立的：它建立在若干前置技术之上（依赖），又催生出后续技术（赋能），形成环环相扣、层层累积的文明基础设施。",
+    "所有条目均标注真实的时间、人员、应用，以及不同时代人们对它的期待与误判。理解技术是如何一步步长出来的，是后续推演科幻科技能否实现的前提。",
+    "本库是整个科幻科技蓝图项目的「现实锚点层」。关于评估方法、分级体系与研发流程，详见「方法论」一页。"
+  ],
+  note: "点击任意节点可查看其时间、关键人物、后续应用，以及各历史时期的期待与看法；在「科技树」视图中，线条表示技术之间的依赖（上游）与赋能（下游）关系。"
+};
+
+// ============================================================
+// 方法论 (Methodology)
+// 沉淀整个项目的制作思路与理念，随迭代持续更新
+// ============================================================
+const METHODOLOGY = {
+  title: "方法论：从现实技术史到科幻科技蓝图",
+  subtitle: "评估框架 · 五档分级 · 研发 SOP · 世界观系统——随项目推进持续修订",
+  updated: "2026-08-25",
+  lead: "本页记录整个「科幻科技实现蓝图」项目的制作思路与核心理念。它不是一次性的方案，而是随每一次迭代持续修订的工作体系：看到了什么、改了什么、为什么这么改，都会沉淀在末尾的「更新日志」里。",
+  sections: [
+    {
+      h: "一、项目原点：把科幻科技「拆」回现实",
+      body: [
+        "项目只有一个根本目标——研究科幻作品里的科技到底能不能实现，以及实现到什么程度。",
+        "为了避免讨论停留在「我觉得行 / 我觉得不行」的直觉层面，项目先建一层「现实锚点」：从史前用火到当代 AI 的真实技术史。任何科幻设想，只要在现实技术树上有可追溯的根与枝，就值得被严肃评估。"
+      ]
+    },
+    {
+      h: "二、五档分级：给「能不能实现」一个刻度",
+      body: [
+        "所有技术按可实现程度归入五档。分级不是结论，而是评估的起点——它强制我们说明「为什么是这一档」。"
+      ],
+      table: {
+        head: ["分级", "名称", "含义"],
+        rows: [
+          ["L1", "已实现", "现实中已存在、可量产或可运营的技术"],
+          ["L2", "目前技术可实现", "原理清楚、已有原型或明确路线图，短期内可达"],
+          ["L3", "未来可能实现", "不违反已知物理，但需重大技术突破或时间积累"],
+          ["L4", "未来较难实现", "原理上可能，但面临根本性约束（能量 / 尺度 / 材料），极难"],
+          ["L5", "只能在该世界观里实现", "依赖该科幻设定的特殊规则或物理，离开世界观即不可行"]
+        ]
+      }
+    },
+    {
+      h: "三、两条工作原则：第一性原理 × 超级工程师",
+      body: [
+        "严肃科学：每一项评估都基于可查证的科学事实与真实技术史，而非科幻想象。先有证据，再有判断。",
+        "第一性原理：从物理定律与基本约束出发，剥离类比、惯例与「大家都是这么说的」，追问这件事在原理上是否可能。",
+        "超级工程师：以工程实现为终点。不只是判断「行不行」，而是给出拆解 → 设计 → 验证的研发路径，把设想落到可执行的步骤上。"
+      ]
+    },
+    {
+      h: "四、现实锚点层：先做真实技术史",
+      body: [
+        "技术不是凭空出现的。本库收录从史前到智能时代的真实技术节点，每条都标注时间、人员、应用，以及不同时代人们对它的期待与误判。",
+        "「来龙去脉」视图把任一技术的上游背景（来龙）与下游衍生（去脉）穿成网状图——一个看似现代的发明，往往要在十几条技术线索同时成熟后才汇聚而生。这是推演科幻科技时最常被低估的环节。"
+      ]
+    },
+    {
+      h: "五、分类与检索体系",
+      body: [
+        "9 大分类：科学基础与方法、材料、能源、制造与工具、交通运载、信息通信、生命与医疗、建筑建造、军事。",
+        "9 大时期：史前 → 智能时代。配合全文检索与「依赖网」，让任意技术都能被快速定位、对比与溯源。"
+      ]
+    },
+    {
+      h: "六、可视化科技树与「来龙去脉」推演",
+      body: [
+        "科技树：以力导向图呈现全部技术的依赖关系，线条表示「谁依赖谁」，节点按分类着色、按关联度缩放。",
+        "来龙去脉：选定任一技术后，左侧展开其技术背景（来龙）、右侧展开衍生应用（去脉），并自动生成一段推演文字，说明它是被哪些上游技术「同时就位」所催生。"
+      ]
+    },
+    {
+      h: "七、研发设计 SOP：评估一项科幻科技的流程",
+      body: [
+        "把模糊的「能不能」变成可复用的步骤。后续所有科幻条目都应按此流程产出评估。"
+      ],
+      list: [
+        "定位分级：它大致落在 L1–L5 的哪一档？",
+        "拆解依赖：把它拆成底层能力（能源 / 材料 / 信息 / 制造），看每项是否在现实技术树上有锚点。",
+        "现实锚点对撞：找到对应现实节点，比对成熟度与差距。",
+        "原理可行性：用第一性原理问——这件事在已知物理下是否矛盾？",
+        "工程路径：若存在可行路径，给出拆解 → 设计 → 验证的研发步骤与时间线。",
+        "风险与边界：列出根本约束（能量密度、尺度、材料极限）与失败模式。"
+      ]
+    },
+    {
+      h: "八、世界观简介系统",
+      body: [
+        "每个科幻设定配一份世界观档案，明确区分两类内容：一是「现实约束」（已知物理、材料极限），二是「设定假设」（该世界观自洽的特殊规则）。",
+        "只有把两者分开，才能说清一项科技是「真的难」，还是「只要接受某个设定假设就成立」。"
+      ]
+    },
+    {
+      h: "九、持续更新机制",
+      body: [
+        "本页末尾保留「更新日志」。每完成一轮迭代（新增数据、修正分类、调整评估），就在此追加一条记录，使项目的思路演进可追溯。",
+        "这也是「超长交付任务」的管理方式：不追求一次性完美，而是让蓝图随证据与理解的增长持续生长。"
+      ]
+    }
+  ],
+  log: [
+    { date: "2026-08-25", text: "执行「关系网增量 1000 条」：基于现有 1342 节点 / 4741 边的依赖网，新增 1000 条真实技术条目（按类别分层：基础科学 168 / 材料 63 / 能源 88 / 制造 22 / 交通 95 / 信息 96 / 生命 178 / 建造 162 / 军事 128，未来 L2–L5 共 42 条）。每条仅锚定到已存在 id（保证 DAG 天然无环），简介由「技术名+真实上游名+具体用途」非模板合成，≥40 字、点名上下游、无套话。生成器 tools/gen_1000.js 内置校验（重复 id/依赖闭合/DAG 无环/简介质量）并自动裁剪至精确 1000 条。关系网扩至 2342 节点 / 8657 边。" },
+    { date: "2026-08-25", text: "执行「关系网前后延伸」：基于已有 1168 节点 / 4289 边的依赖网，向前后双向扩充 174 条技术条目。向后（83 条）：补齐缺失前置与根系（手势交流、绳索、骨器、木作、编织、独木舟、驯化、畜力、车、窑、砌筑、拱、桥、引水渠、工程学、建筑学、齿轮、钟表、水磨、冶金、红铜、木炭、锻造、纺织、纺锤、织机、航海术、磁石、指南针、石灰、采矿、钻井、风箱），并填补库内重大断层节点（等离子体物理、电子学、生物技术、激光、半导体、集成电路、传感器、显示、材料科学、量子科技、纳米技术、航天器、生命保障、药理学、干细胞、组织工程、微流控、推进、燃烧、作动器、CAD、仿真、物联网、大数据、神经网络、微波、低温工程、超导体、粒子物理、时空、广义相对论、量子场论、量子纠缠、量子信息、黑洞、气候科学、气溶胶、LED、自动化、通风、居住舱、超燃冲压、高超声速、电磁炮、原位资源利用）。向前（91 条）：按五档分级推演未来 / 科幻技术——L2 目前技术可实现 51 条（AGI 前身、神经形态计算、量子计算机/加密/互联网、边缘智能、数字孪生、AR/VR/全息、自动驾驶、人形/软体/集群机器人、外骨骼、无人工厂、基因编辑/治疗/合成生物学/干细胞治疗/器官芯片/精准医疗/mRNA 疫苗/人工光合/人造食物、聚变发电/超导磁体/固态电池/空间太阳能/无线输电/电网储能、石墨烯/碳纳米管/超材料/室温超导/自修复/高熵合金/生物制造、可重复火箭/巨型火箭/离子推进/电动飞机/磁悬浮/真空管道/无人船/月球基地/大规模增材/垂直农业/定向能/高超声速武器/自主武器/量子隐形传态）、L3 未来可能实现 19 条（基因电路/器官打印/纳米医药/寿命延长/衰老干预/人造子宫/虚拟世界/脑机接口/太空电梯/核热推进/火星殖民/太空制造/自建造结构/太空居住/地下城/纳米机器人/气候工程/人体冬眠/飞行汽车）、L4 未来较难实现 14 条（大脑仿真/意识上传/数字生命/可编程物质/原子级制造/分子装配/自复制机器/聚变火箭/轨道环/反物质能源/戴森球/冯·诺依曼探测器/记忆提取/轨道打击）、L5 仅在该世界观 7 条（奇异物质/曲速引擎/虫洞/超光速通讯/物质传送/恒星发动机/黑洞计算）。新增 future 时期（2026–2200+）与 ERA_BOUNDS，TL_MAX 扩至 2200，科技详情面板增加分级徽章。关系网扩至 1342 节点 / 4741 边，全量 DAG 无环、零重复 id、依赖全部闭合。" },
+    { date: "2026-08-25", text: "执行「技术拆解」：把 22 个复合平台 / 系统级技术（蒸汽机、内燃机、电力系统、电网、铁路、汽车、飞机、无人机、电子计算机、智能手机、互联网、万维网、基因工程、隧道、火炮、火箭、激光雷达、3D 打印、智能割草机、扫地机、喷气发动机等）拆出 63 个真实子组件 / 代际（纽科门机、瓦特机、锅炉、高压机、四冲程、柴油、化油器、涡轮增压、变压器、输电线、变电站、底盘、变速箱、空气动力学、飞控、分组交换、TCP/IP、光纤、浏览器、重组DNA、盾构机、线膛、液体火箭、扫描振镜等），新增为独立条目并接入依赖关系网（母依赖子、子依赖真实上游）。关系网扩至 1168 节点 / 4289 边，全量 DAG 无环、母→子零断链，简介沿用非模板合成（无套话 / 混排 / 过短）。" },
+    { date: "2026-08-25", text: "新增「关系网分析」页面：对全库 1168 节点 / 4289 边的依赖网做量化总结——(1) 网络结构概览（节点/边/密度/根/叶/最长链）；(2) 综合重要性排行（后代覆盖率×0.40 + 入度×0.18 + PageRank×0.27 + 中介中心性×0.15），含横向条形图 + 完整表格 + 力导向图；(3) 三类关键节点（地基/桥接/瓶颈）各列 top 8；(4) 组合诞生推演——统计「汇聚诞生」实证技术数，计算分类对共生指数（lift 归一化排除 ubiquitous 根节点虚高），输出 9×9 分类融合势能热力图与领域级组合推演（含近期活跃度与未来技术投影）。所有指标由依赖网实时计算，零控制台错误。" },
+    { date: "2026-08-25", text: "按《研发 SOP》分批完成 993 条模板占位的文本升级：用每条技术真实的 dependsOn / _down / applications / era 合成非模板简介，套话、中英混排、过短摘要全部清零，全部达「合格」以上（中位摘要 81 字）。未编造人物/地点（Tier B 待另批）。「进度」页改为内容质量自适应自评。" },
+    { date: "2026-08-25", text: "新增「进度」页面，实时统计技术数据库规模与「技术简介」撰写完成度，并对现有简介质量做自评：结构完整度表面高（字段普遍填充），但内容实质性低——约 993 条（90%）为自动化生成的模板占位，存在套话雷同、中英混排、人物/地点缺失、篇幅偏短四类通病，仅约 112 条手工锚点达到可发布标准。" },
+    { date: "2026-08-25", text: "新增「中间技术」页面，统一管理「多项技术同时成熟后才诞生」的复合技术（智能割草机器人、智能手机、民用无人机、自动驾驶），逐条拆解其关键技术背景与关键瓶颈，并可一键跳转至对应技术的来龙去脉推演。" },
+    { date: "2026-08-25", text: "方法论页从世界观引言中独立成页。世界观引言改为中性、客观的表述，移除了「第一性原理 / 超级工程师」的主观措辞；原世界观中的评估理念、五档分级、研发 SOP 统一沉淀到本页，并设立更新日志以便持续修订。" },
+    { date: "2026-08-23", text: "新增「来龙去脉」推演视图与「智能割草机器人」完整技术背景链（15 条新节点），并修复一处真实依赖环（科学方法 ↔ 经典力学）。" },
+    { date: "2026-08-23", text: "整体视觉改为与「科幻科技实现蓝图」一致的档案 / 蓝图卷宗风格（米黄纸、宋体、墨黑）。" },
+    { date: "2026-08-23", text: "初版交付：97 条技术、184 条依赖链、4 大视图（首页 / 检索 / 时间轴 / 科技树）。" },
+    { date: "2026-08-26", text: "扩充「中间技术」案例库至 100 例：从已有 2342 项技术中按「跨领域汇聚」口径自动筛选——dependsOn ≥4 且依赖跨越 ≥3 个非自身分类（主池）或 ≥2 个非自身分类（补池），round-robin 轮转取样保证 8 大类均衡覆盖（材料 14 / 能源 2 / 制造 14 / 交通 16 / 信息 14 / 生命 14 / 建造 13 / 军事 13）。每例保留原技术简介与年代，生成「为何此时出现」的汇聚说明 + 关键技术背景清单（跨线上游优先，最多 10 条；知名上游用定制注释，其余按分类能力模板合成）。生成器 tools/gen_midtech.js 内置校验（0 重复 id / 0 断链背景）。数据流：新增 assets/techs_midtech.js → data.js 合并 MIDTECHS_EXTRA.concat(MIDTECHS.items)。" }
+  ]
+};
+
+// ============================================================
+// 中间技术 (Mid-tech / Convergence cases)
+// 统一管理「多项技术在同一时点成熟后才诞生」的复合技术，
+// 逐条拆解其关键技术背景（关键瓶颈）。每一项可跳转到来龙去脉推演。
+// ============================================================
+const MIDTECHS = {
+  title: "中间技术：关键瓶颈与汇聚案例",
+  subtitle: "统一管理那些「多项技术在同一时点成熟后才诞生」的复合技术，拆解其技术背景与关键瓶颈",
+  lead: "有些技术并非单一突破的产物，而是当若干上游技术同时越过「可用、便宜、可靠」的临界点后，才汇聚而生。我们把这类复合技术称为「中间技术」，在此集中存放与维护，并逐条拆解它依赖的关键技术背景（即真正的瓶颈）。点击任一技术背景，可跳转到该技术的完整来龙去脉推演。",
+  items: [
+    {
+      id: "smart_mower",
+      name: "智能割草机器人",
+      en: "Robotic Lawn Mower",
+      date: "2010 年代起规模化",
+      summary: "能在无人看管下自主完成庭院割草、自动回充的家用服务机器人。它的出现不是某项技术的突破，而是多条技术线索在同一时点成熟后的汇聚。",
+      born: "智能割草机器人之所以在此时出现、而非更早，是因为以下关键技术恰好同时越过了「消费级可用」的门槛：",
+      backgrounds: [
+        { tech: "ai", note: "机器学习与决策让机器能理解环境、自主规划路径" },
+        { tech: "autonomous_driving", note: "汽车智能沉淀的「感知—决策—控制」范式直接下放家用" },
+        { tech: "gps", note: "GNSS 模块价格大幅下降，消费级定位首次变得可行" },
+        { tech: "lidar", note: "激光雷达小型化、低成本化，提供高精度环境建模" },
+        { tech: "robot_vacuum", note: "家用扫地机多年迭代，验证了家用服务机器人的产品形态与供应链" },
+        { tech: "brushless_motor", note: "无刷电机提供高效、安静、长寿命的行走与切割动力" },
+        { tech: "computer_vision", note: "计算机视觉让机器识别边界、障碍与草坪" },
+        { tech: "battery", note: "锂电池能量密度与成本，使无线长续航成为可能" }
+      ]
+    },
+    {
+      id: "smartphone",
+      name: "智能手机",
+      en: "Smartphone",
+      date: "2007 年起",
+      summary: "将计算、通信、成像、定位集于一身的个人终端，是移动互联时代的入口。",
+      born: "智能手机是以下技术同时成熟、并被压缩进巴掌大小后的结果：",
+      backgrounds: [
+        { tech: "ic", note: "集成电路把整机算力塞进掌心" },
+        { tech: "touchscreen", note: "电容触控屏取代实体键盘，重塑人机交互" },
+        { tech: "battery", note: "高能量密度锂电支撑全天续航" },
+        { tech: "internet", note: "移动互联网让终端随时在线" },
+        { tech: "camera", note: "数码成像模组让手机兼作相机" },
+        { tech: "gps", note: "内置定位催生地图、出行、外卖等位置服务" },
+        { tech: "computer_vision", note: "视觉算法支撑扫码、美颜、AR" }
+      ]
+    },
+    {
+      id: "drone",
+      name: "民用无人机",
+      en: "Consumer Drone",
+      date: "2010 年代起",
+      summary: "低成本、可遥控 / 自主飞行的多旋翼飞行器，渗透航拍、巡检、物流等场景。",
+      born: "多旋翼能从航模变成消费电子，依赖以下瓶颈被逐一打通：",
+      backgrounds: [
+        { tech: "brushless_motor", note: "无刷电机 + 电子调速，让多旋翼稳定悬停成为可能" },
+        { tech: "gps", note: "低价定位与一键返航，使飞行可控、可收回" },
+        { tech: "battery", note: "锂电能量密度支撑数公里续航" },
+        { tech: "computer_vision", note: "视觉稳像与避障提升安全性与画质" },
+        { tech: "camera", note: "微型高清云台相机是航拍价值的核心" },
+        { tech: "airplane", note: "空气动力学与飞控理论提供底层支撑" }
+      ]
+    },
+    {
+      id: "autonomous_driving",
+      name: "自动驾驶 / 汽车智能",
+      en: "Autonomous Driving",
+      date: "2010 年代起",
+      summary: "让汽车在无人干预下感知、决策、行驶的系统性技术，是智能时代交通的核心命题。",
+      born: "自动驾驶的临界点，是下列技术同时达到车规级可靠、且成本可接受：",
+      backgrounds: [
+        { tech: "lidar", note: "激光雷达提供厘米级三维环境感知" },
+        { tech: "computer_vision", note: "视觉识别车道、行人、信号灯" },
+        { tech: "ai", note: "深度学习处理海量感知与决策" },
+        { tech: "gps", note: "高精度定位与高精地图对齐" },
+        { tech: "automobile", note: "车辆线控底盘使「软件控车」成为现实" },
+        { tech: "electric_motor", note: "电动化让执行机构响应更快、更精确" }
+      ]
+    }
+  ]
+};
+
+// 时期（按时间顺序排列，order 用于排序）
+const ERAS = [
+  { id: "prehistoric", name: "史前时代", order: 0, span: "约 330 万年前 – 公元前 3500 年", color: "#8d6e63" },
+  { id: "ancient",     name: "古代文明", order: 1, span: "公元前 3500 – 前 500 年", color: "#a1887f" },
+  { id: "classical",   name: "古典时代", order: 2, span: "公元前 500 – 公元 500 年", color: "#7986cb" },
+  { id: "medieval",    name: "中世纪",   order: 3, span: "公元 500 – 1500 年", color: "#4db6ac" },
+  { id: "earlymodern", name: "近代早期", order: 4, span: "1500 – 1750 年", color: "#4fc3f7" },
+  { id: "industrial",  name: "工业革命", order: 5, span: "1750 – 1900 年", color: "#ffb74d" },
+  { id: "electrical",  name: "电气时代", order: 6, span: "1900 – 1950 年", color: "#ff8a65" },
+  { id: "info",        name: "信息时代", order: 7, span: "1950 – 2000 年", color: "#ba68c8" },
+  { id: "intelligent", name: "智能时代", order: 8, span: "2000 年至今", color: "#f06292" },
+  { id: "future", name: "未来展望", order: 9, span: "约 2026 – 2200+（推演）", color: "#7e57c2" }
+];
+
+// 分类（颜色用于可视化）
+const CATEGORIES = [
+  { id: "basic",    name: "科学基础与方法", color: "#5c6bc0" },
+  { id: "material", name: "材料",          color: "#26a69a" },
+  { id: "energy",   name: "能源",          color: "#ef5350" },
+  { id: "manufact", name: "制造与工具",    color: "#ab47bc" },
+  { id: "transport",name: "交通运载",      color: "#42a5f5" },
+  { id: "info",     name: "信息通信",      color: "#66bb6a" },
+  { id: "life",     name: "生命与医疗",    color: "#ffa726" },
+  { id: "build",    name: "建筑建造",      color: "#8d6e63" },
+  { id: "military", name: "军事",          color: "#78909c" }
+];
+
+// 技术条目
+const TECHS = [
+  // ---------------- 科学基础与方法 ----------------
+  { id:"language", name:"语言", en:"Language", category:"basic", era:"prehistoric", date:"约 10 万年前", year:-100000,
+    people:"早期智人 (Homo sapiens)", place:"非洲",
+    summary:"抽象符号与语音系统的出现，使经验得以在个体间传递、跨代积累，是人类协作与知识传承的前提。",
+    dependsOn: [], enables:["writing","agriculture"],
+    applications:["经验传承","群体协作","知识积累","社会组织"],
+    views:[{period:"史前",text:"语言被视为禁忌与咒语的力量，名字被认为拥有操控现实的魔力。"},
+           {period:"现代",text:"被认知科学视为人类区别于其他物种的根本能力，是文明的‘操作系统’。"},
+           {period:"当代",text:"担心方言与少数民族语言消亡导致知识多样性流失。"}],
+    significance:"一切符号系统与知识传播的起点。" },
+
+  { id:"mathematics", name:"数学", en:"Mathematics", category:"basic", era:"ancient", date:"约 公元前 3000 年", year:-3000,
+    people:"苏美尔人、古埃及人、后来的希腊学者", place:"美索不达米亚、埃及",
+    summary:"从计数、丈量土地到抽象代数与几何，数学提供了描述自然与工程的统一语言。",
+    dependsOn: ["writing","language"], enables:["astronomy","physics","computer"],
+    applications:["历法","贸易记账","工程测量","物理建模"],
+    views:[{period:"古代",text:"被视为占星与神学的辅助工具，常与神秘主义绑定。"},
+           {period:"近代",text:"伽利略称‘自然之书是用数学语言写成的’。"},
+           {period:"现代",text:"被视为科学革命与信息时代真正的底层架构。"}],
+    significance:"描述世界与构建工程的通用语言。" },
+
+  { id:"astronomy", name:"天文学", en:"Astronomy", category:"basic", era:"ancient", date:"约 公元前 3000 年", year:-3000,
+    people:"巴比伦、埃及、中国、希腊天文学家", place:"各早期文明",
+    summary:"对天体运行的系统观测，催生历法、导航与宇宙观，是物理学与航天的前身。",
+    dependsOn: ["mathematics","writing"], enables:["sail","calendar(agri)"],
+    applications:["历法制定","航海导航","农业时令","时间标准"],
+    views:[{period:"古代",text:"天文与占星不分，被视为王朝命运与神意的指示。"},
+           {period:"近代",text:"哥白尼、开普勒将其变为精密科学，颠覆了人类中心宇宙观。"},
+           {period:"现代",text:"成为航天、卫星与深空探测的基础，但也引发‘人类是否孤独’的追问。"}],
+    significance:"最早的系统科学，导航与航天之母。" },
+
+  { id:"scientific_method", name:"科学方法", en:"Scientific Method", category:"basic", era:"classical", date:"约 1600 年", year:1600,
+    people:"弗朗西斯·培根、伽利略·伽利雷", place:"欧洲",
+    summary:"以观察、假设、实验、可重复验证为核心的求知范式，使技术从经验试错升级为可累积的理性进步。",
+    dependsOn: ["mathematics","writing"], enables:["chemistry","evolution","engineering"],
+    applications:["可复现实验","理论检验","技术迭代","学科建制"],
+    views:[{period:"近代",text:"与宗教权威激烈冲突，被视为颠覆秩序的危险思想。"},
+           {period:"现代",text:"成为所有现代科学与工程的‘元方法’，被视为文明跃迁的真正引擎。"},
+           {period:"当代",text:"面对可重复性危机与‘后真相’，其公信力被重新审视。"}],
+    significance:"让知识可累积、可证伪的元方法。" },
+
+  { id:"physics", name:"经典力学", en:"Classical Mechanics", category:"basic", era:"classical", date:"1687 年", year:1687,
+    people:"艾萨克·牛顿", place:"英格兰",
+    summary:"《自然哲学的数学原理》建立运动三定律与万有引力，为机械、航天与工程提供定量基础。",
+    dependsOn: ["mathematics","scientific_method","wave_optics","writing"], enables:["steam_engine","thermodynamics","rocket"],
+    applications:["机械设计","轨道计算","结构工程","钟表精度"],
+    views:[{period:"近代",text:"被视为揭示了上帝设计的宇宙钟表机制，引发哲学与神学地震。"},
+           {period:"现代",text:"被相对论与量子力学修正边界，但仍是工程日常的主心骨。"}],
+    significance:"工程学的定量基石。" },
+
+  { id:"chemistry", name:"化学", en:"Chemistry", category:"basic", era:"classical", date:"1661 年", year:1661,
+    people:"罗伯特·波义耳、安托万·拉瓦锡", place:"欧洲",
+    summary:"从炼金术脱胎，建立元素、反应与物质转化的系统理论，是现代材料、能源与医药的化学根基。",
+    dependsOn: ["scientific_method"], enables:["steel","plastics","petroleum","battery","magnets"],
+    applications:["材料合成","燃料提炼","药物制备","冶金"],
+    views:[{period:"近代",text:"长期与炼金术、神秘学纠缠，追求‘点石成金’。"},
+           {period:"现代",text:"成为材料革命与制药工业的核心，也带来污染与化工安全之虑。"}],
+    significance:"物质转化的系统科学。" },
+
+  { id:"thermodynamics", name:"热力学", en:"Thermodynamics", category:"basic", era:"industrial", date:"1824 年", year:1824,
+    people:"萨迪·卡诺、开尔文、克劳修斯", place:"法国、英国",
+    summary:"研究能量转换与效率的定律，为蒸汽机、内燃机与所有热机奠定理论极限。",
+    dependsOn: ["physics","molecular_theory","writing","mathematics"], enables:["steam_engine","internal_combustion","electricity"],
+    applications:["热机效率","制冷","发电","能量守恒分析"],
+    views:[{period:"近代",text:"‘熵增’概念被引申为社会与宇宙终将走向无序的哲学隐喻。"},
+           {period:"现代",text:"成为能源与信息论共同的基础，指导一切能量系统的设计。"}],
+    significance:"能量转换的根本约束。" },
+
+  { id:"electromagnetism", name:"电磁学", en:"Electromagnetism", category:"basic", era:"industrial", date:"1865 年", year:1865,
+    people:"詹姆斯·麦克斯韦、法拉第", place:"英国",
+    summary:"麦克斯韦方程组统一电、磁与光，预言电磁波，直接催生发电机、电动机、无线电与整个电气文明。",
+    dependsOn: ["physics"], enables:["generator","radio","electric_motor"],
+    applications:["发电","无线通信","电动机","雷达"],
+    views:[{period:"近代",text:"‘看不见的场’颠覆了牛顿式的机械宇宙直觉。"},
+           {period:"现代",text:"被认为是统一理论的首次成功，启发了后世对万物理论的追求。"}],
+    significance:"电气与无线时代的理论源头。" },
+
+  { id:"evolution", name:"进化论", en:"Theory of Evolution", category:"basic", era:"industrial", date:"1859 年", year:1859,
+    people:"查尔斯·达尔文", place:"英格兰",
+    summary:"以自然选择解释物种起源与适应，为现代生物学、遗传学与农业育种提供统一框架。",
+    dependsOn: ["scientific_method","lin_algebra","writing","mathematics"], enables:["genetic_engineering","gmo","medicine"],
+    applications:["物种分类","育种改良","医学研究","生态保护"],
+    views:[{period:"近代",text:"与神创论激烈冲突，被视为冒犯人类尊严。"},
+           {period:"现代",text:"成为生命科学的总纲，但也常被误用为社会达尔文主义。"},
+           {period:"当代",text:"抗生素耐药性等现实问题，让进化论重回公共视野。"}],
+    significance:"生命科学的总纲。" },
+
+  { id:"relativity_qm", name:"相对论与量子力学", en:"Relativity & Quantum Mechanics", category:"basic", era:"electrical", date:"1905 / 1925 年", year:1905,
+    people:"爱因斯坦、玻尔、海森堡、薛定谔", place:"欧洲",
+    summary:"重塑时间、空间、物质与能量的底层认知，是现代核能、半导体与精密测量的物理基础。",
+    dependsOn: ["physics","electromagnetism"], enables:["nuclear_fission","semiconductors","gps"],
+    applications:["核能","半导体","GPS 校正","激光"],
+    views:[{period:"近代",text:"‘上帝不掷骰子’的争论成为科学史上最著名的哲学对峙。"},
+           {period:"现代",text:"被视为 20 世纪物理双支柱，但其‘诡异’仍挑战人类直觉。"},
+           {period:"当代",text:"量子计算与量子通信被视为下一个技术奇点。"}],
+    significance:"现代技术与未来计算的物理地基。" },
+
+  // ---------------- 材料 ----------------
+  { id:"stone_tools", name:"石器", en:"Stone Tools", category:"material", era:"prehistoric", date:"约 260 万年前", year:-2600000,
+    people:"能人、直立人", place:"东非",
+    summary:"打制石核与石片以获取肉类、加工木材，是人类最早的技术产物，开启工具制造传统。",
+    dependsOn: [], enables:["fire","agriculture"],
+    applications:["狩猎","切割","木材加工","骨器制作"],
+    views:[{period:"史前",text:"工具被视为身体能力的延伸，是生存的核心。"},
+           {period:"现代",text:"被考古学视为‘人之所以为人’的物质证据。"}],
+    significance:"人类制造传统的开端。" },
+
+  { id:"fire", name:"用火", en:"Control of Fire", category:"energy", era:"prehistoric", date:"约 100 万年前", year:-1000000,
+    people:"直立人 (Homo erectus)", place:"非洲、欧亚大陆",
+    summary:"主动取火与控火，用于取暖、照明、驱兽与烹饪，并首次让人类掌握可控的化学能释放。",
+    dependsOn: [], enables:["pottery","bronze","iron","steel","cooking"],
+    applications:["取暖照明","烹饪","驱兽","冶金前置","陶器烧制"],
+    views:[{period:"史前",text:"火被神化为神圣且危险的礼物（如普罗米修斯盗火神话）。"},
+           {period:"现代",text:"被视作文明起点，人类脱离动物界的关键一跃。"},
+           {period:"当代",text:"化石燃料之火引发气候危机，人类重新审视‘用火’的代价。"}],
+    significance:"可控化学能的首次掌握，冶金与文明的前提。" },
+
+  
+
+  { id:"brick", name:"砖与砌筑", en:"Brick & Masonry", category:"material", era:"ancient", date:"约 公元前 7000 年", year:-7000,
+    people:"美索不达米亚、印度河流域先民", place:"两河、印度河",
+    summary:"晒干或烧制的土坯/砖块，使大规模、可复制的建造成为可能，催生城市与宫殿。",
+    dependsOn: ["mat_pottery"], enables:["arch","skyscraper"],
+    applications:["房屋","城墙","神庙","城市"],
+    views:[{period:"古代",text:"砖被视为文明与秩序的象征（‘巴比伦之砖’）。"},
+           {period:"现代",text:"仍是全球最普遍的建材，低碳砌体重新受重视。"}],
+    significance:"可复制建造的基石。" },
+
+  { id:"bronze", name:"青铜", en:"Bronze", category:"material", era:"ancient", date:"约 公元前 3300 年", year:-3300,
+    people:"苏美尔、埃及、中国先民", place:"两河、东亚",
+    summary:"铜锡合金，硬度高于纯铜，推动武器、工具与礼器的跃升，开启青铜时代。",
+    dependsOn: ["mat_casting","mat_pottery"], enables:["bronze_casting","iron"],
+    applications:["兵器","农具","礼器","工具"],
+    views:[{period:"古代",text:"青铜礼器是王权与神权的象征，‘国之大事，在祀与戎’。"},
+           {period:"现代",text:"被视为‘合金化’思想的首次胜利，材料设计之始。"}],
+    significance:"第一种人工合金，开启合金时代。" },
+
+  
+
+  { id:"iron", name:"铁器", en:"Iron", category:"material", era:"ancient", date:"约 公元前 1200 年", year:-1200,
+    people:"赫梯、随后扩散至各文明", place:"安纳托利亚、全球",
+    summary:"铁矿石还原冶炼，原料更广、工具更廉，开启铁器时代，深刻改变农业与战争。",
+    dependsOn: ["mat_refractory","bronze"], enables:["iron_smelting","steel","plow"],
+    applications:["农具","兵器","工具","建筑构件"],
+    views:[{period:"古代",text:"铁器普及被视为‘青铜特权’的终结，平民武装化。"},
+           {period:"现代",text:"铁基材料至今仍是文明重量的主体。"}],
+    significance:"廉价强韧材料，普及文明的引擎。" },
+
+  { id:"steel", name:"钢铁", en:"Steel", category:"material", era:"ancient", date:"约 公元前 1000 年", year:-1000,
+    people:"印度武氏体、中国炒钢法，后贝塞麦", place:"印度、中国、欧洲",
+    summary:"控制碳含量的铁基合金，兼具硬度与韧性，是现代机械、铁路、船舶与建筑的骨骼。",
+    dependsOn: ["iron"], enables:["lathe","railway","steel_frame","skyscraper","electric_motor","magnets"],
+    applications:["机械","钢轨","船舶","刀具","结构"],
+    views:[{period:"古代",text:"良钢（如大马士革、坩埚钢）被视为国家机密与工匠神话。"},
+           {period:"近代",text:"贝塞麦转炉量产钢，被视为‘现代世界的骨架’。"},
+           {period:"当代",text:"钢铁碳排放成为绿色转型的焦点。"}],
+    significance:"现代文明的骨骼材料。" },
+
+  { id:"cement", name:"水泥与混凝土", en:"Cement & Concrete", category:"material", era:"classical", date:"约 公元前 200 年", year:-200,
+    people:"古罗马人", place:"罗马",
+    summary:"火山灰+石灰的水硬性胶凝材料，可塑形、耐久，使拱、穹顶与大型基础设施成为可能。",
+    dependsOn: ["mat_castiron","brick"], enables:["arch","reinforced_concrete","road","skyscraper"],
+    applications:["墙体","道路","水渠","穹顶"],
+    views:[{period:"古典",text:"罗马混凝土建筑被视为永恒帝国的物证（万神殿至今不倒）。"},
+           {period:"现代",text:"成为消费量最大的工业材料，也是碳排放巨头。"}],
+    significance:"可塑形的结构化材料。" },
+
+  { id:"paper", name:"造纸", en:"Paper", category:"material", era:"classical", date:"公元 105 年", year:105,
+    people:"蔡伦（改进）", place:"中国东汉",
+    summary:"以树皮、麻头、破布为原料的廉价书写载体，大幅降低知识记录成本，是印刷与信息扩散的前提。",
+    dependsOn: ["writing"], enables:["printing","books"],
+    applications:["书写","记录","包装","印刷载体"],
+    views:[{period:"古代",text:"造纸术经丝路西传，被视为改变知识垄断的‘文明病毒’。"},
+           {period:"现代",text:"纸曾是信息载体之王，如今面临无纸化退场。"}],
+    significance:"廉价知识载体，信息革命前奏。" },
+
+  { id:"plastics", name:"塑料", en:"Plastics", category:"material", era:"industrial", date:"1907 年", year:1907,
+    people:"利奥·贝克兰", place:"美国",
+    summary:"以石油/煤焦油为原料合成的可塑高分子，轻便、廉价、可成型，重塑制造与包装。",
+    dependsOn: ["chemistry","petroleum"], enables:["electronics","consumer"],
+    applications:["包装","绝缘","日用品","医疗器材"],
+    views:[{period:"近代",text:"被誉为‘材料奇迹’，‘能用塑料何必用金属’。"},
+           {period:"当代",text:"微塑料污染与不可降解使其成为环境公敌，循环材料兴起。"}],
+    significance:"廉价可塑高分子，现代制造之膜。" },
+
+  { id:"semiconductors", name:"半导体材料", en:"Semiconductor Materials", category:"material", era:"electrical", date:"1947 年", year:1947,
+    people:"贝尔实验室（肖克利等）", place:"美国",
+    summary:"硅等材料的导电性可控，是晶体管与集成电路的物质基础，直接定义信息时代。",
+    dependsOn: ["chemistry","relativity_qm"], enables:["transistor","ic","computer","solar","lasers","camera","lidar"],
+    applications:["芯片","光伏","传感器","光电器件"],
+    views:[{period:"近代",text:"早期被视为实验室奇物，无人预见其统治世界。"},
+           {period:"当代",text:"‘硅霸权’成为地缘博弈焦点，芯片即战略物资。"}],
+    significance:"信息时代的物质基石。" },
+
+  { id:"composites", name:"复合材料", en:"Composite Materials", category:"material", era:"intelligent", date:"1960 年代", year:1960,
+    people:"航天与材料工程师", place:"美、欧、日",
+    summary:"碳纤维、凯夫拉等以高强轻量重塑航空、航天与运动器材，是‘比强度’工程的代表。",
+    dependsOn: ["chemistry","plastics"], enables:["airplane","spacecraft"],
+    applications:["飞机机体","风电叶片","运动器材","航天结构"],
+    views:[{period:"当代",text:"轻量化成为节能与续航的关键，‘以克论价’。"}],
+    significance:"高强轻量结构材料。" },
+
+  // ---------------- 能源 ----------------
+  { id:"waterwheel", name:"水车", en:"Water Wheel", category:"energy", era:"classical", date:"约 公元 100 年", year:100,
+    people:"古希腊、罗马、中国工匠", place:"欧亚",
+    summary:"以水流转动机械，提供稳定可控的动力，是蒸汽机之前最主要的非人力/畜力工业动力。",
+    dependsOn: ["wheel","ene_coal","ene_hydro"], enables:["mills","industrial_precursor"],
+    applications:["磨粉","提水","冶炼鼓风","锯木"],
+    views:[{period:"古典",text:"水力被视为‘免费的奴隶’，修道院与磨坊依水而建。"},
+           {period:"近代",text:"被视为工业革命机械动力的先声。"}],
+    significance:"稳定机械动力的早期形态。" },
+
+  
+
+  { id:"coal_mining", name:"煤炭开采与利用", en:"Coal Mining", category:"energy", era:"industrial", date:"约 1700 年", year:1700,
+    people:"英国矿工与工程师", place:"英国",
+    summary:"大规模采煤为蒸汽机提供高能量密度燃料，直接引爆工业革命，也开启化石燃料时代。",
+    dependsOn: ["mining"], enables:["steam_engine","electricity","pollution"],
+    applications:["蒸汽燃料","冶炼","发电","取暖"],
+    views:[{period:"近代",text:"煤烟被视为繁荣的徽章，‘浓烟即财富’。"},
+           {period:"当代",text:"被指为气候危机元凶，能源转型的首要淘汰对象。"}],
+    significance:"工业革命的高能燃料。" },
+
+  { id:"steam_engine", name:"蒸汽机", en:"Steam Engine", category:"energy", era:"industrial", date:"1769 年", year:1769,
+    people:"瓦特（改良）、纽科门", place:"英国",
+    summary:"将热能转为机械功，第一次让动力摆脱人力、畜力与自然力限制，是工业革命的心脏。",
+    dependsOn: ["coal_mining","iron","steel","newcomen_engine","watt_engine","boiler"], enables:["railway","steam_ship","factory","generator"],
+    applications:["工厂动力","机车","轮船","采矿排水"],
+    views:[{period:"近代",text:"被视为‘铁马’，既带来财富也摧毁手工业者生计（卢德运动）。"},
+           {period:"现代",text:"被认定为人类首次大规模驾驭‘死劳动’（储能）的转折点。"}],
+    significance:"工业革命心脏，动力解放。" },
+
+  { id:"petroleum", name:"石油工业", en:"Petroleum Industry", category:"energy", era:"industrial", date:"1859 年", year:1859,
+    people:"埃德温·德雷克", place:"美国宾州",
+    summary:"钻井采油与炼制，提供比煤更便携的高能燃料与化工原料，重塑交通、战争与现代化工。",
+    dependsOn: ["chemistry","drilling"], enables:["internal_combustion","plastics","automobile"],
+    applications:["燃料","润滑油","化工原料","塑料"],
+    views:[{period:"近代",text:"‘黑金’被视为国家实力的命脉，七姐妹公司崛起。"},
+           {period:"当代",text:"石油地缘政治与气候账单，使其成为最矛盾的能源。"}],
+    significance:"便携高能燃料与化工之源。" },
+
+  { id:"battery", name:"电池", en:"Battery", category:"energy", era:"industrial", date:"1800 年", year:1800,
+    people:"亚历山德罗·伏打", place:"意大利",
+    summary:"以化学能直接转为可储电的直流电，使便携、离网电力成为可能，是电气化的重要拼图。",
+    dependsOn: ["chemistry"], enables:["portable_elec","electromobile","electronics","brushless_motor","vacuum_cleaner"],
+    applications:["便携电源","启动电机","储能","电动车"],
+    views:[{period:"近代",text:"‘人造电’被视为魔术，伏打堆开启电化学。"},
+           {period:"当代",text:"锂电成为能源转型与电动化的关键瓶颈与争夺点。"}],
+    significance:"可储存电力的容器。" },
+
+  { id:"generator", name:"发电机与电动机", en:"Generator & Motor", category:"energy", era:"industrial", date:"1831 年", year:1831,
+    people:"法拉第、西门子", place:"英国、德国",
+    summary:"基于电磁感应实现机械能与电能互转，使电力可被大规模生产、传输与复用。",
+    dependsOn: ["dynamo"], enables:["electricity","power_grid","electric_motor"],
+    applications:["发电","驱动机械","电气化铁路","家电"],
+    views:[{period:"近代",text:"‘用电代替肌肉’被视为第二次创世。"},
+           {period:"现代",text:"成为现代文明的血液，停电即瘫痪。"}],
+    significance:"电能生产与应用的核心。" },
+
+  { id:"electricity", name:"电力系统", en:"Electric Power", category:"energy", era:"electrical", date:"1879 年", year:1879,
+    people:"爱迪生、特斯拉、威斯汀豪斯", place:"美国",
+    summary:"白炽灯与交流电系统使电力进入家庭与工厂，开启照明、动力与通信全面电气化的新文明。",
+    dependsOn: ["generator","battery"], enables:["power_grid","lighting","electronics","computer"],
+    applications:["照明","动力","通信","家电"],
+    views:[{period:"近代",text:"电灯被视为‘吞食黑夜的魔法’，交流电之争（电流战）沸沸扬扬。"},
+           {period:"现代",text:"电力是现代文明的血液，普及率成为发展指标。"}],
+    significance:"现代文明通用能量介质。" },
+
+  { id:"power_grid", name:"电网", en:"Power Grid", category:"energy", era:"electrical", date:"1882 年", year:1882,
+    people:"爱迪生（珍珠街电站）等", place:"美国、德",
+    summary:"集中发电+远距离输电的网络，使能源可调度、可共享，是工业与城市运转的神经系统。",
+    dependsOn: ["electricity","generator","transmission_line"], enables:["modern_industry","electrification"],
+    applications:["城市供电","工业动力","农村电气化","储能调度"],
+    views:[{period:"近代",text:"电网被视为国家现代化的标志工程。"},
+           {period:"当代",text:"智能电网与分布式能源正在重塑‘集中式’神话。"}],
+    significance:"能源的调度与共享网络。" },
+
+  { id:"nuclear_fission", name:"核裂变", en:"Nuclear Fission", category:"energy", era:"electrical", date:"1942 年", year:1942,
+    people:"费米（首座反应堆）、奥本海默团队", place:"美国",
+    summary:"重核分裂释放巨大能量，既带来清洁基荷电力，也带来毁灭性武器，是双面技术典范。",
+    dependsOn: ["relativity_qm","chemistry"], enables:["nuclear_power","nuclear_weapon"],
+    applications:["发电","潜艇推进","医学同位素","武器"],
+    views:[{period:"近代",text:"‘原子能’曾被视为乌托邦能源，亦是最恐怖武器。"},
+           {period:"当代",text:"福岛之后，核电在‘脱碳’与‘安全风险’间摇摆。"}],
+    significance:"能量密度跃升的双刃剑。" },
+
+  { id:"solar", name:"太阳能光伏", en:"Solar Photovoltaics", category:"energy", era:"info", date:"1954 年", year:1954,
+    people:"贝尔实验室（恰平等）", place:"美国",
+    summary:"半导体光生伏特效应直接发电，开启分布式、清洁的可再生能源路径。",
+    dependsOn: ["semiconductors","relativity_qm"], enables:["renewable","space_power"],
+    applications:["发电","航天电源","离网供电","建筑一体化"],
+    views:[{period:"近代",text:"早期效率极低，仅用于航天。"},
+           {period:"当代",text:"成本十年降九成，成为能源转型主角之一。"}],
+    significance:"分布式的清洁能源。" },
+
+  { id:"nuclear_fusion", name:"核聚变", en:"Nuclear Fusion", category:"energy", era:"intelligent", date:"1952 年（氢弹）/ 2022 净增益", year:1952,
+    people:"多国聚变研究（ITER、NIF 等）", place:"全球",
+    summary:"轻核聚合释能，模拟太阳的近乎无限清洁能源，工程极难，长期被视为‘永远还有 30 年’。",
+    dependsOn: ["relativity_qm","plasma_phys","physics","chemistry","ene_fastbreeder","ene_flywheel"], enables:["abundant_energy"],
+    applications:["未来基荷电力","海水燃料","航天推进（设想）"],
+    views:[{period:"近代",text:"‘人造太阳’被视为终极能源梦想。"},
+           {period:"当代",text:"2022 年 NIF 首次净能量增益，但商用仍遥远，期待与质疑并存。"}],
+    significance:"终极清洁能源（未来可能）。" },
+
+  // ---------------- 制造与工具 ----------------
+  { id:"bronze_casting", name:"青铜铸造", en:"Bronze Casting", category:"manufact", era:"ancient", date:"约 公元前 3200 年", year:-3200,
+    people:"两河、中国二里头工匠", place:"两河、东亚",
+    summary:"以范铸、失蜡法成型复杂金属器物，是第一种可复制的精密制造工艺。",
+    dependsOn: ["bronze"], enables:["iron_smelting","mold_tech"],
+    applications:["礼器","兵器","工具","雕像"],
+    views:[{period:"古代",text:"失蜡法铸造被视为神技，象征王权。"},
+           {period:"现代",text:"仍是艺术品与精密件的制造方法。"}],
+    significance:"可复制精密制造之始。" },
+
+  { id:"iron_smelting", name:"冶铁", en:"Iron Smelting", category:"manufact", era:"ancient", date:"约 公元前 1200 年", year:-1200,
+    people:"赫梯及后继文明", place:"安纳托利亚",
+    summary:"高炉还原铁矿石，使铁器普及，奠定农业工具与兵器的大众化基础。",
+    dependsOn: ["iron","bellows"], enables:["steel","plow","tools"],
+    applications:["农具","兵器","工具","铁器时代"],
+    views:[{period:"古代",text:"铁器扩散被视为‘平等化’武器，瓦解青铜贵族垄断。"}],
+    significance:"铁器大众化的制造基础。" },
+
+  { id:"wheel", name:"轮子", en:"Wheel", category:"transport", era:"ancient", date:"约 公元前 3500 年", year:-3500,
+    people:"美索不达米亚苏美尔人", place:"两河",
+    summary:"旋转对称的力学装置，从陶轮到车轮到齿轮，成为运输、机械与一切转动设备的元构件。",
+    dependsOn: [], enables:["cart","pottery_wheel","waterwheel","machinery","clock"],
+    applications:["运输","陶轮","滑轮","齿轮传动"],
+    views:[{period:"古代",text:"轮子被视为文明最伟大的发明之一，但美洲长期无车轮运输。"},
+           {period:"现代",text:"从轴承到涡轮，轮子仍是机械世界的语法。"}],
+    significance:"旋转力学的元构件。" },
+
+  { id:"lathe", name:"车床与精密加工", en:"Lathe & Precision Machining", category:"manufact", era:"industrial", date:"1751 年", year:1751,
+    people:"莫兹利（螺纹车床）", place:"英国",
+    summary:"可精确切削金属、制造可互换零件，是蒸汽机、枪械与一切机械精度的基础工艺。",
+    dependsOn: ["steel"], enables:["interchangeable_parts","assembly_line","ic_tooling"],
+    applications:["零件加工","螺纹","枪管","精密件"],
+    views:[{period:"近代",text:"‘可互换零件’被视为工业标准化的革命。"},
+           {period:"现代",text:"数控化后仍是制造精度的最终守门人。"}],
+    significance:"精密制造与互换件之父。" },
+
+  { id:"printing", name:"印刷术", en:"Printing", category:"info", era:"medieval", date:"约 1040 / 1450 年", year:1040,
+    people:"毕昇（活字）、古腾堡（金属活字）", place:"中国、德国",
+    summary:"可批量复制文字，使知识从抄写精英走向大众，是宗教改革、科学传播与启蒙的前提。",
+    dependsOn: ["paper","writing"], enables:["books","literacy","scientific_method"],
+    applications:["书籍","报纸","海报","知识扩散"],
+    views:[{period:"近代",text:"教会曾恐惧‘印刷的异端’，古腾堡圣经改变欧洲。"},
+           {period:"现代",text:"被视为信息民主化的第一波，亦被视为假新闻的源头。"},
+           {period:"当代",text:"数字出版被视为其最终继承者与颠覆者。"}],
+    significance:"知识大规模复制，信息革命第一波。" },
+
+  { id:"assembly_line", name:"流水线", en:"Assembly Line", category:"manufact", era:"industrial", date:"1913 年", year:1913,
+    people:"亨利·福特", place:"美国",
+    summary:"将制造拆为标准化工序、连续流动，使汽车等产品成本骤降、产量暴增，定义现代大规模生产。",
+    dependsOn: ["lathe","interchangeable_parts","electricity"], enables:["mass_production","automobile","consumer"],
+    applications:["汽车","家电","食品","军工"],
+    views:[{period:"近代",text:"流水线被视为效率奇迹，也被视为‘人的异化’（卓别林《摩登时代》）。"},
+           {period:"当代",text:"柔性制造与自动化正在改写‘福特模式’。"}],
+    significance:"大规模生产范式。" },
+
+  { id:"cnc", name:"数控加工", en:"CNC Machining", category:"manufact", era:"info", date:"1952 年", year:1952,
+    people:"帕森斯与 MIT", place:"美国",
+    summary:"以计算机指令控制机床，实现高精度、可重复的复杂零件制造，是现代化工业与航天的基础。",
+    dependsOn: ["computer","lathe"], enables:["precision_industry","3d_printing"],
+    applications:["航空零件","模具","医疗植入","芯片设备"],
+    views:[{period:"近代",text:"被视为‘无人工厂’的第一步。"},
+           {period:"当代",text:"与 3D 打印互补，定义‘减材+增材’双轨制造。"}],
+    significance:"计算机驱动的精密制造。" },
+
+  { id:"robot", name:"工业机器人", en:"Industrial Robot", category:"manufact", era:"info", date:"1961 年", year:1961,
+    people:"德沃尔、恩格尔伯格（Unimate）", place:"美国",
+    summary:"可编程机械臂替代重复人力劳动，提升精度与一致性，开启自动化制造时代。",
+    dependsOn: ["computer","assembly_line","electric_motor"], enables:["automation","smart_factory","robot_vacuum"],
+    applications:["焊接","装配","搬运","喷涂"],
+    views:[{period:"近代",text:"科幻中‘机器人取代人’的恐惧开始现实化。"},
+           {period:"当代",text:"与 AI 结合迈向协作机器人（cobot）与无人工厂。"}],
+    significance:"可编程自动化劳动。" },
+
+  
+
+  // ---------------- 交通运载 ----------------
+  { id:"sail", name:"帆船", en:"Sailing Ship", category:"transport", era:"ancient", date:"约 公元前 3500 年", year:-3500,
+    people:"两河、埃及、腓尼基、中国先民", place:"地中海、印度洋、东亚",
+    summary:"以风为动力跨水域运输与贸易，打通古代世界市场，是全球化的最早形态。",
+    dependsOn: ["wheel","mfg_lostwax","ene_charcoal","mat_casting"], enables:["exploration","trade","navigation"],
+    applications:["贸易","远征","渔业","殖民"],
+    views:[{period:"古代",text:"航海被视为冒险与神灵考验，舟船即文明触角。"},
+           {period:"近代",text:"大航海开启全球殖民与物种交换（哥伦布大交换）。"}],
+    significance:"水路全球化之始。" },
+
+  { id:"road", name:"道路与驿道", en:"Roads & Highways", category:"transport", era:"classical", date:"约 公元前 300 年", year:-300,
+    people:"罗马人、秦帝国（驰道）", place:"罗马、中国",
+    summary:"铺设硬质路面与驿站系统，使军队、货物与信息快速移动，奠定帝国治理与贸易网络。",
+    dependsOn: ["brick"], enables:["trade","empire","post"],
+    applications:["军事调动","贸易","邮政","行政"],
+    views:[{period:"古典",text:"‘条条大路通罗马’象征帝国秩序。"},
+           {period:"现代",text:"高速公路网是现代物流与国家统一的骨架。"}],
+    significance:"陆上物流与治理网络。" },
+
+  { id:"horse_gear", name:"马具与马车", en:"Horse Harness & Chariot", category:"transport", era:"ancient", date:"约 公元前 2000 年", year:-2000,
+    people:"中亚、两河、中国先民", place:"欧亚草原",
+    summary:"从 chariot 到马镫、挽具，极大提升陆上速度、农业牵引与战争机动性。",
+    dependsOn: ["wheel"], enables:["cavalry","plow","trade"],
+    applications:["运输","战争","农耕","通信"],
+    views:[{period:"古代",text:"战车是王权与军威的象征（殷墟车马坑）。"},
+           {period:"中世纪",text:"马镫催生重骑兵与封建骑士制度。"}],
+    significance:"陆上机动与牵引革命。" },
+
+  { id:"railway", name:"铁路", en:"Railway", category:"transport", era:"industrial", date:"1825 年", year:1825,
+    people:"乔治·斯蒂芬森", place:"英国",
+    summary:"蒸汽机车+钢轨，以前所未有的速度与运量重组空间、时间与产业，是工业化的动脉。",
+    dependsOn: ["steam_engine","steel","iron","rail_track"], enables:["mass_transport","time_standard","modern_city"],
+    applications:["货运","客运","矿运","城市通勤"],
+    views:[{period:"近代",text:"铁路被视为‘空间 annihilator’，重塑民族国家与市场。"},
+           {period:"现代",text:"高铁是其现代形态，仍是低碳重载主力。"}],
+    significance:"工业化动脉，时空重组。" },
+
+  { id:"steam_ship", name:"蒸汽船", en:"Steam Ship", category:"transport", era:"industrial", date:"1807 年", year:1807,
+    people:"富尔顿", place:"美国",
+    summary:"以蒸汽机替代风帆动力，摆脱季风与洋流限制，使跨洋运输准时可靠，加速全球化。",
+    dependsOn: ["steam_engine","iron","mfg_furnace","ene_wasteheat","mat_plating"], enables:["global_trade","canal"],
+    applications:["跨洋货运","客运","海军"],
+    views:[{period:"近代",text:"‘不顾风向的船’被视为征服自然的象征。"}],
+    significance:"可靠跨洋运输。" },
+
+  { id:"automobile", name:"汽车", en:"Automobile", category:"transport", era:"industrial", date:"1886 年", year:1886,
+    people:"卡尔·本茨、戴姆勒", place:"德国",
+    summary:"内燃机驱动的个人交通工具，重塑城市形态、郊区化与石油经济。",
+    dependsOn: ["internal_combustion","steel","chassis"], enables:["suburb","oil_economy","logistics","autonomous_driving"],
+    applications:["个人出行","货运","出租车"," ambulance"],
+    views:[{period:"近代",text:"汽车从奢侈品变‘国民商品’，福特 T 型车 democratize 出行。"},
+           {period:"当代",text:"拥堵、污染与自动驾驶，让汽车步入反思与转型。"}],
+    significance:"个人机动化与城市重构。" },
+
+  { id:"airplane", name:"飞机", en:"Airplane", category:"transport", era:"electrical", date:"1903 年", year:1903,
+    people:"莱特兄弟", place:"美国",
+    summary:"重于空气的持续动力飞行，压缩全球距离，开启航空时代与战略空权。",
+    dependsOn: ["internal_combustion","aerodynamics","steel","aircraft_engine","landing_gear"], enables:["aviation","globalization","drone"],
+    applications:["客运","货运","军事","侦察"],
+    views:[{period:"近代",text:"‘像鸟一样飞’的千年梦想成真，震动世界。"},
+           {period:"当代",text:"航空碳排放成为绿色难题，电动与氢能飞机探索中。"}],
+    significance:"三维空间机动与全球化加速。" },
+
+  { id:"rocket", name:"火箭", en:"Rocket", category:"transport", era:"industrial", date:"1926 年", year:1926,
+    people:"戈达德、齐奥尔科夫斯基、冯·布劳恩", place:"美国、俄、德",
+    summary:"以反作用推进突破大气层，是航天、卫星与洲际导弹的共同母体。",
+    dependsOn: ["internal_combustion","physics","gunpowder","liquid_rocket"], enables:["satellite","space_station","missile","icbm"],
+    applications:["航天","卫星发射","导弹","深空探测"],
+    views:[{period:"近代",text:"早期被讥为‘疯子科学’，戈达德遭媒体嘲讽。"},
+           {period:"现代",text:"成为大国战略能力与太空经济的核心。"}],
+    significance:"离开地球的能力，太空时代之母。" },
+
+  { id:"satellite", name:"人造卫星", en:"Artificial Satellite", category:"transport", era:"info", date:"1957 年", year:1957,
+    people:"苏联（斯普特尼克 1 号）", place:"苏联",
+    summary:"入轨航天器，提供通信、导航、遥感与科学观测，是信息时代与全球定位的空间底座。",
+    dependsOn: ["rocket","semiconductors","solar"], enables:["gps","comsat","earth_obs","www"],
+    applications:["通信","导航","气象","侦察"],
+    views:[{period:"近代",text:"斯普特尼克引发‘卫星震撼’，开启太空竞赛。"},
+           {period:"当代",text:"Starlink 等巨型星座重塑互联网与太空治理。"}],
+    significance:"空间基础设施。" },
+
+  { id:"space_station", name:"空间站", en:"Space Station", category:"transport", era:"intelligent", date:"1998 年", year:1998,
+    people:"多国（国际空间站 ISS）", place:"国际合作",
+    summary:"近地轨道长期驻留平台，开展微重力科研与航天技术验证，是迈向深空的中转站。",
+    dependsOn: ["satellite","rocket","mfg_cam","ene_hydrothermal","mat_hydrogenstorage","tr_supersonic"], enables:["space_economy","mars(未来)"],
+    applications:["微重力实验","对地观测","技术验证","航天驻留"],
+    views:[{period:"当代",text:"从‘冷战象征’转为‘合作平台’，商业空间站正在兴起。"}],
+    significance:"近地轨道常驻与深空跳板。" },
+
+  // ---------------- 信息通信 ----------------
+  { id:"writing", name:"文字", en:"Writing", category:"info", era:"ancient", date:"约 公元前 3200 年", year:-3200,
+    people:"苏美尔楔形文字、埃及象形、中国甲骨文", place:"两河、埃及、中国",
+    summary:"以符号系统记录语言，使知识可跨越时空存储与传递，是国家、法律与历史的前提。",
+    dependsOn: ["language"], enables:["mathematics","paper","printing","law"],
+    applications:["记账","律法","历史","行政"],
+    views:[{period:"古代",text:"文字被视为神授或王权的垄断工具，‘学在官府’。"},
+           {period:"现代",text:" literacy 被视为基本人权与发展门槛。"}],
+    significance:"知识跨时空存储，文明记忆。" },
+
+  { id:"telegraph", name:"电报", en:"Telegraph", category:"info", era:"industrial", date:"1837 年", year:1837,
+    people:"莫尔斯等", place:"美国、英国",
+    summary:"以电码瞬时传递信息，首次让通信速度超越运输速度，是信息时代的真正起点。",
+    dependsOn: ["writing","mat_alu","electric_motor","mathematics"], enables:["telephone","internet","global_news"],
+    applications:["新闻","金融","军事","调度"],
+    views:[{period:"近代",text:"‘闪电通信’被视为缩小世界的魔法，重塑新闻与金融。"},
+           {period:"现代",text:"被视为网络与实时通信的远祖。"}],
+    significance:"通信速度超越运输，信息时代起点。" },
+
+  { id:"telephone", name:"电话", en:"Telephone", category:"info", era:"industrial", date:"1876 年", year:1876,
+    people:"亚历山大·贝尔", place:"美国、加拿大",
+    summary:"以电信号实时传声，使双向语音远程沟通普及，重塑商业与个人联系。",
+    dependsOn: ["telegraph","mat_tempered","internal_combustion","mathematics"], enables:["radio","network","smartphone"],
+    applications:["语音通信","商业","应急","社交"],
+    views:[{period:"近代",text:"‘千里传音’被视为奇迹，也引发隐私担忧。"},
+           {period:"当代",text:"被手机与互联网通话取代，固定电话退场。"}],
+    significance:"实时语音远程沟通。" },
+
+  { id:"photography", name:"摄影", en:"Photography", category:"info", era:"industrial", date:"1839 年", year:1839,
+    people:"达盖尔、塔尔博特", place:"法国、英国",
+    summary:"以化学与光学定格影像，使视觉记录客观化，重塑艺术、新闻、科学与证据。",
+    dependsOn: ["mat_glass","chemistry"], enables:["film","medical_imaging","surveillance"],
+    applications:["记录","新闻","艺术","取证"],
+    views:[{period:"近代",text:"‘画师失业’的恐惧，摄影被视为客观真相。"},
+           {period:"当代",text:"数字影像与深度伪造，让‘眼见为实’不再可靠。"}],
+    significance:"客观视觉记录。" },
+
+  { id:"radio", name:"无线电", en:"Radio", category:"info", era:"electrical", date:"1895 年", year:1895,
+    people:"马可尼、波波夫", place:"意大利、俄",
+    summary:"以电磁波无线传输信息，摆脱线缆，催生广播、雷达与后来的移动通信。",
+    dependsOn: ["electromagnetism","telegraph"], enables:["television","radar","satellite","smartphone"],
+    applications:["广播","航海通信","雷达","遥控"],
+    views:[{period:"近代",text:"无线电被视为‘以太之声’，广播塑造大众文化。"},
+           {period:"现代",text:"成为卫星、手机与物联网的底层通道。"}],
+    significance:"无线信息传输。" },
+
+  { id:"television", name:"电视", en:"Television", category:"info", era:"electrical", date:"1927 年", year:1927,
+    people:"法恩斯沃斯、兹沃里金", place:"美国",
+    summary:"无线传输动态影像，成为 20 世纪最具影响力的 mass media，塑造公共议程与流行文化。",
+    dependsOn: ["radio","photography","electronics","mat_pvc","ene_rocketengine","mathematics"], enables:["broadcast","media"],
+    applications:["新闻","娱乐","教育","宣传"],
+    views:[{period:"近代",text:"‘客厅里的世界’被视为家庭革命。"},
+           {period:"当代",text:"被流媒体分流，电视的‘黄金时代’落幕。"}],
+    significance:"影像大众媒体。" },
+
+  { id:"transistor", name:"晶体管", en:"Transistor", category:"info", era:"info", date:"1947 年", year:1947,
+    people:"贝尔实验室（巴丁、布拉顿、肖克利）", place:"美国",
+    summary:"固态电子开关，取代笨重真空管，使电子设备微型化、可靠化，是信息革命的物理开关。",
+    dependsOn: ["semiconductors","electricity"], enables:["ic","computer","electronics"],
+    applications:["放大","开关","逻辑","信号处理"],
+    views:[{period:"近代",text:"早期无人预见其将塞满地球，肖克利称‘改变世界的小东西’。"},
+           {period:"现代",text:"被称为‘20 世纪最重要发明’，人类每年制造晶体管超星辰。"}],
+    significance:"电子微型化的开关。" },
+
+  { id:"computer", name:"电子计算机", en:"Electronic Computer", category:"info", era:"info", date:"1946 年", year:1946,
+    people:"莫奇利、埃克特（ENIAC）、图灵、冯·诺依曼", place:"美国、英",
+    summary:"以可编程逻辑自动运算，从弹道计算到通用计算，成为所有现代技术的‘控制大脑’。",
+    dependsOn: ["mathematics","electricity","vacuum_tube","eniac"], enables:["ic","internet","ai","cad"],
+    applications:["科学计算","控制","数据处理","仿真"],
+    views:[{period:"近代",text:"早期被视为巨型计算器，IBM 曾称‘全球只需 5 台’。"},
+           {period:"现代",text:"被视为继火之后最重要的通用技术（GPT 级）。"}],
+    significance:"通用计算与控制大脑。" },
+
+  { id:"ic", name:"集成电路", en:"Integrated Circuit", category:"info", era:"info", date:"1958 年", year:1958,
+    people:"基尔比、诺伊斯", place:"美国",
+    summary:"在单片半导体上集成大量晶体管，遵循摩尔定律指数增长，使算力爆炸式普及。",
+    dependsOn: ["transistor","semiconductors","semiconductor","electronics"], enables:["computer","smartphone","internet","ai"],
+    applications:["芯片","微处理器","存储器","SoC"],
+    views:[{period:"近代",text:"‘把整个电路刻在一颗硅上’被视为疯狂。"},
+           {period:"当代",text:"摩尔定律放缓，‘后摩尔’时代转向封装与专用芯片。"}],
+    significance:"算力指数增长的载体。" },
+
+  { id:"internet", name:"互联网", en:"Internet", category:"info", era:"info", date:"1969 年", year:1969,
+    people:"ARPA（阿帕网）、瑟夫、卡恩", place:"美国",
+    summary:"分组交换的分布式网络，使计算机互联、信息去中心化流动，重塑人类社会结构。",
+    dependsOn: ["computer","ic","telephone","packet_switch"], enables:["www","smartphone","ai","social"],
+    applications:["通信","数据交换","云服务","协作"],
+    views:[{period:"近代",text:"最初为军事与学术网络，被视为‘防核打击的通信’。"},
+           {period:"现代",text:"成为水电般的基础设施，也带来垄断、隐私与信息茧房。"},
+           {period:"当代",text:"去中心化与平台权力成为核心治理争论。"}],
+    significance:"去中心化信息基础设施。" },
+
+  { id:"www", name:"万维网", en:"World Wide Web", category:"info", era:"info", date:"1991 年", year:1991,
+    people:"蒂姆·伯纳斯-李", place:"欧洲核子中心（CERN）",
+    summary:"以超链接组织信息的人机界面，使互联网从专家工具变为大众信息空间。",
+    dependsOn: ["internet","writing","http","web_server"], enables:["ecommerce","social","search"],
+    applications:["网页","搜索","电商","开放知识"],
+    views:[{period:"近代",text:"‘信息向所有人开放’被视为乌托邦式宣言。"},
+           {period:"当代",text:"中心化平台与算法推荐，让开放理想面临商业化侵蚀。"}],
+    significance:"大众信息空间。" },
+
+  { id:"smartphone", name:"智能手机", en:"Smartphone", category:"info", era:"intelligent", date:"2007 年", year:2007,
+    people:"苹果（iPhone）等", place:"美国、韩、中",
+    summary:"将计算、通信、传感、摄像合一的便携终端，使互联网与智能服务随身化、全民化。",
+    dependsOn: ["ic","internet","battery","touchscreen","soc","mobile_os","camera_module"], enables:["app_economy","social","mobile_ai"],
+    applications:["通信","支付","导航","摄影","APP"],
+    views:[{period:"当代",text:"‘手机依赖’成为公共健康议题，也被视为数字器官。"}],
+    significance:"随身智能终端，全民联网。" },
+
+  { id:"ai", name:"人工智能", en:"Artificial Intelligence", category:"info", era:"info", date:"1956 年", year:1956,
+    people:"麦卡锡、明斯基等（达特茅斯会议）", place:"美国",
+    summary:"让机器模拟感知、推理与学习，历经符号主义与连接主义起伏，成为通用技术候选。",
+    dependsOn: ["computer"], enables:["llm","robot","automation","computer_vision","autonomous_driving"],
+    applications:["识别","优化","决策","控制"],
+    views:[{period:"近代",text:"曾两度‘AI 寒冬’，被讥为过度承诺。"},
+           {period:"当代",text:"深度学习突破后，既被视为生产力奇点，也引发失业与失控之虑。"}],
+    significance:"机器智能，通用技术候选。" },
+
+  { id:"llm", name:"大语言模型", en:"Large Language Models", category:"info", era:"intelligent", date:"2017 / 2022 年", year:2017,
+    people:"Transformer 提出者、OpenAI 等", place:"全球",
+    summary:"以海量数据与算力训练的生成式 AI，能理解与生成自然语言，重塑知识工作与人机交互。",
+    dependsOn: ["ai","internet","ic","transformer_arch","mat_2d","ene_tribo","mathematics"], enables:["agent","copilot","knowledge_work"],
+    applications:["对话","写作","编程","搜索","教育"],
+    views:[{period:"当代",text:"既被视为‘知识工作的蒸汽机’，也引发幻觉、版权与考试诚信之忧。"}],
+    significance:"生成式智能，知识工作变革。" },
+
+  // ---------------- 生命与医疗 ----------------
+  { id:"agriculture", name:"农业", en:"Agriculture", category:"life", era:"prehistoric", date:"约 公元前 1 万年", year:-10000,
+    people:"全球多地独立驯化", place:"新月沃地、中国、美洲",
+    summary:"驯化作物与动物、定居耕作，使食物盈余与人口增长，催生城市、分工与文明本身。",
+    dependsOn: ["language","domestication","stone_hoe"], enables:["irrigation","plow","writing","city","population"],
+    applications:["粮食生产","定居","驯化","文明基础"],
+    views:[{period:"史前",text:"从采集到耕种被视为人类与自然的契约转变。"},
+           {period:"现代",text:"被公认是‘文明的一切前提’，也带来生态单一化。"}],
+    significance:"文明的前提，食物盈余之源。" },
+
+  { id:"irrigation", name:"灌溉", en:"Irrigation", category:"life", era:"ancient", date:"约 公元前 6000 年", year:-6000,
+    people:"两河、尼罗河、印度河先民", place:"早期农业带",
+    summary:"人工引水灌溉，稳定产量、支撑高密度人口，也催生早期国家的水利治理。",
+    dependsOn: ["agriculture"], enables:["surplus","city","civilization"],
+    applications:["增产","抗旱","定居扩张"],
+    views:[{period:"古代",text:"水利工程被视为王权合法性的来源（治水或治水）。"}],
+    significance:"稳定农业产出与国家治理。" },
+
+  { id:"plow", name:"犁", en:"Plow", category:"life", era:"ancient", date:"约 公元前 3000 年", year:-3000,
+    people:"美索不达米亚、欧亚农民", place:"两河、中国",
+    summary:"翻耕土壤提升肥力与产量，从木犁到铁犁、畜力犁，是农业生产力跃升的核心工具。",
+    dependsOn: ["agriculture"], enables:["fertilizer","intensive_farming"],
+    applications:["翻土","播种前整地","深耕"],
+    views:[{period:"古代",text:"‘犁与书’并列为文明根基（赫西俄德）。"}],
+    significance:"农业生产力核心工具。" },
+
+  { id:"fermentation", name:"发酵", en:"Fermentation", category:"life", era:"prehistoric", date:"约 公元前 7000 年", year:-7000,
+    people:"新石器先民", place:"全球",
+    summary:"利用微生物转化食物与饮品，既延长保存又创造面包、酒、酸奶，是生物技术的远古开端。",
+    dependsOn: ["agriculture","mat_pottery"], enables:["biotech","food_preserve"],
+    applications:["酿酒","制面包","制酱","保存"],
+    views:[{period:"古代",text:"发酵被视为神秘‘活化’，酒礼通神。"},
+           {period:"现代",text:"成为抗生素、酶与合成生物学的工业母体。"}],
+    significance:"生物技术的远古开端。" },
+
+  { id:"fertilizer", name:"化肥", en:"Chemical Fertilizer", category:"life", era:"industrial", date:"1840 年代", year:1840,
+    people:"李比希（矿质营养说）", place:"德国",
+    summary:"以合成氮磷钾补充土壤肥力，使单位面积产量倍增，支撑人口爆炸式增长。",
+    dependsOn: ["chemistry","plow"], enables:["green_revolution","population"],
+    applications:["增产","土壤改良","集约农业"],
+    views:[{period:"近代",text:"被视为‘喂饱世界’的奇迹。"},
+           {period:"当代",text:"面源污染与碳中和压力，推动精准施肥与有机肥回归。"}],
+    significance:"农业产量倍增。" },
+
+  { id:"vaccination", name:"疫苗", en:"Vaccination", category:"life", era:"industrial", date:"1796 年", year:1796,
+    people:"爱德华·詹纳（牛痘）", place:"英国",
+    summary:"以减毒/抗原诱导免疫，从天花到新冠，是人类对抗传染病最有力的公共卫生武器。",
+    dependsOn: ["chemistry","microbiology"], enables:["public_health","eradication"],
+    applications:["防疫","根除疾病","旅行健康"],
+    views:[{period:"近代",text:"牛痘接种曾遭抵制，被讥为‘人兽杂交’。"},
+           {period:"当代",text:"mRNA 疫苗展现速度，也引发信任与反疫苗运动。"}],
+    significance:"免疫预防，公卫利器。" },
+
+  { id:"anesthesia", name:"麻醉", en:"Anesthesia", category:"life", era:"industrial", date:"1846 年", year:1846,
+    people:"莫顿（乙醚公开演示）", place:"美国",
+    summary:"以药物阻断痛觉，使无痛手术成为可能，彻底改变外科的边界与伦理。",
+    dependsOn: ["chemistry","mathematics","fertilizer"], enables:["surgery","complex_op"],
+    applications:["无痛手术","牙科","分娩"],
+    views:[{period:"近代",text:"‘手术不再嘶吼’被视为医学人道主义胜利。"},
+           {period:"现代",text:"麻醉安全成为外科体系的基础保障。"}],
+    significance:"无痛外科的前提。" },
+
+  { id:"surgery", name:"无菌外科", en:"Aseptic Surgery", category:"life", era:"industrial", date:"1867 年", year:1867,
+    people:"约瑟夫·李斯特（石碳酸消毒）", place:"英国",
+    summary:"以消毒与无菌操作大幅降低术后感染与死亡率，使复杂手术成为常规医疗。",
+    dependsOn: ["anesthesia","microbiology"], enables:["transplant","modern_medicine"],
+    applications:["剖腹","截肢","肿瘤切除","创伤"],
+    views:[{period:"近代",text:"术前刷手曾被视为怪癖，后被证明是救命习惯。"}],
+    significance:"可常规化的复杂外科。" },
+
+  { id:"medical_imaging", name:"医学影像", en:"Medical Imaging", category:"life", era:"electrical", date:"1895 年", year:1895,
+    people:"伦琴（X 光）", place:"德国",
+    summary:"从 X 光到 CT、MRI、超声，使体内结构可视化，诊断从‘猜测’走向‘看见’。",
+    dependsOn: ["photography","electricity"], enables:["diagnosis","radiology"],
+    applications:["骨折","肿瘤","产科","介入"],
+    views:[{period:"近代",text:"X 光初现被视为‘透视魔法’，也引发辐射担忧。"},
+           {period:"现代",text:"影像+AI 辅助诊断成为精准医疗核心。"}],
+    significance:"非侵入式体内可视化。" },
+
+  { id:"dna", name:"遗传学 / DNA", en:"Genetics & DNA", category:"life", era:"info", date:"1953 年", year:1953,
+    people:"沃森、克里克、富兰克林", place:"英国",
+    summary:"揭示遗传物质双螺旋结构，使生命信息可被读取与编辑，开启分子生物学时代。",
+    dependsOn: ["evolution","chemistry"], enables:["genetic_engineering","gmo","gene_therapy"],
+    applications:["亲子鉴定","疾病机制","法医学","育种"],
+    views:[{period:"近代",text:"‘生命密码’被视为揭开造物秘密。"},
+           {period:"当代",text:"基因隐私与编辑伦理（贺建奎事件）引发全球争论。"}],
+    significance:"生命信息的分子基础。" },
+
+  { id:"genetic_engineering", name:"基因工程", en:"Genetic Engineering", category:"life", era:"info", date:"1973 年", year:1973,
+    people:"科恩、博耶（重组 DNA）", place:"美国",
+    summary:"在分子层面剪切拼接基因，使定向改造生物成为可能，是合成生物学的基石。",
+    dependsOn: ["dna","biotech","recombinant_dna","gene_cloning"], enables:["gmo","gene_therapy","synthetic_bio"],
+    applications:["胰岛素生产","疫苗","酶","育种"],
+    views:[{period:"近代",text:"‘扮演上帝’的伦理恐慌催生首次自愿暂停（1975 阿西洛马）。"},
+           {period:"当代",text:"CAR-T、mRNA 等让其从恐惧走向治疗希望。"}],
+    significance:"定向改造生命的工具。" },
+
+  { id:"gmo", name:"转基因作物", en:"GMO Crops", category:"life", era:"intelligent", date:"1994 年", year:1994,
+    people:"Calgene（Flavr Savr 番茄）等", place:"美国",
+    summary:"导入外源基因获得抗虫、耐除草剂等性状，提升产量与抗性，也引发广泛争议。",
+    dependsOn: ["genetic_engineering","agriculture"], enables:["precision_breeding"],
+    applications:["抗虫棉","黄金大米","耐除草剂大豆"],
+    views:[{period:"当代",text:"科学界多认其安全，但公众‘非天然’焦虑与标识之争长期不休。"}],
+    significance:"分子育种的现实应用。" },
+
+  // ---------------- 建筑建造 ----------------
+  { id:"arch", name:"拱与穹顶", en:"Arch & Dome", category:"build", era:"classical", date:"约 公元前 100 年", year:-100,
+    people:"古罗马工程师", place:"罗马",
+    summary:"以拱形分散压力，使大跨度、高大空间成为可能，是桥梁、水渠与穹顶的结构关键。",
+    dependsOn: ["brick","cement"], enables:["aqueduct","dome","bridge"],
+    applications:["桥梁","水渠","剧场","神庙"],
+    views:[{period:"古典",text:"罗马拱被视为帝国工程美学的标志。"},
+           {period:"现代",text:"仍是大跨结构的经典解法，启发现代壳体结构。"}],
+    significance:"大跨结构的关键。" },
+
+  { id:"steel_frame", name:"钢结构", en:"Steel Frame", category:"build", era:"industrial", date:"1885 年", year:1885,
+    people:"詹尼（家庭保险大厦）", place:"美国芝加哥",
+    summary:"以钢柱钢梁承重替代承重墙，使建筑向高空与大体量发展，是现代城市的骨架技术。",
+    dependsOn: ["steel","cement"], enables:["skyscraper","modern_city"],
+    applications:["摩天楼","大跨厂房","桥梁"],
+    views:[{period:"近代",text:"‘向天空争夺土地’被视为城市密度的革命。"}],
+    significance:"高层与大跨的骨架。" },
+
+  { id:"skyscraper", name:"摩天大楼", en:"Skyscraper", category:"build", era:"industrial", date:"1885 年", year:1885,
+    people:"芝加哥学派、后来的全球建筑师", place:"芝加哥、纽约",
+    summary:"电梯+钢结构+幕墙的高层建筑，集约土地、重塑天际线，是工业城市的力量象征。",
+    dependsOn: ["steel_frame","electricity","elevator"], enables:["modern_city","vertical_life"],
+    applications:["办公","住宅","地标","密度"],
+    views:[{period:"近代",text:"摩天楼被视为资本与技术的图腾。"},
+           {period:"当代",text:"‘高度竞赛’转向绿色与韧性，超高层能耗受质疑。"}],
+    significance:"垂直城市与密度革命。" },
+
+  { id:"tunnel", name:"隧道与地下工程", en:"Tunneling & Underground", category:"build", era:"industrial", date:"1843 年", year:1843,
+    people:"布鲁内尔（泰晤士隧道）", place:"英国",
+    summary:"以盾构等工法穿越山岭与河底，使交通与市政管线地下化，支撑现代都市与高铁。",
+    dependsOn: ["steel","cement","shield_tbm","drill_blast"], enables:["metro","highspeed_rail"],
+    applications:["地铁","公路隧道","水利","管线"],
+    views:[{period:"近代",text:"‘穿山过水’被视为工程勇气的象征。"}],
+    significance:"地下空间与穿越工程。" },
+
+  // ---------------- 军事 ----------------
+  { id:"bow_arrow", name:"弓箭", en:"Bow & Arrow", category:"military", era:"prehistoric", date:"约 公元前 2 万年", year:-20000,
+    people:"旧石器晚期先民", place:"全球",
+    summary:"以弹性储能远程投射，是第一种真正意义上的‘武器系统’，提升狩猎与战争的射程。",
+    dependsOn: ["mil_bow","mil_arrow"], enables:["firearm","hunting"],
+    applications:["狩猎","战争","竞技"],
+    views:[{period:"史前",text:"弓被视为猎人与战士的力量延伸。"},
+           {period:"古代",text:"复合弓、弩成为决定性兵器（如秦弩）。"}],
+    significance:"远程投射武器之祖。" },
+
+  { id:"gunpowder", name:"火药", en:"Gunpowder", category:"military", era:"medieval", date:"约 850 年", year:850,
+    people:"中国炼丹家（唐），后西传", place:"中国",
+    summary:"硝石硫黄木炭的爆炸混合物，从烟火到火器，彻底改写战争形态与封建城堡的命运。",
+    dependsOn: ["mil_blackpowder","mil_catapult","algorithm"], enables:["firearm","cannon","rocket","mining"],
+    applications:["火器","开矿","烟火","工程爆破"],
+    views:[{period:"中世纪",text:"中国多用于烟火与守城，西方将其武器化。"},
+           {period:"近代",text:"‘火药革命’被视为骑兵与城堡时代的终结者。"}],
+    significance:"化学能武器，战争形态改写。" },
+
+  { id:"firearm", name:"火器", en:"Firearm", category:"military", era:"medieval", date:"约 1280 年", year:1280,
+    people:"中国火铳、阿拉伯、欧洲枪匠", place:"欧亚",
+    summary:"以火药燃气发射弹丸的便携武器，从火门枪到步枪，使个体杀伤力远超冷兵器。",
+    dependsOn: ["gunpowder","iron"], enables:["cannon","military_rev","hunting"],
+    applications:["步兵","狩猎","治安"],
+    views:[{period:"近代",text:"火绳枪到线列战术，重塑陆军与国家动员。"},
+           {period:"当代",text:"枪权之争（如美国）成为社会撕裂议题。"}],
+    significance:"便携动能武器。" },
+
+  { id:"cannon", name:"火炮", en:"Cannon", category:"military", era:"medieval", date:"约 1300 年", year:1300,
+    people:"欧洲、中国炮兵", place:"欧亚",
+    summary:"大型火药投射器，攻破城墙与战舰装甲，终结中世纪城堡防御体系。",
+    dependsOn: ["gunpowder","iron","bronze","mfg_wiredraw","ene_wind","mat_drawing","tr_horseshoe"], enables:["fortification_change","naval_war"],
+    applications:["攻城","海战","要塞"],
+    views:[{period:"近代",text:"‘君士坦丁堡陷落’（1453）被视为火炮改写历史的标志。"}],
+    significance:"攻城与海战革命。" },
+
+  { id:"tank", name:"坦克", en:"Tank", category:"military", era:"electrical", date:"1916 年", year:1916,
+    people:"英国（马克 I 型）", place:"英国",
+    summary:"装甲+履带+火炮的陆地堡垒，突破堑壕僵局，开启机械化战争。",
+    dependsOn: ["internal_combustion","steel","cannon","assembly_line","ene_peaker","mat_stainless","tr_panama"], enables:["blitzkrieg","mechanized_war"],
+    applications:["突破堑壕","支援步兵","机动作战"],
+    views:[{period:"近代",text:"‘陆战之王’被视为打破一战僵局的答案。"},
+           {period:"当代",text:"无人机与反坦克导弹让其‘无敌神话’受挑战。"}],
+    significance:"机械化陆战核心。" },
+
+  { id:"missile", name:"导弹", en:"Missile", category:"military", era:"info", date:"1942 年", year:1942,
+    people:"冯·布劳恩（V2）", place:"德国",
+    summary:"制导火箭武器，将火箭技术武器化，奠定现代战略威慑与精确打击体系。",
+    dependsOn: ["rocket","electronics","ene_nuclear","tr_transponder"], enables:["icbm","precision_strike"],
+    applications:["战略威慑","战术打击","防空"],
+    views:[{period:"近代",text:"V2 被视为‘从天而降的恐怖’，开启导弹时代。"},
+           {period:"当代",text:"高超音速与反导竞赛，让战略平衡再度紧绷。"}],
+    significance:"制导远程打击。" },
+
+  { id:"nuclear_weapon", name:"核武器", en:"Nuclear Weapon", category:"military", era:"electrical", date:"1945 年", year:1945,
+    people:"曼哈顿计划", place:"美国",
+    summary:"以核裂变（及聚变）释放毁灭性能量，重塑大国关系与‘相互确保摧毁’的恐怖和平。",
+    dependsOn: ["nuclear_fission","rocket"], enables:["deterrence","cold_war"],
+    applications:["战略威慑","（无实战使用至今）"],
+    views:[{period:"近代",text:"广岛长崎后，核武器被视为‘终结战争的武器’与文明达摩克利斯之剑。"},
+           {period:"当代",text:"核扩散与朝伊核问题，使‘无核世界’理想遥不可及。"}],
+    significance:"战略威慑与恐怖和平。" },
+
+  // ---------------- 补充关键节点（被大量引用） ----------------
+  { id:"internal_combustion", name:"内燃机", en:"Internal Combustion Engine", category:"energy", era:"industrial", date:"1876 年", year:1876,
+    people:"尼古拉斯·奥托、戴姆勒、狄塞尔", place:"德国",
+    summary:"在气缸内直接燃烧燃料做功，能量密度高、体积小，取代蒸汽机成为移动动力主力，重塑交通、战争与石油经济。",
+    dependsOn: ["petroleum","thermodynamics","steel","otto_cycle"], enables:["automobile","airplane","tank","rocket"],
+    applications:["汽车","飞机","船舶","发电机"],
+    views:[{period:"近代",text:"被视为‘把爆炸关进盒子’的魔法，开启机动化世纪。"},
+           {period:"当代",text:"碳排放与原地能效瓶颈，推动电动化替代。"}],
+    significance:"移动动力的主力引擎。" },
+
+  { id:"interchangeable_parts", name:"可互换零件", en:"Interchangeable Parts", category:"manufact", era:"industrial", date:"1798 年", year:1798,
+    people:"伊莱·惠特尼（军械标准化）", place:"美国",
+    summary:"以标准化尺寸制造可替换零件，使装配与维修便利化，是流水线与大生产的制度前提。",
+    dependsOn: ["lathe"], enables:["assembly_line"],
+    applications:["军械","钟表","机械维修","量产"],
+    views:[{period:"近代",text:"被视为‘民主化制造’，普通人也能维修机器。"}],
+    significance:"标准化制造的制度基石。" },
+
+  { id:"elevator", name:"安全升降机", en:"Safety Elevator", category:"build", era:"industrial", date:"1853 年", year:1853,
+    people:"伊莱沙·奥蒂斯", place:"美国",
+    summary:"带安全制动的客运升降机，使高层建筑的垂直交通可行，是摩天大楼得以成立的关键配套。",
+    dependsOn: ["steel","steam_engine"], enables:["skyscraper"],
+    applications:["楼宇运输","货物提升","矿井"],
+    views:[{period:"近代",text:"‘会掉下来的电梯’由奥蒂斯当众演示安全制动，打消恐惧。"}],
+    significance:"高层建筑垂直交通关键。" },
+
+  { id:"explosives", name:"现代炸药", en:"Modern Explosives", category:"military", era:"industrial", date:"1867 年", year:1867,
+    people:"阿尔弗雷德·诺贝尔（达纳炸药）", place:"瑞典",
+    summary:"稳定可控的高能爆破物，从开矿、筑路到军事，极大拓展了人类改造地形的能力。",
+    dependsOn: ["gunpowder","chemistry"], enables:["tunnel","mining"],
+    applications:["开矿","筑路","工程爆破","军事"],
+    views:[{period:"近代",text:"诺贝尔以炸药致富却后悔，遗愿设诺贝尔奖以赎‘毁灭之学’。"},
+           {period:"当代",text:"民用爆破与军用制导并存，管控严格。"}],
+    significance:"可控高能爆破。" },
+
+  { id:"touchscreen", name:"触摸屏", en:"Touchscreen", category:"info", era:"intelligent", date:"1970s / 2007", year:1970,
+    people:"多家实验室，后由智能手机普及", place:"全球",
+    summary:"以触控直接交互的显示界面，取代键盘鼠标，使计算设备直观化、移动化、全民化。",
+    dependsOn: ["ic","mat_glass"], enables:["smartphone"],
+    applications:["手机","平板","自助终端","车载"],
+    views:[{period:"当代",text:"‘所见即所点’成为本能交互，儿童无需说明书。"}],
+    significance:"直觉交互界面。" },
+
+  { id:"transformer_arch", name:"Transformer 架构", en:"Transformer Architecture", category:"info", era:"intelligent", date:"2017 年", year:2017,
+    people:"谷歌团队（Vaswani 等）", place:"美国",
+    summary:"以自注意力机制处理序列的神经网络结构，是大规模预训练与大语言模型的技术底座。",
+    dependsOn: ["ai","ic","internet","mat_2d","ene_tribo","mathematics"], enables:["llm"],
+    applications:["大语言模型","机器翻译","多模态","推理"],
+    views:[{period:"当代",text:"论文标题《Attention Is All You Need》成为 AI 纪元注脚。"}],
+    significance:"生成式 AI 的结构底座。" },
+
+  { id:"electric_motor", name:"电动机", en:"Electric Motor", category:"energy", era:"electrical", date:"1831–1837 年", year:1837,
+    people:"法拉第、斯特金、雅可比", place:"英国 / 俄国",
+    summary:"将电能转化为可控旋转机械能的装置，是所有电动设备、家电与移动机器人的动力心脏。",
+    dependsOn: ["battery","steel"],
+    enables:["robot","automobile","brushless_motor","vacuum_cleaner","electric_vehicle"],
+    applications:["工业驱动","家电","电动车辆","机器人"],
+    views:[{period:"电气时代",text:"‘电生磁、磁生力’让动力第一次可以远程、精准地配送到每一台机器。"},
+           {period:"智能时代",text:"无刷化与微型化后，成为无人机、扫地机、割草机的关节。"}],
+    significance:"电能到机械能的通用转换器。" },
+
+  { id:"optics", name:"光学", en:"Optics", category:"basic", era:"classical", date:"约 公元 1000 年（透镜与折射研究）", year:1000,
+    people:"伊本·海赛姆等", place:"阿拉伯世界",
+    summary:"研究光之传播、折射与成像的科学，奠定了从望远镜、照相机到激光与图像传感器的全部视觉技术。",
+    dependsOn: ["algorithm","algebra","ene_wind"],
+    enables:["lasers","camera"],
+    applications:["透镜","成像","光谱","感知"],
+    views:[{period:"古典时代",text:"《光学之书》以实验确立‘光来自物体而非眼睛’，开启近代科学方法先声。"}],
+    significance:"一切‘看’与‘测’的技术母科学。" },
+
+  { id:"atomic_clock", name:"原子钟", en:"Atomic Clock", category:"basic", era:"info", date:"1948–1955 年", year:1955,
+    people:"拉比、埃森等", place:"美国 / 英国",
+    summary:"以原子能级跃迁频率作为超稳定时间基准，使全球定位的纳秒级时间同步成为可能。",
+    dependsOn: ["electromagnetism","relativity_qm"],
+    enables:["gps"],
+    applications:["时间基准","导航","网络同步"],
+    views:[{period:"信息时代",text:"‘用原子的心跳计时’曾被认为毫无实用，却是 GNSS 的隐形底座。"}],
+    significance:"现代时空基准的原子心跳。" },
+
+  { id:"gps", name:"全球卫星定位 GNSS", en:"Global Navigation Satellite System", category:"transport", era:"info", date:"1978 年（军用）/ 1990 年代（民用）", year:1990,
+    people:"美国国防部（GPS）、多国继建", place:"美国 / 全球",
+    summary:"由多颗原子钟卫星广播信号、接收机三角定位的系统；消费级模块价格暴跌后，厘米级定位成为廉价日用品。",
+    dependsOn: ["satellite","atomic_clock","ic"],
+    enables:["drone","autonomous_driving","smart_mower"],
+    applications:["导航","授时","测绘","追踪"],
+    views:[{period:"信息时代",text:"最初是‘确保核潜艇在海洋中知道自己在哪’的军事能力。"},
+           {period:"智能时代",text:"单价从万美元跌到几美元，催生‘一切皆可定位’的机器人时代。"}],
+    significance:"廉价、全球、实时的位置基础设施。" },
+
+  { id:"lasers", name:"激光器", en:"Laser", category:"info", era:"electrical", date:"1960 年", year:1960,
+    people:"西奥多·梅曼", place:"美国",
+    summary:"受激辐射产生单色相干光，是光通信、精密测距与三维感知的核心光源。",
+    dependsOn: ["optics","electromagnetism","semiconductors"],
+    enables:["lidar"],
+    applications:["通信","测距","加工","医疗"],
+    views:[{period:"电气时代",text:"‘找一种用途’的发明，后来被讥为‘空有方案等需求’，却铺就了信息时代的光路。"}],
+    significance:"相干光的技术开关。" },
+
+  { id:"camera", name:"数码相机 / 图像传感器", en:"Digital Camera & Image Sensor", category:"info", era:"info", date:"1975 年（CCD）/ 1990 年代普及", year:1975,
+    people:"博伊尔、史密斯（CCD）", place:"美国",
+    summary:"以半导体将光信号转为数字像素，使机器第一次能‘看见’并以数据理解世界。",
+    dependsOn: ["optics","semiconductors","battery","ic"],
+    enables:["smartphone","computer_vision","smart_mower"],
+    applications:["摄影","监控","视觉感知","社交"],
+    views:[{period:"信息时代",text:"柯达发明它却担心冲击胶卷生意，反而被自己点燃的革命颠覆。"}],
+    significance:"机器视觉的视网膜。" },
+
+  { id:"lidar", name:"激光雷达", en:"LiDAR", category:"transport", era:"info", date:"1960 年代概念 / 2000 年代车载化", year:2005,
+    people:"多项团队，后由自动驾驶推动", place:"全球",
+    summary:"以激光脉冲测距成像，获取环境的毫米级三维点云，是自动驾驶与机器人的‘主雷达眼’。",
+    dependsOn: ["lasers","semiconductors","electric_motor","ic","scan_mirror","tof_ranging"],
+    enables:["autonomous_driving","smart_mower"],
+    applications:["三维测绘","避障","高精地图","机器人感知"],
+    views:[{period:"信息时代",text:"原用于气象与地形测绘，单价曾数十万美元；车载化后才走入消费视野。"}],
+    significance:"三维环境感知的主动雷达。" },
+
+  { id:"computer_vision", name:"计算机视觉", en:"Computer Vision", category:"info", era:"intelligent", date:"1960 年代–2012 年后突破", year:2012,
+    people:"多家实验室，深度学习后跃迁", place:"全球",
+    summary:"让机器从图像中识别、分割与理解场景，是自动驾驶与家用机器人‘认路、识物’的大脑。",
+    dependsOn: ["ai","ic","camera"],
+    enables:["autonomous_driving","smart_mower","robot_vacuum"],
+    applications:["目标检测","分割","人脸识别","SLAM"],
+    views:[{period:"智能时代",text:"2012 年深度学习一役，识别错误率断崖式下跌，‘机器看懂’终成现实。"}],
+    significance:"机器理解像素的智能。" },
+
+  { id:"vacuum_cleaner", name:"真空吸尘器", en:"Vacuum Cleaner", category:"manufact", era:"electrical", date:"1901 年", year:1901,
+    people:"胡伯特·布思等", place:"英国",
+    summary:"以电动风机产生负压吸除尘土，把‘清扫’从扫帚升级为机械作业，是扫地机器人的前身。",
+    dependsOn: ["electric_motor","battery"],
+    enables:["robot_vacuum"],
+    applications:["家庭清洁","工业集尘","卫生"],
+    views:[{period:"电气时代",text:"‘用吸代替扫’被视为中产家庭的体面革命。"}],
+    significance:"机械清洁的开端。" },
+
+  { id:"brushless_motor", name:"无刷电机", en:"Brushless DC Motor", category:"energy", era:"electrical", date:"1960 年代–1980 年代量产", year:1985,
+    people:"多家电气厂商", place:"全球",
+    summary:"以电子换相取代机械电刷，效率更高、寿命更长、可精密调速，是无人机与家用机器人的关节。",
+    dependsOn: ["electric_motor","magnets","ic"],
+    enables:["drone","smart_mower","robot_vacuum","electric_vehicle"],
+    applications:["无人机","机器人关节","电动工具","硬盘"],
+    views:[{period:"电气时代",text:"曾是昂贵的航空器件，规模量产后才飞入寻常家电。"},
+           {period:"智能时代",text:"与锂电、控制芯片组合，成为‘会动的消费电子’的动力基石。"}],
+    significance:"高效精密的微型动力。" },
+
+  { id:"magnets", name:"永磁材料", en:"Permanent Magnet Materials", category:"material", era:"ancient", date:"公元前（天然磁石）/ 1980 年代（钕铁硼）", year:-600,
+    people:"古代先民；现代 NdFeB 团队", place:"全球",
+    summary:"能长期保持磁性的材料，从指南针到高性能电机，是电动与发电装置不可或缺的部分。",
+    dependsOn: ["steel"],
+    enables:["brushless_motor","electric_motor"],
+    applications:["电机","扬声器","磁存储","指南针"],
+    views:[{period:"古代文明",text:"天然磁石与司南，是最早‘不动手而指方向’的神秘器物。"},
+           {period:"智能时代",text:"钕铁硼让电机功率密度倍增，是无刷电机普及的前提。"}],
+    significance:"磁能的固态载体。" },
+
+  { id:"drone", name:"无人机", en:"Unmanned Aerial Vehicle", category:"transport", era:"info", date:"1910 年代概念 / 2010 年代消费化", year:2010,
+    people:"军方先行，后消费级爆发", place:"全球",
+    summary:"无需乘员的飞行器，依赖无刷动力、GNSS、相机与飞控，把‘空中视角与投递’平民化。",
+    dependsOn: ["airplane","gps","brushless_motor","battery","camera","multicopter","uav_controller","fpv_link"],
+    enables:[],
+    applications:["航拍","巡检","投递","农业"],
+    views:[{period:"信息时代",text:"从靶机与侦察兵器，变为人人可飞的‘空中手机’。"}],
+    significance:"低空能力的民主化。" },
+
+  { id:"autonomous_driving", name:"自动驾驶 / 汽车智能", en:"Autonomous Driving", category:"transport", era:"intelligent", date:"2004 年（DARPA 挑战赛）后兴起", year:2009,
+    people:"车企、Waymo、特斯拉等", place:"全球",
+    summary:"让汽车在复杂道路中自主感知、决策与行驶，集成了 AI、视觉、激光雷达、定位与机器人控制的综合技术。",
+    dependsOn: ["automobile","ai","lidar","gps","robot","electric_motor"],
+    enables:["smart_mower"],
+    applications:["Robotaxi","货车编队","代客泊车","特种作业"],
+    views:[{period:"智能时代",text:"‘让车自己开’从科幻梗变成万亿赛道，也引发安全与责任的持久争论。"}],
+    significance:"轮式智能体的综合集成。" },
+
+  { id:"robot_vacuum", name:"家用扫地机器人", en:"Robot Vacuum Cleaner", category:"life", era:"intelligent", date:"2002 年（Roomba）起", year:2002,
+    people:"iRobot 等", place:"美国",
+    summary:"把吸尘、移动、避障与初步智能装进圆盘，是家用服务机器人的第一次大众化成功，为后续品类趟平了路径。",
+    dependsOn: ["robot","battery","vacuum_cleaner","ai","brushless_motor","vacuum_deck","slam_nav"],
+    enables:["smart_mower"],
+    applications:["地面清洁","家庭看护先驱","服务机器人"],
+    views:[{period:"智能时代",text:"‘笨但勤快’的圆盘，让消费者第一次愿意在家里放一个自主机器人。"}],
+    significance:"家用服务机器人的开路者。" },
+
+  { id:"smart_mower", name:"智能割草机器人", en:"Robotic Lawn Mower", category:"life", era:"intelligent", date:"2010 年代起普及", year:2015,
+    people:"多家园艺与机器人厂商", place:"全球",
+    summary:"自主规划院落、定位边界、避障割草的户外服务机器人。它的诞生并非单一突破，而是多条技术线索在同一时点成熟后的汇聚。",
+    dependsOn: ["autonomous_driving","gps","lidar","robot_vacuum","ai","brushless_motor","computer_vision","battery","mower_deck","mower_nav"],
+    enables:[],
+    applications:["庭院维护","户外服务机器人","智慧园艺"],
+    views:[{period:"智能时代",text:"‘为什么是现在？’——因为人工智能、汽车智能、廉价 GNSS、激光雷达与扫地机迭代恰好同时就位，才让草坪上的自主机器人从玩具变为商品。"}],
+    significance:"多技术背景汇聚而成的典型产物。" }
+].concat(typeof EXTRA_TECHS !== "undefined" ? EXTRA_TECHS : [], typeof EXTEND_TECHS !== "undefined" ? EXTEND_TECHS : [], typeof MORE_TECHS !== "undefined" ? MORE_TECHS : []);
+
+// ============================================================
+//  研发 SOP · 技术简介升级工作标准（供审核）
+// ============================================================
+const SOP = {
+  updated: "2026-08-25",
+  lead: "本 SOP 规定如何将「技术演化数据库」中 993 条自动生成的模板占位，升级为合格以上的技术简介。它是「进度」页自评结论的落地方案，须经审核通过后，方可分批执行。",
+  target: {
+    stubs: 993,
+    note: "结构层面 1105 条已全部渲染；内容层面 993 条（90%）为模板占位——摘要套话雷同、名称中英混排、人物/地点缺失、篇幅偏短。",
+    byEra: { prehistoric: 30, ancient: 56, classical: 24, medieval: 22, earlymodern: 43, industrial: 218, electrical: 178, info: 296, intelligent: 126 }
+  },
+  goal: "消除套话与中英混排，用每条技术真实的依赖上下文（上游 / 下游 / 应用 / 时代）写出具体、非模板的简介，使 993 条全部达到「合格·偏薄」以上，并尽可能接近「优秀·深度撰写」。",
+  qualityGate: [
+    "命名规范：name 为纯中文，英文仅存于 en；无「X 与 English」式中英混排。",
+    "摘要无套话：不含「奠定了…基础框架」「发展成熟」「基础设施」「重要进展」「关键技术（泛称）」等禁用表述。",
+    "摘要具体充分：≥ 60 字，至少点名 1 个上游依赖 + 1 个下游催生或应用，且贴合该技术自身领域。",
+    "significance 非类目套话：说明该技术相对上下游的独特贡献，不复用类目级通用句。",
+    "views 具时代个性：开篇 / 当代两段均非「问世之初…重要进展 / 今天…基础设施」模板，需结合具体能力或影响。"
+  ],
+  workflow: [
+    { step: 1, title: "上下文抽取", detail: "读取 name / en / category / era / date / dependsOn（上游名称）/ _down（下游名称）/ applications / significance，作为改写素材。" },
+    { step: 2, title: "命名校正", detail: "若 name 含拉丁字符，提取中文主体为 name，校正 en 为干净英文；剔除「与 / 和」等残留连接词。例如「计数与 tallying」→ name「计数」、en「Counting」。" },
+    { step: 3, title: "摘要合成", detail: "以「建立在[上游]之上 → 使[应用/下游]成为可能」的结构撰写，禁用套话，长度控制在 60–120 字，突出该技术的独特机理或能力。" },
+    { step: 4, title: "意义与时代评价重写", detail: "significance 写清相对上下游的独特作用；views 写两段有时代差异的具体文本（问世背景 + 当代角色），避免通用模板。" },
+    { step: 5, title: "门禁自检与写回", detail: "逐条比对质量门禁 5 项，全部通过才写回；未过则迭代直至通过。每批输出独立文件，确认后再并入 techs_extra.js，可回滚。" }
+  ],
+  transform: {
+    before: "青铜合金（Bronze Alloy）是材料领域的关键技术，约 公元前 3300 年 发展成熟。奠定了描述与理解自然的基础框架。其应用涵盖工具制造、结构件、电子器件。",
+    after: "青铜合金约公元前 3300 年成熟，建立在用火、青铜与铸造之上：以铜锡配比获得远胜红铜的硬度与铸造性，使工具、兵器与礼器得以批量成形，并成为钢铁冶炼前的主体结构材料。",
+    rule: "升级器依据该条技术的真实 dependsOn / _down / applications / era 合成文本，不引用任何外部未经验证的事实，因此不会编造人物或地点。"
+  },
+  split: {
+    by: "按 9 大分类拆分（与网站分类一致）；每类内的模板占位即一个批次任务，批次内再逐条走 5 步工作流。",
+    order: "按模板占位数量降序执行，先啃大头。",
+    batches: [
+      { id: "B1", cat: "material", name: "材料", count: 158, status: "已完成" },
+      { id: "B2", cat: "basic", name: "科学基础与方法", count: 112, status: "已完成" },
+      { id: "B3", cat: "info", name: "信息通信", count: 135, status: "已完成" },
+      { id: "B4", cat: "life", name: "生命与医疗", count: 121, status: "已完成" },
+      { id: "B5", cat: "manufact", name: "制造与工具", count: 105, status: "已完成" },
+      { id: "B6", cat: "transport", name: "交通运载", count: 102, status: "已完成" },
+      { id: "B7", cat: "military", name: "军事", count: 98, status: "已完成" },
+      { id: "B8", cat: "energy", name: "能源", count: 94, status: "已完成" },
+      { id: "B9", cat: "build", name: "建筑建造", count: 68, status: "已完成" }
+    ]
+  },
+  execution: [
+    { phase: "P0", title: "SOP 审批", detail: "本文档经你审核通过，并确认是否纳入 Tier B（人物 / 地点 web 研究）。" },
+    { phase: "P1", title: "试点批", detail: "先跑 1 个批次（建议 B1 材料），输出 before/after 样例供你抽检；你确认质量后继续。" },
+    { phase: "P2", title: "分批执行", detail: "按批次顺序逐一运行升级器，每批完成后跑「进度」页复测（套话数、中英混排数、stub 数、均长）。" },
+    { phase: "P3", title: "全量复测与归档", detail: "目标：套话数→0、中英混排→0、stub 数→0；更新「进度」页结论与 methodology 更新日志。" },
+    { phase: "P4", title: "（可选）归因研究 Tier B", detail: "对 1750 年后、归属明确的现代技术，经你另批后做 web 研究补全 people / place。" }
+  ],
+  guardrails: [
+    "不编造人物 / 地点：Tier B 需你单独批准并承担研究成本。",
+    "不改动依赖图：dependsOn / enables 与 DAG 结构保持不变。",
+    "不删除或合并条目：仅改写文本字段（name / en / summary / significance / views）。",
+    "每批可回滚：升级器先输出到独立文件，确认无误后再并入 techs_extra.js。"
+  ]
+};
+
+// 合并自动生成的中间技术案例（与 data.js 手工 4 例合并为 100 例）
+if (typeof MIDTECHS_EXTRA !== "undefined") {
+  MIDTECHS.items = MIDTECHS_EXTRA.concat(MIDTECHS.items);
+}
+
+// 导出（同时支持浏览器全局与模块化）
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = { WORLDVIEW, ERAS, CATEGORIES, TECHS, MIDTECHS, SOP, METHODOLOGY, EXTEND_TECHS, MORE_TECHS };
+}

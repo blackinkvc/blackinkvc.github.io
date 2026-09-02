@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>技术演化数据库 · 首页 · 技术演化数据库</title>
+<link rel="stylesheet" href="assets/style.css?v=20260828e">
+</head>
+<body>
+<header class="site-header"></header>
+<main id="main">
+<section class="view"><div class="prose" id="worldview-content"></div>
+    <div class="stats-line" id="stats-line"></div>
+    <div class="stats-grid" id="stats-grid"></div>
+    <div class="legend" id="legend"></div></section>
+</main>
+<footer class="site-footer"></footer>
+
+<!-- 详情弹窗壳（由 shell.js 注入内容DOM，此处保证存在） -->
+<div id="modal" class="modal hidden" role="dialog" aria-modal="true">
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-card" id="modal-card"></div>
+</div>
+
+<script src="assets/d3.v7.min.js"></script>
+<script src="assets/techs_extra.js"></script>
+<script src="assets/techs_extend.js"></script>
+<script src="assets/techs_more.js"></script>
+<script src="assets/techs_midtech.js"></script>
+<script src="assets/data.js"></script>
+<script src="assets/core.js?v=20260828e"></script>
+<script src="assets/shell.js"></script>
+<script src="assets/app.js"></script>
+<script src="assets/pages/init_helper.js"></script>
+<script src="assets/pages/worldview.js"></script>
+</body>
+</html>
