@@ -463,3 +463,136 @@ body {
   text-align: center;
   padding: 40px 0;
 }
+
+/* ============ 水豚池 ============ */
+
+.pond { margin-top: 8px; }
+
+.pond-caption {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.pond-caption small { font-size: 11px; opacity: .75; }
+
+.pond-water {
+  position: relative;
+  height: 130px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 70% 90% at 20% 0%, rgba(255, 255, 255, .10), transparent 60%),
+    linear-gradient(180deg, #93a984 0%, #7e9471 45%, #6d8361 100%);
+}
+
+/* 前景水层：盖住水豚下半身，营造"泡在水里" */
+.pond-front {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 45%;
+  background: linear-gradient(180deg, rgba(125, 148, 112, .55), rgba(109, 131, 97, .88));
+  border-top: 2px solid rgba(255, 255, 255, .22);
+  pointer-events: none;
+}
+
+/* 涟漪 */
+.ripple {
+  position: absolute;
+  width: 46px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, .30);
+  border-radius: 50%;
+  animation: pond-ripple 4s ease-out infinite;
+  pointer-events: none;
+}
+
+.ripple.r1 { left: 16%; top: 24%; }
+.ripple.r2 { right: 18%; bottom: 18%; animation-delay: 2s; }
+
+@keyframes pond-ripple {
+  0%   { transform: scale(.3); opacity: 0; }
+  30%  { opacity: 1; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+/* 睡莲叶 */
+.lilypad {
+  position: absolute;
+  right: 7%;
+  top: 12%;
+  width: 44px;
+  height: 22px;
+  background: #5d7d52;
+  border-radius: 50%;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 22% 100%, 0 40%);
+  opacity: .85;
+  pointer-events: none;
+}
+
+/* 水豚来回走：0→50% 向右，50%→100% 向左 */
+.capy-track {
+  position: absolute;
+  left: 3%;
+  bottom: 26px;
+  width: calc(94% - 86px); /* 可走距离 = 池宽 - 左右边距 - 水豚宽 */
+  animation: pond-cross 26s linear infinite;
+  will-change: transform;
+}
+
+@keyframes pond-cross {
+  0%   { transform: translateX(0); }
+  50%  { transform: translateX(100%); }
+  100% { transform: translateX(0); }
+}
+
+/* 朝向：向右走时转身 */
+.capy-face {
+  display: inline-block;
+  animation: pond-face 26s steps(1) infinite;
+  cursor: pointer;
+}
+
+@keyframes pond-face {
+  0%, 49.9%  { transform: scaleX(-1); } /* 向右走 → 朝右 */
+  50%, 100%  { transform: scaleX(1); }  /* 向左走 → 朝左 */
+}
+
+/* 水中起伏 */
+.capy-bob {
+  position: relative;
+  animation: pond-bob 3.2s ease-in-out infinite;
+}
+
+@keyframes pond-bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-3px); }
+}
+
+/* 点水豚冒气泡 */
+.squeak {
+  position: absolute;
+  left: 50%;
+  top: -26px;
+  transform: translateX(-50%) scale(.6);
+  background: #fff;
+  color: #4a5a42;
+  font-size: 12px;
+  padding: 3px 10px;
+  border-radius: 99px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s, transform .2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .12);
+}
+
+.squeak.show {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .capy-track, .capy-face, .capy-bob, .ripple { animation: none; }
+}
