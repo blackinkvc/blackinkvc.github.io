@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>科幻科技实现蓝图 · SciFi Tech Blueprint</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">◈</span>
+      <div class="brand-text">
+        <strong>科幻科技实现蓝图</strong>
+        <small>SciFi Tech Blueprint · 第一性原理研发知识库</small>
+      </div>
+    </div>
+    <nav class="topnav" id="topnav">
+      <a href="#/home" data-route="home">首页</a>
+      <a href="#/tech" data-route="tech">技术库</a>
+      <a href="#/tree" data-route="tree">科技树</a>
+      <a href="#/worldviews" data-route="worldviews">世界观</a>
+      <a href="#/sop" data-route="sop">研发 SOP</a>
+    </nav>
+    <button class="menu-toggle" id="menuToggle" aria-label="菜单">☰</button>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="side-section">
+        <h4>分级速览</h4>
+        <ul class="cat-legend" id="catLegend"></ul>
+      </div>
+      <div class="side-section">
+        <h4>统计</h4>
+        <ul class="stats" id="stats"></ul>
+      </div>
+      <div class="side-section">
+        <h4>关于</h4>
+        <p class="about-text">本项目以严肃科学、第一性原理与超级工程师方法，研究科幻作品中的科技如何（或能否）实现，并建立可检索、可视化的研发蓝图系统。</p>
+      </div>
+    </aside>
+
+    <main class="content" id="content"><!-- 视图渲染区 --></main>
+  </div>
+
+  <footer class="footer">
+    <span>科幻科技实现蓝图 · 严肃科学 / 第一性原理 / 超级工程师方法</span>
+    <span class="muted">数据持续扩充中 · 分级会随使能技术成熟而重估</span>
+  </footer>
+
+  <!-- 数据 -->
+  <script src="assets/data/categories.js"></script>
+  <script src="assets/data/worldviews.js"></script>
+  <script src="assets/data/tech.js"></script>
+  <script src="assets/data/tech_extra.js"></script>
+  <script src="assets/data/sop.js"></script>
+  <!-- 逻辑 -->
+  <script src="assets/js/techtree.js"></script>
+  <script src="assets/js/export.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
