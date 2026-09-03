@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>北辰剑宗 · 掌门密录</title>
+<style>
+  :root{ --grn:#46e07a; --grn2:#9bffb8; --amb:#e9c97a; --red:#ff8a8a; --dim:#2f7a4a; }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    background:#040804; color:var(--grn);
+    font-family:"Courier New",Consolas,"DejaVu Sans Mono",monospace;
+    font-size:15px; line-height:1.7;
+    display:flex; justify-content:center;
+    text-shadow:0 0 3px rgba(70,224,122,.35);
+  }
+  /* 扫描线 + 暗角，复古 CRT 质感（克制，非花哨） */
+  #crt{position:fixed;inset:0;pointer-events:none;z-index:50;
+    background:repeating-linear-gradient(rgba(0,0,0,0) 0 2px, rgba(0,0,0,.22) 2px 4px);
+    box-shadow:inset 0 0 140px rgba(0,0,0,.9);}
+  #wrap{width:100%;max-width:760px;height:100vh;display:flex;flex-direction:column;padding:10px 14px 14px}
+  #bar{border:1px solid var(--dim);border-bottom:none;padding:6px 10px;color:var(--amb);
+    letter-spacing:1px;font-size:13px;background:#060d06;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  #screen{flex:1;display:flex;flex-direction:column;border:1px solid var(--dim);background:#050a05;min-height:0}
+  #log{flex:1;overflow:auto;padding:12px 14px;white-space:pre-wrap;word-break:break-word}
+  #log .line{margin:1px 0}
+  .me{color:var(--grn2)} .foe{color:var(--red)} .sys{color:var(--amb)} .enemy{color:#9fe0ff} .warn{color:#ffd27a}
+  #choices{border-top:1px solid var(--dim);padding:8px 10px;background:#060d06;max-height:46%;overflow:auto}
+  .choice{display:block;width:100%;text-align:left;background:transparent;border:1px solid var(--dim);
+    color:var(--grn);font-family:inherit;font-size:14px;padding:7px 10px;margin:5px 0;cursor:pointer;
+    transition:.1s}
+  .choice:hover{background:#0c2414;color:var(--grn2);border-color:var(--grn)}
+  .choice:active{transform:translateY(1px)}
+  #cur{display:inline-block;width:9px;height:15px;background:var(--grn);animation:bl 1s steps(1) infinite;vertical-align:-2px;margin-left:2px}
+  @keyframes bl{50%{opacity:0}}
+  ::-webkit-scrollbar{width:8px}::-webkit-scrollbar-thumb{background:var(--dim)}
+
+  /* ===== 底部：版本历程进度条 ===== */
+  #footer{border:1px solid var(--dim);border-top:none;background:#060d06;padding:6px 10px 8px;user-select:none}
+  #flabel{font-size:11px;color:var(--dim);letter-spacing:2px;margin-bottom:5px}
+  #flabel .cur{color:var(--amb)}
+  #vbar{display:flex;align-items:center;gap:0;overflow-x:auto;padding-bottom:2px}
+  #vbar .seg{flex:1 1 0;height:2px;background:var(--dim);min-width:14px}
+  #vbar .seg.lit{background:var(--grn)}
+  .vnode{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:3px;
+    background:transparent;border:1px solid var(--dim);color:var(--dim);
+    font-family:inherit;font-size:10px;letter-spacing:1px;padding:3px 7px;cursor:pointer;transition:.1s;white-space:nowrap}
+  .vnode .dot{width:7px;height:7px;border-radius:50%;background:var(--dim)}
+  .vnode.lit{color:var(--grn);border-color:var(--dim)}
+  .vnode.lit .dot{background:var(--grn);box-shadow:0 0 5px var(--grn)}
+  .vnode.cur{color:var(--amb);border-color:var(--amb)}
+  .vnode.cur .dot{background:var(--amb);box-shadow:0 0 6px var(--amb)}
+  .vnode:hover{color:var(--grn2);border-color:var(--grn);background:#0c2414}
+  .vnode:active{transform:translateY(1px)}
+
+  /* ===== 版本更新弹窗 ===== */
+  #changelog{position:fixed;inset:0;z-index:60;display:none;background:rgba(0,0,0,.8);
+    justify-content:center;align-items:center;padding:16px}
+  #changelog.show{display:flex}
+  #clbox{width:min(580px,92vw);max-height:82vh;overflow:auto;border:1px solid var(--grn);
+    background:#041004;box-shadow:0 0 26px rgba(70,224,122,.25);padding:16px 20px}
+  #clbox h2{color:var(--amb);font-size:17px;letter-spacing:2px;margin-bottom:2px}
+  #clbox .cdate{color:var(--dim);font-size:12px;margin-bottom:10px}
+  #clbox .cdesc{color:var(--grn2);margin-bottom:10px;line-height:1.6}
+  #clbox ul{list-style:none;padding:0;margin:0 0 14px}
+  #clbox li{color:var(--grn);font-size:13.5px;line-height:1.7;padding-left:14px;position:relative}
+  #clbox li::before{content:"▸";position:absolute;left:0;color:var(--dim)}
+  #clbox .close{width:100%;text-align:center;background:transparent;border:1px solid var(--dim);
+    color:var(--grn);font-family:inherit;font-size:13px;padding:7px;cursor:pointer;letter-spacing:2px}
+  #clbox .close:hover{background:#0c2414;color:var(--grn2);border-color:var(--grn)}
+</style>
+</head>
+<body>
+<div id="crt"></div>
+<div id="wrap">
+  <div id="bar">北辰剑宗 · 掌门密录</div>
+  <div id="screen">
+    <div id="log"></div>
+    <div id="choices"></div>
+  </div>
+  <div id="footer">
+    <div id="flabel">版本历程　<span class="cur" id="fcur"></span>　·　点选节点查看各代更新</div>
+    <div id="vbar"></div>
+  </div>
+</div>
+<div id="changelog">
+  <div id="clbox">
+    <h2 id="cltitle"></h2>
+    <div class="cdate" id="cldate"></div>
+    <div class="cdesc" id="cldesc"></div>
+    <ul id="cllist"></ul>
+    <button class="close" id="clclose">〔 封卷 〕</button>
+  </div>
+</div>
+<script>
+"use strict";
+/* ============ 数据：武器（兵器） ============ */
+const WEAPONS={
+  iron:    {key:'iron',    name:"北辰铁剑",     atk:6,  desc:"宗门入门佩剑，朴实无华。"},
+  qixing:  {key:'qixing',  name:"七星剑",       atk:9,  desc:"剑身嵌七枚星铁，剑气更盛。"},
+  ziwei:   {key:'ziwei',   name:"紫微剑",       atk:11, desc:"帝星之剑，攻守兼资。", onGain:()=>state.maxEnergy+=1},
+  tanlang: {key:'tanlang', name:"贪狼剑",       atk:10, desc:"嗜血之剑，伤敌之时，反哺气血。"},
+  pojun:   {key:'pojun',   name:"破军剑",       atk:15, desc:"杀伐之剑，重剑无锋。"},
+  benming: {key:'benming', name:"北辰本命剑",   atk:13, desc:"神魂祭炼之本命飞剑，每回合护体渐厚。", onGain:()=>state.blockPerTurn+=3},
+};
+/* ============ 数据：功法（战斗中可施展之招） ============ */
+const SKILLS={
+  tiangang:{name:"天罡剑气",cost:2,desc:"引天罡之力，重创来敌。",use:()=>pAtk(14)},
+  dingxing:{name:"北辰定星",cost:2,desc:"观星定神，凝厚护体罡气。",use:()=>pBlock(14)},
+  yujian:  {name:"御剑诀",  cost:1,desc:"御剑伤敌，且回一分剑气。",use:()=>{pAtk(state.weapon.atk+6);state.energy+=1;}},
+  qizhen:  {name:"七星剑阵",cost:2,desc:"布下剑阵，此后每回合护体渐厚。",use:()=>{state.blockPerTurn+=4;}},
+  zhenmo:  {name:"镇魔咒",  cost:1,desc:"令敌破绽尽露、心神俱乱。",use:()=>{applyE(state.enemy,"vulnerable",2);applyE(state.enemy,"weak",2);}},
+  tanna:   {name:"吐纳诀",  cost:0,desc:"吐纳调息，温养气血。",use:()=>pHeal(8)},
+  jianxin: {name:"北辰剑心",cost:1,desc:"心通北辰，此后剑气渐盈。",use:()=>{state.energyPerTurn+=1;}},
+  jianzhu: {name:"剑主苍穹",cost:2,desc:"剑主之势，此后剑出更利。",use:()=>{state.attackBonus+=4;}},
+  tianji:  {name:"天机神算",cost:1,desc:"窥得天机：自此可见点算之数；施展时护体稍厚。",use:()=>pBlock(3),onGain:()=>{state.seesPoints=true;}},
+};
+/* ============ 数据：法宝（被动） ============ */
+const RELICS={
+  lingpai:  {name:"北辰令",  desc:"每战开局，护体罡气自凝。"},
+  xingpan:  {name:"紫微星盘",desc:"剑气之渊更宽，可多蓄一分剑气。"},
+  canpian:  {name:"剑冢残片",desc:"每战首攻，剑光更利。"},
+  tuanzhu:  {name:"吐纳珠",  desc:"每战终了，气血自回。"},
+  changsheng:{name:"长生玉", desc:"温养元气，气血之基更厚（并回满）。"},
+  xuanbing: {name:"玄冰镜",  desc:"寒气绕身，敌刃稍减。"},
+  shihun:   {name:"噬魂铃",  desc:"每战开局，令敌破绽尽露。"},
+  jifeng:   {name:"疾风靴",  desc:"身法轻盈，气血之基略增。"},
+};
+const RELIC_IDS=Object.keys(RELICS);
+/* ============ 数据：七大宗门势力 ============ */
+/* 以《北辰剑宗》世界观为骨，扩写出当世几大势力，彼此牵缠。 */
+const FACTIONS={
+  beichen:  {name:"北辰剑宗",   title:"本宗·星剑道", stance:"正",
+             desc:"以北极星为道祖，借星力凝剑气，镇守北境、镇压堕星之劫。门下弟子以剑问道，乃当世正道魁首。"},
+  duoxing:  {name:"堕星魔教",   title:"魔道·心魔教", stance:"邪",
+             desc:"崇拜坠落的星辰，以心魔惑人、腐化剑修为奴。堕星魔尊为其主，欲引星陨灭世，是本宗死敌。"},
+  nanhuang: {name:"南荒巫蛊一脉",title:"巫道·蛊教",   stance:"诡",
+             desc:"南荒密林中的养蛊之族，以血饲阵、以毒攻心，善使心智之术，正邪只在一念。"},
+  donghai:  {name:"东海蓬莱剑阁",title:"仙道·剑仙",   stance:"逸",
+             desc:"东海之滨的海外剑仙，御剑凌波、吐纳长生，与北辰剑宗同源而异流，飘然世外。"},
+  xiyu:     {name:"西域金刚禅院",title:"佛道·金刚",   stance:"正",
+             desc:"西域大漠的伏魔禅院，金刚怒目、心性坚忍，专克心魔邪祟，常与本宗并肩。"},
+  zhongyuan:{name:"中原玄天道盟",title:"道道·道门",   stance:"正",
+             desc:"中原腹地的道门同盟，符箓丹鼎、广收英才，声势浩大，与北辰剑宗分庭抗礼。"},
+  beijing:  {name:"北境雪妖国",  title:"妖道·冰魄",   stance:"敌",
+             desc:"北境雪原的妖修之国，冰魄为骨、霜雪为甲，与北辰剑宗世有宿怨，觊觎山门。"},
+};
+const FACTION_IDS=Object.keys(FACTIONS);
+function factionName(id){return FACTIONS[id]?FACTIONS[id].name:id;}
+/* 声望：内部记整数，玩家不可见（隐数哲学），只以文意流露 */
+function bumpRep(id,d){ if(id && state.rep[id]!==undefined) state.rep[id]+=d; }
+function repOf(id){ return state.rep[id]||0; }
+function factionStandingLines(){
+  const out=[];
+  const entries=FACTION_IDS.map(id=>({id,r:state.rep[id]||0})).filter(e=>e.r!==0);
+  if(!entries.length){ out.push("你与七方势力，皆无深交，恩怨未生。"); return out; }
+  entries.sort((a,b)=>b.r-a.r);
+  entries.forEach(e=>{
+    let w;
+    if(e.r>=3) w="恩义日深，你之名已入其门墙";
+    else if(e.r>=1) w="颇有善缘，其人多记你一分情";
+    else if(e.r<=-3) w="仇怨已结，其众视你为死敌";
+    else w="颇生龃龉，其人多存一分戒心";
+    out.push("· "+factionName(e.id)+"： "+w+"。");
+  });
+  return out;
+}
+/* ============ 数据：太极界生命 · 立场与形貌 ============ */
+/* 本界乃「公司」既定删除之造物；你为太极界生命，降一缕分神入此，探查真相，以待决断。 */
+const ALLEGIANCES={
+  guard:   {name:"守界者", short:"守界", desc:"怜此界众生，欲挽其将逝之劫。"},
+  observer:{name:"观局客", short:"观局", desc:"只作壁上之观，记录此界将逝之真相。"},
+  obey:    {name:"听令者", short:"听令", desc:"听得公司之音，视删除为天地之常。"},
+};
+const ALLEGIANCE_IDS=Object.keys(ALLEGIANCES);
+function allegName(id){ return ALLEGIANCE_IDS.includes(id)?ALLEGIANCES[id].name : (id||"未知"); }
+function allegShort(id){ return ALLEGIANCE_IDS.includes(id)?ALLEGIANCES[id].short : "?"; }
+const GENDERS=["乾阳之身","坤阴之身","阴阳合化"];
+const APPEARS=["清癯如竹","魁伟如山","温润如玉","缥缈如雾","凛冽如霜","古拙如石"];
+function truthWord(t){ if(t<=0)return "未明"; if(t<=1)return "微光"; if(t<=2)return "渐显"; if(t<=3)return "将明"; if(t<=4)return "洞见"; if(t<=5)return "豁然"; return "彻照"; }
+function statusWord(s){ return ({arrive:"降临",wander:"游历",see:"洞见",decide:"决断"})[s]||s; }
+function genChar(){
+  state.gender=pick(GENDERS);
+  state.appearance=pick(APPEARS);
+  state.lifespan=42+Math.floor(Math.random()*29); state.lifeMax=state.lifespan; // 42..70
+  state.compute=8+Math.floor(Math.random()*9); state.computeMax=state.compute;   // 8..16
+  state.truth=0; state.deletion=0; state.status='arrive';
+}
+
+/* ============ 数据：妖魔 / 心魔 ============ */
+const ENEMY_DEFS={
+  gu:   {name:"噬剑蛊虫",fac:"nanhuang",hp:24,intro:"一条丈长的噬剑蛊虫自雪中昂首，口器开合，似要吞你剑光。",
+         moves:[{name:"啃咬",kind:"attack",value:7},{name:"群涌",kind:"attack",value:4,times:2}]},
+  hun:  {name:"雪原孤魂",fac:"beijing",hp:30,intro:"风雪里浮起一缕青碧孤魂，怨气凝作寒气扑面。",
+         moves:[{name:"寒袭",kind:"attack",value:9},{name:"诅咒",kind:"debuff",status:"weak",statusN:2},{name:"阴守",kind:"defend",block:8}]},
+  nu:   {name:"堕落剑奴",fac:"duoxing",hp:36,intro:"一具被剑气傀儡化的剑奴挡在道前，锈剑低鸣。",
+         moves:[{name:"重斩",kind:"attack",value:12},{name:"守势",kind:"defend",block:10}]},
+  pan:  {name:"北辰叛徒",fac:"beichen",hp:42,intro:"一名叛出宗门的昔日师兄横剑而立，目露寒光。",
+         moves:[{name:"叛剑",kind:"attack",value:10},{name:"削罡",kind:"attack_debuff",value:6,status:"vulnerable",statusN:2},{name:"蓄力",kind:"buff",value:3}]},
+  spider:{name:"噬魂蛛",fac:"nanhuang",hp:26,intro:"岩隙中爬出一头噬魂蛛，吐着幽绿毒丝。",
+         moves:[{name:"毒噬",kind:"attack_debuff",value:5,status:"burn",statusN:3},{name:"吐丝",kind:"defend",block:6}]},
+  ling: {name:"剑冢守灵",fac:"beichen",hp:80,elite:true,intro:"剑冢深处，一尊守灵石像睁眼，万剑齐鸣。",
+         moves:[{name:"剑压",kind:"attack",value:15},{name:"剑壁",kind:"defend",block:14},{name:"号令",kind:"buff",value:3}]},
+  mo:   {name:"堕星魔尊",fac:"duoxing",hp:140,boss:true,intro:"雪山之巅，堕星魔尊自劫云中显形，星力尽染成墨。",
+         moves:[{name:"堕星击",kind:"attack",value:16},{name:"魔焰",kind:"attack_debuff",value:9,status:"vulnerable",statusN:2},{name:"灭世蓄力",kind:"buff",value:4}],
+         phase2:[{name:"星陨",kind:"attack",value:22},{name:"魔域",kind:"attack_debuff",value:12,status:"weak",statusN:2},{name:"吞噬",kind:"attack",value:14}]},
+  jianling:{name:"北辰剑灵·噬",fac:"beichen",hp:160,boss:true,intro:"北辰本命剑灵竟已生魔，剑光化作千条饿蛟。",
+         moves:[{name:"剑鸣",kind:"attack",value:13},{name:"万剑归宗",kind:"attack",value:6,times:3},{name:"剑心通明",kind:"buff",value:4}]},
+};
+const NORMAL=["gu","hun","nu","pan","spider"];
+const ELITES=["ling"];
+const BOSSES=["mo","jianling"];
+/* ============ 数据：奇遇 ============ */
+const REAL_EVENTS=[
+  {text:["荒雪深处一座剑冢，万千残剑在风中呜咽，似有剑意可及。","你伸手探入剑丛——"],
+   options:[
+     {label:"〔取剑〕 炼一缕剑意入本命，习得一道功法",act:()=>{const id=pick(skillPool()); if(id){learnSkill(id);appendLine("» 你于剑冢中证得功法【"+SKILLS[id].name+"】。",'sys');} else {state.weapon.atk+=2;appendLine("» 诸般功法你已通晓，剑意反令本命剑更利。",'sys');}}},
+     {label:"〔祭剑〕 以血饲剑，求一件法宝（损些气血）",act:()=>{pHeal(-6);const r=gainRelic();appendLine(r?("» 剑光中浮出法宝【"+RELICS[r].name+"】："+RELICS[r].desc):"» 你法宝已满，剑光寂然。",'sys');}},
+   ]},
+  {text:["掌门密录残页自行飘起，星辉洒落，似有前人留声。","留声问你：所求为何？"],
+   options:[
+     {label:"〔参悟〕 静参一理，随机精进本命剑（剑利三分）",act:()=>{state.weapon.atk+=3;appendLine("» 本命剑【"+state.weapon.name+"】剑意更利。",'sys');}},
+     {label:"〔静修〕 温养气血",act:()=>{pHeal(12);appendLine("» 气血温养，神采复盈。",'sys');}},
+   ]},
+  {text:["道旁裂开一道魔气裂隙，既危险，亦是机缘。","墨色在指缝间游走——"],
+   options:[
+     {label:"〔封印〕 收取魔气，化作灵石",act:()=>{bumpRep('beichen',1);state.gold+=20;appendLine("» 你封印魔气，化作废石。北辰同门若见，当记你一分护道之功。",'sys');}},
+     {label:"〔吸纳〕 搏一线机：半得法宝，半损气血",act:()=>{bumpRep('duoxing',1);if(Math.random()<0.5){const r=gainRelic();appendLine(r?("» 法宝【"+RELICS[r].name+"】入怀，堕星魔教似有所感，记下你这暗通款曲的外门弟子。"):"» 你法宝已满。",'sys');}else{pHeal(-8);appendLine("» 魔气反噬，气血受蚀，堕星魔教却似记下了你这名窃火之人。",'sys');}}},
+   ]},
+  {text:["海风忽起，一名御剑的青衣修士按落剑光，自报是东海蓬莱剑阁的传人。","他笑问：可愿论一论这北辰剑意？"],
+   options:[
+     {label:"〔论剑〕 与之切磋，或证得一道功法",act:()=>{bumpRep('donghai',1);const id=pick(skillPool()); if(id){learnSkill(id);appendLine("» 论剑既罢，你证得功法【"+SKILLS[id].name+"】。青衣修士抚掌，记下了你这北辰剑友。",'sys');} else {state.weapon.atk+=2;appendLine("» 诸般功法你已通晓，论剑反令本命剑更利。青衣修士抚掌，记下了你这北辰剑友。",'sys');}}},
+     {label:"〔辞剑〕 婉拒，自去温养气血",act:()=>{bumpRep('donghai',-1);pHeal(12);appendLine("» 你婉辞好意，青衣修士微微颔首，剑光却淡了几分，拂袖而去。",'sys');}},
+   ]},
+  {text:["道旁符香袅袅，一名中原玄天道盟的巡查使拦下你，要验这外门弟子的来历。","他言：北辰剑宗近来魔氛渐起，须查。"],
+   options:[
+     {label:"〔相助〕 助其清缴一桩魔氛，得一件法宝",act:()=>{bumpRep('zhongyuan',1);const r=gainRelic();appendLine(r?("» 魔氛既清，你获赠法宝【"+RELICS[r].name+"】。巡查使记下你的援手，称来日北辰有难，道盟必应。"):"» 你法宝已满，巡查使另赠灵石。",'sys');if(!r)state.gold+=15;}},
+     {label:"〔避走〕 不欲牵缠，悄悄离去（得些灵石）",act:()=>{bumpRep('zhongyuan',-1);state.gold+=15;appendLine("» 你悄然离去，身后巡查使冷眼相送，记下了北辰一个避事的外门弟子。",'sys');}},
+   ]},
+  {text:["幽碧蛊气自林间漫来，一名南荒巫蛊一脉的使者立于毒雾中，递来一坛血蛊。","她媚声道：饮下，便赐你一门异术。"],
+   options:[
+     {label:"〔受蛊〕 饮下血蛊，习一门功法（损些气血）",act:()=>{bumpRep('nanhuang',1);pHeal(-6);const id=pick(skillPool()); if(id){learnSkill(id);appendLine("» 血蛊入腹，你习得意术【"+SKILLS[id].name+"】，却也气血受蚀。巫蛊使者媚笑，称你已是她记名的人。",'sys');} else {state.weapon.atk+=2;appendLine("» 诸般功法你已通晓，血蛊反令本命剑更利，气血受蚀。巫蛊使者媚笑，称你已是她记名的人。",'sys');}}},
+     {label:"〔破蛊〕 一剑斩碎蛊坛，收取散落灵石",act:()=>{bumpRep('nanhuang',-1);state.gold+=18;appendLine("» 蛊坛碎裂，你收取散落灵石。使者恨恨而退，视你为南荒之敌。",'sys');}},
+   ]},
+  {text:["霜雪骤寒，一头北境雪妖国的妖修自冰壁后转出，霜刃抵喉。","它嘶声道：北辰的狗，也敢踏入我疆界？"],
+   options:[
+     {label:"〔言和〕 以礼相待，竟换得一件法宝",act:()=>{bumpRep('beijing',1);const r=gainRelic();appendLine(r?("» 冰锋收回，妖修反倒赠你法宝【"+RELICS[r].name+"】。你与这北境妖修，竟结下一份诡异的默契。"):"» 你法宝已满，妖修掷来灵石。你与这北境妖修，竟结下一份诡异的默契。",'sys');if(!r)state.gold+=16;}},
+     {label:"〔拔剑〕 出其不意，夺其灵石而走",act:()=>{bumpRep('beijing',-1);state.gold+=16;appendLine("» 你剑光一闪夺路而走，雪妖咆哮，此仇北境记下了。",'sys');}},
+   ]},
+  {cond:()=>repOf('duoxing')>=2,
+   text:["一名堕星魔教的香主循着你与魔教的交情找来，眼带玩味。","他摊开手：魔尊许你一道邪门功法，或一桩干净的交易。"],
+   options:[
+     {label:"〔纳降〕 受魔教之赐，习一道功法（却与正道生隙）",act:()=>{bumpRep('duoxing',1);bumpRep('beichen',-1);const id=pick(skillPool()); if(id){learnSkill(id);appendLine("» 你于魔教中证得功法【"+SKILLS[id].name+"】。",'sys');}else{state.weapon.atk+=2;appendLine("» 诸般功法你已通晓，魔赐反令本命剑更利。",'sys');}}},
+     {label:"〔斥退〕 斥其邪说，斩断牵缠",act:()=>{bumpRep('duoxing',-1);appendLine("» 你厉声斥退香主，魔教的牵缠淡了一分。",'sys');}},
+   ]},
+  {cond:()=>repOf('duoxing')<=-2,
+   text:["你昔日的薄情终被堕星魔教记恨，一队魔众循迹围杀而来。","墨色星力翻涌，杀机凛冽。"],
+   options:[
+     {label:"〔力战〕 迎战魔众，剑下见真章",act:()=>{appendLine("» 你拔剑迎敌。",'me');startCombat('nu');}},
+     {label:"〔遁走〕 掐算遁逃，损些气血",act:()=>{pHeal(-8);bumpRep('duoxing',-1);appendLine("» 你掐算遁逃，气血受蚀，魔众的恨意却未消。",'sys');}},
+   ]},
+  {cond:()=>repOf('beichen')>=2,
+   text:["一名北辰师叔见你剑法有本宗风骨，又念你屡护同门，召你入藏剑洞天。","石壁上万剑低鸣，似在相认。"],
+   options:[
+     {label:"〔受教〕 得师叔指点，剑利三分",act:()=>{state.weapon.atk+=3;bumpRep('beichen',1);appendLine("» 师叔授艺，本命剑【"+state.weapon.name+"】剑意更利。",'sys');}},
+     {label:"〔谢退〕 谢过师叔，自去修行（得些灵石）",act:()=>{state.gold+=10;bumpRep('beichen',0);appendLine("» 你谢过师叔，另得些许灵石。",'sys');}},
+   ]},
+  {text:(function(){const t=["你登上半颓的观星台，北辰垂象，天下大势尽收眼底——"];
+        FACTION_IDS.forEach(id=>{const f=FACTIONS[id];t.push("· "+f.name+"（"+f.title+"）　"+f.desc);});
+        t.push("");t.push("星移斗转，终局将至，七方牵缠皆系于此山。");return t;})(),
+   options:[
+     {label:"〔观星〕 记下大势，再赴前路",act:()=>{appendLine("» 你将七大势力的牵缠，暗记于心。",'sys'); factionStandingLines().forEach(l=>appendLine(l,'sys'));
+        if(state.truth>0) appendLine("» 你复掐指算界外——那双名为「公司」的手，正把删除之期，一寸寸拨近。",'warn'); }},
+   ]},
+];
+/* ============ 数据：探索（探查此界本源与「公司」之真相） ============ */
+const REAL_EXPLORE=[
+  {text:["荒亭中立一截残碑，碑上不是剑诀，而是一行行流转的「界律」——此界的山川日月，竟是被写就的。","你俯身细辨——"],
+   options:[
+     {label:"〔摹写〕 抄录界律，得些灵石",act:()=>{state.gold+=14;appendLine("» 你摹下界律，灵石入囊。",'sys');}},
+     {label:"〔推演〕 静参界律，本命剑更利",act:()=>{state.weapon.atk+=2;appendLine("» 界律入心，本命剑【"+state.weapon.name+"】更利。",'sys');}},
+   ]},
+  {text:["一名垂暮的村妪拉住你，浑浊的眼竟看穿了你的形骸：「客不是此界的人罢？这世道……要没了。」","她颤声道——"],
+   options:[
+     {label:"〔问询〕 问她所知的「没了」",act:()=>{state.truth=Math.min(6,state.truth+1);appendLine("» 她说出「公司」之名：上界有人，定时抹去一界。真相·"+truthWord(state.truth)+"。",'sys');}},
+     {label:"〔慰藉〕 渡些气血与她",act:()=>{pHeal(6);appendLine("» 你渡去一分暖意，她含笑阖眼。",'sys');}},
+     {label:"〔不语〕 默然离去",act:()=>{appendLine("» 你未答，任风雪掩去她的低语。",'sys');}},
+   ]},
+  {text:["道旁空间裂开一道细隙，隙后不是雪原，而是一面冰冷的「界面」——上列着此界之名，与一行倒计时。","墨字无声跳动——"],
+   options:[
+     {label:"〔窥伺〕 窥探那倒计时",act:()=>{state.truth=Math.min(6,state.truth+1);state.deletion=Math.min(100,state.deletion+6);appendLine("» 你窥见删除之期已近。真相·"+truthWord(state.truth)+"，然界外之手亦因此察觉了你。",'warn');}},
+     {label:"〔封隙〕 以算力弥合此隙（耗算力）",act:()=>{if(state.compute>=2){state.compute-=2;state.deletion=Math.max(0,state.deletion-8);appendLine("» 你以算力弥合裂隙，删除之期稍缓。",'sys');}else appendLine("» 算力已涸，难封此隙。",'warn');}},
+   ]},
+  {text:["镜湖如墨，你俯看倒影——水中映出的，却不是这副修真形骸，而是一缕缥缈的、太极界的分神。","你与自己对望——"],
+   options:[
+     {label:"〔照见〕 照见真身，剑意自明",act:()=>{state.truth=Math.min(6,state.truth+1);state.weapon.atk+=2;appendLine("» 你照见太极界之真身，剑意通明。真相·"+truthWord(state.truth)+"。",'sys');}},
+     {label:"〔敛神〕 敛去异象，勿引人察",act:()=>{appendLine("» 你敛去界外异象，惟恐被那双手觑破。",'sys');}},
+   ]},
+  {text:["废墟之下，压着一座更古的旧界残骸——原来在你之前，「公司」已删过不止一界。","断柱上刻着前代的余音——"],
+   options:[
+     {label:"〔勘破〕 勘破前代覆灭之因",act:()=>{state.truth=Math.min(6,state.truth+1);appendLine("» 你勘破前代之因：被删之界，皆因无人肯为它决断。真相·"+truthWord(state.truth)+"。",'sys');}},
+     {label:"〔拾遗〕 于废墟得一件法宝",act:()=>{const r=gainRelic();appendLine(r?("» 废墟中浮出法宝【"+RELICS[r].name+"】。"):"» 你法宝已满。",'sys');}},
+     {label:"〔退走〕 不欲久留",act:()=>{appendLine("» 你退出废墟，雪落无声。",'sys');}},
+   ]},
+];
+/* ============ 数据：登山文案 ============ */
+const FLAVOR=[
+ "山门初启，阶下风雪初歇。",
+ "石径蜿蜒，两侧剑痕如新。",
+ "寒潭倒映星河，寒气透骨。",
+ "残碑林立，似有前人剑意未散。",
+ "云海翻涌，北辰愈显。",
+ "古松挂雪，时有剑鸣自深谷传来。",
+ "断崖孤亭，风声如诉。",
+ "冰瀑垂天，星辉凝霜。",
+ "祭坛荒圮，魔气隐隐。",
+ "绝巅在望，风雪俱寂。",
+];
+function pathLabel(t){
+  return ({
+    battle:"【战斗】一条幽暗剑痕小径，杀机暗伏。",
+    elite:"【精英】一处剑意冲霄的险地，非强者不渡。",
+    explore:"【探索】一处静室或残迹，似有旧事可察。",
+    treasure:"【机缘】一座半掩的石室，似藏造化。",
+    rest:"【休整】一间避风的静室，炭火未熄。",
+    event:"【奇遇】一缕飘忽星辉，引你驻足。",
+    boss:"【掌门试炼】北辰绝巅，劫云压顶。",
+  })[t]||"【前路】不知吉凶。";
+}
+/* ============ 数据：随机出身背景 ============ */
+const ORIGINS=[
+  {name:"将门之后",text:"你生于将门，自幼闻金戈铁马之声。",mod:{gold:12}},
+  {name:"寒门弃儿",text:"你出身寒微，蓬牖绳枢，于风雪里磨出一身韧劲。",mod:{gold:-4,maxHp:4}},
+  {name:"没落世家",text:"祖上曾显赫一时，如今只剩几卷残书与一点余荫。",mod:{gold:18}},
+  {name:"山野猎户",text:"你惯走山林，箭无虚发，也惯与野兽夺食。",mod:{gold:2,potions:1}},
+  {name:"江湖浪客",text:"你漂泊半生，市井江湖皆走过一遭。",mod:{gold:8}},
+];
+const PATHS=[
+  {name:"散修",text:"你无门无派，自悟一身野狐禅。",mod:{}},
+  {name:"丹道学徒",text:"你曾随人采药炼丹，识得几味温养之物。",mod:{potions:1}},
+  {name:"体修",text:"你专炼筋骨皮膜，一身硬功。",mod:{maxHp:8}},
+  {name:"符箓师",text:"你惯画符念咒，知扰动敌神之法。",mod:{skill:'zhenmo'}},
+  {name:"拳脚师父",text:"你曾在市井卖艺，一身硬桥硬马。",mod:{weapon:'qixing'}},
+  {name:"佛门行者",text:"你曾披缁衣、敲木鱼，心性坚忍。",mod:{maxHp:4}},
+];
+const BONES=[
+  {name:"天纵奇骨",text:"你根骨天成，是习剑的奇才。",mod:{maxHp:10}},
+  {name:"中正平和",text:"你根骨中正，不疾不徐。",mod:{}},
+  {name:"蒲柳之姿",text:"你根骨平平，须以后天勤勉补之。",mod:{maxHp:-8}},
+];
+const FATES=[
+  {name:"气运昌隆",text:"你命格清贵，常有意外之喜。",mod:{gold:12,potions:1}},
+  {name:"平运",text:"你命数平平，全凭己身。",mod:{}},
+  {name:"命途多舛",text:"你命途多舛，常遇坎坷。",mod:{gold:-6}},
+];
+const REGIONS=[
+  {name:"北境雪原",text:"你自北境苦寒而来，筋骨如铁。",mod:{maxHp:6},fac:"beijing"},
+  {name:"江南烟雨",text:"你自江南烟雨中来，心思玲珑。",mod:{energy:1},fac:"zhongyuan"},
+  {name:"西域大漠",text:"你自西域黄沙中来，性烈刚猛。",mod:{weapon:'qixing'},fac:"xiyu"},
+  {name:"东海之滨",text:"你自东海之滨而来，吐纳自长。",mod:{potions:1},fac:"donghai"},
+  {name:"中原腹地",text:"你自中原腹地而来，见闻广博。",mod:{gold:10},fac:"zhongyuan"},
+  {name:"南荒密林",text:"你自南荒瘴林而来，体带抗力。",mod:{maxHp:4},fac:"nanhuang"},
+];
+function genBackground(){
+  const o=pick(ORIGINS), p=pick(PATHS), b=pick(BONES), f=pick(FATES), r=pick(REGIONS);
+  const mod={gold:0,maxHp:0,potions:0,energy:0,skill:null,weapon:null};
+  [o,p,b,f,r].forEach(x=>{const m=x.mod||{};
+    if(m.gold)mod.gold+=m.gold; if(m.maxHp)mod.maxHp+=m.maxHp;
+    if(m.potions)mod.potions+=m.potions; if(m.energy)mod.energy+=m.energy;
+    if(m.skill)mod.skill=m.skill; if(m.weapon)mod.weapon=m.weapon;
+  });
+  return {origin:o,path:p,bone:b,fate:f,region:r,mod,faction:r.fac};
+}
+/* ============ 全局状态 ============ */
+let state=null;
+function baseState(){
+  return {
+    maxHp:70,hp:70,gold:30,maxEnergy:3,energy:3,block:0,swordIntent:0,attackBonus:0,
+    energyPerTurn:0,blockPerTurn:0,weak:0,vulnerable:0,burn:0,firstAttack:true,
+    weapon:Object.assign({key:'iron'},WEAPONS.iron), skills:['tiangang'], relics:[], potions:1,
+    enemy:null, floorIndex:null, nodeIndex:null, map:null,
+    choices:[], typing:false, _timer:null, _typeDone:null, _typeLines:[], _typeIdx:0, _typeCls:'',
+    points:0, seesPoints:false, bg:null, _lastEvent:null, _lastExp:null,
+    rep:Object.fromEntries(FACTION_IDS.map(k=>[k,0])),
+    allegiance:'observer', gender:'', appearance:'', lifespan:0, lifeMax:0,
+    compute:0, computeMax:0, truth:0, deletion:0, status:'arrive',
+  };
+}
+function applyBackground(){
+  const bg=genBackground(); state.bg=bg; const m=bg.mod;
+  state.maxHp=70+m.maxHp; state.hp=state.maxHp;
+  state.gold=30+m.gold;
+  state.maxEnergy=3+m.energy; state.energy=state.maxEnergy;
+  state.potions=1+m.potions;
+  state.weapon=Object.assign({key:'iron'},WEAPONS.iron);
+  state.skills=['tiangang'];
+  if(m.weapon) gainWeapon(m.weapon);
+  if(m.skill) learnSkill(m.skill);
+}
+function startRun(){
+  state=baseState();
+  state.points=10+Math.floor(Math.random()*91); // 10..100，隐于点算，玩家不可见
+  applyBackground();
+  genChar();
+  state.map=genMap();
+  updateBar();
+  showBackground();
+}
+function learnSkill(key){
+  if(!key || state.skills.includes(key)) return false;
+  state.skills.push(key);
+  if(SKILLS[key] && SKILLS[key].onGain) SKILLS[key].onGain();
+  return true;
+}
+function spendPoint(){
+  if(state.points<=0) return false;
+  state.points--; return true;
+}
+function divineHint(t){
+  const tbl={
+    battle:[ "剑痕小径杀机暗伏，似有妖物横道。", "风里夹着腥气，一道剑痕小径通向未知。"],
+    elite:[ "剑意冲霄，凶险异常，非全盛不可轻渡。", "气机森然，一处险地藏着强横之物。"],
+    treasure:[ "石室半掩，星辉凝作造化之兆。", "星光偏聚，似有遗留的造化藏于一隅。"],
+    explore:[ "气机清寂，似有前人未竟之语。", "一缕微光引你驻足，似与此界本源相关。"],
+    rest:[ "静室避风，炭火犹温，可稍作调息。", "一缕暖意透出，似有避风之所。"],
+    event:[ "一缕星辉飘忽，似有前人留声。", "气机流转古怪，似有奇遇亦似有劫。"],
+    boss:[ "绝巅劫云压顶，掌门试炼将至。", "星力尽染成墨，终局之敌已在眼前。"],
+  };
+  const arr=tbl[t]||["前路吉凶难料。"];
+  let base=arr[Math.floor(Math.random()*arr.length)];
+  const near=factionNear(t);
+  return near? (base+"　"+near) : base;
+}
+/* 掐算之时，亦能窥见附近势力的渗透 */
+function factionNear(t){
+  let pool;
+  if(t==='boss') pool=['duoxing','beichen'];
+  else if(t==='elite') pool=['duoxing','beijing','zhongyuan','beichen'];
+  else if(t==='battle') pool=['beijing','duoxing','nanhuang','zhongyuan'];
+  else if(t==='explore') pool=['beichen','donghai','xiyu','zhongyuan'];
+  else if(t==='event') pool=['donghai','zhongyuan','xiyu','nanhuang','beichen'];
+  else pool=['beichen','donghai','xiyu'];
+  const f=pick(pool);
+  const lines={
+    beichen:["北辰星辉隐隐护持此路，似有同门剑意在侧。","一道北辰剑气未散，本宗足迹及此。"],
+    duoxing:["墨色星力残绕，似是堕星魔教的手笔。","一缕堕星魔念游走，令人心神不宁。"],
+    nanhuang:["幽碧蛊气弥漫，南荒巫蛊一脉曾至此地。","虫噬之音细不可闻，南荒遗法尚存。"],
+    donghai:["海风携剑气，似有东海蓬莱剑阁的传人经过。","凌波剑意未消，东海一脉或曾驻足。"],
+    xiyu:["梵唱余韵入耳，西域金刚禅院的金刚力场犹在。","金光残印在地，佛门伏魔之迹未消。"],
+    zhongyuan:["道门符香淡淡，中原玄天道盟的巡查或曾路过。","丹鼎之气未散，中原道盟势力可及此处。"],
+    beijing:["冰魄寒气刺骨，北境雪妖国的妖修盘踞于此。","霜雪之下妖气森森，雪妖国一脉据有此方。"],
+  };
+  const a=lines[f]||[];
+  return a.length?a[Math.floor(Math.random()*a.length)]:"";
+}
+function showBackground(){
+  const b=state.bg;
+  const lines=[
+    "──── 太极降世 ────",
+    "鸿蒙之外，太极界无声。你是一缕分神，循着一道将熄的星辉，投落此界。",
+    "此界名为北辰，本是修真之世；然你降世便觉——它正被一双名为「公司」的手，悄然抹去。",
+    "你借此界的形骸降生，欲在它湮灭之前，探明真相，再作决断。",
+    "",
+    "〔立场〕 "+allegName(state.allegiance)+"（"+ALLEGIANCES[state.allegiance].desc+"）",
+    "〔形貌〕 "+state.gender+"　"+state.appearance,
+    "〔寿命〕 此身可驻此界约 "+state.lifespan+" 巡　〔算力〕 "+state.compute,
+    "〔根骨〕 "+b.bone.name+"　〔功法〕 "+state.skills.map(k=>SKILLS[k].name).join("、"),
+    "〔出身〕 "+b.origin.name+"　〔前缘〕 "+b.path.name+"　〔地域〕 "+b.region.name+"（渊源："+factionName(b.faction)+"）",
+    "",
+    "你将带着这副形神，自山脚入界，向绝巅而去。",
+  ];
+  const choices=[{label:"〔承此天命〕 以此身入界",act:()=>{ state.status='wander'; goNext(); }}];
+  choices.push({label:"〔重掷来历〕 重掷形貌与出身（耗一点）", act:()=>{
+    if(spendPoint()){ applyBackground(); genChar(); showBackground(); }
+    else appendLine("» 神识已涸，难再掐算来历。",'warn');
+  }});
+  choices.push({label:"〔改易阵营〕 另择对此界的立场", act:()=>{ showAllegiance(); }});
+  say(lines,'',choices);
+}
+function showAllegiance(){
+  const lines=["你这缕分神，对此界存何立场？","（立场将牵动你最终的抉择与结局）"];
+  const choices=ALLEGIANCE_IDS.map(id=>({
+    label:"〔"+ALLEGIANCES[id].short+"〕 "+ALLEGIANCES[id].name+"　"+ALLEGIANCES[id].desc,
+    act:()=>{ state.allegiance=id; showBackground(); }
+  }));
+  choices.push({label:"〔返回〕 再思量", act:()=>showBackground()});
+  say(lines,'',choices);
+}
+function pick(a){return a[Math.floor(Math.random()*a.length)];}
+function shuffled(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function hasRelic(id){return state.relics.includes(id);}
+
+/* ============ 定性文意：以词代数 ============ */
+function hpState(hp,max){const r=hp/max; if(r>0.75)return "充盈"; if(r>0.5)return "尚可"; if(r>0.3)return "见损"; if(r>0.15)return "衰微"; if(r>0)return "命悬一线"; return "气绝";}
+function foeState(hp,max){const r=hp/max; if(r>0.75)return "气焰正盛"; if(r>0.5)return "已现疲态"; if(r>0.3)return "伤势不轻"; if(r>0.15)return "命悬一线"; if(r>0)return "濒临溃散"; return "形神俱灭";}
+function dmgWord(dmg,ref){const r=dmg/Math.max(1,ref); if(r>=0.30)return "重创"; if(r>=0.16)return "深创"; if(r>=0.07)return "受创"; if(r>0)return "轻伤"; return "无伤";}
+function qiWord(){const e=state.energy,m=state.maxEnergy; if(e<=0)return "已涸"; if(e>=m)return "盈沛"; if(e>=Math.ceil(m/2))return "尚足"; return "将尽";}
+function floorWord(f){ if(f===undefined)f=state.floorIndex; if(f===null)return "序"; if(f<=1)return "山门初阶"; if(f<=3)return "石径渐高"; if(f<=5)return "云海之间"; if(f<=7)return "断崖孤行"; if(f<=9)return "绝巅在望"; return "掌门试炼"; }
+function costWord(c){ if(c<=0)return "不费剑气"; if(c===1)return "略耗剑气"; if(c===2)return "颇耗剑气"; return "大耗剑气"; }
+
+/* ============ 地图 ============ */
+function rollType(i){
+  const r=Math.random();
+  if(i<=1){ // 前两段以探索为主，不强制战斗
+    if(r<0.55) return "explore";
+    if(r<0.75) return "rest";
+    if(r<0.92) return "event";
+    return "treasure";
+  }
+  if(i>=3 && r<0.13) return "elite";
+  if(r<0.42) return "battle";
+  if(r<0.60) return "explore";
+  if(r<0.76) return "event";
+  if(r<0.87) return "rest";
+  return "treasure";
+}
+function genMap(){
+  const n=11; const floors=[];
+  for(let i=0;i<n;i++){
+    let count = i===0?3:(2+Math.floor(Math.random()*2));
+    if(i===n-1) count=1;
+    const nodes=[];
+    for(let j=0;j<count;j++){
+      let t = i===0?"explore":(i===n-1?"boss":rollType(i));
+      nodes.push({type:t,edges:[],done:false});
+    }
+    floors.push(nodes);
+  }
+  floors.push([{type:"boss",edges:[],done:false}]);
+  for(let i=0;i<floors.length-1;i++){
+    const cur=floors[i], nxt=floors[i+1];
+    cur.forEach(node=>{
+      const k=1+Math.floor(Math.random()*2);
+      const picks=new Set();
+      while(picks.size<Math.min(k,nxt.length)) picks.add(Math.floor(Math.random()*nxt.length));
+      node.edges=[...picks];
+    });
+    nxt.forEach((nn,idx)=>{ if(!cur.some(c=>c.edges.includes(idx))) cur[Math.floor(Math.random()*cur.length)].edges.push(idx); });
+  }
+  return floors;
+}
+function reachable(){
+  if(!state.map) return [];
+  if(state.floorIndex===null) return state.map[0].map((_,j)=>j);
+  return state.map[state.floorIndex][state.nodeIndex].edges;
+}
+
+/* ============ 文字输出 ============ */
+const logEl=()=>document.getElementById('log');
+function scrollLog(){const e=logEl();if(e)e.scrollTop=e.scrollHeight;}
+function appendLine(text,cls){const d=document.createElement('div');d.className='line '+(cls||'');d.textContent=text;logEl().appendChild(d);updateBar();scrollLog();}
+function updateBar(){
+  const bar=document.getElementById('bar'); if(!bar)return;
+  const fl = floorWord();
+  const hs = (state&&state.maxHp) ? ("气血 "+hpState(state.hp,state.maxHp)) : "气血 —";
+  let s='北辰剑宗·掌门密录　　'+fl+'　　'+hs;
+  if(state&&state.seesPoints) s+='　　点算 '+state.points;
+  bar.textContent=s;
+}
+function typeLines(lines,cls,done){
+  state.typing=true; state._typeLines=lines; state._typeCls=cls||''; state._typeIdx=0; state._typeDone=done;
+  state._curDiv=null; state._curLine='';
+  typeNext();
+}
+function typeNext(){
+  if(state._typeIdx>=state._typeLines.length){ state.typing=false; const d=state._typeDone; state._typeDone=null; scrollLog(); if(d)d(); return; }
+  const text=state._typeLines[state._typeIdx++];
+  const div=document.createElement('div'); div.className='line '+state._typeCls; logEl().appendChild(div);
+  state._curDiv=div; state._curLine=text;
+  let i=0; clearInterval(state._timer);
+  state._timer=setInterval(()=>{
+    div.textContent=text.slice(0,++i); scrollLog();
+    if(i>=text.length){ clearInterval(state._timer); typeNext(); }
+  },12);
+}
+function skipTyping(){
+  if(!state.typing) return;
+  clearInterval(state._timer);
+  if(state._curDiv && state._curLine!==undefined) state._curDiv.textContent=state._curLine;
+  while(state._typeIdx<state._typeLines.length){
+    const text=state._typeLines[state._typeIdx++];
+    const div=document.createElement('div'); div.className='line '+state._typeCls; div.textContent=text; logEl().appendChild(div);
+  }
+  state.typing=false; const d=state._typeDone; state._typeDone=null; scrollLog(); if(d)d();
+}
+function say(lines,cls,choices){
+  setChoices(null);
+  typeLines(lines,cls,()=>setChoices(choices));
+}
+function setChoices(choices){
+  state.choices=choices||[];
+  const box=document.getElementById('choices'); box.innerHTML='';
+  if(!state.choices.length)return;
+  state.choices.forEach((c,i)=>{
+    const b=document.createElement('button'); b.className='choice'; b.textContent='['+(i+1)+'] '+c.label;
+    b.onclick=()=>triggerChoice(i);
+    box.appendChild(b);
+  });
+  scrollLog();
+}
+function triggerChoice(i){
+  const c=state.choices[i]; if(!c)return;
+  state.choices=[]; setChoices([]);
+  c.act();
+}
+
+/* ============ 流程：登山 / 节点 ============ */
+function rerollReach(){
+  const reach=reachable();
+  const fi = state.floorIndex===null?0:state.floorIndex+1;
+  reach.forEach(j=>{
+    const node=state.map[fi][j];
+    if(fi===0) node.type='explore';
+    else if(fi>=state.map.length-1) node.type='boss';
+    else node.type=rollType(fi);
+  });
+}
+function goNext(){
+  const reach=reachable();
+  const fi = state.floorIndex===null?0:state.floorIndex+1;
+  const nodes = reach.map(j=>({j,node:state.map[fi][j]}));
+  const flav = (FLAVOR[Math.min(fi,FLAVOR.length-1)]) + "（"+floorWord(fi)+"）";
+  const lines=[flav,"","前方道路分歧，你须择一而行："];
+  const choices=nodes.map(o=>({label:pathLabel(o.node.type), act:()=>enterNode(fi,o.j)}));
+  choices.push({label:"〔重算前路〕 另觅岔路（耗一点）", act:()=>{
+    if(spendPoint()){ rerollReach(); goNext(); }
+    else appendLine("» 神识已涸，难再掐算前路。",'warn');
+  }});
+  say(lines,'',choices);
+}
+function enterNode(fi,j){
+  state.floorIndex=fi; state.nodeIndex=j; state.map[fi][j].done=true;
+  if(tickWorld()) return; // 寿命或删除进度耗尽，已入结局
+  const t=state.map[fi][j].type;
+  say(["你于路口掐指一算：", divineHint(t), "", "〔应之〕 入此局，或〔不应之〕退回另择。"],'sys',
+      [{label:"〔应之〕 入此局",act:()=>resolveNode(fi,j,t)},
+       {label:"〔不应之〕 退回岔路，另择他途",act:()=>goNext()}]);
+}
+/* 入界一巡，寿数渐消，公司之删除亦渐近 */
+function tickWorld(){
+  state.lifespan=Math.max(0,state.lifespan-1);
+  state.deletion=Math.min(100,state.deletion+(4+Math.floor(Math.random()*3)));
+  state.status = state.floorIndex>=state.map.length-2 ? 'decide' : (state.truth>=3?'see':'wander');
+  if(state.lifespan<=0){ dissipate(); return true; }
+  if(state.deletion>=100){ worldDeleted(); return true; }
+  return false;
+}
+function resolveNode(fi,j,t){
+  if(t==="battle"){ startCombat(pick(NORMAL)); }
+  else if(t==="elite"){ startCombat(pick(ELITES)); }
+  else if(t==="boss"){ resolveSummit(); }
+  else if(t==="explore"){ openExplore(); }
+  else if(t==="event"){ openEvent(); }
+  else if(t==="rest"){ openRest(); }
+  else if(t==="treasure"){ openTreasure(); }
+}
+
+/* ============ 战斗 ============ */
+function pAtk(base){
+  let dmg=base+state.swordIntent+state.attackBonus;
+  if(state.firstAttack&&hasRelic('canpian'))dmg+=3;
+  if(state.weak>0)dmg=Math.floor(dmg*0.75);
+  if(state.enemy.vulnerable>0)dmg=Math.floor(dmg*1.5);
+  dmg=Math.max(0,Math.floor(dmg));
+  dmgToEnemy(dmg);
+  state.firstAttack=false;
+  if(state.weapon.key==='tanlang'&&dmg>0)pHeal(1);
+}
+function dmgToEnemy(dmg){
+  const e=state.enemy;
+  let blocked=0;
+  if(e.block>0){blocked=Math.min(e.block,dmg);e.block-=blocked;dmg-=blocked;}
+  e.hp-=dmg;
+  if(blocked>0) appendLine("　· 剑光及体，为"+e.name+"护体所阻，余威"+dmgWord(dmg,e.maxHp)+"。",'me');
+  else appendLine("　· 剑光及体，"+e.name+dmgWord(dmg,e.maxHp)+"。",'me');
+  if(e.hp<=0)e.hp=0;
+}
+function pBlock(n){state.block+=n;}
+function pHeal(n){state.hp=Math.max(0,Math.min(state.maxHp,state.hp+n));}
+function applyE(e,st,n){e[st]=(e[st]||0)+n;}
+function applyPlayerStatus(st,n){
+  if(st==='weak'){state.weak+=n;appendLine("　· 你心神受扰，身形滞涩（虚弱）。",'foe');}
+  else if(st==='vulnerable'){state.vulnerable+=n;appendLine("　· 你守势有隙，已露破绽（易伤）。",'foe');}
+  else if(st==='burn'){state.burn+=n;appendLine("　· 你身中灼烧，周身如焚。",'foe');}
+}
+function startCombat(key){
+  const d=ENEMY_DEFS[key];
+  state.enemy={key,fac:d.fac,name:d.name,hp:d.hp,maxHp:d.hp,block:0,strength:0,weak:0,vulnerable:0,burn:0,
+    moves:d.moves,phase2:d.phase2||null,phase:1,intent:null,boss:!!d.boss,last:-1};
+  state.block=0;state.swordIntent=0;state.attackBonus=0;state.energyPerTurn=0;state.blockPerTurn=0;
+  state.weak=0;state.vulnerable=0;state.burn=0;state.firstAttack=true;
+  if(hasRelic('lingpai'))state.block+=6;
+  if(hasRelic('shihun'))applyE(state.enemy,'vulnerable',2);
+  appendLine("","");
+  appendLine("【遇敌】"+d.intro,'enemy');
+  if(d.fac) appendLine("　（此獠出自「"+factionName(d.fac)+"」）",'enemy');
+  playerTurn();
+}
+function playerTurn(){
+  state.block=state.blockPerTurn;
+  state.energy=state.maxEnergy+state.energyPerTurn;
+  state.firstAttack=true;
+  if(state.burn>0){ pHeal(-state.burn); appendLine("你身中灼烧，气血受蚀。",'foe'); state.burn--; }
+  if(state.hp<=0){ return gameOver(); }
+  if(state.enemy.hp<=0){ return victory(); }
+  if(state.weak>0)state.weak--; if(state.vulnerable>0)state.vulnerable--;
+  chooseIntent(state.enemy);
+  combatPrompt();
+}
+function combatPrompt(){
+  const e=state.enemy;
+  let est="【"+e.name+"】"+foeState(e.hp,e.maxHp);
+  if(e.block>0)est+="，护体加厚";
+  if(e.strength>0)est+="，剑势凌厉";
+  if(e.weak>0)est+="，身形滞涩";
+  if(e.vulnerable>0)est+="，已露破绽";
+  est+="　意图："+intentText(e);
+  let pst="〔你〕气血"+hpState(state.hp,state.maxHp);
+  if(state.block>0)pst+="，护体加厚";
+  pst+="，剑气"+qiWord();
+  if(state.weak>0)pst+="，身形滞涩";
+  if(state.vulnerable>0)pst+="，已露破绽";
+  if(state.swordIntent>0)pst+="，剑意流转";
+  appendLine(est,'enemy');
+  appendLine(pst,'me');
+  combatChoices();
+}
+function combatChoices(){
+  const moves=allMoves();
+  const attack=moves[0], guard=moves[1], rest=moves.slice(2);
+  const choices=[
+    {label:"〔出击〕 "+attack.desc, act:()=>doMove(attack)},
+    {label:"〔凝罡〕 "+guard.desc, act:()=>doMove(guard)},
+  ];
+  if(rest.length) choices.push({label:"〔运功〕 运转功法，另觅机变", act:()=>showSkillSub(rest)});
+  setChoices(choices);
+}
+function showSkillSub(rest){
+  const choices=rest.map(mv=>({label:"〔"+mv.name+"〕 "+mv.desc, act:()=>doMove(mv)}));
+  choices.push({label:"〔收功〕 退回，再作计较", act:()=>combatChoices()});
+  setChoices(choices);
+}
+function intentText(e){
+  const m=e.intent; if(!m)return "静观其变……";
+  if(m.kind==='attack'||m.kind==='attack_debuff'){
+    const mag=(m.value||0)+e.strength;
+    const sev = mag>=18?"雷霆一击": mag>=10?"出手凌厉":"试探来招";
+    let s=(m.times>1?"连绵剑影，":"")+sev;
+    if(m.kind==='attack_debuff') s+="，且暗藏"+(m.status==='vulnerable'?'破绽之术':m.status==='weak'?'乱神之术':'灼身之毒');
+    return s;
+  }
+  if(m.kind==='defend')return "凝罡自守，剑势收敛";
+  if(m.kind==='buff')return "暗自蓄力，剑势将盛";
+  if(m.kind==='debuff')return "欲以"+(m.status==='weak'?'乱神之术':'破绽之术')+"扰你";
+  return "静观其变……";
+}
+function allMoves(){
+  const m=[];
+  m.push({name:"出击",cost:1,desc:"以"+state.weapon.name+"伤敌，剑意流转。",use:()=>pAtk(state.weapon.atk)});
+  m.push({name:"凝罡",cost:0,desc:"凝罡自守，护体骤厚。",use:()=>pBlock(6)});
+  state.skills.forEach(sk=>{const d=SKILLS[sk];m.push({name:d.name,cost:d.cost,desc:d.desc,use:d.use});});
+  if(state.potions>0)m.push({name:"服丹",cost:0,desc:state.potions>1?"服下伤丹，温养气血。":"服下最后一枚伤丹，温养气血。",use:()=>{state.potions--;pHeal(15);}});
+  return m;
+}
+function doMove(m){
+  if(m.cost>state.energy){ appendLine("» 剑气不足，无法施展【"+m.name+"】。",'warn'); combatChoices(); return; }
+  state.energy-=m.cost;
+  appendLine("» 你施展【"+m.name+"】。",'me');
+  m.use();
+  if(state.enemy.hp<=0) return victory();
+  enemyAct();
+  if(state.hp<=0) return gameOver();
+  playerTurn();
+}
+function enemyAct(){
+  const e=state.enemy; if(e.hp<=0)return;
+  if(e.burn>0){ e.hp-=e.burn; appendLine("　· "+e.name+"身中灼烧，气血受蚀。",'foe'); e.burn--; if(e.hp<=0){e.hp=0;return;} }
+  const m=e.intent;
+  if(m.kind==='attack'||m.kind==='attack_debuff'){
+    const times=m.times||1;
+    for(let t=0;t<times;t++){
+      if(state.hp<=0)break;
+      let base=m.value+e.strength; if(e.weak>0)base=Math.floor(base*0.75);
+      let dmg=base;
+      if(state.vulnerable>0)dmg=Math.floor(dmg*1.5);
+      if(hasRelic('xuanbing'))dmg=Math.max(0,dmg-1);
+      let blocked=0;
+      if(state.block>0){blocked=Math.min(state.block,dmg);state.block-=blocked;dmg-=blocked;}
+      state.hp-=dmg;
+      if(blocked>0) appendLine("　· "+e.name+"使出【"+m.name+"】，剑光为护体所阻，余威"+dmgWord(dmg,state.maxHp)+"。",'foe');
+      else appendLine("　· "+e.name+"使出【"+m.name+"】，你"+dmgWord(dmg,state.maxHp)+"。",'foe');
+    }
+    if(m.kind==='attack_debuff'&&m.status)applyPlayerStatus(m.status,m.statusN);
+  }else if(m.kind==='defend'){ e.block+=m.block; appendLine("　· "+e.name+"凝罡自守，护体骤厚。",'foe'); }
+  else if(m.kind==='buff'){ e.strength+=m.value; appendLine("　· "+e.name+"蓄力，剑势更盛。",'foe'); }
+  else if(m.kind==='debuff'){ applyPlayerStatus(m.status,m.statusN); }
+  if(e.weak>0)e.weak--; if(e.vulnerable>0)e.vulnerable--;
+}
+function chooseIntent(e){
+  if(e.boss&&e.phase===1&&e.hp<=e.maxHp/2)e.phase=2;
+  let moves=e.moves; if(e.boss&&e.phase===2&&e.phase2)moves=e.phase2;
+  let idx; do{idx=Math.floor(Math.random()*moves.length);}while(moves.length>1&&idx===e.last);
+  e.last=idx; e.intent=Object.assign({},moves[idx]);
+}
+function victory(){
+  appendLine("你一剑破其形，"+state.enemy.name+"溃散为星屑。",'sys');
+  if(state.enemy.fac==='duoxing'){ bumpRep('beichen',1); bumpRep('duoxing',-1); }
+  else if(state.enemy.fac==='beichen'){ bumpRep('beichen',1); }
+  if(state.enemy.boss) return winGame();
+  if(hasRelic('tuanzhu'))pHeal(5);
+  rewardScreen();
+}
+function gameOver(){
+  state.screen='gameover';
+  say(["你的剑光黯淡，身躯没入万年冰雪。","北辰无言，星河依旧。","","〔再入轮回〕 整理剑匣，重入山门。"],'foe',
+      [{label:"再入轮回",act:()=>startRun()}]);
+}
+
+/* ============ 奖励 / 法宝 / 奇遇 / 休整 ============ */
+function skillPool(){return Object.keys(SKILLS).filter(k=>!state.skills.includes(k));}
+function weaponPool(){return Object.keys(WEAPONS).filter(k=>k!==state.weapon.key);}
+function relicPool(){return RELIC_IDS.filter(r=>!state.relics.includes(r));}
+function gainRelic(key){
+  if(key===undefined){const avail=relicPool();if(!avail.length)return null;key=pick(avail);}
+  if(state.relics.includes(key))return null;
+  state.relics.push(key);
+  if(key==='xingpan')state.maxEnergy+=1;
+  if(key==='changsheng'){state.maxHp+=15;state.hp=state.maxHp;}
+  if(key==='jifeng'){state.maxHp+=10;state.hp+=10;}
+  return key;
+}
+function gainWeapon(key){
+  state.weapon=Object.assign({key:key},WEAPONS[key]);
+  if(key==='ziwei')state.maxEnergy+=1;
+  if(key==='benming')state.blockPerTurn+=3;
+}
+function rollRewards(n){
+  let pool=[];
+  skillPool().forEach(k=>pool.push({kind:'skill',key:k,name:SKILLS[k].name,desc:SKILLS[k].desc}));
+  weaponPool().forEach(k=>pool.push({kind:'weapon',key:k,name:WEAPONS[k].name,desc:WEAPONS[k].desc}));
+  relicPool().forEach(k=>pool.push({kind:'relic',key:k,name:RELICS[k].name,desc:RELICS[k].desc}));
+  return shuffled(pool).slice(0,n);
+}
+function rewardScreen(){
+  const gold=12+Math.floor(Math.random()*14);
+  state.gold+=gold;
+  const items=rollRewards(2);
+  const lines=["试炼既过，星辉凝作实物。你于残垣中拾得机缘："];
+  const choices=items.map(it=>({
+    label:"〔"+(it.kind==='skill'?'功法':it.kind==='weapon'?'兵器':'法宝')+"〕 "+it.name+" — "+it.desc,
+    act:()=>{ grantReward(it); appendLine("» 你收下了【"+it.name+"】。",'sys'); goNext(); }
+  }));
+  choices.push({label:"〔跳过〕 不取机缘，径自前行",act:()=>{appendLine("» 你未取一物，转身离去。",'');goNext();}});
+  say(lines,'',choices);
+}
+function grantReward(it){
+  if(it.kind==='skill')learnSkill(it.key);
+  else if(it.kind==='weapon')gainWeapon(it.key);
+  else gainRelic(it.key);
+}
+function openEvent(){
+  const cands=REAL_EVENTS.filter(ev=>!ev.cond || ev.cond());
+  let ev;
+  if(cands.length>1){ do{ ev=pick(cands); }while(ev===state._lastEvent); }
+  else ev=cands[0]||REAL_EVENTS[0];
+  state._lastEvent=ev;
+  const lines=[ev.text[0],ev.text[1]||"","" ,"你将如何抉择？"];
+  const choices=ev.options.map(o=>({label:o.label,act:()=>{o.act();goNext();}}));
+  choices.push({label:"〔重算机缘〕 另求他解（耗一点）", act:()=>{
+    if(spendPoint()){ openEvent(); }
+    else appendLine("» 神识已涸，难再掐算机缘。",'warn');
+  }});
+  say(lines,'',choices);
+}
+function openRest(){
+  const healAmt=Math.floor(state.maxHp*0.3);
+  const lines=["雪山静室，炭火微温。你得以稍作调息。","作何抉择？"];
+  const choices=[
+    {label:"〔温养〕 运转周天，温养气血",act:()=>{pHeal(healAmt);appendLine("» 气血温养，神采复盈。",'sys');goNext();}},
+    {label:"〔悟剑〕 静参剑理，本命剑剑意更利",act:()=>{state.weapon.atk+=3;appendLine("» 本命剑【"+state.weapon.name+"】剑意更利。",'sys');goNext();}},
+    {label:"〔凝神〕 静修剑心，剑气之渊更宽",act:()=>{state.maxEnergy+=1;appendLine("» 剑气之渊更宽，此后可多蓄剑气。",'sys');goNext();}},
+  ];
+  say(lines,'',choices);
+}
+function openTreasure(){
+  const r=gainRelic();
+  const line="石室幽深，一案之上悬着星辉凝成的造化。"+(r?("你取走了法宝【"+RELICS[r].name+"】："+RELICS[r].desc):"你已法宝满身，仅余星屑相伴。");
+  say([line,""],'',[{label:"〔前行〕 继续登山",act:()=>goNext()}]);
+}
+function winGame(){
+  state.screen='victory';
+  const lines=["堕星之劫既平，北辰重悬于天。","你拾起掌门密录，于末页续写自己的名字。","—— 北辰剑宗，新掌门就此立。"];
+  const ents=FACTION_IDS.map(id=>({id,r:state.rep[id]||0}));
+  const max=ents.reduce((a,b)=>b.r>a.r?b:a);
+  const min=ents.reduce((a,b)=>b.r<a.r?b:a);
+  if(max.r>0) lines.push("","你与此方恩义深重——"+factionName(max.id)+"视你为同道，乱世之中，有一处可托后背。");
+  if(min.r<0) lines.push("","你与此方仇怨难解——"+factionName(min.id)+"视你为死敌，纵掌门既立，暗箭仍藏于风雪。");
+  lines.push("","〔再入轮回〕 重启一段修行。");
+  say(lines,'sys',[{label:"再入轮回",act:()=>startRun()}]);
+}
+
+/* ============ 底部：版本历程 ============ */
+const VERSIONS=[
+  {ver:"v1.0",date:"2026.08.20",name:"剑冢初开",
+   desc:"《北辰剑宗·掌门密录》初版问世——纯「选择流」肉鸽，以剑气抽牌、登山图闯关。",
+   notes:["引入核心玩法：不移动、不瞄准、不射击，只做抉择",
+          "二十四道剑诀、八件法宝、妖魔心魔与 Boss 体系成形",
+          "十一层登山图（战斗/精英/宝箱/休整/奇遇/Boss）",
+          "视觉偏花哨：星空背景、卡牌、渐变光效"]},
+  {ver:"v1.1",date:"2026.08.22",name:"补天",
+   desc:"修复导致游戏「点开玩不了」的关键崩溃，并重新部署上线。",
+   notes:["修复「入山门」按钮调用未定义函数 startRun 的崩溃（实为 newRun）",
+          "以真实浏览器（Playwright）全流程实测，零报错",
+          "直连线上链接二次校验，确认可玩"]},
+  {ver:"v2.0",date:"2026.08.23",name:"返璞",
+   desc:"推倒重做，删去一切花哨，回归复古终端文字冒险。",
+   notes:["移除卡牌、星空、渐变等视觉，改纯文字对话推进",
+          "定为磷光绿等宽字体 + CRT 扫描线的复古风",
+          "武器/功法/法宝/战斗系统全部以「文字 + 选择」重述",
+          "修复标题页 state 为空导致的入口崩溃"]},
+  {ver:"v2.1",date:"2026.08.23",name:"刻碑",
+   desc:"于网页底部增设「版本历程」进度条，可点选查阅每一代更迭。",
+   notes:["底部新增横向进度条，串联历次大版本节点",
+          "每个版本节点可点击，弹出该代更新碑文",
+          "当前版本以琥珀色高亮，过往版本以磷光绿点亮"]},
+  {ver:"v2.2",date:"2026.08.23",name:"隐数",
+   desc:"隐去一切战斗与属性数字，只余定性文意，让文字体验更纯粹。",
+   notes:["战斗不再显示气血、伤害、护体、剑气的数值",
+          "敌人意图、状态（虚弱/易伤/灼烧）改为文意描述",
+          "兵器、功法、法宝的说明亦去数字化",
+          "以「重创/轻伤」「剑气盈沛/将尽」等词替代数字"]},
+  {ver:"v2.3",date:"2026.08.23",name:"天命",
+   desc:"新增随机出身背景：按出身、前缘、根骨、气运、地域五要素掷定天命。",
+   notes:["每局开局随机生成出身（将门/寒门/世家/猎户/浪客）",
+          "前缘门派（散修/丹道/体修/符箓/拳脚/佛门）影响开局",
+          "根骨定气血上限，气运定机缘多寡，地域赋予特性",
+          "五要素折算为真实开局属性，每世皆不相同"]},
+  {ver:"v2.4",date:"2026.08.23",name:"点算",
+   desc:"新增隐藏「点算」之数：开局随机 10–100，用于重算选择或重掷出身；习得「天机神算」后，点算之数自现。每遇事物先掐算一番。",
+   notes:["开局随机 10–100 点算之数，玩家不可见",
+          "岔路、奇遇、出身皆可〔重算〕另觅他途，每次耗一点",
+          "神识已涸则无法再算（不显数字，只示「神识已涸」）",
+          "习得功法「天机神算」后，顶栏方显点算之数",
+          "每遇事物先〔掐算〕给一句定性提示，再〔应之〕入局",
+          "选择收敛至 2–3，战斗主界面只留〔出击〕〔凝罡〕〔运功〕"]},
+  {ver:"v2.5",date:"2026.08.23",name:"列国",
+   desc:"依《北辰剑宗》世界观扩写出当世七大势力，并将其贯穿出身、掐算、奇遇与敌人。",
+   notes:["新增七大势力：北辰剑宗、堕星魔教、南荒巫蛊一脉、东海蓬莱剑阁、西域金刚禅院、中原玄天道盟、北境雪妖国",
+          "出身界面增〔渊源〕一项，按地域点出你出身之地的势力",
+          "〔掐算〕提示常窥见附近势力的渗透（墨色星力、幽碧蛊气、冰魄妖气……）",
+          "遇敌时标注其所属势力（如「此獠出自『堕星魔教』」）",
+          "新增四起势力相关奇遇（蓬莱论剑、道盟巡查、巫蛊异术、雪妖言和）与一处「观星台·天下大势」可纵览七方"]},
+  {ver:"v2.6",date:"2026.08.23",name:"恩怨",
+   desc:"七大势力的恩怨不再只是背景——你的每一次抉择都会积累声望（隐数），并在奇遇、战斗与结局里生出后果。",
+   notes:["内部记录与各势力的声望，玩家不可见，只以文意流露（符合「隐数」之道）",
+          "四起势力奇遇的抉择开始积累恩怨：论剑/相助/受蛊/言和生善缘，避走/破蛊/拔剑结仇怨",
+          "击败堕星魔教之敌，则北辰增善、魔教积怨；力克北辰叛逆，亦增本宗恩义",
+          "声望到阈值会触发专属奇遇：魔教招揽（恩）、魔教清算（怨）、北辰师叔授艺（恩）",
+          "「观星台」如今亦映出你与各方的恩怨深浅",
+          "通关结局因你与各势力的恩怨而不同——有人托你后背，有人藏箭于雪"]},
+];
+const CUR_VER=VERSIONS[VERSIONS.length-1].ver;
+function renderVersions(){
+  const bar=document.getElementById('vbar'); if(!bar)return;
+  bar.innerHTML='';
+  VERSIONS.forEach((v,i)=>{
+    if(i>0){
+      const seg=document.createElement('div');
+      seg.className='seg'+(i<=VERSIONS.findIndex(x=>x.ver===CUR_VER)?' lit':'');
+      bar.appendChild(seg);
+    }
+    const b=document.createElement('button');
+    b.className='vnode'+(v.ver===CUR_VER?' cur':'')+(i<VERSIONS.length&&v.ver!==CUR_VER?' lit':'');
+    b.innerHTML='<span class="dot"></span>'+v.ver;
+    b.title=v.name+'（'+v.date+'）';
+    b.onclick=()=>showChangelog(i);
+    bar.appendChild(b);
+  });
+  const fcur=document.getElementById('fcur');
+  if(fcur)fcur.textContent='当前 '+CUR_VER+'「'+(VERSIONS.find(v=>v.ver===CUR_VER).name)+'」';
+}
+function showChangelog(i){
+  const v=VERSIONS[i]; if(!v)return;
+  document.getElementById('cltitle').textContent=v.ver+'　'+v.name;
+  document.getElementById('cldate').textContent=v.date;
+  document.getElementById('cldesc').textContent=v.desc;
+  const ul=document.getElementById('cllist'); ul.innerHTML='';
+  v.notes.forEach(n=>{const li=document.createElement('li');li.textContent=n;ul.appendChild(li);});
+  document.getElementById('changelog').classList.add('show');
+}
+function closeChangelog(){document.getElementById('changelog').classList.remove('show');}
+document.getElementById('clclose').onclick=closeChangelog;
+document.getElementById('changelog').addEventListener('click',e=>{ if(e.target.id==='changelog')closeChangelog(); });
+
+/* ============ 输入 ============ */
+document.addEventListener('keydown',e=>{
+  if(document.getElementById('changelog') && document.getElementById('changelog').classList.contains('show')){
+    if(e.key==='Escape'||e.key==='Enter') closeChangelog();
+    return;
+  }
+  if(state&&state.typing){ skipTyping(); return; }
+  if(!state)return;
+  const n=parseInt(e.key,10);
+  if(!isNaN(n)&&n>=1&&n<=state.choices.length){ triggerChoice(n-1); }
+});
+document.getElementById('log').addEventListener('click',()=>{ if(state&&state.typing)skipTyping(); });
+
+/* ============ 启动 ============ */
+renderVersions();
+startRun();
+</script>
+</body>
+</html>
