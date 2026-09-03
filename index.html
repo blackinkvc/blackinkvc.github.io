@@ -15,6 +15,8 @@ wide: true
 {% assign idea_count = projects | where: 'status', 'idea' | size %}
 {% assign total_count = projects | size %}
 
+{% assign notes = site.notes | sort: 'date' | reverse %}
+
 <div class="dashboard">
 
   <!-- ===== 左侧导航 ===== -->
@@ -32,6 +34,7 @@ wide: true
       <button class="cat-btn" data-cat="game">🎮 游戏<span>{{ game_projects | size }}</span></button>
       <button class="cat-btn" data-cat="research">📚 研究 · 知识库<span>{{ research_projects | size }}</span></button>
       <button class="cat-btn" data-cat="soft">🛠 软件 · 工具<span>{{ soft_projects | size }}</span></button>
+      <button class="cat-btn" data-cat="invest">📈 股权投资札记<span>{{ notes | size }}</span></button>
     </nav>
 
     <div class="dash-progress">
@@ -86,6 +89,25 @@ wide: true
       <div class="dash-grid">
         {% for p in soft_projects %}
           {% include dash-card.html p=p %}
+        {% endfor %}
+      </div>
+    </section>
+
+    <!-- 股权投资札记 -->
+    <section class="dash-section" data-cat="invest">
+      <h2>
+        📈 股权投资札记 <small>{{ notes | size }}</small>
+        <a class="sec-link" href="{{ '/notes/' | relative_url }}">查看栏目 →</a>
+      </h2>
+      <div class="dash-grid">
+        {% for n in notes limit: 6 %}
+        <article class="note-card">
+          <div class="note-meta">
+            <time>{{ n.date | date: "%Y-%m-%d" }}</time>
+          </div>
+          <h3><a href="{{ n.url | relative_url }}">{{ n.title }}</a></h3>
+          <p>{{ n.summary }}</p>
+        </article>
         {% endfor %}
       </div>
     </section>

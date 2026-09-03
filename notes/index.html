@@ -1,0 +1,27 @@
+---
+layout: note
+title: 股权投资札记
+wide: true
+---
+
+<section class="intro">
+  <h1>股权投资札记</h1>
+  <p>一级市场的观察、判断与复盘。判断先行，验证滞后——所以先把逻辑写下来。</p>
+</section>
+
+{% assign notes = site.notes | sort: 'date' | reverse %}
+
+<section class="notes-list">
+  {% for n in notes %}
+  <article class="note-item">
+    <div class="note-meta">
+      <time>{{ n.date | date: "%Y-%m-%d" }}</time>
+      {% if n.tags %}<span class="note-tags">{{ n.tags | join: " · " }}</span>{% endif %}
+    </div>
+    <h2><a href="{{ n.url | relative_url }}">{{ n.title }}</a></h2>
+    <p>{{ n.summary }}</p>
+  </article>
+  {% else %}
+  <p class="note-empty">还没有札记，第一篇正在路上。</p>
+  {% endfor %}
+</section>
