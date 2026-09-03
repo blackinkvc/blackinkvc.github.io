@@ -5,6 +5,10 @@ date: 2026-08-21
 tags: [Web, 科幻, 可视化, 世界观]
 summary: 「赛博工程补完计划」网页端：科幻科技的工程化实现蓝图，含交互视图与设计手稿。
 link: /sci-fi-tech-blueprint/
+
+category: research
+status: online
+progress: 100
 ---
 
 ## 简介

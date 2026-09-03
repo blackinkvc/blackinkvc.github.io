@@ -1,24 +1,112 @@
 ---
 layout: default
 title: 项目集
+wide: true
 ---
 
-<section class="intro">
-  <h1>我的项目</h1>
-  <p>这里收录我做过的各类项目，按时间倒序排列。</p>
-</section>
+{% assign projects = site.projects | sort: 'date' | reverse %}
 
-<section class="project-grid">
-  {% assign projects = site.projects | sort: 'date' | reverse %}
-  {% for p in projects %}
-  <article class="card">
-    <h2><a href="{{ p.url | relative_url }}">{{ p.title }}</a></h2>
-    <p class="meta">
-      {{ p.date | date: "%Y-%m-%d" }}
-      {% if p.tags %} · {{ p.tags | join: ", " }}{% endif %}
-    </p>
-    <p>{{ p.summary }}</p>
-    {% if p.link %}<a class="btn" href="{{ p.link }}">查看 / 试玩 →</a>{% endif %}
-  </article>
-  {% endfor %}
-</section>
+{% assign game_projects = projects | where: 'category', 'game' %}
+{% assign research_projects = projects | where: 'category', 'research' %}
+{% assign soft_projects = projects | where: 'category', 'soft' %}
+
+{% assign online_count = projects | where: 'status', 'online' | size %}
+{% assign developing_count = projects | where: 'status', 'developing' | size %}
+{% assign idea_count = projects | where: 'status', 'idea' | size %}
+{% assign total_count = projects | size %}
+
+<div class="dashboard">
+
+  <!-- ===== 左侧导航 ===== -->
+  <aside class="dash-side">
+    <div class="dash-brand">
+      <span class="dash-logo">⬢</span>
+      <div>
+        <strong>blackinkvc</strong>
+        <small>项目展板</small>
+      </div>
+    </div>
+
+    <nav class="dash-nav">
+      <button class="cat-btn active" data-cat="all">全部<span>{{ total_count }}</span></button>
+      <button class="cat-btn" data-cat="game">🎮 游戏<span>{{ game_projects | size }}</span></button>
+      <button class="cat-btn" data-cat="research">📚 研究 · 知识库<span>{{ research_projects | size }}</span></button>
+      <button class="cat-btn" data-cat="soft">🛠 软件 · 工具<span>{{ soft_projects | size }}</span></button>
+    </nav>
+
+    <div class="dash-progress">
+      <div class="dash-progress-num">
+        <strong>{{ online_count }}</strong> / {{ total_count }} 已上线
+      </div>
+      <div class="bar"><i style="width: {{ online_count | times: 100 | divided_by: total_count }}%"></i></div>
+      <div class="dash-progress-meta">
+        开发中 {{ developing_count }} · 构思中 {{ idea_count }}
+      </div>
+    </div>
+  </aside>
+
+  <!-- ===== 右侧展板 ===== -->
+  <div class="dash-main">
+
+    <div class="dash-stats" id="dash-stats">
+      <div class="stat stat-online">
+        <b>{{ online_count }}</b><span>已上线 · 可玩 / 可浏览</span>
+      </div>
+      <div class="stat stat-dev">
+        <b>{{ developing_count }}</b><span>开发中</span>
+      </div>
+      <div class="stat stat-idea">
+        <b>{{ idea_count }}</b><span>构思中</span>
+      </div>
+    </div>
+
+    <!-- 游戏 -->
+    <section class="dash-section" data-cat="game">
+      <h2>🎮 游戏 <small>{{ game_projects | size }}</small></h2>
+      <div class="dash-grid">
+        {% for p in game_projects %}
+          {% include dash-card.html p=p %}
+        {% endfor %}
+      </div>
+    </section>
+
+    <!-- 研究 -->
+    <section class="dash-section" data-cat="research">
+      <h2>📚 研究 · 知识库 <small>{{ research_projects | size }}</small></h2>
+      <div class="dash-grid">
+        {% for p in research_projects %}
+          {% include dash-card.html p=p %}
+        {% endfor %}
+      </div>
+    </section>
+
+    <!-- 软件 -->
+    <section class="dash-section" data-cat="soft">
+      <h2>🛠 软件 · 工具 <small>{{ soft_projects | size }}</small></h2>
+      <div class="dash-grid">
+        {% for p in soft_projects %}
+          {% include dash-card.html p=p %}
+        {% endfor %}
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<script>
+(function () {
+  var btns = document.querySelectorAll('.cat-btn');
+  var sections = document.querySelectorAll('.dash-section');
+  var stats = document.getElementById('dash-stats');
+  btns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var cat = btn.dataset.cat;
+      btns.forEach(function (b) { b.classList.toggle('active', b === btn); });
+      sections.forEach(function (s) {
+        s.style.display = (cat === 'all' || s.dataset.cat === cat) ? '' : 'none';
+      });
+      if (stats) stats.style.display = cat === 'all' ? '' : 'none';
+    });
+  });
+})();
+</script>

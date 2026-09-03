@@ -4,6 +4,10 @@ title: 网页底部版本选择器
 date: 2026-08-23
 tags: [Web, 组件, 版本管理]
 summary: 为网页底部添加的版本切换选择器组件。
+
+category: soft
+status: idea
+progress: 10
 ---
 
 ## 简介

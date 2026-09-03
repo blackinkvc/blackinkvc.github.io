@@ -4,6 +4,10 @@ title: 赛博工程补完计划 · 维基
 date: 2026-08-21
 tags: [维基, 知识库, 赛博朋克]
 summary: 赛博工程补完计划中的维基模块。
+
+category: research
+status: idea
+progress: 5
 ---
 
 ## 简介

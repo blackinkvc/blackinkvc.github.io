@@ -5,6 +5,10 @@ date: 2026-08-26
 tags: [Web, 数据库, 科技史]
 summary: 人类文明科技发展脉络的可视化数据库，含科技树、谱系、时间线与分析。
 link: /tech-evolution/
+
+category: research
+status: online
+progress: 100
 ---
 
 ## 简介

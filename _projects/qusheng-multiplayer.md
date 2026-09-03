@@ -4,6 +4,10 @@ title: 蛆模拟器联网网页版
 date: 2026-08-25
 tags: [游戏, Web, 多人]
 summary: 蛆模拟器的联网网页版本，支持在线互动。
+
+category: game
+status: developing
+progress: 60
 ---
 
 ## 简介

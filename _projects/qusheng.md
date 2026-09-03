@@ -5,6 +5,10 @@ date: 2026-09-01
 tags: [文字冒险, 游戏, 数值设计]
 summary: 以"蛆"为主角的文字冒险游戏，含轮回/转世玩法、日常生活日志与核心数值系统。
 link: /qusheng/
+
+category: game
+status: online
+progress: 100
 ---
 
 ## 简介

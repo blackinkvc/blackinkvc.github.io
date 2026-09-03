@@ -4,6 +4,10 @@ title: 北辰剑宗肉鸽选择
 date: 2026-08-23
 tags: [游戏, 设计, 肉鸽]
 summary: 以北辰剑宗为背景的肉鸽（Roguelike）玩法选择设计。
+
+category: game
+status: idea
+progress: 10
 ---
 
 ## 简介

@@ -4,6 +4,10 @@ title: 单文件排程 / 笔记应用
 date: 2026-08-20
 tags: [Web, 工具, 排程]
 summary: 一个单文件 HTML 的排程与笔记 Web 应用，采用四层结构组织内容。
+
+category: soft
+status: developing
+progress: 60
 ---
 
 ## 简介

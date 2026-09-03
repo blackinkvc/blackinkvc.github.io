@@ -4,6 +4,10 @@ title: 日记
 date: 2026-08-24
 tags: [Web, 工具, 日记]
 summary: 个人日记记录工具。
+
+category: soft
+status: idea
+progress: 5
 ---
 
 ## 简介

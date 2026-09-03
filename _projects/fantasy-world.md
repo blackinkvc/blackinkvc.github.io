@@ -5,6 +5,10 @@ date: 2026-08-25
 tags: [创作, 模板, 奇幻, 世界观]
 summary: 基于模板化方法构建奇幻世界的静态知识站，涵盖造物蓝图与设定体系。
 link: /fantasy-blueprint/
+
+category: research
+status: online
+progress: 100
 ---
 
 ## 简介

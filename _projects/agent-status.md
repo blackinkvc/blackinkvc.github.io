@@ -4,6 +4,10 @@ title: Agent 状态显示小组件
 date: 2026-08-26
 tags: [Web, 工具, Agent]
 summary: 开发中的 agent 状态可视化小组件。
+
+category: soft
+status: idea
+progress: 10
 ---
 
 ## 简介

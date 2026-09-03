@@ -1,0 +1,21 @@
+{% assign p = include.p %}
+<article class="dcard st-{{ p.status }}">
+  <div class="dcard-head">
+    <span class="dot"></span>
+    <h3><a href="{{ p.url | relative_url }}">{{ p.title }}</a></h3>
+    <span class="status-label">
+      {% case p.status %}
+        {% when 'online' %}已上线
+        {% when 'developing' %}开发中
+        {% else %}构思中
+      {% endcase %}
+    </span>
+  </div>
+  <p class="dcard-summary">{{ p.summary }}</p>
+  <div class="dcard-foot">
+    <div class="bar"><i style="width: {{ p.progress | default: 0 }}%"></i></div>
+    {% if p.link %}
+      <a class="dcard-go" href="{{ p.link }}">进入 →</a>
+    {% endif %}
+  </div>
+</article>
