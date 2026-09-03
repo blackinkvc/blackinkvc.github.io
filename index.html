@@ -17,6 +17,27 @@ wide: true
 
 {% assign notes = site.notes | sort: 'date' | reverse %}
 
+<!-- 水豚池 · 页面最顶部 -->
+<div class="pond" aria-hidden="true">
+  <div class="pond-caption">🌿 池塘角 · 有只水豚在慢慢走 <small>（点点它试试）</small></div>
+  <div class="pond-water">
+    <div class="ripple r1"></div>
+    <div class="ripple r2"></div>
+    <div class="lilypad"></div>
+
+    <div class="capy-track">
+      <div class="capy-bob">
+        <div class="capy-face">
+          <img id="capy" src="{{ '/assets/img/capybara.png' | relative_url }}" alt="水豚" width="110">
+        </div>
+        <span class="squeak">咕噜～</span>
+      </div>
+    </div>
+
+    <div class="pond-front"></div>
+  </div>
+</div>
+
 <div class="dashboard">
 
   <!-- ===== 左侧导航 ===== -->
@@ -112,38 +133,6 @@ wide: true
       </div>
     </section>
 
-    <!-- 水豚池 -->
-    <div class="pond" aria-hidden="true">
-      <div class="pond-caption">🌿 池塘角 · 有只水豚在慢慢走 <small>（点点它试试）</small></div>
-      <div class="pond-water">
-        <div class="ripple r1"></div>
-        <div class="ripple r2"></div>
-        <div class="lilypad"></div>
-
-        <div class="capy-track">
-          <div class="capy-bob">
-            <div class="capy-face">
-              <svg id="capy" viewBox="0 0 120 74" width="86" height="53">
-                <!-- 水豚 · 默认朝左 -->
-                <rect x="36" y="52" width="9" height="16" rx="4" fill="#8a5a30"/>
-                <rect x="72" y="52" width="9" height="16" rx="4" fill="#8a5a30"/>
-                <ellipse cx="62" cy="38" rx="42" ry="23" fill="#a5713d"/>
-                <ellipse cx="24" cy="30" rx="17" ry="14" fill="#a5713d"/>
-                <ellipse cx="13" cy="34" rx="10" ry="8" fill="#8a5a30"/>
-                <ellipse cx="7" cy="32" rx="1.6" ry="2.2" fill="#3c2410"/>
-                <circle cx="22" cy="25" r="2.2" fill="#2d1a0c"/>
-                <circle cx="28" cy="15" r="4.5" fill="#8a5a30"/>
-                <circle cx="28" cy="15" r="2.2" fill="#6e4522"/>
-              </svg>
-            </div>
-            <span class="squeak">咕噜～</span>
-          </div>
-        </div>
-
-        <div class="pond-front"></div>
-      </div>
-    </div>
-
   </div>
 </div>
 
@@ -166,7 +155,7 @@ wide: true
   var capy = document.getElementById('capy');
   if (capy) {
     capy.addEventListener('click', function () {
-      var squeak = capy.parentElement.querySelector('.squeak');
+      var squeak = capy.closest('.capy-bob').querySelector('.squeak');
       squeak.classList.add('show');
       setTimeout(function () { squeak.classList.remove('show'); }, 1600);
     });

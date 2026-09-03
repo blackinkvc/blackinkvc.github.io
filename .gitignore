@@ -11,3 +11,4 @@ Gemfile.lock
 
 # WorkBuddy 内部数据（不对外公开）
 .workbuddy/
+generated-images/

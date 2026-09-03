@@ -590,7 +590,7 @@ body {
 
 /* ============ 水豚池 ============ */
 
-.pond { margin-top: 8px; }
+.pond { margin-bottom: 24px; }
 
 .pond-caption {
   font-size: 13px;
@@ -602,7 +602,7 @@ body {
 
 .pond-water {
   position: relative;
-  height: 130px;
+  height: 150px;
   border: 1px solid var(--line);
   border-radius: 14px;
   overflow: hidden;
@@ -660,7 +660,7 @@ body {
   position: absolute;
   left: 3%;
   bottom: 26px;
-  width: calc(94% - 86px); /* 可走距离 = 池宽 - 左右边距 - 水豚宽 */
+  width: calc(94% - 110px); /* 可走距离 = 池宽 - 左右边距 - 水豚宽 */
   animation: pond-cross 26s linear infinite;
   will-change: transform;
 }
@@ -676,6 +676,14 @@ body {
   display: inline-block;
   animation: pond-face 26s steps(1) infinite;
   cursor: pointer;
+}
+
+.capy-face img {
+  display: block;
+  width: 110px;
+  height: auto;
+  /* 轻微压暗融入水色 */
+  filter: saturate(.92) brightness(.96);
 }
 
 @keyframes pond-face {
@@ -698,7 +706,7 @@ body {
 .squeak {
   position: absolute;
   left: 50%;
-  top: -26px;
+  top: 4px;
   transform: translateX(-50%) scale(.6);
   background: #fff;
   color: #4a5a42;
@@ -710,6 +718,7 @@ body {
   pointer-events: none;
   transition: opacity .2s, transform .2s;
   box-shadow: 0 2px 8px rgba(0, 0, 0, .12);
+  z-index: 5;
 }
 
 .squeak.show {
