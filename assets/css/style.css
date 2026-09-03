@@ -413,6 +413,61 @@ body {
   flex: 1;
 }
 
+/* 栏目入口卡（首页 → 札记栏目） */
+.column-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-decoration: none;
+  transition: transform .15s, box-shadow .15s, border-color .15s;
+}
+
+.column-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, .06);
+  border-color: var(--accent);
+}
+
+.column-card-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.column-card-icon {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.column-card h3 {
+  margin: 0;
+  font-size: 16px;
+  color: var(--fg);
+}
+
+.column-card small {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.column-card p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
 /* 栏目落地页列表 */
 .notes-list {
   display: flex;

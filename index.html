@@ -114,22 +114,22 @@ wide: true
       </div>
     </section>
 
-    <!-- 股权投资札记 -->
+    <!-- 股权投资札记 · 栏目入口 -->
     <section class="dash-section" data-cat="invest">
       <h2>
-        📈 股权投资札记 <small>{{ notes | size }}</small>
-        <a class="sec-link" href="{{ '/notes/' | relative_url }}">查看栏目 →</a>
+        📈 股权投资札记 <small>{{ notes | size }} 篇</small>
       </h2>
       <div class="dash-grid">
-        {% for n in notes limit: 6 %}
-        <article class="note-card">
-          <div class="note-meta">
-            <time>{{ n.date | date: "%Y-%m-%d" }}</time>
+        <a class="column-card" href="{{ '/notes/' | relative_url }}">
+          <div class="column-card-head">
+            <span class="column-card-icon">📈</span>
+            <div>
+              <h3>股权投资札记</h3>
+              <small>{{ notes | size }} 篇 · 更新中</small>
+            </div>
           </div>
-          <h3><a href="{{ n.url | relative_url }}">{{ n.title }}</a></h3>
-          <p>{{ n.summary }}</p>
-        </article>
-        {% endfor %}
+          <p>一级市场的观察、判断与复盘：行业笔记、项目复盘、方法论与市场观察。点开阅读全部文章 →</p>
+        </a>
       </div>
     </section>
 
