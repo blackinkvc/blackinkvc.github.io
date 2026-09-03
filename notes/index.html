@@ -1,27 +1,34 @@
 ---
 layout: note
 title: 股权投资札记
-wide: true
 ---
 
-<section class="intro">
-  <h1>股权投资札记</h1>
+<section class="notes-hero">
+  {% assign all = site.notes | sort: 'date' %}
+  <h1>📈 股权投资札记</h1>
   <p>一级市场的观察、判断与复盘。判断先行，验证滞后——所以先把逻辑写下来。</p>
+  <div class="notes-hero-meta">
+    <span><b>{{ site.notes.size }}</b> 篇</span>
+    <span><b>{{ all.first.date | date: "%Y.%m" }}</b> – <b>{{ all.last.date | date: "%Y.%m" }}</b></span>
+  </div>
 </section>
 
-{% assign notes = site.notes | sort: 'date' | reverse %}
+{% assign year_groups = site.notes | group_by_exp: 'n', 'n.date | date: "%Y"' | sort: 'name' | reverse %}
 
 <section class="notes-list">
-  {% for n in notes %}
+  {% for g in year_groups %}
+  <h2 class="year-head">{{ g.name }} <small>共 {{ g.items.size }} 篇</small></h2>
+  {% assign items = g.items | sort: 'date' | reverse %}
+  {% for n in items %}
   <article class="note-item">
     <div class="note-meta">
-      <time>{{ n.date | date: "%Y-%m-%d" }}</time>
+      <time>{{ n.date | date: "%m-%d" }}</time>
+      {% if n.series %}<span class="series-badge">札记 {{ n.series }}</span>{% endif %}
       {% if n.tags %}<span class="note-tags">{{ n.tags | join: " · " }}</span>{% endif %}
     </div>
     <h2><a href="{{ n.url | relative_url }}">{{ n.title }}</a></h2>
     <p>{{ n.summary }}</p>
   </article>
-  {% else %}
-  <p class="note-empty">还没有札记，第一篇正在路上。</p>
+  {% endfor %}
   {% endfor %}
 </section>

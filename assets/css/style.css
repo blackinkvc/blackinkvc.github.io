@@ -464,6 +464,130 @@ body {
   padding: 40px 0;
 }
 
+/* ============ 札记栏目页（杂志模板） ============ */
+
+.notes-hero {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 26px 26px 20px;
+  margin-bottom: 26px;
+}
+
+.notes-hero h1 { margin: 0 0 8px; font-size: 24px; }
+.notes-hero p { margin: 0 0 14px; color: var(--muted); }
+
+.notes-hero-meta {
+  display: flex;
+  gap: 20px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.notes-hero-meta b { color: var(--fg); font-size: 15px; }
+
+.year-head {
+  margin: 26px 0 12px;
+  font-size: 18px;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.year-head small {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.series-badge {
+  background: var(--accent);
+  color: #fff;
+  font-size: 11px;
+  border-radius: 99px;
+  padding: 2px 9px;
+}
+
+.note-item h2 { font-size: 17px; }
+
+/* ============ 札记文章页排版 ============ */
+
+.note-article {
+  max-width: 720px;
+  margin: 0 auto;
+  font-size: 15.5px;
+}
+
+.note-back { margin: 0 0 18px; font-size: 13px; }
+.note-back a { color: var(--muted); text-decoration: none; }
+.note-back a:hover { color: var(--accent); }
+
+.note-article h1 {
+  font-size: 25px;
+  line-height: 1.4;
+  margin: 0 0 18px;
+}
+
+.note-article h2 { font-size: 20px; margin: 30px 0 10px; }
+.note-article h3 { font-size: 17px; margin: 24px 0 8px; }
+
+.note-article p { margin: 0 0 14px; line-height: 1.85; }
+
+.note-article ul, .note-article ol {
+  margin: 0 0 14px;
+  padding-left: 24px;
+}
+
+.note-article li { margin: 4px 0; line-height: 1.8; }
+
+.note-article blockquote {
+  margin: 0 0 14px;
+  padding: 10px 16px;
+  border-left: 3px solid var(--line);
+  background: var(--bg);
+  border-radius: 0 8px 8px 0;
+  color: var(--muted);
+}
+
+.note-article code {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 1px 6px;
+  font-size: 13px;
+}
+
+.note-article pre {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px 14px;
+  overflow: auto;
+}
+
+.note-article pre code { border: none; background: transparent; }
+
+.note-article hr {
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: 26px 0;
+}
+
+.note-article img { max-width: 100%; border-radius: 8px; }
+
+.note-article table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0 0 14px;
+  font-size: 14px;
+}
+
+.note-article th, .note-article td {
+  border: 1px solid var(--line);
+  padding: 6px 10px;
+  text-align: left;
+}
+
 /* ============ 水豚池 ============ */
 
 .pond { margin-top: 8px; }

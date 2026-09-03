@@ -16,7 +16,10 @@
   </header>
 
   <main class="site-main">
-    {{ content }}
+    <div class="note-article">
+      <p class="note-back"><a href="{{ '/notes/' | relative_url }}">← 返回栏目</a></p>
+      {{ content }}
+    </div>
   </main>
 
   <footer class="site-footer">
