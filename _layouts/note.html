@@ -17,9 +17,41 @@
   </header>
 
   <main class="site-main">
-    <div class="note-article">
-      <p class="note-back"><a href="{{ '/notes/' | relative_url }}">← 返回栏目</a></p>
-      {{ content }}
+    <div class="note-layout">
+      <aside class="note-aside">
+        {% include notes_toc.html mode="link" %}
+      </aside>
+
+      <div class="note-body">
+        <p class="note-back"><a href="{{ '/notes/' | relative_url }}">← 返回栏目</a></p>
+
+        <article class="note-article">
+          {{ content }}
+        </article>
+
+        {% comment %} 同组上一篇 / 下一篇 {% endcomment %}
+        {% assign all = site.notes | sort: 'date' %}
+        {% if page.series %}
+          {% assign grp_items = all | where_exp: 'n', 'n.series != nil' | sort: 'series' %}
+        {% elsif page.tags contains "培养新人" %}
+          {% assign grp_items = all | where_exp: 'n', 'n.tags contains "培养新人"' | sort: 'date' | reverse %}
+        {% else %}
+          {% assign grp_items = all | where_exp: 'n', 'n.series == nil and n.tags contains "培养新人" == false' | sort: 'date' | reverse %}
+        {% endif %}
+
+        {% assign prev = nil %}{% assign next = nil %}{% assign found = false %}
+        {% for n in grp_items %}
+          {% if found %}{% assign next = n %}{% break %}{% endif %}
+          {% if n.url == page.url %}{% assign found = true %}{% else %}{% assign prev = n %}{% endif %}
+        {% endfor %}
+
+        {% if prev or next %}
+        <nav class="note-pager">
+          {% if prev %}<a class="np prev" href="{{ prev.url | relative_url }}"><span>← 上一篇</span><b>{{ prev.title | truncate: 18 }}</b></a>{% else %}<span class="np empty"></span>{% endif %}
+          {% if next %}<a class="np next" href="{{ next.url | relative_url }}"><span>下一篇 →</span><b>{{ next.title | truncate: 18 }}</b></a>{% else %}<span class="np empty"></span>{% endif %}
+        </nav>
+        {% endif %}
+      </div>
     </div>
   </main>
 

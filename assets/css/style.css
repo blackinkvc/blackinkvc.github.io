@@ -784,3 +784,133 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .capy-track, .capy-face, .capy-bob, .ripple { animation: none; }
 }
+
+/* ============ 札记目录系统 ============ */
+
+/* 栏目页：左目录 + 右列表 */
+.notes-shell {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.notes-aside { position: sticky; top: 16px; }
+
+.notes-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 18px;
+}
+.nf-btn {
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--muted);
+  border-radius: 99px;
+  padding: 6px 14px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all .15s;
+}
+.nf-btn:hover { border-color: var(--accent); color: var(--fg); }
+.nf-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+/* 目录组件（栏目页 & 文章页共用） */
+.notes-toc {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px 14px 8px;
+  max-height: calc(100vh - 40px);
+  overflow: auto;
+}
+.notes-toc-head {
+  font-weight: 700;
+  font-size: 15px;
+  padding: 2px 6px 10px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 8px;
+}
+.notes-toc-head small { color: var(--muted); font-weight: 400; font-size: 12px; margin-left: 4px; }
+
+.notes-toc-group { margin-bottom: 10px; }
+.notes-toc-group-title {
+  font-size: 12px;
+  color: var(--muted);
+  padding: 4px 6px;
+  letter-spacing: .3px;
+}
+.notes-toc-group-title span {
+  background: var(--bg);
+  border-radius: 99px;
+  padding: 0 7px;
+  font-size: 11px;
+  margin-left: 4px;
+}
+.notes-toc ul { list-style: none; margin: 0; padding: 0; }
+.notes-toc li a {
+  display: block;
+  padding: 5px 8px;
+  border-radius: 7px;
+  color: var(--fg);
+  text-decoration: none;
+  font-size: 13px;
+  line-height: 1.35;
+}
+.notes-toc li a:hover { background: var(--bg); color: var(--accent); }
+.notes-toc li.cur a { background: var(--accent); color: #fff; }
+.notes-toc li.cur a .toc-series { background: rgba(255,255,255,.25); color: #fff; }
+
+.toc-series {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  font-size: 10px;
+  border-radius: 99px;
+  padding: 0 6px;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+.toc-title { vertical-align: middle; }
+
+/* 文章页：左目录 + 右正文 */
+.note-layout {
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  gap: 28px;
+  align-items: start;
+}
+.note-aside { position: sticky; top: 16px; }
+.note-body { min-width: 0; }
+
+.note-pager {
+  display: flex;
+  gap: 12px;
+  margin-top: 38px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+.note-pager .np {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  text-decoration: none;
+  background: var(--card);
+  transition: border-color .15s;
+}
+.note-pager .np:hover { border-color: var(--accent); }
+.note-pager .np span { font-size: 12px; color: var(--muted); }
+.note-pager .np b { font-size: 14px; color: var(--fg); font-weight: 600; }
+.note-pager .np.next { text-align: right; }
+.note-pager .np.empty { border: none; background: none; }
+
+@media (max-width: 860px) {
+  .notes-shell, .note-layout { grid-template-columns: 1fr; }
+  .notes-aside, .note-aside { position: static; }
+  .notes-toc { max-height: none; }
+}

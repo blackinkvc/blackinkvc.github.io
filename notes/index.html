@@ -13,22 +13,67 @@ title: 股权投资札记
   </div>
 </section>
 
-{% assign year_groups = site.notes | group_by_exp: 'n', 'n.date | date: "%Y"' | sort: 'name' | reverse %}
+<div class="notes-shell">
+  <!-- 左侧固定目录 -->
+  <aside class="notes-aside">
+    {% include notes_toc.html mode="anchor" %}
+  </aside>
 
-<section class="notes-list">
-  {% for g in year_groups %}
-  <h2 class="year-head">{{ g.name }} <small>共 {{ g.items.size }} 篇</small></h2>
-  {% assign items = g.items | sort: 'date' | reverse %}
-  {% for n in items %}
-  <article class="note-item">
-    <div class="note-meta">
-      <time>{{ n.date | date: "%m-%d" }}</time>
-      {% if n.series %}<span class="series-badge">札记 {{ n.series }}</span>{% endif %}
-      {% if n.tags %}<span class="note-tags">{{ n.tags | join: " · " }}</span>{% endif %}
+  <!-- 右侧文章列表 -->
+  <div class="notes-main">
+    <div class="notes-filters" id="notesFilters">
+      <button class="nf-btn active" data-filter="all">全部</button>
+      <button class="nf-btn" data-filter="invest">投资札记</button>
+      <button class="nf-btn" data-filter="train">培养新人</button>
+      <button class="nf-btn" data-filter="other">其他随笔</button>
     </div>
-    <h2><a href="{{ n.url | relative_url }}">{{ n.title }}</a></h2>
-    <p>{{ n.summary }}</p>
-  </article>
-  {% endfor %}
-  {% endfor %}
-</section>
+
+    {% assign year_groups = site.notes | group_by_exp: 'n', 'n.date | date: "%Y"' | sort: 'name' | reverse %}
+
+    <section class="notes-list">
+      {% for g in year_groups %}
+      <h2 class="year-head" data-group="year">{{ g.name }} <small>共 {{ g.items.size }} 篇</small></h2>
+      {% assign items = g.items | sort: 'date' | reverse %}
+      {% for n in items %}
+        {% assign slug = n.path | split: "/" | last | remove: ".md" %}
+        {% if n.series != nil %}{% assign grp = "invest" %}
+        {% elsif n.tags contains "培养新人" %}{% assign grp = "train" %}
+        {% else %}{% assign grp = "other" %}{% endif %}
+        <article class="note-item" id="note-{{ slug }}" data-group="{{ grp }}">
+          <div class="note-meta">
+            <time>{{ n.date | date: "%m-%d" }}</time>
+            {% if n.series %}<span class="series-badge">札记 {{ n.series }}</span>{% endif %}
+            {% if n.tags %}<span class="note-tags">{{ n.tags | join: " · " }}</span>{% endif %}
+          </div>
+          <h2><a href="{{ n.url | relative_url }}">{{ n.title }}</a></h2>
+          <p>{{ n.summary }}</p>
+        </article>
+      {% endfor %}
+      {% endfor %}
+    </section>
+  </div>
+</div>
+
+<script>
+(function () {
+  var btns = document.querySelectorAll('#notesFilters .nf-btn');
+  var cards = document.querySelectorAll('.note-item');
+  var groups = document.querySelectorAll('.notes-toc-group');
+  var tocItems = document.querySelectorAll('.notes-toc-group li');
+  function apply(filter) {
+    cards.forEach(function (c) {
+      c.style.display = (filter === 'all' || c.dataset.group === filter) ? '' : 'none';
+    });
+    // 年份标题：仅当该年还有可见文章时显示
+    document.querySelectorAll('.year-head').forEach(function (h) { h.style.display = ''; });
+    groups.forEach(function (g) { g.style.display = (filter === 'all' || g.dataset.group === filter) ? '' : 'none'; });
+    tocItems.forEach(function (li) { li.style.display = (filter === 'all' || li.dataset.group === filter) ? '' : 'none'; });
+  }
+  btns.forEach(function (b) {
+    b.addEventListener('click', function () {
+      btns.forEach(function (x) { x.classList.toggle('active', x === b); });
+      apply(b.dataset.filter);
+    });
+  });
+})();
+</script>
