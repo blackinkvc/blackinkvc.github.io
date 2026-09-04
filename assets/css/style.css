@@ -785,6 +785,77 @@ body {
   .capy-track, .capy-face, .capy-bob, .ripple { animation: none; }
 }
 
+/* ============ 主页：看板 / 列表 视图切换 ============ */
+
+/* 品牌做成按钮 */
+.dash-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 0;
+  margin: 0 0 16px;
+  background: none;
+  border: none;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: opacity .15s;
+}
+.dash-brand:hover { opacity: .72; }
+.dash-brand .dash-logo {
+  font-size: 20px;
+  color: var(--accent);
+}
+
+/* 列表视图默认隐藏 */
+.list-view { display: none; }
+.dashboard.list-mode .board-view { display: none; }
+.dashboard.list-mode .list-view { display: block; }
+/* 列表模式下隐藏左侧筛选/进度（它们只为看板服务） */
+.dashboard.list-mode .dash-nav,
+.dashboard.list-mode .dash-progress { display: none; }
+
+.list-head {
+  margin: 26px 0 12px;
+  font-size: 18px;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.list-head:first-child { margin-top: 0; }
+.list-head small { font-size: 12px; color: var(--muted); font-weight: 400; }
+
+.proj-list { list-style: none; margin: 0 0 8px; padding: 0; }
+.proj-list li { border-bottom: 1px solid var(--line); }
+.proj-list li:last-child { border-bottom: none; }
+.proj-list a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 11px 6px;
+  text-decoration: none;
+  color: var(--fg);
+  border-radius: 8px;
+}
+.proj-list a:hover { background: var(--bg); }
+.pl-title { font-size: 15px; font-weight: 600; }
+.pl-meta { display: flex; gap: 6px; flex-shrink: 0; }
+.pl-tag {
+  font-size: 11px;
+  color: var(--muted);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  padding: 2px 9px;
+  white-space: nowrap;
+}
+.pl-tag.pl-online { color: #1a7f37; border-color: #b7e4c7; background: #eafaf0; }
+.pl-tag.pl-developing { color: #b58105; border-color: #f5d99b; background: #fff7e6; }
+.pl-tag.pl-idea { color: #8250df; border-color: #d8c7f5; background: #f6f0ff; }
+
 /* ============ 札记目录系统 ============ */
 
 /* 栏目页：左目录 + 右列表 */

@@ -42,13 +42,13 @@ wide: true
 
   <!-- ===== 左侧导航 ===== -->
   <aside class="dash-side" data-page-node-id="BgVsA0zSO87RDXGFaE03M5">
-    <div class="dash-brand" data-page-node-id="7yIUMnkIAVdxOHyexImw6k">
+    <button class="dash-brand" id="viewToggle" type="button" data-page-node-id="7yIUMnkIAVdxOHyexImw6k" title="点击在看板 / 列表之间切换">
       <span class="dash-logo" data-page-node-id="HKEi0sNKqa3svL7xmjMjqy">⬢</span>
       <div data-page-node-id="0coEoCmsnUK9UCs6VaYftA">
         <strong data-page-node-id="vragsFZbDd2L3t53yTmgOt">blackinkvc</strong>
-        <small data-page-node-id="FXnychMzqCuE7HodKSqaLL">项目展板</small>
+        <small data-page-node-id="FXnychMzqCuE7HodKSqaLL">项目展板 · <span id="viewMode">看板</span></small>
       </div>
-    </div>
+    </button>
 
     <nav class="dash-nav" data-page-node-id="31kt73RKjie1VlIAAuwFen">
       <button class="cat-btn active" data-cat="all" data-page-node-id="LywmD2hVEa7LUdRiCc8Rid">全部<span data-page-node-id="ULPjFHrzUsZj01B8xU8QVM">{{ total_count }}</span></button>
@@ -72,6 +72,9 @@ wide: true
 
   <!-- ===== 右侧展板 ===== -->
   <div class="dash-main" data-page-node-id="0oDaCu2zp8wDIKCdniVh3I">
+
+    <!-- 看板视图（默认） -->
+    <div class="board-view" id="boardView">
 
     <div class="dash-stats" id="dash-stats" data-page-node-id="VKaYcCWylAzTDVPemm7AY1">
       <div class="stat stat-online" data-page-node-id="a9CsfyXW7GXiBCIHNmBpBV">
@@ -154,6 +157,40 @@ wide: true
       </div>
     </section>
 
+    </div><!-- /board-view -->
+
+    <!-- 列表视图（点击品牌切换） -->
+    <div class="list-view" id="listView">
+      <h2 class="list-head">📋 全部项目 <small>{{ projects.size }} 个</small></h2>
+      <ul class="proj-list">
+        {% for p in projects %}
+        <li>
+          <a href="{{ p.link | default: p.url | relative_url }}">
+            <span class="pl-title">{{ p.title }}</span>
+            <span class="pl-meta">
+              {% if p.category %}<span class="pl-tag">{{ p.category }}</span>{% endif %}
+              {% if p.status %}<span class="pl-tag pl-{{ p.status }}">{{ p.status }}</span>{% endif %}
+              {% if p.progress %}<span class="pl-tag">进度 {{ p.progress }}%</span>{% endif %}
+            </span>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+
+      <h2 class="list-head">📈 股权投资札记 <small>{{ notes.size }} 篇</small></h2>
+      <ul class="proj-list">
+        <li><a href="{{ '/notes/' | relative_url }}"><span class="pl-title">全部文章</span><span class="pl-meta"><span class="pl-tag">栏目</span></span></a></li>
+      </ul>
+
+      <h2 class="list-head">🏍️ 旅行计划&amp;札记 <small>{{ site.travel.size }} 个计划</small></h2>
+      <ul class="proj-list">
+        {% assign travels = site.travel | sort: 'date' | reverse %}
+        {% for t in travels %}
+        <li><a href="{{ t.link | relative_url }}"><span class="pl-title">{{ t.title }}</span><span class="pl-meta"><span class="pl-tag">{{ t.meta }}</span></span></a></li>
+        {% endfor %}
+      </ul>
+    </div>
+
   </div>
 </div>
 
@@ -172,6 +209,17 @@ wide: true
       if (stats) stats.style.display = cat === 'all' ? '' : 'none';
     });
   });
+
+  // 看板 / 列表 视图切换
+  var toggle = document.getElementById('viewToggle');
+  var dash = document.querySelector('.dashboard');
+  var modeLabel = document.getElementById('viewMode');
+  if (toggle && dash) {
+    toggle.addEventListener('click', function () {
+      var isList = dash.classList.toggle('list-mode');
+      if (modeLabel) modeLabel.textContent = isList ? '列表' : '看板';
+    });
+  }
 
   var capy = document.getElementById('capy');
   if (capy) {
