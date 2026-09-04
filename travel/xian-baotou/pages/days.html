@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日打卡 · 西安→包头摩旅</title>
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+.day-block {
+  background: var(--c-bg);
+  border: 1.5px solid rgba(0,0,0,0.06);
+  border-radius: var(--radius-lg);
+  margin-bottom: 28px;
+  overflow: hidden;
+  transition: all .25s;
+  scroll-margin-top: 90px;
+}
+
+.day-block:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.day-block-head {
+  padding: 32px 28px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.day-block.d1 .day-block-head { background: linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%); }
+.day-block.d2 .day-block-head { background: linear-gradient(135deg, #FF6B35 0%, #FF3CAC 100%); }
+.day-block.d3 .day-block-head { background: linear-gradient(135deg, #FF3CAC 0%, #C13C9E 100%); }
+.day-block.d4 .day-block-head { background: linear-gradient(135deg, #C13C9E 0%, #784BA0 100%); }
+.day-block.d5 .day-block-head { background: linear-gradient(135deg, #784BA0 0%, #2B86C5 100%); }
+.day-block.bonus .day-block-head { background: linear-gradient(135deg, #2B86C5 0%, #06A77D 100%); }
+
+.day-block-head .label {
+  font-family: var(--ff-accent);
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  opacity: 0.85;
+  margin-bottom: 6px;
+}
+
+.day-block-head h2 {
+  font-family: var(--ff-heading);
+  font-size: 36px;
+  font-weight: 900;
+  color: white;
+  margin-bottom: 4px;
+  letter-spacing: -1px;
+}
+
+.day-block-head .km-row {
+  font-family: var(--ff-accent);
+  font-weight: 600;
+  font-size: 15px;
+  opacity: 0.9;
+}
+
+.day-block-body {
+  padding: 32px 28px;
+}
+
+.day-block-body h4 {
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--c-primary);
+  margin: 20px 0 8px;
+}
+
+.day-block-body h4:first-child { margin-top: 0; }
+
+.day-block-body ul {
+  list-style: none;
+  padding: 0;
+}
+
+.day-block-body ul li {
+  padding: 6px 0;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  line-height: 1.6;
+}
+
+.day-block-body ul li::before {
+  content: '▸';
+  color: var(--c-primary);
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.quote-card {
+  background: linear-gradient(135deg, #FFF8E1 0%, #FFEFD5 100%);
+  border-left: 5px solid var(--c-accent);
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
+  margin-top: 18px;
+  font-style: italic;
+  font-size: 15px;
+}
+
+.print-guide {
+  background: linear-gradient(135deg, #FFF5EF 0%, #FFE8E0 100%);
+  border: 2px dashed var(--c-primary);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  margin: 60px auto;
+  max-width: 720px;
+  text-align: center;
+}
+
+.print-guide h3 {
+  font-size: 24px;
+  margin-bottom: 12px;
+  background: var(--c-grad-warm);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      🏍️ <span class="logo-mark">西安→包头</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html">首页</a></li>
+      <li><a href="overview.html">行程概览</a></li>
+      <li><a href="days.html" class="active">每日打卡</a></li>
+      <li><a href="manual.html">路线手册</a></li>
+      <li><a href="budget.html">预算清单</a></li>
+      <li><a href="gear.html">装备 & 安全</a></li>
+      <li><a href="about.html">关于</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-banner">
+  <div class="eyebrow">DAILY CARDS · 5 DAYS</div>
+  <h1>每日打卡卡</h1>
+  <p>从古城到草原，5 张主卡 + 3 张备卡<br>每张卡把一天的"高潮时刻"打包呈现</p>
+</header>
+
+<section class="section section-light">
+
+  <!-- Day 1 -->
+  <article class="day-block d1" id="day-1">
+    <div class="day-block-head">
+      <div class="label">DAY · 01</div>
+      <h2>西安 → 铜川 · 暖身段</h2>
+      <div class="km-row">📏 140 km · ⏱ 3 h · 🟢 轻松</div>
+    </div>
+    <div class="day-block-body">
+      <h4>核心路线</h4>
+      <ul>
+        <li>西安 → 河堤路 / 北三环绕城 → G70 福银高速入口</li>
+        <li>三原县出口下高速 → S107/S208 → 铜川新区</li>
+        <li>（避开西安 / 咸阳市区早 7-9 / 晚 5-8 限行段）</li>
+      </ul>
+
+      <h4>今日打卡</h4>
+      <ul>
+        <li>🥟 <strong>三原泡泡油糕 + 疙瘩面</strong> —— 中午推荐小镇子，三原小吃天下闻名</li>
+        <li>🏯 可选折返 <strong>乾陵</strong>（唐高宗 + 武则天合葬墓，三原北约 30 km）</li>
+        <li>🌰 铜川新区入住，<strong>下午 1 点前必到</strong>，剩下来时间调试装备</li>
+      </ul>
+
+      <h4>今日警告</h4>
+      <ul>
+        <li>❌ 西安 / 咸阳市区限行段 —— 用河堤路或北三环绕开</li>
+        <li>❌ 第一次上 G65 高速前<strong>胎压确认 +0.1 bar</strong>，长途专属</li>
+      </ul>
+
+      <div class="quote-card">「今天不长，整装待发。重点不是赶路，而是试装备」</div>
+    </div>
+  </article>
+
+  <!-- Day 2 -->
+  <article class="day-block d2" id="day-2">
+    <div class="day-block-head">
+      <div class="label">DAY · 02</div>
+      <h2>铜川 → 延安 · 启程段</h2>
+      <div class="km-row">📏 200 km · ⏱ 3 h · 🟢 最轻松</div>
+    </div>
+    <div class="day-block-body">
+      <h4>核心路线</h4>
+      <ul>
+        <li>铜川 → G65 包茂高速 → 洛川 / 黄陵 → 延安</li>
+        <li>G65 全程高速，<strong>全天路况最好</strong></li>
+      </ul>
+
+      <h4>今日打卡</h4>
+      <ul>
+        <li>🛕 <strong>黄帝陵</strong>（黄陵县出口 5 km）—— 古柏 + 沮河景观，需 + 半日</li>
+        <li>🗼 <strong>延安宝塔山</strong>（日落时分最美）</li>
+        <li>🏛️ 杨家岭 / 枣园 / 革命纪念馆（连成一片）</li>
+      </ul>
+
+      <h4>今日必吃</h4>
+      <ul>
+        <li>🍜 <strong>荞面饸饹</strong> —— 陕北人吃面是仪式</li>
+        <li>🥞 <strong>子长煎饼</strong> —— 薄脆带香，配羊杂汤一绝</li>
+      </ul>
+
+      <h4>住宿建议</h4>
+      <ul>
+        <li>📍 避开枣园片区（游客太多 / 晚上吵），选市区连锁</li>
+      </ul>
+
+      <div class="quote-card">「革命圣地的灯光，第一次亮起」</div>
+    </div>
+  </article>
+
+  <!-- Day 3 -->
+  <article class="day-block d3" id="day-3">
+    <div class="day-block-head">
+      <div class="label">DAY · 03</div>
+      <h2>延安 → 靖边 → 榆林 · 险途</h2>
+      <div class="km-row">📏 420 km · ⏱ 5.5 h · ⚠️ 全线最长</div>
+    </div>
+    <div class="day-block-body">
+      <h4>核心路线</h4>
+      <ul>
+        <li>早 7:00 延安出发 → G65 包茂北上 → 靖边出高速</li>
+        <li>靖边 → 龙洲乡（22 km 国道）→ 波浪谷（核心区步行 1.5 h）</li>
+        <li>原路返回靖边上 G20 → 榆林（约 270 km / 3.5 h）</li>
+      </ul>
+
+      <h4>今日打卡</h4>
+      <ul>
+        <li>🪨 <strong>靖边波浪谷</strong> —— 中国版"波浪谷"，丹霞纹路令人震撼</li>
+        <li>⏰ <strong>黄金时段：下午 2-4 点</strong>光线斜射，丹霞呈红色</li>
+        <li>🌅 <strong>榆林红石峡</strong>夕阳时分最美，<strong>榆林古城骑楼夜游</strong>是高潮</li>
+      </ul>
+
+      <h4>今日必吃</h4>
+      <ul>
+        <li>🍲 <strong>剁荞面</strong> —— 陕北主食，榆林最有名的版本</li>
+        <li>🍖 <strong>羊杂碎</strong> —— 早 / 午 / 晚都适合，越辣越香</li>
+      </ul>
+
+      <h4>今日警告</h4>
+      <ul>
+        <li>⚠️ 今日最长段，<strong>必早起，必须在 4 PM 前离开波浪谷</strong></li>
+        <li>⚠️ 靖边段 4G 信号偏弱，<strong>离线地图包出发前先下</strong></li>
+      </ul>
+
+      <div class="quote-card">「丹霞峡谷里，时间停了」</div>
+    </div>
+  </article>
+
+  <!-- Day 4 -->
+  <article class="day-block d4" id="day-4">
+    <div class="day-block-head">
+      <div class="label">DAY · 04</div>
+      <h2>榆林 → 鄂尔多斯 · 跨省</h2>
+      <div class="km-row">📏 280 km · ⏱ 4 h · 🟡 注意横风</div>
+    </div>
+    <div class="day-block-body">
+      <h4>核心路线</h4>
+      <ul>
+        <li>榆林 → G20 北上 → 蒙陕界收费站（出陕入蒙）</li>
+        <li>过蒙陕界后限速从 100 升到 120，区间测速密集</li>
+        <li>直抵鄂尔多斯康巴什新区</li>
+      </ul>
+
+      <h4>今日打卡</h4>
+      <ul>
+        <li>🐎 <strong>毛乌素沙地 → 草原</strong> —— 视野豁然开朗，地平线变远</li>
+        <li>👑 <strong>成吉思汗陵</strong>（康巴什东南 40 km）—— 八白室 + 蒙古族建筑群</li>
+        <li>⛲ <strong>康巴什音乐喷泉广场</strong> —— 晚上 8 点有灯光秀</li>
+      </ul>
+
+      <h4>今日必吃</h4>
+      <ul>
+        <li>🍖 <strong>烤全羊</strong> —— 仪式感拉满</li>
+        <li>🥛 <strong>手把肉 + 蒙古奶茶</strong></li>
+      </ul>
+
+      <h4>今日警告</h4>
+      <ul>
+        <li>⚠️ <strong>蒙段横风强</strong>（5–6 级常态），过卡车严守车道</li>
+        <li>⚠️ <strong>区间测速多</strong>，超速 20% 即拍</li>
+        <li>⚠️ 内蒙段<strong>油表 1/2 即可找站</strong>，偏远站间距大</li>
+      </ul>
+
+      <div class="quote-card">「横风很大，地平线很远」</div>
+    </div>
+  </article>
+
+  <!-- Day 5 -->
+  <article class="day-block d5" id="day-5">
+    <div class="day-block-head">
+      <div class="label">DAY · 05</div>
+      <h2>鄂尔多斯 → 响沙湾 → 包头 · 收官</h2>
+      <div class="km-row">📏 150 km · ⏱ 3 h · 🎉 终点</div>
+    </div>
+    <div class="day-block-body">
+      <h4>核心路线</h4>
+      <ul>
+        <li>康巴什 → G65 北上 → 响沙湾（110 km）</li>
+        <li>上午响沙湾游玩 2-3 h → 下午 1 点 G65 北上包头</li>
+        <li>下午约 4 点抵包头昆都仑区，庆功 🍻</li>
+      </ul>
+
+      <h4>今日打卡</h4>
+      <ul>
+        <li>🏜️ <strong>响沙湾</strong> —— 中国三大响沙之一，沙子会"唱歌"（<strong>套票 ~300 元</strong>）</li>
+        <li>🐪 <strong>骑骆驼</strong> —— 高峰季要排 30 min 队</li>
+        <li>🛝 <strong>滑沙 + 沙漠越野车</strong> —— 沙漠里的玩法打开方式</li>
+      </ul>
+
+      <h4>庆功推荐</h4>
+      <ul>
+        <li>🍖 包头昆都仑区夜市烤全羊 / 阿尔丁广场周边</li>
+        <li>🌟 进阶行程：+ 1 天可去<strong>希拉穆仁草原</strong>（包头北 80 km）</li>
+      </ul>
+
+      <div class="quote-card">「沙子在唱歌，结束也是开始 🏁」</div>
+    </div>
+  </article>
+
+  <!-- Bonus 1 -->
+  <article class="day-block bonus" id="day-0">
+    <div class="day-block-head">
+      <div class="label">BONUS · 00 · 出发前夜</div>
+      <h2>整装与车检 · 出行不可少</h2>
+      <div class="km-row">⏱ 提前 1 晚 · 🔧 整备</div>
+    </div>
+    <div class="day-block-body">
+      <h4>必做清单</h4>
+      <ul>
+        <li>🔧 整车保养：机油 / 链条润滑 / 刹车片厚度检查</li>
+        <li>🛞 胎压检查：长途 + 0.1 bar</li>
+        <li>🔧 备齐工具：电动打气筒 + 补胎工具 + 备用火花塞 + 备用保险丝</li>
+        <li>🛂 文件齐全：身份证 / D 证 / 行驶证 / 交强险贴</li>
+        <li>💰 现金 200 元 + 信用卡 / 银联标志</li>
+        <li>📱 高德 / 百度地图离线包 + 行程攻略</li>
+        <li>🛢️ 油表加满 + ⛽ 手机充满 + 🔋 充电宝</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- Bonus 2: 3-day -->
+  <article class="day-block bonus" id="day-fast">
+    <div class="day-block-head">
+      <div class="label">BONUS · 压缩版</div>
+      <h2>3 天 2 晚 · 老手压缩版</h2>
+      <div class="km-row">⏱ 3 天 · ⚠️ 每日 380+ km</div>
+    </div>
+    <div class="day-block-body">
+      <table>
+        <thead>
+          <tr><th>日</th><th>路段</th><th>km</th><th>关键动作</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>D1</strong></td><td>西安 → 铜川 → 延安</td><td>380</td><td>早 6:00 出发，过路型</td></tr>
+          <tr><td><strong>D2</strong></td><td>延安 → 波浪谷 → 榆林</td><td>420</td><td>波浪谷 2 h 后直奔榆林</td></tr>
+          <tr><td><strong>D3</strong></td><td>榆林 → 鄂尔多斯 → 响沙湾 → 包头</td><td>430</td><td>早 6:00，<strong>晚上 7 点前必到包头</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="quote-card">⚠️ 压缩版适合有长途摩旅经验者；新手请按 5 天版走</div>
+    </div>
+  </article>
+
+  <!-- Bonus 3: 进阶 -->
+  <article class="day-block bonus" id="day-extra">
+    <div class="day-block-head">
+      <div class="label">BONUS · 进阶 +1–2 天</div>
+      <h2>加码玩法 · 若有时间</h2>
+      <div class="km-row">⏱ +1–2 天 · 🌟 解锁秘景</div>
+    </div>
+    <div class="day-block-body">
+      <table>
+        <tbody>
+          <tr><td><strong>壶口瀑布</strong></td><td>延安东南 130 km</td><td>4–5 月"桃花汛"水量最壮观，但雨多</td></tr>
+          <tr><td><strong>红碱淖</strong></td><td>榆林东北 130 km</td><td>中国最大沙漠淡水湖，4 月观遗鸥</td></tr>
+          <tr><td><strong>库布其沙漠</strong></td><td>鄂尔多斯南 50 km</td><td>沙漠越野、沙漠星空露营</td></tr>
+          <tr><td><strong>希拉穆仁草原</strong></td><td>包头北 80 km</td><td>蒙古包住宿 + 那达慕体验</td></tr>
+          <tr><td><strong>五当召</strong></td><td>包头北 60 km</td><td>"小布达拉宫"，藏传佛教寺院</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <!-- Print guide -->
+  <div class="print-guide">
+    <h3>🖨 想贴冰箱？</h3>
+    <p style="margin: 12px 0; color: var(--c-text-soft);">详见老版本 <code style="background:#fff;padding:2px 8px;border-radius:4px;">01-打卡卡片.html</code> —— A4 4 张/页打印，沿虚线剪开。</p>
+    <a href="../01-打卡卡片.html" class="btn btn-tertiary">→ 打开打印版</a>
+  </div>
+
+</section>
+
+<footer class="footer">
+  <div class="col-grid">
+    <div>
+      <h4>站点地图</h4>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="overview.html">行程概览</a></li>
+        <li><a href="days.html">每日打卡</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>实用工具</h4>
+      <ul>
+        <li><a href="manual.html">路线手册</a></li>
+        <li><a href="budget.html">预算清单</a></li>
+        <li><a href="gear.html">装备 & 安全</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>关于</h4>
+      <ul>
+        <li><a href="about.html">关于本方案</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="copyright">© 2026 西安→包头摩旅方案 · v1.0</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="L3BDl73aCFGdcC0UDiZjiS">
+<head data-page-node-id="QWP7AgLr0z7JvOLDPSHoz6">
+<meta charset="UTF-8" data-page-node-id="iDPRexEztMGssBjNgjbAMV">
+<title>西安→包头 摩旅 · 路线手册</title>
+<meta name="docx-page-size" content="A4" data-page-node-id="ICMhHScHmS7BDSzZQpxQBf">
+<style>
+:root {
+  --color-primary: #FF6B35;
+  --color-secondary: #FF3CAC;
+  --color-tertiary: #784BA0;
+  --color-quaternary: #2B86C5;
+  --color-accent: #F9D649;
+  --color-text: #1A1A2E;
+  --color-textLight: #F8F8F8;
+  --color-bg-soft: #FFF5EF;
+  --color-gradient-hero: linear-gradient(135deg, #FF6B35 0%, #FF3CAC 50%, #784BA0 100%);
+  --color-gradient-cool: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --ff-heading: 阿里巴巴普惠体, PingFang SC, 微软雅黑, sans-serif;
+  --ff-body: PingFang SC, 微软雅黑, sans-serif;
+  --ff-accent: Poppins, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+@page {
+  size: A4;
+  margin: 1.8cm;
+  @bottom-center {
+    content: "第 " counter(page) " 页 / 共 " counter(pages) " 页";
+    font-family: var(--ff-accent);
+    font-size: 9pt;
+    color: #888;
+  }
+}
+
+@page cover {
+  @bottom-center { content: none; }
+}
+
+body {
+  font-family: var(--ff-body);
+  font-size: 11pt;
+  color: var(--color-text);
+  background: white;
+  max-width: 17.4cm;
+  margin: 0 auto;
+  line-height: 1.75;
+}
+
+section { page-break-after: always; }
+section:last-child { page-break-after: auto; }
+
+/* ========== 封面 ========== */
+section[role="cover"] {
+  page: cover;
+  text-align: center;
+  padding: 2cm 0;
+}
+
+.cover-eyebrow {
+  display: inline-block;
+  color: var(--color-primary);
+  font-family: var(--ff-accent);
+  font-weight: 700;
+  letter-spacing: 6px;
+  font-size: 11pt;
+  text-transform: uppercase;
+  margin-bottom: 1.5cm;
+}
+
+.cover-title {
+  font-family: var(--ff-heading);
+  font-size: 44pt;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  background: var(--color-gradient-hero);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.4cm;
+}
+
+.cover-subtitle {
+  font-family: var(--ff-heading);
+  font-size: 18pt;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 2.5cm;
+}
+
+.cover-route {
+  font-family: var(--ff-accent);
+  font-size: 22pt;
+  font-weight: 700;
+  color: var(--color-tertiary);
+  margin-bottom: 0.8cm;
+  letter-spacing: 1px;
+}
+
+.cover-route .arrow {
+  color: var(--color-primary);
+  margin: 0 8px;
+  font-size: 26pt;
+}
+
+.cover-meta {
+  display: inline-block;
+  margin-top: 2cm;
+  padding: 14px 28px;
+  border-radius: 30px;
+  background: var(--color-bg-soft);
+  border: 1.5px dashed var(--color-primary);
+  font-size: 11pt;
+  color: #555;
+}
+
+.cover-meta span + span::before {
+  content: " · ";
+  margin: 0 8px;
+  color: var(--color-primary);
+}
+
+/* ========== 通用 ========== */
+h1 {
+  font-family: var(--ff-heading);
+  font-size: 22pt;
+  font-weight: 800;
+  color: var(--color-tertiary);
+  margin: 0.6cm 0 0.4cm;
+  padding-bottom: 8px;
+  border-bottom: 3px solid var(--color-primary);
+  position: relative;
+  page-break-after: avoid;
+}
+
+h2 {
+  font-family: var(--ff-heading);
+  font-size: 15pt;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin: 0.5cm 0 0.3cm;
+  padding-left: 14px;
+  border-left: 5px solid var(--color-primary);
+  page-break-after: avoid;
+}
+
+h3 {
+  font-family: var(--ff-heading);
+  font-size: 12.5pt;
+  font-weight: 700;
+  color: var(--color-quaternary);
+  margin: 0.3cm 0 0.2cm;
+}
+
+p { margin: 0.25cm 0; }
+
+ul, ol { margin: 0.2cm 0 0.3cm 1cm; }
+
+li { margin: 0.1cm 0; }
+
+/* ========== 路线时间线 ========== */
+.day-block {
+  margin: 0.5cm 0;
+  padding: 14px 18px;
+  background: var(--color-bg-soft);
+  border-radius: 10px;
+  border-left: 5px solid var(--color-primary);
+  page-break-inside: avoid;
+}
+
+.day-block .day-num {
+  display: inline-block;
+  background: var(--color-gradient-hero);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-family: var(--ff-accent);
+  font-weight: 800;
+  font-size: 10pt;
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+}
+
+.day-block h3 {
+  font-size: 13pt;
+  color: var(--color-text);
+  margin: 0 0 6px 8px;
+}
+
+.day-stats {
+  display: flex;
+  gap: 14px;
+  margin: 8px 0 10px;
+  font-family: var(--ff-accent);
+  font-size: 10pt;
+}
+
+.stat {
+  background: white;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid #eee;
+}
+
+.stat strong { color: var(--color-primary); }
+
+/* ========== 表格 ========== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.4cm 0;
+  font-size: 10.5pt;
+  page-break-inside: avoid;
+}
+
+th {
+  background: var(--color-gradient-hero);
+  color: white;
+  padding: 10px 8px;
+  text-align: left;
+  font-family: var(--ff-heading);
+  font-weight: 700;
+  font-size: 10.5pt;
+}
+
+td {
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+tr:nth-child(even) td {
+  background: var(--color-bg-soft);
+}
+
+td strong {
+  color: var(--color-primary);
+}
+
+/* ========== Callout ========== */
+.callout {
+  margin: 0.4cm 0;
+  padding: 14px 18px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #FFF8E1 0%, #FFEFD5 100%);
+  border-left: 5px solid var(--color-accent);
+  page-break-inside: avoid;
+}
+
+.callout.warning {
+  background: linear-gradient(135deg, #FFE8E8 0%, #FFD8D8 100%);
+  border-left-color: #E63946;
+}
+
+.callout strong {
+  color: #B45309;
+  font-family: var(--ff-heading);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.callout.warning strong { color: #B91C1C; }
+
+/* ========== 节奏卡片 ========== */
+.metric-row {
+  margin: 0.4cm 0;
+  display: flex;
+  gap: 10px;
+}
+
+.metric {
+  flex: 1;
+  padding: 12px 14px;
+  background: var(--color-bg-soft);
+  border-radius: 10px;
+  text-align: center;
+  border: 1.5px solid #FFE0CC;
+}
+
+.metric .num {
+  font-family: var(--ff-accent);
+  font-size: 22pt;
+  font-weight: 800;
+  color: var(--color-primary);
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+}
+
+.metric .lbl {
+  font-size: 9.5pt;
+  color: #666;
+  margin-top: 3px;
+}
+
+/* ========== 路线总览图 ========== */
+.route-flow {
+  margin: 0.5cm 0;
+  padding: 20px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #FFE8E8 0%, #FFD8E8 50%, #E8D8F0 100%);
+  text-align: center;
+}
+
+.route-flow .city {
+  display: inline-block;
+  background: white;
+  padding: 8px 14px;
+  border-radius: 18px;
+  font-family: var(--ff-heading);
+  font-weight: 700;
+  font-size: 11pt;
+  margin: 4px;
+  border: 2px solid var(--color-primary);
+  color: var(--color-text);
+}
+
+.route-flow .connect {
+  display: inline-block;
+  margin: 0 4px;
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+/* ========== 装备清单 ========== */
+.gear-grid {
+  margin: 0.4cm 0;
+}
+
+.gear-group {
+  margin: 0.3cm 0;
+  padding: 12px 16px;
+  background: var(--color-bg-soft);
+  border-radius: 8px;
+  page-break-inside: avoid;
+}
+
+.gear-group h4 {
+  font-family: var(--ff-heading);
+  font-size: 12pt;
+  color: var(--color-quaternary);
+  margin-bottom: 6px;
+}
+
+.gear-group td {
+  border: none;
+  background: transparent;
+  padding: 4px 8px;
+}
+
+.gear-group td:first-child {
+  width: 30%;
+  font-weight: 700;
+  color: var(--color-tertiary);
+  font-family: var(--ff-heading);
+}
+
+/* ========== Footer ========== */
+.doc-footer {
+  margin-top: 1cm;
+  padding-top: 0.3cm;
+  border-top: 1.5px dashed var(--color-primary);
+  font-size: 9pt;
+  color: #888;
+  text-align: center;
+  font-family: var(--ff-accent);
+  letter-spacing: 1px;
+}
+
+@media print {
+  body { font-size: 10.5pt; }
+}
+</style>
+</head>
+<body data-page-node-id="D6fgw2YU26OSWw6MBiks3B">
+
+<!-- ============ COVER ============ -->
+<section role="cover" data-page-node-id="PJeS4dZa8ZigGZdj2uFjcp">
+  <div class="cover-eyebrow" data-page-node-id="Gar5PNhaxNWo2NScDnDYdP">CHINA · MOTORCYCLE ROAD TRIP</div>
+  <h1 class="cover-title" data-page-node-id="xAvMw9rYxAidf60REVuT24">纵贯秦晋蒙</h1>
+  <p class="cover-subtitle" data-page-node-id="KZ6HEdc6cEFeM1MXoHTZ6a">5 天 4 晚 · 1180 公里摩旅</p>
+  <div class="cover-route" data-page-node-id="Au7sphVvT72QTmghPWbD2o">
+    <span data-page-node-id="F4S8dQaDsuNVFM9tC0YkGe">西安</span><span class="arrow" data-page-node-id="IhS5pYde2nrLtwNptIk0Hc">→</span>
+    <span data-page-node-id="eaPBC0r85xrHg5UCiGGlY0">咸阳</span><span class="arrow" data-page-node-id="U0ByChxv62T5uNMc0OU6Cz">→</span>
+    <span data-page-node-id="qPlDI5dTgMIT6kxDURvcNx">铜川</span><span class="arrow" data-page-node-id="CiC0RsljRefM9H5T2ATnuV">→</span>
+    <span data-page-node-id="IVP8cn4fWp7aTHrUyVkF0v">延安</span><span class="arrow" data-page-node-id="CJWXoVeoxLUWdT88gAVV07">→</span>
+    <span data-page-node-id="89rspsxXVy5OJNi7cC29BT">榆林</span><span class="arrow" data-page-node-id="EOwIF89oqWZ7QwyXmiLmUK">→</span>
+    <span data-page-node-id="zJKVkmyut7XuR0PNlmWNfa">鄂尔多斯</span><span class="arrow" data-page-node-id="at7NTA4zp0LGISHEVm17fI">→</span>
+    <span data-page-node-id="j0mpZaAxG3A5O1PuqPgIuE">包头</span>
+  </div>
+  <div class="cover-meta" data-page-node-id="s4r3cNaKLOsrr70ufPxFmC">
+    <span data-page-node-id="HD29xPYtPeJd3yl5fH3DPn">⛽ 油费约 460 元</span>
+    <span data-page-node-id="BygL1UCqFTWnFlyEerf8nB">🏨 4 晚住宿</span>
+    <span data-page-node-id="nkynLP0Ozi1BLwGSui3AEO">🎫 门票约 670 元</span>
+    <span data-page-node-id="0ufSuNmGtGO5GKrUtbqxxO">💰 总预算 ≈ 2600 元</span>
+  </div>
+</section>
+
+<!-- ============ 总览 ============ -->
+<section role="body" data-page-restart="1" data-page-node-id="TRRNj46Qda8CoQkgAhLZqH">
+  <h1 data-page-node-id="33olYnnfdGyUInvvB3FKUV">一、行程总览</h1>
+
+  <div class="metric-row" data-page-node-id="T6Pv9F7TtePU0OrEbe3LQT">
+    <div class="metric" data-page-node-id="bG4bEkGKm94s41RAOonHyH">
+      <div class="num" data-page-node-id="OjII2tmTzOCtt8JFMz8Eu5">1180</div>
+      <div class="lbl" data-page-node-id="CWE0M43CKrqgVIOFBmC7Ko">公里全程</div>
+    </div>
+    <div class="metric" data-page-node-id="wKazHiZJ18h0UBW6Ja0Sqg">
+      <div class="num" data-page-node-id="VhzijqrL5Dc2jH3nA42RjW">5</div>
+      <div class="lbl" data-page-node-id="AHph6jtciIiZugEJ6SAOcL">推荐天数</div>
+    </div>
+    <div class="metric" data-page-node-id="1YRRh6vg5SRtsDFOo9xL4b">
+      <div class="num" data-page-node-id="6cEoP6XbQm0G1PBqJFFXmM">7</div>
+      <div class="lbl" data-page-node-id="3e5dGdNvklOXKLqwc0EPXu">途经城市</div>
+    </div>
+    <div class="metric" data-page-node-id="CNLDDw4KuNXoO6QnOSqram">
+      <div class="num" data-page-node-id="nkB2KSH70h2AIgHkqKZC4v">2600</div>
+      <div class="lbl" data-page-node-id="bKBwz0kTtw3sLmQ5j6FJU1">总预算（元）</div>
+    </div>
+  </div>
+
+  <h2 data-page-node-id="LG9ZjueyE0jxAwDDXv4yzS">路线骨架</h2>
+  <div class="route-flow" data-page-node-id="uauv5cpBvga2OKjKeD60xk">
+    <span class="city" data-page-node-id="l6Ig6WK1x6AqiRBenNxN8X">西安</span><span class="connect" data-page-node-id="Z8CskJvVoyxBCUk4BEkfHg">→</span>
+    <span class="city" data-page-node-id="R59xgEELBa0zVPP51xvyH8">咸阳</span><span class="connect" data-page-node-id="DwL8YYodYrqW2FCprY0kct">→</span>
+    <span class="city" data-page-node-id="tgX3eg1LR6MrlkNxod2Lo3">铜川</span><span class="connect" data-page-node-id="SZrKSpaTu1HYlIj87ZU8By">→</span>
+    <span class="city" data-page-node-id="vFlJPaTUk23TEQRamBYDPj">延安</span><span class="connect" data-page-node-id="TKdg2UjzTbKJIP7lMxjYtD">→</span>
+    <span class="city" data-page-node-id="VU61HYKSVxmA3HSnhRUBy8">靖边波浪谷</span><span class="connect" data-page-node-id="zr1WKDLJ5fl49m81VfEcJ4">→</span>
+    <span class="city" data-page-node-id="pkBEGJHkKJoUIjhaCdvFj6">榆林</span><span class="connect" data-page-node-id="J3pPiOk47GEX1jjsJksbuf">→</span>
+    <span class="city" data-page-node-id="pYCKt6GCQ3rMBFE2vf0m1h">鄂尔多斯</span><span class="connect" data-page-node-id="eQ9KGfCDvlkfd76hPGz7hs">→</span>
+    <span class="city" data-page-node-id="v4eoLZZDS8a5A4JwZFEzUA">响沙湾</span><span class="connect" data-page-node-id="vL1j2DFgGHnJ6nJENZvVr3">→</span>
+    <span class="city" data-page-node-id="EdtwCFn8tyTkxToDZCU1RX">包头</span>
+  </div>
+
+  <h2 data-page-node-id="67G8FjNZCAkwpDdb22057c">通行证 + 装备</h2>
+  <ul data-page-node-id="3jEZFaedkrdviBqUkkbGY9">
+    <li data-page-node-id="X1nYTri7SvSWRqKKAaCuAu"><strong data-page-node-id="9yeA4FzwZIQzIWVKLaLZiJ">证件</strong>：身份证 + <strong data-page-node-id="ET2qv5jmY8XDOCoFz04U6J">D 证（摩托）</strong> + 行驶证 + 交强险贴</li>
+    <li data-page-node-id="CeOE3ZhrLMArrc1wXsR0nb"><strong data-page-node-id="WzDpRUb8BHQnQJAsRcf5j0">服装</strong>：全盔 + 拉力服 + 抓绒内胆 + 分体雨衣</li>
+    <li data-page-node-id="AC7PVtXJpUqv7YH97O9zjG"><strong data-page-node-id="PSAT9jyIZhdtO5bw1XZ1vI">工具</strong>：电动打气筒 + 补胎工具 + 备用火花塞</li>
+    <li data-page-node-id="5bN8DTvp2lZeZ60GUAeGvN"><strong data-page-node-id="sAQE2qruI5OLNQ58YMRCxm">现金</strong>：备 200 元（内蒙偏远站扫码偶有失灵）</li>
+    <li data-page-node-id="UjGoOC0HXJQfoVtMqWmjKa"><strong data-page-node-id="zH1aC3Sz2qsrRjCtaclHtV">APP</strong>：高德 / 百度地图离线包提前下载</li>
+  </ul>
+
+  <h2 data-page-node-id="BgipwT0EHxm4hMrEccQgbZ">最佳季节</h2>
+  <table data-page-node-id="IHUGfXRV29yilOv7ZAyGID">
+    <thead data-page-node-id="8DTCDXECldWhkCWhvuFjvn">
+      <tr data-page-node-id="HkNExbRWINvsjCkcwu4iv5"><th data-page-node-id="GbYFzY7KYC1I10Vq46XJw6">月份</th><th data-page-node-id="O5n9y871cYRh1w7wOS2hQC">温度（北段）</th><th data-page-node-id="Ar8SJ1BpsWR8WbsoNqXBTg">体验</th><th data-page-node-id="TAzyekHYv7UsOrtst2UgLq">推荐度</th></tr>
+    </thead>
+    <tbody data-page-node-id="Z9hAo8Rdt1GL9xb6c2z1Ya">
+      <tr data-page-node-id="tdF0wEY7Fy5YsC8EwsLS4y"><td data-page-node-id="W2FmNvylXlFAelX7U8JKjG">5–6 月</td><td data-page-node-id="zbgMaUPLQxiLpDV3rOq7bs">15–22°C</td><td data-page-node-id="tVvkWGveiHFm1ICkuhhwpg">草原渐绿、丹霞最美</td><td data-page-node-id="aN3ZBlUB870CzXzisbIc9J"><strong data-page-node-id="OS1LE4lspFZat8XI1Jjur8">✅ 最佳</strong></td></tr>
+      <tr data-page-node-id="gQZZEpLMk8ND801Apbz4Rr"><td data-page-node-id="g7zOUeOpzKAlOUW6vZku0Y">7–8 月</td><td data-page-node-id="rw2yls3ZC6zwBSzT7vGfuy">26–30°C</td><td data-page-node-id="g3P3mFBtcAI8pJFXpCvJgn">暴晒、午后雷阵雨多</td><td data-page-node-id="2kyLpWkAn1bolodTYvCIFA">⚠️ 防晒防雨</td></tr>
+      <tr data-page-node-id="rTFqLBohxRUCGs1sQCRNaX"><td data-page-node-id="H2ZHXialnSyvcpxPUrcFRQ">9–10 月</td><td data-page-node-id="1xD1b5UfmnkUTNjF0jDcLY">8–18°C</td><td data-page-node-id="3NEa81WG6jgC0FgZHLqH3D">秋色金黄、舒适骑行</td><td data-page-node-id="N9ICyrOlyLxDK7gNAWG9Zi"><strong data-page-node-id="Xc5J2mOge7zpo4D3NkBu3n">✅ 最佳</strong></td></tr>
+      <tr data-page-node-id="IU5e21oMtVRyAMonVPw74y"><td data-page-node-id="PqnGaEFdnEmspuEQARrnVB">11–3 月</td><td data-page-node-id="DWbEO1jVZbnVShYoE3LmJa">-20~0°C</td><td data-page-node-id="yG15yt5fjzUjU5NYlqIuT5">路面结冰、横风极强</td><td data-page-node-id="smStx2b1VkdBwFRHqboJUA">❌ 不推荐</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ DAY 1 ============ -->
+<section role="body" data-page-node-id="1akNOmWZ6CHOmzwp8XWAww">
+  <h1 data-page-node-id="6XhL5bO5K5n8z3hSQ4axQU">二、每日行程</h1>
+
+  <div class="day-block" data-page-node-id="qwRHMFAQ1NqJT39vfGnCBa">
+    <div class="day-num" data-page-node-id="Hwzwa45p4lI9cWILEtZFAt">DAY 01</div>
+    <h3 data-page-node-id="F0LSpCgp6VeFsrV7iGMjWu">西安 → 咸阳 → 铜川｜140 km / 3 h 🟢 暖身段</h3>
+    <div class="day-stats" data-page-node-id="UEZCt7DPpkhdfcgb2tfeiQ">
+      <span class="stat" data-page-node-id="pYkAADyPbYex8XeALmlgL5">📍 <strong data-page-node-id="Ugq3Tpl9VZfN1ApnyE0v7N">西安</strong> 6:30 出发</span>
+      <span class="stat" data-page-node-id="AiSMvbYgjvCkCKJnHIjRpz">🚗 <strong data-page-node-id="T8JQctrtHGIqZhBaRgcAnd">140 km</strong></span>
+      <span class="stat" data-page-node-id="IZi1eK8fHWu0xSg2GhlEDF">⏱ <strong data-page-node-id="N6Wn1YZdvjVOkVhvf51TVY">3 h</strong></span>
+      <span class="stat" data-page-node-id="CYXPUE6WpkXnQkAvBMdDZn">🛏 铜川新区</span>
+    </div>
+    <p data-page-node-id="uJDkldXf8MQmDUCGhdDCWF"><strong data-page-node-id="MmcBNFbhyCZNKos3tnO6No">路线</strong>：西安市 → 河堤路/北三环 → 福银高速入口 → G65 → 三原（午餐）→ S107 → 铜川新区</p>
+    <h3 data-page-node-id="rm1i35a7WOcgLvt7LAfe4i">避坑要点</h3>
+    <ul data-page-node-id="YHnzhgJnrOqrkdZ5RNpJEG">
+      <li data-page-node-id="mhSresUdFpg2mDKPY7YBzR">西安 / 咸阳市区有 <strong data-page-node-id="1dmaOSE8l5VCBD6BWcGp3M">摩托限行段</strong>（早 7–9、晚 5–8），走<strong data-page-node-id="lvWZ3YUak18r6luabW9nYK">河堤路或北三环绕城</strong>进 G70 入口</li>
+      <li data-page-node-id="EZTYiqK6kLByUSRtbpRlaq">三原县下 G65 高速 → S107/S208 转铜川（绕开耀州区限行）</li>
+      <li data-page-node-id="QqlINBQYEUbMWHkOxemU1b">暖身日不赶路 — 重点适应装备、路线节奏、机油温度</li>
+    </ul>
+    <h3 data-page-node-id="vh8kolIHDNrqdCldkVEd6y">推荐午餐</h3>
+    <p data-page-node-id="k1HHYxg3zs3nE8zWmSON7C">三原小吃天下闻名：<strong data-page-node-id="wURu22xqGc6ufpNLk6advO">泡泡油糕、疙瘩面、笼笼肉夹馍</strong></p>
+    <h3 data-page-node-id="OXgcCO2C9FG8jNn2JwpjX6">可选折返</h3>
+    <p data-page-node-id="tdeOOyhsazxbpPSofBnu2Q">乾陵（唐高宗 + 武则天合葬墓，三原北约 30 km）— 想看需 + 半日</p>
+    <h3 data-page-node-id="JebnRghfobOauPyNgLNIkg">夜宿</h3>
+    <p data-page-node-id="DYtQRySM1wEneIRoZGGcUB">铜川新区 / 耀州区（连锁酒店 ~150 元）</p>
+  </div>
+
+  <!-- DAY 2 -->
+  <div class="day-block" data-page-node-id="2maEy1zuffaElFduknno1C">
+    <div class="day-num" data-page-node-id="teD26pHHqRUQonH2rbtEYY">DAY 02</div>
+    <h3 data-page-node-id="QkmlzulVBlJIFRx00TwIBC">铜川 → 洛川 → 延安｜200 km / 3 h</h3>
+    <div class="day-stats" data-page-node-id="OcCWz6SqxQCKoLAtbVaByV">
+      <span class="stat" data-page-node-id="QtcowJQpQ6WhOF7SVzEl3k">🚗 <strong data-page-node-id="WiXBnWIbuACE7fSK6hH6DC">200 km</strong> G65</span>
+      <span class="stat" data-page-node-id="I9PkpJRLNgFYmFMTqkk48q">⏱ <strong data-page-node-id="sVFyIuVcCtc8zFYAlfpZl8">3 h</strong></span>
+      <span class="stat" data-page-node-id="TapJfFVCjctn9Zuz8xkdrS">🛏 延安市区</span>
+    </div>
+    <p data-page-node-id="tJy7iiDSS1p93Z7ZNvAFy6"><strong data-page-node-id="CCtRO0Eko9YtF409euQEzt">路线</strong>：铜川 → G65 包茂高速 → 洛川/黄陵 → 延安</p>
+    <h3 data-page-node-id="eavBZBIbbzd0LuY137PU1u">路况</h3>
+    <p data-page-node-id="Qr23oWNfBgbXOq93oXaGno">G65 全程高速，路况极好，<strong data-page-node-id="13iKdP9Dcxhx7IwSI6bFvR">这是全程最轻松的一天</strong></p>
+    <h3 data-page-node-id="SqxacrqIauXtJgXwrU5HF0">途经亮点</h3>
+    <ul data-page-node-id="zFn77p0lxnVX8MINeahcsZ">
+      <li data-page-node-id="2O6NcXHxHWvHdKlvVTuUOp"><strong data-page-node-id="ZCer10rGvXxogzuORZiYoj">黄帝陵</strong>（黄陵县出口 5 km）：古柏 + 沮河景观；05:30 出发可 + 半日</li>
+      <li data-page-node-id="KX5JdYE4NRgpDatALOBpHt"><strong data-page-node-id="6xDbaiacr2jwSB4bWPgXoW">洛川会议旧址</strong>：高速沿线，免门票快速参观</li>
+    </ul>
+    <h3 data-page-node-id="HsWpxt65S93oBE7llptmxP">延安必看</h3>
+    <p data-page-node-id="MlgAqoNg0knXofcOGXjg7R">宝塔山（标志性）/ 杨家岭 / 枣园 / 革命纪念馆</p>
+    <p data-page-node-id="mUsSeqUjUDXIrPy4fkrOG1">美食：荞面饸饹、羊肉面、子长煎饼</p>
+    <h3 data-page-node-id="SvhUplWDD02iUlU9fhEjqc">夜宿</h3>
+    <p data-page-node-id="CzXWkqxLknF5SiKo9n0tA4">延安市区 ~180 元；<strong data-page-node-id="EKMYx3gEloZh9rIotVKDge">避开枣园片区选市中心</strong>（距景点更近、安全）</p>
+  </div>
+
+  <!-- DAY 3 -->
+  <div class="day-block" data-page-node-id="l0EkY5ikiXLyucvaWL2rg6">
+    <div class="day-num" data-page-node-id="16FHOrHNlnF43u545hHpMS">DAY 03</div>
+    <h3 data-page-node-id="rrSe0VkffC2fTAJimjgcQL">延安 → 靖边波浪谷 → 榆林｜420 km / 5.5 h ⚠️ 最长段</h3>
+    <div class="day-stats" data-page-node-id="iMHWVZqbIccXN7wf9NDIk1">
+      <span class="stat" data-page-node-id="ff11Fl3R8hDXK3cQJN70kS">🚗 <strong data-page-node-id="04QW1ZiDmVWhbB7xx09wte">420 km</strong> G65+G20</span>
+      <span class="stat" data-page-node-id="7T1JMuSc7DUZsIyWyWfB3Z">⏱ <strong data-page-node-id="CbLaxyp7ITafyiEGzb7gTI">5.5 h</strong></span>
+      <span class="stat" data-page-node-id="1aWPHBfxByRwinyvng6Htp">📸 波浪谷必停</span>
+      <span class="stat" data-page-node-id="wyTYbhaKUBdEh3dV0EvhDi">🛏 榆林古城</span>
+    </div>
+    <p data-page-node-id="VX9zBoXMTqDrYDSp9CoLJF"><strong data-page-node-id="UTQAWOIDP0ZdXxnA9jA62Y">路线</strong>：延安 → G65 北上 → 靖边下高速 → 波浪谷（22 km 国道）→ 折返靖边 → G20 → 榆林</p>
+    <div class="callout warning" data-page-node-id="b9nBpfQBJ7fWVXubpeXQY4">
+      <strong data-page-node-id="VpMGNp5klB0oYlvgkX1kbd">关键提醒</strong>
+      今日为全线最长，<strong data-page-node-id="nUTEtjgtnXcTQlY6h8cy2r">早 7:00 出发</strong>，给陕北横风留余量
+    </div>
+    <h3 data-page-node-id="MQdCs5iE7GT8QvuPaNxi0O">靖边波浪谷</h3>
+    <ul data-page-node-id="s0yHGXH4lpvAzVOSwYhVKR">
+      <li data-page-node-id="SMwE2pTpEMKkePWwEBX1X4">中国版"波浪谷"，丹霞纹路令人震撼</li>
+      <li data-page-node-id="E4CkDy3r0tRRfgOesREaPs">摄影最佳时段：<strong data-page-node-id="3lYuChHXAKyE0DzLCQpR8Y">下午 2–4 点</strong>光线斜射呈红色纹路</li>
+      <li data-page-node-id="7z3fnrdJOifr30qmd83Ucs">游览 1.5–2 h，<strong data-page-node-id="hKFCGi0Mcv1dtyczFHbTx5">下午 3 点前离开</strong></li>
+      <li data-page-node-id="4W3LFhYx0CG8m4yi5PUO18">摩托可驶入景区外围公路</li>
+    </ul>
+    <h3 data-page-node-id="XSgASgjY2Yu8plT55huOw8">榆林必看</h3>
+    <p data-page-node-id="q6nbwaJvw1X5tioBchYaFL">红石峡（夕阳时最美）/ 镇北台 / <strong data-page-node-id="6CgkckR1YteoSO2Id78C2p">榆林古城骑楼夜景</strong></p>
+    <p data-page-node-id="uOnFmdOoKw4AxNLvY9cEzO">美食：榆林豆腐、剁荞面、羊杂碎</p>
+    <h3 data-page-node-id="SL52aiOGtBabWr9BcptDuc">夜宿</h3>
+    <p data-page-node-id="7dC4sqd4IuT4fJiWSi7tcq">榆林古城周边 ~200 元</p>
+  </div>
+
+  <!-- DAY 4 -->
+  <div class="day-block" data-page-node-id="bbk1EdyVCob3AchJvqbeCA">
+    <div class="day-num" data-page-node-id="aa8HZktcMbDEoqREu5rgPl">DAY 04</div>
+    <h3 data-page-node-id="w3oJtUZ7ZT7uNHKfAXfKv5">榆林 → 鄂尔多斯（康巴什）｜280 km / 4 h</h3>
+    <div class="day-stats" data-page-node-id="s25F837olSHLVynVANOB6W">
+      <span class="stat" data-page-node-id="ntF2FIM6giXHOlCREFDo0t">🚗 <strong data-page-node-id="kNPuXYP2V7N2LNW0sAagCZ">280 km</strong> G20</span>
+      <span class="stat" data-page-node-id="QEOTsbyUYfUqpWvSWUpViK">⏱ <strong data-page-node-id="RO9jwRzz08q8OZ5wKJVIUX">4 h</strong></span>
+      <span class="stat" data-page-node-id="HZemtyeacwrhq6sbV3KVqi">🌬 入蒙段</span>
+      <span class="stat" data-page-node-id="RLX8vDftcp1azvAPBh7oIZ">🛏 康巴什新区</span>
+    </div>
+    <p data-page-node-id="jQTmE3NDG5KrkxyyOOnRIc"><strong data-page-node-id="MLGeV6vRXlltMCoSH2fxa9">路线</strong>：榆林 → G20 → 蒙陕界收费站 → S22 → 鄂尔多斯（康巴什）</p>
+    <h3 data-page-node-id="OAIKmunUBpE4I8hyGfgtvK">跨省提醒</h3>
+    <ul data-page-node-id="aSqhE451IGdtIRkBabawTD">
+      <li data-page-node-id="X2IuCeLVPDWnM4tXCcPkz3">出陕入蒙 <strong data-page-node-id="GgKLAQfhbUEf1EfwJHHEN5">限速从 100 升到 120</strong>，区间测速密集</li>
+      <li data-page-node-id="AhQr7uTpGtIvwbmha6eZaj">蒙段<strong data-page-node-id="laDEQolTY00BAH7ms8dZAk">横风强</strong>，双手不离把，过路牌与货车时格外注意</li>
+      <li data-page-node-id="3n4ZMG7P1NDF77F3AEZJKy">景观切换：毛乌素沙地 → 丘陵草原，视野突然开阔</li>
+    </ul>
+    <h3 data-page-node-id="76CW5WzVb3OLU9fGHsL7Qe">成吉思汗陵</h3>
+    <p data-page-node-id="xFoiBEXp5runeG8jrFBEJ4">康巴什东南 40 km（甘德利草原）— 八白室 + 蒙古族建筑群，1.5 h 足够</p>
+    <h3 data-page-node-id="HTL475OkDTAS59LLQ6aOz6">康巴什夜景</h3>
+    <p data-page-node-id="9oRiAUaFb7gtC6BTU9W5hM">晚上 8 点出来看亚洲最大<strong data-page-node-id="Jf12hHR9ApMr3tp05dWBIA">音乐喷泉广场</strong>（灯光秀）</p>
+    <h3 data-page-node-id="EWFvcJv6RgMlMboWn8LgSk">夜宿</h3>
+    <p data-page-node-id="jl3UkRZDmBo9rliufvX1b7">康巴什新区标间 ~250 元，5 星反而常 300 出头</p>
+  </div>
+
+  <!-- DAY 5 -->
+  <div class="day-block" data-page-node-id="octmOcbTCoQcfVQNkQiBcq">
+    <div class="day-num" data-page-node-id="vFONhREgJf8u05qPxgf4HE">DAY 05 · FINISH</div>
+    <h3 data-page-node-id="tjsZJgjXE7wAOR5zIb6dbX">鄂尔多斯 → 响沙湾 → 包头｜150 km / 3 h 🎉 收尾</h3>
+    <div class="day-stats" data-page-node-id="2TqBqaFTiDn5bHxr3HV97F">
+      <span class="stat" data-page-node-id="rXCDRWZCzWT4jIce7S38UA">🚗 <strong data-page-node-id="h8xNCGhgg5M9BKL9lAZ0oj">150 km</strong> G65</span>
+      <span class="stat" data-page-node-id="74Blje059EI2ZbjR76Jadn">⏱ <strong data-page-node-id="ec4RE34ssnbJGlDYQnX73g">3 h</strong></span>
+      <span class="stat" data-page-node-id="IlUWCeoN1U1xVJB7jLCDQQ">🏁 终点</span>
+    </div>
+    <p data-page-node-id="cy2EpZ1llXE5CXRLcUG7GF"><strong data-page-node-id="WVBpDu9qipIZpt14z4MAgm">路线</strong>：康巴什 → G65 北上 → 响沙湾（110 km）→ 包头</p>
+    <h3 data-page-node-id="BSATulbzS5p63Ux3rdUvTU">上午：响沙湾</h3>
+    <ul data-page-node-id="Wl7emNOF8CrjjnJDNTPiDG">
+      <li data-page-node-id="SP9KAr1XQwXOyMYPYKZRq7">中国三大响沙之一，<strong data-page-node-id="kAxvDsnf1P6St3sCzuJPxC">沙子会"唱歌"</strong></li>
+      <li data-page-node-id="gQsxmYnjzBHrLmDqSsz4fl">推荐项目：骑骆驼、滑沙、沙漠越野车（<strong data-page-node-id="2ymFrGphH0rOMjutYRYdOf">套票 ~300 元</strong>含项目）</li>
+      <li data-page-node-id="I9bq7qIq6lhYulcZi5W42d">摩托可直达景区停车场</li>
+    </ul>
+    <h3 data-page-node-id="8rXPfOJRshzV1JlxdSE3pK">下午：抵包头</h3>
+    <p data-page-node-id="XyHatDQKfQtsIsAgzruHNT">1 点出发 → G65 北上 1.5 h 抵终点</p>
+    <h3 data-page-node-id="TZ6g5IDyG7kp0L6JunlL56">庆功推荐</h3>
+    <p data-page-node-id="sVDZo0rc7ldMGxBPtAAL8z">包头昆都仑区夜市 / 阿尔丁广场周边<strong data-page-node-id="7BGYIEnLjHUEs5mIEGJhb6">烤全羊</strong></p>
+  </div>
+</section>
+
+<!-- ============ 装备 ============ -->
+<section role="body" data-page-node-id="bMA4ad4OjSSVCHnzDXI8dR">
+  <h1 data-page-node-id="lYTnpXFMJfnWOBZ19FzU68">三、装备清单</h1>
+
+  <div class="gear-grid" data-page-node-id="KezZx72E7xLTLbCGfjXhS7">
+    <div class="gear-group" data-page-node-id="zecCcPxy3WqYmDRPxqhuZa">
+      <h4 data-page-node-id="tLli4RKL9e5xwEFuS6kIIl">📂 文件</h4>
+      <table data-page-node-id="eH8BRtugBDY6m9oDmoIgy4">
+        <tr data-page-node-id="3gj4XGFX87XlBG2nawuDAG"><td data-page-node-id="loPeCnKf7sfLZlFVH5X4KU">身份证</td><td data-page-node-id="yAMcTtExzo8i3gq4MaS9ou">原件 + 复印件</td></tr>
+        <tr data-page-node-id="Lr2KV23dU6DDNgYXmAGZhj"><td data-page-node-id="7bGdtKOA8kdEGfLBXYGiyR">驾照</td><td data-page-node-id="VUZAa9sSiqvRzOtn6FnHxn"><strong data-page-node-id="N5xBlRT9DeiXmRGz4XvE7O">D 本</strong>才能上高速</td></tr>
+        <tr data-page-node-id="UJzziPRHEiygaYaegEKKUz"><td data-page-node-id="Wn4rU8jDeCOctUqfObFXWI">行驶证</td><td data-page-node-id="HTYjmPKFiHWSVVZoUK9KmG">原件 + 复印件</td></tr>
+        <tr data-page-node-id="AtfVFKxEMJQBBqqTMACOLr"><td data-page-node-id="sdM8qpFyZbs8lvKkituZYW">交强险贴</td><td data-page-node-id="UN77Jubro9gD2uRIzVAaXf">挡风玻璃上</td></tr>
+      </table>
+    </div>
+
+    <div class="gear-group" data-page-node-id="UFCf5pl6f5dtzvpVxTD3FQ">
+      <h4 data-page-node-id="WNLSQpSSVqubmKfEFpYNih">🧥 服装（昼夜温差 10–18°C）</h4>
+      <table data-page-node-id="XSh4yiidMr40ltwGbJMk6R">
+        <tr data-page-node-id="4xtV1EusrwX9ExRGU0djl4"><td data-page-node-id="l2XW96iVxUOKzLR0JscjNk">头盔</td><td data-page-node-id="uVMscoMiVlt5S3UebAg3X5"><strong data-page-node-id="SrCYuc3CwECMGOSF5EeBOh">全盔</strong>（半盔高速横风危险）</td></tr>
+        <tr data-page-node-id="wQO5LL7jCNaeqhfWUF2mgD"><td data-page-node-id="okjiyCA5MVCs1ZExGjXG4B">外套</td><td data-page-node-id="3qNqigiEifwU7NFoxZOjPa">拉力服 / 夏季骑行服 + 抓绒内胆</td></tr>
+        <tr data-page-node-id="sqPsB0Bdis8xTEf1urmMw5"><td data-page-node-id="m6w9VI7hhMQmg9CFSwbeC6">手套</td><td data-page-node-id="En4IG47EYULgteyzfdckHJ">防风骑行手套（秋冬款）</td></tr>
+        <tr data-page-node-id="ji29nc7b9GcSOnf1uvUCCK"><td data-page-node-id="igToxgX8nPurK3SWuAByEC">鞋</td><td data-page-node-id="HP5mLrOAWk8P8miQrFQC4c">防滑骑行靴（过脚踝）</td></tr>
+        <tr data-page-node-id="sSKogGtHz0aTZfdtIuv5EE"><td data-page-node-id="fE5UvrzCr13lDpSw3cwuFZ">雨衣</td><td data-page-node-id="wda6pd3LCJz16xV5VHyGub"><strong data-page-node-id="gxGy7llgyjzbZmGEXn7svE">分体雨衣</strong>（陕北阵雨说来就来）</td></tr>
+        <tr data-page-node-id="J8xBkk3XKyhuNSV6rUChO4"><td data-page-node-id="HF84X9EmmCG0QqfKUYHT6I">配件</td><td data-page-node-id="5A6izao4s76cEu1PEAJURS">颈巾 + 速干内层（多带一套）</td></tr>
+      </table>
+    </div>
+
+    <div class="gear-group" data-page-node-id="1YnibFRG15TnLmNtMoch8H">
+      <h4 data-page-node-id="GHIuYeDMuLmJshQEQGWlaA">🛠️ 摩托保养（出发前必做）</h4>
+      <table data-page-node-id="DvxKrOsoAAIkbNiEjdrG1A">
+        <tr data-page-node-id="h2egONR4XtJo0ehXi4JVMl"><td data-page-node-id="5EEyhIcJteHrsLiaz05kFj">机油</td><td data-page-node-id="oZ3W4C5PviSlNcPYgxQGea">出发前 30 天内换新</td></tr>
+        <tr data-page-node-id="nqbLhN8MDYmOSm7DDCDnmj"><td data-page-node-id="BuTKC9te6KYw3S71FDtaFl">链条</td><td data-page-node-id="e43AG0YwPD6x3C4zG4upOM">清洗 + 润滑</td></tr>
+        <tr data-page-node-id="ePlqPRGrYVzkCVPKrj8rEU"><td data-page-node-id="E9ZOIuDSPxLnr6BwSYFtA1">刹车</td><td data-page-node-id="IU1emhrOeqxmEiAFbyIBMd">片厚度检查</td></tr>
+        <tr data-page-node-id="hE63nRC1J521kzgMvkZNM1"><td data-page-node-id="KWLul4tFWyeU1qeDMrHDlQ">胎压</td><td data-page-node-id="5LrIZJyNT6rtOPyVG1xwb6">长途 <strong data-page-node-id="AUeEOi7ciTMNtEPnxO7q3s">+0.1 bar</strong></td></tr>
+        <tr data-page-node-id="YbFi6HLG1kGFD9s74lWm9x"><td data-page-node-id="kVKgLyuwJ8oFzBPYbAuHtQ">打气筒</td><td data-page-node-id="8OCioo755f2wuiC3jqrG82"><strong data-page-node-id="Qo0rpc9QXIGV2kx5R9KVkx">电动打气筒</strong>（小米米家款）</td></tr>
+        <tr data-page-node-id="hlKHxE5t8QwPQwkZdyWDhM"><td data-page-node-id="kC4Ev2G8Sk3KRXhSlBAFoF">补胎工具</td><td data-page-node-id="O6n3wRRLfQ2S8EKImoIU9L">胶条 + 锉刀 + 胶水</td></tr>
+        <tr data-page-node-id="unf63rECADAm3i7sjvQhmn"><td data-page-node-id="GMYcX7TxOuuA5Fy6yDmjx4">火花塞</td><td data-page-node-id="w8a8Ila90Hp2CEds9183mr">备 1 个</td></tr>
+        <tr data-page-node-id="CXEJejrgIEGk2jsSiQ6eRo"><td data-page-node-id="RZcFApxEKL7Y7zwiZZUxwG">保险丝</td><td data-page-node-id="fkNPEyZS9zlNZRFJrAUjPf">备 2 个（不同规格）</td></tr>
+      </table>
+    </div>
+
+    <div class="gear-group" data-page-node-id="1EbESgBxGSucoP6zI1CVkA">
+      <h4 data-page-node-id="81huQjpkAF6gssc2okUzHf">⛽ 加油策略</h4>
+      <table data-page-node-id="xFHAPTylwtRoDDlMAl5Rbx">
+        <tr data-page-node-id="1tEW2vqyGuZjLuDVQjjRyY"><td data-page-node-id="ze3gImiCN5KlWpwgWXqO9P">加油阈值</td><td data-page-node-id="UrnXkXYogWh6vsPMeA86HP">油表 <strong data-page-node-id="kZUVEbfaCpU21jhVaeb5DT">1/3 即找站</strong></td></tr>
+        <tr data-page-node-id="CyH6o0VoTYw8v4no7dHvpi"><td data-page-node-id="boUCmHZH9md0fQw4XHFtlF">品牌偏好</td><td data-page-node-id="rMkonK7dRpPVNnoK2h8pK9">中石化 / 中石油（品质稳定）</td></tr>
+        <tr data-page-node-id="RE6WFtaKrmZQUG5IPY3TlG"><td data-page-node-id="L6fwjD5TICHJJvkHeYdIsM">现金</td><td data-page-node-id="E6JhFf3sGVohDsdbVmqlT8"><strong data-page-node-id="FNLvenPV8f5Up5CQ1cfosa">内蒙段备 200 元</strong>（偏远站扫码偶有失灵）</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 安全 ============ -->
+<section role="body" data-page-node-id="reD8m14APuTZEb6V1UAs64">
+  <h1 data-page-node-id="eaqJn3DYO5oW31TCKkyuPB">四、安全提醒（必读）</h1>
+
+  <div class="callout" data-page-node-id="qGVPOGQXikErY0CrBgrexB">
+    <strong data-page-node-id="In4U6AV6MLhm1o91KvKIFT">🛡 出发前 8 项 checklist</strong>
+    油满 · 证件齐全 · 装备到齐 · 现金 200 · 离线包下载 · 手机满电 · 防晒 · 雨衣
+  </div>
+
+  <h2 data-page-node-id="oVVFCH4afQ9FOQXnMM5GJE">高速与限行</h2>
+  <ol data-page-node-id="CirxwnAdQ8r3QV80oyykRC">
+    <li data-page-node-id="RLUZnS5eXUKNHc6okaP1Hh"><strong data-page-node-id="xWmy91fVFhC1zG5vF5KJYf">西安/咸阳市区限行</strong>：走河堤路或北三环绕开限行段，G70/G65 入口尽量选绕城段</li>
+    <li data-page-node-id="5XsUwwnNAIy59FffPGbHGM"><strong data-page-node-id="OhUPDVq9v0Fc7oyNFw3B9O">陕西段限速</strong>：G65 高速区间测速密集，<strong data-page-node-id="90hsa0o3KGVDxVVL8S1QRL">小车 100、货车 80</strong>，超速极易中招</li>
+    <li data-page-node-id="V32wfKqibXvd1XDJmOBpJW"><strong data-page-node-id="AIrBxQVKxcCH72o4oYivMb">内蒙古段限速</strong>：区间测速同样密集，<strong data-page-node-id="e7NH4mmqQkn0McaG4XCwL4">120 严控</strong></li>
+  </ol>
+
+  <h2 data-page-node-id="E4S4Fq7SQhnabG5elFa5pt">气候与地形</h2>
+  <ol data-page-node-id="GGhAoxJlLaq3wkk5OwUISP">
+    <li data-page-node-id="cuHWfv1CZX8DUkqhD6X14w"><strong data-page-node-id="QWj3fRXMVNwA6Sp2qESmSz">横风</strong>：鄂尔多斯/包头段草原开阔带横风剧烈，过卡车时尤其警惕</li>
+    <li data-page-node-id="o5Wno8Anx3JLGl6yCS71sA"><strong data-page-node-id="CLLQ1XbKbygA0oZPhTGvCv">通讯</strong>：靖边波浪谷段 4G 偏弱、草原段偶有失联，<strong data-page-node-id="TgJPxDIEP5Wa8EyREHhwfq">高德/百度地图离线包务必提前下</strong></li>
+    <li data-page-node-id="ruApizoxCiTgJkM3bBJpW6"><strong data-page-node-id="MWqIT2jKG36ZKJKDb2I8lM">防晒</strong>：陕北、内蒙紫外线比西安强 1–2 个档位，防晒霜 + 长袖手套必备</li>
+  </ol>
+
+  <h2 data-page-node-id="pHdbGAgAb7UruxDto0PMUW">加油与支付</h2>
+  <ol data-page-node-id="brmv7czGUnxX4vMznWNFC9">
+    <li data-page-node-id="jQXNaDzErhQSh6eDITVgBV"><strong data-page-node-id="mUzIlgTXjpJcUtEZAT3FCm">异地加油</strong>：内蒙部分偏远站可能要求"先付后加"，备好零钱</li>
+    <li data-page-node-id="IVTFU5PhGMqe7kpgbUJ29m"><strong data-page-node-id="rSrwhCAxZcMkoRAINA0sHS">信用卡</strong>：1 张银联标志信用卡（无卡可走现金）</li>
+  </ol>
+</section>
+
+<!-- ============ 进阶 ============ -->
+<section role="body" data-page-node-id="W9f95u5v3qsiqc5H2QbOgy">
+  <h1 data-page-node-id="9NAvjHc4d9xszS25JtJG0C">五、进阶玩法</h1>
+  <p data-page-node-id="rRwGeVYKa4W4i7skT4lvMv">若多 1–2 天，这 5 个地方非常值得加码：</p>
+
+  <table data-page-node-id="jwWY7dmUU3qkRhigjyZt3h">
+    <thead data-page-node-id="DMlmAMuFb7vnitPs2FYSsN">
+      <tr data-page-node-id="okWhF2di34nHgBMa5BHleS"><th data-page-node-id="7OMrVq4OIUn4ZQ8Ji7wT32">路线</th><th data-page-node-id="71hp9RcFQrBRaMjfZO97yV">位置</th><th data-page-node-id="DLnWPdYTjPXZ8G1gpSXJ1d">加码玩法</th></tr>
+    </thead>
+    <tbody data-page-node-id="Bn2nNzVCMEZHtYpB4d3MHX">
+      <tr data-page-node-id="9jEHcJcLwnMazakJcZOyiq">
+        <td data-page-node-id="rBUccqwdSC8fSLWwGXACVe"><strong data-page-node-id="T9Cgh35hWAfxtSRqE47Oqx">壶口瀑布</strong></td>
+        <td data-page-node-id="dJDs1yk2mOkGeFxKHOf0Tz">延安东南 130 km</td>
+        <td data-page-node-id="ytdJRnlizM4xZpEQdnCHQC">4–5 月"桃花汛"水量最壮观，但雨多</td>
+      </tr>
+      <tr data-page-node-id="prdmYduB4M4ogzeGDPquSN">
+        <td data-page-node-id="AleYv97Xy6LUfYduWXs32J"><strong data-page-node-id="qmyAOEQ0Sj2Xq0Tmqut0sV">红碱淖</strong></td>
+        <td data-page-node-id="T9yyg97YC0jX3MpHnk5YLs">榆林东北 130 km</td>
+        <td data-page-node-id="it0xeqNH1YcPDApp0YSljZ">中国最大沙漠淡水湖，4 月观遗鸥</td>
+      </tr>
+      <tr data-page-node-id="Dy3Am1bYYJRDPmRLvWIrIJ">
+        <td data-page-node-id="EIdLziBpsGK28EpnCjFFx5"><strong data-page-node-id="DjFnafXld3YL3A43a4BEmW">库布其沙漠</strong></td>
+        <td data-page-node-id="bLGVksAzllZbBCzcFzAakG">鄂尔多斯南 50 km</td>
+        <td data-page-node-id="gDXy14LJxThwL7wOSoOBHb">沙漠越野、沙漠星空露营</td>
+      </tr>
+      <tr data-page-node-id="Soi00RPpFAMBlKnZRuD27m">
+        <td data-page-node-id="DfFekGf4fqOYSoCcFPMsF9"><strong data-page-node-id="bGkvk2H6i1tpByfLDqHQb2">希拉穆仁草原</strong></td>
+        <td data-page-node-id="qFC0ennMl6FUXhrsg4gB1X">包头北 80 km</td>
+        <td data-page-node-id="2RHOL357DcdhYgkkvNeSI0">蒙古包住宿 + 那达慕体验</td>
+      </tr>
+      <tr data-page-node-id="jlRJMhbLFDJvvCrl3Y8dp9">
+        <td data-page-node-id="Rt3DeFC15tG1fhheRzA65z"><strong data-page-node-id="cILkn3m9oyVU65OQ4QcKhu">五当召</strong></td>
+        <td data-page-node-id="mz6KpFbSGbiTVMg00NiPEF">包头北 60 km</td>
+        <td data-page-node-id="ERrtQ10hGM7ngLfzo0vofo">"小布达拉宫"，藏传佛教寺院</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2 data-page-node-id="YRWn4r59aeaAtl7tU1Rxbw">🍜 沿途美食地图</h2>
+  <table data-page-node-id="ni1NX7cq0TKxjdOQNBxx8G">
+    <thead data-page-node-id="3jbJxTsKrPWcUdMThJXap2">
+      <tr data-page-node-id="RJMuMBSKEzgYErtCNlyq0J"><th data-page-node-id="ZeKw4B8XzDzwlCwF6wzKks">城市</th><th data-page-node-id="g02SghLvqOdL2vUw1ppeIl">必尝</th></tr>
+    </thead>
+    <tbody data-page-node-id="lFVYAG18Jg06vyHN3Onk5C">
+      <tr data-page-node-id="7Zyc6TVmk8hMgkWMkNPQHC"><td data-page-node-id="WHP6jHwzAuF76uJtEKiLuh">三原</td><td data-page-node-id="CHCpJ85EIA8rXjzDKQgGai">泡泡油糕、疙瘩面</td></tr>
+      <tr data-page-node-id="47N0AwKCJlABvTda6qbKT8"><td data-page-node-id="1fessFJRqkaP6g7A4F5YMW">铜川</td><td data-page-node-id="WdFEUSYsTvMaeacKFWWwVO">咸汤面、雪花糖</td></tr>
+      <tr data-page-node-id="aT9CD5abwfNNJsdHNmMMhC"><td data-page-node-id="ZxGL95wzGBKI1Fr9mEIjiO">延安</td><td data-page-node-id="xmntskSp8lg9dTGTdu1uGQ">荞面饸饹、子长煎饼、羊肉面</td></tr>
+      <tr data-page-node-id="rEHvJXjBfLGbVZjxyh1Zb8"><td data-page-node-id="KB34RMoMcUu4CnjNEWKdGz">靖边</td><td data-page-node-id="b8u4ieWlGqgMJGASVMj0wY">剁荞面、羊杂碎</td></tr>
+      <tr data-page-node-id="mu87QdEvT5NuYjkoXUBeAZ"><td data-page-node-id="AEQbpJqRrnxawMSvBHDMLu">榆林</td><td data-page-node-id="f5WVAdt9rC70808VAA3EOS">豆腐、剁荞面、米脂婆姨</td></tr>
+      <tr data-page-node-id="3agZi0cngI1oyUompg0OqM"><td data-page-node-id="ejZ9mMSWiXWHWkApiZwH8y">鄂尔多斯</td><td data-page-node-id="adaqCAADD2I25SA44EENAr">烤全羊、手把肉、奶茶</td></tr>
+      <tr data-page-node-id="Ij0zY6BvE5aARWdziTSmy3"><td data-page-node-id="Q7uMthp7Q1AVkrBdjumybx">包头</td><td data-page-node-id="nTFmk4LJC81oq0pefnTbc1">莜面、烤全羊、西部牛仔奶茶</td></tr>
+    </tbody>
+  </table>
+
+  <h2 data-page-node-id="opdcaN96tPwmBUq6FmgN1A">🆘 紧急联系</h2>
+  <table data-page-node-id="J5E9lyRNCFugzgOr8mLKzv">
+    <thead data-page-node-id="C1PtZiC81c0z0zHakIAmLQ">
+      <tr data-page-node-id="MIbydncSiq9NRCiNbXH3Y5"><th data-page-node-id="4gA2hOO5xgNjgchi1SmqFP">项目</th><th data-page-node-id="ahzZYjboT4lCMC9AtnBJFG">号码</th></tr>
+    </thead>
+    <tbody data-page-node-id="nnZKH7rRkOE55OpkrniTsQ">
+      <tr data-page-node-id="hrpPfwX6bi95M3hqSiDBzc"><td data-page-node-id="yOpCDgDEQ5COtdF1APjKT4">交警</td><td data-page-node-id="C0rW8qe7PBdwGQJ1TQ0cnj">122</td></tr>
+      <tr data-page-node-id="SMOUCfxFPsuk409izGMgUp"><td data-page-node-id="sNITeEYdeyhmNjsomNzH2S">高速救援</td><td data-page-node-id="BRSmSS6tFYCFqqUAkMfNoo">12122</td></tr>
+      <tr data-page-node-id="OFkevsMwrJJFxFgQmIl23h"><td data-page-node-id="VaA7gTQiz8B14m5hJbSd82">急救</td><td data-page-node-id="uPr1k6MWr2lUOWRHRyBRPg">120</td></tr>
+      <tr data-page-node-id="tL535SfEHGBbsltSBd1LEW"><td data-page-node-id="5X76C5OKQIS3uu9AkssXBH">火警</td><td data-page-node-id="eYAG9e7d5R5AWLR6bAD1Yy">119</td></tr>
+      <tr data-page-node-id="iqhOFEQGXanTvIrqrrxpbf"><td data-page-node-id="AVg7PYkVdCv2QyECCFldPm">摩旅救援</td><td data-page-node-id="SSbyusAzCoGZZSfXocao5x"><strong data-page-node-id="ggTxo9QVlAUWyuMsINVRJH">中国摩旅协会</strong>公众号实时</td></tr>
+      <tr data-page-node-id="5Ct0vWOhTkNtBjtpFBGjkP"><td data-page-node-id="AONeL6faYMdHgM9qMp6Fu7">旅途天气</td><td data-page-node-id="2keiYBzwxUrXngaVEChNAr"><strong data-page-node-id="pRIzxCIw3BHA5nwywMiejr">中央气象台</strong>小程序 + 墨迹天气</td></tr>
+    </tbody>
+  </table>
+
+  <div class="doc-footer" data-page-node-id="O25eAAJwh65ALYT9Zmss3m">
+    ✦ 文档版本 v1.0 · 2026.09 · 摩旅方案 ✦ 5 天 4 晚精华版 ✦
+  </div>
+</section>
+
+</body>
+</html>

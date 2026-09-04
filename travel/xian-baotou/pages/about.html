@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>关于 · 西安→包头摩旅</title>
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin: 40px 0;
+}
+
+@media (max-width: 760px) { .about-grid { grid-template-columns: 1fr; } }
+
+.token-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.token-card {
+  padding: 20px;
+  background: var(--c-bg);
+  border-radius: var(--radius-md);
+  border: 1.5px solid rgba(0,0,0,0.06);
+  text-align: center;
+}
+
+.token-swatch {
+  width: 60px; height: 60px;
+  border-radius: var(--radius-md);
+  margin: 0 auto 12px;
+  box-shadow: var(--shadow-sm);
+}
+
+.token-card .token-name {
+  font-family: var(--ff-accent);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--c-tertiary);
+}
+
+.token-card .token-hex {
+  font-family: var(--ff-accent);
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--c-text-soft);
+  margin-top: 4px;
+}
+
+.faq-item {
+  margin: 14px 0;
+  padding: 18px 22px;
+  background: var(--c-bg);
+  border: 1.5px solid rgba(0,0,0,0.06);
+  border-radius: var(--radius-md);
+}
+
+.faq-item h4 {
+  font-size: 16px;
+  margin-bottom: 6px;
+  color: var(--c-primary);
+}
+
+.faq-item p {
+  font-size: 14.5px;
+  color: var(--c-text-soft);
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      🏍️ <span class="logo-mark">西安→包头</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html">首页</a></li>
+      <li><a href="overview.html">行程概览</a></li>
+      <li><a href="days.html">每日打卡</a></li>
+      <li><a href="manual.html">路线手册</a></li>
+      <li><a href="budget.html">预算清单</a></li>
+      <li><a href="gear.html">装备 & 安全</a></li>
+      <li><a href="about.html" class="active">关于</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-banner">
+  <div class="eyebrow">ABOUT · 关于本方案</div>
+  <h1>关于</h1>
+  <p>一个为摩旅人而设的方案<br>用 marketing-doc 的视觉温度，重新组织一份实用的旅行手册</p>
+</header>
+
+<section class="section section-light">
+
+  <div class="about-grid">
+    <div class="card">
+      <h3>🎨 设计令牌</h3>
+      <p>本方案的所有视觉来自营销主题（creative-marketing）配色 —— 活力橙 / 霓虹粉 / 神秘紫的渐变组合，被设计用于"活动方案"和"品牌营销"场景。我们认为摩旅也属于这类场景：<strong>有活力、有节奏、有故事</strong>。</p>
+      <p style="margin-top: 12px;">所有页面基于 <code style="background: var(--c-bg-soft); padding: 2px 8px; border-radius: 4px;">assets/style.css</code> 共享变量。改一个颜色，所有页面同步变化。</p>
+    </div>
+
+    <div class="card">
+      <h3>📐 信息架构</h3>
+      <p>七个页面按"吸引 → 规划 → 落地 → 决策 → 行动"的漏斗排列：</p>
+      <ul style="list-style: none; margin-top: 14px; line-height: 2;">
+        <li>🏠 <strong>首页</strong> —— 5 秒内决定"我要去"</li>
+        <li>🗺️ <strong>行程概览</strong> —— 鸟瞰地图 + 时间轴</li>
+        <li>📍 <strong>每日打卡</strong> —— 一日一卡，5+3 张</li>
+        <li>📖 <strong>路线手册</strong> —— 落地执行的完整指南</li>
+        <li>💰 <strong>预算清单</strong> —— 决策后盾，透明到每一元</li>
+        <li>🧰 <strong>装备 & 安全</strong> —— 出发前最后一道防线</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📊 数据来源</h3>
+      <ul style="list-style: none; margin-top: 12px;">
+        <li>📏 <strong>里程 / 高速</strong>：高德地图 + 百度地图核实</li>
+        <li>⛽ <strong>油价</strong>：2026 年 9 月陕西 / 内蒙段均价</li>
+        <li>🏨 <strong>住宿</strong>：美团 / 携程 2025 年旺季均价</li>
+        <li>🎫 <strong>门票</strong>：景区官方 2024–2026 价格</li>
+        <li>📅 <strong>天气</strong>：历史月均气温（中央气象台）</li>
+      </ul>
+      <p style="margin-top: 12px; font-size: 13px; color: var(--c-text-soft);">⚠️ 价格随季节波动，本方案为标准版参考预算</p>
+    </div>
+
+    <div class="card">
+      <h3>🔄 版本迭代</h3>
+      <ul style="list-style: none; margin-top: 12px; line-height: 1.9;">
+        <li><strong>v1.0</strong> · 2026.09 — 首版：5 天 4 晚精华路线</li>
+        <li>未来计划：3 天压缩版专版、女性骑手安全指南</li>
+        <li>开源：所有 HTML / Markdown 可自由 fork 修改</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 style="text-align: center; margin: 60px 0 8px; font-size: 32px;">🎨 设计令牌：5 个色板</h2>
+  <p style="text-align: center; color: var(--c-text-soft); margin-bottom: 32px;">marketing-doc 主题核心配色 —— 改色只需替换这些变量</p>
+
+  <div class="token-grid">
+    <div class="token-card">
+      <div class="token-swatch" style="background: #FF6B35;"></div>
+      <div class="token-name">primary</div>
+      <div class="token-hex">#FF6B35</div>
+    </div>
+    <div class="token-card">
+      <div class="token-swatch" style="background: #FF3CAC;"></div>
+      <div class="token-name">secondary</div>
+      <div class="token-hex">#FF3CAC</div>
+    </div>
+    <div class="token-card">
+      <div class="token-swatch" style="background: #784BA0;"></div>
+      <div class="token-name">tertiary</div>
+      <div class="token-hex">#784BA0</div>
+    </div>
+    <div class="token-card">
+      <div class="token-swatch" style="background: #2B86C5;"></div>
+      <div class="token-name">quaternary</div>
+      <div class="token-hex">#2B86C5</div>
+    </div>
+    <div class="token-card">
+      <div class="token-swatch" style="background: #F9D649;"></div>
+      <div class="token-name">accent</div>
+      <div class="token-hex">#F9D649</div>
+    </div>
+    <div class="token-card">
+      <div class="token-swatch" style="background: linear-gradient(135deg, #FF6B35 0%, #FF3CAC 50%, #784BA0 100%);"></div>
+      <div class="token-name">hero gradient</div>
+      <div class="token-hex">橙→粉→紫</div>
+    </div>
+  </div>
+
+  <h2 style="text-align: center; margin: 60px 0 8px; font-size: 32px;">💬 常见问题</h2>
+  <p style="text-align: center; color: var(--c-text-soft); margin-bottom: 24px;">整理自摩旅圈最常见疑问</p>
+
+  <div class="faq-item">
+    <h4>Q：没有长途摩旅经验，能直接走这条线吗？</h4>
+    <p>A：建议先做一次 500 km 以下的小长途（如西安→汉中→安康）适应装备和节奏。本方案按新手"5 天节奏"设计，但仍需有 100 km 短途经验。</p>
+  </div>
+
+  <div class="faq-item">
+    <h4>Q：雨季（7–8 月）走有影响吗？</h4>
+    <p>A：陕北 / 内蒙段夏季午后对流雨集中，1-2 h 雨停，但路面湿滑会让长途风险上升。建议优先选 5–6 月或 9–10 月出行。</p>
+  </div>
+
+  <div class="faq-item">
+    <h4>Q：D 证 / E 证 上高速什么规定？</h4>
+    <p>A：<strong>D 证（摩托车驾照）才能上高速</strong>；E 证只能市区内骑。驾龄至少 1 年以上，部分省（市）会查"实习期不得上高速"。</p>
+  </div>
+
+  <div class="faq-item">
+    <h4>Q：加油、内蒙段住宿需要做哪些准备？</h4>
+    <p>A：现金 200 元 + 信用卡 / 银联标志。**蒙段部分中石油 / 加油站只接受现金或刷卡**。住宿可提前在美团 / 携程订连锁，可减少到店排队。</p>
+  </div>
+
+  <div class="faq-item">
+    <h4>Q：本方案能不能直接打印？</h4>
+    <p>A：能。<strong>浏览器打开任意 HTML → ⌘P → 存储为 PDF</strong>，勾选"背景图形"。每个页面的 print 样式已经优化（A4 优先 + 隐藏 navbar / footer）。</p>
+  </div>
+
+  <div class="cta-block" style="margin: 60px 0 0;">
+    <h2 style="font-size: 32px;">🏍️ 从古城到草原</h2>
+    <p>看见首页第一眼，就被一个标题拽进去<br>然后被时间轴 / 每日卡 / 透明预算一节一节说服</p>
+    <p style="margin-top: 8px; font-size: 14px; opacity: 0.7;">—— 这就是本方案的存在意义</p>
+    <div class="cta-row" style="margin-top: 32px;">
+      <a href="../index.html" class="btn btn-primary">返回首页</a>
+      <a href="budget.html" class="btn btn-secondary">查看预算</a>
+    </div>
+  </div>
+
+</section>
+
+<footer class="footer">
+  <div class="col-grid">
+    <div><h4>站点地图</h4>
+      <ul><li><a href="../index.html">首页</a></li><li><a href="overview.html">行程概览</a></li><li><a href="days.html">每日打卡</a></li></ul>
+    </div>
+    <div><h4>实用工具</h4>
+      <ul><li><a href="manual.html">路线手册</a></li><li><a href="budget.html">预算清单</a></li><li><a href="gear.html">装备 & 安全</a></li></ul>
+    </div>
+  </div>
+  <p class="copyright">© 2026 西安→包头摩旅方案 · 基于 design-token · v1.0</p>
+</footer>
+
+</body>
+</html>

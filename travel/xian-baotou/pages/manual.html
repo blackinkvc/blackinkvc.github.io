@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>路线手册 · 西安→包头摩旅</title>
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+.toc {
+  background: var(--c-bg);
+  border: 1.5px solid rgba(0,0,0,0.06);
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  margin: 0 auto 60px;
+  max-width: 720px;
+}
+
+.toc h3 {
+  font-size: 18px;
+  margin-bottom: 14px;
+  color: var(--c-tertiary);
+}
+
+.toc ol {
+  columns: 2;
+  column-gap: 24px;
+  list-style-position: inside;
+  padding-left: 0;
+}
+
+.toc li {
+  padding: 6px 0;
+  font-size: 14.5px;
+  break-inside: avoid;
+}
+
+.toc li a {
+  color: var(--c-text);
+  font-weight: 500;
+  transition: color .2s;
+}
+
+.toc li a:hover { color: var(--c-primary); }
+
+h2.manual-h2 {
+  text-align: left;
+  font-size: 28px;
+  margin: 60px 0 20px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid var(--c-primary);
+}
+
+.manual-h2 .num {
+  font-family: var(--ff-accent);
+  font-weight: 800;
+  font-size: 20px;
+  background: var(--c-grad-warm);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-right: 12px;
+}
+
+.day-full {
+  background: var(--c-bg);
+  border: 1.5px solid rgba(0,0,0,0.06);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: 28px;
+}
+
+.day-full-head {
+  padding: 24px 28px;
+  color: white;
+  background: var(--c-grad-warm);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.day-full.d2 .day-full-head { background: linear-gradient(135deg, #FF6B35 0%, #FF3CAC 100%); }
+.day-full.d3 .day-full-head { background: linear-gradient(135deg, #FF3CAC 0%, #C13C9E 100%); }
+.day-full.d4 .day-full-head { background: linear-gradient(135deg, #C13C9E 0%, #784BA0 100%); }
+.day-full.d5 .day-full-head { background: linear-gradient(135deg, #784BA0 0%, #2B86C5 100%); }
+
+.day-full-head .left h3 {
+  font-size: 24px;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 4px;
+}
+
+.day-full-head .right {
+  font-family: var(--ff-accent);
+  font-weight: 700;
+  font-size: 16px;
+  background: rgba(255,255,255,0.2);
+  padding: 8px 16px;
+  border-radius: 999px;
+  backdrop-filter: blur(8px);
+}
+
+.day-full-body {
+  padding: 32px 28px;
+}
+
+.day-full h4 {
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--c-primary);
+  margin: 20px 0 8px;
+}
+
+.day-full h4:first-child { margin-top: 0; }
+
+.day-full ul {
+  list-style: none;
+  padding: 0;
+}
+
+.day-full ul li {
+  padding: 5px 0;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  line-height: 1.7;
+  font-size: 14.5px;
+}
+
+.day-full ul li::before {
+  content: '▸';
+  color: var(--c-primary);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.day-full .quote {
+  margin-top: 16px;
+  padding: 14px 18px;
+  background: linear-gradient(135deg, #FFF8E1 0%, #FFEFD5 100%);
+  border-left: 5px solid var(--c-accent);
+  border-radius: var(--radius-md);
+  font-style: italic;
+  font-size: 14.5px;
+  color: #1A1A2E;
+}
+
+.tier-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 24px 0;
+}
+
+@media (max-width: 720px) { .tier-list { grid-template-columns: 1fr; } }
+
+.tier-card {
+  text-align: center;
+  padding: 24px 16px;
+  background: var(--c-bg);
+  border-radius: var(--radius-lg);
+  border: 2px solid rgba(0,0,0,0.06);
+}
+
+.tier-card.basic { border-color: #66BB6A; }
+.tier-card.standard { border-color: var(--c-accent); }
+.tier-card.luxury { border-color: #EC407A; }
+
+.tier-card .price {
+  font-family: var(--ff-accent);
+  font-weight: 800;
+  font-size: 32px;
+  background: var(--c-grad-warm);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.tier-card .name { font-weight: 700; font-size: 16px; margin: 6px 0; }
+.tier-card .desc { font-size: 13px; color: var(--c-text-soft); margin-top: 10px; line-height: 1.5; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      🏍️ <span class="logo-mark">西安→包头</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html">首页</a></li>
+      <li><a href="overview.html">行程概览</a></li>
+      <li><a href="days.html">每日打卡</a></li>
+      <li><a href="manual.html" class="active">路线手册</a></li>
+      <li><a href="budget.html">预算清单</a></li>
+      <li><a href="gear.html">装备 & 安全</a></li>
+      <li><a href="about.html">关于</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-banner">
+  <div class="eyebrow">ROUTE MANUAL · 路线手册</div>
+  <h1>完整路线手册</h1>
+  <p>5 天 4 晚精华版 · 1,180 km · 11 章 · 5+3 张卡 · 1 张 checklist<br>归档本，任何时刻拿起来就能用</p>
+</header>
+
+<section class="section section-light">
+
+  <!-- ===== 目录 ===== -->
+  <div class="toc">
+    <h3>📋 本手册目录</h3>
+    <ol>
+      <li><a href="#sec1">总览速览</a></li>
+      <li><a href="#sec2">每日行程详解</a></li>
+      <li><a href="#sec3">3 天压缩版</a></li>
+      <li><a href="#sec4">装备清单</a></li>
+      <li><a href="#sec5">季节天气</a></li>
+      <li><a href="#sec6">安全提醒</a></li>
+      <li><a href="#sec7">进阶玩法</a></li>
+      <li><a href="#sec8">沿途美食</a></li>
+      <li><a href="#sec9">紧急联系</a></li>
+      <li><a href="#sec10">出发前 checklist</a></li>
+      <li><a href="#sec11">预算概览</a></li>
+    </ol>
+  </div>
+
+  <!-- ===== 一、总览 ===== -->
+  <h2 class="manual-h2" id="sec1"><span class="num">01</span>总览速览</h2>
+
+  <div class="kpi-strip">
+    <div class="kpi"><div class="ico">📏</div><div class="num">1,180</div><div class="lbl">km 全程</div></div>
+    <div class="kpi"><div class="ico">📅</div><div class="num">5</div><div class="lbl">天 4 晚</div></div>
+    <div class="kpi"><div class="ico">💰</div><div class="num">¥2,600</div><div class="lbl">元 / 人</div></div>
+    <div class="kpi"><div class="ico">🌡️</div><div class="num">5–10月</div><div class="lbl">最佳季节</div></div>
+  </div>
+
+  <div class="callout">
+    <strong>📋 路线骨架</strong>
+    G70 福银 → G65 包茂高速 → G20 二广 → S22 / S31。证件：身份证 + D 证（摩托）+ 行驶证 + 交强险。
+  </div>
+
+  <!-- ===== 二、每日行程 ===== -->
+  <h2 class="manual-h2" id="sec2"><span class="num">02</span>每日行程详解</h2>
+
+  <div class="day-full d1">
+    <div class="day-full-head">
+      <div class="left"><h3>Day 1 · 西安 → 咸阳 → 铜川</h3></div>
+      <div class="right">📏 140 km · ⏱ 3 h · 🟢 暖身段</div>
+    </div>
+    <div class="day-full-body">
+      <h4>路线</h4>
+      <ul>
+        <li>西安市 → 河堤路 / 福银高速入口 → 三原（午餐）→ 铜川新区</li>
+      </ul>
+
+      <h4>避坑要点</h4>
+      <ul>
+        <li>西安 / 咸阳市区有<strong>摩托限行段</strong>（早 7–9、晚 5–8），走河堤路或北三环绕城进 G70 入口</li>
+        <li>三原县下 G65 高速转 S107 / S208 到铜川（绕开耀州区限行）</li>
+      </ul>
+
+      <h4>午餐推荐</h4>
+      <ul>
+        <li>🥟 三原泡泡油糕、疙瘩面、笼笼肉夹馍</li>
+      </ul>
+
+      <h4>可选折返</h4>
+      <ul>
+        <li>🏯 <strong>乾陵</strong>（唐高宗 + 武则天合葬墓，三原北约 30 km）—— 想看需 + 半日</li>
+      </ul>
+
+      <h4>夜宿</h4>
+      <ul>
+        <li>铜川新区 / 耀州区（连锁酒店 ~150 元）</li>
+      </ul>
+
+      <div class="quote">💡 今日重点：暖身段，不赶路。重点适应装备、路线节奏、机油温度。</div>
+    </div>
+  </div>
+
+  <div class="day-full d2">
+    <div class="day-full-head">
+      <div class="left"><h3>Day 2 · 铜川 → 延安</h3></div>
+      <div class="right">📏 200 km · ⏱ 3 h · 🟢 最轻松</div>
+    </div>
+    <div class="day-full-body">
+      <h4>路线</h4>
+      <ul>
+        <li>铜川 → G65 包茂高速 → 洛川 / 黄陵 → 延安</li>
+      </ul>
+
+      <h4>路况</h4>
+      <ul>
+        <li>G65 全程高速，路况极好，<strong>全程最轻松的一天</strong></li>
+      </ul>
+
+      <h4>途经亮点</h4>
+      <ul>
+        <li>🛕 <strong>黄帝陵</strong>（黄陵县出口 5 km）：古柏 + 沮河景观；05:30 出发可 + 半日</li>
+        <li>📍 <strong>洛川会议旧址</strong>：高速沿线，免门票快速参观</li>
+      </ul>
+
+      <h4>延安必看</h4>
+      <ul>
+        <li>🗼 <strong>宝塔山</strong>（标志性）/ 杨家岭 / 枣园 / 革命纪念馆</li>
+        <li>🍜 美食：荞面饸饹、羊肉面、子长煎饼</li>
+      </ul>
+
+      <h4>夜宿</h4>
+      <ul>
+        <li>延安市区（~180 元，<strong>避开枣园片区选市中心</strong>）</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="day-full d3">
+    <div class="day-full-head">
+      <div class="left"><h3>Day 3 · 延安 → 靖边波浪谷 → 榆林</h3></div>
+      <div class="right">📏 420 km · ⏱ 5.5 h · ⚠️ 最长段</div>
+    </div>
+    <div class="day-full-body">
+      <h4>路线</h4>
+      <ul>
+        <li>延安 → G65 包茂高速 → 靖边下 → 波浪谷（60 km 折返）→ 靖边上 G20 → 榆林</li>
+      </ul>
+
+      <h4>关键提醒</h4>
+      <ul>
+        <li>今日为全线最长，<strong>早 7:00 出发</strong></li>
+        <li>靖边下高速后 22 km 龙洲乡，摩托可驶入景区外围</li>
+      </ul>
+
+      <h4>靖边波浪谷（龙洲丹霞地貌）</h4>
+      <ul>
+        <li>中国版"波浪谷"，丹霞纹路令人震撼</li>
+        <li>摄影最佳时段：<strong>下午 2–4 点</strong>光线斜射呈红色纹路</li>
+        <li>游览 1.5–2 h，务必下午 3 点前离开</li>
+      </ul>
+
+      <h4>榆林必看</h4>
+      <ul>
+        <li>🌅 <strong>红石峡</strong>（夕阳时最美）/ 镇北台 / <strong>榆林古城骑楼夜景</strong></li>
+        <li>🍜 美食：榆林豆腐、剁荞面、羊杂碎</li>
+      </ul>
+
+      <h4>夜宿</h4>
+      <ul>
+        <li>榆林古城周边（~200 元）</li>
+      </ul>
+
+      <div class="quote">⚠️ 必在 4 PM 前离开波浪谷，迎接今日最长段的余下路段。</div>
+    </div>
+  </div>
+
+  <div class="day-full d4">
+    <div class="day-full-head">
+      <div class="left"><h3>Day 4 · 榆林 → 鄂尔多斯</h3></div>
+      <div class="right">📏 280 km · ⏱ 4 h · 🟡 横风段</div>
+    </div>
+    <div class="day-full-body">
+      <h4>路线</h4>
+      <ul>
+        <li>榆林 → G20 → 蒙陕界收费站（出陕入蒙）→ 鄂尔多斯（康巴什）</li>
+      </ul>
+
+      <h4>跨省提醒</h4>
+      <ul>
+        <li>出陕入蒙<strong>限速从 100 升到 120</strong>，区间测速密集</li>
+        <li>蒙段<strong>横风强</strong>，双手不离把，过路牌与货车时格外注意</li>
+        <li>景观切换：毛乌素沙地 → 丘陵草原，视野突然开阔</li>
+      </ul>
+
+      <h4>午后抵鄂尔多斯，直奔成吉思汗陵</h4>
+      <ul>
+        <li>康巴什东南 40 km（甘德利草原）</li>
+        <li>八白室 + 蒙古族建筑群，1.5 h 足够</li>
+      </ul>
+
+      <h4>夜宿 · 康巴什区（新区）</h4>
+      <ul>
+        <li>晚上 8 点出来看亚洲最大<strong>音乐喷泉广场</strong>（灯光秀）</li>
+        <li>标间 ~250 元，5 星反而常 300 出头</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="day-full d5">
+    <div class="day-full-head">
+      <div class="left"><h3>Day 5 · 鄂尔多斯 → 响沙湾 → 包头 🎉</h3></div>
+      <div class="right">📏 150 km · ⏱ 3 h · 🏁 终点</div>
+    </div>
+    <div class="day-full-body">
+      <h4>路线</h4>
+      <ul>
+        <li>康巴什 → G65 北上 → 响沙湾 → 包头</li>
+      </ul>
+
+      <h4>上午：直奔响沙湾（康巴什北上 110 km）</h4>
+      <ul>
+        <li>中国三大响沙之一，沙子会"唱歌"</li>
+        <li>推荐：骑骆驼、滑沙、沙漠越野车（<strong>套票 ~300 元</strong>含项目）</li>
+        <li>摩托可直达景区停车场</li>
+      </ul>
+
+      <h4>下午：1 点出发包头</h4>
+      <ul>
+        <li>G65 北上 1.5 h 抵终点</li>
+      </ul>
+
+      <h4>庆功</h4>
+      <ul>
+        <li>🍖 包头昆都仑区夜市 / 阿尔丁广场周边烤全羊</li>
+      </ul>
+
+      <div class="quote">🏁 终点也是开始 —— 这一路你不再是从前那个骑手。</div>
+    </div>
+  </div>
+
+  <!-- ===== 三、3 天压缩版 ===== -->
+  <h2 class="manual-h2" id="sec3"><span class="num">03</span>3 天 2 晚压缩版</h2>
+
+  <p style="color: var(--c-text-soft); margin-bottom: 16px;">老手可压缩到 3 天，但每日 380+ km 对装备和体力要求更高。</p>
+
+  <table>
+    <thead>
+      <tr><th>日</th><th>路段</th><th>km</th><th>关键动作</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>D1</strong></td><td>西安 → 铜川 → 延安</td><td>380</td><td>早 6:00 出发，过路型</td></tr>
+      <tr><td><strong>D2</strong></td><td>延安 → 波浪谷 → 榆林</td><td>420</td><td>波浪谷 2 h 后直奔榆林</td></tr>
+      <tr><td><strong>D3</strong></td><td>榆林 → 鄂尔多斯 → 响沙湾 → 包头</td><td>430</td><td>早 6:00，<strong>晚上 7 点前必到包头</strong></td></tr>
+    </tbody>
+  </table>
+
+  <!-- ===== 四、装备 ===== -->
+  <h2 class="manual-h2" id="sec4"><span class="num">04</span>装备清单</h2>
+
+  <div class="callout">
+    <strong>📋 完整装备清单见 → <a href="gear.html">装备 & 安全</a></strong>，本章只保留核心四类（文件 / 服装 / 摩托保养 / 随车工具）。
+  </div>
+
+  <div class="card">
+    <h4>📂 文件</h4>
+    <ul>
+      <li>身份证 + <strong>D 证</strong>（摩旅必须 D；E 证只能市区骑）+ 行驶证 + 交强险贴</li>
+      <li>建议打印一份副本（防雨淋模糊）</li>
+    </ul>
+
+    <h4>👕 服装（昼夜温差 10–18°C）</h4>
+    <ul>
+      <li><strong>全盔</strong>（半盔高速横风危险）</li>
+      <li>拉力服 / 夏季骑行服 + 抓绒内胆（高海拔段早晚冷）</li>
+      <li>防风骑行手套（秋冬款）+ 防滑骑行靴（过脚踝）</li>
+      <li><strong>分体雨衣</strong>（陕北阵雨说来就来）</li>
+      <li>颈巾 + 速干内层（多带一套）</li>
+    </ul>
+
+    <h4>🔧 摩托保养（出发前必做）</h4>
+    <ul>
+      <li>机油 + 链条润滑 + 刹车片检查</li>
+      <li>胎压略加（长途 + 0.1 bar）</li>
+      <li>必备：电动打气筒（小米米家款）+ 补胎工具 + 备用火花塞 + 备用保险丝</li>
+    </ul>
+
+    <h4>⛽ 加油策略</h4>
+    <ul>
+      <li>油表 1/3 即找站（G65 全程中石化 / 中石油充足）</li>
+      <li>内蒙段备<strong>200 元现金</strong>（偏远站扫码偶有失灵）</li>
+    </ul>
+  </div>
+
+  <!-- ===== 五、季节 ===== -->
+  <h2 class="manual-h2" id="sec5"><span class="num">05</span>季节 / 天气</h2>
+
+  <div class="callout">
+    <strong>⚠️ 11–3 月不推荐</strong>，路面结冰 + 横风极强 + 气温低至 -20°C，标准摩旅难度。最佳是 <strong>5 月底 – 6 月 / 9 月 – 10 月初</strong>。
+  </div>
+
+  <table>
+    <thead>
+      <tr><th>月份</th><th>西安</th><th>延安</th><th>榆林</th><th>鄂尔多斯</th><th>推荐度</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>5–6 月</strong></td><td>25°C</td><td>22°C</td><td>18°C</td><td>15°C</td><td>✅ <strong>最佳</strong></td></tr>
+      <tr><td>7–8 月</td><td>35°C</td><td>30°C</td><td>28°C</td><td>26°C</td><td>⚠️ 防晒、防午后雷阵雨</td></tr>
+      <tr><td><strong>9–10 月</strong></td><td>22°C</td><td>18°C</td><td>14°C</td><td>10°C</td><td>✅ <strong>最佳</strong></td></tr>
+      <tr><td>11–3 月</td><td>-5~10°C</td><td>-10~5°C</td><td>-15~0°C</td><td>-20~-5°C</td><td>❌ 不推荐</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ===== 六、安全 ===== -->
+  <h2 class="manual-h2" id="sec6"><span class="num">06</span>安全提醒</h2>
+
+  <p style="color: var(--c-text-soft); margin-bottom: 16px;">11 条安全提醒完整版见 → <a href="gear.html">装备 & 安全 / 安全提醒</a>。本章保留 4 条最关键的：</p>
+
+  <div class="card">
+    <ol style="padding-left: 24px; line-height: 2.2;">
+      <li><strong>西安 / 咸阳市区限行</strong> —— 走河堤路或北三环绕开限行段，G70 / G65 入口尽量选绕城段</li>
+      <li><strong>蒙段横风</strong> —— 鄂尔多斯 / 包头段草原开阔带横风剧烈，**双手不离把**，过卡车时尤其警惕</li>
+      <li><strong>区间测速</strong> —— 陕西段小车 100 / 货车 80，蒙段 120 严控</li>
+      <li><strong>通讯</strong> —— 靖边波浪谷段 4G 偏弱、草原段偶有失联，高德 / 百度地图离线包<strong>务必提前下</strong></li>
+    </ol>
+  </div>
+
+  <!-- ===== 七、进阶 ===== -->
+  <h2 class="manual-h2" id="sec7"><span class="num">07</span>进阶玩法（若多 1–2 天）</h2>
+
+  <table>
+    <thead>
+      <tr><th>路线</th><th>位置</th><th>加码玩法</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>壶口瀑布</strong></td><td>延安东南 130 km</td><td>4–5 月"桃花汛"水量最壮观，但雨多</td></tr>
+      <tr><td><strong>红碱淖</strong></td><td>榆林东北 130 km</td><td>中国最大沙漠淡水湖，4 月观遗鸥</td></tr>
+      <tr><td><strong>库布其沙漠</strong></td><td>鄂尔多斯南 50 km</td><td>沙漠越野、沙漠星空露营</td></tr>
+      <tr><td><strong>希拉穆仁草原</strong></td><td>包头北 80 km</td><td>蒙古包住宿 + 那达慕体验</td></tr>
+      <tr><td><strong>五当召</strong></td><td>包头北 60 km</td><td>"小布达拉宫"，藏传佛教寺院</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ===== 八、美食 ===== -->
+  <h2 class="manual-h2" id="sec8"><span class="num">08</span>沿途美食地图</h2>
+
+  <table>
+    <thead>
+      <tr><th>城市</th><th>必尝</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>三原</td><td>🥟 泡泡油糕、疙瘩面</td></tr>
+      <tr><td>铜川</td><td>咸汤面、雪花糖</td></tr>
+      <tr><td>延安</td><td>🍜 荞面饸饹、子长煎饼、羊肉面</td></tr>
+      <tr><td>靖边</td><td>🍲 剁荞面、羊杂碎</td></tr>
+      <tr><td>榆林</td><td>豆腐、剁荞面、米脂婆姨</td></tr>
+      <tr><td>鄂尔多斯</td><td>🍖 烤全羊、手把肉、奶茶</td></tr>
+      <tr><td>包头</td><td>莜面、烤全羊、西部牛仔奶茶</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ===== 九、紧急联系 ===== -->
+  <h2 class="manual-h2" id="sec9"><span class="num">09</span>紧急联系</h2>
+
+  <div class="contacts-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px;">
+    <div class="contact-card" style="padding: 16px; text-align: center; background: var(--c-bg-soft); border-radius: var(--radius-md);">
+      <div style="font-size: 26px;">🚓</div>
+      <div style="font-family: var(--ff-accent); font-size: 24px; font-weight: 800; color: var(--c-primary);">122</div>
+      <div style="font-size: 12px; color: var(--c-text-soft);">交警</div>
+    </div>
+    <div class="contact-card" style="padding: 16px; text-align: center; background: var(--c-bg-soft); border-radius: var(--radius-md);">
+      <div style="font-size: 26px;">🛣️</div>
+      <div style="font-family: var(--ff-accent); font-size: 24px; font-weight: 800; color: var(--c-primary);">12122</div>
+      <div style="font-size: 12px; color: var(--c-text-soft);">高速救援</div>
+    </div>
+    <div class="contact-card" style="padding: 16px; text-align: center; background: var(--c-bg-soft); border-radius: var(--radius-md);">
+      <div style="font-size: 26px;">🚑</div>
+      <div style="font-family: var(--ff-accent); font-size: 24px; font-weight: 800; color: var(--c-primary);">120</div>
+      <div style="font-size: 12px; color: var(--c-text-soft);">急救</div>
+    </div>
+    <div class="contact-card" style="padding: 16px; text-align: center; background: var(--c-bg-soft); border-radius: var(--radius-md);">
+      <div style="font-size: 26px;">🚒</div>
+      <div style="font-family: var(--ff-accent); font-size: 24px; font-weight: 800; color: var(--c-primary);">119</div>
+      <div style="font-size: 12px; color: var(--c-text-soft);">火警</div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>🏍️ 中国摩旅协会</strong>
+    微信公众号实时救援 / 沿途车友互救，建议提前关注。
+  </div>
+
+  <!-- ===== 十、checklist ===== -->
+  <h2 class="manual-h2" id="sec10"><span class="num">10</span>出发前 24 h checklist</h2>
+
+  <div style="background: var(--c-bg); border-radius: var(--radius-lg); padding: 24px 32px; border: 1.5px solid rgba(0,0,0,0.06);">
+    <ul style="list-style: none; line-height: 2.2;">
+      <li>☑️ 整车保养（机油 / 链条 / 刹车）</li>
+      <li>☑️ 胎压检查（长途 + 0.1 bar）</li>
+      <li>☑️ 备齐工具（补胎 / 打气筒 / 火花塞）</li>
+      <li>☑️ 文件齐全（身份证 / D 证 / 行驶证 / 交强险）</li>
+      <li>☑️ 现金 200 元 + 信用卡</li>
+      <li>☑️ 高德 / 百度地图离线包下载</li>
+      <li>☑️ 油表加满</li>
+      <li>☑️ 手机充满 + 充电宝</li>
+      <li>☑️ 拍摄装备（GoPro / 运动相机 / 手机支架）</li>
+    </ul>
+  </div>
+
+  <!-- ===== 十一、预算概览 ===== -->
+  <h2 class="manual-h2" id="sec11"><span class="num">11</span>预算概览</h2>
+
+  <p style="color: var(--c-text-soft); margin-bottom: 16px;">完整预算见 → <a href="budget.html">预算清单</a>。本章保留 3 档对比：</p>
+
+  <div class="tier-list">
+    <div class="tier-card basic">
+      <div style="font-size: 22px;">🌿</div>
+      <div class="name">穷游版</div>
+      <div class="price">¥1,800</div>
+      <div class="desc">青旅 / 多人间 + 简餐，不买纪念品</div>
+    </div>
+    <div class="tier-card standard">
+      <div style="font-size: 22px;">🟢</div>
+      <div class="name">标准版（推荐）</div>
+      <div class="price">¥2,600</div>
+      <div class="desc">连锁 + 一顿特色餐 + 基础纪念品</div>
+    </div>
+    <div class="tier-card luxury">
+      <div style="font-size: 22px;">🌟</div>
+      <div class="name">升级版</div>
+      <div class="price">¥3,800</div>
+      <div class="desc">4 星酒店 + 烤全羊 + 进阶景点</div>
+    </div>
+  </div>
+
+  <div class="cta-block" style="margin: 60px 0 0;">
+    <h2 style="font-size: 32px;">🏍️ 看完了？出发吧</h2>
+    <p style="margin: 16px 0;">把首页置顶，把每日卡贴在冰箱，把这份手册装进手机<br>—— 这一路，从此属于你</p>
+    <div class="cta-row" style="margin-top: 32px;">
+      <a href="days.html" class="btn btn-primary">📍 每日打卡</a>
+      <a href="budget.html" class="btn btn-secondary">💰 看预算</a>
+      <a href="../index.html" class="btn btn-tertiary">🏠 回首页</a>
+    </div>
+  </div>
+
+</section>
+
+<footer class="footer">
+  <div class="col-grid">
+    <div><h4>站点地图</h4>
+      <ul><li><a href="../index.html">首页</a></li><li><a href="overview.html">行程概览</a></li><li><a href="days.html">每日打卡</a></li></ul>
+    </div>
+    <div><h4>实用工具</h4>
+      <ul><li><a href="manual.html">路线手册</a></li><li><a href="budget.html">预算清单</a></li><li><a href="gear.html">装备 & 安全</a></li></ul>
+    </div>
+    <div><h4>关于</h4>
+      <ul><li><a href="about.html">关于本方案</a></li></ul>
+    </div>
+  </div>
+  <p class="copyright">© 2026 西安→包头摩旅方案 · 路线手册 v1.0</p>
+</footer>
+
+</body>
+</html>

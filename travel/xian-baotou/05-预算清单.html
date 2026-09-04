@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="J9uPuUSdgcMpJhpQVOKe5V">
+<head data-page-node-id="vaOX4b4dkfrb83uAq0WknP">
+<meta charset="UTF-8" data-page-node-id="3WXUUDZvp2uPXN6xUwOabS">
+<title>西安→包头 摩旅 · 预算清单</title>
+<meta name="docx-page-size" content="A4" data-page-node-id="iOb8Y5cfdyrAURYmR4WOS4">
+<style>
+:root {
+  --color-primary: #FF6B35;
+  --color-secondary: #FF3CAC;
+  --color-tertiary: #784BA0;
+  --color-quaternary: #2B86C5;
+  --color-accent: #F9D649;
+  --color-text: #1A1A2E;
+  --color-textLight: #F8F8F8;
+  --color-bg-soft: #FFF5EF;
+  --color-success: #06A77D;
+  --ff-heading: 阿里巴巴普惠体, PingFang SC, 微软雅黑, sans-serif;
+  --ff-body: PingFang SC, 微软雅黑, sans-serif;
+  --ff-accent: Poppins, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+@page {
+  size: A4;
+  margin: 1.8cm;
+  @bottom-center {
+    content: "第 " counter(page) " 页 / 共 " counter(pages) " 页";
+    font-family: var(--ff-accent);
+    font-size: 9pt;
+    color: #888;
+  }
+}
+
+@page cover { @bottom-center { content: none; } }
+
+body {
+  font-family: var(--ff-body);
+  font-size: 11pt;
+  color: var(--color-text);
+  background: white;
+  max-width: 17.4cm;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+section { page-break-after: always; }
+section:last-child { page-break-after: auto; }
+
+/* ============ 封面 ============ */
+section[role="cover"] {
+  page: cover;
+  text-align: center;
+  padding: 2.5cm 0 1cm 0;
+}
+
+.cover-eyebrow {
+  color: var(--color-primary);
+  font-family: var(--ff-accent);
+  font-weight: 700;
+  letter-spacing: 6px;
+  font-size: 11pt;
+  text-transform: uppercase;
+  margin-bottom: 1.5cm;
+}
+
+.cover-title {
+  font-family: var(--ff-heading);
+  font-size: 42pt;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  background: linear-gradient(135deg, #FF6B35 0%, #FF3CAC 50%, #784BA0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.3cm;
+}
+
+.cover-subtitle {
+  font-family: var(--ff-heading);
+  font-size: 17pt;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 1.5cm;
+}
+
+.total-card {
+  display: inline-block;
+  margin: 1cm 0;
+  padding: 28px 50px;
+  background: linear-gradient(135deg, #FFE8E8 0%, #FFD8E8 50%, #E8D8F0 100%);
+  border-radius: 18px;
+  border: 2.5px dashed var(--color-primary);
+}
+
+.total-card .label {
+  font-family: var(--ff-accent);
+  font-size: 11pt;
+  letter-spacing: 4px;
+  color: var(--color-tertiary);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.total-card .amount {
+  font-family: var(--ff-accent);
+  font-size: 60pt;
+  font-weight: 800;
+  color: var(--color-primary);
+  line-height: 1;
+  letter-spacing: -2px;
+}
+
+.total-card .suffix {
+  font-family: var(--ff-heading);
+  font-size: 16pt;
+  color: var(--color-text);
+  margin-top: 4px;
+}
+
+.cover-tags {
+  margin-top: 0.5cm;
+  font-size: 10pt;
+  color: #555;
+}
+
+.cover-tags .tag {
+  display: inline-block;
+  background: white;
+  border: 1.5px solid var(--color-primary);
+  padding: 3px 12px;
+  border-radius: 14px;
+  margin: 0 4px;
+}
+
+.cover-tags .tag b { color: var(--color-primary); }
+
+/* ============ 通用 ============ */
+h1 {
+  font-family: var(--ff-heading);
+  font-size: 22pt;
+  font-weight: 800;
+  color: var(--color-tertiary);
+  margin: 0.6cm 0 0.4cm;
+  padding-bottom: 8px;
+  border-bottom: 3px solid var(--color-primary);
+}
+
+h2 {
+  font-family: var(--ff-heading);
+  font-size: 15pt;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin: 0.5cm 0 0.3cm;
+  padding-left: 14px;
+  border-left: 5px solid var(--color-primary);
+}
+
+h3 {
+  font-family: var(--ff-heading);
+  font-size: 12pt;
+  font-weight: 700;
+  color: var(--color-quaternary);
+  margin: 0.3cm 0 0.2cm;
+}
+
+p { margin: 0.25cm 0; }
+
+/* ============ 4 大类 KPI ============ */
+.kpi-grid {
+  margin: 0.3cm 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.kpi {
+  flex: 1 1 calc(50% - 6px);
+  padding: 14px 18px;
+  background: var(--color-bg-soft);
+  border-radius: 10px;
+  border-left: 5px solid var(--color-primary);
+}
+
+.kpi:nth-child(2) { border-left-color: var(--color-secondary); }
+.kpi:nth-child(3) { border-left-color: var(--color-tertiary); }
+.kpi:nth-child(4) { border-left-color: var(--color-quaternary); }
+
+.kpi .ico { font-size: 16pt; display: block; margin-bottom: 2px; }
+.kpi .num {
+  font-family: var(--ff-accent);
+  font-size: 22pt;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--color-primary);
+}
+
+.kpi:nth-child(2) .num { color: var(--color-secondary); }
+.kpi:nth-child(3) .num { color: var(--color-tertiary); }
+.kpi:nth-child(4) .num { color: var(--color-quaternary); }
+
+.kpi .lbl {
+  font-size: 9.5pt;
+  color: #666;
+  margin-top: 3px;
+}
+
+/* ============ 占比条 ============ */
+.bar-chart { margin: 0.4cm 0; }
+
+.bar-row {
+  display: flex;
+  align-items: center;
+  margin: 6px 0;
+  font-size: 10.5pt;
+}
+
+.bar-label {
+  width: 25%;
+  font-family: var(--ff-heading);
+  font-weight: 600;
+}
+
+.bar-track {
+  flex: 1;
+  height: 22px;
+  background: #f5f5f5;
+  border-radius: 11px;
+  overflow: hidden;
+  margin: 0 10px;
+  position: relative;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 8px;
+  color: white;
+  font-family: var(--ff-accent);
+  font-weight: 700;
+  font-size: 9.5pt;
+  letter-spacing: 0.5px;
+}
+
+.bar-pct {
+  width: 38px;
+  text-align: right;
+  font-family: var(--ff-accent);
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+/* ============ 表格 ============ */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.4cm 0;
+  font-size: 10.5pt;
+  page-break-inside: avoid;
+}
+
+th {
+  background: linear-gradient(135deg, #FF6B35 0%, #FF3CAC 50%, #784BA0 100%);
+  color: white;
+  padding: 10px 8px;
+  text-align: left;
+  font-family: var(--ff-heading);
+  font-weight: 700;
+  font-size: 10.5pt;
+}
+
+td {
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+tr:nth-child(even) td {
+  background: var(--color-bg-soft);
+}
+
+td.amount {
+  font-family: var(--ff-accent);
+  font-weight: 700;
+  color: var(--color-primary);
+  text-align: right;
+}
+
+td strong { color: var(--color-primary); }
+
+/* ============ 3 档对比卡片 ============ */
+.tier-row {
+  margin: 0.4cm 0;
+  display: flex;
+  gap: 8px;
+}
+
+.tier {
+  flex: 1;
+  padding: 16px 14px;
+  border-radius: 12px;
+  text-align: center;
+  page-break-inside: avoid;
+}
+
+.tier.basic {
+  background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+  border: 2px solid #66BB6A;
+}
+
+.tier.standard {
+  background: linear-gradient(135deg, #FFF8E1 0%, #FFEFD5 100%);
+  border: 2.5px solid var(--color-accent);
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(249, 214, 73, 0.3);
+}
+
+.tier.luxury {
+  background: linear-gradient(135deg, #FCE4EC 0%, #F8BBD0 100%);
+  border: 2px solid #EC407A;
+}
+
+.tier .ico { font-size: 18pt; }
+.tier .name {
+  font-family: var(--ff-heading);
+  font-size: 13pt;
+  font-weight: 700;
+  margin: 4px 0;
+  color: var(--color-text);
+}
+
+.tier .price {
+  font-family: var(--ff-accent);
+  font-size: 24pt;
+  font-weight: 800;
+  color: var(--color-primary);
+  line-height: 1;
+}
+
+.tier .price::after {
+  content: " 元";
+  font-size: 11pt;
+  color: #888;
+  font-weight: 600;
+}
+
+.tier .desc {
+  font-size: 9.5pt;
+  color: #555;
+  margin-top: 6px;
+  line-height: 1.5;
+}
+
+/* ============ Callout ============ */
+.callout {
+  margin: 0.4cm 0;
+  padding: 14px 18px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #FFF8E1 0%, #FFEFD5 100%);
+  border-left: 5px solid var(--color-accent);
+}
+
+.callout strong {
+  color: #B45309;
+  font-family: var(--ff-heading);
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* ============ 速算卡 ============ */
+.cheatsheet {
+  margin: 0.5cm 0;
+  padding: 18px 20px;
+  background: var(--color-text);
+  color: var(--color-textLight);
+  border-radius: 12px;
+  font-family: var(--ff-accent);
+}
+
+.cheatsheet h3 {
+  color: var(--color-accent);
+  font-family: var(--ff-heading);
+  font-size: 13pt;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+}
+
+.cheatsheet .line {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  font-size: 10.5pt;
+  border-bottom: 1px dashed #444;
+}
+
+.cheatsheet .line:last-child { border: none; }
+
+.cheatsheet .line .val { color: var(--color-accent); font-weight: 700; }
+
+.cheatsheet .total {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 2px solid var(--color-primary);
+  font-size: 14pt;
+  font-weight: 800;
+}
+
+.cheatsheet .total .val { color: var(--color-primary); }
+
+.doc-footer {
+  margin-top: 1cm;
+  padding-top: 0.3cm;
+  border-top: 1.5px dashed var(--color-primary);
+  font-size: 9pt;
+  color: #888;
+  text-align: center;
+  font-family: var(--ff-accent);
+  letter-spacing: 1px;
+}
+
+@media print {
+  body { font-size: 10.5pt; }
+}
+</style>
+</head>
+<body data-page-node-id="wHhEK7iK8hs8AC4a3IpoEc">
+
+<!-- ========== COVER ========== -->
+<section role="cover" data-page-node-id="cxmmUQkI98b1uEwyMFlGHv">
+  <div class="cover-eyebrow" data-page-node-id="YiNxB6BLo6T1rutV33viYc">BUDGET · MOTORCYCLE TRIP</div>
+  <h1 class="cover-title" data-page-node-id="s6jtqy52xbf6qJkVAcjkRe">¥ 2,600</h1>
+  <p class="cover-subtitle" data-page-node-id="dbaccfJgopo3hSptMtihMx">1 人 · 5 天 4 晚 · 全程预算</p>
+
+  <div class="total-card" data-page-node-id="MhlA74XB23Xlfx9ZTu5v5l">
+    <div class="label" data-page-node-id="CLzfLBKklbhItiWbgMT4FN">TOTAL BUDGET</div>
+    <div class="amount" data-page-node-id="B08etxYyU5DIomE5VNBMGL">2,600</div>
+    <div class="suffix" data-page-node-id="QE7F4hMKKZdbnivW3miP07">元 / 人</div>
+  </div>
+
+  <div class="cover-tags" data-page-node-id="eNUmODA55Zh87H5acOSrdq">
+    <span class="tag" data-page-node-id="4XxerAM4vbKFD6tq5QT4ui"><b data-page-node-id="ua2Vtve0wS69KzqwSmBaUB">⛽</b> 油费 <b data-page-node-id="XECJoysRRJLsQLU902INui">460</b></span>
+    <span class="tag" data-page-node-id="PFmqUR20w2rQjn88iN7Fs1"><b data-page-node-id="NEJBzEAVlYHKWAq6aQGoTe">🏨</b> 住宿 <b data-page-node-id="6TRivm9OsyZgX2v8f8g3K1">820</b></span>
+    <span class="tag" data-page-node-id="Vg1rxsurdoWYBgRHWS6v0j"><b data-page-node-id="7WNDgFPeQHhPYxnCTD7WL2">🍜</b> 餐饮 <b data-page-node-id="dBvGCZErmGeCnmnuoOki3E">480</b></span>
+    <span class="tag" data-page-node-id="8wDLNwf4HCy0JBpRxJOCkv"><b data-page-node-id="jW3N68f25Ju3987LBwceEC">🎫</b> 门票 <b data-page-node-id="R77yHSp2iZxgBlPipXG6bO">384</b></span>
+    <span class="tag" data-page-node-id="iA26FmfNAGbMNq3V5yqlyE"><b data-page-node-id="dCrBlqWSaFhNgrOqVGAQXM">🛣️</b> 过路 <b data-page-node-id="Gi5ybJVx4dT571FHRW2buw">296</b></span>
+    <span class="tag" data-page-node-id="p2QqDk0wXsWKDzgFypucDG"><b data-page-node-id="OR8E6F9i67OTPHDgLfKprA">🎁</b> 杂费 <b data-page-node-id="YOoUaIi9zI2q8TzGdKDiNB">160</b></span>
+  </div>
+</section>
+
+<!-- ========== 总览 ========== -->
+<section role="body" data-page-restart="1" data-page-node-id="xxFaMyNMzDmy9ARyFldtQf">
+  <h1 data-page-node-id="TRJyZ9ZbfsYljf9Hvf46Cr">一、总览速览</h1>
+
+  <div class="kpi-grid" data-page-node-id="Gk72SsuZvZfYbzaL5yR6Z2">
+    <div class="kpi" data-page-node-id="kLKLTuvAB0MdQpeAfzQCPg">
+      <span class="ico" data-page-node-id="WWNzj8VwWapuyhjBa093uS">📏</span>
+      <div class="num" data-page-node-id="wH3dVmVSLU8WiUATvIGco7">1,180</div>
+      <div class="lbl" data-page-node-id="9rwjIQ8fj60E1kBxFBJTfW">公里全程</div>
+    </div>
+    <div class="kpi" data-page-node-id="fYTnstlyyDOBWxroIAtpvP">
+      <span class="ico" data-page-node-id="AVufjFRNTK784oW2UTdBA0">📅</span>
+      <div class="num" data-page-node-id="8lBFwzWTfCb00AdBqmikXR">5</div>
+      <div class="lbl" data-page-node-id="RfZ447UL32Ahq9pYwwLnD3">推荐天数</div>
+    </div>
+    <div class="kpi" data-page-node-id="Y6N6nKRv1ByfNZhUx0ttS8">
+      <span class="ico" data-page-node-id="EAcj1vy0vSLmAjk416aQ2a">⛽</span>
+      <div class="num" data-page-node-id="HJFlF5ORWBrHhWtpQA0FWL">59L</div>
+      <div class="lbl" data-page-node-id="ubNlfs2j42PS5KHzmim0bX">总耗油（95#）</div>
+    </div>
+    <div class="kpi" data-page-node-id="U4R0Q32tt54mqOZiyHth1G">
+      <span class="ico" data-page-node-id="2kE7wQOGxPjzJ35ejXEKdT">💰</span>
+      <div class="num" data-page-node-id="U8y59Woxy9EELCgw3Hmw7s">2,600</div>
+      <div class="lbl" data-page-node-id="0xW3DDstZs0Zofu9S4VMWd">元/人 总预算</div>
+    </div>
+  </div>
+
+  <h2 data-page-node-id="PMZEf0zMT92itJFNHogfhZ">📊 6 大类金额占比</h2>
+  <div class="bar-chart" data-page-node-id="h9HMgCdLewJ7TiaCSs5VEI">
+    <div class="bar-row" data-page-node-id="yHWsjCgQ4JCXHyoBj4P8SS">
+      <span class="bar-label" data-page-node-id="uk0wcngi8dsUFr6GCLrtD2">🏨 住宿</span>
+      <div class="bar-track" data-page-node-id="IZASUFKzdq5Q4xrzN3QMWu"><div class="bar-fill" style="width:31.5%;background:linear-gradient(90deg,#FF3CAC,#FF6B35);" data-page-node-id="2CzkvI2FpaeVYd83yTXuWa">820</div></div>
+      <span class="bar-pct" data-page-node-id="L4gB1dLu0ap5xXvH4bQ4qh">31.5%</span>
+    </div>
+    <div class="bar-row" data-page-node-id="idjqCei6XPfDyD79uybde9">
+      <span class="bar-label" data-page-node-id="1gTygWsuhWYH5BbvDGizDG">🍜 餐饮</span>
+      <div class="bar-track" data-page-node-id="7Xf1qkncodlRt1rqgBGYPE"><div class="bar-fill" style="width:18.5%;background:linear-gradient(90deg,#FF6B35,#F9D649);" data-page-node-id="yJdiqfoQ2IshVGnp0QVANF">480</div></div>
+      <span class="bar-pct" data-page-node-id="sdAXD5RQNpthNDFxxQx1tU">18.5%</span>
+    </div>
+    <div class="bar-row" data-page-node-id="zh8RcU0gR3JvGEywA8LB3f">
+      <span class="bar-label" data-page-node-id="iySg6HsrCs3tlqUdXD2htj">⛽ 油费</span>
+      <div class="bar-track" data-page-node-id="WGPzapetDIbx0zDiZClqsP"><div class="bar-fill" style="width:17.7%;background:linear-gradient(90deg,#FF6B35,#FF3CAC);" data-page-node-id="f4FscWq0o0MkfBK3nCSoLY">460</div></div>
+      <span class="bar-pct" data-page-node-id="waNiv1XEXmJZ4dbvkfTvCE">17.7%</span>
+    </div>
+    <div class="bar-row" data-page-node-id="8VTzy8KblWSNOmIhQ2HK8a">
+      <span class="bar-label" data-page-node-id="f4C9RUtAe6GYEcpajMWH3M">🛣️ 过路费</span>
+      <div class="bar-track" data-page-node-id="M9XETTP1GTLYPpd7wf101F"><div class="bar-fill" style="width:11.4%;background:linear-gradient(90deg,#2B86C5,#784BA0);" data-page-node-id="VU5jfSrNGdiiozk5p084jr">296</div></div>
+      <span class="bar-pct" data-page-node-id="2tkGpHZ6BHOtE9Qa27AWko">11.4%</span>
+    </div>
+    <div class="bar-row" data-page-node-id="FGYgTrROAFh7YHLbLyh6Vr">
+      <span class="bar-label" data-page-node-id="YI70w9TeEytsHXFbpDCQ4C">🎫 门票</span>
+      <div class="bar-track" data-page-node-id="GWrpSGPMbega74Rb6Gx3Lb"><div class="bar-fill" style="width:14.8%;background:linear-gradient(90deg,#784BA0,#FF3CAC);" data-page-node-id="rpPLcMZNbvxdsyVLzShVrr">384</div></div>
+      <span class="bar-pct" data-page-node-id="BH0K4mKRObqeFR8IKoeT5n">14.8%</span>
+    </div>
+    <div class="bar-row" data-page-node-id="2vaLcHxGvjVtSsGNIwOCxX">
+      <span class="bar-label" data-page-node-id="S4pO3DZVTtxGaIgVMuHvYJ">🎁 杂费</span>
+      <div class="bar-track" data-page-node-id="XlZ1LGo5u30cB3hQUWn1Qc"><div class="bar-fill" style="width:6.1%;background:#999;" data-page-node-id="kfnjEdLz7xvMWt02Maeeh7">160</div></div>
+      <span class="bar-pct" data-page-node-id="VXCgXheNrmPr2bTKreLzgW">6.1%</span>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 油费 + 过路 ========== -->
+<section role="body" data-page-node-id="XeL3AHBR5fhHjajChvlmG1">
+  <h1 data-page-node-id="iAwXGBMuSuRR07cjYEtX1L">二、油费 & 过路费</h1>
+
+  <h2 data-page-node-id="HD2EPDPruF9BjEaJ4QGKgc">⛽ 油费明细</h2>
+  <table data-page-node-id="vuFjFTVtRpivNyQSbIIcNj">
+    <tbody data-page-node-id="l5zwrxkHTHFRvD2fFUsR0C">
+      <tr data-page-node-id="cJ46cYa2W0i7FD6LB1fIRN"><td data-page-node-id="XLdUINcpiqb84mgKpFARD9">总里程</td><td class="amount" data-page-node-id="9TLojdPUa8BTf6nW2OxWkF">1,180 km</td></tr>
+      <tr data-page-node-id="qR50RspPotWwweB1QlEp6k"><td data-page-node-id="xvppPBeblDxDNmoPvU1Dz0">百公里油耗</td><td class="amount" data-page-node-id="i0AIxOIPmSyBkApEglIT8l">5 L</td></tr>
+      <tr data-page-node-id="xGEHTakALeGdfpwPZlvyoU"><td data-page-node-id="zM4t2MIGe9csRnGuL8FQS3">汽油标号</td><td data-page-node-id="6DAX1RIwKgHl4sATGBMbWN"><strong data-page-node-id="3f9bVqYsUNFp9heDnongww">95 号</strong>（推荐；部分摩旅/赛车款需 98）</td></tr>
+      <tr data-page-node-id="xbgDk7Gc5d51f5faBBRMgd"><td data-page-node-id="bIvmYZbZYhGQVYwjpP23YB">油价（陕/蒙段均价）</td><td class="amount" data-page-node-id="qYZwDbBOcSYtNLkpQbEpsi">7.85 元/L</td></tr>
+      <tr data-page-node-id="BNrejwmIjmAmxLi5HTRiAK"><td data-page-node-id="bDI0HVgm1fVYBmqIvSm2aJ"><strong data-page-node-id="cT3bLf6HEzt8dq5NpkqNCY">总耗油</strong></td><td class="amount" data-page-node-id="lC29oN8rh7GhyOOuP9CBjR"><strong data-page-node-id="IWatXlEBigNiPnh9cahn2l">59 L</strong></td></tr>
+      <tr data-page-node-id="r9wewQTdmjwaJeGIbPNprC"><td data-page-node-id="QzSUzPPDxKOylHqDc4Lcs8"><strong data-page-node-id="tRQbJvxn84nHLdoHMuYDTl">总金额</strong></td><td class="amount" data-page-node-id="rLvEUr38qtzrPQpxcgUUzN"><strong data-page-node-id="Nh2uBaYlXUEMbJFDXcNQcV">460 元</strong></td></tr>
+    </tbody>
+  </table>
+
+  <h2 data-page-node-id="GxaKshJaFHY5rkVFi5jU5i">🛣️ 过路费明细</h2>
+  <table data-page-node-id="O563cgh8Au4RCSqpg2dE1K">
+    <thead data-page-node-id="FBWAmWTrLBNgYd9mwScOl7">
+      <tr data-page-node-id="tpD2XaHtPbbI78PELJ1SHI"><th data-page-node-id="HV49x4d7HWotxmmesqWKMm">路段</th><th data-page-node-id="ZIfWt5jkNMxGPQwFJ2Y8h2">高速</th><th class="amount" data-page-node-id="SdHRzDB1uz6mVo2WLsBT6d">摩托估算</th></tr>
+    </thead>
+    <tbody data-page-node-id="YzV1dho4niarGi57HgUmCX">
+      <tr data-page-node-id="DVaUOPo1i7GUhSzxRcLehM"><td data-page-node-id="dtxZpGkwkJFwQMJUSmKEvB">西安 → 铜川</td><td data-page-node-id="aNjUhwBubap8YLESTeFTV2">G70</td><td class="amount" data-page-node-id="wnqt8PGaUdkOXA11GGAC0Q">25 元</td></tr>
+      <tr data-page-node-id="AuvtHoRFTOuOHLbEl9shcb"><td data-page-node-id="6JTggLEt6acYXNwaHYAGUS">铜川 → 延安</td><td data-page-node-id="zLI1ETSBJmUsEb90cRzn4Z">G65</td><td class="amount" data-page-node-id="sSpquMUvsqm6aopTaSQL65">80 元</td></tr>
+      <tr data-page-node-id="vjRspD1kB4N2hIuBaat2qW"><td data-page-node-id="TfCRHq8uypJniVMq4C6p2U">延安 → 榆林</td><td data-page-node-id="ef7wgOzqCX44Fvf2BDzeJS">G65</td><td class="amount" data-page-node-id="2HeFdzjjTM47g8Qd9YnB47">85 元</td></tr>
+      <tr data-page-node-id="ScGaGdrFjgB93dIcg0Lt6V"><td data-page-node-id="GNGMjbzrKK6BtDF7r7UpIp">榆林 → 鄂尔多斯</td><td data-page-node-id="eeFH78uuhUz0IoiFq67sfG">G20</td><td class="amount" data-page-node-id="9yru8oIXyS8nKGpkjeA7n9">50 元</td></tr>
+      <tr data-page-node-id="dKYkduiU9thl3EtFTSfLZ9"><td data-page-node-id="9PkqPDFaQPOG9N0sYSTDcU">鄂尔多斯 → 包头</td><td data-page-node-id="Ip8TMCH46RMOizXmJVZYCp">G65</td><td class="amount" data-page-node-id="hFIDA8iJsaCd3dF9VDZSMR">40 元</td></tr>
+      <tr data-page-node-id="cRfVDdpebUvTsZBx2L2UhH"><td data-page-node-id="TSjZkCyVUfcL5nqO7uFStH"><strong data-page-node-id="VjnUtsXWIubE1MdE5Y9zlU">合计</strong></td><td data-page-node-id="IlPabvenVBdW4AWybnTzbf">—</td><td class="amount" data-page-node-id="qq803YS48EjYSMcFmkgCuG"><strong data-page-node-id="3qw6GM892gYx4742GT0wHk">280 元</strong></td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout" data-page-node-id="xBRW5Fn1hTBAPbOOqx3yQX">
+    <strong data-page-node-id="47WJ2EbyOZKO0Fhm8koXYR">💡 摩托上高速注意</strong>
+    摩托车上高速在陕西 / 内蒙均合法，但 ETC 多省未支持摩托，<strong data-page-node-id="RzFoFuqXyhDeH7IicOnAJS">可能要走人工 M 通道</strong>，备好 16 元现金以防万一。
+  </div>
+</section>
+
+<!-- ========== 住宿 + 餐饮 ========== -->
+<section role="body" data-page-node-id="vtVFYgFk2Df3IeIHoxHTpA">
+  <h1 data-page-node-id="RIrb6zewJTdRj8TEYjHAFJ">三、住宿 & 餐饮</h1>
+
+  <h2 data-page-node-id="ynKqFGygRLi2V1kpXFsbEl">🏨 住宿明细（4 晚）</h2>
+  <table data-page-node-id="StobH4n0pe3mBzX21uABno">
+    <thead data-page-node-id="HH9ascSi46fT74eweY4mp6">
+      <tr data-page-node-id="HIhnnwgzAnf7JURfWsgFZW"><th data-page-node-id="IqnGDfJOodCQZjyi2kG9DR">Day</th><th data-page-node-id="Bhk0RWDbf6yKXPc4MireJP">城市</th><th data-page-node-id="40bPBsTNXPCPvjHoZ60VYF">区域</th><th data-page-node-id="oUeoLzhKMLNpczraPjyFxB">推荐</th><th class="amount" data-page-node-id="hoadQpqZg4wQj6biqBz8Rt">价格</th></tr>
+    </thead>
+    <tbody data-page-node-id="RvebmNXUB6oW177ULsP837">
+      <tr data-page-node-id="odPDPojJVHeZo2P3UxhyLw"><td data-page-node-id="yWvUuGckEbtADoo0DUjkI3">D1</td><td data-page-node-id="KGQPZjzjeLVOlkALwqGZ4u">铜川</td><td data-page-node-id="vXaCov3OHtb0oaptHAIrMi">新区 / 耀州区</td><td data-page-node-id="qZhNF5040AmNdBhtiHfpMP">连锁酒店</td><td class="amount" data-page-node-id="wzSK5SOH3CxGcxmM6dIbNl">150 元</td></tr>
+      <tr data-page-node-id="Yg0T4FcQj4aMEWnoqPnJtt"><td data-page-node-id="lH4tT41Crik5g8V9Lh5Uty">D2</td><td data-page-node-id="ndlfwDa6OOeArH3v91ZsbH">延安</td><td data-page-node-id="dprQlvpDeVZ9epcm9it26G">市区（避开枣园）</td><td data-page-node-id="QW44vY1pDKCX0J4AFgiG1A">连锁酒店</td><td class="amount" data-page-node-id="cq4o7205AICLWEHJ6CzDKw">180 元</td></tr>
+      <tr data-page-node-id="bUlrpPv7ksJHJ4g6eFcrzh"><td data-page-node-id="tytgPguLoHzVlOz1EoosXl">D3</td><td data-page-node-id="JboPuUEdxKH1CCw6hfmSP7">榆林</td><td data-page-node-id="Hf8N5be9qM2tDixjQFZ7SP">古城周边</td><td data-page-node-id="KtyNRo2tuGA1HBRKp1x1Bn">客栈 / 连锁</td><td class="amount" data-page-node-id="Dsg4EFwPaau31TqVUfeDbf">200 元</td></tr>
+      <tr data-page-node-id="IKlpsexYwEOpoBCUIqRAZU"><td data-page-node-id="phW2ulGST5g40KQD3gPyT4">D4</td><td data-page-node-id="fZDYvKiFIyXd6SFIb7cspH">鄂尔多斯</td><td data-page-node-id="znDEPGMWREWkUNxHAvtVCF">康巴什新区</td><td data-page-node-id="uW0ifPyIA7jpjz0GkJYR6F">4 星</td><td class="amount" data-page-node-id="2CZcDyFpeWCh4cKHF9htmC">250 元</td></tr>
+      <tr data-page-node-id="lCHeGDICf8SMHTO0n7M9D7"><td colspan="4" data-page-node-id="h2j2YYNvSgNOY5HAkfAUTF"><strong data-page-node-id="igABeCtr3SQgYxE0xd3tPt">小计</strong></td><td class="amount" data-page-node-id="mibHV8RPKVAFfjx07dDMoU"><strong data-page-node-id="CUF8XUZbglInt4SAPurukR">820 元</strong></td></tr>
+    </tbody>
+  </table>
+
+  <h3 data-page-node-id="DBtseq2ZRVDc9dVMRlYE1h">升级方案（+ ~270 元）</h3>
+  <ul data-page-node-id="zKvqOJBVQkJKkPpL0g0qpA">
+    <li data-page-node-id="XvCDgbO246fvqglNrDtTC9">D2 延安：宝塔山景观房 ≈ 320 元（+140）</li>
+    <li data-page-node-id="wjkNZVGPonGnidH9o74kQ7">D4 鄂尔多斯：5 星 380 元（+130）</li>
+  </ul>
+
+  <h2 data-page-node-id="ZQMvB3RAGLBIDNFPpD0K1C">🍜 餐饮明细</h2>
+  <table data-page-node-id="Vii8zsMJJAvwbh3hPifYDD">
+    <thead data-page-node-id="LabAU4OfZRcvYIRZhUnm9i">
+      <tr data-page-node-id="3XWltCssWqU2bnCGqLn7Je"><th data-page-node-id="xzxTXasOUeW2X68ihiHrpR">项目</th><th class="amount" data-page-node-id="jdKp75RqKuCueaIDO4XVy5">单价</th><th data-page-node-id="d62CrJ8PCbE4t57fqcCz0I">频率</th><th class="amount" data-page-node-id="qtxsC7Bs8UJ5Fz2u4qmcIe">小计</th></tr>
+    </thead>
+    <tbody data-page-node-id="dImQAOqtNJjCwBhGzhhjMB">
+      <tr data-page-node-id="XpnkqOYXrc7cfFAxIYCQ7u"><td data-page-node-id="opPEFxWkS6rfHUATe0izSY">早餐</td><td class="amount" data-page-node-id="7i9HUneK8U4AqpSgrtxerA">25</td><td data-page-node-id="FeQXBYY08QrqG8aOMI567z">5 天</td><td class="amount" data-page-node-id="gBgYqdYLzxO08x5ATJq05Y">125</td></tr>
+      <tr data-page-node-id="DtjD8vWirf7qZvhpne4GHd"><td data-page-node-id="Ofs9M606iVYHFVxH7JcF8C">午餐</td><td class="amount" data-page-node-id="RoayyXr9NFTKSrVrbBFp3B">50</td><td data-page-node-id="vljfyiXFI0F3TCJsfC8i42">5 天</td><td class="amount" data-page-node-id="FSLEMuGRgc9odJDByUJ5nb">250</td></tr>
+      <tr data-page-node-id="OBw7ZqEoV2WpfDXbuCWFBB"><td data-page-node-id="OC52ZB6nBzcGGwVMECgL79">晚餐</td><td class="amount" data-page-node-id="CTeGrVHXhQ2u6Jxh8DYF4B">50</td><td data-page-node-id="0MNLPCvHoyyzh4d2cJZq2F">5 天</td><td class="amount" data-page-node-id="5Uw4Zuu0XJxbcFu59YE9Qn">250</td></tr>
+      <tr data-page-node-id="dBhiQnD0aT9UDMTpWyN6EC"><td data-page-node-id="9OOsOLYkUmN5aRN4voBRIG">加餐 / 饮料</td><td class="amount" data-page-node-id="KVXjvuXK8M2EhA8goNngcQ">—</td><td data-page-node-id="G8OKEiTilrfWGhwHcJrBTs">随机</td><td class="amount" data-page-node-id="qmU3W9oO3mTeH6Qn75QQ5I">30</td></tr>
+      <tr data-page-node-id="woH3vcaFKSJRV7S1xicY6m"><td colspan="3" data-page-node-id="zKkpVpLvmZf3zUHaiXqPMm"><strong data-page-node-id="F1NLdq81J7HAo7Ubn86n37">小计（节省型）</strong></td><td class="amount" data-page-node-id="ACMGYJaOTISvn5kTnPoZ7i"><strong data-page-node-id="f2lfnLzzQqgFFhT3bzWuf3">~480 元</strong></td></tr>
+    </tbody>
+  </table>
+
+  <h3 data-page-node-id="cCSDAAedlx2FLSAC5bcef8">沿途特色美食地标</h3>
+  <ul data-page-node-id="YK6vjkhvinvqOG6K1bizmT">
+    <li data-page-node-id="qQBwYbTnNkp2dv7jBS12jk"><strong data-page-node-id="o5xIwQDgxdpbsUxRalbwBY">三原</strong>：泡泡油糕 + 疙瘩面（午餐）</li>
+    <li data-page-node-id="vYhq2BkluaFEJYUMsznK7i"><strong data-page-node-id="5DmDyS9bxvwVL8fWSXDHVE">延安</strong>：荞面饸饹 + 子长煎饼（晚餐）</li>
+    <li data-page-node-id="Rak13WEiKam46gHoRBzsB3"><strong data-page-node-id="aSTZj1BjkZvTPCduRSlTW3">靖边</strong>：剁荞面 + 羊杂碎（午餐）</li>
+    <li data-page-node-id="28vamhUuQUH5LETmrcP5B3"><strong data-page-node-id="sWo8OMGBs13ZC8mttfb8GK">榆林</strong>：豆腐宴（晚餐）</li>
+    <li data-page-node-id="bpLccKjXHmZDz5CwwqSwxf"><strong data-page-node-id="H8HCD9gNMnrJk1v7UVHrjq">鄂尔多斯</strong>：烤全羊 + 奶茶（晚餐）</li>
+    <li data-page-node-id="j4c37kEQzFAibbzK66VjJJ"><strong data-page-node-id="A70AYKtnQFzvFBYz8MEOHl">包头</strong>：庆功晚餐 ~120 元</li>
+  </ul>
+</section>
+
+<!-- ========== 门票 + 杂费 ========== -->
+<section role="body" data-page-node-id="5ycQT7aCMltgBDeBxHudmR">
+  <h1 data-page-node-id="ePzn88Zu5nIyUrNAg9v3Bl">四、门票 & 杂费</h1>
+
+  <h2 data-page-node-id="wp3KA0gWMZBQi1Mz4RuQy7">🎫 门票明细</h2>
+  <table data-page-node-id="xa8ZguFMxRozBidhqOmItC">
+    <thead data-page-node-id="YrGcw5liyxHnjPY5dTp2Wr">
+      <tr data-page-node-id="TUrf74wqSP5EEBK3KMa488"><th data-page-node-id="kAnE9GujGNStqkFpR9iYbf">景点</th><th data-page-node-id="2NBoGXuDAJ8KaL0o2T7a6i">位置</th><th class="amount" data-page-node-id="Bd7RQ10tK4z3eQxzF6bdmp">价格</th></tr>
+    </thead>
+    <tbody data-page-node-id="PIr6GbQV7rrj7fBw4kGKBA">
+      <tr data-page-node-id="YIRpBSqDBPQz2uszhBVUBI"><td data-page-node-id="9cMGjWvOkLTlA9iHaXnc3e">波浪谷</td><td data-page-node-id="HNyKwtc1j1UUFaMCtTSpBK">靖边龙洲</td><td class="amount" data-page-node-id="orrMmH5bcDlSQlvxGd4ew2">98 元</td></tr>
+      <tr data-page-node-id="1CMNiVdAblaaM65jMZgL88"><td data-page-node-id="utDMsDo3LR9e5kYtCN9EWN">成吉思汗陵</td><td data-page-node-id="NwOvE563hpSpvJ67mi9NW7">鄂尔多斯</td><td class="amount" data-page-node-id="RcFFLMtkfrKdT6vIljg4PA">100 元</td></tr>
+      <tr data-page-node-id="eUjFhyBxG2CQv2xS55GUk5"><td data-page-node-id="1YegksVlAZ1nvrDnMRMB3g">响沙湾套票</td><td data-page-node-id="ohyuEyfurC4Zl50BZpCqhm">鄂尔多斯</td><td class="amount" data-page-node-id="qsUZPVDe7JCjKDstFaVksT">280 元</td></tr>
+      <tr data-page-node-id="4oioRH3idHtZqXnOqDvCri"><td data-page-node-id="wp4yoLmiZz8VMqtQAvGETO">宝塔山</td><td data-page-node-id="5OMdrDEEtZdcm8b0Ve2yay">延安</td><td class="amount" data-page-node-id="IgjM9vOul7ukIgG78vmrNR">50 元</td></tr>
+      <tr data-page-node-id="9uCdiDKP80ozeGgUCCwAWW"><td data-page-node-id="Sa8C2d4Jm7xvrGCKPXSAc5">红石峡</td><td data-page-node-id="k0REFz4AvKKoRJ58S2PeaW">榆林</td><td class="amount" data-page-node-id="s07PEAQMCqvCl1C9mOGEpQ">30 元</td></tr>
+      <tr data-page-node-id="tvmTJLlRw7bN0h1BGoXGbZ"><td data-page-node-id="rXrKTf1zsAGSnunueQBnUj">镇北台</td><td data-page-node-id="UbcHRdLqVCz57NBJUeNaWU">榆林</td><td class="amount" data-page-node-id="9StqMGxFmd6VCjReI12WPW">20 元</td></tr>
+      <tr data-page-node-id="AkfjYsaFMv26x2FWGv6gae"><td colspan="2" data-page-node-id="7LNj3hTutnYQuaeeM6c7lW"><strong data-page-node-id="Bif41inEE6JHiYD9LIhc8q">小计</strong></td><td class="amount" data-page-node-id="OK3FDwOjop0MLJDu5TeTLl"><strong data-page-node-id="KH64HdCYD0uHBBhndFKetH">578 元</strong></td></tr>
+    </tbody>
+  </table>
+
+  <h3 data-page-node-id="zAVzlyPUGI7oaz6lHCfGQ2">可选景点（+ ~200 元预算）</h3>
+  <table data-page-node-id="AA8khExGoo65DKJQUbGMiG">
+    <tbody data-page-node-id="TnPobA9vc1osIwDajDLhKs">
+      <tr data-page-node-id="wzi32uzHQOW1PHHfSXaIfE"><td data-page-node-id="T7F1Wba0I4C6uR5Poe8UdP">黄帝陵</td><td class="amount" data-page-node-id="QY70PL1k25XbvYzGMs3AVF">70 元</td></tr>
+      <tr data-page-node-id="g6w5Ws2DvLruoaQ2uE7wso"><td data-page-node-id="7DlzpYqEKERZkuWw6m0kaw">杨家岭 + 枣园（联票）</td><td class="amount" data-page-node-id="OF9gSznPuXct5kmLpqNHrg">50 元</td></tr>
+      <tr data-page-node-id="dlrxLn7YTL8uAIsx5gQXOV"><td data-page-node-id="HbZW4ULVYV4QEOZKWiBsfN">革命纪念馆</td><td class="amount" data-page-node-id="GKem1fGl2CLyLeFOUmXJs6">免费</td></tr>
+      <tr data-page-node-id="3TXITSm4wLIUPSZVEIBHj1"><td data-page-node-id="WvEOaSbK6jzfBWjks8TUvp">榆林古城文昌阁</td><td class="amount" data-page-node-id="GMSkfgUDfBnGij8duxZIM9">20 元</td></tr>
+      <tr data-page-node-id="E1U1zyKI6i6PB8ixsZdLXX"><td data-page-node-id="SOK1pGtnDcKqORVJ9GACBc">壶口瀑布（+1 天）</td><td class="amount" data-page-node-id="dye6gEqHI4VNGdV7JZRzW6">91+ 元</td></tr>
+      <tr data-page-node-id="fnYBLmxu0z9cfrJqLDBNOG"><td data-page-node-id="j8WgpXa8VKOflIpSCEuMx1">希拉穆仁草原</td><td class="amount" data-page-node-id="CYyQbzTwP2PEkt5faEGIkW">80 元</td></tr>
+      <tr data-page-node-id="6GOcxidK7En3xQ3wNxXa0u"><td data-page-node-id="Kd5jSQ5ie3szi8CCgfmiEp">五当召</td><td class="amount" data-page-node-id="xSyu3e6WV7rVAuMcPQDrCA">60 元</td></tr>
+    </tbody>
+  </table>
+
+  <h2 data-page-node-id="Mqcy7FGknp5BaiPjAbCVEk">🎁 杂费明细</h2>
+  <table data-page-node-id="YSFZUB7RoUNFzlaqnnoea9">
+    <tbody data-page-node-id="8MAo9F1Auas2TP3Fkts69o">
+      <tr data-page-node-id="7DF2D53rRMigxCW5CMl0kM"><td data-page-node-id="XALGsmZIhaAOHJtk2BIqgR">停车费</td><td class="amount" data-page-node-id="dRGHHGGH58wfkly9yEjlqe">30 元</td></tr>
+      <tr data-page-node-id="BGr3KY2AMsbKdJ91Dlnp7b"><td data-page-node-id="RX5ToQU9gosTSdC2F1o9N1">纪念品（波浪谷石块 / 蒙古物件）</td><td class="amount" data-page-node-id="T0n5DEBPh9ZVs78R5ihHum">50 元</td></tr>
+      <tr data-page-node-id="Gn9RevuklLFuFJXibmmhIN"><td data-page-node-id="6a1bTEasYu2kluz1fXrm9G">应急现金</td><td class="amount" data-page-node-id="HuAjlZOMN7s9SmLxXLl821">60 元</td></tr>
+      <tr data-page-node-id="0N5c8EotdnUmB9eAU9Euc0"><td data-page-node-id="Xq7Zv4MHmLGaUet6IcIIOF">手机支架 / 拍摄装备</td><td class="amount" data-page-node-id="VAy3wlTbNjXChbZiYOI0jI">30 元</td></tr>
+      <tr data-page-node-id="O7PSDFj5qNh5UDGXNCxsDm"><td data-page-node-id="khjlYoyzJFG27WHqpxJYA0"><strong data-page-node-id="IKZI3ajVZ4F3jkD5qurBYc">小计</strong></td><td class="amount" data-page-node-id="ZmW2z7vmMRmTvKg7FeF3sO"><strong data-page-node-id="DXmp55w7ahrABRvZ7FwIKH">~170 元</strong></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ========== 3 档对比 ========== -->
+<section role="body" data-page-node-id="HWWccBeGY46aipV7hMyIEW">
+  <h1 data-page-node-id="D42zDMTskw9eNrEvepngcq">五、3 档预算对比</h1>
+
+  <div class="tier-row" data-page-node-id="4GAD1nvxetDOExRqoq2C8w">
+    <div class="tier basic" data-page-node-id="XFWrNF8gsX0V71bD8KVoZD">
+      <div class="ico" data-page-node-id="su47nBguhgETqFlG4aig3J">🌿</div>
+      <div class="name" data-page-node-id="ghE0lFUDn52eqH88poGA46">穷游版</div>
+      <div class="price" data-page-node-id="z1GwlVKh1LzmNW8Yg3COBj">1800</div>
+      <div class="desc" data-page-node-id="HEVVDfs86VlVP9OWq01o3c">
+        住青旅 / 多人间 + 餐饮偏简餐<br data-page-node-id="MNeFInendMf91ka6xJzrWF">
+        不买纪念品<br data-page-node-id="0HHSQwjgP2M4ymEubbNUis">
+        自带所有装备
+      </div>
+    </div>
+
+    <div class="tier standard" data-page-node-id="30tiKzbj31zYnVAvDr6Cd3">
+      <div class="ico" data-page-node-id="ODiFhwKAwC6KFqOQBgzW2u">🟢</div>
+      <div class="name" data-page-node-id="uCShO1BL9A0AOVLvYmVWOj">标准版（推荐）</div>
+      <div class="price" data-page-node-id="cJRnLxNOyHGXnLLEwxlWSC">2600</div>
+      <div class="desc" data-page-node-id="cPEywk80izbDaU1imv7VB2">
+        连锁酒店 + 一顿特色餐<br data-page-node-id="kMu6enB5jnk1u62oLTPY7o">
+        基础纪念品<br data-page-node-id="GmBi9zsSv3Nt4WY3GFhMNZ">
+        主线 + 几个小景点
+      </div>
+    </div>
+
+    <div class="tier luxury" data-page-node-id="AUyu7grLn8hpT6NeXiq7VG">
+      <div class="ico" data-page-node-id="UaFjDEPeIAfXqPDuTsT4Ql">🌟</div>
+      <div class="name" data-page-node-id="MmSTxWkDg3C8fxbmp40qCB">升级版</div>
+      <div class="price" data-page-node-id="H7b057FITKzdi82Bak1FeF">3800</div>
+      <div class="desc" data-page-node-id="rA75czzA8GkX0CNobp0gj6">
+        4 晚均升级到 4 星<br data-page-node-id="ONFlVxlqFxA7eB2FjHh4EN">
+        烤全羊庆功餐<br data-page-node-id="olY0NuZrZnyyc4YZedWUAL">
+        进阶景点（壶口/希拉穆仁）
+      </div>
+    </div>
+  </div>
+
+  <h2 data-page-node-id="xYZAYqolE3yAylKj2H21fu">🎒 装备一次性投入（不含在行程预算）</h2>
+  <table data-page-node-id="hcpFDWMgAxsQDffAI9juAL">
+    <thead data-page-node-id="Lz3z5O0HIs3by4W6Mim4XE">
+      <tr data-page-node-id="7ssy2CaBVb85W1kOdaOGI5"><th data-page-node-id="5t4aKVNJoCqOlfaaRGEhJC">项目</th><th data-page-node-id="HHBmeXuG1t9LACurnJxHrN">预算（元）</th><th data-page-node-id="2q92d0DE8ubIfwhOonKGrZ">必买</th></tr>
+    </thead>
+    <tbody data-page-node-id="eF6ns7JvrQKoT3RsmqukIe">
+      <tr data-page-node-id="RglFCXdAsSxSXEhtv5Pivu"><td data-page-node-id="72p8zcmhR7FDkXVUy8p2z1">全盔</td><td class="amount" data-page-node-id="E650DpumOVUIa5CVRE4M27">800–1500</td><td data-page-node-id="vHzAiiriFYiLOUXn0n5PYb">✅</td></tr>
+      <tr data-page-node-id="ZHuB2L5vDzDMaip8XWgiDY"><td data-page-node-id="WQ2ce3QzjWF6zXtUINwfFl">拉力服 / 夏季骑行服</td><td class="amount" data-page-node-id="H4N4l2yvVReH5poJ1ZGG2f">600–1200</td><td data-page-node-id="2wvK2q3vomC8XYWiKatTN1">✅</td></tr>
+      <tr data-page-node-id="dv7HbiZ9oEdiq3vrLpo3bt"><td data-page-node-id="h1ZX0vaCFP2lGTjhq0bT5k">骑行手套</td><td class="amount" data-page-node-id="V1EmCkarrgg7mgxyMWr08e">150–300</td><td data-page-node-id="V4HTPFds0tKCt05LEr6ebE">✅</td></tr>
+      <tr data-page-node-id="ExL18PjZBAcGcjXrm8ZwxC"><td data-page-node-id="sTzDGcF4kVB4FUmZjQxqMx">骑行靴</td><td class="amount" data-page-node-id="UiLmrUofbl6p6CcQc2zjAK">400–800</td><td data-page-node-id="7HmLi8kpveXHHHWdMMSL6b">✅</td></tr>
+      <tr data-page-node-id="mEH0qN0uQXf1HigrwN3WKo"><td data-page-node-id="YfcOcJ8zG7j5lAswyZhdys">电动打气筒</td><td class="amount" data-page-node-id="c5UnUo37lyHKec0HhbcHrz">80–150</td><td data-page-node-id="m3AXsMb1o2AH8Llkwyt5wL">✅</td></tr>
+      <tr data-page-node-id="I4gLTsZT2xoNgyHjOHzp1q"><td data-page-node-id="AlFsQGclshdOOl2qpNm8Xh">补胎工具套装</td><td class="amount" data-page-node-id="K5BHrbGAqDlbbPeG754E6M">60–120</td><td data-page-node-id="mIfLkGDmDMzCiDZEOLGZIW">✅</td></tr>
+      <tr data-page-node-id="1I3FLPHs3c7cdCUcnGjx3c"><td data-page-node-id="n2EobneAM64DalazVFKW9Q">分体雨衣</td><td class="amount" data-page-node-id="SZyzh1D2RDQp9CYlyvhbbJ">100–200</td><td data-page-node-id="R0EI2bVYqw7wet73AFrsIF">✅</td></tr>
+      <tr data-page-node-id="qDUAaCRYLRCrMB1ojCKxrb"><td data-page-node-id="DagrlcLIgyhK7XJ8iuTJEF">充电宝 20000mAh</td><td class="amount" data-page-node-id="JFhcnqrjhYTZBN2kd3PHSu">100–200</td><td data-page-node-id="D5XMvjBycMyOxSZWtSHXem">✅</td></tr>
+      <tr data-page-node-id="iccKJ0yWfq4iT4APEwOFlq"><td data-page-node-id="svcMraJ8BK6fSlrFmnnjvm"><strong data-page-node-id="eSZfzeMp0sa0ZfCopzACzf">一次性总投入</strong></td><td class="amount" data-page-node-id="pdPaZEsQcJT3m5qUAeLx6k"><strong data-page-node-id="SHPADaDkU6st9jFNh3OxwG">~3000–5000 元</strong></td><td data-page-node-id="umm1yMqhO9HbJC1iShhdfu">—</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ========== 省钱 + 速算 ========== -->
+<section role="body" data-page-node-id="GZVJKfjFsaSm6maXUmHFg7">
+  <h1 data-page-node-id="nhaEPMgcsaE0LagYIbyJII">六、省钱攻略 & 速算卡</h1>
+
+  <h2 data-page-node-id="maFZNxaCRbpi2xbxBuSsHH">💡 省 6 个维度</h2>
+  <ul data-page-node-id="CluRrpSzBnc4HHnpx7F7gR">
+    <li data-page-node-id="3LqZ9AUXlpCEC1DW0g6Vtm"><strong data-page-node-id="iMtlr1Pk34jVXSENCPlqqv">🏨 住宿</strong>：连锁 app 提前 3 天订，铜川/榆林段 100+ 元有连锁</li>
+    <li data-page-node-id="AE4SVPNTvdGSHaUNBYZZB9"><strong data-page-node-id="EmL66JGzQnTIPxJy83E2Qq">🍜 餐饮</strong>：当地小吃店比景区便宜一半，且更地道</li>
+    <li data-page-node-id="B2QEF4htZtCCjNOTrCmZ9W"><strong data-page-node-id="2kPLX8KU3RHcGzvI2SOaLK">⛽ 加油</strong>：服务区降价时段（蒙段比陕段便宜 0.2 元/L）</li>
+    <li data-page-node-id="sBvq6kG7BkqjhAo1LhAKri"><strong data-page-node-id="ZKYMrelwQzVFvLH7LozsE6">🎫 门票</strong>：美团 / 携程提前订票常 8 折</li>
+    <li data-page-node-id="gCSa3bR6xcOrRNyZDdnH7T"><strong data-page-node-id="BOu5787kgGHoLNRLx9Oy4l">📸 拍摄</strong>：不用专门买运动相机，手机支架 + 延时模式</li>
+    <li data-page-node-id="5OFjSTPkY7Xrdmz8aBwtz0"><strong data-page-node-id="2yA2wD6dAbZy6GVIXYGUK3">💰 现金</strong>：内蒙段住宿 + 加油优先现金，部分店家不扫码</li>
+  </ul>
+
+  <h2 data-page-node-id="s7o7BwNw8CbpL8nkuenLDy">🧮 随身速算卡</h2>
+  <div class="cheatsheet" data-page-node-id="EUD3ZwArHfa3VesjqMvgUa">
+    <h3 data-page-node-id="kYRnJL0hlS7hw0Uw4AkTSX">西安 → 包头 摩旅预算速算</h3>
+    <div class="line" data-page-node-id="q1tSjZCEbk5T47QDxIhMkH"><span data-page-node-id="XkrRCvXKFWDDAbfD5cnAqr">🛢️ 油费</span><span class="val" data-page-node-id="DGEt8GfbCypu0AGMy7qETZ">≈ 460 元</span></div>
+    <div class="line" data-page-node-id="oeQAUe8gxcK0dSimES0fAg"><span data-page-node-id="Mwiwixaao33rvGPsrec8i3">🛣️ 过路费</span><span class="val" data-page-node-id="3JPyAtyaDLBOpGJdahuFNK">≈ 296 元</span></div>
+    <div class="line" data-page-node-id="HV353FBtX4mrgIDAQUjvHw"><span data-page-node-id="v9xT7hKT3WzbDSvMl0dcuR">🏨 住宿（4 晚）</span><span class="val" data-page-node-id="sHwgmx3NJILjQjMPq5qWqs">≈ 820 元</span></div>
+    <div class="line" data-page-node-id="YwSvF3aLZQMDBShiTHxlYK"><span data-page-node-id="tBhwNmOvOedHaDj9Jx5rYK">🍜 餐饮（5 天）</span><span class="val" data-page-node-id="FEH08VAUGtV3htrC8FPUrz">≈ 480 元</span></div>
+    <div class="line" data-page-node-id="wkFGErTiQwZ2LcTE7vBv2g"><span data-page-node-id="DGd6C8jij9AbLs723nOhk2">🎫 门票</span><span class="val" data-page-node-id="5R4OQUsMJaJq4oTkw1xgs5">≈ 384 元</span></div>
+    <div class="line" data-page-node-id="54drAJ0BQuLUykiIzgcHae"><span data-page-node-id="gUBqXAQVSPqfGPQvzaz8T4">🎁 杂费</span><span class="val" data-page-node-id="x7aK8wV5TnklXCE1gEM5yC">≈ 160 元</span></div>
+    <div class="line total" data-page-node-id="eALu25paQKeKeBHsb8i9vR"><span data-page-node-id="jKS6UsBFdhF0vAu6xKAMcG">💰 标准版预算</span><span class="val" data-page-node-id="Vaki39F4Tx6utwUFoCa1Yx">≈ 2,600 元</span></div>
+    <div class="line" style="margin-top:6px;border:none;font-size:10pt;color:#aaa;" data-page-node-id="cXVcGYCKOgJV3m4jRF0MIo">
+      <span data-page-node-id="Pz4U3CZY2ktt8Pgc3EutI8">🌿 穷游版</span><span data-page-node-id="GnmEJYrZ5IsAGgQeavjpej">≈ 1,800 元</span>
+    </div>
+    <div class="line" style="border:none;font-size:10pt;color:#aaa;" data-page-node-id="rkU0ic8S32OwQFlFaVTUgo">
+      <span data-page-node-id="TjNRisD2odeWAOhD4Ov7vf">🌟 升级版</span><span data-page-node-id="1FWAppJPiQd2DVPVM2nUZF">≈ 3,800 元</span>
+    </div>
+  </div>
+
+  <div class="doc-footer" data-page-node-id="9fjfiD7aeogxqK1VQWDg7C">
+    ✦ 预算版本 v1.0 · 2026.09 · 标准版 ✦ 数据基于 2024–2026 年陕西/内蒙段均价，仅供参考 ✦
+  </div>
+</section>
+
+</body>
+</html>

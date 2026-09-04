@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="g5VrGiiKR57WfjoFu4DFBW">
+<head data-page-node-id="0wyMJFHxRS4Je8KGdLDPEf">
+<meta charset="UTF-8" data-page-node-id="jRHmLKltcWmM8RGWCblCW4">
+<title>西安→包头 摩旅打卡卡片</title>
+<meta name="docx-page-size" content="A4" data-page-node-id="Bq7BdH9IgAh4Hc6lCXDn3Z">
+<style>
+:root {
+  --color-primary: #FF6B35;
+  --color-secondary: #FF3CAC;
+  --color-tertiary: #784BA0;
+  --color-quaternary: #2B86C5;
+  --color-accent: #F9D649;
+  --color-text: #1A1A2E;
+  --color-textLight: #F8F8F8;
+  --color-background: #FFFFFF;
+  --color-gradient-hero: linear-gradient(135deg, #FF6B35 0%, #FF3CAC 50%, #784BA0 100%);
+  --color-gradient-fire: linear-gradient(135deg, #FF6B35 0%, #FF3CAC 100%);
+  --color-gradient-desert: linear-gradient(135deg, #FF6B35 0%, #F9D649 100%);
+  --color-gradient-grass: linear-gradient(135deg, #2B86C5 0%, #784BA0 100%);
+  --color-gradient-sand: linear-gradient(135deg, #F9D649 0%, #FF6B35 100%);
+  --color-gradient-dusk: linear-gradient(135deg, #FF3CAC 0%, #784BA0 100%);
+  --ff-heading: 阿里巴巴普惠体, PingFang SC, 微软雅黑, sans-serif;
+  --ff-body: PingFang SC, 微软雅黑, sans-serif;
+  --ff-accent: Poppins, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+@page {
+  size: A4;
+  margin: 1.2cm;
+}
+
+body {
+  font-family: var(--ff-body);
+  color: var(--color-text);
+  background: #f3f3f3;
+  padding: 0;
+}
+
+.page {
+  width: 18.6cm;
+  margin: 0 auto 0.6cm auto;
+  background: white;
+  padding: 0.8cm;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  page-break-after: always;
+}
+
+.page:last-child { page-break-after: auto; }
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0.6cm;
+  width: 100%;
+  height: 26.4cm;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+  page-break-inside: avoid;
+}
+
+.card-header {
+  height: 4cm;
+  padding: 0.5cm 0.7cm;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.card-day {
+  font-family: var(--ff-accent);
+  font-size: 56pt;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -2px;
+  text-shadow: 0 3px 0 rgba(0,0,0,0.15);
+}
+
+.card-day-label {
+  font-family: var(--ff-accent);
+  font-size: 9pt;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  opacity: 0.9;
+  margin-top: -4px;
+}
+
+.card-distance {
+  display: inline-block;
+  background: rgba(255,255,255,0.22);
+  backdrop-filter: blur(8px);
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-family: var(--ff-accent);
+  font-weight: 700;
+  font-size: 11pt;
+  letter-spacing: 0.5px;
+  align-self: flex-start;
+}
+
+.card-body {
+  padding: 0.5cm 0.7cm 0.4cm 0.7cm;
+  height: calc(100% - 4cm);
+}
+
+.card-route {
+  font-family: var(--ff-heading);
+  font-size: 16pt;
+  font-weight: 700;
+  line-height: 1.35;
+  margin-bottom: 0.35cm;
+  color: var(--color-text);
+}
+
+.card-route .arrow {
+  color: var(--color-primary);
+  margin: 0 4px;
+  font-weight: 400;
+}
+
+.card-meta {
+  display: flex;
+  gap: 0.5cm;
+  margin-bottom: 0.35cm;
+  padding-bottom: 0.25cm;
+  border-bottom: 1.5px dashed #ddd;
+}
+
+.meta-item {
+  font-family: var(--ff-accent);
+  font-size: 10pt;
+  font-weight: 600;
+  color: #555;
+}
+
+.meta-item .ico {
+  color: var(--color-primary);
+  margin-right: 3px;
+}
+
+.highlights {
+  list-style: none;
+  padding: 0;
+  font-size: 10pt;
+  line-height: 1.55;
+}
+
+.highlights li {
+  margin-bottom: 4px;
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.highlights li .dot {
+  color: var(--color-primary);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.card-footer {
+  position: absolute;
+  bottom: 0.3cm;
+  right: 0.5cm;
+  font-family: var(--ff-accent);
+  font-size: 8pt;
+  color: #aaa;
+  letter-spacing: 1.5px;
+}
+
+.tip {
+  background: var(--color-accent);
+  color: var(--color-text);
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-size: 9pt;
+  font-weight: 700;
+  display: inline-block;
+  margin-right: 4px;
+}
+
+/* 5 individual card themes via header background */
+.theme-day1 .card-header { background: var(--color-gradient-fire); }
+.theme-day2 .card-header { background: var(--color-gradient-dusk); }
+.theme-day3 .card-header { background: var(--color-gradient-hero); }
+.theme-day4 .card-header { background: var(--color-gradient-grass); }
+.theme-day5 .card-header { background: var(--color-gradient-desert); }
+
+.print-hint {
+  text-align: center;
+  font-size: 9pt;
+  color: #888;
+  padding: 6px;
+  font-family: var(--ff-accent);
+  letter-spacing: 1px;
+}
+
+.cut-line {
+  border: 0;
+  border-top: 1px dashed #ccc;
+  margin: 0.3cm 0;
+}
+
+@media print {
+  body { background: white; }
+  .page { box-shadow: none; margin: 0 auto; }
+  .print-hint { display: none; }
+}
+</style>
+</head>
+<body data-page-node-id="I3nPhnWxlFNsTJZbVxYTej">
+
+<div class="print-hint" data-page-node-id="3OimH9UtxHaoMBKKjHXOJC">打印提示：A4 纸张，2 张 / 4 张卡片 / 页，沿虚线剪开 → 贴冰箱 ✂️</div>
+
+<!-- ========== PAGE 1 (Day 1-4) ========== -->
+<div class="page" data-page-node-id="fRlCntBxM2J4PG5Z7Toskk">
+  <div class="cards" data-page-node-id="E2d4Yo8cFVSAVuf3vpcWzh">
+
+    <!-- DAY 1 -->
+    <div class="card theme-day1" data-page-node-id="UTILcitQXO0J8KzQetCS8s">
+      <div class="card-header" data-page-node-id="f1IMFQ5NjpbUQ4Oyh4wPWN">
+        <div data-page-node-id="nSIM3LWHhgqhMqgLUXf1OS">
+          <div class="card-day" data-page-node-id="rbg3IbHAQMLd2r8oUmoRx0">01</div>
+          <div class="card-day-label" data-page-node-id="XPFlIUgqm8vCm0xiCKjPZa">DAY ONE</div>
+        </div>
+        <div class="card-distance" data-page-node-id="SiaJxeRlK9yVcRRqM0Tpz8">≈ 140 KM · 3 H</div>
+      </div>
+      <div class="card-body" data-page-node-id="3DeLOA8ICZFk9rGULs7wkL">
+        <div class="card-route" data-page-node-id="inAKdbEf4Ob6GxwYFKxehX">西安 <span class="arrow" data-page-node-id="8Rkxf5GP0TNTtYPWFRYv3u">→</span> 咸阳 <span class="arrow" data-page-node-id="Odv2MGQgWXe459yHAgEeok">→</span> 铜川</div>
+        <div class="card-meta" data-page-node-id="AvCYTPbXocUAsRul6CKeeB">
+          <span class="meta-item" data-page-node-id="CVblxbOeZhFbLnedR0g7RC"><span class="ico" data-page-node-id="Fl0TFpltBzdbcvaXSd4AC1">🛣️</span>G70 / S107</span>
+          <span class="meta-item" data-page-node-id="iyPEAVtW16HlRBdW2Ui7V9">暖身日</span>
+        </div>
+        <ul class="highlights" data-page-node-id="WpfMMaKygtNHkI4DPA0HgR">
+          <li data-page-node-id="HDrDHczjBKntnMkfAbUJwC"><span class="dot" data-page-node-id="GNJvSHatErx1AYhtnsZbaG">●</span><span data-page-node-id="EWgsfEnON9eGjycbOMyn6E"><span class="tip" data-page-node-id="iKDlNd1Z9Pi0aSaNGbsdyG">吃货</span>三原泡泡油糕 / 疙瘩面</span></li>
+          <li data-page-node-id="DAsZBZ4bRFS9btUUseVQ8R"><span class="dot" data-page-node-id="RpwDZrzgeQAAH1KHJjO293">●</span><span data-page-node-id="YepT2fbFtOZaCTqd7FdGHB">河堤路绕开西安/咸阳限行段</span></li>
+          <li data-page-node-id="7xPTR2e04LHa5VxNzQnC4T"><span class="dot" data-page-node-id="F7IMLwzA8BSkaRNSq5LyCt">●</span><span data-page-node-id="0y7ZEkRrwPS08t3KWAKKPf">可顺路乾陵（+30 KM 折返）</span></li>
+          <li data-page-node-id="IETvTcjmhAa1KjcdmIzAmE"><span class="dot" data-page-node-id="TsS1GXYcZPqealEWdqS029">●</span><span data-page-node-id="MGjfUsVux71qJQijuiwhm0">铜川新区连锁酒店休整 ~150 元</span></li>
+        </ul>
+      </div>
+      <div class="card-footer" data-page-node-id="F5gOfbcbaRVXrzJv8n2kff">XI'AN · STARTS</div>
+    </div>
+
+    <!-- DAY 2 -->
+    <div class="card theme-day2" data-page-node-id="q3TN08vkBBMZLEHrofEMxb">
+      <div class="card-header" data-page-node-id="DJkuZI7dvvQw8cGgF9eGsY">
+        <div data-page-node-id="iKSqg7j5e98hddj5suNCvh">
+          <div class="card-day" data-page-node-id="hOSERdmOS4iD15mHvGRUxy">02</div>
+          <div class="card-day-label" data-page-node-id="VAeFCv5Eg9hY05BqzjqcKV">DAY TWO</div>
+        </div>
+        <div class="card-distance" data-page-node-id="8Fjf1rFJkppeDkgeVx8Uop">≈ 200 KM · 3 H</div>
+      </div>
+      <div class="card-body" data-page-node-id="PJvK0KpztUKQTWBAqOqp9m">
+        <div class="card-route" data-page-node-id="3lXYxwxdV4Tl2VqojxMIwQ">铜川 <span class="arrow" data-page-node-id="12FDdC717SYGBHVqDDXQtQ">→</span> 洛川 <span class="arrow" data-page-node-id="hNdCD3SWtKm3xtcgViw5FN">→</span> 延安</div>
+        <div class="card-meta" data-page-node-id="VJO7fieHFULJRE2lL9HeMR">
+          <span class="meta-item" data-page-node-id="TyccoojO6abx8jFPaxfK8e"><span class="ico" data-page-node-id="JhEswrVP8INtNCYJjCoytA">🛣️</span>G65 包茂高速</span>
+          <span class="meta-item" data-page-node-id="5e3ewgnu3xxW1Cv0NMTRBG">最轻松一天</span>
+        </div>
+        <ul class="highlights" data-page-node-id="HrD2fq8fjyA2uf3wNK0nvB">
+          <li data-page-node-id="fd3sTcjs7lAEMrv6xivPly"><span class="dot" data-page-node-id="OsTRorGMvnpX4XHCe6hBfV">●</span><span data-page-node-id="OhopQQQWdEjKhFKdHML6tU">黄帝陵折返（古柏+沮河）</span></li>
+          <li data-page-node-id="F7xAnd4SbyBrVvwft2RDoE"><span class="dot" data-page-node-id="u5ODSjaoAsUGWeZdbu3v12">●</span><span data-page-node-id="ki6TXtvzBljahUOlmzWdIW">必看：宝塔山 / 杨家岭 / 枣园</span></li>
+          <li data-page-node-id="SGvCzsFAv3fy54crGck0cr"><span class="dot" data-page-node-id="dzEnLfjBkJead86OdzkEFg">●</span><span data-page-node-id="x21KtJRywRg5joXpiEdVQY">美食：荞面饸饹 / 子长煎饼</span></li>
+          <li data-page-node-id="6jcIVTjm97R9KN2WMhrtlk"><span class="dot" data-page-node-id="BQykYYWD7m9BwE21OB7uYk">●</span><span data-page-node-id="5yYPTkxZiShRmd3g13FU9w">住延安市中心避开枣园 ~180 元</span></li>
+        </ul>
+      </div>
+      <div class="card-footer" data-page-node-id="5XBhPkadarcLElEvHcNKHZ">YAN'AN · MEMORIES</div>
+    </div>
+
+    <!-- DAY 3 -->
+    <div class="card theme-day3" data-page-node-id="KDinHPNVhh8A0W5T7gOIxd">
+      <div class="card-header" data-page-node-id="PnYz0bMBUSh0kYdGazQ7Xx">
+        <div data-page-node-id="IZuu5BCCb5EjrJ905DSGEx">
+          <div class="card-day" data-page-node-id="R5HolfgU9xEbcodAmm4XPY">03</div>
+          <div class="card-day-label" data-page-node-id="3acZe8AMcOkWFETo2wTe1p">DAY THREE</div>
+        </div>
+        <div class="card-distance" data-page-node-id="H52BL5zDGBKFYfZaOGJFbw">≈ 420 KM · 5.5 H ⚠</div>
+      </div>
+      <div class="card-body" data-page-node-id="CjMRXu5BwTZBBkkLyDikcO">
+        <div class="card-route" data-page-node-id="WdESBVW2oVTIFYSBshFGc8">延安 <span class="arrow" data-page-node-id="GsUMJ7cjVvG4oEJavswikl">→</span> 靖边波浪谷 <span class="arrow" data-page-node-id="L5GrPtQnmEbyqUimEzZYEb">→</span> 榆林</div>
+        <div class="card-meta" data-page-node-id="5KZFFeFVTmSXm1rq761ixI">
+          <span class="meta-item" data-page-node-id="2iqEqDP3WmKvnfcyGa8F2a"><span class="ico" data-page-node-id="hQBCAtoUk4BjGcCL2BFFzU">🛣️</span>G65 + G20</span>
+          <span class="meta-item" data-page-node-id="HE39pTBKUhzYA9RFAwsQIY">最累一天</span>
+        </div>
+        <ul class="highlights" data-page-node-id="8OFwy1kEA30qTHCOFgCTJY">
+          <li data-page-node-id="xn5hW1UnNxLkB7NDzZzwGm"><span class="dot" data-page-node-id="STPF6JCbN7tEoN8ZArGaWD">●</span><span data-page-node-id="qWkGKCsPMSSEE9YNZDOMtI"><span class="tip" data-page-node-id="3ni9ySW8EmTpsCrSUzT9nj">必停</span>下午 2–4 点拍波浪谷最佳</span></li>
+          <li data-page-node-id="KDfLXCbh4eA7dyi1Z59B3A"><span class="dot" data-page-node-id="gG9JHJuiojJtVN64EZINxD">●</span><span data-page-node-id="zWRwI2CjkevkrY2ps0HSQc">早 7:00 出发，给陕北风留余量</span></li>
+          <li data-page-node-id="07lTap86fnLq1icQToRM7r"><span class="dot" data-page-node-id="95a7QkRBue7GkjdFQxTxsg">●</span><span data-page-node-id="TpxJ49QH7wGbxXRlrCdPC9">榆林古城骑楼夜景超治愈</span></li>
+          <li data-page-node-id="fMkpOLe4pHn3qHMmSTDSKp"><span class="dot" data-page-node-id="VFKh5vr91nWR2ll7ynBKGL">●</span><span data-page-node-id="idEirhcJIvfg3pdbDIctbx">剁荞面 / 羊杂碎管饱</span></li>
+        </ul>
+      </div>
+      <div class="card-footer" data-page-node-id="GGJoqwrcO6fHBnTAwCJ7EU">WAVE ROCK · MAGIC</div>
+    </div>
+
+    <!-- DAY 4 -->
+    <div class="card theme-day4" data-page-node-id="rmRXoUbP5ExNfpgvOfJ9yu">
+      <div class="card-header" data-page-node-id="pbm07eFgOAtcEofPkaadMm">
+        <div data-page-node-id="XzV4F2GPAg25JnW7zb2kss">
+          <div class="card-day" data-page-node-id="KPMmTAAMOxSXhongxPW08D">04</div>
+          <div class="card-day-label" data-page-node-id="KcpfoG2TItZ37e3oKHUXf6">DAY FOUR</div>
+        </div>
+        <div class="card-distance" data-page-node-id="rK4uJiBnSGjnCSUdT3X4Vr">≈ 280 KM · 4 H</div>
+      </div>
+      <div class="card-body" data-page-node-id="9Vg788l42StHyPiFPqmkkK">
+        <div class="card-route" data-page-node-id="QGahw16MdkAjGY30LIHoQZ">榆林 <span class="arrow" data-page-node-id="jDUmCKvsZibMwGx1XSdsPC">→</span> 蒙陕界 <span class="arrow" data-page-node-id="6eYuyVOsuuv3pQkz0HBgQv">→</span> 鄂尔多斯</div>
+        <div class="card-meta" data-page-node-id="7kuAXDBkAxjOijkFKvwWsE">
+          <span class="meta-item" data-page-node-id="bPXefCMQeyXNQTaTXYxjBX"><span class="ico" data-page-node-id="eZw1VWX8JkhaRdmM9ZFmEM">🛣️</span>G20 转 S22</span>
+          <span class="meta-item" data-page-node-id="gmrl7o0QdLrXeFzbsqICpy">入蒙段</span>
+        </div>
+        <ul class="highlights" data-page-node-id="OBE7y6r5UcSIKv8zzquewn">
+          <li data-page-node-id="9tKx2rEWp99kOFnFLCOxyI"><span class="dot" data-page-node-id="OTvoSovjR72oTfHbR68M4e">●</span><span data-page-node-id="smB2MwE4TAxqqfVpiWJCso"><span class="tip" data-page-node-id="mNCQtCrmuSrHxkYHv47EcC">草原</span>横风强，双手不离把</span></li>
+          <li data-page-node-id="Vnf4aYCUvgbExT5iVVxaQf"><span class="dot" data-page-node-id="cb2Yrvk0eVnbeP82lqADk6">●</span><span data-page-node-id="iCSXElpOEQrKElQRiGc6z4">成吉思汗陵（甘德利草原）1.5 h</span></li>
+          <li data-page-node-id="3HBllwRRHRhDTsBnv3MkA5"><span class="dot" data-page-node-id="nEkAFIeQEfxVwmEeoOp9aL">●</span><span data-page-node-id="S6pfE4BkBfBcwLrBhCLOMZ">夜游康巴什亚洲最大喷泉广场</span></li>
+          <li data-page-node-id="Fcx9WbQXwwZLTmu87ge3oV"><span class="dot" data-page-node-id="HDHBVkJqbNmqXRaFPSqEG3">●</span><span data-page-node-id="HDzMHaYKqTs5Xcpcj6WQR6">住康巴什新区 ~250 元</span></li>
+        </ul>
+      </div>
+      <div class="card-footer" data-page-node-id="tbC5uRLxEPzxpDH1sXZCpD">INNER MONGOLIA</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ========== PAGE 2 (Day 5 + bonus) ========== -->
+<div class="page" data-page-node-id="4B5UW3RDwL1EqFeXHa7n84">
+  <div class="cards" data-page-node-id="n3VcBMboHW5IvVRFRjvNgn">
+
+    <!-- DAY 5 -->
+    <div class="card theme-day5" data-page-node-id="o1WduZSbc4wALxJW1bSXAZ">
+      <div class="card-header" data-page-node-id="sJOcYqRGFniiw8jMGNwxUz">
+        <div data-page-node-id="JA9u6oCS4tcvqNDPz8mv1z">
+          <div class="card-day" data-page-node-id="FOtDCaOqh68xytXkKSDyrk">05</div>
+          <div class="card-day-label" data-page-node-id="Ao3ICN5quF47Pej3DmoLur">DAY FIVE · FINISH</div>
+        </div>
+        <div class="card-distance" data-page-node-id="CHzBMFpuf2vXvCosdaltV1">≈ 150 KM · 3 H 🎉</div>
+      </div>
+      <div class="card-body" data-page-node-id="ROVFUJ70ONvL7tfnMtxDi6">
+        <div class="card-route" data-page-node-id="GhtX7wAnTibuV6jKfdnIR2">鄂尔多斯 <span class="arrow" data-page-node-id="XQXW039SDHHzc8JYJ6IHrV">→</span> 响沙湾 <span class="arrow" data-page-node-id="re42NisS1Q2LBzMeVP6kWA">→</span> 包头</div>
+        <div class="card-meta" data-page-node-id="NQFZOLsayV6dRijyyc1zGJ">
+          <span class="meta-item" data-page-node-id="5lvzi6X0xnyXwsemxcEW67"><span class="ico" data-page-node-id="dwSTBObuffwCchGWGuTCml">🛣️</span>G65 北上</span>
+          <span class="meta-item" data-page-node-id="otwIVGTnDeg3jEpvtqosBJ">收官日</span>
+        </div>
+        <ul class="highlights" data-page-node-id="7ODg7vP7xIXXIkYqPER9V4">
+          <li data-page-node-id="BYliY0lqj3pkv0AbXOTCpH"><span class="dot" data-page-node-id="hM9Yw99lg0VREPvongBzGs">●</span><span data-page-node-id="MX0rtap8qEfjX53awCK2YD"><span class="tip" data-page-node-id="4N9jAA2AOQwxtRXo7T7vB5">必玩</span>响沙湾骑骆驼 / 滑沙 / 越野</span></li>
+          <li data-page-node-id="te7aHiq1AhFTXohZMlJ5PA"><span class="dot" data-page-node-id="Pul65VFhgvUdiT58SmlFAz">●</span><span data-page-node-id="bMmQsYXteCg9v5oMGTyfcL">玩 2–3 h 玩沙玩够再北上</span></li>
+          <li data-page-node-id="kv1mXZjqCy3H9RLoGtRTm7"><span class="dot" data-page-node-id="IP7PgqUnzS1vPXly6FEoAz">●</span><span data-page-node-id="zg6HtJuTHqwhCzTX50mCOq">下午 1 点出发去包头</span></li>
+          <li data-page-node-id="AA3q44P2hBbOPc3dRW8LNA"><span class="dot" data-page-node-id="9P5vislqvdCaPH61KFZq70">●</span><span data-page-node-id="JBU0m8AK59ClTpGI3euDvB">庆功烤全羊 / 包头夜市</span></li>
+        </ul>
+      </div>
+      <div class="card-footer" data-page-node-id="eM0JPBPsbeOQuAQEfDWLhe">BAOTOU · YEAH! 🏁</div>
+    </div>
+
+    <!-- BONUS 1: 出发前夜 -->
+    <div class="card theme-day1" data-page-node-id="PBDiqjmXFABidvlHPAB7Lm">
+      <div class="card-header" data-page-node-id="eJOGtZRUIiSxM5coI7kmal">
+        <div data-page-node-id="97mvidVPZWVf9zh1BV5o3E">
+          <div class="card-day" style="font-size:42pt;letter-spacing:0;" data-page-node-id="BA8kjJhFmFlCWGAC7KjR3t">出发前夜</div>
+          <div class="card-day-label" data-page-node-id="mfIZcb6zbt5BPeQFYR6Xk6">PRE-DEPARTURE</div>
+        </div>
+        <div class="card-distance" data-page-node-id="BYnEa09Uo6fcNHC2vQFLVk">🛠️ 车检 · 装备</div>
+      </div>
+      <div class="card-body" data-page-node-id="COMkPa3ECUZ0FVCxyfXWIE">
+        <div class="card-route" data-page-node-id="Cyx8ufA2JLzBMxmKWaXiIo">车 + 人 <span class="arrow" data-page-node-id="PoPEz0pkceOSrvnyGDsIrm">→</span> Ready</div>
+        <div class="card-meta" data-page-node-id="wdKeyHmF2MbzpRbyAdYRVP">
+          <span class="meta-item" data-page-node-id="4oruKMZ7EAXbNFWCsKMsob"><span class="ico" data-page-node-id="4xugVEkmKSoMZFqjjCYJWj">🔧</span>基础保养</span>
+        </div>
+        <ul class="highlights" data-page-node-id="wR4OrR6XOFSYTrkBoOAQEk">
+          <li data-page-node-id="HSrACu57Ng9M4QRyOlTHME"><span class="dot" data-page-node-id="Jo4z7xMQGLngXwLr7JFCge">●</span><span data-page-node-id="nV6Rd3H1hDlV5VaodlCuYX">机油 + 链条润滑 + 刹车厚度</span></li>
+          <li data-page-node-id="bU3xCu92IsiqiPT3FbAP14"><span class="dot" data-page-node-id="RSRDlgsZahzvRPSDulAa4O">●</span><span data-page-node-id="RsYQ0bnrlUIEkzZVVSnbjf">胎压长途 +0.1 bar</span></li>
+          <li data-page-node-id="T7MYXuUO8HNyiVd1tX8ckB"><span class="dot" data-page-node-id="Xev7D4BcgKVqXXTCmYKw97">●</span><span data-page-node-id="askkoTSfhg6c4DTzA2TvFh">备：补胎工具 / 火花塞 / 保险丝</span></li>
+          <li data-page-node-id="l6aATNfGLvt42toeaNNROi"><span class="dot" data-page-node-id="DMjSjZBOOCijUORYdnAHIg">●</span><span data-page-node-id="aV0zdCkOMcFQSujxnF4BwE">D 证 + 行驶证 + 200 元现金</span></li>
+          <li data-page-node-id="mrY3JIofA9VESYs88uSU68"><span class="dot" data-page-node-id="lOoNhPHXFzatYIDoB39oGT">●</span><span data-page-node-id="Ccm7aCXQbRMmZlq1J4ZCB6">离线地图包（提前下好）</span></li>
+        </ul>
+      </div>
+      <div class="card-footer" data-page-node-id="SOmFEo1fKqr3C0iNr0mre0">SAFETY FIRST</div>
+    </div>
+
+    <!-- BONUS 2: 装备清单 -->
+    <div class="card theme-day4" data-page-node-id="PbALKYcYLExjpSkz4gMRSz">
+      <div class="card-header" data-page-node-id="s1CwoMKlSLIF9eIwIgXFNM">
+        <div data-page-node-id="GErQCBvH3trUzuwZYMyFqs">
+          <div class="card-day" style="font-size:42pt;letter-spacing:0;" data-page-node-id="KK4VgXjcZJECuraOx7adbu">装备</div>
+          <div class="card-day-label" data-page-node-id="FZWdjHE2wT2NoSs2RdHTCC">PACKING LIST</div>
+        </div>
+        <div class="card-distance" data-page-node-id="XBVvRL0o54qNF39DgFDBat">昼夜温差 10–18°C</div>
+      </div>
+      <div class="card-body" data-page-node-id="11UrwJzUfH85x6BRuqPZoE">
+        <div class="card-route" data-page-node-id="4CFJWO3p6BKxooBTsAtnQn">人 + 车 = 安全</div>
+        <div class="card-meta" data-page-node-id="njSOB2vnv1F9lsMMSQBrm6">
+          <span class="meta-item" data-page-node-id="a2qCoHn8LvNt0gtHpYXugQ"><span class="ico" data-page-node-id="6qycz0FhxehWVyqP5jdjvY">🧥</span>服装</span>
+          <span class="meta-item" data-page-node-id="jUCtyNg81NzlZm7tGVeLmo"><span class="ico" data-page-node-id="YwfNuu11y8gQ7sjBuKJGaF">🛠️</span>工具</span>
+        </div>
+        <ul class="highlights" data-page-node-id="mNLIMIz8nZeoLMIqGXLLv0">
+          <li data-page-node-id="V16AxlAaVxBNRhulXyTz8E"><span class="dot" data-page-node-id="clD6UcxtqXsCSfUb3jeGvo">●</span><span data-page-node-id="U9WkScrHlskVhlubd6cjWk">全盔 + 拉力服 + 抓绒内胆</span></li>
+          <li data-page-node-id="W2V3MJkB4yC7Q8MjIlc4p9"><span class="dot" data-page-node-id="H4vggIbSlRJffP17v1Ad8O">●</span><span data-page-node-id="Yl6MrEEL65QoWC3OVsMQkf">防风手套 + 过踝骑行靴</span></li>
+          <li data-page-node-id="LNAJHLJ1qv3FlTfv4jKAbs"><span class="dot" data-page-node-id="HxvTZgTgpC6GWZS7jcyeRB">●</span><span data-page-node-id="b3KBBVUY5SP8075SL1yl68">分体雨衣（陕北阵雨说来就来）</span></li>
+          <li data-page-node-id="gNBTF07hWfE5SHnYZCfSqy"><span class="dot" data-page-node-id="Mv6RKHgPTV2d7hE0z47eXA">●</span><span data-page-node-id="eyQGBRyht2e9DJsFAvTBPz">电动打气筒 + 速干内层（多一套）</span></li>
+          <li data-page-node-id="ObdyjmSbpLcj1xCAP2NCu2"><span class="dot" data-page-node-id="UHMnM6E2GkREARezX2ml4Q">●</span><span data-page-node-id="SLTvn0WUN7jUkKLLuldocE">防晒霜 + 颈巾 + 长袖手套</span></li>
+        </ul>
+      </div>
+      <div class="card-footer" data-page-node-id="eRwF6Jy6r9s535LSSaN0Z1">GEAR CHECK ✓</div>
+    </div>
+
+    <!-- BONUS 3: 进阶路线 -->
+    <div class="card theme-day3" data-page-node-id="p8tttCFjTqEjnESKTogq6P">
+      <div class="card-header" data-page-node-id="GWgcEQu37BbnZSWUCbQ9tc">
+        <div data-page-node-id="WkH8LtaAcBQBE5kkAZqkr3">
+          <div class="card-day" style="font-size:42pt;letter-spacing:0;" data-page-node-id="FuRLDMaP5AslYfq74Uc27U">+1 天</div>
+          <div class="card-day-label" data-page-node-id="IpSkDioYOOorHURuO5Si6h">BONUS ROUTE</div>
+        </div>
+        <div class="card-distance" data-page-node-id="hgwpleOSWld0ZeIKnGCFlZ">壶口瀑布</div>
+      </div>
+      <div class="card-body" data-page-node-id="Bd5v1T7ANyrSiuAcEoQHLy">
+        <div class="card-route" data-page-node-id="1An2hc2Yg4AU3BQ964BPdC">延安 <span class="arrow" data-page-node-id="czwi87JJTIOXjwoWLj10c5">→</span> 壶口</div>
+        <div class="card-meta" data-page-node-id="d8sjYhZcllKtikWpu1FxsB">
+          <span class="meta-item" data-page-node-id="Ap6vCrMddXUxb3dk7Ec0Py">+ 130 KM</span>
+          <span class="meta-item" data-page-node-id="H0eedasGN0SCiDJhaehEDT">春夏最佳</span>
+        </div>
+        <ul class="highlights" data-page-node-id="PpMGUbdn5jlUJdUhTMdHFM">
+          <li data-page-node-id="7I0tLrfgJ16JnaoG9SVXIg"><span class="dot" data-page-node-id="eGg9U5C5srN3ZTsRtY5GJP">●</span><span data-page-node-id="BiZ9ZubheH8MGe7xnE7KJQ">黄河金色飞瀑，4–5 月桃花汛最壮观</span></li>
+          <li data-page-node-id="dzsgPjoQWI69Y6TiXDhQLc"><span class="dot" data-page-node-id="m5WA59Et5xKlVX6UCIgFcd">●</span><span data-page-node-id="vFLg9zpCFRuKQKlB45BC3S">需在延安多停留 1 晚</span></li>
+          <li data-page-node-id="X8lJLOGOXu5d7wz0W1UCEq"><span class="dot" data-page-node-id="dbxA9cG4CH6fAmnET1Bo6t">●</span><span data-page-node-id="ErAibxs9YLareNNlUD5LZF">或者改走：红碱淖 / 库布其</span></li>
+          <li data-page-node-id="MsaMnSOCixcytXohWLBCyw"><span class="dot" data-page-node-id="LDMUdVl3uifEFag96BWbHp">●</span><span data-page-node-id="HpOfB57e6xZgQEMHjDMr3S">或者多 1 晚希拉穆仁草原</span></li>
+        </ul>
+      </div>
+      <div class="card-footer" data-page-node-id="8LQ5JOZVWcgi9z77IDjx7C">EXTRA · WORTH IT</div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>行程总览 · 西安→包头摩旅</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      🏍️ <span class="logo-mark">西安→包头</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html">首页</a></li>
+      <li><a href="overview.html" class="active">行程概览</a></li>
+      <li><a href="days.html">每日打卡</a></li>
+      <li><a href="manual.html">路线手册</a></li>
+      <li><a href="budget.html">预算清单</a></li>
+      <li><a href="gear.html">装备 & 安全</a></li>
+      <li><a href="about.html">关于</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-banner">
+  <div class="eyebrow">OVERVIEW · 大局观</div>
+  <h1>行程总览</h1>
+  <p>5 天 4 晚 · 7 座城 · 1180 公里<br>从十三朝古都到草原钢城，看一次中国的北向剖面</p>
+</header>
+
+<!-- ===== 4 大核心 KPI ===== -->
+<section class="section section-light">
+  <div class="kpi-strip">
+    <div class="kpi">
+      <div class="ico">📏</div>
+      <div class="num">1,180</div>
+      <div class="lbl">公里 / km</div>
+    </div>
+    <div class="kpi">
+      <div class="ico">🏙️</div>
+      <div class="num">7</div>
+      <div class="lbl">途经城市</div>
+    </div>
+    <div class="kpi">
+      <div class="ico">⛰️</div>
+      <div class="num">3</div>
+      <div class="lbl">地形切换</div>
+    </div>
+    <div class="kpi">
+      <div class="ico">💰</div>
+      <div class="num">¥2,600</div>
+      <div class="lbl">元 / 人预算</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 路线地图（ASCII + 城市节点） ===== -->
+<section class="section section-soft">
+  <span class="section-eyebrow">ROUTE · 路线图</span>
+  <h2 class="section-title">一路向北</h2>
+  <p class="section-lead">从西安到包头，地形三次切换：平原 → 丘陵 → 草原。G70 / G65 / G20 高速一气贯通。</p>
+
+  <div style="max-width: 980px; margin: 0 auto;">
+    <svg viewBox="0 0 1000 480" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; max-height: 500px;">
+      <defs>
+        <linearGradient id="mapBg" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#FFF5EF"/>
+          <stop offset="100%" stop-color="#FFE8E0"/>
+        </linearGradient>
+        <linearGradient id="routeLine" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#FF6B35"/>
+          <stop offset="50%" stop-color="#FF3CAC"/>
+          <stop offset="100%" stop-color="#784BA0"/>
+        </linearGradient>
+      </defs>
+
+      <rect width="1000" height="480" fill="url(#mapBg)" rx="20"/>
+
+      <!-- 经纬网格 -->
+      <g stroke="#f0d8c8" stroke-width="0.5" stroke-dasharray="2,4">
+        <line x1="0" y1="120" x2="1000" y2="120"/>
+        <line x1="0" y1="240" x2="1000" y2="240"/>
+        <line x1="0" y1="360" x2="1000" y2="360"/>
+        <line x1="200" y1="0" x2="200" y2="480"/>
+        <line x1="400" y1="0" x2="400" y2="480"/>
+        <line x1="600" y1="0" x2="600" y2="480"/>
+        <line x1="800" y1="0" x2="800" y2="480"/>
+      </g>
+
+      <!-- 路线主线 -->
+      <path d="M 80 380 Q 180 350 260 320 T 450 240 T 620 180 T 800 130 L 920 100"
+            fill="none" stroke="url(#routeLine)" stroke-width="5" stroke-linecap="round"/>
+
+      <!-- 城市节点 -->
+      <g font-family="'PingFang SC',sans-serif">
+        <!-- 西安 -->
+        <circle cx="80" cy="380" r="16" fill="#FF6B35" stroke="white" stroke-width="3"/>
+        <text x="80" y="415" text-anchor="middle" font-size="16" font-weight="700" fill="#1A1A2E">西安</text>
+        <text x="80" y="432" text-anchor="middle" font-size="11" fill="#784BA0" font-style="italic">DAY 1 起点</text>
+
+        <!-- 三原 -->
+        <circle cx="180" cy="350" r="6" fill="#FFA07A"/>
+        <text x="180" y="375" text-anchor="middle" font-size="11" fill="#4A4A5A">三原</text>
+
+        <!-- 铜川 -->
+        <circle cx="260" cy="320" r="11" fill="#FF6B35"/>
+        <text x="260" y="305" text-anchor="middle" font-size="13" font-weight="700" fill="#1A1A2E">铜川</text>
+        <text x="260" y="288" text-anchor="middle" font-size="11" fill="#784BA0" font-style="italic">DAY 1 宿</text>
+
+        <!-- 黄帝陵 -->
+        <circle cx="380" cy="280" r="5" fill="#FFA07A"/>
+        <text x="380" y="265" text-anchor="middle" font-size="10" fill="#4A4A5A">黄帝陵</text>
+
+        <!-- 延安 -->
+        <circle cx="450" cy="240" r="14" fill="#FF6B35" stroke="white" stroke-width="3"/>
+        <text x="450" y="218" text-anchor="middle" font-size="16" font-weight="700" fill="#1A1A2E">延安</text>
+        <text x="450" y="200" text-anchor="middle" font-size="11" fill="#784BA0" font-style="italic">DAY 2 宿</text>
+
+        <!-- 靖边波浪谷 -->
+        <circle cx="540" cy="210" r="9" fill="#FF3CAC"/>
+        <text x="540" y="190" text-anchor="middle" font-size="13" font-weight="700" fill="#1A1A2E">靖边波浪谷</text>
+        <text x="540" y="248" text-anchor="middle" font-size="11" fill="#784BA0" font-style="italic">DAY 3 必停</text>
+
+        <!-- 榆林 -->
+        <circle cx="620" cy="180" r="14" fill="#FF3CAC" stroke="white" stroke-width="3"/>
+        <text x="620" y="158" text-anchor="middle" font-size="16" font-weight="700" fill="#1A1A2E">榆林</text>
+        <text x="620" y="140" text-anchor="middle" font-size="11" fill="#784BA0" font-style="italic">DAY 3 宿</text>
+
+        <!-- 蒙陕界 -->
+        <line x1="700" y1="155" x2="715" y2="155" stroke="#FF3CAC" stroke-width="2" stroke-dasharray="3,2"/>
+        <text x="707" y="148" text-anchor="middle" font-size="10" fill="#FF3CAC" font-weight="700">蒙陕界</text>
+
+        <!-- 鄂尔多斯 -->
+        <circle cx="800" cy="130" r="14" fill="#784BA0" stroke="white" stroke-width="3"/>
+        <text x="800" y="108" text-anchor="middle" font-size="16" font-weight="700" fill="#1A1A2E">鄂尔多斯</text>
+        <text x="800" y="90" text-anchor="middle" font-size="11" fill="#784BA0" font-style="italic">DAY 4 宿</text>
+
+        <!-- 成吉思汗陵 -->
+        <circle cx="780" cy="170" r="6" fill="#A66BC4"/>
+        <text x="780" y="190" text-anchor="middle" font-size="11" fill="#4A4A5A">成吉思汗陵</text>
+
+        <!-- 响沙湾 -->
+        <circle cx="860" cy="115" r="9" fill="#FF6B35"/>
+        <text x="860" y="95" text-anchor="middle" font-size="13" font-weight="700" fill="#1A1A2E">响沙湾</text>
+
+        <!-- 包头 -->
+        <circle cx="920" cy="100" r="16" fill="#784BA0" stroke="white" stroke-width="3"/>
+        <text x="920" y="74" text-anchor="middle" font-size="16" font-weight="700" fill="#1A1A2E">包头</text>
+        <text x="920" y="56" text-anchor="middle" font-size="11" fill="#784BA0" font-style="italic">DAY 5 终点 🏁</text>
+      </g>
+
+      <!-- 图例 -->
+      <g transform="translate(20, 30)" font-family="'PingFang SC',sans-serif">
+        <rect width="160" height="100" fill="rgba(255,255,255,0.85)" rx="10" stroke="#f0d8c8"/>
+        <text x="14" y="22" font-size="11" font-weight="700" fill="#1A1A2E">图例 · LEGEND</text>
+        <circle cx="20" cy="40" r="6" fill="#FF6B35"/>
+        <text x="32" y="44" font-size="11" fill="#1A1A2E">主线站点</text>
+        <circle cx="20" cy="62" r="6" fill="#FFA07A"/>
+        <text x="32" y="66" font-size="11" fill="#1A1A2E">途经点</text>
+        <line x1="14" y1="80" x2="40" y2="80" stroke="url(#routeLine)" stroke-width="3"/>
+        <text x="48" y="84" font-size="11" fill="#1A1A2E">行进路线</text>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- ===== 时间轴 Timeline ===== -->
+<section class="section section-light">
+  <span class="section-eyebrow">TIMELINE · 时间轴</span>
+  <h2 class="section-title">五天节奏</h2>
+  <p class="section-lead">每天都有明确的主题 —— 不是"赶路"为主，而是"打卡"为主。</p>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="marker">D1</div>
+      <h4>暖身段 · 西安 → 铜川</h4>
+      <div class="km">📏 140 km · ⏱ 3 h · 🟢 轻松</div>
+      <p>从西安出发经三原到铜川。避开市区限行、走河堤路或北三环绕城。早 8:30 出发，下午 1 点前到，午饭后可睡个午觉适应装备。重点是"试骑"而非"赶路"。</p>
+    </div>
+
+    <div class="timeline-item">
+      <div class="marker">D2</div>
+      <h4>启程段 · 铜川 → 延安</h4>
+      <div class="km">📏 200 km · ⏱ 3 h · 🟢 最轻松</div>
+      <p>G65 包茂高速一路向北，全天路况最好。下午直抵延安，宝塔山看夕阳、杨家岭吃羊肉面、革命纪念馆文化重温。今晚可以早睡，给明天 420 km 蓄力。</p>
+    </div>
+
+    <div class="timeline-item">
+      <div class="marker">D3</div>
+      <h4>险途 · 延安 → 靖边 → 榆林</h4>
+      <div class="km">📏 420 km · ⏱ 5.5 h · ⚠️ 全线最长</div>
+      <p>早 7:00 出发，G65 北上至靖边下高速 22 km 进波浪谷。**下午 2-4 点光线最佳**，必拍！之后再上 G20 抵榆林，看红石峡夕阳、逛古城骑楼。</p>
+    </div>
+
+    <div class="timeline-item">
+      <div class="marker">D4</div>
+      <h4>跨省 · 榆林 → 鄂尔多斯</h4>
+      <div class="km">📏 280 km · ⏱ 4 h · 🟡 注意横风</div>
+      <p>出陕入蒙过收费站后**限速升到 120，区间测速密集**。毛乌素沙地 → 丘陵草原，视野豁然开朗。午后直达成吉思汗陵，傍晚康巴什看亚洲最大喷泉灯光秀。</p>
+    </div>
+
+    <div class="timeline-item">
+      <div class="marker">D5</div>
+      <h4>收官 · 鄂尔多斯 → 响沙湾 → 包头</h4>
+      <div class="km">📏 150 km · ⏱ 3 h · 🎉 终点</div>
+      <p>上午直奔响沙湾（康巴什北上 110 km），骑骆驼 + 滑沙 + 沙漠越野车，沙漠里会"唱歌"。下午 1 点 G65 北上 1.5 h 抵包头，烤全羊庆功收尾 🏁。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 三段地形 ===== -->
+<section class="section section-soft">
+  <span class="section-eyebrow">TERRAINS · 地貌</span>
+  <h2 class="section-title">三种地形，三层体验</h2>
+
+  <div class="day-grid">
+    <div class="feature-card">
+      <div class="feature-ico">🌾</div>
+      <h3>陕西段 · 第 1–2 天</h3>
+      <p>从西安出发一路向北，500 米以下的关中平原 + 渭北高原。G65 / G70 双向 6 车道高速，路况最好、加油站最密、限速相对宽松。</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-ico">🪨</div>
+      <h3>陕北段 · 第 3 天</h3>
+      <p>北上进入黄土高原，**靖边波浪谷的丹霞地貌**是全程最大的视觉冲击。从 800 米爬升到 1400 米，黄土沟壑与红色丹霞交错。</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-ico">🐎</div>
+      <h3>内蒙段 · 第 4–5 天</h3>
+      <p>过蒙陕界进入毛乌素沙地 → 草原。海拔抬升到 1300 米以上。地平线远了，但**横风变强**（5–6 级常态），过卡车要严守车道。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer class="footer">
+  <div class="col-grid">
+    <div>
+      <h4>站点地图</h4>
+      <ul>
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="overview.html">行程概览</a></li>
+        <li><a href="days.html">每日打卡</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>实用工具</h4>
+      <ul>
+        <li><a href="manual.html">路线手册</a></li>
+        <li><a href="budget.html">预算清单</a></li>
+        <li><a href="gear.html">装备 & 安全</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>关于</h4>
+      <ul>
+        <li><a href="about.html">关于本方案</a></li>
+        <li><a href="../README.md">设计令牌</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>联系方式</h4>
+      <ul>
+        <li>📞 122 高速报警</li>
+        <li>📞 120 急救</li>
+        <li>🆘 摩旅协会公众号</li>
+      </ul>
+    </div>
+  </div>
+  <p class="copyright">© 2026 西安→包头摩旅方案 · 基于 marketing-doc 设计令牌 · v1.0</p>
+</footer>
+
+</body>
+</html>
