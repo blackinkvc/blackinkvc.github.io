@@ -1,10 +1,15 @@
 ---
-layout: note
+layout: default
 title: 股权投资札记
+wide: true
 ---
 
+{% assign all = site.notes | sort: 'date' %}
+{% assign g_invest = all | where_exp: 'n', 'n.series' | sort: 'series' %}
+{% assign g_train  = all | where: 'tags', '培养新人' | sort: 'date' | reverse %}
+{% assign g_other  = all | where_exp: 'n', 'n.series == empty' | reject: 'tags', '培养新人' | sort: 'date' | reverse %}
+
 <section class="notes-hero">
-  {% assign all = site.notes | sort: 'date' %}
   <h1>📈 股权投资札记</h1>
   <p>一级市场的观察、判断与复盘。判断先行，验证滞后——所以先把逻辑写下来。</p>
   <div class="notes-hero-meta">
@@ -19,7 +24,7 @@ title: 股权投资札记
     {% include notes_toc.html mode="anchor" %}
   </aside>
 
-  <!-- 右侧文章列表 -->
+  <!-- 右侧看板 -->
   <div class="notes-main">
     <div class="notes-filters" id="notesFilters">
       <button class="nf-btn active" data-filter="all">全部</button>
@@ -28,28 +33,55 @@ title: 股权投资札记
       <button class="nf-btn" data-filter="other">其他随笔</button>
     </div>
 
-    {% assign year_groups = site.notes | group_by_exp: 'n', 'n.date | date: "%Y"' | sort: 'name' | reverse %}
+    <section class="dash-section" data-cat="invest">
+      <h2>📑 投资札记系列 <small>{{ g_invest.size }} 篇</small></h2>
+      <div class="dash-grid">
+        {% for n in g_invest %}
+          {% assign slug = n.path | split: "/" | last | remove: ".md" %}
+          <article class="ncard" id="note-{{ slug }}" data-group="invest">
+            <div class="ncard-meta">
+              <time>{{ n.date | date: "%Y-%m-%d" }}</time>
+              <span class="series-badge">No.{{ n.series }}</span>
+            </div>
+            <h3><a href="{{ n.url | relative_url }}">{{ n.title }}</a></h3>
+            <p>{{ n.summary }}</p>
+          </article>
+        {% endfor %}
+      </div>
+    </section>
 
-    <section class="notes-list">
-      {% for g in year_groups %}
-      <h2 class="year-head" data-group="year">{{ g.name }} <small>共 {{ g.items.size }} 篇</small></h2>
-      {% assign items = g.items | sort: 'date' | reverse %}
-      {% for n in items %}
-        {% assign slug = n.path | split: "/" | last | remove: ".md" %}
-        {% if n.series %}{% assign grp = "invest" %}
-        {% elsif n.tags contains "培养新人" %}{% assign grp = "train" %}
-        {% else %}{% assign grp = "other" %}{% endif %}
-        <article class="note-item" id="note-{{ slug }}" data-group="{{ grp }}">
-          <div class="note-meta">
-            <time>{{ n.date | date: "%m-%d" }}</time>
-            {% if n.series %}<span class="series-badge">札记 {{ n.series }}</span>{% endif %}
-            {% if n.tags %}<span class="note-tags">{{ n.tags | join: " · " }}</span>{% endif %}
-          </div>
-          <h2><a href="{{ n.url | relative_url }}">{{ n.title }}</a></h2>
-          <p>{{ n.summary }}</p>
-        </article>
-      {% endfor %}
-      {% endfor %}
+    <section class="dash-section" data-cat="train">
+      <h2>🧑‍🏫 培养新人系列 <small>{{ g_train.size }} 篇</small></h2>
+      <div class="dash-grid">
+        {% for n in g_train %}
+          {% assign slug = n.path | split: "/" | last | remove: ".md" %}
+          <article class="ncard" id="note-{{ slug }}" data-group="train">
+            <div class="ncard-meta">
+              <time>{{ n.date | date: "%Y-%m-%d" }}</time>
+              {% if n.tags %}<span class="ncard-tags">{{ n.tags | join: " · " }}</span>{% endif %}
+            </div>
+            <h3><a href="{{ n.url | relative_url }}">{{ n.title }}</a></h3>
+            <p>{{ n.summary }}</p>
+          </article>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="dash-section" data-cat="other">
+      <h2>📝 其他随笔 <small>{{ g_other.size }} 篇</small></h2>
+      <div class="dash-grid">
+        {% for n in g_other %}
+          {% assign slug = n.path | split: "/" | last | remove: ".md" %}
+          <article class="ncard" id="note-{{ slug }}" data-group="other">
+            <div class="ncard-meta">
+              <time>{{ n.date | date: "%Y-%m-%d" }}</time>
+              {% if n.tags %}<span class="ncard-tags">{{ n.tags | join: " · " }}</span>{% endif %}
+            </div>
+            <h3><a href="{{ n.url | relative_url }}">{{ n.title }}</a></h3>
+            <p>{{ n.summary }}</p>
+          </article>
+        {% endfor %}
+      </div>
     </section>
   </div>
 </div>
@@ -57,15 +89,13 @@ title: 股权投资札记
 <script>
 (function () {
   var btns = document.querySelectorAll('#notesFilters .nf-btn');
-  var cards = document.querySelectorAll('.note-item');
+  var sections = document.querySelectorAll('.dash-section[data-cat]');
   var groups = document.querySelectorAll('.notes-toc-group');
   var tocItems = document.querySelectorAll('.notes-toc-group li');
   function apply(filter) {
-    cards.forEach(function (c) {
-      c.style.display = (filter === 'all' || c.dataset.group === filter) ? '' : 'none';
+    sections.forEach(function (s) {
+      s.style.display = (filter === 'all' || s.dataset.cat === filter) ? '' : 'none';
     });
-    // 年份标题：仅当该年还有可见文章时显示
-    document.querySelectorAll('.year-head').forEach(function (h) { h.style.display = ''; });
     groups.forEach(function (g) { g.style.display = (filter === 'all' || g.dataset.group === filter) ? '' : 'none'; });
     tocItems.forEach(function (li) { li.style.display = (filter === 'all' || li.dataset.group === filter) ? '' : 'none'; });
   }
