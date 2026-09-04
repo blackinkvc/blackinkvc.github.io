@@ -666,7 +666,7 @@ body {
     linear-gradient(180deg, #93a984 0%, #7e9471 45%, #6d8361 100%);
 }
 
-/* 前景水层：盖住水豚下半身，营造"泡在水里" */
+/* 前景水层：盖住水豚下半身，营造"泡在水里"；半透出小腿，折射出走路错觉 */
 .pond-front {
   position: absolute;
   inset: auto 0 0 0;
@@ -683,7 +683,7 @@ body {
   height: 16px;
   border: 2px solid rgba(255, 255, 255, .30);
   border-radius: 50%;
-  animation: pond-ripple 4s ease-out infinite;
+  animation: pond-ripple 6s ease-out infinite;
   pointer-events: none;
 }
 
@@ -710,26 +710,26 @@ body {
   pointer-events: none;
 }
 
-/* 水豚来回走：0→50% 向右，50%→100% 向左 */
+/* 水豚随波逐流：缓慢漂荡、幅度小、缓入缓出，像浮在水面而非来回跑 */
 .capy-track {
   position: absolute;
   left: 3%;
   bottom: 26px;
-  width: calc(94% - 110px); /* 可走距离 = 池宽 - 左右边距 - 水豚宽 */
-  animation: pond-cross 26s linear infinite;
+  width: calc(94% - 110px); /* 可漂距离 = 池宽 - 左右边距 - 水豚宽 */
+  animation: pond-cross 64s ease-in-out infinite;
   will-change: transform;
 }
 
 @keyframes pond-cross {
-  0%   { transform: translateX(0); }
-  50%  { transform: translateX(100%); }
-  100% { transform: translateX(0); }
+  0%   { transform: translateX(-6%); }
+  50%  { transform: translateX(10%); }
+  100% { transform: translateX(-6%); }
 }
 
-/* 朝向：向右走时转身 */
+/* 朝向：随漂荡方向缓缓转身 */
 .capy-face {
   display: inline-block;
-  animation: pond-face 26s steps(1) infinite;
+  animation: pond-face 64s steps(1) infinite;
   cursor: pointer;
 }
 
@@ -746,15 +746,15 @@ body {
   50%, 100%  { transform: scaleX(1); }  /* 向左走 → 朝左 */
 }
 
-/* 水中起伏 */
+/* 水中起伏：放慢、轻柔，像随波上下 */
 .capy-bob {
   position: relative;
-  animation: pond-bob 3.2s ease-in-out infinite;
+  animation: pond-bob 5s ease-in-out infinite;
 }
 
 @keyframes pond-bob {
   0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-3px); }
+  50%      { transform: translateY(-4px); }
 }
 
 /* 点水豚冒气泡 */
