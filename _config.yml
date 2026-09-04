@@ -20,11 +20,7 @@ collections:
   notes:
     output: true
     permalink: /notes/:name/
-  travel:
-    output: false
-    # 仅作为「旅行计划&札记」栏目数据源；实际页面在 travel/ 静态目录内
-
-  # 旅行计划&札记：每个旅行计划一个 _travel/xxx.md（数据条目），
+  # 旅行计划&札记：每个计划一个 _travel/xxx.md（数据条目），
   # 实际页面是 travel/<slug>/ 下的独立静态站点
   travel:
     output: false
