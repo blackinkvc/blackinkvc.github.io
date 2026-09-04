@@ -9,11 +9,6 @@
 <body>
   <header class="site-header">
     <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
-    <nav>
-      <a href="{{ '/' | relative_url }}">项目</a>
-      <a href="{{ '/notes/' | relative_url }}">股权投资札记</a>
-      <a href="{{ '/travel/' | relative_url }}">旅行计划&amp;札记</a>
-    </nav>
   </header>
 
   <main class="site-main">
@@ -32,11 +27,11 @@
         {% comment %} 同组上一篇 / 下一篇 {% endcomment %}
         {% assign all = site.notes | sort: 'date' %}
         {% if page.series %}
-          {% assign grp_items = all | where_exp: 'n', 'n.series != nil' | sort: 'series' %}
+          {% assign grp_items = all | where_exp: 'n', 'n.series' | sort: 'series' %}
         {% elsif page.tags contains "培养新人" %}
-          {% assign grp_items = all | where_exp: 'n', 'n.tags contains "培养新人"' | sort: 'date' | reverse %}
+          {% assign grp_items = all | where: 'tags', '培养新人' | sort: 'date' | reverse %}
         {% else %}
-          {% assign grp_items = all | where_exp: 'n', 'n.series == nil and n.tags contains "培养新人" == false' | sort: 'date' | reverse %}
+          {% assign grp_items = all | where_exp: 'n', 'n.series == empty' | reject: 'tags', '培养新人' | sort: 'date' | reverse %}
         {% endif %}
 
         {% assign prev = nil %}{% assign next = nil %}{% assign found = false %}

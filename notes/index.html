@@ -36,7 +36,7 @@ title: 股权投资札记
       {% assign items = g.items | sort: 'date' | reverse %}
       {% for n in items %}
         {% assign slug = n.path | split: "/" | last | remove: ".md" %}
-        {% if n.series != nil %}{% assign grp = "invest" %}
+        {% if n.series %}{% assign grp = "invest" %}
         {% elsif n.tags contains "培养新人" %}{% assign grp = "train" %}
         {% else %}{% assign grp = "other" %}{% endif %}
         <article class="note-item" id="note-{{ slug }}" data-group="{{ grp }}">

@@ -5,9 +5,9 @@
 {% endcomment %}
 
 {% assign all = site.notes | sort: 'date' %}
-{% assign g_invest = all | where_exp: 'n', 'n.series != nil' | sort: 'series' %}
-{% assign g_train  = all | where_exp: 'n', 'n.tags contains "培养新人"' | sort: 'date' | reverse %}
-{% assign g_other  = all | where_exp: 'n', 'n.series == nil and n.tags contains "培养新人" == false' | sort: 'date' | reverse %}
+{% assign g_invest = all | where_exp: 'n', 'n.series' | sort: 'series' %}
+{% assign g_train  = all | where: 'tags', '培养新人' | sort: 'date' | reverse %}
+{% assign g_other  = all | where_exp: 'n', 'n.series == empty' | reject: 'tags', '培养新人' | sort: 'date' | reverse %}
 
 {% assign groups = "invest|投资札记系列|📑,train|培养新人系列|🧑‍🏫,other|其他随笔|📝" | split: "," %}
 
@@ -18,11 +18,9 @@
     {% assign key = parts[0] %}
     {% assign label = parts[1] %}
     {% assign icon = parts[2] %}
-    {% assign items = g_invest %}
-    {% if key == "train" %}{% assign items = g_train %}{% endif %}
-    {% if key == "other" %}{% assign items = g_other %}{% endif %}
-    {% if key == "train" %}{% assign items = g_train %}{% endif %}
-    {% if key == "other" %}{% assign items = g_other %}{% endif %}
+    {% if key == "invest" %}{% assign items = g_invest %}
+    {% elsif key == "train" %}{% assign items = g_train %}
+    {% else %}{% assign items = g_other %}{% endif %}
     {% if items.size > 0 %}
     <div class="notes-toc-group" data-group="{{ key }}">
       <div class="notes-toc-group-title">{{ icon }} {{ label }} <span>{{ items.size }}</span></div>
