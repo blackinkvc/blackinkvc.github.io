@@ -38,15 +38,15 @@ wide: true
   </div>
 </div>
 
-<div class="dashboard" data-page-node-id="74y0os3NmH5s0qxJeTD79B">
+<div class="dashboard mode-compact" data-page-node-id="74y0os3NmH5s0qxJeTD79B">
 
   <!-- ===== 左侧导航 ===== -->
   <aside class="dash-side" data-page-node-id="BgVsA0zSO87RDXGFaE03M5">
-    <button class="dash-brand" id="viewToggle" type="button" data-page-node-id="7yIUMnkIAVdxOHyexImw6k" title="点击在看板 / 列表之间切换">
+    <button class="dash-brand" id="viewToggle" type="button" data-page-node-id="7yIUMnkIAVdxOHyexImw6k" title="点击在 简洁 / 看板 / 列表 之间切换">
       <span class="dash-logo" data-page-node-id="HKEi0sNKqa3svL7xmjMjqy">⬢</span>
       <div data-page-node-id="0coEoCmsnUK9UCs6VaYftA">
         <strong data-page-node-id="vragsFZbDd2L3t53yTmgOt">blackinkvc</strong>
-        <small data-page-node-id="FXnychMzqCuE7HodKSqaLL">项目展板 · <span id="viewMode">看板</span></small>
+        <small data-page-node-id="FXnychMzqCuE7HodKSqaLL">项目展板 · <span id="viewMode">简洁</span></small>
       </div>
     </button>
 
@@ -73,7 +73,50 @@ wide: true
   <!-- ===== 右侧展板 ===== -->
   <div class="dash-main" data-page-node-id="0oDaCu2zp8wDIKCdniVh3I">
 
-    <!-- 看板视图（默认） -->
+    <!-- 简洁视图（默认） -->
+    <div class="compact-view" id="compactView">
+      <p class="compact-hint">项目以标题列出，点标题直达。点击左上角「blackinkvc 项目展板」可在 简洁 / 看板 / 列表 之间切换。</p>
+
+      <div class="compact-grid">
+        <div class="compact-group" data-cat="game">
+          <h3>🎮 游戏 <small>{{ game_projects | size }}</small></h3>
+          <ul class="compact-list">
+            {% for p in game_projects %}<li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>{% endfor %}
+          </ul>
+        </div>
+
+        <div class="compact-group" data-cat="research">
+          <h3>📚 研究 · 知识库 <small>{{ research_projects | size }}</small></h3>
+          <ul class="compact-list">
+            {% for p in research_projects %}<li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>{% endfor %}
+          </ul>
+        </div>
+
+        <div class="compact-group" data-cat="soft">
+          <h3>🛠 软件 · 工具 <small>{{ soft_projects | size }}</small></h3>
+          <ul class="compact-list">
+            {% for p in soft_projects %}<li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>{% endfor %}
+          </ul>
+        </div>
+
+        <div class="compact-group" data-cat="invest">
+          <h3>📈 股权投资札记 <small>{{ notes | size }} 篇</small></h3>
+          <ul class="compact-list">
+            <li><a href="{{ '/notes/' | relative_url }}">全部文章 →</a></li>
+          </ul>
+        </div>
+
+        <div class="compact-group" data-cat="travel">
+          <h3>🏍️ 旅行计划&amp;札记 <small>{{ site.travel | size }} 个</small></h3>
+          <ul class="compact-list">
+            {% assign travels = site.travel | sort: 'date' | reverse %}
+            {% for t in travels %}<li><a href="{{ t.link | relative_url }}">{{ t.title }}</a></li>{% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 看板视图 -->
     <div class="board-view" id="boardView">
 
     <div class="dash-stats" id="dash-stats" data-page-node-id="VKaYcCWylAzTDVPemm7AY1">
@@ -197,7 +240,7 @@ wide: true
 <script>
 (function () {
   var btns = document.querySelectorAll('.cat-btn');
-  var sections = document.querySelectorAll('.dash-section');
+  var sections = document.querySelectorAll('.dash-section, .compact-group');
   var stats = document.getElementById('dash-stats');
   btns.forEach(function (btn) {
     btn.addEventListener('click', function () {
@@ -210,14 +253,18 @@ wide: true
     });
   });
 
-  // 看板 / 列表 视图切换
+  // 简洁 / 看板 / 列表 三视图切换（默认 简洁）
   var toggle = document.getElementById('viewToggle');
   var dash = document.querySelector('.dashboard');
   var modeLabel = document.getElementById('viewMode');
   if (toggle && dash) {
+    var modes = ['compact', 'board', 'list'];
+    var modeLabels = { compact: '简洁', board: '看板', list: '列表' };
+    var mi = 0;
     toggle.addEventListener('click', function () {
-      var isList = dash.classList.toggle('list-mode');
-      if (modeLabel) modeLabel.textContent = isList ? '列表' : '看板';
+      mi = (mi + 1) % modes.length;
+      dash.className = 'dashboard mode-' + modes[mi];
+      if (modeLabel) modeLabel.textContent = modeLabels[modes[mi]];
     });
   }
 

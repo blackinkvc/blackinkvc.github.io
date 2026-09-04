@@ -809,13 +809,36 @@ body {
   color: var(--accent);
 }
 
-/* 列表视图默认隐藏 */
-.list-view { display: none; }
-.dashboard.list-mode .board-view { display: none; }
-.dashboard.list-mode .list-view { display: block; }
-/* 列表模式下隐藏左侧筛选/进度（它们只为看板服务） */
-.dashboard.list-mode .dash-nav,
-.dashboard.list-mode .dash-progress { display: none; }
+/* 三视图：默认隐藏，仅显示当前模式的那一个 */
+.compact-view, .board-view, .list-view { display: none; }
+.dashboard.mode-compact .compact-view { display: block; }
+.dashboard.mode-board  .board-view  { display: block; }
+.dashboard.mode-list   .list-view   { display: block; }
+/* 列表模式下隐藏左侧筛选/进度（它们只为看板/简洁服务） */
+.dashboard.mode-list .dash-nav,
+.dashboard.mode-list .dash-progress { display: none; }
+
+/* 简洁视图：分类框格，2 列 */
+.compact-hint { color: var(--muted); font-size: 13px; margin: 0 0 10px; }
+.compact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.compact-group {
+  border: 1px solid var(--line); border-radius: 12px;
+  background: var(--card); padding: 12px 14px;
+}
+.compact-group h3 {
+  font-size: 14px; margin: 0 0 8px; color: var(--fg);
+  display: flex; align-items: baseline; gap: 8px;
+}
+.compact-group h3 small { font-size: 12px; color: var(--muted); font-weight: 400; }
+.compact-list { list-style: none; margin: 0; padding: 0; }
+.compact-list li { border-bottom: 1px solid var(--line); }
+.compact-list li:last-child { border-bottom: none; }
+.compact-list a {
+  display: block; padding: 7px 4px; text-decoration: none;
+  color: var(--fg); border-radius: 6px; font-size: 13px;
+}
+.compact-list a:hover { background: var(--bg); color: var(--accent); }
+@media (max-width: 720px) { .compact-grid { grid-template-columns: 1fr; } }
 
 .list-head {
   margin: 26px 0 12px;
