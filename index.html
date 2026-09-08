@@ -105,6 +105,7 @@ wide: true
         <div class="compact-group" data-cat="invest">
           <h3>📈 股权投资札记 <small>{{ notes | size }} 篇</small></h3>
           <ul class="compact-list">
+            {% for n in notes limit: 5 %}<li><a href="{{ n.url | relative_url }}">{{ n.title }}</a></li>{% endfor %}
             <li><a href="{{ '/notes/' | relative_url }}">全部文章 →</a></li>
           </ul>
         </div>
@@ -172,21 +173,31 @@ wide: true
       </div>
     </section>
 
-    <!-- 股权投资札记 · 栏目入口 -->
+    <!-- 股权投资札记 -->
     <section class="dash-section" data-cat="invest">
-      <h2>
-        📈 股权投资札记 <small>{{ notes | size }} 篇</small>
-      </h2>
+      <h2>📈 股权投资札记 <small>{{ notes | size }} 篇</small></h2>
       <div class="dash-grid">
-        <a class="column-card" href="{{ '/notes/' | relative_url }}">
+        {% for n in notes limit: 5 %}
+        <a class="column-card" href="{{ n.url | relative_url }}">
           <div class="column-card-head">
             <span class="column-card-icon">📈</span>
             <div>
-              <h3>股权投资札记</h3>
-              <small>{{ notes | size }} 篇 · 更新中</small>
+              <h3>{{ n.title }}</h3>
+              <small>{{ n.date | date: '%Y-%m-%d' }}</small>
             </div>
           </div>
-          <p>一级市场的观察、判断与复盘：行业笔记、项目复盘、方法论与市场观察。点开阅读全部文章 →</p>
+          <p>{{ n.summary | strip_html | truncate: 80 }}</p>
+        </a>
+        {% endfor %}
+        <a class="column-card" href="{{ '/notes/' | relative_url }}">
+          <div class="column-card-head">
+            <span class="column-card-icon">→</span>
+            <div>
+              <h3>全部文章</h3>
+              <small>共 {{ notes | size }} 篇</small>
+            </div>
+          </div>
+          <p>阅读股权投资札记的全部文章 →</p>
         </a>
       </div>
     </section>
@@ -253,7 +264,10 @@ wide: true
 
       <h2 class="list-head">📈 股权投资札记 <small>{{ notes.size }} 篇</small></h2>
       <ul class="proj-list">
-        <li><a href="{{ '/notes/' | relative_url }}"><span class="pl-title">全部文章</span><span class="pl-meta"><span class="pl-tag">栏目</span></span></a></li>
+        {% for n in notes limit: 5 %}
+        <li><a href="{{ n.url | relative_url }}"><span class="pl-title">{{ n.title }}</span><span class="pl-meta"><span class="pl-tag">{{ n.date | date: '%Y-%m-%d' }}</span></span></a></li>
+        {% endfor %}
+        <li><a href="{{ '/notes/' | relative_url }}"><span class="pl-title">全部文章</span><span class="pl-meta"><span class="pl-tag">共 {{ notes.size }} 篇</span></span></a></li>
       </ul>
 
       <h2 class="list-head">🏍️ 旅行计划&amp;札记 <small>{{ site.travel.size }} 个计划</small></h2>
