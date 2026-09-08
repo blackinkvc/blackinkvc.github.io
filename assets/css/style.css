@@ -1077,3 +1077,14 @@ body {
 .download-note { margin-top: 14px; font-size: 14px; }
 .download-note a { color: var(--accent); text-decoration: none; font-weight: 600; }
 .download-note a:hover { text-decoration: underline; }
+
+/* 资料下载清单页 */
+.downloads-page { max-width: 760px; margin: 0 auto; padding: 8px 4px 40px; }
+.downloads-page h1 { font-size: 26px; margin: 6px 0 10px; }
+.downloads-intro { color: var(--muted); line-height: 1.8; margin: 0 0 18px; }
+.downloads-intro code { background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 1px 6px; font-size: 13px; }
+.download-list { list-style: none; margin: 0; padding: 0; }
+.download-item { display: flex; align-items: baseline; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+.download-item a { color: var(--accent); font-weight: 600; text-decoration: none; font-size: 16px; }
+.download-item a:hover { text-decoration: underline; }
+.download-meta { color: var(--muted); font-size: 13px; }
