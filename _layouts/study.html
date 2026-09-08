@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title %}{{ page.title }} · {% endif %}小项目研究</title>
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+</head>
+<body>
+  <header class="site-header">
+    <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+  </header>
+
+  <main class="site-main">
+    <article class="study-page">
+      <p class="study-back"><a href="{{ '/' | relative_url }}">← 返回首页</a></p>
+
+      <header class="study-head">
+        <h1 class="study-title">{{ page.title }}</h1>
+        <p class="study-meta">
+          <span class="study-date">📅 {{ page.date | date: '%Y-%m-%d' }}</span>
+          {% if page.tags %}{% for t in page.tags %}<span class="study-tag">#{{ t }}</span>{% endfor %}{% endif %}
+        </p>
+      </header>
+
+      {% if page.summary %}
+      <section class="study-summary">
+        <h2 class="study-label">主要内容</h2>
+        <p>{{ page.summary | escape }}</p>
+      </section>
+      {% endif %}
+
+      {% if page.conversation %}
+      <section class="study-conversation-wrap">
+        <details class="study-conversation">
+          <summary>对话全文</summary>
+          <div class="conversation">{{ page.conversation | escape }}</div>
+        </details>
+      </section>
+      {% endif %}
+
+      {% if page.log %}
+      <section class="study-log-wrap">
+        <h2 class="study-label">日志</h2>
+        <ul class="study-log">
+          {% for item in page.log %}
+          <li>{{ item | escape }}</li>
+          {% endfor %}
+        </ul>
+      </section>
+      {% endif %}
+
+      <p class="study-back study-back--bottom"><a href="{{ '/' | relative_url }}">← 返回首页</a></p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>© {{ site.time | date: '%Y' }} {{ site.author }} · 由 GitHub Pages 驱动</p>
+  </footer>
+</body>
+</html>
