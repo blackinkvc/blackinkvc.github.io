@@ -17,7 +17,7 @@ wide: true
 
 {% assign notes = site.notes | sort: 'date' | reverse %}
 
-{% assign studies = site.studies | sort: 'date' | reverse %}
+{% assign studies = site.studies | where_exp: "n", "n.exclude_from_index != true" | sort: 'date' | reverse %}
 
 <!-- 水豚池 · 页面最顶部 -->
 <div class="pond" aria-hidden="true">

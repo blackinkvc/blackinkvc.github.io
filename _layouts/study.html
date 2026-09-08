@@ -30,6 +30,13 @@
       </section>
       {% endif %}
 
+      {% if content and content != "" %}
+      <section class="study-body-wrap">
+        <h2 class="study-label">正文</h2>
+        <div class="study-body note-article">{{ content }}</div>
+      </section>
+      {% endif %}
+
       {% if page.conversation %}
       <section class="study-conversation-wrap">
         <details class="study-conversation">
@@ -57,5 +64,24 @@
   <footer class="site-footer">
     <p>© {{ site.time | date: '%Y' }} {{ site.author }} · 由 GitHub Pages 驱动</p>
   </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (!window.mermaid) return;
+      // kramdown/Python-Markdown emit a fenced ```mermaid block as a code block,
+      // not as <div class="mermaid">, so convert it before running mermaid.
+      var blocks = document.querySelectorAll('.language-mermaid');
+      blocks.forEach(function (el) {
+        var code = el.querySelector('code') || el;
+        var div = document.createElement('div');
+        div.className = 'mermaid';
+        div.textContent = code.textContent;
+        el.parentNode.replaceChild(div, el);
+      });
+      mermaid.initialize({ startOnLoad: false, theme: 'default', securityLevel: 'loose' });
+      mermaid.run();
+    });
+  </script>
 </body>
 </html>
