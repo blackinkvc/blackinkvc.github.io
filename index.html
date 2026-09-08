@@ -17,7 +17,7 @@ wide: true
 
 {% assign notes = site.notes | sort: 'date' | reverse %}
 
-{% assign studies = site.studies | sort: 'date' | reverse %}
+{% assign studies = site.studies | where_exp: "n", "n.exclude_from_index != true" | sort: 'date' | reverse %}
 
 <!-- 水豚池 · 页面最顶部 -->
 <div class="pond" aria-hidden="true">
@@ -121,7 +121,8 @@ wide: true
         <div class="compact-group" data-cat="studies">
           <h3>🧪 小项目研究 <small>{{ studies | size }}</small></h3>
           <ul class="compact-list">
-            {% for s in studies %}<li><a href="{{ s.url | relative_url }}">{{ s.title }}</a></li>{% endfor %}
+            {% for s in studies limit: 5 %}<li><a href="{{ s.url | relative_url }}">{{ s.title }}</a></li>{% endfor %}
+            <li><a href="{{ '/studies/' | relative_url }}">全部研究 →</a></li>
           </ul>
           <p class="download-note"><a href="{{ '/downloads/机械硬盘HDD产业链研究归档包.zip' | relative_url }}">📎 机械硬盘 HDD 产业链研究归档包（zip 下载）</a> · <a href="{{ '/downloads/' | relative_url }}">📁 资料下载专区</a></p>
         </div>
@@ -226,7 +227,7 @@ wide: true
     <section class="dash-section" data-cat="studies">
       <h2>🧪 小项目研究 <small>{{ studies | size }}</small></h2>
       <div class="dash-grid">
-        {% for s in studies %}
+        {% for s in studies limit: 5 %}
         <a class="column-card" href="{{ s.url | relative_url }}">
           <div class="column-card-head">
             <span class="column-card-icon">🧪</span>
@@ -238,6 +239,16 @@ wide: true
           <p>{{ s.summary }}</p>
         </a>
         {% endfor %}
+        <a class="column-card" href="{{ '/studies/' | relative_url }}">
+          <div class="column-card-head">
+            <span class="column-card-icon">→</span>
+            <div>
+              <h3>全部研究</h3>
+              <small>共 {{ studies | size }} 个</small>
+            </div>
+          </div>
+          <p>查看全部小项目研究 →</p>
+        </a>
       </div>
       <p class="download-note"><a href="{{ '/downloads/机械硬盘HDD产业链研究归档包.zip' | relative_url }}">📎 机械硬盘 HDD 产业链研究归档包（zip 下载）</a> · <a href="{{ '/downloads/' | relative_url }}">📁 资料下载专区</a></p>
     </section>
@@ -280,9 +291,10 @@ wide: true
 
       <h2 class="list-head">🧪 小项目研究 <small>{{ studies.size }} 个</small></h2>
       <ul class="proj-list">
-        {% for s in studies %}
+        {% for s in studies limit: 5 %}
         <li><a href="{{ s.url | relative_url }}"><span class="pl-title">{{ s.title }}</span><span class="pl-meta"><span class="pl-tag">{{ s.date | date: '%Y-%m-%d' }}</span></span></a></li>
         {% endfor %}
+        <li><a href="{{ '/studies/' | relative_url }}"><span class="pl-title">全部研究</span><span class="pl-meta"><span class="pl-tag">共 {{ studies.size }} 个</span></span></a></li>
       </ul>
       <p class="download-note"><a href="{{ '/downloads/机械硬盘HDD产业链研究归档包.zip' | relative_url }}">📎 机械硬盘 HDD 产业链研究归档包（zip 下载）</a> · <a href="{{ '/downloads/' | relative_url }}">📁 资料下载专区</a></p>
     </div>

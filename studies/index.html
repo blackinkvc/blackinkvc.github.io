@@ -1,0 +1,24 @@
+---
+layout: default
+title: 小项目研究
+description: 与 AI 的小研究、小对话归档
+---
+
+<div class="downloads-page">
+  <p class="study-back"><a href="{{ '/' | relative_url }}">← 返回首页</a></p>
+
+  <h1>🧪 小项目研究</h1>
+  <p class="downloads-intro">这里收录与 AI 做的小研究、小对话。新增研究时，直接把 .md 文件放进仓库 <code>_studies/</code> 目录即可（带 front matter 会自动生成页面，并出现在下方列表中）。</p>
+
+  <ul class="download-list">
+    {% assign all_studies = site.studies | where_exp: "n", "n.exclude_from_index != true" | sort: 'date' | reverse %}
+    {% for s in all_studies %}
+    <li class="download-item">
+      <a href="{{ s.url | relative_url }}">{{ s.title }}</a>
+      <span class="download-meta">{{ s.date | date: '%Y-%m-%d' }}</span>
+    </li>
+    {% endfor %}
+  </ul>
+
+  <p class="study-back study-back--bottom"><a href="{{ '/' | relative_url }}">← 返回首页</a></p>
+</div>
