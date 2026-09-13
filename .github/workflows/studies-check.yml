@@ -1,0 +1,35 @@
+name: Check study URLs
+
+# GitHub Pages 不服务含中文（非 ASCII）的 URL 路径。
+# 中文文件名本身没问题，但必须在 front matter 里加 ASCII 的 permalink。
+# 这个检查会在改动 _studies/ 时提醒你漏加 permalink 的文件，避免又出现 404。
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '_studies/**'
+      - 'scripts/check_studies.py'
+      - '.github/workflows/studies-check.yml'
+  pull_request:
+    paths:
+      - '_studies/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Verify all studies have an ASCII URL
+        run: |
+          set -o pipefail
+          python scripts/check_studies.py | tee -a "$GITHUB_STEP_SUMMARY"

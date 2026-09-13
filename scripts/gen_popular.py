@@ -50,9 +50,14 @@ def collect(slug_dir, url_prefix, cat):
             continue
         if fn in ("README.md", "_template.md"):
             continue
-        slug = fn[:-3]
-        url = f"{url_prefix}{slug}/"
-        title = fm.get("title", slug)
+        # URL = front matter permalink if set (supports Chinese filenames);
+        # otherwise fall back to the filename slug.
+        permalink = (fm.get("permalink") or "").strip()
+        if permalink:
+            url = permalink if permalink.endswith("/") else permalink + "/"
+        else:
+            url = f"{url_prefix}{fn[:-3]}/"
+        title = fm.get("title") or fn[:-3]
         out.append({"url": url, "title": title, "cat": cat})
     return out
 
