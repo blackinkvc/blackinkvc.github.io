@@ -126,6 +126,13 @@ wide: true
           </ul>
           <p class="download-note"><a href="{{ '/downloads/机械硬盘HDD产业链研究归档包.zip' | relative_url }}">📎 机械硬盘 HDD 产业链研究归档包（zip 下载）</a> · <a href="{{ '/downloads/' | relative_url }}">📁 资料下载专区</a></p>
         </div>
+
+        <div class="compact-group" data-cat="hot">
+          <h3>🔥 热门文件 <small id="hotCount">…</small></h3>
+          <ul class="compact-list" id="hotList">
+            <li class="hot-empty">统计加载中…</li>
+          </ul>
+        </div>
       </div>
     </div>
 
@@ -253,6 +260,14 @@ wide: true
       <p class="download-note"><a href="{{ '/downloads/机械硬盘HDD产业链研究归档包.zip' | relative_url }}">📎 机械硬盘 HDD 产业链研究归档包（zip 下载）</a> · <a href="{{ '/downloads/' | relative_url }}">📁 资料下载专区</a></p>
     </section>
 
+    <!-- 热门文件 -->
+    <section class="dash-section" data-cat="hot">
+      <h2>🔥 热门文件 <small id="hotCount2">…</small></h2>
+      <div class="dash-grid" id="hotGrid">
+        <p class="hot-empty">统计加载中…</p>
+      </div>
+    </section>
+
     </div><!-- /board-view -->
 
     <!-- 列表视图（点击品牌切换） -->
@@ -297,6 +312,11 @@ wide: true
         <li><a href="{{ '/studies/' | relative_url }}"><span class="pl-title">全部研究</span><span class="pl-meta"><span class="pl-tag">共 {{ studies.size }} 个</span></span></a></li>
       </ul>
       <p class="download-note"><a href="{{ '/downloads/机械硬盘HDD产业链研究归档包.zip' | relative_url }}">📎 机械硬盘 HDD 产业链研究归档包（zip 下载）</a> · <a href="{{ '/downloads/' | relative_url }}">📁 资料下载专区</a></p>
+
+      <h2 class="list-head">🔥 热门文件 <small id="hotCount3">…</small></h2>
+      <ul class="proj-list" id="hotUl">
+        <li class="hot-empty"><span class="pl-title">统计加载中…</span></li>
+      </ul>
     </div>
 
   </div>
@@ -341,5 +361,93 @@ wide: true
       setTimeout(function () { squeak.classList.remove('show'); }, 1600);
     });
   }
+
+  // ===== 热门 / 点击量排名 =====
+  (function () {
+    var LABEL = { studies: '小项目研究', notes: '股权投资札记', travel: '旅行' };
+    function getJSON(url, cb, err) {
+      try {
+        fetch(url).then(function (r) {
+          if (!r.ok) throw new Error('http ' + r.status);
+          return r.json();
+        }).then(cb).catch(function () { if (err) err(); });
+      } catch (e) { if (err) err(); }
+    }
+    function setHotEmpty() {
+      var ul = document.getElementById('hotList');   if (ul) ul.innerHTML = '<li class="hot-empty">暂无统计数据</li>';
+      var ul2 = document.getElementById('hotUl');    if (ul2) ul2.innerHTML = '<li class="hot-empty">暂无统计数据</li>';
+      var grid = document.getElementById('hotGrid'); if (grid) grid.innerHTML = '<div class="hot-empty">暂无统计数据</div>';
+      ['hotCount', 'hotCount2', 'hotCount3'].forEach(function (id) {
+        var e = document.getElementById(id); if (e) e.textContent = '0';
+      });
+    }
+    function compactLi(it, rank) {
+      return '<li>' + (rank ? '<span class="rank">' + rank + '</span> ' : '') +
+        '<a href="' + it.url + '">' + it.title + '</a>' +
+        (it.count != null ? ' <span class="vcount">' + it.count + '</span>' : '') + '</li>';
+    }
+    function listLi(it, rank) {
+      return '<li><a href="' + it.url + '"><span class="pl-title">' + it.title + '</span>' +
+        '<span class="pl-meta"><span class="pl-tag">' + (rank ? ('No.' + rank + ' · ') : '') +
+        (it.count != null ? (it.count + ' 次') : '热门') + '</span></span></a></li>';
+    }
+    function cardEl(it, rank) {
+      return '<a class="column-card" href="' + it.url + '"><div class="column-card-head">' +
+        '<span class="column-card-icon">' + (rank || '📄') + '</span><div><h3>' + it.title + '</h3>' +
+        '<small>' + (it.count != null ? (it.count + ' 次浏览') : '热门') + '</small></div></div><p></p></a>';
+    }
+    function replaceCompact(cat, items) {
+      var ul = document.querySelector('.compact-group[data-cat="' + cat + '"] ul.compact-list');
+      if (!ul) return;
+      var all = ul.querySelector('a[href="/' + cat + '/"]');
+      var html = items.map(function (it, i) { return compactLi(it, i + 1); }).join('');
+      if (all) html += '<li><a href="/' + cat + '/">全部' + (LABEL[cat] || '') + ' →</a></li>';
+      ul.innerHTML = html;
+    }
+    function replaceBoard(cat, items) {
+      var grid = document.querySelector('.dash-section[data-cat="' + cat + '"] .dash-grid');
+      if (!grid) return;
+      var all = grid.querySelector('a.column-card[href="/' + cat + '/"]');
+      var html = items.map(function (it, i) { return cardEl(it, i + 1); }).join('');
+      if (all) html += all.outerHTML;
+      grid.innerHTML = html;
+    }
+    function replaceList(cat, items) {
+      var heads = document.querySelectorAll('.list-view .list-head');
+      for (var h = 0; h < heads.length; h++) {
+        if (heads[h].textContent.indexOf(LABEL[cat] || cat) === -1) continue;
+        var ul = heads[h].nextElementSibling;
+        if (!ul || !ul.classList.contains('proj-list')) continue;
+        var all = ul.querySelector('a[href="/' + cat + '/"]');
+        var html = items.map(function (it, i) { return listLi(it, i + 1); }).join('');
+        if (all) html += all.outerHTML;
+        ul.innerHTML = html;
+        break;
+      }
+    }
+
+    getJSON('/assets/data/popular.json', function (data) {
+      if (!data) { setHotEmpty(); return; }
+      var pop = (data.popular || []).slice(0, 5);
+      if (pop.length) {
+        var cl = document.getElementById('hotList'); if (cl) cl.innerHTML = pop.map(function (it, i) { return compactLi(it, i + 1); }).join('');
+        var cg = document.getElementById('hotGrid'); if (cg) cg.innerHTML = pop.map(function (it, i) { return cardEl(it, i + 1); }).join('');
+        var cu = document.getElementById('hotUl'); if (cu) cu.innerHTML = pop.map(function (it, i) { return listLi(it, i + 1); }).join('');
+        ['hotCount', 'hotCount2', 'hotCount3'].forEach(function (id) {
+          var e = document.getElementById(id); if (e) e.textContent = pop.length;
+        });
+      } else {
+        setHotEmpty();
+      }
+      var by = data.by_cat || {};
+      Object.keys(by).forEach(function (cat) {
+        var items = (by[cat] || []).slice(0, 5);
+        if (!items.length) return;
+        replaceCompact(cat, items);
+        replaceBoard(cat, items);
+        replaceList(cat, items);
+      });
+    }, setHotEmpty);
+  })();
 })();
 </script>

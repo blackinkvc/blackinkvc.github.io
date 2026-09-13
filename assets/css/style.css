@@ -1088,3 +1088,8 @@ body {
 .download-item a { color: var(--accent); font-weight: 600; text-decoration: none; font-size: 16px; }
 .download-item a:hover { text-decoration: underline; }
 .download-meta { color: var(--muted); font-size: 13px; }
+
+/* 热门 / 点击量排名 */
+.hot-empty { color: var(--muted); font-size: 14px; }
+.rank { color: var(--accent); font-weight: 700; margin-right: 4px; }
+.vcount { color: var(--muted); font-size: 12px; }
