@@ -9,12 +9,6 @@ author: blackinkvc
 baseurl: ""
 url: "https://blackinkvc.github.io"
 
-# 访问统计（GoatCounter，可选）
-# 填你的 GoatCounter 站点代号（注册 https://www.goatcounter.com 后获得），留空则不加载统计脚本。
-# 热门排名所需的 counts 由 .github/workflows/popular.yml 定期写入 assets/data/popular.json
-goatcounter:
-  code: ""
-
 # 构建设置
 markdown: kramdown
 

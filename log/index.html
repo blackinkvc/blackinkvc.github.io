@@ -1,0 +1,136 @@
+---
+layout: default
+title: 更新日志
+description: 站点所有更新的时间与内容，由 Git 提交历史自动生成
+---
+
+<div class="log-page">
+  <p class="study-back"><a href="{{ '/' | relative_url }}">← 返回首页</a></p>
+
+  <h1>📋 更新日志</h1>
+  <p class="log-intro">
+    这里记录站点的每一次更新。<b>本页不需要手工维护</b>——它直接读取本站 GitHub 仓库的提交历史，
+    每次 <code>push</code> 之后的新改动都会自动出现在下面，包含<b>时间</b>与<b>内容</b>。
+    时间取自提交时间，内容取自提交说明；说明里写清楚改了什么，这里就会显示什么。
+  </p>
+
+  <div class="log-toolbar">
+    <input type="search" id="logSearch" class="log-search" placeholder="搜索更新内容…" autocomplete="off">
+  </div>
+  <div class="log-tags" id="logTags"></div>
+  <p class="log-count" id="logCount">正在读取提交记录…</p>
+
+  <div id="logBody">
+    <p class="log-empty">正在加载…</p>
+  </div>
+
+  <p class="log-more-wrap" id="logMoreWrap" hidden>
+    <button type="button" id="logMore" class="log-more">加载更早的更新</button>
+  </p>
+
+  <p class="study-back study-back--bottom">
+    <a href="{{ '/' | relative_url }}">← 返回首页</a> ·
+    <a href="https://github.com/blackinkvc/blackinkvc.github.io/commits/" target="_blank" rel="noopener">在 GitHub 查看完整提交记录</a>
+  </p>
+</div>
+
+<script src="{{ '/assets/js/changelog.js' | relative_url }}"></script>
+<script>
+(function () {
+  'use strict';
+  var C = window.Changelog;
+  var body = document.getElementById('logBody');
+  var countEl = document.getElementById('logCount');
+  var tagsEl = document.getElementById('logTags');
+  var moreWrap = document.getElementById('logMoreWrap');
+  var moreBtn = document.getElementById('logMore');
+  var searchEl = document.getElementById('logSearch');
+
+  if (!C) {
+    body.innerHTML = '<p class="log-empty">脚本未能加载，请刷新重试。</p>';
+    return;
+  }
+
+  var all = [];
+  var activeTag = '';
+
+  function filtered() {
+    var q = (searchEl.value || '').trim().toLowerCase();
+    return all.filter(function (it) {
+      if (activeTag && (it.tag || 'other') !== activeTag) return false;
+      if (!q) return true;
+      return (it.title + ' ' + it.body + ' ' + it.short + ' ' + it.tagLabel)
+        .toLowerCase().indexOf(q) !== -1;
+    });
+  }
+
+  function paintCount(shown) {
+    var text = '共 ' + all.length + ' 次提交' + (C.hasMore() ? '（还有更早的未加载）' : '');
+    if (all.length) text += ' · 最近更新 ' + C.humanize(all[0].date);
+    if (shown !== all.length) text += ' · 当前显示 ' + shown + ' 条';
+    countEl.textContent = text;
+  }
+
+  function paintTags() {
+    var seen = {}, order = [];
+    all.forEach(function (it) {
+      var k = it.tag || 'other';
+      if (seen[k] === undefined) { seen[k] = 0; order.push(k); }
+      seen[k] += 1;
+    });
+    var html = '<button type="button" class="log-tagbtn' + (activeTag === '' ? ' active' : '') +
+      '" data-tag="">全部 ' + all.length + '</button>';
+    order.forEach(function (k) {
+      html += '<button type="button" class="log-tagbtn' + (activeTag === k ? ' active' : '') +
+        '" data-tag="' + C.esc(k) + '">' + C.esc(C.tagLabel[k] || '其他') + ' ' + seen[k] + '</button>';
+    });
+    tagsEl.innerHTML = html;
+  }
+
+  function paint() {
+    var list = filtered();
+    C.renderLog(body, list);
+    paintCount(list.length);
+    C.scrollToHash();
+  }
+
+  function refresh(items) {
+    all = items;
+    moreWrap.hidden = !C.hasMore();
+    moreBtn.disabled = false;
+    moreBtn.textContent = '加载更早的更新';
+    paintTags();
+    paint();
+  }
+
+  tagsEl.addEventListener('click', function (e) {
+    var t = e.target;
+    if (!t || !t.closest) return;
+    var b = t.closest('.log-tagbtn');
+    if (!b) return;
+    activeTag = b.getAttribute('data-tag') || '';
+    paintTags();
+    paint();
+  });
+
+  searchEl.addEventListener('input', paint);
+
+  moreBtn.addEventListener('click', function () {
+    moreBtn.disabled = true;
+    moreBtn.textContent = '加载中…';
+    C.loadMore().then(refresh).catch(function () {
+      moreBtn.disabled = false;
+      moreBtn.textContent = '读取失败，点此重试';
+    });
+  });
+
+  window.addEventListener('hashchange', C.scrollToHash);
+  C.attachFilesHandler(body);
+
+  C.load().then(refresh).catch(function (err) {
+    countEl.textContent = '';
+    body.innerHTML = '<p class="log-empty">暂时读不到提交记录（' + C.esc(err.message) +
+      '）。可以到 <a href="https://github.com/blackinkvc/blackinkvc.github.io/commits/" target="_blank" rel="noopener">GitHub 提交记录</a> 查看。</p>';
+  });
+})();
+</script>
