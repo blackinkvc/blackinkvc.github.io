@@ -92,7 +92,7 @@ wide: true
         <div class="compact-group" data-cat="research">
           <h3>📚 研究 · 知识库 <small>{{ research_projects | size }}</small></h3>
           <ul class="compact-list">
-            {% for p in research_projects %}<li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>{% endfor %}
+            {% for p in research_projects %}<li><a href="{{ p.link | default: p.url | relative_url }}">{{ p.title }}</a></li>{% endfor %}
           </ul>
         </div>
 
