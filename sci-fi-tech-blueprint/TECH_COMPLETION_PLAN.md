@@ -57,7 +57,7 @@
 > 各补至 4–6 条，强化 bio/energy/material（生存技术）
 
 ### 批次 B6 — 日本动画/特摄补完
-> 目标：eva、攻壳（已入B1）、阿基拉、攻壳机动队、攻壳、攻壳、攻壳、攻壳、攻壳、攻壳、攻壳、攻壳、攻壳、攻壳、攻壳、攻壳、攻壳、攻壳、攻壳、攻壳、攻壳、攻壳、攻壳、攻壳、攻壳、攻壳、攻壳、攻壳、攻壳、攻壳
+> 目标：EVA、阿基拉、星际牛仔、风之谷、哆啦A梦、铁臂阿童木、万神殿（攻壳机动队已入 B1）
 > 注：实际取 akira、evangelion、cowboy-bebop、nausicaa、ghost-in-shell（B1）、doraemon、astro-boy、pantheon
 > 各补至 4–6 条
 

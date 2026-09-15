@@ -4,6 +4,11 @@ title: 人类基础技能包
 date: 2026-08-23
 tags: [知识库, 技能, 参考]
 summary: 整理人类基础技能的知识包项目。
+link: /projects/human-skills/
+
+category: research
+status: idea
+progress: 5
 ---
 
 ## 简介
