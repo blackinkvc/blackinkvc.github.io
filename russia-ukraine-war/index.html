@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>俄乌战争研究 · 2026年9月态势</title>
+<style>
+:root{
+  --bg:#0b0f14;
+  --bg2:#111820;
+  --panel:#151d27;
+  --panel2:#1a2430;
+  --line:#25323f;
+  --txt:#e6edf3;
+  --txt2:#9aa9b8;
+  --txt3:#6b7d8f;
+  --ua:#4a9eff;
+  --ua-dim:rgba(74,158,255,.14);
+  --ru:#e8574a;
+  --ru-dim:rgba(232,87,74,.14);
+  --warn:#e8b04a;
+  --ok:#4ad9a0;
+  --mono:"SF Mono",Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--txt);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  font-size:15px;line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--ua);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* ---------- 顶部 ---------- */
+header{
+  position:relative;padding:64px 32px 48px;
+  background:
+    radial-gradient(ellipse 900px 400px at 15% 0%,rgba(232,87,74,.10),transparent 60%),
+    radial-gradient(ellipse 900px 400px at 85% 10%,rgba(74,158,255,.12),transparent 60%),
+    linear-gradient(180deg,#0e141b,#0b0f14);
+  border-bottom:1px solid var(--line);
+}
+.hwrap{max-width:1180px;margin:0 auto}
+.kicker{
+  font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--txt3);
+  text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+}
+.live{display:inline-flex;align-items:center;gap:6px;color:var(--ru);font-weight:700}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--ru);animation:pulse 1.8s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.8)}}
+h1{
+  font-size:clamp(30px,5vw,52px);line-height:1.15;margin:0 0 16px;font-weight:800;letter-spacing:-.02em;
+}
+h1 .split{background:linear-gradient(90deg,var(--ru),var(--ua));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--txt2);font-size:16px;max-width:760px;margin:0 0 30px}
+
+.statbar{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.stat{background:var(--panel);padding:18px 20px}
+.stat .v{font-family:var(--mono);font-size:24px;font-weight:700;letter-spacing:-.02em;color:var(--txt)}
+.stat .v.ru{color:var(--ru)}.stat .v.ua{color:var(--ua)}.stat .v.w{color:var(--warn)}
+.stat .k{font-size:11.5px;color:var(--txt3);margin-top:5px;letter-spacing:.04em}
+
+/* ---------- 导航 ---------- */
+nav{
+  position:sticky;top:0;z-index:50;background:rgba(11,15,20,.86);
+  backdrop-filter:blur(14px);border-bottom:1px solid var(--line);
+}
+.navwrap{max-width:1180px;margin:0 auto;display:flex;gap:2px;overflow-x:auto;padding:0 16px;scrollbar-width:none}
+.navwrap::-webkit-scrollbar{display:none}
+nav a{
+  padding:14px 14px;font-size:13px;color:var(--txt2);white-space:nowrap;
+  border-bottom:2px solid transparent;transition:.18s;font-weight:500;
+}
+nav a:hover{color:var(--txt);background:rgba(255,255,255,.03);text-decoration:none}
+nav a.on{color:var(--ua);border-bottom-color:var(--ua)}
+
+/* ---------- 布局 ---------- */
+main{max-width:1180px;margin:0 auto;padding:0 32px 100px}
+section{padding:56px 0 8px;scroll-margin-top:60px}
+h2{
+  font-size:13px;font-family:var(--mono);letter-spacing:.2em;color:var(--txt3);
+  text-transform:uppercase;margin:0 0 8px;font-weight:600;
+}
+h2+.h2sub{font-size:26px;font-weight:750;margin:0 0 12px;letter-spacing:-.01em}
+h3{font-size:17px;font-weight:700;margin:32px 0 10px;letter-spacing:-.01em}
+p{margin:0 0 14px;color:var(--txt2)}
+p strong,li strong{color:var(--txt);font-weight:650}
+
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px 24px}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(175px,1fr))}
+
+.tag{
+  display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;
+  padding:3px 8px;border-radius:5px;text-transform:uppercase;font-weight:600;
+}
+.tag.ru{background:var(--ru-dim);color:var(--ru);border:1px solid rgba(232,87,74,.3)}
+.tag.ua{background:var(--ua-dim);color:var(--ua);border:1px solid rgba(74,158,255,.3)}
+.tag.n{background:rgba(255,255,255,.05);color:var(--txt2);border:1px solid var(--line)}
+
+/* ---------- 时间线 ---------- */
+.tl{position:relative;margin:28px 0 0;padding-left:0}
+.tl::before{content:"";position:absolute;left:104px;top:6px;bottom:6px;width:2px;background:linear-gradient(180deg,var(--ru),#3a4756 45%,var(--ua));border-radius:2px}
+.ev{position:relative;display:grid;grid-template-columns:96px 1fr;gap:40px;padding:13px 0}
+.ev .yr{
+  font-family:var(--mono);font-size:12.5px;font-weight:700;color:var(--txt3);
+  text-align:right;padding-top:1px;letter-spacing:-.02em;
+}
+.ev .bd{position:relative}
+.ev .bd::before{
+  content:"";position:absolute;left:-47px;top:7px;width:11px;height:11px;border-radius:50%;
+  background:var(--bg);border:2.5px solid #3a4756;transition:.2s;
+}
+.ev.hot .bd::before{border-color:var(--ru);box-shadow:0 0 0 4px var(--ru-dim)}
+.ev.win .bd::before{border-color:var(--ua);box-shadow:0 0 0 4px var(--ua-dim)}
+.ev .t{font-weight:650;color:var(--txt);font-size:14.5px;margin-bottom:3px}
+.ev .d{font-size:13.5px;color:var(--txt2);line-height:1.65}
+
+/* ---------- 表格 ---------- */
+table{width:100%;border-collapse:collapse;font-size:13.5px;margin:16px 0}
+th{
+  text-align:left;padding:11px 14px;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;
+  color:var(--txt3);text-transform:uppercase;border-bottom:1px solid var(--line);font-weight:600;
+  background:rgba(255,255,255,.015);
+}
+td{padding:12px 14px;border-bottom:1px solid rgba(37,50,63,.6);color:var(--txt2);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tbody tr:hover{background:rgba(255,255,255,.02)}
+td.num{font-family:var(--mono);color:var(--txt);font-weight:600;white-space:nowrap}
+td.ru{color:var(--ru);font-weight:650}
+td.ua{color:var(--ua);font-weight:650}
+
+/* ---------- 条状图 ---------- */
+.bars{display:flex;flex-direction:column;gap:14px;margin:20px 0}
+.bar-row .bl{display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:6px;color:var(--txt2)}
+.bar-row .bl b{font-family:var(--mono);color:var(--txt);font-weight:650}
+.track{height:9px;background:rgba(255,255,255,.05);border-radius:5px;overflow:hidden;display:flex}
+.fill{height:100%;border-radius:5px;transition:width 1s cubic-bezier(.2,.8,.2,1)}
+.fill.ru{background:linear-gradient(90deg,#c0392b,var(--ru))}
+.fill.ua{background:linear-gradient(90deg,#2b6fc0,var(--ua))}
+
+/* ---------- 关键指标块 ---------- */
+.metric{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:16px}
+.metric .mv{font-family:var(--mono);font-size:20px;font-weight:700;letter-spacing:-.02em}
+.metric .mk{font-size:11.5px;color:var(--txt3);margin-top:4px}
+.metric .md{font-size:12.5px;color:var(--txt2);margin-top:9px;line-height:1.55}
+
+/* ---------- 引用 ---------- */
+blockquote{
+  border-left:2px solid var(--ua);background:var(--ua-dim);margin:18px 0;
+  padding:13px 18px;border-radius:0 8px 8px 0;color:var(--txt);font-size:14px;
+}
+blockquote.ru{border-left-color:var(--ru);background:var(--ru-dim)}
+blockquote cite{display:block;font-size:12px;color:var(--txt3);font-style:normal;margin-top:8px}
+
+/* ---------- 场景卡 ---------- */
+.scen{border-radius:12px;padding:18px 20px;border:1px solid var(--line);background:var(--panel)}
+.scen.hi{border-color:rgba(232,176,74,.4);background:linear-gradient(180deg,rgba(232,176,74,.07),transparent)}
+.scen .sh{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:9px}
+.scen .st{font-weight:700;font-size:15px}
+.pct{font-family:var(--mono);font-size:17px;font-weight:700}
+
+/* ---------- 脚注 ---------- */
+footer{border-top:1px solid var(--line);padding:36px 32px;margin-top:40px;background:var(--bg2)}
+.fwrap{max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;font-size:12.5px;color:var(--txt3)}
+footer a{color:var(--txt2)}
+
+.note{font-size:12.5px;color:var(--txt3);margin-top:10px;line-height:1.65}
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+@media(max-width:640px){
+  header{padding:44px 20px 36px}
+  main{padding:0 20px 70px}
+  .tl::before{left:62px}
+  .ev{grid-template-columns:54px 1fr;gap:26px}
+  .ev .bd::before{left:-33px}
+  .ev .yr{font-size:10.5px}
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="hwrap">
+  <div class="kicker">
+    <span class="live"><span class="dot"></span>局势快照</span>
+    <span>数据截至 2026 年 9 月中旬</span>
+    <span>·</span>
+    <span>冲突第 1660+ 天</span>
+  </div>
+  <h1>俄乌战争：<br><span class="split">消耗战的天平</span>正在倾斜</h1>
+  <p class="sub">
+    持续超过四年的全面战争进入第五个年头。战场陷入千米级的堑壕拉锯，双方把战火烧向对方的纵深腹地——
+    俄罗斯轰炸乌克兰电网，乌克兰无人机则系统性拆解俄罗斯的炼油工业。军事僵局与外交博弈互为镜像：
+    战场上拿不到的东西，谈判桌上同样拿不到。
+  </p>
+
+  <div class="statbar">
+    <div class="stat"><div class="v w">1660+</div><div class="k">冲突持续天数</div></div>
+    <div class="stat"><div class="v ua">≈20%</div><div class="k">俄军控制乌领土比例</div></div>
+    <div class="stat"><div class="v ru">200万+</div><div class="k">双方累计军事伤亡</div></div>
+    <div class="stat"><div class="v w">$5880亿</div><div class="k">乌克兰10年重建需求</div></div>
+  </div>
+</div>
+</header>
+
+<nav>
+  <div class="navwrap">
+    <a href="#overview" class="on">总览</a>
+    <a href="#timeline">战争脉络</a>
+    <a href="#frontline">战场态势</a>
+    <a href="#casualty">伤亡与消耗</a>
+    <a href="#energy">能源战与无人机</a>
+    <a href="#economy">经济与韧性</a>
+    <a href="#diplomacy">外交博弈</a>
+    <a href="#world">国际格局</a>
+    <a href="#outlook">走向研判</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- ============ 总览 ============ -->
+<section id="overview">
+  <h2>01 / Overview</h2>
+  <div class="h2sub">一张图看懂：五个维度的长期化</div>
+  <p>
+    2022 年 2 月 24 日的"特别军事行动"被普遍预期为一场 72 小时结束的闪击战，如今已演变为
+    冷战结束以来欧洲规模最大、伤亡最惨重的战争。它的形态经历了三次转型：
+    <strong>闪击战 → 机动战 → 阵地消耗战 → 无人机与纵深打击战</strong>。
+    到 2026 年，前线日均推进以"米"为单位计算，而决定战争走向的变量，
+    越来越多地来自前线之外——炼油厂、变电所、选举日程和盟友的财政能力。
+  </p>
+
+  <div class="grid g4" style="margin-top:26px">
+    <div class="metric">
+      <div class="mv" style="color:var(--warn)">~118,000 km²</div>
+      <div class="mk">俄控制乌克兰领土</div>
+      <div class="md">含克里米亚与战前顿巴斯占领区，约占乌克兰全境 20%。四年半新增占领约 75,000 km²。</div>
+    </div>
+    <div class="metric">
+      <div class="mv" style="color:var(--ua)">7.87%</div>
+      <div class="mk">2026 上半年俄军推进量 / 2025 同期</div>
+      <div class="md">ISW 数据：俄军领土收益较去年同期萎缩逾九成，2026 年 3 月起净收益趋近于零。</div>
+    </div>
+    <div class="metric">
+      <div class="mv" style="color:var(--ru)">50 米/天</div>
+      <div class="mk">2026 上半年顿巴斯日均推进</div>
+      <div class="md">CSIS 测算：恰索夫亚尔—康斯坦丁尼夫卡方向日均仅 50 米，为现代战争最慢推进速度之一。</div>
+    </div>
+    <div class="metric">
+      <div class="mv" style="color:var(--ok)">8:1</div>
+      <div class="mk">2026 上半年伤亡比（俄:乌）</div>
+      <div class="md">CSIS 估算：因乌军无人机规模化运用，俄乌伤亡比由长期 2–3:1 急剧扩大至接近 8:1。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 时间线 ============ -->
+<section id="timeline">
+  <h2>02 / Timeline</h2>
+  <div class="h2sub">战争的四个阶段</div>
+  <p>四年半的战争，大体沿着"进攻—反攻—僵持—纵深对攻"的曲线演进。以下是各阶段的关键节点。</p>
+
+  <div class="tl">
+    <div class="ev hot">
+      <div class="yr">2022.02</div>
+      <div class="bd">
+        <div class="t">全面入侵开始</div>
+        <div class="d">2 月 24 日，俄军自白俄罗斯、俄罗斯本土、克里米亚三轴齐发，目标基辅。西方情报普遍预测基辅将在 72–96 小时内陷落。乌军守住安东诺夫机场，俄军装甲纵队因燃油与后勤断绝而停滞。</div>
+      </div>
+    </div>
+    <div class="ev">
+      <div class="yr">2022.04</div>
+      <div class="bd">
+        <div class="t">布查事件 · 马里乌波尔陷落</div>
+        <div class="d">俄军自基辅周边撤退后，布查镇发现数百具遭即决处决的平民遗体，触发国际刑事法院调查。东南部港口城市马里乌波尔在数月围城后沦陷，亚速钢铁厂守军投降。</div>
+      </div>
+    </div>
+    <div class="ev win">
+      <div class="yr">2022.09</div>
+      <div class="bd">
+        <div class="t">哈尔科夫与赫尔松反攻</div>
+        <div class="d">乌军在哈尔科夫方向 10 天内收复 6,000+ km²，为二战后最快领土收益；11 月俄军撤出赫尔松市，退守第聂伯河东岸。俄方同期宣布顿涅茨克、卢甘斯克、扎波罗热、赫尔松四州"入俄"。</div>
+      </div>
+    </div>
+    <div class="ev">
+      <div class="yr">2023.05</div>
+      <div class="bd">
+        <div class="t">巴赫穆特易手 · 瓦格纳兵变</div>
+        <div class="d">瓦格纳雇佣兵团在付出极高代价后拿下已成废墟的巴赫穆特。6 月卡霍夫卡大坝被炸。8 月普里戈任发动"正义游行"兵变，车队推进至距莫斯科 200 公里处折返，两个月后坠机身亡。</div>
+      </div>
+    </div>
+    <div class="ev">
+      <div class="yr">2024.02</div>
+      <div class="bd">
+        <div class="t">阿夫杰耶夫卡陷落 · 俄重获主动</div>
+        <div class="d">俄军控制阿夫杰耶夫卡，重新掌握前线主导权。乌军因兵员与弹药短缺，转入全面防御。</div>
+      </div>
+    </div>
+    <div class="ev win">
+      <div class="yr">2024.08</div>
+      <div class="bd">
+        <div class="t">库尔斯克越境行动</div>
+        <div class="d">乌军首次大规模越境攻入俄本土库尔斯克州，一度控制 1,300 km²，迫使俄军从东部战线抽调兵力。2025 年 3 月，在朝鲜部队协助下俄军将乌军逐出。</div>
+      </div>
+    </div>
+    <div class="ev">
+      <div class="yr">2025.01</div>
+      <div class="bd">
+        <div class="t">特朗普重返白宫 · 外交线启动</div>
+        <div class="d">美方宣布与俄直接会谈。2 月 28 日白宫会晤中特朗普与泽连斯基公开争吵，一度威胁切断军援。11 月美方提出包含乌方割让领土换取安全保障的方案。</div>
+      </div>
+    </div>
+    <div class="ev win">
+      <div class="yr">2026.03</div>
+      <div class="bd">
+        <div class="t">战局拐点：俄军净收益归零</div>
+        <div class="d">ISW 评估：自 3 月起乌军首次在 2024 年 8 月库尔斯克攻势以来重新掌握战场主动权。乌军在库皮扬斯克、亚历山德里夫卡、莱曼方向发起反攻，4–5 月俄军净失地约 400 km²。</div>
+      </div>
+    </div>
+    <div class="ev hot">
+      <div class="yr">2026.09</div>
+      <div class="bd">
+        <div class="t">穿梭外交重启 · 僵局未破</div>
+        <div class="d">美特使威特科夫与库什纳先后访俄乌，三方同意恢复谈判。谈判期间双方承诺暂不攻击对方首都。但领土问题依旧是死结，泽连斯基预判"战争将持续至冬季"。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 战场态势 ============ -->
+<section id="frontline">
+  <h2>03 / Frontline</h2>
+  <div class="h2sub">千米级拉锯：主动权易手</div>
+
+  <p>
+    2026 年的战场呈现出一种反直觉的组合：<strong>俄军仍在局部推进，却已失去整体主动</strong>。
+    ISW 的判断是，乌军自 2025 年底起持续挑战俄军的进攻节奏，这是自 2024 年 8 月库尔斯克攻势以来
+    首次出现的持续性变化。乌军在三个方向的反攻，直接打乱了俄军的作战计划。
+  </p>
+
+  <div class="grid g3" style="margin-top:24px">
+    <div class="card">
+      <span class="tag ua">乌军反攻方向</span>
+      <h3 style="margin-top:12px">库皮扬斯克</h3>
+      <p style="font-size:13.5px;margin-bottom:0">乌军夺回城区及周边阵地，并击退俄军后续多次夺回尝试。该方向的反攻大幅压缩了俄军在哈尔科夫州东部的桥头堡。</p>
+    </div>
+    <div class="card">
+      <span class="tag ua">乌军反攻方向</span>
+      <h3 style="margin-top:12px">亚历山德里夫卡</h3>
+      <p style="font-size:13.5px;margin-bottom:0">1–3 月中旬乌军收复约 400 km²，并成功阻止俄军向第聂伯罗彼得罗夫斯克州突入的企图，随后将反攻扩展至多个地段。</p>
+    </div>
+    <div class="card">
+      <span class="tag ua">乌军反攻方向</span>
+      <h3 style="margin-top:12px">莱曼</h3>
+      <p style="font-size:13.5px;margin-bottom:0">乌军消灭了一处威胁斯拉维扬斯克北翼及整个顿涅茨克防御带的俄军突出部，显著改善了防御态势。</p>
+    </div>
+  </div>
+
+  <h3>俄军仍在推进的方向</h3>
+  <p>
+    俄军的战果高度集中在顿巴斯核心区。<strong>康斯坦丁尼夫卡</strong>及其周边取得有限但具战役意义的进展；
+    在<strong>斯拉维扬斯克与克拉马托尔斯克以东</strong>也有所前推。
+    但维持攻势的代价极高——CSIS 的描述是：俄军依赖训练不足的小型步兵分队在装甲车支援下实施武力侦察，
+    主动引诱乌军开火后，再由火炮与滑翔制导炸弹打击暴露的阵地。
+  </p>
+
+  <div class="bars">
+    <div class="bar-row">
+      <div class="bl"><span>恰索夫亚尔—康斯坦丁尼夫卡方向</span><b>50 m/天</b></div>
+      <div class="track"><div class="fill ru" style="width:14%"></div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bl"><span>波克罗夫斯克方向</span><b>70 m/天</b></div>
+      <div class="track"><div class="fill ru" style="width:20%"></div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bl"><span>斯拉维扬斯克方向</span><b>90 m/天</b></div>
+      <div class="track"><div class="fill ru" style="width:26%"></div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bl"><span>2022 年闪击战阶段（对照）</span><b>数公里/天</b></div>
+      <div class="track"><div class="fill ua" style="width:100%"></div></div>
+    </div>
+  </div>
+  <div class="note">条形长度按日均推进距离的相对量级示意。CSIS 估计，当前推进速度比 2022 年机动战阶段慢 30–100 倍，并将其与一战索姆河战役类比。</div>
+
+  <blockquote>
+    "由此形成的战场图景，与俄罗斯能在整条战线上主导节奏的情形截然不同。乌军的反攻迫使俄军一边应对威胁，一边继续在其他地段维持进攻。"
+    <cite>—— 战争研究所（ISW）评估报告</cite>
+  </blockquote>
+
+  <h3>技术如何重塑前线</h3>
+  <p>
+    前线停滞的根本原因不是兵力，而是<strong>透明化</strong>。无人机、地面无人车与电子战系统的普及，
+    使任何规模化装甲集结都会在数分钟内被发现并摧毁。多方报告估计，
+    <strong>FPV 无人机造成的伤亡占比已超过三分之二</strong>，CSIS 更认为无人机对俄军战场损失贡献率超过 90%。
+    传统意义上的机动战，在长达 1,000 公里以上的接触线上几乎不再可能。
+  </p>
+  <p>
+    另一个被忽视的变量是<strong>星链（Starlink）权限</strong>。CSIS 指出，SpaceX 在 2026 年初限制俄方访问权限后，
+    俄军指挥控制体系受到干扰，这直接助推了乌军多轮反攻的成功。
+  </p>
+</section>
+
+<!-- ============ 伤亡 ============ -->
+<section id="casualty">
+  <h2>04 / Attrition</h2>
+  <div class="h2sub">两百万人的账单</div>
+
+  <p>
+    伤亡数字是这场战争中最具争议的统计。各方口径差距巨大，以下汇总 CSIS、Mediazona（与 BBC 俄语部合作）
+    及联合国等来源的公开估算，并标明差异。<strong>所有数字均为估算，非确切统计。</strong>
+  </p>
+
+  <table>
+    <thead>
+      <tr><th>指标</th><th>俄罗斯</th><th>乌克兰</th><th>来源 / 口径</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>累计军事伤亡<br><span style="color:var(--txt3);font-size:12px">死亡+受伤+失踪</span></td>
+        <td class="ru">约 120–140 万</td>
+        <td class="ua">约 50–62.5 万</td>
+        <td>CSIS（2026 年中）</td>
+      </tr>
+      <tr>
+        <td>其中阵亡</td>
+        <td class="ru">约 32.5–45 万</td>
+        <td class="ua">约 12.5–15 万</td>
+        <td>CSIS</td>
+      </tr>
+      <tr>
+        <td>已确认姓名的俄军阵亡</td>
+        <td class="ru">239,000（实名核实）<br>352,000（超额死亡率推算）</td>
+        <td class="ua">—</td>
+        <td>Mediazona × BBC 俄语部</td>
+      </tr>
+      <tr>
+        <td>平民死亡（乌方，联合国确认）</td>
+        <td class="ru">—</td>
+        <td class="ua">15,172 人<br>（受伤 4 万+）</td>
+        <td>联合国人权高专办，截至 2026.02</td>
+      </tr>
+      <tr>
+        <td>月度伤亡（2026）</td>
+        <td class="ru">30,000–34,000</td>
+        <td class="ua">未公开</td>
+        <td>CSIS；俄月均新兵招募约 27,000</td>
+      </tr>
+      <tr>
+        <td>总伤亡（含双方）</td>
+        <td colspan="2" class="num" style="text-align:center">超过 200 万人</td>
+        <td>CSIS 综合测算</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="note">
+    注：另有中文媒体援引的"累计伤亡约 180 万"口径，统计时点与统计范围（是否含顿巴斯武装、是否含失踪）与 CSIS 不同，故数值存在差异。
+  </div>
+
+  <h3>规模的历史坐标</h3>
+  <div class="grid g2" style="margin-top:18px">
+    <div class="card">
+      <p style="margin-bottom:10px"><strong>俄军阵亡人数约相当于：</strong></p>
+      <div class="bars" style="margin:0">
+        <div class="bar-row">
+          <div class="bl"><span>二战以来美军全部战争阵亡总数</span><b>≈ 4 倍</b></div>
+          <div class="track"><div class="fill ru" style="width:100%"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bl"><span>苏联阿富汗战争阵亡</span><b>≈ 28 倍以上</b></div>
+          <div class="track"><div class="fill ru" style="width:76%"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bl"><span>两次车臣战争阵亡</span><b>≈ 18 倍以上</b></div>
+          <div class="track"><div class="fill ru" style="width:62%"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bl"><span>1945 年后俄/苏所有战争阵亡总和</span><b>≈ 9 倍以上</b></div>
+          <div class="track"><div class="fill ru" style="width:44%"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <p style="margin-bottom:10px"><strong>人力缺口：招募追不上损耗</strong></p>
+      <p style="font-size:13.5px">
+        2026 年俄军月均伤亡 30,000–34,000 人，而月均新兵招募约 27,000 人——
+        <strong style="color:var(--ru)">每月净缺口约 3,000–7,000 人</strong>。
+      </p>
+      <p style="font-size:13.5px;margin-bottom:0">
+        这正是俄军指挥层向普京施压要求启动新一轮大规模动员的直接原因。
+        而普京已公开表态不会进行新一轮动员，转而依靠现有兵力、精准火力与阵地蚕食。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 能源战 ============ -->
+<section id="energy">
+  <h2>05 / Deep Strike</h2>
+  <div class="h2sub">无人机战争：把代价送回对方后方</div>
+
+  <p>
+    当战线凝固，双方把战争逻辑转向了<strong>纵深的相互消耗</strong>。
+    俄罗斯持续打击乌克兰的民用能源系统，乌克兰则以远程无人机系统性拆解俄罗斯的炼油工业与出口终端。
+    这是 2026 年最具决定性的战场形态变化。
+  </p>
+
+  <div class="grid g2" style="margin-top:24px">
+    <div class="card" style="border-color:rgba(232,87,74,.3)">
+      <span class="tag ru">俄罗斯打击乌克兰能源系统</span>
+      <div class="grid g2" style="margin-top:14px;gap:10px">
+        <div class="metric" style="padding:12px">
+          <div class="mv" style="color:var(--ru)">~50%</div>
+          <div class="mk">能源基础设施与发电能力被毁</div>
+        </div>
+        <div class="metric" style="padding:12px">
+          <div class="mv" style="color:var(--ru)">&gt;2/3</div>
+          <div class="mk">火电发电能力损失</div>
+        </div>
+      </div>
+      <p style="font-size:13.5px;margin:14px 0 0">
+        可用发电容量从战前约 <strong>55 GW</strong> 降至 2026 年 2 月的约 <strong>11.5 GW</strong>。
+        乌方甚至在入冬前建议基辅的老人撤离，并呼吁居民购置柴油发电机——为断电断暖的最坏局面做准备。
+      </p>
+      <div class="note">数据来源：欧洲电力工业协会 Eurelectric（2026.02）</div>
+    </div>
+
+    <div class="card" style="border-color:rgba(74,158,255,.3)">
+      <span class="tag ua">乌克兰打击俄罗斯炼油业</span>
+      <div class="grid g2" style="margin-top:14px;gap:10px">
+        <div class="metric" style="padding:12px">
+          <div class="mv" style="color:var(--ua)">每 3 天 1 次</div>
+          <div class="mk">2026 前 8 个月平均炼厂命中频率</div>
+        </div>
+        <div class="metric" style="padding:12px">
+          <div class="mv" style="color:var(--ua)">-30%</div>
+          <div class="mk">2026 年 6 月原油加工量同比</div>
+        </div>
+      </div>
+      <p style="font-size:13.5px;margin:14px 0 0">
+        6 月俄罗斯炼油厂原油加工量降至 <strong>380 万桶/日</strong>，为 2004 年 5 月以来最低；
+        汽油产量下降约 20%。俄方被迫实施史上首次航空煤油与柴油出口禁令，并放宽燃油质量标准至 Euro 2/3/4。
+      </p>
+      <div class="note">数据来源：国际能源署（IEA）</div>
+    </div>
+  </div>
+
+  <h3>打击清单：从边境到西伯利亚</h3>
+  <p>
+    打击范围的扩张速度远超预期。2026 年 8 月，乌军无人机在单月内击中 <strong>21 座</strong>俄罗斯炼油厂，创下战时纪录。
+    到 8 月底，仅有 4 座主要炼厂（均位于东西伯利亚及更东，距乌克兰 3,500–6,500 公里）仍未遭打击。
+  </p>
+
+  <table>
+    <thead>
+      <tr><th>时间</th><th>目标</th><th>纵深</th><th>意义</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="num">2026.07.07</td><td>鄂木斯克炼油厂（俄最大，45 万桶/日）</td><td class="num">2,500 km</td><td>创下战时最远打击纪录</td></tr>
+      <tr><td class="num">2026.09.06</td><td>梁赞炼油厂（俄石油旗下，约 1,700 万吨/年）</td><td class="num">470 km</td><td>击中 Izomalk-2 异构化装置，该厂 4 套常减压装置中 2 套已被瘫痪</td></tr>
+      <tr><td class="num">2026.09.11–12</td><td>萨拉托夫炼厂（三度被击）、彼尔姆炼厂、卢克石油-彼尔姆</td><td class="num">800–1,400 km</td><td>打击节奏密集至近乎每日</td></tr>
+      <tr><td class="num">2026.08–09</td><td>克斯托沃炼厂、乌斯季卢加综合体</td><td class="num">800–1,100 km</td><td>乌总参谋部称两厂已完全停产，均为俄军燃料供应方</td></tr>
+    </tbody>
+  </table>
+
+  <blockquote>
+    "泽连斯基先生必须做一件事：他得停止打击俄罗斯的柴油。他可以打别的目标——但别打柴油，因为他造成了柴油短缺。这不是中东造成的，这是俄乌之间发生的事造成的。"
+    <cite>—— 美国总统特朗普，2026 年 9 月，于爱尔兰高尔夫球场接受采访时表示</cite>
+  </blockquote>
+  <div class="note">
+    这一表态折射出纵深打击的全球外溢：乌克兰对俄炼厂的打击推高了国际柴油价格，甚至反向施压美国国内油价，
+    使乌克兰的核心战术手段成为其与最大援助国之间的摩擦点。
+  </div>
+
+  <h3>乌克兰的远程打击工具</h3>
+  <table>
+    <thead><tr><th>型号</th><th>战斗部</th><th>最大航程</th><th>备注</th></tr></thead>
+    <tbody>
+      <tr><td class="num">FP-1</td><td class="num">105 kg</td><td class="num">2,600 km</td><td>Fire Point 研制，执行了鄂木斯克炼厂远程打击</td></tr>
+      <tr><td class="num">AN-196 Liutyi</td><td class="num">75 kg</td><td class="num">1,500 km</td><td>乌国防工业集团生产，参与 2026.06 莫斯科炼厂打击</td></tr>
+      <tr><td class="num">AQ 400 Scythe</td><td class="num">50 kg</td><td class="num">750 km</td><td>常用于蜂群式攻击</td></tr>
+      <tr><td class="num">UJ-26 Beaver</td><td class="num">20 kg</td><td class="num">1,000 km</td><td>国产，战前即服役</td></tr>
+    </tbody>
+  </table>
+  <p>
+    2026 年 8 月，乌军发动了开战以来最大规模的单次无人机袭击——<strong>822 架无人机</strong>，
+    其中 600 架指向莫斯科。乌克兰国防部称其无人机工业具备年产 <strong>2,000 万架</strong>的产能。
+  </p>
+</section>
+
+<!-- ============ 经济 ============ -->
+<section id="economy">
+  <h2>06 / Economy</h2>
+  <div class="h2sub">双方都在失血，方式不同</div>
+
+  <p>
+    这是一场经济耐力赛。乌克兰靠外部输血维持国家运转与战争机器，
+    俄罗斯则在战时经济结构下把资源持续投向军事，代价是民用部门的系统性衰退。
+  </p>
+
+  <div class="grid g2" style="margin-top:24px">
+    <div class="card">
+      <h3 style="margin-top:0;color:var(--ua)">乌克兰：依赖输血的战争经济</h3>
+      <table style="margin:14px 0 0">
+        <tbody>
+          <tr><td>累计直接损失</td><td class="num">$1,951 亿</td></tr>
+          <tr><td>社会经济损失总额</td><td class="num">$6,667 亿</td></tr>
+          <tr><td>10 年重建需求</td><td class="num">$5,877 亿</td></tr>
+          <tr><td>2026 年财政赤字</td><td class="num">$450 亿</td></tr>
+          <tr><td>公共债务 / GDP</td><td class="num">&gt;108%</td></tr>
+          <tr><td>经济规模（对比战前）</td><td class="num">约为战前 80%</td></tr>
+          <tr><td>人口（对比战前）</td><td class="num">4,300 万 → 约 3,400 万</td></tr>
+        </tbody>
+      </table>
+      <div class="note">世界银行 × 欧盟 × 联合国 × 乌克兰政府 RDNA5 评估（截至 2025.12）；重建需求约为乌 2025 年 GDP 的近三倍。</div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-top:0;color:var(--ru)">俄罗斯：战时经济的隐性成本</h3>
+      <table style="margin:14px 0 0">
+        <tbody>
+          <tr><td>战争四年经济损失</td><td class="num">&gt; $1 万亿</td></tr>
+          <tr><td>军费占 GDP</td><td class="num">约 6.8%</td></tr>
+          <tr><td>2025 年 GDP 增速</td><td class="num">约 1%</td></tr>
+          <tr><td>2026 年计划财政赤字</td><td class="num">3.79 万亿卢布</td></tr>
+          <tr><td>2026 前 4 月实际赤字</td><td class="num">5.87 万亿卢布</td></tr>
+          <tr><td>潜在增长率上限</td><td class="num">1–1.5%</td></tr>
+          <tr><td>盖洛普调查：认为本地经济恶化</td><td class="num">60%（20 年新高）</td></tr>
+        </tbody>
+      </table>
+      <div class="note">俄罗斯国有开发银行（VEB）首席经济学家克莱帕奇因公开警示经济风险而遭解职。</div>
+    </div>
+  </div>
+
+  <blockquote class="ru">
+    "我们正在落后。我们在技术和经济竞争中都在输，而且不只是输给中国和美国——某些方面我们还在输给乌克兰。我们赢不了这场消耗战。俄罗斯不会崩溃，但我几乎可以肯定，我们会迎来一场社会危机。"
+    <cite>—— 安德烈·克莱帕奇，俄罗斯国有开发银行（VEB）首席经济学家（解职前公开表态）</cite>
+  </blockquote>
+
+  <h3>制裁的传导：能源收入与买家结构</h3>
+  <p>
+    新制裁叠加乌克兰对油气、港口、物流基础设施的打击，正在形成合力。
+    <strong>印度与中国减少了俄罗斯石油采购</strong>，而炼油能力受损意味着俄方即便能出口原油，
+    也无法获得成品油与原油之间的高额价差收益——这是结构性损失，而非短期扰动。
+    2026 年前 7 个月的联邦赤字已达约 <strong>760 亿美元</strong>，超过 2025 年全年缺口。
+  </p>
+
+  <h3>西方援助的结构性转移</h3>
+  <table>
+    <thead><tr><th>援助渠道</th><th>规模</th><th>时段</th></tr></thead>
+    <tbody>
+      <tr><td>欧盟"乌克兰支持贷款"</td><td class="num">€900 亿</td><td>覆盖 2026–2027</td></tr>
+      <tr><td>欧盟乌克兰基金（Ukraine Facility）</td><td class="num">€500 亿</td><td>2024–2027</td></tr>
+      <tr><td>"欧洲团队"累计军事援助</td><td class="num">€693 亿</td><td>至 2026 年</td></tr>
+      <tr><td>G7 ERA 贷款（俄冻结资产收益担保）</td><td class="num">$500 亿</td><td>2024 年承诺，已交付</td></tr>
+      <tr><td>欧盟 2026.04 追加贷款</td><td class="num">$1,050 亿</td><td>覆盖至 2027</td></tr>
+    </tbody>
+  </table>
+  <p>
+    趋势是明确的：<strong>欧洲正在取代美国成为乌克兰军援的主要来源</strong>。
+    2025 年欧洲军事援助同比增长 67%，财政与人道援助增长 59%，而美国的拨款基本停滞。
+    但欧洲内部共识正在松动——参与对乌援助的欧盟国家已从 2023 年的 21 个降至 2026 年的 14 个，
+    2026 年前 4 个月欧盟对乌援助较 2025 年月均水平下降约 17%。斯洛伐克、匈牙利、捷克公开抵制
+    北约 2026 年 700 亿欧元援乌计划。
+  </p>
+</section>
+
+<!-- ============ 外交 ============ -->
+<section id="diplomacy">
+  <h2>07 / Diplomacy</h2>
+  <div class="h2sub">穿梭外交与三条硬约束</div>
+
+  <p>
+    2026 年 9 月是冲突爆发以来外交活动最密集的时段之一。
+    9 月 5 日，美特使威特科夫与库什纳在克里姆林宫会见普京；随后赴基辅会见泽连斯基。
+    9 月 8 日，特朗普与普京通电话。俄方称通话"富有建设性且十分坦诚"。
+    最实际的成果是<strong>三方同意恢复谈判</strong>，以及谈判期间双方承诺暂不空袭对方首都。
+  </p>
+
+  <h3>三条未松动的硬约束</h3>
+  <div class="grid g3" style="margin-top:18px">
+    <div class="card" style="border-color:rgba(232,87,74,.28)">
+      <span class="tag ru">约束一</span>
+      <h3 style="margin-top:12px;font-size:15px">领土要求与安全诉求的结构性对立</h3>
+      <p style="font-size:13.5px;margin-bottom:0">
+        俄方立场"不可动摇"：乌军须从顿涅茨克、卢甘斯克、赫尔松、扎波罗热四州全部撤出，并放弃加入北约。
+        乌方坚守领土完整底线，强调领土问题不容外部"越顶决定"，且任何和平协议必须有完备的国际安全保障。
+      </p>
+    </div>
+    <div class="card" style="border-color:rgba(232,87,74,.28)">
+      <span class="tag ru">约束二</span>
+      <h3 style="margin-top:12px;font-size:15px">俄方"以打促谈"，而非"停战求和"</h3>
+      <p style="font-size:13.5px;margin-bottom:0">
+        克宫消息人士称普京认为时间站在俄方一边。维持低烈度攻势、等待 11 月美国中期选举后
+        华盛顿更急于"交卷"，对俄方是成本最低的选择。战场上没有决定性胜负，谈判桌上就不会有决定性妥协。
+      </p>
+    </div>
+    <div class="card" style="border-color:rgba(232,176,74,.28)">
+      <span class="tag n">约束三</span>
+      <h3 style="margin-top:12px;font-size:15px">美方"时间表"削弱斡旋信用</h3>
+      <p style="font-size:13.5px;margin-bottom:0">
+        中期选举临近，美方急需外交成果，方案就越倾向压乌方妥协；越压乌方，欧洲与乌克兰抵触越强，
+        俄方越觉得可以"再等一等"。9 月 3 日特朗普还公开喊话要求欧洲"退还"军援费用。
+      </p>
+    </div>
+  </div>
+
+  <h3>美方方案的核心条款（媒体报道版本）</h3>
+  <table>
+    <thead><tr><th>条款</th><th>内容</th><th>各方立场</th></tr></thead>
+    <tbody>
+      <tr><td>克里米亚与乌东两州归属</td><td>承认归属俄罗斯</td><td><span class="tag ua">乌方视为"投降协议"</span></td></tr>
+      <tr><td>乌军规模</td><td>限额 60 万人</td><td><span class="tag n">乌方未接受</span></td></tr>
+      <tr><td>北约问题</td><td>乌克兰宪法承诺永不加入北约</td><td><span class="tag ru">俄方核心诉求</span></td></tr>
+      <tr><td>安全保障</td><td>美国提供 10 年期类第五条（集体防御）保障</td><td><span class="tag ua">乌方要求更具约束力</span></td></tr>
+    </tbody>
+  </table>
+  <p>
+    整体上这仍是"安克雷奇框架"的延续，以俄方主张的"战场现实"为底色，
+    因此被普遍评价为"两头不讨好"。库什纳 9 月 11 日在雅尔塔欧洲战略会议（YES）上承认：
+    <em>"普京总统明确提出了俄方想要达成的界线。如果乌克兰愿意撤到那条线，协议的其他部分其实已经基本就位——但乌克兰目前不愿意这样做。"</em>
+  </p>
+
+  <h3>时间线的赛跑</h3>
+  <div class="card" style="margin-top:18px">
+    <p style="margin-bottom:0">
+      两条时间线正在重叠：<strong>普京设定的年底拿下顿涅茨克州的目标</strong>，
+      与<strong>泽连斯基设定的 2027 年夏天前停火的窗口</strong>，在时间轴上几乎完美重合。
+      泽连斯基的逻辑是：一旦 2028 年美国大选进入实质阶段，白宫将无暇顾及东欧战事。
+      留给外交的窗口，大致是从 2026 年 12 月 G20 峰会到 2027 年夏末的十个月。
+    </p>
+  </div>
+  <div class="note">
+    前五轮斡旋反复验证同一条规律：外交窗口能打开，多是因为给美方面子和双方国内政治需要；
+    窗口又被关上，因为双方都想在谈判桌上拿到"战场上拿不到的东西"，而又都不肯妥协。
+  </div>
+</section>
+
+<!-- ============ 国际格局 ============ -->
+<section id="world">
+  <h2>08 / Global</h2>
+  <div class="h2sub">两条反向运行的支援曲线</div>
+
+  <p>
+    支撑战争的外部结构正在从早期的"东西对线"，向多极平行的方向演变。
+    最清晰的对比是：<strong>美欧援乌体系从集中协调走向碎片化分担，而俄朝军事绑定持续深化，从交易关系走向作战协同。</strong>
+  </p>
+
+  <div class="grid g2" style="margin-top:24px">
+    <div class="card">
+      <h3 style="margin-top:0;color:var(--ua)">援乌体系：碎片化</h3>
+      <ul style="margin:12px 0 0;padding-left:20px;color:var(--txt2);font-size:14px">
+        <li style="margin-bottom:9px">参与援助的欧盟国家从 2023 年的 21 个降至 2026 年的 <strong>14 个</strong></li>
+        <li style="margin-bottom:9px">2026 前 4 个月欧盟对乌援助较 2025 年月均下降约 <strong>17%</strong></li>
+        <li style="margin-bottom:9px">斯洛伐克、匈牙利、捷克公开抵制北约 700 亿欧元援乌计划</li>
+        <li style="margin-bottom:9px">波兰、荷兰明确表示直接军援已达极限</li>
+        <li style="margin-bottom:9px">欧洲国内支持援乌的民调比例从初期的 80% 降至 <strong>50% 以下</strong></li>
+        <li style="margin-bottom:0">美国通过土耳其盘活对乌重火力供给，绕开欧洲主导的援乌体系</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-top:0;color:var(--ru)">俄朝绑定：作战协同</h3>
+      <ul style="margin:12px 0 0;padding-left:20px;color:var(--txt2);font-size:14px">
+        <li style="margin-bottom:9px">朝鲜已向俄西部部署 <strong>3 万–5 万人</strong>，承担后方警戒、工程建设及部分作战任务</li>
+        <li style="margin-bottom:9px">导弹分队进驻沃罗涅日州，编入俄军第 112 导弹旅</li>
+        <li style="margin-bottom:9px">交付 KN-23/KN-24 短程弹道导弹，实现"武器+操作人员+发射单元"整建制支援</li>
+        <li style="margin-bottom:9px">约 25,000 名朝鲜士兵迄今已在俄军轮换过</li>
+        <li style="margin-bottom:9px">朝方以支援换取俄制 S-400 等先进装备，已获"铠甲"防空系统</li>
+        <li style="margin-bottom:0">朝鲜以实战检验导弹性能，获取"拿钱也买不到"的数据反馈</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>中国与全球南方的立场</h3>
+  <p>
+    中国在这场地缘博弈中保持既定立场，主张通过对话谈判解决危机，
+    反对未经联合国安理会授权的单边制裁，并持续呼吁<strong>停火止战、政治解决</strong>。
+    中国与俄罗斯维持正常经贸往来，同时未参与对俄制裁，也未向冲突双方提供武器。
+    在制裁与反制裁的背景下，中俄能源与贸易结构出现调整，
+    而乌克兰对俄炼厂的打击及其引发的国际柴油价格波动，同样对包括中国在内的全球能源市场产生传导效应。
+  </p>
+  <p>
+    全球南方国家总体保持中立或呼吁和平，多数未加入对俄制裁体系。
+    这一格局意味着，无论战场态势如何变化，俄罗斯都不会面临完全意义上的国际经济孤立，
+    而乌克兰的外部支持则越来越依赖欧洲有限且分散的财政与政治意愿。
+  </p>
+
+  <h3>其他关键变量</h3>
+  <div class="grid g3" style="margin-top:18px">
+    <div class="card">
+      <span class="tag n">美国</span>
+      <p style="font-size:13.5px;margin:12px 0 0">
+        深陷伊朗冲突，霍尔木兹海峡危机与油价飙升牵制了绝大部分外交精力。中期选举临近，急需外交政绩。
+        对俄乌的注意力被结构性稀释，这既是推动谈判的动力，也是方案缺乏执行力度的原因。
+      </p>
+    </div>
+    <div class="card">
+      <span class="tag n">欧洲</span>
+      <p style="font-size:13.5px;margin:12px 0 0">
+        正试图扛起援乌主导权，但"意愿与能力之间的裂缝"是最大结构性问题。
+        财政负担加重、民意支持下滑，难以在美国缺位时完全填补火力与资金缺口。
+      </p>
+    </div>
+    <div class="card">
+      <span class="tag n">土耳其 / 韩国</span>
+      <p style="font-size:13.5px;margin:12px 0 0">
+        土耳其借军售通道获取现金流与对美缓和，但其中立斡旋者身份出现不可修复的裂痕。
+        韩国李在明政府以改善对俄关系、重启对朝对话为优先，明确不向乌克兰提供致命武器。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 研判 ============ -->
+<section id="outlook">
+  <h2>09 / Outlook</h2>
+  <div class="h2sub">三种可能的走向</div>
+
+  <p>
+    关于战争走向的判断应被视为有依据的估计，而非确定的结论。综合战场态势、经济承受力与外交环境，
+    以下是三种情景及其概率权重。
+  </p>
+
+  <div class="grid g3" style="margin-top:24px">
+    <div class="scen hi">
+      <div class="sh">
+        <div class="st">边打边谈 · 局部冻结</div>
+        <div class="pct" style="color:var(--warn)">最可能</div>
+      </div>
+      <p style="font-size:13.5px;margin:0">
+        军事行动维持中低烈度，双方在部分方向达成事实性停火，但政治协议长期无法签署。
+        人道主义议题（战俘交换、平民撤离）成为唯一可交付成果。
+        这是当前投入产出比最低、却最稳定的均衡。
+      </p>
+    </div>
+
+    <div class="scen">
+      <div class="sh">
+        <div class="st">俄军重启大规模攻势</div>
+        <div class="pct" style="color:var(--ru)">中等</div>
+      </div>
+      <p style="font-size:13.5px;margin:0">
+        取决于普京是否启动新一轮动员。俄军指挥层正施压要求扩军。
+        若动员落地，俄方或试图在顿巴斯方向取得战役突破；
+        但即便动员，能否在乌军无人机主导的透明战场改变态势仍高度存疑。
+      </p>
+    </div>
+
+    <div class="scen">
+      <div class="sh">
+        <div class="st">全面和平协议</div>
+        <div class="pct" style="color:var(--txt3)">最低</div>
+      </div>
+      <p style="font-size:13.5px;margin:0">
+        领土与安全诉求的结构性对立尚未松动，任何一方签字都意味着政治生存风险。
+        除非战场出现决定性变化或外部支持结构发生突变，否则短期内签署全面协议的概率最低。
+      </p>
+    </div>
+  </div>
+
+  <h3>决定走向的五个观察点</h3>
+  <table>
+    <thead><tr><th>#</th><th>观察指标</th><th>为何重要</th></tr></thead>
+    <tbody>
+      <tr><td class="num">1</td><td>俄方大规模动员是否落地</td><td>这是俄军唯一可能改变兵力赤字的手段，也是社会风险的引爆点</td></tr>
+      <tr><td class="num">2</td><td>乌军防空弹药库存</td><td>弹道导弹拦截弹短缺程度，直接决定俄军冬季打击电网的成效</td></tr>
+      <tr><td class="num">3</td><td>乌克兰炼油打击的持续性</td><td>这是乌方最有效的杠杆，但受特朗普公开施压与全球油价的制约</td></tr>
+      <tr><td class="num">4</td><td>欧洲援助的财政与政治意愿</td><td>在美国拨款停滞背景下，欧洲是乌克兰国家预算的最大支撑</td></tr>
+      <tr><td class="num">5</td><td>2026 年 11 月美国中期选举</td><td>选举结果决定华盛顿在 2027 年对俄乌投入的政治意愿与资源</td></tr>
+    </tbody>
+  </table>
+
+  <div class="card" style="margin-top:24px;border-color:rgba(74,158,255,.28)">
+    <p style="margin-bottom:0">
+      <strong>核心判断：</strong>这场战争的形态已经稳定下来——它不再是一场比拼谁先突破防线的战争，
+      而是一场比拼<strong>谁的社会、财政与盟友体系更晚耗尽耐力</strong>的战争。
+      2026 年出现的第一个明确信号是：乌克兰在战场上重新掌握了主动权，
+      而俄罗斯在纵深腹地正承受前所未有的常态化打击。
+      但主动权不等同于胜利——只要领土诉求不松动，战场上的每一次得失，都只是谈判筹码的重新计量。
+    </p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="fwrap">
+    <div>
+      <strong style="color:var(--txt2)">资料来源</strong><br>
+      战争研究所（ISW）· 战略与国际研究中心（CSIS）· 国际能源署（IEA）<br>
+      联合国人权高专办 · 世界银行 RDNA5 · Mediazona × BBC 俄语部<br>
+      Eurelectric · 基辅独立报 · 法新社 · 央广军事 · 公开媒体报道
+    </div>
+    <div style="text-align:right">
+      <strong style="color:var(--txt2)">数据说明</strong><br>
+      伤亡与经济损失数据均为多方估算，口径不一，存在显著区间差异。<br>
+      本页于 2026 年 9 月 18 日汇编，仅供研究参考。
+    </div>
+  </div>
+</footer>
+
+<script>
+// 滚动高亮导航
+const secs=[...document.querySelectorAll('section')];
+const links=[...document.querySelectorAll('nav a')];
+const onScroll=()=>{
+  const y=window.scrollY+120;
+  let cur=secs[0]?.id;
+  secs.forEach(s=>{if(s.offsetTop<=y)cur=s.id});
+  links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+};
+window.addEventListener('scroll',onScroll,{passive:true});
+onScroll();
+
+// 入场动画
+const io=new IntersectionObserver(es=>{
+  es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
+},{threshold:.12});
+document.querySelectorAll('section .grid, section .tl, section table, section .card, section blockquote')
+  .forEach(el=>{el.classList.add('reveal');io.observe(el)});
+
+// 条状图动画
+const bo=new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.fill').forEach(f=>{
+        const w=f.style.width;f.style.width='0';requestAnimationFrame(()=>{f.style.width=w});
+      });
+      bo.unobserve(e.target);
+    }
+  });
+},{threshold:.3});
+document.querySelectorAll('.bars').forEach(b=>bo.observe(b));
+</script>
+</body>
+</html>
