@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第17章 太空制造与原位资源利用 · 未来太空移民技术手册</title>
+<meta name="description" content="未来太空移民技术手册 —— 面向专业读者的综合性太空殖民技术参考，涵盖推进、生保、栖息地、治理与前沿技术。">
+<link rel="icon" type="image/png" href="../assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script>(function(){try{var t=localStorage.getItem('smh-theme');if(!t)t='dark';document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="目录"><span></span><span></span><span></span></button>
+  <a class="brand" href="../index.html">
+    <img class="brand-icon" src="../assets/icon.png" alt="">
+    <span class="brand-zh">未来太空移民技术手册</span>
+    <span class="brand-en">SPACE SETTLEMENT HANDBOOK</span>
+  </a>
+  <div class="top-actions">
+    <button class="search-btn" id="searchBtn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg><span>检索</span><kbd>⌘K</kbd></button>
+    <button class="theme-btn" id="themeBtn" aria-label="切换主题"></button>
+  </div>
+</header>
+
+<div class="search-overlay" id="searchOverlay" hidden>
+  <div class="search-box">
+    <div class="search-head">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg>
+      <input id="searchInput" type="text" placeholder="检索全书：术语、参数、章节…" autocomplete="off">
+      <kbd>ESC</kbd>
+    </div>
+    <div class="search-results" id="searchResults"><div class="search-hint">输入关键词，检索 23 章正文与附录</div></div>
+  </div>
+</div>
+<div class="layout">
+<nav class="sidebar" id="sidebar">
+<div class="sb-group"><div class="sb-label">卷首</div>
+<a class="sb-item" href="intro.html"><span class="sb-num">◎</span><span class="sb-t">前言与导读</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第一部分 · 基础物理与宇宙环境</div>
+<a class="sb-item" href="ch01.html"><span class="sb-num">01</span><span class="sb-t">太空环境物理</span></a>
+<a class="sb-item" href="ch02.html"><span class="sb-num">02</span><span class="sb-t">天体物理与轨道力学</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第二部分 · 推进与运输系统</div>
+<a class="sb-item" href="ch03.html"><span class="sb-num">03</span><span class="sb-t">化学推进与近中期方案</span></a>
+<a class="sb-item" href="ch04.html"><span class="sb-num">04</span><span class="sb-t">先进推进理论</span></a>
+<a class="sb-item" href="ch05.html"><span class="sb-num">05</span><span class="sb-t">星际航行工程</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第三部分 · 生命保障与人体工程</div>
+<a class="sb-item" href="ch06.html"><span class="sb-num">06</span><span class="sb-t">封闭生态生命保障系统（CELSS）</span></a>
+<a class="sb-item" href="ch07.html"><span class="sb-num">07</span><span class="sb-t">太空医学</span></a>
+<a class="sb-item" href="ch08.html"><span class="sb-num">08</span><span class="sb-t">食品与营养</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第四部分 · 栖息地与基础设施</div>
+<a class="sb-item" href="ch09.html"><span class="sb-num">09</span><span class="sb-t">栖息地结构设计</span></a>
+<a class="sb-item" href="ch10.html"><span class="sb-num">10</span><span class="sb-t">能源系统</span></a>
+<a class="sb-item" href="ch11.html"><span class="sb-num">11</span><span class="sb-t">通信与导航</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第五部分 · 目的地与殖民方案</div>
+<a class="sb-item" href="ch12.html"><span class="sb-num">12</span><span class="sb-t">月球</span></a>
+<a class="sb-item" href="ch13.html"><span class="sb-num">13</span><span class="sb-t">火星</span></a>
+<a class="sb-item" href="ch14.html"><span class="sb-num">14</span><span class="sb-t">小行星与太空殖民地</span></a>
+<a class="sb-item" href="ch15.html"><span class="sb-num">15</span><span class="sb-t">外太阳系与冰卫星</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第六部分 · 材料与制造</div>
+<a class="sb-item" href="ch16.html"><span class="sb-num">16</span><span class="sb-t">太空材料科学</span></a>
+<a class="sb-item current" href="ch17.html"><span class="sb-num">17</span><span class="sb-t">太空制造与原位资源利用</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第七部分 · 社会、文化与治理</div>
+<a class="sb-item" href="ch18.html"><span class="sb-num">18</span><span class="sb-t">太空治理与法律框架</span></a>
+<a class="sb-item" href="ch19.html"><span class="sb-num">19</span><span class="sb-t">太空经济学</span></a>
+<a class="sb-item" href="ch20.html"><span class="sb-num">20</span><span class="sb-t">太空文化演化</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第八部分 · 前沿与推测性技术</div>
+<a class="sb-item" href="ch21.html"><span class="sb-num">21</span><span class="sb-t">脑机接口与人类增强</span></a>
+<a class="sb-item" href="ch22.html"><span class="sb-num">22</span><span class="sb-t">AI治理与超级智能</span></a>
+<a class="sb-item" href="ch23.html"><span class="sb-num">23</span><span class="sb-t">意识上传与数字存在</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">附录 · 参考数据</div>
+<a class="sb-item" href="appA.html"><span class="sb-num">A</span><span class="sb-t">A 物理常数与换算</span></a>
+<a class="sb-item" href="appB.html"><span class="sb-num">B</span><span class="sb-t">B 太阳系天体参数</span></a>
+<a class="sb-item" href="appC.html"><span class="sb-num">C</span><span class="sb-t">C 推进系统对比</span></a>
+<a class="sb-item" href="appD.html"><span class="sb-num">D</span><span class="sb-t">D 辐射与屏蔽</span></a>
+<a class="sb-item" href="appE.html"><span class="sb-num">E</span><span class="sb-t">E 术语表（中英对照）</span></a>
+<a class="sb-item" href="appF.html"><span class="sb-num">F</span><span class="sb-t">F 参考文献与推荐阅读</span></a>
+</div>
+</nav><main class="content"><article class="article"><div class="crumb"><span class="crumb-part">第六部分 · 材料与制造</span><span class="crumb-sep">/</span><span class="crumb-ch">CHAPTER 17</span></div><div class="ch-head"><div class="ch-num">17</div><h1 class="ch-title">太空制造与原位资源利用</h1></div><div class="article-body"><blockquote>
+<p><strong>章首导语</strong></p>
+<p>太空制造与原位资源利用（In-Situ Resource Utilization, ISRU）的实质，是把航天后勤方程中的"从地球发射的质量"一项改写为"在目的地生产的质量"。本章按三层逻辑展开。第一层是微重力制造（17.1 节）：微重力不是单纯的"环境缺陷"，而是一种制造资源——它消除浮力对流与沉降，为晶体生长、光纤拉制与生物打印打开地面无法实现的工艺窗口，ZBLAN 光纤质量提升 10–100 倍是最著名的定量证据。第二层是月球与火星 ISRU（17.2–17.3 节）：月壤制氧（熔盐电解能耗 ~10–15 kWh/kg O₂）、极区水冰开采、火星大气 CO₂ 电解（MOXIE 已在火星完成 16 次实验、累计产氧 ~122 g）与 Sabatier 推进剂合成（全链能耗 ~25–35 MJ/kg）——这些工艺都已在地面或在轨/原位完成原理验证，但距载人任务所需的吨级日产量仍有 2–3 个数量级的规模化差距。第三层是自复制系统（17.4 节）：冯·诺依曼探测器是 ISRU 的极限外推，~10 年的复制周期意味着数百年可探索整个银河系，但当前"最小自复制集"的技术成熟度大多停留在 TRL 2–6。目的地环境背景见第12、13章，能源供给见第10章，推进剂与生命保障的衔接见第3、6章。</p>
+</blockquote>
+<h3 id="sec-1">17.1 微重力制造物理</h3>
+<h3 id="sec-2">17.1.1 微重力对制造过程的影响</h3>
+<p><strong>（1）流体行为</strong>：
+- 无重力驱动对流：传热仅靠传导和辐射（自然对流消失）
+- 表面张力主导：液体形成球状，不润湿表面行为改变
+- 无浮力分离：气泡不上升，夹杂物不沉降</p>
+<p><strong>Bond数</strong>（重力与表面张力之比）：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord mathnormal">o</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.1771em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.4911em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">ρ</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<p>对微重力（g ~ 10⁻⁶ g₀），特征长度 L = 1 mm，水（σ = 0.072 N/m）：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord mathnormal">o</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.1771em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.4911em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">0.072</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1000</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">5</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">3</span></span></span></span></span></span></span></span></span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8641em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">9</span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p>表面张力完全主导（Bo &lt;&lt; 1）。</p>
+<p><strong>（2）材料凝固</strong>：
+- 无重力驱动对流 → 溶质分布均匀 → 更均匀的合金/晶体
+- 无密度分层 → 可制备地球上无法获得的合金（如Al-Pb偏晶合金）
+- 过冷能力增强 → 可形成金属玻璃（非晶态金属）</p>
+<p><strong>（3）增材制造（3D打印）</strong>：
+- 粉末床：微重力下粉末不自然沉降，需要约束
+- 熔融沉积：熔池行为改变（表面张力主导形态）
+- 电子束熔化：真空中自然适配，但电子散射需考虑</p>
+<h3 id="sec-3">17.1.2 ISS上的制造实验</h3>
+<table>
+<thead>
+<tr>
+<th>设施</th>
+<th>功能</th>
+<th>成果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ISS National Lab 3D Printer (Made In Space)</td>
+<td>FDM塑料打印</td>
+<td>首个太空3D打印工具（扳手）</td>
+</tr>
+<tr>
+<td>Refabricator</td>
+<td>金属+塑料3D打印</td>
+<td>首个太空金属3D打印</td>
+</tr>
+<tr>
+<td>BioFabric</td>
+<td>生物组织打印</td>
+<td>人类组织打印验证</td>
+</tr>
+<tr>
+<td>ZBLAN光纤实验</td>
+<td>氟化物玻璃光纤</td>
+<td>微重力下光纤质量提升 ~10-100×</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sec-4">17.1.3 微重力ZBLAN光纤：从实验史到商业化</h3>
+<p>ZBLAN（ZrF₄-BaF₂-LaF₃-AlF₃-NaF 氟化物玻璃）光纤是目前证据链最完整的"在轨制造独特产品"。其在中红外波段的理论损耗极限 ~0.01 dB/km，比二氧化硅光纤（~0.2 dB/km @ 1550 nm）低一至两个数量级；但地面拉制过程中，重力对流、杂质沉降与析晶（失透）缺陷使实际损耗通常高达 ~1–25 dB/km，限制了其在医疗激光传导与中红外传感中的应用。微重力正是去除这些缺陷的工艺窗口。</p>
+<p><strong>实验史</strong>（按时间）：</p>
+<table>
+<thead>
+<tr>
+<th>时间</th>
+<th>平台</th>
+<th>里程碑</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1990 年代中期</td>
+<td>NASA KC-135 抛物线飞机</td>
+<td>首批微重力 ZBLAN 加工实验（每次抛物线 ~20 s 微重力窗口），证实微重力抑制析晶成核</td>
+</tr>
+<tr>
+<td>1997</td>
+<td>航天飞机 MSL-1 载荷（STS-83/STS-94）</td>
+<td>在轨光纤拉制实验，首次轨道级验证</td>
+</tr>
+<tr>
+<td>2000 年代</td>
+<td>地面落塔与探空火箭</td>
+<td>成核动力学系统研究（含 JAXA 落塔 ~10 s 微重力工况）</td>
+</tr>
+<tr>
+<td>2017</td>
+<td>ISS（Made In Space ZF-1）</td>
+<td>站上首个商业制造实验：光纤拉制试验装置进站运行</td>
+</tr>
+<tr>
+<td>2018–2019</td>
+<td>Blue Origin New Shepard 亚轨道火箭</td>
+<td>多次短时微重力拉制参数验证飞行</td>
+</tr>
+<tr>
+<td>2018–2021</td>
+<td>ISS（ZF-2 及后续批次）</td>
+<td>连续拉制与样品下行，转入商业化生产</td>
+</tr>
+</tbody>
+</table>
+<p><strong>现状与局限</strong>：Made In Space（后并入 Redwire）已向市场提供微重力拉制的 ZBLAN 光纤，面向中红外传感与医疗激光传导，成为在轨制造首个商业化产品；微重力光纤的散射损耗较地面产品低 10–100 倍（与上表一致）。局限在于市场规模：中红外特种光纤属细分市场，当前营收量级只能支撑小规模飞行生产，尚不足以论证大型在轨制造设施的独立经济性——"高价值、小质量"仍是现阶段在轨制造选品的主导逻辑（经济性分析框架见第19章）。</p>
+<hr />
+<h3 id="sec-5">17.2 月球ISRU</h3>
+<h3 id="sec-6">17.2.1 月球资源清单</h3>
+<table>
+<thead>
+<tr>
+<th>资源</th>
+<th>存在形式</th>
+<th>丰度</th>
+<th>提取方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>氧</td>
+<td>氧化物（FeO, TiO₂, SiO₂, Al₂O₃）</td>
+<td>~40-45 wt%</td>
+<td>氢还原、熔盐电解</td>
+</tr>
+<tr>
+<td>金属（Fe, Al, Ti）</td>
+<td>氧化物/合金</td>
+<td>~5-15 wt%</td>
+<td>氢还原、电解</td>
+</tr>
+<tr>
+<td>水冰</td>
+<td>永久阴影区冰</td>
+<td>~1-10 wt%（极区）</td>
+<td>热提取</td>
+</tr>
+<tr>
+<td>氦-3</td>
+<td>月壤植入</td>
+<td>~10-50 ppb</td>
+<td>热提取（&gt;600°C）</td>
+</tr>
+<tr>
+<td>稀土元素</td>
+<td>月海玄武岩</td>
+<td>~100-500 ppm</td>
+<td>化学分离</td>
+</tr>
+<tr>
+<td>硅</td>
+<td>SiO₂</td>
+<td>~20 wt%</td>
+<td>碳热还原</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sec-7">17.2.2 氧气生产</h3>
+<p><strong>方法一：氢还原钛铁矿</strong></p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mord mathnormal">i</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mord mathnormal">e</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mord mathnormal">i</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span></span></span></span></span></p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2503em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel x-arrow"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1003em;"><span style="top:-3.322em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"><span class="mord cjk_fallback mtight">电解</span></span></span></span><span class="svg-align" style="top:-2.689em;"><span class="pstrut" style="height:2.7em;"></span><span class="hide-tail" style="height:0.522em;min-width:1.469em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.011em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:2.0074em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+<ul>
+<li>反应温度：~800-1000°C</li>
+<li>氧气产率：~4-6 wt%（对钛铁矿富集月壤）</li>
+<li>氢气循环使用</li>
+</ul>
+<p><strong>方法二：月壤熔盐电解（FFC Cambridge工艺）</strong></p>
+<p>月壤直接溶解在CaCl₂熔盐中（~900°C），电解产生O₂（阳极）和金属（阴极）。</p>
+<ul>
+<li>氧气产率：~40 wt%（对全部月壤）</li>
+<li>副产物：Fe-Ti合金（可用于3D打印）</li>
+<li>能耗：~10-15 kWh/kg O₂</li>
+</ul>
+<p><strong>方法三：水冰电解（极区）</strong></p>
+<ul>
+<li>加热永久阴影区月壤至 &gt;0°C释放水蒸气</li>
+<li>冷凝收集 → 净化 → 电解</li>
+<li>能耗：~13 kWh/kg O₂（仅电解），加上加热 ~3-5 kWh/kg 月壤</li>
+<li>同时获得H₂（火箭推进剂）</li>
+</ul>
+<h3 id="sec-8">17.2.3 月球水冰开采</h3>
+<p><strong>永久阴影区（PSR）条件</strong>：
+- 温度：~30-50 K（极低，水冰稳定数十亿年）
+- 水冰含量：~1-10 wt%（Lunar Reconnaissance Orbiter/LCROSS数据）
+  - LCROSS 撞击实测喷出物含水 ~5.6 ± 2.9 wt%（Colaprete et al., Science, 2010），是迄今最直接的原位证据
+- 深度分布：表层 ~0-30 cm，可能更深层更丰富</p>
+<p><strong>开采方案</strong>：</p>
+<ol>
+<li><strong>热提取</strong>：部署太阳能聚光器或电加热器，加热月壤至 &gt;100°C，水蒸气冷凝收集</li>
+<li><strong>微波烧结</strong>：微波加热月壤，内部水蒸气逸出后收集</li>
+<li><strong>采矿车</strong>：挖掘PSR月壤，输送到加热反应器</li>
+</ol>
+<p><strong>水冰开采的能耗估算</strong>：</p>
+<p>对1 wt%水冰含量月壤，生产1吨水：
+- 需处理 ~100吨月壤
+- 加热从40K到273K：Q = m·Cp·ΔT = 10⁵ × 800 × 233 ≈ 1.9 × 10¹⁰ J ≈ 5200 kWh
+- 考虑热回收（~70%效率）：~1500 kWh/吨水</p>
+<h3 id="sec-9">17.2.4 月壤建造与3D打印实验进展</h3>
+<p>以月壤为建材的路线已从概念进入地面演示验证，三条主要技术路径为：粘结剂固化、激光/微波烧结、熔融浇铸。代表性实验与计划：</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>机构</th>
+<th>时间</th>
+<th>方法与结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>月球基地概念（D-Shape 打印机）</td>
+<td>ESA / Foster + Partners</td>
+<td>2013</td>
+<td>月壤模拟物 + 镁基粘结剂喷印，制成 ~1.5 吨级蜂窝结构砌块，验证"月壤砖"概念</td>
+</tr>
+<tr>
+<td>激光烧结研究</td>
+<td>ESA</td>
+<td>2013–2017</td>
+<td>激光烧结模拟月壤成型砖状构件，评估真空与低重力下的成型强度</td>
+</tr>
+<tr>
+<td>3D Printed Habitat Challenge</td>
+<td>NASA</td>
+<td>2014–2019</td>
+<td>三阶段竞赛；AI SpaceFactory（MARSHA 方案）以玄武岩纤维 + 生物基聚合物打印赢得决赛</td>
+</tr>
+<tr>
+<td>Olympus 计划</td>
+<td>NASA SBIR / ICON</td>
+<td>2020–至今</td>
+<td>2020 年 Phase I 概念验证，2022 年获 Phase II 合同（~5.7 × 10⁷ USD），开发月面建造系统</td>
+</tr>
+<tr>
+<td>Mars Dune Alpha</td>
+<td>NASA / ICON</td>
+<td>2023 建成</td>
+<td>约翰逊航天中心内 ~160 m² 3D 打印模拟火星栖息地，支撑 CHAPEA 1 年期乘员模拟实验</td>
+</tr>
+<tr>
+<td>月砖实验</td>
+<td>中国</td>
+<td>2028（计划）</td>
+<td>嫦娥八号携带月壤制砖装置，在月面原位验证月壤砖 3D 打印成型</td>
+</tr>
+</tbody>
+</table>
+<p>工程瓶颈集中在：月尘的粘附与磨蚀（颗粒棱角尖锐、无风化圆化）、真空与 1/6 g 下的成型强度与气密性、大温差（~100–400 K）与辐照对粘结相的老化。打印结构的承载、屏蔽与密封设计见第9章；月面环境背景见第12章。</p>
+<hr />
+<h3 id="sec-10">17.3 火星ISRU</h3>
+<h3 id="sec-11">17.3.1 火星大气资源</h3>
+<p>火星大气成分：</p>
+<table>
+<thead>
+<tr>
+<th>成分</th>
+<th>体积分数</th>
+<th>分子量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CO₂</td>
+<td>95.32%</td>
+<td>44</td>
+</tr>
+<tr>
+<td>N₂</td>
+<td>2.6%</td>
+<td>28</td>
+</tr>
+<tr>
+<td>Ar</td>
+<td>1.6%</td>
+<td>40</td>
+</tr>
+<tr>
+<td>O₂</td>
+<td>0.13%</td>
+<td>32</td>
+</tr>
+<tr>
+<td>CO</td>
+<td>0.08%</td>
+<td>28</td>
+</tr>
+</tbody>
+</table>
+<p>表面气压：~610 Pa（0.6%地球），表面温度：~210-293 K</p>
+<p><strong>大气采集</strong>：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.918em;vertical-align:-0.2501em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6679em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">m</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1389em;"><span class="mord">˙</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">C</span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3173em;"><span style="top:-2.357em;margin-left:-0.0278em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2501em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.2832em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.5972em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9202em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span><span style="top:-3.2523em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1389em;"><span class="mord">˙</span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">C</span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3173em;"><span style="top:-2.357em;margin-left:-0.0278em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2501em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<p>对 100 L/min 压缩机（p = 610 Pa, T = 210 K）：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.918em;vertical-align:-0.2501em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6679em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">m</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1389em;"><span class="mord">˙</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">C</span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3173em;"><span style="top:-2.357em;margin-left:-0.0278em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2501em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.2604em;vertical-align:-0.7693em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.4911em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">8.314</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">210</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">610</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">1.67</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">3</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">0.044</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7693em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">2.6</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.1141em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">5</span></span></span></span></span></span></span></span></span><span class="mord text"><span class="mord"> kg/s</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0.09</span><span class="mord text"><span class="mord"> kg/h</span></span></span></span></span></span></p>
+<h3 id="sec-12">17.3.2 MOXIE与Sabatier反应</h3>
+<p><strong>MOXIE（Mars Oxygen ISRU Experiment）</strong>：</p>
+<p>已在Perseverance火星车上验证（2021-2023）：
+- 原理：固态氧化物电解（SOXE），CO₂ → CO + ½O₂
+- 产率：~6-12 g O₂/小时
+- 工作温度：~800°C
+- 电力消耗：~300 W</p>
+<p><strong>飞行成果小结</strong>（2023 年收官）：MOXIE 在火星完成 16 次实验，累计产氧 ~122 g，最后一次实验峰值产率达到 ~12 g/h，全面超出设计指标，并验证了跨昼夜、跨季节、含尘大气条件下的可运行性。未解决的问题同样明确：SOXE 电堆累计运行仅 ~10¹ 小时量级，距载人任务所需的 ~10³ 小时级寿命差约两个数量级；灰尘侵入与热循环（每次实验需升降温 ~800 °C）对电堆的退化机制需要专门的地面寿命试验与后续飞行验证。</p>
+<p><strong>放大到载人任务规模</strong>：</p>
+<p>需要 ~25 t O₂ + ~7 t CH₄ 用于火星表面起飞（380 s I_sp，4.1 km/s Δv，~30 t上升质量）。</p>
+<p>生产25 t O₂需要 ~55 t CO₂（MOXIE效率），以放大1000倍（~12 kg/h）计算：
+- 运行时间：~2000小时（~83天连续运行）
+- 电力需求：~300 kW（放大后）
+- 系统质量：~2-5 t（估计）</p>
+<p><strong>再放大到重型返回任务量级</strong>（量级估算）：若支持 Starship 级飞行器从火星返回，推进剂需求可达 ~10³ t 级。按本节给出的总能耗 ~25–35 MJ/kg 推进剂（约 7–10 kWh/kg）估算，生产 1000 t CH₄/LOX 需电力 ~7–10 GWh；摊到 ~2.1 年的会合窗口内平均功率 ~0.4–0.5 MW，再计入可用率（火星尘暴与夜间太阳能不可用）、液化与低温贮存损失及设计裕度，现实设计点约 ~1–2 MW 的核电站或 ~10⁴ m² 量级的太阳能阵列。这比 MOXIE 飞行规模大 3–4 个数量级，其放大规律（电堆并联的一致性、CO₂ 采集与压缩的大型化、反应热管理）目前只有地面分析支撑，构成火星 ISRU 中最大的规模化不确定项。火星任务架构与着陆选址见第13章。</p>
+<p><strong>Sabatier反应</strong>：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.2581em;vertical-align:-0.15em;"></span><span class="mord">4</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel x-arrow"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1081em;"><span style="top:-3.322em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">N</span><span class="mord mathnormal mtight">i</span><span class="mord cjk_fallback mtight">催化剂</span><span class="mpunct mtight">,</span><span class="mord mtight">300</span><span class="mbin mtight">−</span><span class="mord mtight">400°</span><span class="mord mathnormal mtight" style="margin-right:0.07153em;">C</span></span></span></span><span class="svg-align" style="top:-2.689em;"><span class="pstrut" style="height:2.7em;"></span><span class="hide-tail" style="height:0.522em;min-width:1.469em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.011em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord">2</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span></span></span></span></span></p>
+<ul>
+<li>氢气来源：火星地下水冰电解</li>
+<li>甲烷产率：每kg H₂产生 ~2 kg CH₄</li>
+<li>水副产物可电解回收O₂和H₂</li>
+</ul>
+<p><strong>完整ISRU推进剂生产链</strong>：</p>
+<pre><code>CO₂（大气采集）+ H₂（水冰电解）
+        ↓ Sabatier
+    CH₄ + 2H₂O
+        ↓ 电解水
+    H₂ + ½O₂
+        ↓
+    CH₄（燃料）+ O₂（氧化剂）
+</code></pre>
+<p>净反应：CO₂ → CH₄ + O₂（外部能量输入：太阳能/核能）</p>
+<p><strong>能量需求</strong>：</p>
+<p>生产1 kg CH₄/LOX推进剂对：
+- Sabatier：~5-8 MJ/kg（反应热+压缩）
+- 水电解：~13-15 MJ/kg O₂
+- CO₂压缩：~1-2 MJ/kg
+- 总计：~25-35 MJ/kg推进剂</p>
+<p>对25 t CH₄/LOX：~625-875 GJ ≈ 170-240 MWh</p>
+<p>以100 kW核反应堆连续运行：~70-100天</p>
+<h3 id="sec-13">17.3.3 火星水资源</h3>
+<p><strong>火星水储量估计</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>储层</th>
+<th>水当量</th>
+<th>位置</th>
+<th>可及性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>极冠（水冰）</td>
+<td>~2.6 × 10⁶ km³</td>
+<td>北极</td>
+<td>中等（表面暴露）</td>
+</tr>
+<tr>
+<td>地下冰（中纬度）</td>
+<td>~10⁵-10⁶ km³</td>
+<td>30-60°纬度</td>
+<td>需钻探（~1-10 m深）</td>
+</tr>
+<tr>
+<td>含水矿物</td>
+<td>~0.5-1 × 10⁶ km³</td>
+<td>全球</td>
+<td>需高温处理</td>
+</tr>
+<tr>
+<td>古海洋总量</td>
+<td>~10-20 × 10⁶ km³</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>中纬度地下冰</strong>（最具工程价值）：</p>
+<ul>
+<li>深度：~1-10 m（取决于纬度）</li>
+<li>纯度：~50-90%水冰（体积）</li>
+<li>温度：~200-210 K</li>
+<li>代表地点：Utopia Planitia（~40°N，SHARAD雷达确认）</li>
+</ul>
+<p><strong>水开采方法</strong>：</p>
+<ol>
+<li><strong>表面挖掘+加热</strong>：挖掘含冰壤，加热到 &gt;0°C收集水蒸气</li>
+<li><strong>原位加热</strong>：插入加热探针，融化地下冰，收集液态水</li>
+<li><strong>微波加热</strong>：微波穿透土壤，选择性加热水冰</li>
+</ol>
+<hr />
+<h3 id="sec-14">17.4 冯·诺依曼探测器与自复制系统</h3>
+<h3 id="sec-15">17.4.1 理论框架</h3>
+<p>冯·诺依曼探测器（Von Neumann Probe）是一种能够自我复制的太空探测器：</p>
+<ol>
+<li>到达目标天体</li>
+<li>开采资源</li>
+<li>制造自身副本</li>
+<li>副本飞往新目标</li>
+<li>指数增长探索整个星系</li>
+</ol>
+<p><strong>指数增长动力学</strong>：</p>
+<p>若复制周期为 T_rep，每次产生 n 个副本：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.938em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.938em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mord mtight">/</span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1645em;"><span style="top:-2.357em;margin-left:-0.1389em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">re</span><span class="mord mathnormal mtight">p</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2819em;"><span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p>对 n = 2，T_rep = 10年（保守估计）：</p>
+<p>探索银河系（~10¹¹ 恒星）所需时间：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">re</span><span class="mord mathnormal mtight">p</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.1141em;vertical-align:-0.25em;"></span><span class="mop"><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.207em;"><span style="top:-2.4559em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2441em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">11</span></span></span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">10</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">36.5</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">365</span><span class="mord text"><span class="mord"> </span><span class="mord cjk_fallback">年</span></span></span></span></span></span></p>
+<p>即使考虑旅行时间（~100年/恒星系），~1000年可探索整个银河系。</p>
+<h3 id="sec-16">17.4.2 自复制系统的关键技术</h3>
+<table>
+<thead>
+<tr>
+<th>技术需求</th>
+<th>当前TRL</th>
+<th>挑战</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>自主采矿</td>
+<td>3-4</td>
+<td>未知天体表面操作</td>
+</tr>
+<tr>
+<td>矿石分选/冶炼</td>
+<td>2-3</td>
+<td>全自动化冶金</td>
+</tr>
+<tr>
+<td>半导体制造</td>
+<td>9（地球）</td>
+<td>需要集成到自复制系统</td>
+</tr>
+<tr>
+<td>机器人组装</td>
+<td>5-6</td>
+<td>复杂系统自组装</td>
+</tr>
+<tr>
+<td>自我诊断/修复</td>
+<td>4-5</td>
+<td>完全自主故障处理</td>
+</tr>
+<tr>
+<td>能量供应</td>
+<td>7-8</td>
+<td>RTG/太阳能成熟</td>
+</tr>
+</tbody>
+</table>
+<p><strong>最小自复制系统质量估计</strong>：</p>
+<ul>
+<li>电子/计算：~100 kg</li>
+<li>机器人手臂/执行器：~500 kg</li>
+<li>冶炼/加工设备：~2000 kg</li>
+<li>能源系统：~500 kg</li>
+<li>总计：~3-10 t（高度乐观）</li>
+</ul>
+<p><strong>地面验证里程碑</strong>：</p>
+<ul>
+<li>1980 年 NASA/ASEE 夏季研究（"Advanced Automation for Space Missions"，成果汇编为 NASA CP-2255，1982 年出版；Freitas &amp; Gilbreath）：系统论证了自复制月球工厂概念，估计初始"种子"工厂质量 ~4.4 × 10² t，在连续运行条件下 ~10 年可使产能扩大 ~10 倍——本节 T_rep = 10 年的假设与该研究的增速设定一致</li>
+<li>结构化环境自复制机器人演示（Chirikjian 团队，约翰斯·霍普金斯大学，2002）：利用预置功能模块完成了部分自复制的物理演示，并给出"自复制复杂度"的定量度量，证明机械层面自复制的概念可行性</li>
+<li>RepRap 项目（2005，巴斯大学）：首个开源自复制 FDM 3D 打印机，按质量计可自产自身 ~50% 的结构件，是"部分自复制"的工程原型</li>
+</ul>
+<p>这些里程碑共同说明：自复制的瓶颈不在概念，而在工业链的完备性——完全闭环系统必须包含采矿、冶金、机加工、电子制造与化工五大门类，而地球工业体系靠 ~10⁹ 人口级的分工网络实现这一点；将其压缩进单个可移动系统，是自复制探测器最难的环节（各单项技术成熟度见上表）。星际探索的总体策略讨论见第5章。</p>
+<h3 id="sec-17">17.4.3 伦理与安全考量</h3>
+<ul>
+<li><strong>灰蛊（Gray Goo）场景</strong>：失控自复制消耗所有可用资源</li>
+<li><strong>安全机制</strong>：</li>
+<li>资源限制设计（必须特定矿物才能复制）</li>
+<li>数量限制（内置计数器）</li>
+<li>远程终止信号</li>
+<li>生物类比"基因防火墙"（缺少关键基因则无法存活）</li>
+</ul>
+<p>上述机制目前均为设计原则，无飞行验证。自复制系统的责任归属与行星保护约束尚无现行法律框架承接（太空治理与法律背景见第18章）；当自复制系统与高度自主 AI 结合时，还叠加了 AI 对齐与监督问题（见第22章）。</p>
+<p><strong>本章小结</strong></p>
+<p>本章给出了"就地取材"的完整工程图景。微重力制造侧，ZBLAN 光纤从 1990 年代抛物线飞行、1997 年航天飞机在轨拉制，到 2017 年 ISS 首个商业制造实验、如今 Redwire 商业出货，证明"微重力独特产品"路线真实成立，但细分市场容量限制了设施规模。ISRU 侧，月壤制氧（熔盐电解产氧 ~40 wt%、能耗 ~10–15 kWh/kg O₂）、极区水冰开采（LCROSS 实测 ~5.6 wt%）、火星 CO₂ 电解（MOXIE 16 次累计 ~122 g O₂）与 Sabatier 推进剂链（总能耗 ~25–35 MJ/kg）均已完成原理或在位验证，瓶颈不在化学原理，而在电堆寿命、粉尘治理与连续运行可靠性——距载人任务的吨级产量仍有 2–3 个数量级差距。自复制侧，1980 年 NASA/ASEE 研究的"~440 t 种子工厂、10 年产能扩大 ~10 倍"仍是基准设计；从 RepRap 的 ~50% 质量自复制走向完全闭环，是本手册中跨度最大的技术鸿沟之一，其实现时序将直接决定银河级探索的时间表。</p>
+<p><strong>关键参数速查表</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>典型值</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ZBLAN 微重力光纤质量提升</td>
+<td>散射损耗降低 ~10–100×</td>
+<td>在轨制造的核心论据；理论损耗极限 ~0.01 dB/km</td>
+</tr>
+<tr>
+<td>月壤熔盐电解制氧能耗</td>
+<td>~10–15 kWh/kg O₂</td>
+<td>产氧 ~40 wt%，副产 Fe-Ti 合金可用于 3D 打印</td>
+</tr>
+<tr>
+<td>极区水冰电解制氧能耗</td>
+<td>~13 kWh/kg O₂（另加热 ~3–5 kWh/kg 月壤）</td>
+<td>同时获得 H₂ 推进剂</td>
+</tr>
+<tr>
+<td>水冰开采能耗（1 wt% 品位）</td>
+<td>~1500 kWh/吨水（含 ~70% 热回收）</td>
+<td>需处理 ~100 t 月壤</td>
+</tr>
+<tr>
+<td>LCROSS 水冰实测</td>
+<td>~5.6 ± 2.9 wt%</td>
+<td>PSR 水冰品位的直接原位证据（Science, 2010）</td>
+</tr>
+<tr>
+<td>MOXIE 产氧能力</td>
+<td>~6–12 g/h；16 次累计 ~122 g O₂</td>
+<td>SOXE ~800 °C、~300 W；载人任务需 ~10³ h 级电堆寿命</td>
+</tr>
+<tr>
+<td>Sabatier 推进剂链总能耗</td>
+<td>~25–35 MJ/kg 推进剂</td>
+<td>25 t CH₄/LOX ≈ 170–240 MWh</td>
+</tr>
+<tr>
+<td>火星推进剂工厂规模</td>
+<td>25 t 级需 ~300 kW；10³ t 级需 ~1–2 MW</td>
+<td>依本文能耗估算，较 MOXIE 放大 3–4 个数量级</td>
+</tr>
+<tr>
+<td>冯·诺依曼探测器复制周期</td>
+<td>~10 年（保守）</td>
+<td>n=2 时 ~365 年探索银河系；含旅行时间 ~1000 年</td>
+</tr>
+<tr>
+<td>自复制月球工厂种子质量</td>
+<td>~4.4 × 10² t（1982 年研究）</td>
+<td>~10 年产能扩大 ~10 倍</td>
+</tr>
+<tr>
+<td>最小自复制系统质量估计</td>
+<td>~3–10 t（高度乐观）</td>
+<td>真正瓶颈是工业链完备性而非单机质量</td>
+</tr>
+<tr>
+<td>RepRap 自复制程度</td>
+<td>按质量 ~50%</td>
+<td>"部分自复制"的工程原型（2005）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="sec-18">本部分开放问题清单</h2>
+<p>以下问题在第16–17章中均无确定答案，属于材料与制造路线收敛前必须解决的关键未知项：</p>
+<p><strong>第16章（太空材料科学）</strong></p>
+<ol>
+<li>CNT 宏观纤维的强度上限：从当前准静态 ~2–9 GPa 到太空电梯所需的 &gt;50 MJ/kg 比强度（对应数十 GPa 级宏观强度），管间载荷传递与缺陷控制的可行路径未定；这一差距直接裁定地球太空电梯的可行性。</li>
+<li>石墨烯宏观组装体在空间环境（原子氧、紫外、质子辐照）下的长期性能：无飞行数据，抗辐照薄膜与热辐射器应用停留在试样阶段。</li>
+<li>HTS 磁屏蔽线圈的工程化：失超保护、制冷冗余、乘员区杂散场限值，以及数吨级线圈的在轨制造与绕制工艺，均无载人飞行验证（TRL 3–4）。</li>
+<li>自修复材料的在轨定量验证：真空与热循环下微胶囊寿命、修复剂固化动力学的飞行数据为零；"mm 级穿孔自密封"缺乏可验收的定量判据。</li>
+</ol>
+<p><strong>第17章（太空制造与原位资源利用）</strong></p>
+<ol start="5">
+<li>在轨制造的经济闭环：目前仅 ZBLAN 光纤一类产品实现商业出货；其余候选产品（半导体晶体、生物组织、大型构件打印）的市场规模估算分歧达数量级，"何时值得在轨生产"缺通用判据（分析框架见第19章）。</li>
+<li>月壤熔盐电解的规模化：阳极寿命、熔盐净化、连续加料等问题在 &gt;kg/天 级未验证；ESA 与 JAXA 的月球 ISRU 载荷仍在演示阶段。</li>
+<li>MOXIE 放大中的电堆寿命：~10³ 小时级 SOXE 寿命与灰尘侵入、热循环退化的耦合机制，是火星推进剂工厂设计的前置条件。</li>
+<li>PSR 水冰的工程赋存状态：品位、垂向分布与力学性质（松散霜层还是坚硬冰胶结层）只有遥感约束，直接决定采矿机构设计（需在 Artemis 后续任务中实测）。</li>
+<li>月壤/火星壤打印结构的力学与密封性能：真空、低重力、大温差下打印体的强度、蠕变与气密性数据稀缺，粘结剂依赖地球输入则抵消 ISRU 收益。</li>
+<li>自复制的"最小完备集"：半导体与真空设备是复制链的公认瓶颈（需洁净室级设施）；~3–10 t 的乐观估计可能低估 1–2 个数量级，真实种子系统质量未定。</li>
+<li>自复制系统的治理框架：失控复制的行星保护责任、终止机制的法律可执行性，目前无任何成文规则（见第18章）。</li>
+</ol>
+<hr />
+<p><em>第六部分完。</em></p></div><div class="prevnext"><a class="pn pn-prev" href="ch16.html"><span class="pn-k">上一篇</span><span class="pn-t">第16章 太空材料科学</span></a><a class="pn pn-next" href="ch18.html"><span class="pn-k">下一篇</span><span class="pn-t">第18章 太空治理与法律框架</span></a></div></article><footer class="foot"><span>未来太空移民技术手册 · 完整版 v2.0</span><span class="foot-mono">AD ASTRA PER ASPERA</span></footer></main>
+<aside class="toc"><div class="toc-title">本页目录</div>
+<a class="toc-h3" href="#sec-1">17.1 微重力制造物理</a>
+<a class="toc-h3" href="#sec-2">17.1.1 微重力对制造过程的影响</a>
+<a class="toc-h3" href="#sec-3">17.1.2 ISS上的制造实验</a>
+<a class="toc-h3" href="#sec-4">17.1.3 微重力ZBLAN光纤：从实验史到商业化</a>
+<a class="toc-h3" href="#sec-5">17.2 月球ISRU</a>
+<a class="toc-h3" href="#sec-6">17.2.1 月球资源清单</a>
+<a class="toc-h3" href="#sec-7">17.2.2 氧气生产</a>
+<a class="toc-h3" href="#sec-8">17.2.3 月球水冰开采</a>
+<a class="toc-h3" href="#sec-9">17.2.4 月壤建造与3D打印实验进展</a>
+<a class="toc-h3" href="#sec-10">17.3 火星ISRU</a>
+<a class="toc-h3" href="#sec-11">17.3.1 火星大气资源</a>
+<a class="toc-h3" href="#sec-12">17.3.2 MOXIE与Sabatier反应</a>
+<a class="toc-h3" href="#sec-13">17.3.3 火星水资源</a>
+<a class="toc-h3" href="#sec-14">17.4 冯·诺依曼探测器与自复制系统</a>
+<a class="toc-h3" href="#sec-15">17.4.1 理论框架</a>
+<a class="toc-h3" href="#sec-16">17.4.2 自复制系统的关键技术</a>
+<a class="toc-h3" href="#sec-17">17.4.3 伦理与安全考量</a>
+<a class="toc-h2" href="#sec-18">本部分开放问题清单</a>
+</aside>
+</div>
+<script src="../search-index.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

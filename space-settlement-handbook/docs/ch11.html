@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第11章 通信与导航 · 未来太空移民技术手册</title>
+<meta name="description" content="未来太空移民技术手册 —— 面向专业读者的综合性太空殖民技术参考，涵盖推进、生保、栖息地、治理与前沿技术。">
+<link rel="icon" type="image/png" href="../assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script>(function(){try{var t=localStorage.getItem('smh-theme');if(!t)t='dark';document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="目录"><span></span><span></span><span></span></button>
+  <a class="brand" href="../index.html">
+    <img class="brand-icon" src="../assets/icon.png" alt="">
+    <span class="brand-zh">未来太空移民技术手册</span>
+    <span class="brand-en">SPACE SETTLEMENT HANDBOOK</span>
+  </a>
+  <div class="top-actions">
+    <button class="search-btn" id="searchBtn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg><span>检索</span><kbd>⌘K</kbd></button>
+    <button class="theme-btn" id="themeBtn" aria-label="切换主题"></button>
+  </div>
+</header>
+
+<div class="search-overlay" id="searchOverlay" hidden>
+  <div class="search-box">
+    <div class="search-head">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg>
+      <input id="searchInput" type="text" placeholder="检索全书：术语、参数、章节…" autocomplete="off">
+      <kbd>ESC</kbd>
+    </div>
+    <div class="search-results" id="searchResults"><div class="search-hint">输入关键词，检索 23 章正文与附录</div></div>
+  </div>
+</div>
+<div class="layout">
+<nav class="sidebar" id="sidebar">
+<div class="sb-group"><div class="sb-label">卷首</div>
+<a class="sb-item" href="intro.html"><span class="sb-num">◎</span><span class="sb-t">前言与导读</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第一部分 · 基础物理与宇宙环境</div>
+<a class="sb-item" href="ch01.html"><span class="sb-num">01</span><span class="sb-t">太空环境物理</span></a>
+<a class="sb-item" href="ch02.html"><span class="sb-num">02</span><span class="sb-t">天体物理与轨道力学</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第二部分 · 推进与运输系统</div>
+<a class="sb-item" href="ch03.html"><span class="sb-num">03</span><span class="sb-t">化学推进与近中期方案</span></a>
+<a class="sb-item" href="ch04.html"><span class="sb-num">04</span><span class="sb-t">先进推进理论</span></a>
+<a class="sb-item" href="ch05.html"><span class="sb-num">05</span><span class="sb-t">星际航行工程</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第三部分 · 生命保障与人体工程</div>
+<a class="sb-item" href="ch06.html"><span class="sb-num">06</span><span class="sb-t">封闭生态生命保障系统（CELSS）</span></a>
+<a class="sb-item" href="ch07.html"><span class="sb-num">07</span><span class="sb-t">太空医学</span></a>
+<a class="sb-item" href="ch08.html"><span class="sb-num">08</span><span class="sb-t">食品与营养</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第四部分 · 栖息地与基础设施</div>
+<a class="sb-item" href="ch09.html"><span class="sb-num">09</span><span class="sb-t">栖息地结构设计</span></a>
+<a class="sb-item" href="ch10.html"><span class="sb-num">10</span><span class="sb-t">能源系统</span></a>
+<a class="sb-item current" href="ch11.html"><span class="sb-num">11</span><span class="sb-t">通信与导航</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第五部分 · 目的地与殖民方案</div>
+<a class="sb-item" href="ch12.html"><span class="sb-num">12</span><span class="sb-t">月球</span></a>
+<a class="sb-item" href="ch13.html"><span class="sb-num">13</span><span class="sb-t">火星</span></a>
+<a class="sb-item" href="ch14.html"><span class="sb-num">14</span><span class="sb-t">小行星与太空殖民地</span></a>
+<a class="sb-item" href="ch15.html"><span class="sb-num">15</span><span class="sb-t">外太阳系与冰卫星</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第六部分 · 材料与制造</div>
+<a class="sb-item" href="ch16.html"><span class="sb-num">16</span><span class="sb-t">太空材料科学</span></a>
+<a class="sb-item" href="ch17.html"><span class="sb-num">17</span><span class="sb-t">太空制造与原位资源利用</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第七部分 · 社会、文化与治理</div>
+<a class="sb-item" href="ch18.html"><span class="sb-num">18</span><span class="sb-t">太空治理与法律框架</span></a>
+<a class="sb-item" href="ch19.html"><span class="sb-num">19</span><span class="sb-t">太空经济学</span></a>
+<a class="sb-item" href="ch20.html"><span class="sb-num">20</span><span class="sb-t">太空文化演化</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第八部分 · 前沿与推测性技术</div>
+<a class="sb-item" href="ch21.html"><span class="sb-num">21</span><span class="sb-t">脑机接口与人类增强</span></a>
+<a class="sb-item" href="ch22.html"><span class="sb-num">22</span><span class="sb-t">AI治理与超级智能</span></a>
+<a class="sb-item" href="ch23.html"><span class="sb-num">23</span><span class="sb-t">意识上传与数字存在</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">附录 · 参考数据</div>
+<a class="sb-item" href="appA.html"><span class="sb-num">A</span><span class="sb-t">A 物理常数与换算</span></a>
+<a class="sb-item" href="appB.html"><span class="sb-num">B</span><span class="sb-t">B 太阳系天体参数</span></a>
+<a class="sb-item" href="appC.html"><span class="sb-num">C</span><span class="sb-t">C 推进系统对比</span></a>
+<a class="sb-item" href="appD.html"><span class="sb-num">D</span><span class="sb-t">D 辐射与屏蔽</span></a>
+<a class="sb-item" href="appE.html"><span class="sb-num">E</span><span class="sb-t">E 术语表（中英对照）</span></a>
+<a class="sb-item" href="appF.html"><span class="sb-num">F</span><span class="sb-t">F 参考文献与推荐阅读</span></a>
+</div>
+</nav><main class="content"><article class="article"><div class="crumb"><span class="crumb-part">第四部分 · 栖息地与基础设施</span><span class="crumb-sep">/</span><span class="crumb-ch">CHAPTER 11</span></div><div class="ch-head"><div class="ch-num">11</div><h1 class="ch-title">通信与导航</h1></div><div class="article-body"><blockquote>
+<p><strong>章首导语</strong> —— 通信与导航是行星际文明的神经系统：通信决定殖民地的信息带宽与对地关系，导航决定运输安全与运行自主性。本章先讨论深空光通信——相比射频，激光链路数据率提升 100–1000 倍，DSOC 演示已在约 3100 万公里距离实测 267 Mbps 下行；再讨论适应分钟–小时级延迟与频繁中断的延迟容忍网络（DTN，已在 ISS 多次验证）；然后是导航体系：地面 DSN 测距（米级精度但依赖地球）、脉冲星自主导航（XNAV，SEXTANT 已在轨实现约 5 km 定位精度）与光学导航的组合；最后是量子密钥分发与光速延迟的社会架构含义。关键结论：地火 3.2–22.4 分钟的单向延迟使实时遥控与实时治理都不可能，通信架构必须从第一天起按"异步、存储转发、间歇连接"设计，殖民地的高度自治不是选择而是物理必然。运输与轨道设计见第二部分；延迟对治理与文化的影响延伸见第七部分第20章。</p>
+</blockquote>
+<h3 id="sec-1">11.1 深空光通信</h3>
+<h3 id="sec-2">11.1.1 激光通信链路预算</h3>
+<p><strong>自由空间光通信（FSOC）链路方程</strong>：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:2.604em;vertical-align:-0.95em;"></span><span class="minner"><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size3">(</span></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">4</span><span class="mord mathnormal" style="margin-right:0.03588em;">π</span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">λ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size3">)</span></span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:1.654em;"><span style="top:-3.9029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">m</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">o</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">h</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">er</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+<p>其中：
+- P_t：发射功率（W）
+- G_t：发射天线增益 = (πD_t/λ)²
+- G_r：接收天线增益 = (πD_r/λ)²
+- λ：波长（~1064 nm或1550 nm）
+- R：通信距离（m）
+- L_atm：大气损耗（~0.5-0.9，取决于天气）
+- L_other：其他损耗（指向、偏振等，~0.5-0.9）</p>
+<p><strong>地-火激光通信示例</strong>：</p>
+<ul>
+<li>距离：R = 0.5-2.5 AU = 7.5×10¹⁰ - 3.75×10¹¹ m</li>
+<li>发射：P_t = 1 W，D_t = 0.3 m（望远镜）</li>
+<li>接收：D_r = 5 m（地面望远镜）</li>
+<li>波长：λ = 1064 nm</li>
+<li>数据率：~10-100 Mbps（取决于距离和大气）</li>
+</ul>
+<p><strong>vs. 射频通信</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>RF（X-band）</th>
+<th>光通信</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>频率</td>
+<td>8 GHz</td>
+<td>~282 THz（1064 nm）</td>
+</tr>
+<tr>
+<td>天线增益</td>
+<td>~50 dBi</td>
+<td>~100 dBi</td>
+</tr>
+<tr>
+<td>数据率</td>
+<td>~10-100 kbps（火星距离）</td>
+<td>~10-100 Mbps</td>
+</tr>
+<tr>
+<td>天线尺寸</td>
+<td>3-5 m（深空）</td>
+<td>0.3-1 m（发射）</td>
+</tr>
+<tr>
+<td>大气影响</td>
+<td>小</td>
+<td>大（云、湍流）</td>
+</tr>
+<tr>
+<td>指向精度</td>
+<td>~0.1°</td>
+<td>~μrad级</td>
+</tr>
+</tbody>
+</table>
+<p><strong>优势</strong>：数据率提升 ~100-1000倍，天线尺寸/质量大幅降低</p>
+<p><strong>挑战</strong>：</p>
+<ul>
+<li>指向精度：微弧度级（需要精密跟踪）</li>
+<li>大气干扰：云层遮挡、大气湍流（需要自适应光学或多个地面站）</li>
+<li>太阳合：通信中断（vs. RF可穿透）</li>
+</ul>
+<h3 id="sec-3">11.1.2 已验证系统</h3>
+<ul>
+<li><strong>LLCD</strong>（Lunar Laser Communication Demonstration, 2013）：月球距离，下行 ~622 Mbps</li>
+<li><strong>LCRD</strong>（Laser Communications Relay Demonstration, 2023-）：GEO中继</li>
+<li><strong>Psyche</strong>（2024-）：深空光通信演示（前往Psyche小行星）</li>
+<li><strong>EDRS</strong>（European Data Relay System）：GEO中继激光通信</li>
+</ul>
+<p><strong>DSOC 实测数据（2023–2025）</strong>：</p>
+<p>Psyche 任务搭载的 DSOC（Deep Space Optical Communications，深空光学通信）是首个进入工程巡航阶段的深空激光通信演示：</p>
+<ul>
+<li>首次捕获：2023年11月14日（发射约一个月后），在约 1600 万公里距离上完成首次激光捕获与数据传输。</li>
+<li>速率纪录：2023年12月，在约 3100 万公里（约 0.2 AU）距离实现 267 Mbps 下行，接收端为帕洛马天文台 5.1 m 口径 Hale 望远镜；该距离上光行时已达约 101 秒。</li>
+<li>最远通信：至2024年12月，已在约 4.94 亿公里（约 3.3 AU）距离成功接收下行数据；整个演示期累计接收约 13.6 Tb 数据，NASA 评估为超额完成目标（2025年收官）。</li>
+<li>空间终端参数：发射望远镜口径约 22 cm，激光器功率约 4 W，波长 1064 nm；指向精度维持在微弧度量级，验证了 11.1.1 节所述"小孔径、高增益"的链路优势。</li>
+</ul>
+<p><strong>工程含义</strong>：在火星距离（0.5–2.5 AU），DSOC 级终端可支持 10–100 Mbps 业务链路；云遮挡需多地面站协同并配合 DTN 存储转发。</p>
+<h3 id="sec-4">11.2 延迟容忍网络（DTN）</h3>
+<h3 id="sec-5">11.2.1 协议架构</h3>
+<p><strong>问题</strong>：</p>
+<p>行星际通信面临：
+- 长延迟（分钟-小时级）
+- 频繁中断（行星自转、太阳合、天线切换）
+- 高误码率（深空信号弱）</p>
+<p>传统TCP/IP不适用：
+- TCP超时机制在长延迟下失效
+- 频繁中断导致连接重建
+- 端到端确认不可行</p>
+<p><strong>DTN解决方案</strong>（Delay/Disruption-Tolerant Networking）：</p>
+<ul>
+<li>Bundle Protocol（BP）：存储-转发-确认机制</li>
+<li>节点接收完整Bundle（数据块）→ 存储 → 等待链路可用 → 转发</li>
+<li>逐跳确认（非端到端）</li>
+<li>支持优先级和截止时间</li>
+<li>Licklider Transmission Protocol（LTP）：可靠传输（类似TCP但适应长延迟）</li>
+</ul>
+<p><strong>架构层次</strong>：</p>
+<pre><code>应用层
+  ↓
+Bundle Protocol（BP） ← DTN核心
+  ↓
+LTP / TCP / UDP ← 传输层
+  ↓
+网络层（IP或专用）
+  ↓
+数据链路层（射频/光通信）
+</code></pre>
+<p><strong>在轨验证历史与标准化</strong>：</p>
+<ul>
+<li>2008年：DTN 协议首次在 EPOXI（深度撞击号延伸任务）航天器上验证，完成了数千万公里距离上的存储-转发图像传输，是最早的行星际 DTN 演示。</li>
+<li>2012年10月：NASA 与 ESA 联合实验中，ISS 航天员苏尼塔·威廉姆斯（Sunita Williams）通过 DTN（Bundle Protocol）从轨道遥控位于达姆施塔特欧洲空间运算中心（ESOC）的 LEGO 机器人，验证了"轨道—表面"遥操作链路的可行性。</li>
+<li>ESA Meteron（Multi-purpose End-To-End Robotic Operations Network）项目（2015–2019）：ISS 航天员多次经 DTN 链路操控地球模拟场地的漫游车与机械臂，为未来"火星轨道遥控火星表面机器人"验证了协议栈与操作程序。</li>
+<li>标准化：Bundle Protocol v1 以 RFC 5050（2007）发布，BPv7 以 RFC 9171（2022）发布；DTN 整体处于 TRL 6–7（相关环境系统演示），正从实验协议走向飞行标准。</li>
+</ul>
+<blockquote>
+<p>交叉引用：驱动这一架构的延迟数值及其社会后果见 11.5 节。</p>
+</blockquote>
+<h3 id="sec-6">11.2.2 火星互联网概念</h3>
+<p><strong>架构</strong>：</p>
+<pre><code>地球 ↔ 地-月L₂中继 ↔ 火星轨道中继 ↔ 火星表面网关 ↔ 火星基地/漫游车
+</code></pre>
+<p><strong>节点</strong>：</p>
+<ul>
+<li>地球：深空网络（DSN）天线阵列</li>
+<li>中继卫星：火星轨道（MRO, MAVEN等）</li>
+<li>表面网关：固定基地通信中心</li>
+<li>终端：漫游车、宇航员便携设备</li>
+</ul>
+<p><strong>服务</strong>：</p>
+<ul>
+<li>文件传输（科学数据、软件更新）</li>
+<li>延迟邮件（非实时消息）</li>
+<li>语音/视频（延迟对话，非实时）</li>
+<li>遥测/遥控（自主系统 + 延迟指令）</li>
+</ul>
+<h3 id="sec-7">11.3 行星际导航</h3>
+<h3 id="sec-8">11.3.1 深空网络（DSN）测距</h3>
+<p><strong>原理</strong>：</p>
+<p>地面天线发射信号 → 航天器转发 → 地面接收</p>
+<ul>
+<li>往返时间（RTT）：直接给出距离（d = c × RTT / 2）</li>
+<li>多普勒频移：给出径向速度（v_r = c × Δf / f₀）</li>
+<li>角度测量：天线指向给出航天器方向（精度 ~0.01°-0.1°）</li>
+</ul>
+<p><strong>精度</strong>：</p>
+<ul>
+<li>距离：~1-10 m（取决于信号带宽和信噪比）</li>
+<li>速度：~0.01-0.1 mm/s（多普勒）</li>
+<li>角度：~1-10 nrad（VLBI, Very Long Baseline Interferometry）</li>
+</ul>
+<p><strong>局限</strong>：</p>
+<ul>
+<li>需要地面天线（地球依赖）</li>
+<li>精度随距离下降</li>
+<li>无法自主导航（需要地球确认）</li>
+</ul>
+<h3 id="sec-9">11.3.2 脉冲星导航（XNAV）</h3>
+<p><strong>原理</strong>：</p>
+<p>利用毫秒脉冲星的稳定脉冲信号作为"宇宙GPS"。</p>
+<ul>
+<li>毫秒脉冲星自转周期稳定性：~10⁻¹⁵（接近原子钟）</li>
+<li>已知脉冲星位置精度：~亚毫角秒级</li>
+<li>观测4+颗脉冲星 → 三维位置 + 时间</li>
+</ul>
+<p><strong>导航算法</strong>：</p>
+<ol>
+<li>测量脉冲到达时间（TOA）</li>
+<li>与太阳系质心（SSB）参考TOA比较</li>
+<li>时间差 → 航天器位置偏移</li>
+</ol>
+<p><strong>精度估计</strong>：</p>
+<ul>
+<li>X射线望远镜（有效面积 ~1 m²）：观测 ~1000秒</li>
+<li>位置精度：~5-20 km（当前估计）</li>
+<li>速度精度：~0.1-1 mm/s</li>
+</ul>
+<p><strong>优势</strong>：</p>
+<ul>
+<li>完全自主（不依赖地球）</li>
+<li>全太阳系可用（脉冲星信号各向同性）</li>
+<li>长期稳定（脉冲星周期变化极小）</li>
+</ul>
+<p><strong>工程挑战</strong>：</p>
+<ul>
+<li>X射线望远镜质量/功率：~10-50 kg, ~50-200 W</li>
+<li>信号弱：需要长积分时间（~100-1000秒）</li>
+<li>脉冲星星历精度：需要精确模型</li>
+</ul>
+<p><strong>已验证</strong>：</p>
+<ul>
+<li>SEXTANT（Station Explorer for X-ray Timing and Navigation Technology, 2017）：ISS上演示脉冲星导航，位置精度 ~5 km</li>
+</ul>
+<p><strong>SEXTANT 实验细节</strong>：</p>
+<ul>
+<li>载荷与平台：SEXTANT 搭载于 NICER X 射线时变望远镜（2017年6月安装于 ISS），利用其数十台掠入射 X 射线聚焦光学组件获得约 1 m² 量级有效收集面积。</li>
+<li>首次演示：2018年1月完成人类首次 X 射线脉冲星导航在轨演示——观测 4 颗毫秒脉冲星，两天内将 ISS 轨道位置确定至约 5 km 精度（优于事先设定的 10 km 目标值）。</li>
+<li>旁证：中国"慧眼"（HXMT）卫星于2018年也开展了 X 射线脉冲星导航在轨实验，与 SEXTANT 一道初步验证了该手段的可行性。</li>
+<li>适用性边界：积分时间长（分钟–小时量级），不适合着陆段等高动态阶段的导航更新；其定位场景是深空巡航段的自主定轨，与光学导航（近天体段）互补。</li>
+</ul>
+<h3 id="sec-10">11.3.3 光学导航</h3>
+<p><strong>原理</strong>：</p>
+<p>利用相机观测已知天体（行星、小行星、恒星）的角位置，与星历比较确定航天器位置。</p>
+<p><strong>应用</strong>：</p>
+<ul>
+<li>火星EDL：Mars Reconnaissance Orbiter图像辅助着陆</li>
+<li>小行星着陆：OSIRIS-REx, Hayabusa2 光学导航</li>
+<li>深空巡航：恒星敏感器 + 行星观测</li>
+</ul>
+<p><strong>精度</strong>：</p>
+<ul>
+<li>近目标天体：~10-100 m（光学特征匹配）</li>
+<li>深空巡航：~1-10 km（行星角位置测量）</li>
+</ul>
+<h3 id="sec-11">11.4 量子通信与量子密钥分发</h3>
+<h3 id="sec-12">11.4.1 量子密钥分发（QKD）</h3>
+<p><strong>原理</strong>：</p>
+<p>利用量子力学原理（不可克隆定理、测量坍缩）实现无条件安全的密钥分发。</p>
+<p><strong>协议</strong>：</p>
+<ul>
+<li>BB84：单光子偏振编码</li>
+<li>E91：纠缠光子对</li>
+<li>CV-QKD：连续变量（相干态）</li>
+</ul>
+<p><strong>地-星QKD</strong>：</p>
+<ul>
+<li>Micius卫星（中国, 2016）：首次实现地-星QKD</li>
+<li>距离：~1200 km</li>
+<li>密钥率：~1 kbps</li>
+<li>技术：单光子探测（雪崩光电二极管）</li>
+<li>后续实测（2017）：同链路实现 kbps 级密钥分发，链路效率较同等长度光纤直传提升约 20 个数量级；并完成 1203 km 双地面站纠缠分发与 Bell 检验，验证了卫星量子中继路径——但行星际距离（≥10¹⁰ m）仍远超单光子链路预算能力（见下）</li>
+</ul>
+<p><strong>行星际QKD挑战</strong>：</p>
+<ul>
+<li>距离：火星距离 ~10¹⁰-10¹¹ m → 光子损耗极大</li>
+<li>单光子探测效率：~10-80%</li>
+<li>背景噪声：太阳辐射、宇宙线</li>
+<li>当前可行性：仅地-月距离可行（~4×10⁸ m），行星际不可行</li>
+</ul>
+<h3 id="sec-13">11.4.2 量子纠缠通信（理论）</h3>
+<p><strong>常见误解</strong>：</p>
+<p>量子纠缠不能用于超光速通信——测量结果随机，需要经典信道比较。</p>
+<p><strong>量子隐形传态（Quantum Teleportation）</strong>：</p>
+<ul>
+<li>传输量子态（非经典信息）</li>
+<li>需要：纠缠对 + 经典通信（2 bits/量子比特）</li>
+<li>速度限制：受经典信道限制（≤ c）</li>
+<li>应用：量子计算网络、量子中继</li>
+</ul>
+<p><strong>行星际量子网络概念</strong>：</p>
+<ul>
+<li>量子中继站（地-月L₁/L₂，火星轨道）</li>
+<li>纠缠分发（卫星链路）</li>
+<li>量子存储（长寿命量子记忆）</li>
+<li>时间尺度：2050-2100+（高度推测性）</li>
+</ul>
+<h3 id="sec-14">11.5 光速延迟对殖民社会信息架构的影响</h3>
+<h3 id="sec-15">11.5.1 通信延迟分级</h3>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>单向延迟</th>
+<th>通信模式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>月球</td>
+<td>1.3秒</td>
+<td>近实时对话</td>
+</tr>
+<tr>
+<td>火星（最近）</td>
+<td>3.2分钟</td>
+<td>延迟对话（类email）</td>
+</tr>
+<tr>
+<td>火星（最远）</td>
+<td>22.4分钟</td>
+<td>异步消息</td>
+</tr>
+<tr>
+<td>小行星带</td>
+<td>30-50分钟</td>
+<td>异步消息</td>
+</tr>
+<tr>
+<td>外行星</td>
+<td>1-4小时</td>
+<td>批量传输</td>
+</tr>
+<tr>
+<td>星际</td>
+<td>4+年</td>
+<td>世代级通信</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sec-16">11.5.2 社会影响分析</h3>
+<p><strong>火星殖民（3-22分钟延迟）</strong>：</p>
+<ul>
+<li>实时对话不可能 → 异步通信为主</li>
+<li>地球"远程控制"不可行 → 殖民地高度自治</li>
+<li>紧急医疗/工程咨询：预录AI专家系统 + 延迟消息</li>
+<li>文化影响：火星本地文化加速形成（不依赖地球实时输入）</li>
+</ul>
+<p><strong>外行星殖民（1-4小时延迟）</strong>：</p>
+<ul>
+<li>通信窗口有限（每天/每周数次）</li>
+<li>实质独立（地球指导几乎无用）</li>
+<li>本地决策完全自主</li>
+<li>知识传承：本地化（不依赖地球实时更新）</li>
+</ul>
+<p><strong>星际殖民（4+年延迟）</strong>：</p>
+<ul>
+<li>通信 = 时间胶囊（发送时地球状态 vs. 到达时地球状态可能完全不同）</li>
+<li>文明分裂：数代后形成完全独立文明</li>
+<li>技术路径分化：本地创新 vs. 地球技术（可能已超前或落后）</li>
+<li>"地球"概念：从现实变为传说/历史</li>
+</ul>
+<h3 id="sec-17">11.5.3 信息架构设计</h3>
+<p><strong>分层自治</strong>：</p>
+<pre><code>地球（文明母体）
+  ↓ [光速延迟]
+区域中心（火星/外行星）
+  ↓ [分钟-小时延迟]
+本地殖民地（城市/基地）
+  ↓ [秒-分钟延迟]
+个体/设备
+</code></pre>
+<p><strong>每层功能</strong>：</p>
+<ul>
+<li>地球：知识存档、长期规划、文明协调</li>
+<li>区域中心：区域协调、资源分配、冲突仲裁</li>
+<li>本地殖民地：日常治理、资源管理、紧急响应</li>
+<li>个体：自主决策、本地协作</li>
+</ul>
+<p><strong>知识管理</strong>：</p>
+<ul>
+<li>本地知识库（完整技术/科学/文化存档）</li>
+<li>定期同步（地球 → 殖民地，数年一次）</li>
+<li>本地创新记录（可能反向传播到地球）</li>
+</ul>
+<h3 id="sec-18">第11章小结</h3>
+<p>行星际通信/导航架构由三层构成。物理层以激光通信为主干：DSOC 在约 3100 万公里实测 267 Mbps，证明同等口径下激光链路速率可达射频的百倍至千倍，火星距离的 10–100 Mbps 业务链路具备工程基础；射频保留为备份与测控通道。协议层以 DTN 的存储-转发机制容纳分钟–小时级延迟与频繁中断，该协议已在 EPOXI、ISS 与 Meteron 多次验证（TRL 6–7）。导航层实行"地基 + 自主"双轨：DSN 提供米级测距但完全依赖地球，XNAV 实测约 5 km 定位精度并与光学导航互补，共同支撑深空巡航段自主运行。最后，光速延迟不是单纯的工程参数：地火 3.2–22.4 分钟单向延迟在物理上排除了实时遥控与实时治理，殖民地的信息架构必须预置为"分层自治 + 周期同步"。</p>
+<h3 id="sec-19">关键参数速查表（第11章）</h3>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>典型值</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>地火激光通信数据率</td>
+<td>~10–100 Mbps（设计）；267 Mbps 实测（~3100 万公里）</td>
+<td>行星际干线带宽</td>
+</tr>
+<tr>
+<td>LLCD 月球下行</td>
+<td>622 Mbps（2013）</td>
+<td>近地激光通信基准</td>
+</tr>
+<tr>
+<td>DSOC 最远接收距离</td>
+<td>~4.94 亿公里（累计 13.6 Tb）</td>
+<td>深空光通信能力边界</td>
+</tr>
+<tr>
+<td>地火单向延迟</td>
+<td>3.2–22.4 分钟</td>
+<td>同步/异步通信分界</td>
+</tr>
+<tr>
+<td>DTN 标准</td>
+<td>RFC 5050（2007）/ RFC 9171（2022）</td>
+<td>行星际网络协议基线</td>
+</tr>
+<tr>
+<td>DSN 测距精度</td>
+<td>~1–10 m</td>
+<td>地基导航基准</td>
+</tr>
+<tr>
+<td>XNAV 位置精度</td>
+<td>~5 km（SEXTANT 实测）</td>
+<td>自主导航能力</td>
+</tr>
+<tr>
+<td>毫秒脉冲星计时稳定度</td>
+<td>~10⁻¹⁵</td>
+<td>XNAV 的天然基准源</td>
+</tr>
+<tr>
+<td>星地 QKD 距离</td>
+<td>~1200 km（Micius，密钥率 ~1 kbps）</td>
+<td>量子通信当前边界</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="sec-20">本部分开放问题清单</h2>
+<p>以下问题在本手册成稿时均无成熟答案，按章归类列出，作为后续研究与任务论证的重点方向：</p>
+<p><strong>第9章 栖息地结构</strong></p>
+<ol>
+<li>充气舱织物在 15 年以上辐射、温度循环与（近地）原子氧环境下的老化规律：BEAM 提供了近十年的数据，但向 20 年寿命外推仍缺乏依据。</li>
+<li>熔岩管顶板与内部结构的定量稳定性评估：重力/雷达反演均为间接证据，需就位探地雷达、LiDAR 与微震监测验证。</li>
+<li>真实月壤/火星壤的烧结与固化行为：所有实测强度均来自模拟壤，纳米相铁、玻璃质团聚体与高氯酸盐的影响待真实样品确认。</li>
+<li>硫混凝土在火星低压（~600 Pa）环境中的长期升华、温度循环脆化与火灾安全性。</li>
+<li>熔岩管内充气内衬与粗糙岩壁界面的密封策略：完全解耦（独立承压舱）与局部锚固的工程取舍。</li>
+</ol>
+<p><strong>第10章 能源系统</strong></p>
+<ol start="6">
+<li>自由活塞斯特林转换器的长寿命验证：KRUSTY 仅演示 28 小时满功率运行，十年量级寿命依赖的地面加速试验尚未完成。</li>
+<li>FSP 反应堆屏蔽的质量优化：如何在乘员剂量 &lt;1 mSv/年的约束下将屏蔽质量压入运载能力包络。</li>
+<li>火星光伏阵列除尘的工程化：静电、CO₂ 喷射与机器人清扫在真实尘暴条件下的可靠性与能耗。</li>
+<li>²³⁸Pu 产能（~1 kg/年级）与未来任务需求的缺口：²⁴¹Am 替代燃料与动态同位素系统的可行性。</li>
+</ol>
+<p><strong>第11章 通信与导航</strong></p>
+<ol start="10">
+<li>DTN 之上的应用层协议生态：文件传输、消息服务与遥科学接口在"火星表面网 + 轨道中继 + 地火干线"三段架构下的标准化。</li>
+<li>XNAV 能否支持着陆段导航：脉冲星星历精度与 X 射线光学质量（~10–50 kg）的改进空间。</li>
+<li>太阳合与强空间天气期间载人任务的最低通信保障：冗余链路配置与自主决策权限的边界设计。</li>
+</ol>
+<hr />
+<p><em>第四部分完。</em></p></div><div class="prevnext"><a class="pn pn-prev" href="ch10.html"><span class="pn-k">上一篇</span><span class="pn-t">第10章 能源系统</span></a><a class="pn pn-next" href="ch12.html"><span class="pn-k">下一篇</span><span class="pn-t">第12章 月球</span></a></div></article><footer class="foot"><span>未来太空移民技术手册 · 完整版 v2.0</span><span class="foot-mono">AD ASTRA PER ASPERA</span></footer></main>
+<aside class="toc"><div class="toc-title">本页目录</div>
+<a class="toc-h3" href="#sec-1">11.1 深空光通信</a>
+<a class="toc-h3" href="#sec-2">11.1.1 激光通信链路预算</a>
+<a class="toc-h3" href="#sec-3">11.1.2 已验证系统</a>
+<a class="toc-h3" href="#sec-4">11.2 延迟容忍网络（DTN）</a>
+<a class="toc-h3" href="#sec-5">11.2.1 协议架构</a>
+<a class="toc-h3" href="#sec-6">11.2.2 火星互联网概念</a>
+<a class="toc-h3" href="#sec-7">11.3 行星际导航</a>
+<a class="toc-h3" href="#sec-8">11.3.1 深空网络（DSN）测距</a>
+<a class="toc-h3" href="#sec-9">11.3.2 脉冲星导航（XNAV）</a>
+<a class="toc-h3" href="#sec-10">11.3.3 光学导航</a>
+<a class="toc-h3" href="#sec-11">11.4 量子通信与量子密钥分发</a>
+<a class="toc-h3" href="#sec-12">11.4.1 量子密钥分发（QKD）</a>
+<a class="toc-h3" href="#sec-13">11.4.2 量子纠缠通信（理论）</a>
+<a class="toc-h3" href="#sec-14">11.5 光速延迟对殖民社会信息架构的影响</a>
+<a class="toc-h3" href="#sec-15">11.5.1 通信延迟分级</a>
+<a class="toc-h3" href="#sec-16">11.5.2 社会影响分析</a>
+<a class="toc-h3" href="#sec-17">11.5.3 信息架构设计</a>
+<a class="toc-h3" href="#sec-18">第11章小结</a>
+<a class="toc-h3" href="#sec-19">关键参数速查表（第11章）</a>
+<a class="toc-h2" href="#sec-20">本部分开放问题清单</a>
+</aside>
+</div>
+<script src="../search-index.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

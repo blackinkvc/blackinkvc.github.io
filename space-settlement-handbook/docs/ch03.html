@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第3章 化学推进与近中期方案 · 未来太空移民技术手册</title>
+<meta name="description" content="未来太空移民技术手册 —— 面向专业读者的综合性太空殖民技术参考，涵盖推进、生保、栖息地、治理与前沿技术。">
+<link rel="icon" type="image/png" href="../assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script>(function(){try{var t=localStorage.getItem('smh-theme');if(!t)t='dark';document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="目录"><span></span><span></span><span></span></button>
+  <a class="brand" href="../index.html">
+    <img class="brand-icon" src="../assets/icon.png" alt="">
+    <span class="brand-zh">未来太空移民技术手册</span>
+    <span class="brand-en">SPACE SETTLEMENT HANDBOOK</span>
+  </a>
+  <div class="top-actions">
+    <button class="search-btn" id="searchBtn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg><span>检索</span><kbd>⌘K</kbd></button>
+    <button class="theme-btn" id="themeBtn" aria-label="切换主题"></button>
+  </div>
+</header>
+
+<div class="search-overlay" id="searchOverlay" hidden>
+  <div class="search-box">
+    <div class="search-head">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg>
+      <input id="searchInput" type="text" placeholder="检索全书：术语、参数、章节…" autocomplete="off">
+      <kbd>ESC</kbd>
+    </div>
+    <div class="search-results" id="searchResults"><div class="search-hint">输入关键词，检索 23 章正文与附录</div></div>
+  </div>
+</div>
+<div class="layout">
+<nav class="sidebar" id="sidebar">
+<div class="sb-group"><div class="sb-label">卷首</div>
+<a class="sb-item" href="intro.html"><span class="sb-num">◎</span><span class="sb-t">前言与导读</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第一部分 · 基础物理与宇宙环境</div>
+<a class="sb-item" href="ch01.html"><span class="sb-num">01</span><span class="sb-t">太空环境物理</span></a>
+<a class="sb-item" href="ch02.html"><span class="sb-num">02</span><span class="sb-t">天体物理与轨道力学</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第二部分 · 推进与运输系统</div>
+<a class="sb-item current" href="ch03.html"><span class="sb-num">03</span><span class="sb-t">化学推进与近中期方案</span></a>
+<a class="sb-item" href="ch04.html"><span class="sb-num">04</span><span class="sb-t">先进推进理论</span></a>
+<a class="sb-item" href="ch05.html"><span class="sb-num">05</span><span class="sb-t">星际航行工程</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第三部分 · 生命保障与人体工程</div>
+<a class="sb-item" href="ch06.html"><span class="sb-num">06</span><span class="sb-t">封闭生态生命保障系统（CELSS）</span></a>
+<a class="sb-item" href="ch07.html"><span class="sb-num">07</span><span class="sb-t">太空医学</span></a>
+<a class="sb-item" href="ch08.html"><span class="sb-num">08</span><span class="sb-t">食品与营养</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第四部分 · 栖息地与基础设施</div>
+<a class="sb-item" href="ch09.html"><span class="sb-num">09</span><span class="sb-t">栖息地结构设计</span></a>
+<a class="sb-item" href="ch10.html"><span class="sb-num">10</span><span class="sb-t">能源系统</span></a>
+<a class="sb-item" href="ch11.html"><span class="sb-num">11</span><span class="sb-t">通信与导航</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第五部分 · 目的地与殖民方案</div>
+<a class="sb-item" href="ch12.html"><span class="sb-num">12</span><span class="sb-t">月球</span></a>
+<a class="sb-item" href="ch13.html"><span class="sb-num">13</span><span class="sb-t">火星</span></a>
+<a class="sb-item" href="ch14.html"><span class="sb-num">14</span><span class="sb-t">小行星与太空殖民地</span></a>
+<a class="sb-item" href="ch15.html"><span class="sb-num">15</span><span class="sb-t">外太阳系与冰卫星</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第六部分 · 材料与制造</div>
+<a class="sb-item" href="ch16.html"><span class="sb-num">16</span><span class="sb-t">太空材料科学</span></a>
+<a class="sb-item" href="ch17.html"><span class="sb-num">17</span><span class="sb-t">太空制造与原位资源利用</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第七部分 · 社会、文化与治理</div>
+<a class="sb-item" href="ch18.html"><span class="sb-num">18</span><span class="sb-t">太空治理与法律框架</span></a>
+<a class="sb-item" href="ch19.html"><span class="sb-num">19</span><span class="sb-t">太空经济学</span></a>
+<a class="sb-item" href="ch20.html"><span class="sb-num">20</span><span class="sb-t">太空文化演化</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第八部分 · 前沿与推测性技术</div>
+<a class="sb-item" href="ch21.html"><span class="sb-num">21</span><span class="sb-t">脑机接口与人类增强</span></a>
+<a class="sb-item" href="ch22.html"><span class="sb-num">22</span><span class="sb-t">AI治理与超级智能</span></a>
+<a class="sb-item" href="ch23.html"><span class="sb-num">23</span><span class="sb-t">意识上传与数字存在</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">附录 · 参考数据</div>
+<a class="sb-item" href="appA.html"><span class="sb-num">A</span><span class="sb-t">A 物理常数与换算</span></a>
+<a class="sb-item" href="appB.html"><span class="sb-num">B</span><span class="sb-t">B 太阳系天体参数</span></a>
+<a class="sb-item" href="appC.html"><span class="sb-num">C</span><span class="sb-t">C 推进系统对比</span></a>
+<a class="sb-item" href="appD.html"><span class="sb-num">D</span><span class="sb-t">D 辐射与屏蔽</span></a>
+<a class="sb-item" href="appE.html"><span class="sb-num">E</span><span class="sb-t">E 术语表（中英对照）</span></a>
+<a class="sb-item" href="appF.html"><span class="sb-num">F</span><span class="sb-t">F 参考文献与推荐阅读</span></a>
+</div>
+</nav><main class="content"><article class="article"><div class="crumb"><span class="crumb-part">第二部分 · 推进与运输系统</span><span class="crumb-sep">/</span><span class="crumb-ch">CHAPTER 03</span></div><div class="ch-head"><div class="ch-num">03</div><h1 class="ch-title">化学推进与近中期方案</h1></div><div class="article-body"><blockquote>
+<p>面向航天工程、物理学、生物学等相关专业背景读者。涵盖当前可行技术与理论/科幻级前瞻技术。</p>
+</blockquote>
+<hr />
+<p>推进系统是太空移民的"发动机"——决定了我们能去多快、去多远、运多少。本章从当前工程成熟的化学推进出发，逐层推进到理论物理前沿的推进概念，构建完整的推进技术图谱。</p>
+<p><strong>章首导语</strong>。化学推进是目前唯一能把载荷送出地球引力阱的手段，核热与核电推进则是最有可能把载人火星航程压缩到数月量级的技术——本章讨论的技术谱系直接决定近中期（2025–2060 年）移民架构的总体参数：运力规模、航程时间与单位质量成本。本章从液体化学推进的热力学极限（比冲、发动机循环、可复用性、在轨加注）出发，说明 CH₄/LOX 与复用为何构成火星运输的主轴；随后讨论比冲约翻倍的核热推进（Nuclear Thermal Propulsion, NTP）的原理、六十年发展沿革与 DRACO 计划现状；比冲更高但推力极低的核电推进（Nuclear Electric Propulsion, NEP）单独成节，重点分析散热器引入的功率-质量约束。关键结论预告：其一，可复用运载器可把 LEO 单位质量成本降低 1–2 个数量级，是大规模移民的经济前提（发射成本经济学详见第19章）；其二，NTP 对载人火星任务的首要价值是缩短转移时间从而降低辐射暴露（剂量限值详见第7章太空医学）；其三，NEP 适合货运而不适合载人。第4章将进入理论层面的先进推进概念。</p>
+<h3 id="sec-1">3.1 液体化学推进</h3>
+<h3 id="sec-2">3.1.1 推进剂组合与理论比冲</h3>
+<p>液体化学推进的能量来源是推进剂组合的化学反应放热。理论比冲由燃烧产物的热力学性质决定：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">s</span><span class="mord mathnormal mtight">p</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">h</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">eory</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:3.2278em;vertical-align:-1.25em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.9777em;"><span class="svg-align" style="top:-5.1878em;"><span class="pstrut" style="height:5.1878em;"></span><span class="mord" style="padding-left:1.056em;"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05556em;">γ</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">1</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span><span class="mord mathnormal" style="margin-right:0.05556em;">γ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size4">[</span></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="minner"><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size3">(</span></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1076em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size3">)</span></span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:1.7279em;"><span style="top:-3.9029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathnormal mtight" style="margin-right:0.05556em;">γ</span><span class="mbin mtight">−</span><span class="mord mtight">1</span><span class="mclose mtight">)</span><span class="mord mtight">/</span><span class="mord mathnormal mtight" style="margin-right:0.05556em;">γ</span></span></span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size4">]</span></span></span></span></span><span style="top:-3.9378em;"><span class="pstrut" style="height:5.1878em;"></span><span class="hide-tail" style="min-width:0.742em;height:3.2678em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="3.2678em" viewBox="0 0 400000 3267" preserveAspectRatio="xMinYMin slice"><path d="M702 80H40000040
+H742v3133l-4 4-4 4c-.667.7 -2 1.5-4 2.5s-4.167 1.833-6.5 2.5-5.5 1-9.5 1
+h-12l-28-84c-16.667-52-96.667 -294.333-240-727l-212 -643 -85 170
+c-4-3.333-8.333-7.667-13 -13l-13-13l77-155 77-156c66 199.333 139 419.667
+219 661 l218 661zM702 80H400000v40H742z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.25em;"><span></span></span></span></span></span></span></span></span></span></p>
+<p>其中 γ 为比热比，R 为通用气体常数，M 为燃烧产物平均分子量，T_c 为燃烧室温度，p_c 为燃烧室压力，p_e 为喷管出口压力。</p>
+<p><strong>关键推进剂组合性能</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>推进剂组合</th>
+<th>混合比 O/F</th>
+<th>T_c (K)</th>
+<th>M (g/mol)</th>
+<th>I_sp,真空 (s)</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LH₂/LOX</td>
+<td>6.0</td>
+<td>3560</td>
+<td>9.6</td>
+<td>457-465</td>
+<td>最高比冲，低密度</td>
+</tr>
+<tr>
+<td>CH₄/LOX</td>
+<td>3.5</td>
+<td>3600</td>
+<td>21.5</td>
+<td>365-380</td>
+<td>可复用，ISRU潜力</td>
+</tr>
+<tr>
+<td>RP-1/LOX</td>
+<td>2.56</td>
+<td>3680</td>
+<td>23.3</td>
+<td>340-350</td>
+<td>高密度，易处理</td>
+</tr>
+<tr>
+<td>MMH/NTO</td>
+<td>1.67</td>
+<td>3350</td>
+<td>23.0</td>
+<td>330-345</td>
+<td>可储存，自燃</td>
+</tr>
+<tr>
+<td>LH₂/LF₂</td>
+<td>3.2</td>
+<td>4500</td>
+<td>14.0</td>
+<td>510-540</td>
+<td>理论最高，剧毒</td>
+</tr>
+</tbody>
+</table>
+<p><strong>LH₂/LOX——比冲之王</strong>：</p>
+<p>燃烧产物为H₂O和未燃H₂，平均分子量极低（~9.6 g/mol），这是比冲高的根本原因。但液氢密度仅 70.8 kg/m³（沸点20.3 K），导致贮箱体积巨大。</p>
+<p>工程实现：
+- RS-25（航天飞机主发动机/太空发射系统核心级）：I_sp = 452.3 s（真空），p_c = 206 atm，膨胀比 77.5:1
+- BE-3U（Blue Origin）：I_sp = 453 s（真空），全流量分级燃烧循环
+- CE-7.5（印度）：I_sp = 453 s，膨胀循环</p>
+<p><strong>CH₄/LOX——火星推进剂</strong>：</p>
+<p>甲烷的关键优势：
+1. <strong>ISRU可行性</strong>：火星大气CO₂可通过Sabatier反应转化为CH₄：CO₂ + 4H₂ → CH₄ + 2H₂O（需氢源：火星地下水冰电解）。Sabatier 反应的工程化与火星推进剂生产链条详见第17章太空制造与原位资源利用
+2. <strong>可复用性</strong>：甲烷燃烧不产生积碳（vs. RP-1），发动机可多次重启无需清洗
+3. <strong>密度适中</strong>：ρ_CH₄ = 422 kg/m³（沸点111.6 K），贮箱尺寸介于LH₂和RP-1之间
+4. <strong>比冲接近LH₂</strong>：虽低于LH₂，但密度比冲（I_sp × ρ）优势明显</p>
+<p>工程实现：
+- Raptor（SpaceX）：I_sp = 356 s（真空海平面），p_c = 300 atm，全流量分级燃烧循环（FFSC），推力 230 tf
+- BE-4（Blue Origin）：I_sp = 363 s（真空），氧化剂分级燃烧循环，推力 250 tf</p>
+<h3 id="sec-3">3.1.2 发动机循环类型</h3>
+<p><strong>燃烧循环决定了推进剂如何被泵入燃烧室，直接影响性能和复杂度</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>循环类型</th>
+<th>原理</th>
+<th>p_c上限</th>
+<th>复杂度</th>
+<th>代表</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>挤压式</td>
+<td>高压气体直接挤压推进剂</td>
+<td>~10 atm</td>
+<td>低</td>
+<td>小型姿态控制</td>
+</tr>
+<tr>
+<td>涡轮泵（开式）</td>
+<td>涡轮废气直接排放</td>
+<td>~50 atm</td>
+<td>中</td>
+<td>Merlin 1D</td>
+</tr>
+<tr>
+<td>燃气发生器</td>
+<td>副燃烧室产燃气驱动涡轮</td>
+<td>~100 atm</td>
+<td>中高</td>
+<td>F-1, Merlin 1D（改进）</td>
+</tr>
+<tr>
+<td>分级燃烧（富氧/富燃）</td>
+<td>全部推进剂经涡轮后入主燃烧室</td>
+<td>~250 atm</td>
+<td>高</td>
+<td>RD-180, RS-25</td>
+</tr>
+<tr>
+<td>全流量分级燃烧（FFSC）</td>
+<td>两个预燃室：富氧+富燃</td>
+<td>~300+ atm</td>
+<td>极高</td>
+<td>Raptor</td>
+</tr>
+</tbody>
+</table>
+<p><strong>FFSC的独特优势</strong>：</p>
+<ul>
+<li>两个预燃室分别驱动氧涡轮和燃料涡轮，机械解耦</li>
+<li>全部推进剂都经过涡轮，无排放损失 → 更高I_sp</li>
+<li>氧涡轮和燃料涡轮压比独立优化 → 更高燃烧室压力</li>
+<li>两个涡轮排气均为气态进入主燃烧室 → 燃烧效率高</li>
+<li>机械应力更低（每个涡轮只处理部分流量）</li>
+</ul>
+<p><strong>Raptor的FFSC实现</strong>：</p>
+<ul>
+<li>富氧预燃室：T ~ 800 K，高氧分压对合金的腐蚀是核心挑战（SpaceX开发了SX500不锈钢应对）</li>
+<li>富燃预燃室：T ~ 700 K，甲烷裂解风险</li>
+<li>目标p_c = 300+ atm，理论I_sp可达 365 s（真空）</li>
+</ul>
+<h3 id="sec-4">3.1.3 可复用运载器工程</h3>
+<p><strong>可复用性对太空移民的经济性至关重要</strong>。单次发射成本从 ~$10,000/kg（一次性火箭）降至 ~$100-1000/kg（完全可复用），是大规模移民的经济前提。发射成本的历史趋势与学习曲线分析详见第19章太空经济学。</p>
+<p><strong>热防护与再入</strong>：</p>
+<p>再入热流峰值：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8623em;vertical-align:-0.1944em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6679em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.0556em;"><span class="mord">˙</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∝</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.44em;vertical-align:-0.9703em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.4697em;"><span class="svg-align" style="top:-4.4em;"><span class="pstrut" style="height:4.4em;"></span><span class="mord" style="padding-left:1em;"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1076em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">ρ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.836em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-3.4297em;"><span class="pstrut" style="height:4.4em;"></span><span class="hide-tail" style="min-width:1.02em;height:2.48em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="2.48em" viewBox="0 0 400000 2592" preserveAspectRatio="xMinYMin slice"><path d="M424,2478
+c-1.3,-0.7,-38.5,-172,-111.5,-514c-73,-342,-109.8,-513.3,-110.5,-514
+c0,-2,-10.7,14.3,-32,49c-4.7,7.3,-9.8,15.7,-15.5,25c-5.7,9.3,-9.8,16,-12.5,20
+s-5,7,-5,7c-4,-3.3,-8.3,-7.7,-13,-13s-13,-13,-13,-13s76,-122,76,-122s77,-121,77,-121
+s209,968,209,968c0,-2,84.7,-361.7,254,-1079c169.3,-717.3,254.7,-1077.7,256,-1081
+l0 -0c4,-6.7,10,-10,18,-10 H400000
+v40H1014.6
+s-87.3,378.7,-272.6,1166c-185.3,787.3,-279.3,1182.3,-282,1185
+c-2,6,-10,9,-24,9
+c-8,0,-12,-0.7,-12,-2z M1001 80
+h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9703em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8641em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p>其中 ρ 为大气密度，r_n 为驻点曲率半径，v 为速度。</p>
+<ul>
+<li>LEO再入：v ~ 7.8 km/s，热流 ~100-200 W/cm²</li>
+<li>火星再入：v ~ 5.5 km/s，大气密度低，热流 ~50-100 W/cm²</li>
+<li>月球返回：v ~ 11 km/s（第二宇宙速度），热流 ~300-500 W/cm²</li>
+</ul>
+<p><strong>热防护材料选择</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>材料</th>
+<th>使用温度</th>
+<th>可复用性</th>
+<th>代表应用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>烧蚀材料（PICA/AVCOAT）</td>
+<td>&gt;2000°C</td>
+<td>一次性</td>
+<td>Dragon, Orion</td>
+</tr>
+<tr>
+<td>增强碳-碳（RCC）</td>
+<td>&gt;1500°C</td>
+<td>可复用（有限）</td>
+<td>航天飞机鼻锥</td>
+</tr>
+<tr>
+<td>陶瓷瓦（RSI/TUFI）</td>
+<td>~1200°C</td>
+<td>可复用</td>
+<td>航天飞机机身</td>
+</tr>
+<tr>
+<td>不锈钢+主动冷却</td>
+<td>~1000°C（发汗冷却）</td>
+<td>高度可复用</td>
+<td>Starship概念</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Starship的不锈钢箭体方案</strong>：</p>
+<ul>
+<li>304L/301不锈钢：熔点 ~1400°C，再入时外表面温度 ~800-1000°C</li>
+<li>迎风面：陶瓷隔热瓦（防热）</li>
+<li>背风面：裸露不锈钢（温度较低）</li>
+<li>着陆：大气制动 + 着陆腿（无需降落伞，火星大气不足以减速到零）</li>
+</ul>
+<p><strong>SpaceX可复用迭代史</strong>。复用运载器是用失败样本铺出来的。Falcon 1 在 2006–2008 年间经历三次连续发射失败（含 2008 年一二级分离碰撞事件），2008 年 9 月 28 日第四次发射首次入轨成功。Falcon 9 自 2013 年起用 Grasshopper 试验箭进行垂直起降测试（共 8 次飞行，最大高度 ~744 m），随后转入实际飞行中的分段回收试验：2014–2015 年多次受控海面溅落与着陆失败后，2015 年 12 月 21 日首次陆上垂直着陆成功（Orbcomm-2 任务），2016 年 4 月 8 日首次海上无人船着陆成功（CRS-8 任务），2017 年 3 月 30 日首次复用已回收助推器发射（SES-10 任务）。截至 2024 年，单枚 Falcon 9 助推器飞行次数已超过 20 次，复用从工程赌注变成了经济常态。Starship 的原型迭代节奏更激进：SN8 高空试验（2020 年 12 月，12.5 km 高度）因着陆段贮箱头部压力不足坠毁，SN9–SN11 接连失败，SN15 于 2021 年 5 月首次着陆成功；此后整箭集成飞行试验继续高速迭代——IFT-1（2023 年 4 月）上升段解体，IFT-2（2023 年 11 月）验证热分离（hot-staging），IFT-5（2024 年 10 月）首次实现发射塔机械臂（"筷子"）回收超重助推器。</p>
+<p><strong>热防护的迭代难点</strong>。热防护是快速复用的瓶颈环节：航天飞机时代的陶瓷瓦（RSI）每飞行一次需大量人工逐块检测更换，增强碳-碳（RCC）前缘抗冲击性差——2003 年 Columbia 号事故的肇因正是发射时泡沫塑料撞击损坏机翼 RCC 前缘，再入时高温气体侵入导致解体。Starship 的不锈钢 + 隔热瓦方案同样在飞行中迭代：早期试飞暴露出隔热瓦脱落与迎风面局部过热变形，改进路径包括瓦背结构加固、缝隙密封以及对高热流区域探索发汗冷却（经壁面渗出甲烷形成保护膜）。工程共识是：热防护系统的检测与翻修周转时间，直接决定复用频率的上限。</p>
+<h3 id="sec-5">3.1.4 在轨推进剂加注</h3>
+<p><strong>在轨加注（Orbital Refueling）是深空任务的关键使能技术</strong>：</p>
+<p>核心逻辑：
+1. 火箭从地面发射时，受限于最大起飞质量（~3000-5000 t级）
+2. 火星任务需要大量推进剂（单次任务 ~1000-2000 t LH₂/LOX或CH₄/LOX）
+3. 解决方案：多次"加油飞行"将推进剂运送到在轨"仓库"，任务飞船出发前加满</p>
+<p><strong>Starship在轨加注方案</strong>：</p>
+<ul>
+<li>Starship干质量 ~120 t，推进剂容量 ~1200 t（CH₄/LOX）</li>
+<li>LEO到火星：需要 ~1200 t推进剂（含储备）</li>
+<li>每次加油飞行可运送 ~100-150 t推进剂</li>
+<li>需要 ~8-12 次加油飞行支持一次火星出发</li>
+</ul>
+<p><strong>推进剂在轨储存挑战</strong>：</p>
+<ul>
+<li><strong>蒸发损失（Boil-off）</strong>：LH₂蒸发率 ~0.3-1%/天（当前技术），长期任务不可接受</li>
+<li>零 boil-off（ZBO）技术：主动制冷 + 辐射冷却器，目标 &lt;0.01%/天</li>
+<li>CH₄蒸发率较低（沸点111.6 K vs. LH₂ 20.3 K），是深空任务的另一优势</li>
+<li><strong>微重力流体管理</strong>：气液分离困难，需要表面张力装置或离心分离</li>
+<li><strong>长期储存材料兼容性</strong>：LOX与有机物长期接触的安全问题</li>
+</ul>
+<p><strong>在轨加注的架构影响</strong>。在轨加注不是一项孤立操作，它重构深空运输的总体架构：</p>
+<ol>
+<li><strong>运载器规模与任务质量解耦</strong>：出发飞船在轨补满推进剂，发射系统无需在一次发射内容纳全部任务 Δv，可以用较小的运载火箭，或让同一火箭的运力利用率显著提高；</li>
+<li><strong>风险分布化</strong>：单次加油航班失败只损失一份推进剂，而超重型单次发射失败则损失全部任务载荷——加注架构本质上是用发射次数换冗余；</li>
+<li><strong>发射窗口弹性</strong>：推进剂可在火星会合窗口（约 26 个月周期）之前预先发射囤积，载人出发发射不再被漫长的生产与合练周期挤压；</li>
+<li><strong>基础设施节点化</strong>：推进剂仓库（propellant depot）可演化为地月空间的通用节点；若未来月球水冰电解制取推进剂实现（详见第17章），"月面推进剂 → LEO 仓库"的补给链将进一步改写对地面发射的需求结构；</li>
+<li><strong>新的依赖项</strong>：架构把任务成败压力转移到发射频率与在轨储存能力上。一次火星出发消耗约 10 次量级的航班，若复用周转以周计，囤积周期为月量级，对蒸发损失控制与微重力流体转移提出硬性要求。</li>
+</ol>
+<p>NASA 与 ULA 于 2019 年在 Centaur 上面级上开展低温流体管理（Cryogenic Fluid Management, CFM）在轨演示，验证了低温推进剂混合、沉底与箱压控制等操作，为加注架构提供了首批实测数据（TRL ~4–5）。</p>
+<hr />
+<h3 id="sec-6">3.2 核热推进（NTP）</h3>
+<h3 id="sec-7">3.2.1 基本原理</h3>
+<p>核热推进利用核反应堆加热工质（通常为液氢），通过喷管膨胀产生推力。</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">s</span><span class="mord mathnormal mtight">p</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight" style="margin-right:0.13889em;">NTP</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">s</span><span class="mord mathnormal mtight">p</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">c</span><span class="mord mathnormal mtight">h</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">m</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:2.44em;vertical-align:-0.844em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.596em;"><span class="svg-align" style="top:-4.4em;"><span class="pstrut" style="height:4.4em;"></span><span class="mord" style="padding-left:1em;"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">co</span><span class="mord mathnormal mtight">mb</span><span class="mord mathnormal mtight">u</span><span class="mord mathnormal mtight">s</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">o</span><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">re</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight">c</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">or</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.836em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-3.556em;"><span class="pstrut" style="height:4.4em;"></span><span class="hide-tail" style="min-width:1.02em;height:2.48em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="2.48em" viewBox="0 0 400000 2592" preserveAspectRatio="xMinYMin slice"><path d="M424,2478
+c-1.3,-0.7,-38.5,-172,-111.5,-514c-73,-342,-109.8,-513.3,-110.5,-514
+c0,-2,-10.7,14.3,-32,49c-4.7,7.3,-9.8,15.7,-15.5,25c-5.7,9.3,-9.8,16,-12.5,20
+s-5,7,-5,7c-4,-3.3,-8.3,-7.7,-13,-13s-13,-13,-13,-13s76,-122,76,-122s77,-121,77,-121
+s209,968,209,968c0,-2,84.7,-361.7,254,-1079c169.3,-717.3,254.7,-1077.7,256,-1081
+l0 -0c4,-6.7,10,-10,18,-10 H400000
+v40H1014.6
+s-87.3,378.7,-272.6,1166c-185.3,787.3,-279.3,1182.3,-282,1185
+c-2,6,-10,9,-24,9
+c-8,0,-12,-0.7,-12,-2z M1001 80
+h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.844em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:3.04em;vertical-align:-1.194em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.846em;"><span class="svg-align" style="top:-5em;"><span class="pstrut" style="height:5em;"></span><span class="mord" style="padding-left:1em;"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3173em;"><span style="top:-2.357em;margin-left:-0.0813em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2501em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">p</span><span class="mord mathnormal mtight">ro</span><span class="mord mathnormal mtight">d</span><span class="mord mathnormal mtight">u</span><span class="mord mathnormal mtight">c</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">s</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">c</span><span class="mord mathnormal mtight">h</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">m</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9361em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-3.806em;"><span class="pstrut" style="height:5em;"></span><span class="hide-tail" style="min-width:1.02em;height:3.08em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="3.08em" viewBox="0 0 400000 3240" preserveAspectRatio="xMinYMin slice"><path d="M473,2793
+c339.3,-1799.3,509.3,-2700,510,-2702 l0 -0
+c3.3,-7.3,9.3,-11,18,-11 H400000v40H1017.7
+s-90.5,478,-276.2,1466c-185.7,988,-279.5,1483,-281.5,1485c-2,6,-10,9,-24,9
+c-8,0,-12,-0.7,-12,-2c0,-1.3,-5.3,-32,-16,-92c-50.7,-293.3,-119.7,-693.3,-207,-1200
+c0,-1.3,-5.3,8.7,-16,30c-10.7,21.3,-21.3,42.7,-32,64s-16,33,-16,33s-26,-26,-26,-26
+s76,-153,76,-153s77,-151,77,-151c0.7,0.7,35.7,202,105,604c67.3,400.7,102,602.7,104,
+606zM1001 80h400000v40H1017.7z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.194em;"><span></span></span></span></span></span></span></span></span></span></p>
+<p>由于工质为纯H₂（M = 2 g/mol，远低于化学推进燃烧产物的 ~10-23 g/mol），且反应堆温度可高于化学燃烧温度：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">s</span><span class="mord mathnormal mtight">p</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight" style="margin-right:0.13889em;">NTP</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">850</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">950</span><span class="mord text"><span class="mord"> s</span></span></span></span></span></span></p>
+<p>是化学推进的 ~2-2.5倍。</p>
+<h3 id="sec-8">3.2.2 反应堆设计</h3>
+<p><strong>NERVA计划</strong>（1960s，美国）：</p>
+<ul>
+<li>堆芯：铀-235燃料颗粒嵌入石墨基体（石墨既是慢化剂也是结构材料）</li>
+<li>冷却剂/工质：液氢流过堆芯通道</li>
+<li>T_reactor ~ 2500-2700 K（受材料限制）</li>
+<li>推力：~75,000 lbf（334 kN）</li>
+<li>I_sp：~850 s</li>
+<li>运行时间：~60分钟（足够火星任务多次点火）</li>
+</ul>
+<p><strong>发展脉络：从 Rover 到 DRACO</strong>。核热推进的历史是六十年断续推进：</p>
+<ul>
+<li><strong>Rover 计划（1955–1972，洛斯阿拉莫斯）</strong>：Kiwi 系列（1959 年起）首次演示核加热氢排气；Phoebus 系列（1965–1967）将堆热功率推到 ~1200 MW 量级；Pewee（1970）验证了小型高功率密度堆芯（~500 MW），代表 Rover 计划的技术峰值。</li>
+<li><strong>NERVA（1961–1973）</strong>：NASA 与原子能委员会联合主管，目标是飞行资格认证。XE 发动机完成 28 次地面点火（累计约 2 小时），在真空模拟条件下演示了 ~850 s 比冲与多次重启能力；至 1970 年代初发动机已基本具备飞行设计状态，但阿波罗后预算收缩导致整个计划于 1973 年下马，配套的载人火星方案一并搁置。</li>
+<li><strong>苏联平行路线</strong>：RD-0410 核热发动机（1970–1980 年代）在塞米巴拉金斯克试验场完成地面热试，I_sp ~910 s，推力 ~36 kN。</li>
+<li><strong>复兴（2010 年代–）</strong>：NASA 于 2017–2019 年重启 NTP 关键技术研究并资助 BWXT 开展下一代核热发动机研制；DARPA 于 2020–2021 年启动 DRACO（Demonstration Rocket for Agile Cislunar Operations）计划，第一阶段授予 Blue Origin、General Atomics、Lockheed Martin 等，2022 年第二阶段集中到 Lockheed Martin（飞行器平台）与 BWXT（发动机），目标 2027 年前后完成在轨演示——这将是 NERVA 之后核热发动机的首次飞行尝试。</li>
+</ul>
+<p><strong>现代NTP设计</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>设计</th>
+<th>推力 (kN)</th>
+<th>I_sp (s)</th>
+<th>功率 (MWth)</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NTR（传统固体堆芯）</td>
+<td>67-250</td>
+<td>850-950</td>
+<td>1500-5000</td>
+<td>最成熟方案</td>
+</tr>
+<tr>
+<td>PBR（颗粒床反应堆）</td>
+<td>100-5000</td>
+<td>900-1000</td>
+<td>500-2000</td>
+<td>氢工质直接冷却燃料颗粒</td>
+</tr>
+<tr>
+<td>MITEE（微型）</td>
+<td>1-10</td>
+<td>700-850</td>
+<td>10-100</td>
+<td>小型化，适合探测器</td>
+</tr>
+</tbody>
+</table>
+<p><strong>核心工程挑战</strong>：</p>
+<ol>
+<li><strong>氢脆（Hydrogen Embrittlement）</strong>：高温高压H₂与金属/石墨的化学反应</li>
+<li><strong>核辐射屏蔽</strong>：中子和γ辐射对乘员和电子设备的影响
+   - 需要 ~1-2 m 水屏蔽或 ~0.5 m 聚乙烯 + 重金属层
+   - 屏蔽质量是NTP系统质量的关键组成
+   - 乘员辐射剂量的生物效应与限值详见第7章太空医学</li>
+<li><strong>启动与关机瞬态</strong>：反应堆功率调节的响应速度</li>
+<li><strong>核安全</strong>：发射失败场景下的放射性释放风险
+   - 方案：亚临界组装，入轨后才达到临界</li>
+</ol>
+<h3 id="sec-9">3.2.3 NTP对火星任务的影响</h3>
+<p><strong>NTP vs. 化学推进的火星任务对比</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>化学（CH₄/LOX）</th>
+<th>NTP</th>
+<th>改善</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>地-火转移时间</td>
+<td>250-300天</td>
+<td>120-180天</td>
+<td>-40%</td>
+</tr>
+<tr>
+<td>初始质量（LEO）</td>
+<td>~1000 t</td>
+<td>~400-600 t</td>
+<td>-40-60%</td>
+</tr>
+<tr>
+<td>推进剂需求</td>
+<td>~1200 t</td>
+<td>~300-500 t</td>
+<td>-60%</td>
+</tr>
+<tr>
+<td>辐射暴露</td>
+<td>~0.5-1.0 Sv</td>
+<td>~0.3-0.5 Sv</td>
+<td>-40-50%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>关键优势</strong>：转移时间缩短直接减少乘员辐射暴露和微重力生理效应，是载人火星任务最有力的使能技术之一。</p>
+<p><strong>当前状态</strong>：</p>
+<ul>
+<li>NASA DRACO计划（2021-）：与DARPA合作，目标2027年在轨演示NTP</li>
+<li>主要承包商：Blue Origin（基于NERVA衍生设计）、X-energy（Xe-100高温气冷堆改编）</li>
+<li>TRL：4-5（地面组件测试阶段）</li>
+</ul>
+<hr />
+<h3 id="sec-10">3.3 核电推进（NEP）</h3>
+<h3 id="sec-11">3.3.1 基本原理</h3>
+<p>核电推进将核反应堆的电能用于电推进系统（离子推进器、霍尔推进器等），产生高比冲但低推力的排气。</p>
+<p><strong>系统架构</strong>：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">h</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span><span class="mord mathnormal mtight">ec</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">b</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">am</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+<ul>
+<li>P_th：反应堆热功率</li>
+<li>P_elec = η_conv × P_th：电功率（η_conv ~ 0.2-0.4，热电/热机转换效率）</li>
+<li>P_beam = η_thr × P_elec：射束功率（η_thr ~ 0.5-0.7，推进器效率）</li>
+</ul>
+<p><strong>推力与比冲的关系</strong>：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.1963em;vertical-align:-0.836em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">b</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">am</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.836em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.3324em;vertical-align:-0.9721em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">s</span><span class="mord mathnormal mtight">p</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">η</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">h</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">η</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">co</span><span class="mord mathnormal mtight">n</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">v</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">h</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9721em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<p><strong>关键约束</strong>：给定反应堆功率，推力与比冲成反比——高I_sp意味着低推力。</p>
+<h3 id="sec-12">3.3.2 电推进器类型</h3>
+<p><strong>（1）静电离子推进器（Gridded Ion Thruster）</strong></p>
+<ul>
+<li>原理：电子轰击电离推进剂（Xe），栅极静电加速离子</li>
+<li>I_sp：2000-6000 s</li>
+<li>效率：η ~ 0.6-0.8</li>
+<li>推力：~30-250 mN（单台）</li>
+<li>代表：NASA NSTAR（Deep Space 1, Dawn），NEXT（~6.9 kW，I_sp ~4300 s）</li>
+<li>寿命：&gt;30,000 小时（Dawn任务验证）</li>
+<li>局限：栅极侵蚀限制功率密度，推力极低</li>
+</ul>
+<p><strong>（2）霍尔效应推进器（Hall Effect Thruster, HET）</strong></p>
+<ul>
+<li>原理：径向磁场 + 轴向电场，E×B漂移形成霍尔电流，电子电离推进剂</li>
+<li>I_sp：1000-3000 s</li>
+<li>效率：η ~ 0.5-0.7</li>
+<li>推力：~50-500 mN（单台，大功率型可达数N）</li>
+<li>代表：SPT-100（俄罗斯，&gt;200颗卫星使用），PPS-5000（5 kW级）</li>
+<li>优势：结构简单、无栅极侵蚀、功率密度高于离子推进器</li>
+<li>局限：通道壁侵蚀（BN陶瓷）、效率在高I_sp时下降</li>
+</ul>
+<p><strong>（3）VASIMR（可变比冲磁等离子体射频推进器）</strong></p>
+<ul>
+<li>原理：射频天线电离并加热等离子体，磁喷嘴加速</li>
+<li>I_sp：可调 500-5000 s（"可变比冲"是核心优势）</li>
+<li>效率：η ~ 0.3-0.6（当前），理论 &gt;0.7</li>
+<li>推力：~1-5 N（200 kW级），需大功率电源</li>
+<li>代表：Ad Astra VASIMR VX-200（200 kW测试）</li>
+<li>优势：I_sp可调 → 任务优化（高推力低I_sp加速段 + 低推力高I_sp巡航段）</li>
+<li>局限：射频耦合效率、磁喷嘴效率、需要兆瓦级电源</li>
+</ul>
+<h3 id="sec-13">3.3.3 核电推进系统架构</h3>
+<p><strong>空间核反应堆选择</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>反应堆类型</th>
+<th>电功率</th>
+<th>质量</th>
+<th>寿命</th>
+<th>TRL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>热电偶（RTG放大）</td>
+<td>1-10 kW_e</td>
+<td>500-2000 kg</td>
+<td>10-15年</td>
+<td>9</td>
+</tr>
+<tr>
+<td>动态同位素（SRG）</td>
+<td>1-10 kW_e</td>
+<td>300-1000 kg</td>
+<td>15-20年</td>
+<td>5-6</td>
+</tr>
+<tr>
+<td>Kilopower（Stirling）</td>
+<td>1-10 kW_e</td>
+<td>1500-3000 kg</td>
+<td>10-15年</td>
+<td>4-5</td>
+</tr>
+<tr>
+<td>高温气冷堆（Brayton）</td>
+<td>100-1000 kW_e</td>
+<td>5000-20000 kg</td>
+<td>5-10年</td>
+<td>3-4</td>
+</tr>
+<tr>
+<td>快堆（液态金属冷却）</td>
+<td>100-1000 kW_e</td>
+<td>3000-10000 kg</td>
+<td>5-10年</td>
+<td>3-4</td>
+</tr>
+</tbody>
+</table>
+<p>空间核反应堆具有推进与供电的双重用途：未来月面/火星表面基地同样依赖 10–1000 kW_e 级反应堆作为基荷电源（详见第10章能源系统），两者的技术投资可以共享。</p>
+<p><strong>NEP系统质量预算</strong>（100 kW_e级）：</p>
+<table>
+<thead>
+<tr>
+<th>子系统</th>
+<th>质量 (t)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>反应堆</td>
+<td>3-5</td>
+</tr>
+<tr>
+<td>屏蔽</td>
+<td>2-4</td>
+</tr>
+<tr>
+<td>电力转换（Brayton）</td>
+<td>1-2</td>
+</tr>
+<tr>
+<td>散热器</td>
+<td>3-8</td>
+</tr>
+<tr>
+<td>推进器（多台）</td>
+<td>0.5-1</td>
+</tr>
+<tr>
+<td>结构/配线</td>
+<td>1-2</td>
+</tr>
+<tr>
+<td><strong>总计</strong></td>
+<td><strong>10-22</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>散热器的质量惩罚</strong>：</p>
+<p>NEP系统的最大质量贡献往往不是反应堆本身，而是散热器。废热功率：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02691em;">w</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight">s</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">e</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">h</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span><span class="mord mathnormal mtight">ec</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">h</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">η</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">co</span><span class="mord mathnormal mtight">n</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">v</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></p>
+<p>对 η_conv = 0.25（热电偶），100 kW_e 需要 300 kW_th → 200 kW 废热。</p>
+<p>辐射散热面积（T_rad = 700 K，ε = 0.9）：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.0463em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">ϵ</span><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02691em;">w</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight">s</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">e</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.0908em;vertical-align:-0.7693em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">0.9</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">5.67</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">8</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">70</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">200</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">000</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7693em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8641em;"></span><span class="mord">440</span><span class="mord"><span class="mord text"><span class="mord"> m</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p>这是巨大的散热面积，对应的 radiator 质量 ~3-8 t（取决于技术：传统热管 ~15 kg/m²，先进薄膜 ~2-5 kg/m²）。</p>
+<h3 id="sec-14">3.3.4 NEP任务应用</h3>
+<p><strong>适用场景</strong>：</p>
+<ul>
+<li>大质量货运（非时间紧迫）：转移时间可接受数月-数年</li>
+<li>外行星探测：高I_sp显著减少推进剂需求</li>
+<li>地月空间运输：定期穿梭运输（"太空拖船"概念）</li>
+</ul>
+<p><strong>不适用场景</strong>：</p>
+<ul>
+<li>载人火星（推力太低，转移时间过长，辐射暴露增加）</li>
+<li>需要快速机动的任务</li>
+</ul>
+<p><strong>典型任务分析</strong>（100 kW_e NEP，地-火货运）：</p>
+<ul>
+<li>有效载荷：50 t</li>
+<li>初始加速段：~0.1-1 mm/s²（极低推力）</li>
+<li>转移时间：~500-1000天（vs. 化学 ~250天）</li>
+<li>推进剂消耗：~5-10 t Xe（vs. 化学 ~1200 t CH₄/LOX）</li>
+</ul>
+<p><strong>历史先例：JIMO</strong>。NASA 的木星冰卫星轨道器（Jupiter Icy Moons Orbiter, JIMO，2003–2005）是首个以 NEP 为骨干的系统性深空探测任务尝试：计划用数百 kW 级空间反应堆 + 离子推进，在数年内依次环绕探测木星的三颗冰卫星。该计划随 2005 年预算调整被取消，但其架构研究（大功率空间堆、电推进巡航、深空自主运行）构成了后续 NEP 设计的基础。</p>
+<h3 id="sec-15">本章小结</h3>
+<p>化学推进已触及分子键能设定的天花板：LH₂/LOX 比冲 ~457–465 s，CH₄/LOX ~365–380 s；CH₄/LOX 凭借 ISRU 兼容、不积碳与适中密度成为火星运输主轴，全流量分级燃烧循环（Raptor）把室压推到 ~300 atm。可复用运载器与在轨加注共同重构运输经济学：前者把单位质量成本压低 1–2 个数量级，后者让飞行器规模与任务 Δv 解耦。核热推进以约翻倍的比冲（850–950 s）把地火转移缩短到 120–180 天，是 2030 年代最可能服役的载人深空推进（DRACO 目标 2027 年在轨演示，TRL 4–5）；核电推进比冲更高但推力受功率-质量约束（散热器是最大质量项），只适合不赶时间的货运。近中期方案本质上是"化学推进 + 复用 + 加注"的优化问题；跨越式的推进能力见第4章。</p>
+<h3 id="sec-16">关键参数速查表</h3>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>典型值</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LH₂/LOX 真空比冲</td>
+<td>457–465 s</td>
+<td>化学推进比冲上限</td>
+</tr>
+<tr>
+<td>CH₄/LOX 真空比冲</td>
+<td>365–380 s</td>
+<td>火星推进主轴（ISRU 兼容）</td>
+</tr>
+<tr>
+<td>RP-1/LOX 真空比冲</td>
+<td>340–350 s</td>
+<td>高密度、易处理</td>
+</tr>
+<tr>
+<td>Raptor 室压 / 推力</td>
+<td>~300 atm / 230 tf</td>
+<td>FFSC 循环工程峰值</td>
+</tr>
+<tr>
+<td>RS-25 真空比冲</td>
+<td>452.3 s</td>
+<td>LH₂/LOX 分级燃烧标杆</td>
+</tr>
+<tr>
+<td>LEO 再入热流峰值</td>
+<td>~100–200 W/cm²</td>
+<td>热防护设计条件</td>
+</tr>
+<tr>
+<td>月球返回再入速度</td>
+<td>~11 km/s</td>
+<td>热流 ~300–500 W/cm²</td>
+</tr>
+<tr>
+<td>Starship 干质量 / 推进剂容量</td>
+<td>~120 t / ~1200 t</td>
+<td>加注架构基准</td>
+</tr>
+<tr>
+<td>加油航班单次运送量</td>
+<td>~100–150 t</td>
+<td>一次火星出发需 8–12 次</td>
+</tr>
+<tr>
+<td>LH₂ 在轨蒸发率</td>
+<td>~0.3–1%/天</td>
+<td>ZBO 目标 &lt;0.01%/天</td>
+</tr>
+<tr>
+<td>NTP 比冲</td>
+<td>850–950 s</td>
+<td>约化学推进的 2–2.5 倍</td>
+</tr>
+<tr>
+<td>NERVA 推力</td>
+<td>~334 kN</td>
+<td>NTP 历史基准</td>
+</tr>
+<tr>
+<td>DRACO 状态</td>
+<td>TRL 4–5</td>
+<td>目标 2027 年在轨演示</td>
+</tr>
+<tr>
+<td>NEP 热电转换效率</td>
+<td>~0.2–0.4</td>
+<td>决定废热与散热器规模</td>
+</tr>
+<tr>
+<td>100 kW_e NEP 散热面积</td>
+<td>~440 m²</td>
+<td>散热器是质量瓶颈</td>
+</tr>
+</tbody>
+</table>
+<hr /></div><div class="prevnext"><a class="pn pn-prev" href="ch02.html"><span class="pn-k">上一篇</span><span class="pn-t">第2章 天体物理与轨道力学</span></a><a class="pn pn-next" href="ch04.html"><span class="pn-k">下一篇</span><span class="pn-t">第4章 先进推进理论</span></a></div></article><footer class="foot"><span>未来太空移民技术手册 · 完整版 v2.0</span><span class="foot-mono">AD ASTRA PER ASPERA</span></footer></main>
+<aside class="toc"><div class="toc-title">本页目录</div>
+<a class="toc-h3" href="#sec-1">3.1 液体化学推进</a>
+<a class="toc-h3" href="#sec-2">3.1.1 推进剂组合与理论比冲</a>
+<a class="toc-h3" href="#sec-3">3.1.2 发动机循环类型</a>
+<a class="toc-h3" href="#sec-4">3.1.3 可复用运载器工程</a>
+<a class="toc-h3" href="#sec-5">3.1.4 在轨推进剂加注</a>
+<a class="toc-h3" href="#sec-6">3.2 核热推进（NTP）</a>
+<a class="toc-h3" href="#sec-7">3.2.1 基本原理</a>
+<a class="toc-h3" href="#sec-8">3.2.2 反应堆设计</a>
+<a class="toc-h3" href="#sec-9">3.2.3 NTP对火星任务的影响</a>
+<a class="toc-h3" href="#sec-10">3.3 核电推进（NEP）</a>
+<a class="toc-h3" href="#sec-11">3.3.1 基本原理</a>
+<a class="toc-h3" href="#sec-12">3.3.2 电推进器类型</a>
+<a class="toc-h3" href="#sec-13">3.3.3 核电推进系统架构</a>
+<a class="toc-h3" href="#sec-14">3.3.4 NEP任务应用</a>
+<a class="toc-h3" href="#sec-15">本章小结</a>
+<a class="toc-h3" href="#sec-16">关键参数速查表</a>
+</aside>
+</div>
+<script src="../search-index.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

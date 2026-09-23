@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第13章 火星 · 未来太空移民技术手册</title>
+<meta name="description" content="未来太空移民技术手册 —— 面向专业读者的综合性太空殖民技术参考，涵盖推进、生保、栖息地、治理与前沿技术。">
+<link rel="icon" type="image/png" href="../assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script>(function(){try{var t=localStorage.getItem('smh-theme');if(!t)t='dark';document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="目录"><span></span><span></span><span></span></button>
+  <a class="brand" href="../index.html">
+    <img class="brand-icon" src="../assets/icon.png" alt="">
+    <span class="brand-zh">未来太空移民技术手册</span>
+    <span class="brand-en">SPACE SETTLEMENT HANDBOOK</span>
+  </a>
+  <div class="top-actions">
+    <button class="search-btn" id="searchBtn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg><span>检索</span><kbd>⌘K</kbd></button>
+    <button class="theme-btn" id="themeBtn" aria-label="切换主题"></button>
+  </div>
+</header>
+
+<div class="search-overlay" id="searchOverlay" hidden>
+  <div class="search-box">
+    <div class="search-head">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg>
+      <input id="searchInput" type="text" placeholder="检索全书：术语、参数、章节…" autocomplete="off">
+      <kbd>ESC</kbd>
+    </div>
+    <div class="search-results" id="searchResults"><div class="search-hint">输入关键词，检索 23 章正文与附录</div></div>
+  </div>
+</div>
+<div class="layout">
+<nav class="sidebar" id="sidebar">
+<div class="sb-group"><div class="sb-label">卷首</div>
+<a class="sb-item" href="intro.html"><span class="sb-num">◎</span><span class="sb-t">前言与导读</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第一部分 · 基础物理与宇宙环境</div>
+<a class="sb-item" href="ch01.html"><span class="sb-num">01</span><span class="sb-t">太空环境物理</span></a>
+<a class="sb-item" href="ch02.html"><span class="sb-num">02</span><span class="sb-t">天体物理与轨道力学</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第二部分 · 推进与运输系统</div>
+<a class="sb-item" href="ch03.html"><span class="sb-num">03</span><span class="sb-t">化学推进与近中期方案</span></a>
+<a class="sb-item" href="ch04.html"><span class="sb-num">04</span><span class="sb-t">先进推进理论</span></a>
+<a class="sb-item" href="ch05.html"><span class="sb-num">05</span><span class="sb-t">星际航行工程</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第三部分 · 生命保障与人体工程</div>
+<a class="sb-item" href="ch06.html"><span class="sb-num">06</span><span class="sb-t">封闭生态生命保障系统（CELSS）</span></a>
+<a class="sb-item" href="ch07.html"><span class="sb-num">07</span><span class="sb-t">太空医学</span></a>
+<a class="sb-item" href="ch08.html"><span class="sb-num">08</span><span class="sb-t">食品与营养</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第四部分 · 栖息地与基础设施</div>
+<a class="sb-item" href="ch09.html"><span class="sb-num">09</span><span class="sb-t">栖息地结构设计</span></a>
+<a class="sb-item" href="ch10.html"><span class="sb-num">10</span><span class="sb-t">能源系统</span></a>
+<a class="sb-item" href="ch11.html"><span class="sb-num">11</span><span class="sb-t">通信与导航</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第五部分 · 目的地与殖民方案</div>
+<a class="sb-item" href="ch12.html"><span class="sb-num">12</span><span class="sb-t">月球</span></a>
+<a class="sb-item current" href="ch13.html"><span class="sb-num">13</span><span class="sb-t">火星</span></a>
+<a class="sb-item" href="ch14.html"><span class="sb-num">14</span><span class="sb-t">小行星与太空殖民地</span></a>
+<a class="sb-item" href="ch15.html"><span class="sb-num">15</span><span class="sb-t">外太阳系与冰卫星</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第六部分 · 材料与制造</div>
+<a class="sb-item" href="ch16.html"><span class="sb-num">16</span><span class="sb-t">太空材料科学</span></a>
+<a class="sb-item" href="ch17.html"><span class="sb-num">17</span><span class="sb-t">太空制造与原位资源利用</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第七部分 · 社会、文化与治理</div>
+<a class="sb-item" href="ch18.html"><span class="sb-num">18</span><span class="sb-t">太空治理与法律框架</span></a>
+<a class="sb-item" href="ch19.html"><span class="sb-num">19</span><span class="sb-t">太空经济学</span></a>
+<a class="sb-item" href="ch20.html"><span class="sb-num">20</span><span class="sb-t">太空文化演化</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第八部分 · 前沿与推测性技术</div>
+<a class="sb-item" href="ch21.html"><span class="sb-num">21</span><span class="sb-t">脑机接口与人类增强</span></a>
+<a class="sb-item" href="ch22.html"><span class="sb-num">22</span><span class="sb-t">AI治理与超级智能</span></a>
+<a class="sb-item" href="ch23.html"><span class="sb-num">23</span><span class="sb-t">意识上传与数字存在</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">附录 · 参考数据</div>
+<a class="sb-item" href="appA.html"><span class="sb-num">A</span><span class="sb-t">A 物理常数与换算</span></a>
+<a class="sb-item" href="appB.html"><span class="sb-num">B</span><span class="sb-t">B 太阳系天体参数</span></a>
+<a class="sb-item" href="appC.html"><span class="sb-num">C</span><span class="sb-t">C 推进系统对比</span></a>
+<a class="sb-item" href="appD.html"><span class="sb-num">D</span><span class="sb-t">D 辐射与屏蔽</span></a>
+<a class="sb-item" href="appE.html"><span class="sb-num">E</span><span class="sb-t">E 术语表（中英对照）</span></a>
+<a class="sb-item" href="appF.html"><span class="sb-num">F</span><span class="sb-t">F 参考文献与推荐阅读</span></a>
+</div>
+</nav><main class="content"><article class="article"><div class="crumb"><span class="crumb-part">第五部分 · 目的地与殖民方案</span><span class="crumb-sep">/</span><span class="crumb-ch">CHAPTER 13</span></div><div class="ch-head"><div class="ch-num">13</div><h1 class="ch-title">火星</h1></div><div class="article-body"><blockquote>
+<p><strong>章首导语</strong></p>
+<p>火星是除月球外最现实的殖民目标：它有大气（虽稀薄）、有水冰、有昼夜交替（自转周期 24.6 小时）和可耕种潜力，但每一项禀赋都附带苛刻的工程代价。本章按"到达—落地—就地取材—长期生存—终极改造"的链条展开：13.1 节处理进入-下降-着陆（EDL），即载人任务从 ~1 t 级载荷跃升到 20–40 t 级的瓶颈；13.2–13.3 节讨论表面化学（含高氯酸盐毒害问题）与大气原位利用（MOXIE 与 Sabatier 合成甲烷），这是"不依赖地球补给"的关键；13.4 节给出地球化改造（Terraforming）的理论框架与时间尺度（百年至千年量级）；13.5 节直面 0.38 g 下长期生存的医学未知。与第 12 章相比，火星的通信延迟（3–22 分钟）排除了实时遥控，一切系统必须更高自主性；逃逸速度 5.0 km/s（月球为 2.38 km/s）意味着火星表面必须建立完整的推进剂工业才能实现返程。本章所有方案的时间尺度均长于月球方案一个台阶，读者可将第 12 章结论作为基准对照阅读。</p>
+</blockquote>
+<h3 id="sec-1">13.1 进入-下降-着陆（EDL）大气制动技术</h3>
+<h3 id="sec-2">13.1.1 火星大气特征</h3>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>表面气压</td>
+<td>~610 Pa（地球的 ~0.6%）</td>
+</tr>
+<tr>
+<td>成分</td>
+<td>CO₂ 95.3%, N₂ 2.7%, Ar 1.6%, O₂ 0.13%</td>
+</tr>
+<tr>
+<td>标高</td>
+<td>~11 km（vs. 地球 ~8.5 km）</td>
+</tr>
+<tr>
+<td>表面密度</td>
+<td>~0.020 kg/m³（地球的 ~1.6%）</td>
+</tr>
+<tr>
+<td>温度范围</td>
+<td>~-125°C（极夜）至 ~20°C（赤道正午）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>EDL挑战</strong>：</p>
+<ul>
+<li>大气足够产生气动阻力（减速），但不够稠密到完全减速到零</li>
+<li>"最难的大气"：不足以用降落伞完全减速（vs. 地球），又足够稠密到需要热防护（vs. 月球）</li>
+<li>最大减速：~6-10 g（载人任务需限制到 ~4 g）</li>
+</ul>
+<h3 id="sec-3">13.1.2 EDL序列</h3>
+<p><strong>典型火星EDL时间线</strong>（进入速度 ~5.5 km/s）：</p>
+<pre><code>T+0:00  进入大气（125 km高度）
+T+0:00 - T+4:30  进入阶段（气动减速，峰值热流 ~100 W/cm²）
+T+4:30  降落伞展开（Mach ~2, ~10 km高度）
+T+5:00  热防护罩抛离
+T+5:30  动力下降准备（雷达高度计锁定）
+T+6:00  降落伞抛离
+T+6:00 - T+7:00  动力下降（反推发动机）
+T+7:00  着陆（速度 ~0 m/s）
+</code></pre>
+<p><strong>总EDL时间</strong>：~7分钟（"恐怖7分钟"）</p>
+<p><strong>火星 EDL 任务史（1976–2021）</strong>：</p>
+<p>火星着陆的总体成功率长期徘徊在 ~50–60%，每一次成功的 EDL 架构都是下一次任务的基线：</p>
+<ol>
+<li><strong>Viking 1/2（1976）</strong>：首次成功软着陆。气动减速 + 超音速降落伞（16 m 盘帆伞）+ 着陆反推火箭，着陆质量 ~600 kg。其 EDL 架构在此后 20 年几乎未被突破。</li>
+<li><strong>Mars Pathfinder（1997）</strong>：引入气囊弹跳着陆（airbags），着陆器以 ~15 m/s 触地后反弹数十次，总成本大幅降低，验证了"轻载荷可以粗暴着陆"。</li>
+<li><strong>Spirit/Meridiani Opportunity（2004）</strong>：沿用气囊方案，着陆质量 ~185 kg（含火星车）。</li>
+<li><strong>Phoenix（2008）</strong>：回归反推火箭方案，首次降落在北极区并在浅表层直接挖到水冰。</li>
+<li><strong>Curiosity（2012）</strong>：EDL 技术的分水岭。900 kg 级载荷超出了气囊与反推方案的承载范围，采用"天空起重机"（Sky Crane）：下降级以 8 台反推火箭悬停，用 ~7.5 m 缆绳将火星车缓放至地面后飞离自毁。同期首次使用制导再入（guided entry），着陆椭圆缩小到 ~20 km × 7 km。</li>
+<li><strong>InSight（2018）</strong>：复用 Viking 级架构，但借助 MarCO 立方星实现 EDL 过程实时中继回传。</li>
+<li><strong>Perseverance（2021）</strong>：在天空起重机基础上引入两项新技术——地形相对导航（Terrain-Relative Navigation, TRN），着陆精度提升到 ~40 m 量级，使杰泽罗撞击坑这类高风险地形成为可能；以及"飞越者"直升机（Ingenuity），验证了火星大气的可控飞行。</li>
+</ol>
+<p><strong>关键统计</strong>：信号从火星传回地球需 3–22 分钟，而 EDL 全程仅 ~7 分钟——地面控制完全无法干预，所有决策必须由飞行器自主完成，这是"恐怖七分钟"一词的本义。对载人任务而言，上述所有架构的载荷上限（~1 t）与需求（20–40 t）相差一个数量级以上，必须走全新路线（见 13.1.3）。</p>
+<h3 id="sec-4">13.1.3 载人火星EDL挑战</h3>
+<p><strong>质量问题</strong>：</p>
+<ul>
+<li>当前火星着陆器质量：~1 t（Curiosity ~0.9 t, Perseverance ~1.0 t）</li>
+<li>载人着陆质量：~20-40 t（栖息地 + 上升飞行器 + 乘员）</li>
+<li>降落伞极限：当前最大 ~2 t（Mars 2020降落伞）</li>
+</ul>
+<p><strong>解决方案</strong>：</p>
+<ol>
+<li>
+<p><strong>超音速反推（Supersonic Retropropulsion, SRP）</strong>：
+   - 在超音速段启动反推发动机
+   - SpaceX Starship方案：6台Raptor发动机反推
+   - 挑战：发动机羽流与气动加热的复杂交互</p>
+</li>
+<li>
+<p><strong>充气式气动减速器</strong>：
+   - HIAD（Hypersonic Inflatable Aerodynamic Decelerator）
+   - 增大阻力面积 → 降低弹道系数
+   - LOFTID/ARDTII已成功测试（2022）</p>
+</li>
+<li>
+<p><strong>气动捕获（Aerocapture）</strong>：
+   - 单次大气通过直接进入火星轨道（无需降落伞）
+   - 节省推进剂（vs. 推进式轨道插入）
+   - 挑战：精确导航（一次机会，偏差 = 逃逸或烧毁）</p>
+</li>
+<li>
+<p><strong>降落伞扩展</strong>：
+   - 多伞系统（4-8个超大降落伞）
+   - 面积：~1500-3000 m²
+   - 挑战：展开动力学、伞间干扰</p>
+</li>
+</ol>
+<h3 id="sec-5">13.1.4 热防护</h3>
+<p><strong>火星EDL热环境</strong>：</p>
+<ul>
+<li>峰值热流：~50-150 W/cm²（取决于进入速度和弹道系数）</li>
+<li>总热负荷：~50-200 MJ/m²</li>
+<li>持续时间：~3-5分钟</li>
+</ul>
+<p><strong>热防护材料</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>材料</th>
+<th>使用温度</th>
+<th>烧蚀率</th>
+<th>代表应用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PICA-X</td>
+<td>&gt;2000°C</td>
+<td>中</td>
+<td>Dragon, Starship（部分）</td>
+</tr>
+<tr>
+<td>AVCOAT</td>
+<td>&gt;2000°C</td>
+<td>中</td>
+<td>Orion, Apollo</td>
+</tr>
+<tr>
+<td>SLA-561V</td>
+<td>~1200°C</td>
+<td>高</td>
+<td>Viking, Curiosity, Perseverance</td>
+</tr>
+<tr>
+<td>不锈钢+隔热</td>
+<td>~1000°C</td>
+<td>无（可复用）</td>
+<td>Starship（外表面）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Starship方案</strong>：</p>
+<ul>
+<li>不锈钢箭体：迎风面承受气动加热（~800-1000°C）</li>
+<li>隔热瓦：迎风面陶瓷瓦（类似航天飞机）</li>
+<li>背风面：裸露不锈钢（温度较低）</li>
+<li>可复用：着陆后检查/更换隔热瓦 → 重复使用</li>
+</ul>
+<h3 id="sec-6">13.2 火星表面化学</h3>
+<h3 id="sec-7">13.2.1 高氯酸盐</h3>
+<p><strong>问题</strong>：</p>
+<p>火星表面土壤含 ~0.5-1% 高氯酸盐（ClO₄⁻），对人体有毒（甲状腺抑制），对植物有毒。</p>
+<p><strong>处理方法</strong>：</p>
+<ol>
+<li>
+<p><strong>水洗</strong>：水溶解高氯酸盐 → 离子交换去除
+   - 需要大量水（火星稀缺资源）
+   - 产物：含ClO₄⁻废水 → 需处理</p>
+</li>
+<li>
+<p><strong>热分解</strong>：加热到 ~400-500°C → ClO₄⁻ → Cl⁻ + 2O₂
+   - 产物：O₂（有用！）+ 氯化物
+   - 能耗：~5-10 MJ/kg土壤</p>
+</li>
+<li>
+<p><strong>生物还原</strong>：高氯酸盐还原菌（如 Dechloromonas）
+   - ClO₄⁻ → Cl⁻ + 2O₂（生物催化）
+   - 优势：低能耗
+   - 挑战：火星环境适应性</p>
+</li>
+</ol>
+<p><strong>去除工艺的工程权衡</strong>：</p>
+<ul>
+<li><strong>毒理学基准</strong>：人体对高氯酸盐的敏感性集中在甲状腺——ClO₄⁻ 与碘竞争钠碘同向转运体（NIS），抑制甲状腺激素合成。美国环保署（EPA）饮用水健康咨询值为 15 μg/L 量级；火星土壤 0.5–1% 的含量超出该基准约 5 个数量级，因此<strong>任何农业基质、生活用水与建筑材料（防尘）都必须先经去氯处理</strong>。</li>
+<li><strong>水洗-离子交换</strong>：工艺链为"水洗 → 强碱性阴离子交换树脂吸附 → 树脂再生"。单级去除率可达 &gt;99%，但水耗大（土壤:水 ~1:1–1:5 质量比估算），且树脂再生废液含浓缩 ClO₄⁻，仍需终端分解。适合处理饮用水与农业用水这类小流量高纯度场景。</li>
+<li><strong>热分解的副产氧红利</strong>：1% ClO₄⁻ 的土壤完全分解理论上释放 ~0.39%（土壤质量）的 O₂，与 MOXIE 大气制氧形成互补；但火星低气压下散热与粉尘控制使反应器设计比地面困难，~5–10 MJ/kg 土壤的能耗意味着处理 1 t 土壤需 ~1.4–2.8 kWh，工业化处理规模受电力约束。</li>
+<li><strong>生物还原的现实定位</strong>：Dechloromonas aromatica 等菌株在实验室已实现 ClO₄⁻ 完全还原，但火星土壤的高盐、低水活度与低温需先经地球化缓冲（如温室环境）；合理路径是将其置于受控生物反应器中处理废水，而非直接撒入田面。</li>
+</ul>
+<p>工程结论：农业开垦前土壤处理应组合使用——<strong>大宗土壤用热分解（兼收 O₂），灌溉与生活用水用离子交换精处理，废水闭环走生物还原</strong>。该前置工序的成本必须计入火星农业的总账（与第 11 章食物生产方案联动）。</p>
+<h3 id="sec-8">13.2.2 水冰资源分布</h3>
+<p><strong>已知水冰位置</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>区域</th>
+<th>深度</th>
+<th>含量</th>
+<th>可及性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>中纬度（~35-55°）</td>
+<td>~0.1-1 m</td>
+<td>~30-60%（体积）</td>
+<td>高（浅层）</td>
+</tr>
+<tr>
+<td>极地层状沉积</td>
+<td>表面</td>
+<td>~80-90%（体积）</td>
+<td>中（极端温度）</td>
+</tr>
+<tr>
+<td>赤道地下</td>
+<td>&gt;1 km</td>
+<td>未知</td>
+<td>低（深层）</td>
+</tr>
+<tr>
+<td>冰川</td>
+<td>表面</td>
+<td>~90%+</td>
+<td>中-高</td>
+</tr>
+</tbody>
+</table>
+<p><strong>最佳开采区域</strong>：</p>
+<ul>
+<li>中纬度（~40-50°N/S）：水冰浅（&lt;1 m）、温度适中</li>
+<li>权衡：vs. 赤道（温度更好但水冰深）和极地（水冰多但极冷）</li>
+</ul>
+<p><strong>开采方法</strong>：</p>
+<ol>
+<li><strong>挖掘 + 加热</strong>：挖取水冰土壤 → 加热到 &gt;0°C → 融化收集</li>
+<li><strong>原位加热</strong>：插入加热探针 → 升华水蒸气 → 冷凝收集</li>
+<li><strong>微波加热</strong>：微波直接加热含冰土壤 → 水蒸气收集</li>
+</ol>
+<h3 id="sec-9">13.3 火星大气原位利用</h3>
+<h3 id="sec-10">13.3.1 MOXIE扩展</h3>
+<p><strong>MOXIE（Mars Oxygen In-Situ Resource Utilization Experiment）</strong>：</p>
+<ul>
+<li>Perseverance火星车搭载（2021着陆）</li>
+<li>原理：固体氧化物电解（SOXE）分解CO₂</li>
+</ul>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2581em;vertical-align:-0.15em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel x-arrow"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1081em;"><span style="top:-3.322em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05764em;">SOXE</span><span class="mpunct mtight">,</span><span class="mspace nobreak mtight"><span class="mtight"> </span></span><span class="mord mtight">800°</span><span class="mord mathnormal mtight" style="margin-right:0.07153em;">C</span></span></span></span><span class="svg-align" style="top:-2.689em;"><span class="pstrut" style="height:2.7em;"></span><span class="hide-tail" style="height:0.522em;min-width:1.469em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.011em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">CO</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:2.0074em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+<ul>
+<li>产率：~6-10 g O₂/小时</li>
+<li>目标：技术验证（非规模生产）</li>
+</ul>
+<p><strong>MOXIE 实际飞行成果（2021–2022）</strong>：</p>
+<p>MOXIE 是人类首次在地外天体上从本地资源制备出可用资源的实验，其运行结果对规模化设计有直接定量价值：</p>
+<ul>
+<li>2021-04-20 首次产氧成功；至 2022-09 共完成 16 次运行，<strong>累计产氧 ~122 g</strong>（约够一名宇航员呼吸 4 小时）。</li>
+<li>单次峰值产率 ~12 g O₂/小时（约为设计值 6–10 g/h 的上限），电功率约 300 W_e；折算比能耗 ~25–30 kWh/kg O₂（含预热与压缩）。</li>
+<li>成功在夜间、不同季节与火星尘暴期间运行，验证了 SOXE 堆栈对 ~610 Pa 进气压力与 -20°C 至 +30°C 环境温度的鲁棒性；第 15 次运行期间曾短暂中断后自主恢复，暴露了火星尘进入压缩机的风险。</li>
+<li>主要工程教训：电解堆的长寿命（载人任务要求 &gt;10,000 小时）与防粉尘进气过滤是规模化的两大瓶颈，而非电解原理本身。</li>
+</ul>
+<p>这些数据确认了原文所列规模化参数（100–200 倍规模、25–40 kW 连续电力）的量级合理性，同时提示实际比能耗可能高于理想估计，电力系统设计需留 ~30% 裕度。</p>
+<p><strong>规模化设计</strong>（载人任务需求）：</p>
+<ul>
+<li>O₂需求：~1 t/年（乘员呼吸）+ ~7 t（上升飞行器推进剂氧化剂）</li>
+<li>需要：~100-200× MOXIE规模</li>
+<li>电力需求：~25-40 kW（连续运行）</li>
+<li>质量：~500-1000 kg（工业级SOXE系统）</li>
+</ul>
+<h3 id="sec-11">13.3.2 Sabatier合成甲烷</h3>
+<p><strong>反应</strong>：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.2581em;vertical-align:-0.15em;"></span><span class="mord">4</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel x-arrow"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1081em;"><span style="top:-3.322em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.00773em;">R</span><span class="mord mathnormal mtight">u</span><span class="mord cjk_fallback mtight">催化剂</span><span class="mpunct mtight">,</span><span class="mord mtight">300</span><span class="mbin mtight">−</span><span class="mord mtight">400°</span><span class="mord mathnormal mtight" style="margin-right:0.07153em;">C</span><span class="mpunct mtight">,</span><span class="mord mtight">1</span><span class="mbin mtight">−</span><span class="mord mtight">30</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">m</span></span></span></span><span class="svg-align" style="top:-2.689em;"><span class="pstrut" style="height:2.7em;"></span><span class="hide-tail" style="height:0.522em;min-width:1.469em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.011em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord">2</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span></span></span></span></span></p>
+<p><strong>火星上升飞行器（MAV）推进剂生产</strong>：</p>
+<ul>
+<li>CH₄/LOX推进剂：~26 t（火星表面起飞，~10 t有效载荷到火星轨道）</li>
+<li>CO₂来源：直接从大气压缩（无限供应）</li>
+<li>H₂来源：水冰电解（需要从地下开采 ~6 t水 → ~1 t H₂）</li>
+<li>生产时间：~12-18个月（连续运行，确保储备）</li>
+</ul>
+<p><strong>生产链</strong>：</p>
+<pre><code>大气CO₂ → 压缩 → Sabatier反应器 → CH₄ + H₂O
+                                      ↓
+水冰 → 挖掘 → 融化 → 净化 → 电解 → H₂ + O₂
+                                      ↓
+                              CH₄液化 + O₂液化 → 储存
+</code></pre>
+<p><strong>能量需求</strong>：</p>
+<ul>
+<li>Sabatier：~12-15 kWh/kg CH₄</li>
+<li>水电解：~50 kWh/kg H₂</li>
+<li>CO₂压缩：~5-10 kWh/kg CO₂</li>
+<li>总计：~25-40 kW连续运行12-18个月 → ~200-400 MWh</li>
+</ul>
+<h3 id="sec-12">13.4 火星地球化改造理论</h3>
+<h3 id="sec-13">13.4.1 大气增温</h3>
+<p><strong>目标</strong>：将火星表面温度从 ~-60°C 提升到 &gt;0°C（允许液态水存在）</p>
+<p><strong>方案1：温室气体注入</strong></p>
+<ul>
+<li>注入强效温室气体：CF₃SF₅（全氟三甲基胺）、SF₆、C₃F₈</li>
+<li>温室效应：比CO₂强 ~10,000-50,000倍</li>
+<li>来源：火星表面矿物氟化物的工业加工</li>
+<li>时间尺度：~数十年-百年（取决于注入速率）</li>
+<li>升温效果：~10-20°C（需要持续补充）</li>
+</ul>
+<p><strong>方案2：轨道镜</strong></p>
+<ul>
+<li>大型反射镜（~100 km²级）聚焦阳光到极冠</li>
+<li>蒸发CO₂冰 → 增加大气压 → 温室效应</li>
+<li>时间尺度：~数十年</li>
+<li>工程规模：极大（需要太空制造）</li>
+</ul>
+<p><strong>方案3：小行星撞击</strong></p>
+<ul>
+<li>引导富含氨/水的小行星撞击火星极冠</li>
+<li>瞬间释放大量温室气体</li>
+<li>风险：不可控、破坏性</li>
+</ul>
+<h3 id="sec-14">13.4.2 磁场重建</h3>
+<p><strong>问题</strong>：</p>
+<p>火星无全球磁场（仅地壳剩磁），大气被太阳风持续剥离。</p>
+<p><strong>方案</strong>：</p>
+<ul>
+<li>在火星-太阳L₁点部署磁屏蔽（偶极子 ~1-2 T·R²）</li>
+<li>偏转太阳风 → 减少大气剥离</li>
+<li>时间尺度：部署 ~数十年，效果 ~立即</li>
+</ul>
+<p><strong>当前研究</strong>：</p>
+<ul>
+<li>NASA首席科学家Jim Green（2017）提出：在火星L₁点放置偶极磁盾</li>
+<li>模型显示：可恢复火星大气到 ~地球气压的 ~1/3（数百年时间尺度）</li>
+</ul>
+<h3 id="sec-15">13.4.3 生物引入序列</h3>
+<p><strong>阶段1：微生物（地球化初期）</strong></p>
+<ul>
+<li>蓝藻/光合细菌：产生O₂、固定N₂</li>
+<li>极端微生物：适应火星环境（低温、低气压、高辐射）</li>
+<li>挑战：表面辐射致死（需要屏蔽或地下）</li>
+</ul>
+<p><strong>阶段2：地衣/苔藓（土壤形成）</strong></p>
+<ul>
+<li>岩石风化 → 土壤形成</li>
+<li>有机质积累</li>
+<li>时间尺度：~数百年-千年</li>
+</ul>
+<p><strong>阶段3：高等植物（大气改造后）</strong></p>
+<ul>
+<li>需要：大气压 &gt;0.1 atm，温度 &gt;0°C，土壤成熟</li>
+<li>先锋物种：转基因耐寒/耐旱植物</li>
+<li>时间尺度：大气改造后 ~数十年</li>
+</ul>
+<p><strong>阶段4：动物（生态成熟后）</strong></p>
+<ul>
+<li>昆虫 → 小型哺乳动物 → 大型动物</li>
+<li>需要完整食物链</li>
+<li>时间尺度：~数千年</li>
+</ul>
+<h3 id="sec-16">13.4.4 伦理与行星保护</h3>
+<p><strong>核心问题</strong>：</p>
+<ul>
+<li>火星是否已有生命？（地下？过去？）</li>
+<li>地球微生物污染 → 不可逆改变火星环境</li>
+<li>科学价值 vs. 开发价值</li>
+<li>国际法：外层空间条约第9条（有害污染条款）</li>
+</ul>
+<h3 id="sec-17">13.5 火星重力下的长期生存策略</h3>
+<h3 id="sec-18">13.5.1 0.38g的未知性</h3>
+<p>火星重力 0.38g 介于微重力和地球重力之间，长期效应是太空医学最大的未知之一。</p>
+<p><strong>关键问题</strong>：</p>
+<ul>
+<li>0.38g是否足以维持骨骼密度？（阈值可能在 ~0.2-0.5g之间）</li>
+<li>心血管系统能否长期适应？</li>
+<li>前庭系统如何重新校准？</li>
+<li>胎儿发育是否正常？（火星出生）</li>
+</ul>
+<p><strong>数据获取路径</strong>：</p>
+<p>与月球情形类似（见 12.3.3），0.38 g 的生理数据无法在地面获得，只能依赖递进式的飞行实验：</p>
+<ul>
+<li><strong>ISS 离心机分档实验</strong>：JAXA MHU 小鼠实验（见 12.3.3）已给出 0.2 g 端点数据；未来可在 ISS 或商业空间站扩展 0.3–0.4 g 档位，覆盖火星重力区间。</li>
+<li><strong>地火转移飞船上的对照实验</strong>：首次载人火星任务的 ~6–9 个月转移段（微重力）与火星段（0.38 g）天然构成对照，乘员的 DEXA 骨密度、心血管与神经前庭数据将是首批人类 0.38 g 样本。</li>
+<li><strong>类比数据的局限</strong>：长期卧床（-6° head-down tilt）与后肢悬吊动物模型只能模拟微重力端点，对部分重力区间的预测误差可达数倍，不能替代飞行数据。</li>
+</ul>
+<p>因此，火星殖民的医学可行性判断必然滞后于首次登陆——规划上应假定早期殖民者承受与 ISS 长期驻留相当或略低的健康代价，并以"可返回性"（返程医疗保障）作为首批定居者的筛选条件之一。</p>
+<h3 id="sec-19">13.5.2 生存策略</h3>
+<p><strong>医学监测</strong>：</p>
+<ul>
+<li>定期骨密度扫描（DEXA）</li>
+<li>心血管功能评估</li>
+<li>血液/尿液生物标志物</li>
+<li>神经-前庭功能测试</li>
+</ul>
+<p><strong>对抗措施</strong>：</p>
+<ul>
+<li>运动：抗阻 + 有氧（每天 ~2小时）</li>
+<li>药物：双膦酸盐（骨保护）</li>
+<li>营养：高蛋白、高钙、Vit D补充</li>
+<li>人工重力：短期旋转暴露（如每天1-2小时离心训练器）</li>
+</ul>
+<p><strong>火星出生问题</strong>：</p>
+<ul>
+<li>从未在部分重力下研究过哺乳动物完整发育</li>
+<li>动物实验：鹌鹑蛋在太空孵化 → 骨骼发育异常</li>
+<li>风险：胎儿骨骼/心血管发育可能不正常</li>
+<li>对策：人工重力妊娠舱（旋转产生1g）</li>
+</ul>
+<h3 id="sec-20">13.6 本章小结</h3>
+<p>火星殖民的难度可概括为三个"数量级跃迁"：<strong>EDL 载荷从 ~1 t 到 20–40 t、ISRU 从克级演示（MOXIE 累计 122 g O₂）到吨级生产、驻留从月级到年级乃至永久</strong>。技术路径均已存在——超音速反推与充气减速器解决降落、Sabatier 工艺解决返程推进剂、热分解兼收 O₂ 与高氯酸盐去除——但没有任何一条链条在火星规模上被验证过。高氯酸盐 0.5–1% 的土壤背景值是贯穿农业与用水设计的隐性成本项。地球化改造在热力学上可能、在工程上属于世纪级工程，其磁场重建与温室气体注入方案的时间尺度（百年起）决定了它只是殖民的远景而非前提。与第 12 章月球不同，火星方案的容错空间被 3–22 分钟通信延迟与 5.0 km/s 逃逸速度显著压缩：<strong>系统冗余与本地化程度必须按"断供两年仍可生存"设计</strong>。</p>
+<p><strong>关键参数速查表</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>典型值</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>火星表面气压</td>
+<td>~610 Pa（地球的 0.6%）</td>
+<td>EDL 与压力服设计的边界条件</td>
+</tr>
+<tr>
+<td>火星逃逸速度</td>
+<td>5.0 km/s</td>
+<td>返程推进剂必须本地生产（月球为 2.38 km/s）</td>
+</tr>
+<tr>
+<td>载人 EDL 质量需求</td>
+<td>20–40 t</td>
+<td>超出当前最大降落伞能力（~2 t）一个数量级</td>
+</tr>
+<tr>
+<td>EDL 全程时间</td>
+<td>~7 分钟</td>
+<td>通信延迟 3–22 分钟 → 全程自主，不可地面干预</td>
+</tr>
+<tr>
+<td>高氯酸盐含量</td>
+<td>~0.5–1%（土壤质量）</td>
+<td>农业/用水前置处理的核心依据</td>
+</tr>
+<tr>
+<td>MOXIE 累计产氧</td>
+<td>~122 g（16 次运行）</td>
+<td>SOXE 原理验证达成，峰值 ~12 g O₂/小时</td>
+</tr>
+<tr>
+<td>载人 O₂ 需求</td>
+<td>~1 t/年（呼吸）+ ~7 t（MAV 氧化剂）</td>
+<td>规模化 MOXIE 需 25–40 kW 连续电力</td>
+</tr>
+<tr>
+<td>Sabatier 能耗</td>
+<td>~12–15 kWh/kg CH₄</td>
+<td>甲烷推进剂生产链的主要电耗项</td>
+</tr>
+<tr>
+<td>中纬度浅层水冰</td>
+<td>深度 ~0.1–1 m，含量 ~30–60%（体积）</td>
+<td>首选开采区（~40–50°N/S）</td>
+</tr>
+<tr>
+<td>表面重力</td>
+<td>0.38 g（3.71 m/s²）</td>
+<td>长期生理阈值未知，需飞行数据</td>
+</tr>
+<tr>
+<td>地球化时间尺度</td>
+<td>温室气体增温 ~10–20°C 需数十年至百年</td>
+<td>殖民的远景框架而非近期依赖</td>
+</tr>
+</tbody>
+</table>
+<hr /></div><div class="prevnext"><a class="pn pn-prev" href="ch12.html"><span class="pn-k">上一篇</span><span class="pn-t">第12章 月球</span></a><a class="pn pn-next" href="ch14.html"><span class="pn-k">下一篇</span><span class="pn-t">第14章 小行星与太空殖民地</span></a></div></article><footer class="foot"><span>未来太空移民技术手册 · 完整版 v2.0</span><span class="foot-mono">AD ASTRA PER ASPERA</span></footer></main>
+<aside class="toc"><div class="toc-title">本页目录</div>
+<a class="toc-h3" href="#sec-1">13.1 进入-下降-着陆（EDL）大气制动技术</a>
+<a class="toc-h3" href="#sec-2">13.1.1 火星大气特征</a>
+<a class="toc-h3" href="#sec-3">13.1.2 EDL序列</a>
+<a class="toc-h3" href="#sec-4">13.1.3 载人火星EDL挑战</a>
+<a class="toc-h3" href="#sec-5">13.1.4 热防护</a>
+<a class="toc-h3" href="#sec-6">13.2 火星表面化学</a>
+<a class="toc-h3" href="#sec-7">13.2.1 高氯酸盐</a>
+<a class="toc-h3" href="#sec-8">13.2.2 水冰资源分布</a>
+<a class="toc-h3" href="#sec-9">13.3 火星大气原位利用</a>
+<a class="toc-h3" href="#sec-10">13.3.1 MOXIE扩展</a>
+<a class="toc-h3" href="#sec-11">13.3.2 Sabatier合成甲烷</a>
+<a class="toc-h3" href="#sec-12">13.4 火星地球化改造理论</a>
+<a class="toc-h3" href="#sec-13">13.4.1 大气增温</a>
+<a class="toc-h3" href="#sec-14">13.4.2 磁场重建</a>
+<a class="toc-h3" href="#sec-15">13.4.3 生物引入序列</a>
+<a class="toc-h3" href="#sec-16">13.4.4 伦理与行星保护</a>
+<a class="toc-h3" href="#sec-17">13.5 火星重力下的长期生存策略</a>
+<a class="toc-h3" href="#sec-18">13.5.1 0.38g的未知性</a>
+<a class="toc-h3" href="#sec-19">13.5.2 生存策略</a>
+<a class="toc-h3" href="#sec-20">13.6 本章小结</a>
+</aside>
+</div>
+<script src="../search-index.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

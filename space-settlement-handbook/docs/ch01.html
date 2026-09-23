@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第1章 太空环境物理 · 未来太空移民技术手册</title>
+<meta name="description" content="未来太空移民技术手册 —— 面向专业读者的综合性太空殖民技术参考，涵盖推进、生保、栖息地、治理与前沿技术。">
+<link rel="icon" type="image/png" href="../assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script>(function(){try{var t=localStorage.getItem('smh-theme');if(!t)t='dark';document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="目录"><span></span><span></span><span></span></button>
+  <a class="brand" href="../index.html">
+    <img class="brand-icon" src="../assets/icon.png" alt="">
+    <span class="brand-zh">未来太空移民技术手册</span>
+    <span class="brand-en">SPACE SETTLEMENT HANDBOOK</span>
+  </a>
+  <div class="top-actions">
+    <button class="search-btn" id="searchBtn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg><span>检索</span><kbd>⌘K</kbd></button>
+    <button class="theme-btn" id="themeBtn" aria-label="切换主题"></button>
+  </div>
+</header>
+
+<div class="search-overlay" id="searchOverlay" hidden>
+  <div class="search-box">
+    <div class="search-head">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg>
+      <input id="searchInput" type="text" placeholder="检索全书：术语、参数、章节…" autocomplete="off">
+      <kbd>ESC</kbd>
+    </div>
+    <div class="search-results" id="searchResults"><div class="search-hint">输入关键词，检索 23 章正文与附录</div></div>
+  </div>
+</div>
+<div class="layout">
+<nav class="sidebar" id="sidebar">
+<div class="sb-group"><div class="sb-label">卷首</div>
+<a class="sb-item" href="intro.html"><span class="sb-num">◎</span><span class="sb-t">前言与导读</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第一部分 · 基础物理与宇宙环境</div>
+<a class="sb-item current" href="ch01.html"><span class="sb-num">01</span><span class="sb-t">太空环境物理</span></a>
+<a class="sb-item" href="ch02.html"><span class="sb-num">02</span><span class="sb-t">天体物理与轨道力学</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第二部分 · 推进与运输系统</div>
+<a class="sb-item" href="ch03.html"><span class="sb-num">03</span><span class="sb-t">化学推进与近中期方案</span></a>
+<a class="sb-item" href="ch04.html"><span class="sb-num">04</span><span class="sb-t">先进推进理论</span></a>
+<a class="sb-item" href="ch05.html"><span class="sb-num">05</span><span class="sb-t">星际航行工程</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第三部分 · 生命保障与人体工程</div>
+<a class="sb-item" href="ch06.html"><span class="sb-num">06</span><span class="sb-t">封闭生态生命保障系统（CELSS）</span></a>
+<a class="sb-item" href="ch07.html"><span class="sb-num">07</span><span class="sb-t">太空医学</span></a>
+<a class="sb-item" href="ch08.html"><span class="sb-num">08</span><span class="sb-t">食品与营养</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第四部分 · 栖息地与基础设施</div>
+<a class="sb-item" href="ch09.html"><span class="sb-num">09</span><span class="sb-t">栖息地结构设计</span></a>
+<a class="sb-item" href="ch10.html"><span class="sb-num">10</span><span class="sb-t">能源系统</span></a>
+<a class="sb-item" href="ch11.html"><span class="sb-num">11</span><span class="sb-t">通信与导航</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第五部分 · 目的地与殖民方案</div>
+<a class="sb-item" href="ch12.html"><span class="sb-num">12</span><span class="sb-t">月球</span></a>
+<a class="sb-item" href="ch13.html"><span class="sb-num">13</span><span class="sb-t">火星</span></a>
+<a class="sb-item" href="ch14.html"><span class="sb-num">14</span><span class="sb-t">小行星与太空殖民地</span></a>
+<a class="sb-item" href="ch15.html"><span class="sb-num">15</span><span class="sb-t">外太阳系与冰卫星</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第六部分 · 材料与制造</div>
+<a class="sb-item" href="ch16.html"><span class="sb-num">16</span><span class="sb-t">太空材料科学</span></a>
+<a class="sb-item" href="ch17.html"><span class="sb-num">17</span><span class="sb-t">太空制造与原位资源利用</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第七部分 · 社会、文化与治理</div>
+<a class="sb-item" href="ch18.html"><span class="sb-num">18</span><span class="sb-t">太空治理与法律框架</span></a>
+<a class="sb-item" href="ch19.html"><span class="sb-num">19</span><span class="sb-t">太空经济学</span></a>
+<a class="sb-item" href="ch20.html"><span class="sb-num">20</span><span class="sb-t">太空文化演化</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第八部分 · 前沿与推测性技术</div>
+<a class="sb-item" href="ch21.html"><span class="sb-num">21</span><span class="sb-t">脑机接口与人类增强</span></a>
+<a class="sb-item" href="ch22.html"><span class="sb-num">22</span><span class="sb-t">AI治理与超级智能</span></a>
+<a class="sb-item" href="ch23.html"><span class="sb-num">23</span><span class="sb-t">意识上传与数字存在</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">附录 · 参考数据</div>
+<a class="sb-item" href="appA.html"><span class="sb-num">A</span><span class="sb-t">A 物理常数与换算</span></a>
+<a class="sb-item" href="appB.html"><span class="sb-num">B</span><span class="sb-t">B 太阳系天体参数</span></a>
+<a class="sb-item" href="appC.html"><span class="sb-num">C</span><span class="sb-t">C 推进系统对比</span></a>
+<a class="sb-item" href="appD.html"><span class="sb-num">D</span><span class="sb-t">D 辐射与屏蔽</span></a>
+<a class="sb-item" href="appE.html"><span class="sb-num">E</span><span class="sb-t">E 术语表（中英对照）</span></a>
+<a class="sb-item" href="appF.html"><span class="sb-num">F</span><span class="sb-t">F 参考文献与推荐阅读</span></a>
+</div>
+</nav><main class="content"><article class="article"><div class="crumb"><span class="crumb-part">第一部分 · 基础物理与宇宙环境</span><span class="crumb-sep">/</span><span class="crumb-ch">CHAPTER 01</span></div><div class="ch-head"><div class="ch-num">01</div><h1 class="ch-title">太空环境物理</h1></div><div class="article-body"><blockquote>
+<p>面向航天工程、物理学、生物学等相关专业背景读者。涵盖当前可行技术与理论/科幻级前瞻技术。</p>
+</blockquote>
+<hr />
+<p>太空移民的一切工程约束，归根结底来自对太空环境的精确理解。本章系统描述载人航天所面临的核心物理环境参数，为后续各章的工程设计和人体适应分析提供基础。</p>
+<p><strong>章首导语</strong>。本章的任务是把"太空环境"从定性认知转化为一组可定量使用的工程边界条件，覆盖五大类威胁因素：重力环境（1.1）、辐射环境（1.2）、真空与极端温度（1.3）、微流星体与空间碎片（1.4）、等离子体与磁场环境（1.5）。这些参数之所以关键，在于它们直接决定任何栖息地、运输载具与舱外系统的规模、质量与寿命上限：微重力水平决定人工重力结构的尺寸；辐射剂量率决定屏蔽质量与任务时长；碎片通量决定防护结构厚度。本章是后续各章的共同前置——第7章太空医学的生理损伤机理以本章的剂量与重力数据为输入；第9章栖息地结构设计的屏蔽与防护方案直接采用本章的辐射与撞击参数；与第2章轨道力学结合后，又共同决定第3、4章推进系统所能到达的目的地。关键结论预告：ISS内部实际微重力水平约 10⁻⁶ g；舒适的人工重力系统需要约 224 m 半径量级的旋转结构；火星往返辐射剂量 ~0.7–1.2 Sv 已逼近职业限值；被动屏蔽是当前工程上唯一可执行的辐射防护手段。</p>
+<h3 id="sec-1">1.1 微重力与人工重力</h3>
+<h3 id="sec-2">1.1.1 微重力的本质</h3>
+<p>"微重力"（microgravity）并非"零重力"。在轨航天器处于自由落体状态，残余加速度来源于：</p>
+<ul>
+<li><strong>大气阻力梯度</strong>：LEO（~400 km）处残余大气密度 ρ ~ 10⁻¹² kg/m³，对ISS（截面积 A ~ 3000 m²，质量 m ~ 420,000 kg）产生的减速度约 a_drag ~ ρv²C_DA/(2m) ~ 10⁻⁶ g 量级</li>
+<li><strong>重力梯度</strong>：航天器尺度 L 内，重力差 Δg/g ~ 2L/R_orbit。对ISS（L ~ 100 m），Δg ~ 2.5 × 10⁻⁵ g</li>
+<li><strong>乘员活动与机械振动</strong>：舱内设备、人员运动产生 10⁻⁴ ~ 10⁻² g 的瞬态加速度</li>
+<li><strong>太阳辐射压</strong>：对大面积结构（如太阳能帆板）产生 ~10⁻⁶ g 量级扰动</li>
+</ul>
+<p>综合效果使ISS内部实际微重力水平约为 10⁻⁶ g（即"微重力品质"），远非理想零重力。</p>
+<h3 id="sec-3">1.1.2 人工重力：旋转系统物理</h3>
+<p>产生人工重力的唯一成熟方案是旋转产生离心加速度：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8641em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">ω</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.1771em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.4911em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-2.453em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">ro</span><span class="mord mathnormal mtight">t</span></span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<p>其中 ω 为角速度（rad/s），r 为旋转半径（m），v_rot 为切向线速度。</p>
+<p><strong>设计约束——Coriolis效应</strong>：</p>
+<p>当人体在旋转参考系中运动时，受到科里奥利力：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1163em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9663em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span></span><span style="top:-3.2523em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1522em;"><span class="overlay" style="height:0.714em;width:0.471em;"><svg xmlns="http://www.w3.org/2000/svg" width="0.471em" height="0.714em" style="width:0.471em" viewBox="0 0 471 714" preserveAspectRatio="xMinYMin"><path d="M377 20c0-5.333 1.833-10 5.5-14S391 0 397 0c4.667 0 8.667 1.667 12 5
+3.333 2.667 6.667 9 10 19 6.667 24.667 20.333 43.667 41 57 7.333 4.667 11
+10.667 11 18 0 6-1 10-3 12s-6.667 5-14 9c-28.667 14.667-53.667 35.667-75 63
+-1.333 1.333-3.167 3.5-5.5 6.5s-4 4.833-5 5.5c-1 .667-2.5 1.333-4.5 2s-4.333 1
+-7 1c-4.667 0-9.167-1.833-13.5-5.5S337 184 337 178c0-12.667 15.667-32.333 47-59
+H213l-171-1c-8.667-6-13-12.333-13-19 0-4.667 4.333-11.333 13-20h359
+c-16-25.333-24-45-24-59z"/></svg></span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">C</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">or</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">−</span><span class="mord">2</span><span class="mord mathnormal">m</span><span class="mopen">(</span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.714em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">ω</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2355em;"><span class="overlay" style="height:0.714em;width:0.471em;"><svg xmlns="http://www.w3.org/2000/svg" width="0.471em" height="0.714em" style="width:0.471em" viewBox="0 0 471 714" preserveAspectRatio="xMinYMin"><path d="M377 20c0-5.333 1.833-10 5.5-14S391 0 397 0c4.667 0 8.667 1.667 12 5
+3.333 2.667 6.667 9 10 19 6.667 24.667 20.333 43.667 41 57 7.333 4.667 11
+10.667 11 18 0 6-1 10-3 12s-6.667 5-14 9c-28.667 14.667-53.667 35.667-75 63
+-1.333 1.333-3.167 3.5-5.5 6.5s-4 4.833-5 5.5c-1 .667-2.5 1.333-4.5 2s-4.333 1
+-7 1c-4.667 0-9.167-1.833-13.5-5.5S337 184 337 178c0-12.667 15.667-32.333 47-59
+H213l-171-1c-8.667-6-13-12.333-13-19 0-4.667 4.333-11.333 13-20h359
+c-16-25.333-24-45-24-59z"/></svg></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.714em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2077em;"><span class="overlay" style="height:0.714em;width:0.471em;"><svg xmlns="http://www.w3.org/2000/svg" width="0.471em" height="0.714em" style="width:0.471em" viewBox="0 0 471 714" preserveAspectRatio="xMinYMin"><path d="M377 20c0-5.333 1.833-10 5.5-14S391 0 397 0c4.667 0 8.667 1.667 12 5
+3.333 2.667 6.667 9 10 19 6.667 24.667 20.333 43.667 41 57 7.333 4.667 11
+10.667 11 18 0 6-1 10-3 12s-6.667 5-14 9c-28.667 14.667-53.667 35.667-75 63
+-1.333 1.333-3.167 3.5-5.5 6.5s-4 4.833-5 5.5c-1 .667-2.5 1.333-4.5 2s-4.333 1
+-7 1c-4.667 0-9.167-1.833-13.5-5.5S337 184 337 178c0-12.667 15.667-32.333 47-59
+H213l-171-1c-8.667-6-13-12.333-13-19 0-4.667 4.333-11.333 13-20h359
+c-16-25.333-24-45-24-59z"/></svg></span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">re</span><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></p>
+<p>其中 v_rel 为人体相对旋转参考系的速度。这导致：</p>
+<ul>
+<li><strong>前庭系统冲突</strong>：头部运动时，半规管内淋巴液受到额外力矩，产生运动病和空间定向障碍</li>
+<li><strong>肢体运动偏差</strong>：手臂运动轨迹偏转，影响精细操作</li>
+</ul>
+<p><strong>人体耐受阈值</strong>（基于NASA和苏联旋转空间站研究数据）：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>短期耐受（数小时）</th>
+<th>长期适应（数周后）</th>
+<th>舒适阈值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>角速度 ω</td>
+<td>≤ 4 rpm</td>
+<td>≤ 6 rpm</td>
+<td>≤ 2 rpm</td>
+</tr>
+<tr>
+<td>径向重力梯度 Δg/g</td>
+<td>≤ 10%</td>
+<td>≤ 15%</td>
+<td>≤ 5%</td>
+</tr>
+<tr>
+<td>切向线速度 v_rot</td>
+<td>≤ 30 m/s</td>
+<td>≤ 40 m/s</td>
+<td>≤ 20 m/s</td>
+</tr>
+</tbody>
+</table>
+<p><strong>工程推论</strong>：</p>
+<p>以舒适阈值 ω ≤ 2 rpm（ω = 0.209 rad/s）和 1g 人工重力为目标：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.7936em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1076em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">ω</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.0074em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">0.20</span><span class="mord"><span class="mord">9</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">9.81</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">224</span><span class="mord text"><span class="mord"> m</span></span></span></span></span></span></p>
+<p>这意味着一个舒适的1g旋转栖息地需要约 <strong>450 m 直径</strong>。若放宽到 2 rpm 耐受阈值：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.2574em;vertical-align:-0.936em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mopen">(</span><span class="mord">2</span><span class="mord mathnormal" style="margin-right:0.03588em;">π</span><span class="mord">/30</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">9.81</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">56</span><span class="mord text"><span class="mord"> m</span></span></span></span></span></span></p>
+<p>即 ~112 m 直径，但乘员需要数天的前庭适应期。</p>
+<p><strong>径向重力梯度的影响</strong>：</p>
+<p>人体身高 h ~ 1.8 m，脚部到头部重力差：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.2408em;vertical-align:-0.8804em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">Δ</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.0574em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span><span class="mord mathnormal">h</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<p>对 r = 56 m 的旋转站：Δg/g = 2×1.8/(2×56) ≈ 1.6%，在可接受范围内。
+对 r = 10 m 的小型站：Δg/g ≈ 9%，脚部1g时头部仅0.91g，长期影响未知。</p>
+<h3 id="sec-4">1.1.3 部分重力的未知领域</h3>
+<p>月球（0.16g）和火星（0.38g）的长期人体效应是太空移民的核心未解问题。目前数据极为有限：</p>
+<ul>
+<li><strong>ISS数据</strong>：完全微重力下，骨密度流失 ~1-1.5%/月，肌肉质量流失 ~5%/月，心血管去适应在数周内发生</li>
+<li><strong>Apollo任务</strong>：月球表面停留仅数天，不足以评估长期效应</li>
+<li><strong>动物实验</strong>：啮齿动物在部分重力模拟（0.33g，通过离心器）下骨骼适应优于微重力，但阈值不明</li>
+</ul>
+<p><strong>关键科学问题</strong>：人体是否存在重力阈值效应？即 0.38g 是否足以维持骨骼和心血管系统的长期健康？这需要火星表面长期驻留（&gt;1年）的医学数据才能回答。</p>
+<p><strong>相关研究进展（2010年代以来）</strong>：</p>
+<ol>
+<li><strong>在轨啮齿动物基线实验</strong>：NASA"啮齿动物研究"（Rodent Research）系列（2014–2020，共20次任务）与JAXA小鼠实验（Mouse Habitat Unit，2015）确认了小鼠在微重力下出现与人类相似的快速骨丢失与肌肉萎缩，建立了微重力下哺乳动物去适应的基线数据；但这些实验均在完全微重力中进行，无法直接检验部分重力阈值。</li>
+<li><strong>在轨离心机</strong>：2021年，ESA通过SpaceX货运任务将AGBRESA生物离心机送至ISS，该离心机可为细胞与小组织样本提供 0–2 g 的可调重力，是ISS上第一个专用人工重力生物学实验设施。须注意：ISS至今没有可供人体或大型动物使用的离心机，人体尺度的部分重力实验仍无平台。</li>
+<li><strong>地面模拟研究</strong>：最系统的模拟平台是"头低位卧床 + 短臂离心机"。DLR与NASA的60天卧床实验表明，每日间歇性离心刺激可部分缓解心血管去适应，但对骨保护的剂量-效应关系尚不明确；卧床模型的根本局限是只能模拟"卸载"效应，无法复现真实部分重力下的生理载荷状态。</li>
+</ol>
+<p><strong>阈值估计现状</strong>：基于动物离心数据的推算提出"维持骨量所需重力水平至少约 0.3–0.5 g"，但均属超出实验参数区间的外推，不能作为结论。目前最严谨的表述仍是：<strong>人体长期健康所需的最小重力水平没有可靠下限</strong>（开放问题）。这决定了栖息地设计的保守路径——月球（0.16g）与火星（0.38g）基地都应预留人工重力对策设施（离心机、旋转舱段），详见第9章栖息地结构设计；相应的医学监测方案详见第7章太空医学。</p>
+<hr />
+<h3 id="sec-5">1.2 宇宙辐射环境</h3>
+<p>辐射是深空太空移民最严峻的环境威胁之一，也是限制任务时长和栖息地设计的关键因素。</p>
+<h3 id="sec-6">1.2.1 辐射源分类与能谱</h3>
+<p><strong>（1）银河宇宙线（Galactic Cosmic Rays, GCR）</strong></p>
+<p>来源：超新星遗迹、活动星系核等银河系外高能天体物理过程。</p>
+<p>成分与能谱：
+- ~87% 质子，~12% α粒子（氦核），~1% 重离子（HZE粒子：C, O, Fe, Si 等）
+- 能谱范围：~10 MeV/n ~ 10⁵ GeV/n，峰值在 ~300 MeV/n ~ 1 GeV/n
+- 通量：太阳活动极小年 ~4 particles/(cm²·s)（E &gt; 100 MeV/n），太阳活动极大年降低约50%（太阳调制效应）
+- 各向同性，近似恒定通量（太阳周期调制除外）</p>
+<p><strong>GCR能谱参数化</strong>（Force Field Approximation, Gleeson &amp; Axford 1968）：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord">Φ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.00773em;">GCR</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord">Φ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">L</span><span class="mord mathnormal mtight" style="margin-right:0.07847em;">I</span><span class="mord mathnormal mtight" style="margin-right:0.05764em;">S</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">ϕ</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:2.4271em;vertical-align:-0.936em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.4911em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal">ϕ</span><span class="mclose">)</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal">ϕ</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">2</span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">2</span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<p>其中 Φ_LIS 为本地星际谱（LIS），φ 为太阳调制势（单位 MV），典型值 300~1000 MV，随太阳周期变化。</p>
+<p><strong>（2）太阳粒子事件（Solar Particle Events, SPE）</strong></p>
+<p>来源：太阳耀斑和日冕物质抛射（CME）中的粒子加速。</p>
+<p>特征：
+- 几乎全为质子（&gt;95%），少量 α 和重离子
+- 能量范围：~1 MeV ~ 数百 MeV，极端事件可达 GeV
+- 通量：平时 ~0.1 p/(cm²·s·sr)，SPE期间可飙升 3~6 个数量级
+- 持续时间：数小时至数天
+- 高度各向异性，具有方向性
+- 不可精确预测，但存在统计模型（如 JPL SPE概率模型）</p>
+<p><strong>历史案例：1972年8月超级SPE</strong>。1972年4月20日（Apollo 16溅落）与12月7日（Apollo 17发射）之间发生了一连串强烈SPE，其中8月4日的超快CME仅约 14.6 小时到达地球（普通事件需 2–4 天），是SPE风险评估的基准案例。事后剂量重建表明，若当时乘组处于行星际空间且仅有航天服防护，皮肤剂量可达数 Gy 量级（常引估计约 4 Gy），足以引发急性辐射综合征；即便有指令舱舱壁屏蔽，剂量仍将远超年限值。该事件未造成伤亡纯属时间上的巧合——自此后，"SPE应急避难所"成为深空载人栖息地的必备设计项（见 1.2.4 与第9章）。</p>
+<p><strong>（3）辐射带（Van Allen Belts）</strong></p>
+<p>地球辐射带捕获的高能质子和电子：
+- 内带（~1.2~2 R_E）：高能质子为主（E_p ~ 10-100 MeV），由宇宙线与大气相互作用产生的中子衰变（CRAND机制）补充
+- 外带（~3~7 R_E）：高能电子为主（E_e ~ 0.1-10 MeV）
+- 南大西洋异常区（SAA）：内带下沉至 ~200 km，ISS轨道穿越时辐射剂量率升高 ~2倍</p>
+<p><strong>实测验证：阿波罗穿越辐射带</strong>。阿波罗是唯一穿越辐射带的载人航天样本，其轨道设计本身就是辐射防护的一部分：跨月注入（TLI）后飞船高速穿越内外辐射带（约1小时），避开峰值区域，指令舱铝制舱壁提供额外屏蔽。各任务实测皮肤吸收剂量（常引范围）约 0.16–1.37 cGy（mGy量级；不同报告略有差异，Apollo 14 最高，其中包含太阳粒子事件贡献），远低于确定性效应阈值。这证实了"快速穿越 + 避开峰值区"工程策略的有效性——载人登月轨道中辐射带贡献的剂量，远小于全程累积的GCR与SPE剂量。</p>
+<h3 id="sec-7">1.2.2 辐射剂量学</h3>
+<p><strong>剂量量定义</strong>：</p>
+<ul>
+<li><strong>吸收剂量 D</strong>（Gy = J/kg）：单位质量沉积能量</li>
+<li><strong>剂量当量 H</strong>（Sv）：H = D × Q，Q 为辐射品质因子</li>
+<li>光子、电子：Q = 1</li>
+<li>质子（E &lt; 10 MeV）：Q = 2~5</li>
+<li>α粒子、重离子：Q = 20</li>
+<li>GCR重离子（HZE）：Q 可达 20，但实际辐射生物学效应可能更高（RBE问题）</li>
+</ul>
+<p><strong>深空辐射环境典型剂量率</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>位置</th>
+<th>GCR剂量率</th>
+<th>SPE期间剂量率</th>
+<th>年累计（无屏蔽）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LEO（ISS，~400 km）</td>
+<td>~0.2 mSv/天</td>
+<td>可升至 ~1 mSv/天</td>
+<td>~150-200 mSv/年</td>
+</tr>
+<tr>
+<td>月球表面</td>
+<td>~0.3 mSv/天</td>
+<td>可升至 ~数 Sv/天（极端SPE）</td>
+<td>~200-300 mSv/年</td>
+</tr>
+<tr>
+<td>火星转移轨道</td>
+<td>~0.5-0.7 mSv/天</td>
+<td>可升至 ~数 Sv/天</td>
+<td>~300-500 mSv/年</td>
+</tr>
+<tr>
+<td>火星表面</td>
+<td>~0.2 mSv/天（大气部分屏蔽）</td>
+<td>可升至 ~0.5-1 Sv/天</td>
+<td>~150-250 mSv/年</td>
+</tr>
+<tr>
+<td>行星际空间（1 AU）</td>
+<td>~0.5 mSv/天</td>
+<td>—</td>
+<td>~180 mSv/年</td>
+</tr>
+</tbody>
+</table>
+<p><em>数据来源：MSL/RAD火星表面测量、MARIE火星轨道测量、CRaTER/LRO月球测量</em></p>
+<p><strong>关键实测值</strong>：MSL/RAD（好奇号）测得的地火转移段GCR剂量当量率为 0.66 ± 0.12 mSv/天，火星表面为 0.21 ± 0.04 mSv/天（Zeitlin等，Science，2013；2014）——后者是首次在另一颗行星表面进行的原位辐射测量，表明火星大气（柱质量 ~16 g/cm²）与行星本体将GCR剂量降低至行星际空间的约 1/3。这两个数据为载人火星任务的辐射剂量预测提供了锚点。</p>
+<h3 id="sec-8">1.2.3 辐射对人体的影响</h3>
+<p><strong>确定性效应（高剂量率，&gt;阈值）</strong>：
+- 急性辐射综合征（ARS）：&gt;0.5 Sv 全身照射
+  - 0.5-1 Sv：造血综合征（淋巴细胞下降）
+  - 1-2 Sv：胃肠综合征（恶心、呕吐）
+  - 2-6 Sv：骨髓抑制，感染风险
+  - &gt;6 Sv：致死性（无医疗干预 LD₅₀/₃₀ ~ 3.5-4 Sv）
+- 皮肤红斑、白内障（晶体混浊，阈值 ~0.5 Sv 重离子）</p>
+<p><strong>随机性效应（低剂量率，概率性）</strong>：
+- 致癌：线性无阈值（LNT）模型下，每 Sv 增加 ~5% 致死癌症风险
+- 心血管效应：近年证据表明 &gt;0.5 Sv 可能增加心血管疾病风险
+- 中枢神经系统（CNS）效应：GCR重离子可能造成神经元损伤、认知功能下降，这是深空任务特有的风险</p>
+<p><strong>注（Apollo队列研究）</strong>：一项队列研究（Delp等，Scientific Reports，2016）显示，24名Apollo登月宇航员中心血管疾病死亡占比（~43%）显著高于未飞行与仅近地轨道飞行的宇航员（均 ~9–11%），提示深空辐射对心血管系统存在长期损伤的可能；该研究因样本量小、混杂因素多而受到质疑，尚非定论（待验证）。</p>
+<p><strong>NASA辐射剂量限值</strong>（2014年标准，基于3% REID致癌风险）：</p>
+<table>
+<thead>
+<tr>
+<th>性别/年龄</th>
+<th>职业生涯剂量限值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>男性 35岁</td>
+<td>~1.0 Sv</td>
+</tr>
+<tr>
+<td>女性 35岁</td>
+<td>~0.6 Sv</td>
+</tr>
+<tr>
+<td>男性 45岁</td>
+<td>~1.5 Sv</td>
+</tr>
+<tr>
+<td>女性 45岁</td>
+<td>~0.9 Sv</td>
+</tr>
+</tbody>
+</table>
+<p><em>注：女性限值较低，因为乳腺和卵巢组织辐射敏感性更高</em></p>
+<p><strong>火星任务辐射挑战</strong>：</p>
+<p>一次火星往返任务（~500天转移 + 500天表面停留）预计总剂量当量 ~0.7-1.2 Sv（取决于屏蔽和太阳周期相位），已接近或超过职业限值。这意味着火星任务要么需要显著辐射屏蔽，要么需要重新定义可接受风险标准。</p>
+<h3 id="sec-9">1.2.4 辐射防护基础</h3>
+<p><strong>被动屏蔽</strong>：</p>
+<p>辐射在物质中的衰减遵循：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">Φ</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord">Φ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.938em;"></span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.938em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mathnormal mtight">x</span><span class="mord mtight">/</span><span class="mord mathnormal mtight">λ</span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p>其中 x 为屏蔽厚度（g/cm²），λ 为衰减长度（g/cm²）。</p>
+<p>关键问题：
+- <strong>GCR质子</strong>：水或聚乙烯屏蔽，λ ~ 150 g/cm²。10 g/cm²（~10 cm水）可将质子通量降低 ~6%
+- <strong>GCR重离子（HZE）</strong>：与屏蔽材料发生核碎裂反应，产生次级中子和碎片粒子。高Z材料（如铝）产生的次级辐射反而可能增加剂量。低Z材料（氢富集材料如聚乙烯、水）是更优选择
+- <strong>SPE质子</strong>：能量较低（~10-100 MeV），20-50 g/cm² 聚乙烯即可有效屏蔽</p>
+<p><strong>主动屏蔽概念</strong>：</p>
+<p>利用磁场或电场偏转带电粒子：
+- 超导线圈产生 ~1-5 T 磁场，形成磁屏蔽层
+- 所需磁场强度取决于粒子刚度（rigidity）：R = pc/(Ze)，其中 p 为动量，Z 为电荷数
+- GCR高能粒子刚度极高（~GV量级），需要极大磁矩，工程上极为困难
+- 静电屏蔽：需要极高电压（~GV），电荷泄漏和击穿问题严重</p>
+<p>目前主动屏蔽仍处于概念研究阶段（TRL 2-3），被动屏蔽仍是唯一可行方案。</p>
+<p><strong>工程含义</strong>：载人栖息地的被动屏蔽实践上采用"分级屏蔽 + 应急避难所"形式——以栖息地舱壁、水箱、食品与推进剂贮箱组合提供约 10–20 g/cm² 的平均屏蔽，另设局部屏蔽 20–50 g/cm² 的小型避难所（风暴避难所，storm shelter）用于SPE应急。Artemis计划的载人登月任务已将该配置列为必备设计项。月球/火星栖息地的屏蔽设计与质量预算详见第9章栖息地结构设计；辐射约束对火星表面驻留时长的影响详见第13章火星。</p>
+<hr />
+<h3 id="sec-10">1.3 真空与极端温度</h3>
+<h3 id="sec-11">1.3.1 真空环境</h3>
+<p><strong>行星际空间真空度</strong>：</p>
+<ul>
+<li>数密度：~5 particles/cm³（太阳风质子在1 AU处）</li>
+<li>对应压力：~10⁻¹⁴ Pa（1 AU处太阳风动态压力）</li>
+<li>远优于任何人造真空室（最佳工业真空 ~10⁻¹⁰ Pa）</li>
+</ul>
+<p><strong>真空的工程影响</strong>：</p>
+<ol>
+<li>
+<p><strong>出气（Outgassing）</strong>：材料在真空中释放吸附气体和挥发物
+   - 总质量损失（TML）和可凝挥发物（CVCM）是航天材料筛选的关键指标
+   - 典型聚合物：环氧树脂 TML ~0.5-2%，聚酰亚胺 TML ~0.1-0.5%
+   - 出气产物可在低温表面凝结（光学器件、散热器污染）</p>
+</li>
+<li>
+<p><strong>冷焊（Cold Welding）</strong>：真空中清洁金属表面接触时，无氧化层阻隔，可直接键合
+   - 对活动部件（铰链、连接器）构成风险
+   - 缓解措施：使用不同材料配对、润滑剂、表面涂层</p>
+</li>
+<li>
+<p><strong>热传导限制</strong>：真空中无对流散热，仅靠传导和辐射
+   - 电子设备散热完全依赖传导到辐射面板
+   - 热管（heat pipe）技术是航天器热管理的核心</p>
+</li>
+<li>
+<p><strong>电弧与放电</strong>：高电压在真空中可能引发真空电弧
+   - 帕邢定律（Paschen's Law）在低气压区失效
+   - 高压系统设计需特殊考虑</p>
+</li>
+</ol>
+<p>材料的出气筛选标准（TML/CVCM）与空间环境适应性评估详见第16章太空材料科学；热控系统的定量设计（散热器规模、热管布局）详见第9章栖息地结构设计。</p>
+<h3 id="sec-12">1.3.2 极端温度与热平衡</h3>
+<p><strong>航天器热平衡方程</strong>：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5945em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0037em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05764em;">S</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6389em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">so</span><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">p</span><span class="mord mathnormal mtight">ro</span><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.5945em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">ϵ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.07847em;">I</span><span class="mord mathnormal mtight" style="margin-right:0.00773em;">R</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7306em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.01968em;">pl</span><span class="mord mathnormal mtight">an</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">v</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight" style="margin-right:0.02691em;">w</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">Q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">in</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">er</span><span class="mord mathnormal mtight">na</span><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.5945em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">ϵ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.07847em;">I</span><span class="mord mathnormal mtight" style="margin-right:0.00773em;">R</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4445em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8641em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+<p>其中：
+- α_S：太阳吸收率（表面光学性质）
+- q_solar：太阳常数（1 AU处 ~1361 W/m²）
+- A_proj：投影面积
+- ε_IR：红外发射率
+- q_planet：行星反照和红外辐射
+- Q_internal：内部产热
+- σ：Stefan-Boltzmann常数 = 5.67 × 10⁻⁸ W/(m²·K⁴)
+- T：平衡温度（K）
+- A_rad：辐射散热面积</p>
+<p>太阳常数 q_solar 同时是太阳能发电系统的设计输入；输出功率随日心距离的衰减规律与太阳能帆板工程详见第10章能源系统。</p>
+<p><strong>典型温度范围</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>日照面温度</th>
+<th>阴影面温度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LEO航天器（铝表面）</td>
+<td>~120°C</td>
+<td>~-150°C</td>
+</tr>
+<tr>
+<td>月球表面（赤道）</td>
+<td>~127°C（正午）</td>
+<td>~-173°C（夜间）</td>
+</tr>
+<tr>
+<td>火星表面（赤道）</td>
+<td>~20°C（正午）</td>
+<td>~-73°C（夜间）</td>
+</tr>
+<tr>
+<td>深空（1 AU，等温球体）</td>
+<td>—</td>
+<td>~278 K（~5°C）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>热管理工程</strong>：</p>
+<ul>
+<li><strong>多层隔热（MLI）</strong>：20-40层镀铝聚酰亚胺薄膜，有效发射率 ε_eff ~ 0.01-0.03，将热传导降至极低</li>
+<li><strong>可变发射率器件（VRD）</strong>：电致变色或热致变色涂层，动态调节辐射散热</li>
+<li><strong>热管与环路热管（LHP）</strong>：等温传热，有效热导率比铜高 100-1000倍</li>
+<li><strong>放射性同位素加热单元（RHU）</strong>：¹⁴⁰W ²³⁸PuO₂ 每颗，用于月球/火星夜间保温</li>
+</ul>
+<hr />
+<h3 id="sec-13">1.4 微流星体与空间碎片</h3>
+<h3 id="sec-14">1.4.1 微流星体环境</h3>
+<p><strong>来源</strong>：彗星碎片和小行星碰撞产生的颗粒。</p>
+<p><strong>通量模型</strong>（Grün et al. 1985, NASA MSFC模型）：</p>
+<p>质量分布：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.0574em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="mord mathnormal">m</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8213em;"></span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8213em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mathnormal mtight">s</span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p>其中 s ~ 1.34（小质量段）至 ~1.8（大质量段），C 为归一化常数。</p>
+<table>
+<thead>
+<tr>
+<th>质量范围</th>
+<th>通量（/m²/年）</th>
+<th>典型来源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10⁻¹⁸ ~ 10⁻¹⁴ kg</td>
+<td>~10⁶</td>
+<td>彗星尘埃</td>
+</tr>
+<tr>
+<td>10⁻¹⁴ ~ 10⁻⁶ kg</td>
+<td>~10⁴</td>
+<td>彗星/小行星尘埃</td>
+</tr>
+<tr>
+<td>10⁻⁶ ~ 10⁻³ kg</td>
+<td>~10</td>
+<td>小行星碰撞</td>
+</tr>
+<tr>
+<td>&gt;10⁻³ kg</td>
+<td>&lt;1</td>
+<td>偶发大颗粒</td>
+</tr>
+</tbody>
+</table>
+<p><strong>速度分布</strong>：
+- 平均撞击速度：~20 km/s（行星际空间）
+- 最大撞击速度：~72 km/s（逆行轨道迎面撞击）
+- LEO：叠加轨道速度，平均 ~10-15 km/s</p>
+<h3 id="sec-15">1.4.2 空间碎片环境</h3>
+<p><strong>LEO碎片分布</strong>（截至2025年估计）：</p>
+<table>
+<thead>
+<tr>
+<th>尺寸</th>
+<th>数量（估计）</th>
+<th>风险等级</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&gt;10 cm</td>
+<td>~36,000</td>
+<td>可追踪，需规避机动</td>
+</tr>
+<tr>
+<td>1-10 cm</td>
+<td>~100万</td>
+<td>不可追踪，需被动防护</td>
+</tr>
+<tr>
+<td>0.1-1 mm</td>
+<td>~1.3亿</td>
+<td>表面侵蚀</td>
+</tr>
+<tr>
+<td>&lt;0.1 mm</td>
+<td>不可计数</td>
+<td>低个体风险</td>
+</tr>
+</tbody>
+</table>
+<p><strong>轨道速度下的动能</strong>：</p>
+<p>一颗 1 cm 铝合金碎片（m ~ 1 g），以 v = 10 km/s 撞击：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.0074em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord mathnormal">m</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.0074em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.9474em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">3</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.1141em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span></span></span></span></span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord">50</span><span class="mord text"><span class="mord"> kJ</span></span></span></span></span></span></p>
+<p>相当于一颗手榴弹的动能，集中在 ~1 cm² 面积上。</p>
+<p><strong>碎片通量模型</strong>（ORDEM, NASA）：</p>
+<p>1 mm碎片在LEO的通量 ~10⁻⁴ /m²/年，对长期运行的栖息地（10年以上）构成累积风险。</p>
+<p><strong>凯斯勒级联（Kessler Syndrome）</strong>：</p>
+<p>Kessler与Cour-Palais（1978）提出：当碎片密度超过临界值后，碎片间碰撞会产生更多碎片，即使停止一切发射，碎片数量仍会持续增长——即级联效应，其在LEO的时间尺度估计为数十年至数百年。两个标志性事件证实了该风险的现实性：</p>
+<ul>
+<li><strong>2009年铱星-宇宙碰撞</strong>：2009年2月10日，在役的Iridium 33通信卫星与已退役的俄罗斯Cosmos 2251军用通信卫星在约 790 km 高度以约 11.7 km/s 的相对速度相撞，产生约 2,000 个可追踪大型碎片与更多小碎片——这是人类历史上首次完整卫星间的碰撞，证明碰撞概率模型并非过于保守的估计。</li>
+<li><strong>2021年反卫星试验</strong>：2021年11月15日，俄罗斯以直升式反卫星导弹摧毁退役卫星Cosmos 1408（约 1,400 kg，约 485 km 轨道），产生 1,500 余个可追踪碎片，ISS乘组当时被迫进入返回飞船应急避险。</li>
+</ul>
+<p>对太空移民的含义：LEO中的长寿命栖息地在10–50年时间尺度上面临持续增长的碎片通量，防护设计应预留增长裕度；或者将建设选址转向更高轨道与深空（如Lagrange点，见第2章 2.2）。主动碎片清除（Active Debris Removal, ADR）目前处于在轨演示阶段（TRL 4–6，如Astroscale的ELSA-d与ADRAS-J任务），规模与经济性尚不足以逆转级联趋势。</p>
+<h3 id="sec-16">1.4.3 超高速撞击物理</h3>
+<p><strong>撞击 regimes</strong>：</p>
+<p>当撞击速度 v &gt; 材料声速的 ~30% 时，进入超高速撞击（hypervelocity impact, HVI）范畴，材料行为由流体动力学主导而非强度。</p>
+<p><strong>撞击坑直径</strong>（经验公式，Cour-Palais 1969）：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.667</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.2472em;vertical-align:-0.3831em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-2.453em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">p</span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">0.917</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3831em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8641em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">0.333</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.2472em;vertical-align:-0.3831em;"></span><span class="mord"><span class="mord mathnormal">ρ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-2.453em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">p</span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">0.167</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3831em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.1111em;vertical-align:-0.247em;"></span><span class="mord"><span class="mord mathnormal">ρ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-2.453em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">0.167</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.1141em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mop">cos</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">0.5</span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p>其中 d_p 为弹丸直径，v 为撞击速度，ρ_p 和 ρ_t 分别为弹丸和目标密度，θ 为撞击角。</p>
+<p><strong>弹道极限方程（BLE）</strong>：</p>
+<p>定义恰好穿透给定厚度靶板的最小弹丸尺寸：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05017em;">B</span><span class="mord mathnormal mtight">L</span><span class="mord mathnormal mtight" style="margin-right:0.05764em;">E</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">ρ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">ρ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">material properties</span></span><span class="mclose">)</span></span></span></span></span></p>
+<p>这是防护设计的核心方程。</p>
+<h3 id="sec-17">1.4.4 防护结构设计</h3>
+<p><strong>Whipple防护罩</strong>（1947年提出）：</p>
+<p>基本结构：薄外板（bumper）+ 间距 + 主壁</p>
+<p>工作原理：弹丸撞击外板碎裂/气化，碎片云在间距中扩散，降低主壁上的局部冲击压力。</p>
+<p><strong>增强型Whipple防护罩</strong>（用于ISS）：</p>
+<ul>
+<li>外板：1.2 mm铝合金</li>
+<li>间距：~10 cm</li>
+<li>Nextel/Kevlar缓冲层：陶瓷纤维和芳纶织物捕获次级碎片</li>
+<li>主壁：4 mm铝合金</li>
+</ul>
+<p>可防护 ~1.2 cm 铝合金弹丸（v = 7 km/s）。</p>
+<p><strong>月球/火星栖息地防护</strong>：</p>
+<ul>
+<li>月壤/火星壤覆盖：2-3 m厚覆盖层可有效防护所有微流星和大多数碎片</li>
+<li>熔岩管栖息地：天然岩体提供完整防护</li>
+<li>充气式栖息地：多层Vectran/Zylon织物 + 外部颗粒填充屏蔽</li>
+</ul>
+<p><strong>关键穿透概率计算</strong>：</p>
+<p>对于暴露面积 A（m²）、运行时间 T（年）、临界穿透弹丸尺寸 d_c 的栖息地：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">p</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">n</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">o</span><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">exp</span><span class="mopen">(</span><span class="mord">−</span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mopen">(</span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mclose">)</span></span></span></span></span></p>
+<p>其中 F(&gt;d_c) 为大于 d_c 的碎片/微流星累积通量。</p>
+<p>设计准则：ISS要求 P_penetration &lt; 0.01/年（对临界穿透尺寸），长期月球基地可能需要更严格标准。</p>
+<hr />
+<h3 id="sec-18">1.5 行星际磁场与太阳风等离子体环境</h3>
+<h3 id="sec-19">1.5.1 太阳风基本参数</h3>
+<p>太阳风是从日冕持续向外膨胀的等离子体流，由质子、电子和少量α粒子组成。</p>
+<p><strong>1 AU处典型参数</strong>（慢速太阳风）：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>典型值</th>
+<th>范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>质子数密度 n_p</td>
+<td>~5 cm⁻³</td>
+<td>1-20 cm⁻³</td>
+</tr>
+<tr>
+<td>质子温度 T_p</td>
+<td>~10⁵ K</td>
+<td>0.5-5 × 10⁵ K</td>
+</tr>
+<tr>
+<td>电子温度 T_e</td>
+<td>~1.3 × 10⁵ K</td>
+<td>0.8-2 × 10⁵ K</td>
+</tr>
+<tr>
+<td>流速 v_sw</td>
+<td>~400 km/s</td>
+<td>300-800 km/s</td>
+</tr>
+<tr>
+<td>动压 ρv²</td>
+<td>~2 nPa</td>
+<td>0.5-10 nPa</td>
+</tr>
+<tr>
+<td>磁场 B（IMF）</td>
+<td>~5 nT</td>
+<td>1-15 nT</td>
+</tr>
+</tbody>
+</table>
+<p><strong>快速太阳风</strong>（来自冕洞）：v ~ 700-800 km/s，n_p ~ 3 cm⁻³</p>
+<h3 id="sec-20">1.5.2 行星际磁场（IMF）</h3>
+<p>太阳风携带太阳磁场向外扩展，形成帕克螺旋（Parker Spiral）结构：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0502em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.04em;vertical-align:-0.686em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0502em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner"><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size2">(</span></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1076em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size2">)</span></span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:1.354em;"><span style="top:-3.6029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0502em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">ϕ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.3271em;vertical-align:-0.836em;"></span><span class="mord">−</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0502em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.4911em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">s</span><span class="mord mathnormal mtight" style="margin-right:0.02691em;">w</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord">Ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2583em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">⊙</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-2.4519em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2481em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.836em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">sin</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span></span></span></span></span></p>
+<p>其中 B_0 为日面参考磁场，Ω_⊙ = 2.7 × 10⁻⁶ rad/s 为太阳自转角速度，θ 为日心纬度。</p>
+<p>在1 AU、黄道面处，帕克螺旋角：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mop">tan</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">ψ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.1963em;vertical-align:-0.836em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0502em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0502em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">ϕ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.836em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.1963em;vertical-align:-0.836em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">s</span><span class="mord mathnormal mtight" style="margin-right:0.02691em;">w</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord">Ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2583em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">⊙</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.836em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.2604em;vertical-align:-0.7693em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.4911em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">4</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2.7</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">6</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">1.5</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">11</span></span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7693em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1.0</span></span></span></span></span></p>
+<p>即 ψ ~ 45°，磁场方向与日-地连线成约45°角。</p>
+<h3 id="sec-21">1.5.3 等离子体环境对航天器的影响</h3>
+<p><strong>表面充电（Surface Charging）</strong>：</p>
+<ul>
+<li>航天器在不同等离子体环境中积累电荷</li>
+<li>LEO：等离子体密度高（~10⁶ cm⁻³），航天器电位接近等离子体电位（~0 V）</li>
+<li>GEO：等离子体密度低（~1 cm⁻³），光电子发射主导，航天器可充电至 +10 ~ +20 V</li>
+<li>磁尾/等离子体片：高能电子注入，航天器可充电至 -100 ~ -10,000 V（深层充电风险）</li>
+</ul>
+<p><strong>深层充电（Deep Dielectric Charging）</strong>：</p>
+<p>高能电子（&gt;1 MeV）穿透航天器外壳，在绝缘材料内部积累电荷，最终放电（ESD）可能损坏电子设备。</p>
+<p><strong>单粒子效应（SEE）</strong>：</p>
+<p>高能宇宙线或太阳粒子穿透微电子器件，产生电荷沉积：
+- 单粒子翻转（SEU）：存储位翻转，可恢复
+- 单粒子锁定（SEL）：CMOS器件闩锁，可能烧毁
+- 单粒子烧毁（SEB）：功率器件击穿</p>
+<h3 id="sec-22">1.5.4 行星际等离子体对通信的影响</h3>
+<p><strong>太阳合（Solar Conjunction）</strong>：</p>
+<p>当航天器与地球之间视线接近太阳时（太阳-航天器-地球角 &lt; ~5°），信号穿过太阳风等离子体：</p>
+<ul>
+<li>闪烁（Scintillation）：等离子体密度不均匀性导致信号幅度和相位波动</li>
+<li>法拉第旋转：磁场导致极化面旋转，影响圆极化通信</li>
+<li>群延迟：等离子体色散导致测距误差</li>
+</ul>
+<p><strong>日冕物质抛射（CME）通过时</strong>：</p>
+<p>密度可升至 ~10-100 cm⁻³，通信中断风险显著增加。</p>
+<p><strong>实际案例</strong>：火星探测器每约 26 个月经历一次太阳合（与会合周期同步，见第2章 2.1.2），持续约 2–3 周，期间NASA按惯例暂停向火星车与轨道器发送指令（MSL、Mars 2020等任务均如此执行）。地火 3–22 分钟的光行时叠加合日中断，构成火星栖息地必须具备本地自主运行能力的环境根源之一（详见第11章通信与导航）。</p>
+<h3 id="sec-23">1.6 本章小结</h3>
+<p>本章建立了太空移民的太空环境定量边界条件：（1）ISS微重力水平约 10⁻⁶ g，人工重力的舒适阈值 ω ≤ 2 rpm 对应约 224 m 半径，部分重力（0.16–0.38g）生理阈值是当前最大的未知变量；（2）辐射是深空任务的首要约束——火星往返剂量 ~0.7–1.2 Sv 已逼近职业限值，被动低Z屏蔽是唯一可行手段，SPE应急避难所为必备设计；（3）真空与热环境决定材料选择与热控构型；（4）超高速撞击风险可管理，Whipple防护罩与月壤覆盖是成熟方案，但LEO碎片环境的长期增长趋势要求防护预留裕度；（5）等离子体与磁场环境影响表面充电、电子器件安全与深空通信。上述参数直接作为后续栖息地（第9章）、医学（第7章）、能源（第10章）与推进（第3、4章）设计的输入。</p>
+<h3 id="sec-24">1.7 关键参数速查表</h3>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>典型值</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ISS微重力水平</td>
+<td>~10⁻⁶ g</td>
+<td>在轨微重力品质</td>
+</tr>
+<tr>
+<td>舒适人工重力半径</td>
+<td>~224 m（ω = 2 rpm，1 g）</td>
+<td>大型旋转栖息地下限尺度</td>
+</tr>
+<tr>
+<td>旋转耐受阈值</td>
+<td>ω ≤ 4 rpm（短期）/ ≤ 6 rpm（适应后）</td>
+<td>前庭耐受上限</td>
+</tr>
+<tr>
+<td>GCR通量（太阳活动极小年）</td>
+<td>~4 particles/(cm²·s)（E &gt; 100 MeV/n）</td>
+<td>深空辐射场基准</td>
+</tr>
+<tr>
+<td>太阳调制势 φ</td>
+<td>~300–1000 MV</td>
+<td>GCR强度的太阳周期调制</td>
+</tr>
+<tr>
+<td>LEO（ISS）剂量率</td>
+<td>~0.2 mSv/天（年 ~150–200 mSv）</td>
+<td>近地轨道辐射暴露</td>
+</tr>
+<tr>
+<td>火星转移轨道剂量率</td>
+<td>~0.5–0.7 mSv/天</td>
+<td>转移段GCR剂量</td>
+</tr>
+<tr>
+<td>火星表面剂量率（实测）</td>
+<td>0.21 ± 0.04 mSv/天</td>
+<td>MSL/RAD原位测量</td>
+</tr>
+<tr>
+<td>火星往返总剂量</td>
+<td>~0.7–1.2 Sv</td>
+<td>逼近职业剂量限值</td>
+</tr>
+<tr>
+<td>SPE屏蔽需求</td>
+<td>20–50 g/cm² 聚乙烯</td>
+<td>风暴避难所设计依据</td>
+</tr>
+<tr>
+<td>太阳常数（1 AU）</td>
+<td>~1361 W/m²</td>
+<td>热平衡与太阳能设计输入</td>
+</tr>
+<tr>
+<td>微流星体平均撞击速度</td>
+<td>~20 km/s（最大 ~72 km/s）</td>
+<td>撞击动能载荷依据</td>
+</tr>
+<tr>
+<td>ISS Whipple防护能力</td>
+<td>~1.2 cm 弹丸 @ 7 km/s</td>
+<td>防护结构基准</td>
+</tr>
+<tr>
+<td>太阳风典型参数（1 AU）</td>
+<td>n_p ~5 cm⁻³，v ~400 km/s</td>
+<td>等离子体环境基准</td>
+</tr>
+<tr>
+<td>帕克螺旋角（1 AU）</td>
+<td>~45°</td>
+<td>行星际磁场方向</td>
+</tr>
+</tbody>
+</table>
+<hr /></div><div class="prevnext"><a class="pn pn-prev" href="intro.html"><span class="pn-k">上一篇</span><span class="pn-t">前言与导读</span></a><a class="pn pn-next" href="ch02.html"><span class="pn-k">下一篇</span><span class="pn-t">第2章 天体物理与轨道力学</span></a></div></article><footer class="foot"><span>未来太空移民技术手册 · 完整版 v2.0</span><span class="foot-mono">AD ASTRA PER ASPERA</span></footer></main>
+<aside class="toc"><div class="toc-title">本页目录</div>
+<a class="toc-h3" href="#sec-1">1.1 微重力与人工重力</a>
+<a class="toc-h3" href="#sec-2">1.1.1 微重力的本质</a>
+<a class="toc-h3" href="#sec-3">1.1.2 人工重力：旋转系统物理</a>
+<a class="toc-h3" href="#sec-4">1.1.3 部分重力的未知领域</a>
+<a class="toc-h3" href="#sec-5">1.2 宇宙辐射环境</a>
+<a class="toc-h3" href="#sec-6">1.2.1 辐射源分类与能谱</a>
+<a class="toc-h3" href="#sec-7">1.2.2 辐射剂量学</a>
+<a class="toc-h3" href="#sec-8">1.2.3 辐射对人体的影响</a>
+<a class="toc-h3" href="#sec-9">1.2.4 辐射防护基础</a>
+<a class="toc-h3" href="#sec-10">1.3 真空与极端温度</a>
+<a class="toc-h3" href="#sec-11">1.3.1 真空环境</a>
+<a class="toc-h3" href="#sec-12">1.3.2 极端温度与热平衡</a>
+<a class="toc-h3" href="#sec-13">1.4 微流星体与空间碎片</a>
+<a class="toc-h3" href="#sec-14">1.4.1 微流星体环境</a>
+<a class="toc-h3" href="#sec-15">1.4.2 空间碎片环境</a>
+<a class="toc-h3" href="#sec-16">1.4.3 超高速撞击物理</a>
+<a class="toc-h3" href="#sec-17">1.4.4 防护结构设计</a>
+<a class="toc-h3" href="#sec-18">1.5 行星际磁场与太阳风等离子体环境</a>
+<a class="toc-h3" href="#sec-19">1.5.1 太阳风基本参数</a>
+<a class="toc-h3" href="#sec-20">1.5.2 行星际磁场（IMF）</a>
+<a class="toc-h3" href="#sec-21">1.5.3 等离子体环境对航天器的影响</a>
+<a class="toc-h3" href="#sec-22">1.5.4 行星际等离子体对通信的影响</a>
+<a class="toc-h3" href="#sec-23">1.6 本章小结</a>
+<a class="toc-h3" href="#sec-24">1.7 关键参数速查表</a>
+</aside>
+</div>
+<script src="../search-index.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

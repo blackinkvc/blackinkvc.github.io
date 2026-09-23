@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第12章 月球 · 未来太空移民技术手册</title>
+<meta name="description" content="未来太空移民技术手册 —— 面向专业读者的综合性太空殖民技术参考，涵盖推进、生保、栖息地、治理与前沿技术。">
+<link rel="icon" type="image/png" href="../assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script>(function(){try{var t=localStorage.getItem('smh-theme');if(!t)t='dark';document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="目录"><span></span><span></span><span></span></button>
+  <a class="brand" href="../index.html">
+    <img class="brand-icon" src="../assets/icon.png" alt="">
+    <span class="brand-zh">未来太空移民技术手册</span>
+    <span class="brand-en">SPACE SETTLEMENT HANDBOOK</span>
+  </a>
+  <div class="top-actions">
+    <button class="search-btn" id="searchBtn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg><span>检索</span><kbd>⌘K</kbd></button>
+    <button class="theme-btn" id="themeBtn" aria-label="切换主题"></button>
+  </div>
+</header>
+
+<div class="search-overlay" id="searchOverlay" hidden>
+  <div class="search-box">
+    <div class="search-head">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg>
+      <input id="searchInput" type="text" placeholder="检索全书：术语、参数、章节…" autocomplete="off">
+      <kbd>ESC</kbd>
+    </div>
+    <div class="search-results" id="searchResults"><div class="search-hint">输入关键词，检索 23 章正文与附录</div></div>
+  </div>
+</div>
+<div class="layout">
+<nav class="sidebar" id="sidebar">
+<div class="sb-group"><div class="sb-label">卷首</div>
+<a class="sb-item" href="intro.html"><span class="sb-num">◎</span><span class="sb-t">前言与导读</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第一部分 · 基础物理与宇宙环境</div>
+<a class="sb-item" href="ch01.html"><span class="sb-num">01</span><span class="sb-t">太空环境物理</span></a>
+<a class="sb-item" href="ch02.html"><span class="sb-num">02</span><span class="sb-t">天体物理与轨道力学</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第二部分 · 推进与运输系统</div>
+<a class="sb-item" href="ch03.html"><span class="sb-num">03</span><span class="sb-t">化学推进与近中期方案</span></a>
+<a class="sb-item" href="ch04.html"><span class="sb-num">04</span><span class="sb-t">先进推进理论</span></a>
+<a class="sb-item" href="ch05.html"><span class="sb-num">05</span><span class="sb-t">星际航行工程</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第三部分 · 生命保障与人体工程</div>
+<a class="sb-item" href="ch06.html"><span class="sb-num">06</span><span class="sb-t">封闭生态生命保障系统（CELSS）</span></a>
+<a class="sb-item" href="ch07.html"><span class="sb-num">07</span><span class="sb-t">太空医学</span></a>
+<a class="sb-item" href="ch08.html"><span class="sb-num">08</span><span class="sb-t">食品与营养</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第四部分 · 栖息地与基础设施</div>
+<a class="sb-item" href="ch09.html"><span class="sb-num">09</span><span class="sb-t">栖息地结构设计</span></a>
+<a class="sb-item" href="ch10.html"><span class="sb-num">10</span><span class="sb-t">能源系统</span></a>
+<a class="sb-item" href="ch11.html"><span class="sb-num">11</span><span class="sb-t">通信与导航</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第五部分 · 目的地与殖民方案</div>
+<a class="sb-item current" href="ch12.html"><span class="sb-num">12</span><span class="sb-t">月球</span></a>
+<a class="sb-item" href="ch13.html"><span class="sb-num">13</span><span class="sb-t">火星</span></a>
+<a class="sb-item" href="ch14.html"><span class="sb-num">14</span><span class="sb-t">小行星与太空殖民地</span></a>
+<a class="sb-item" href="ch15.html"><span class="sb-num">15</span><span class="sb-t">外太阳系与冰卫星</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第六部分 · 材料与制造</div>
+<a class="sb-item" href="ch16.html"><span class="sb-num">16</span><span class="sb-t">太空材料科学</span></a>
+<a class="sb-item" href="ch17.html"><span class="sb-num">17</span><span class="sb-t">太空制造与原位资源利用</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第七部分 · 社会、文化与治理</div>
+<a class="sb-item" href="ch18.html"><span class="sb-num">18</span><span class="sb-t">太空治理与法律框架</span></a>
+<a class="sb-item" href="ch19.html"><span class="sb-num">19</span><span class="sb-t">太空经济学</span></a>
+<a class="sb-item" href="ch20.html"><span class="sb-num">20</span><span class="sb-t">太空文化演化</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第八部分 · 前沿与推测性技术</div>
+<a class="sb-item" href="ch21.html"><span class="sb-num">21</span><span class="sb-t">脑机接口与人类增强</span></a>
+<a class="sb-item" href="ch22.html"><span class="sb-num">22</span><span class="sb-t">AI治理与超级智能</span></a>
+<a class="sb-item" href="ch23.html"><span class="sb-num">23</span><span class="sb-t">意识上传与数字存在</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">附录 · 参考数据</div>
+<a class="sb-item" href="appA.html"><span class="sb-num">A</span><span class="sb-t">A 物理常数与换算</span></a>
+<a class="sb-item" href="appB.html"><span class="sb-num">B</span><span class="sb-t">B 太阳系天体参数</span></a>
+<a class="sb-item" href="appC.html"><span class="sb-num">C</span><span class="sb-t">C 推进系统对比</span></a>
+<a class="sb-item" href="appD.html"><span class="sb-num">D</span><span class="sb-t">D 辐射与屏蔽</span></a>
+<a class="sb-item" href="appE.html"><span class="sb-num">E</span><span class="sb-t">E 术语表（中英对照）</span></a>
+<a class="sb-item" href="appF.html"><span class="sb-num">F</span><span class="sb-t">F 参考文献与推荐阅读</span></a>
+</div>
+</nav><main class="content"><article class="article"><div class="crumb"><span class="crumb-part">第五部分 · 目的地与殖民方案</span><span class="crumb-sep">/</span><span class="crumb-ch">CHAPTER 12</span></div><div class="ch-head"><div class="ch-num">12</div><h1 class="ch-title">月球</h1></div><div class="article-body"><blockquote>
+<p>面向航天工程、物理学、生物学等相关专业背景读者。涵盖当前可行技术与理论/科幻级前瞻技术。</p>
+</blockquote>
+<hr />
+<p>本部分针对太阳系内主要候选目的地，逐一分析其环境特征、资源禀赋、工程挑战和殖民方案。</p>
+<blockquote>
+<p><strong>章首导语</strong></p>
+<p>月球是太阳系中距离地球最近、勘测程度最高的天体，也是人类建立首个地外永久定居点的首选试验场。本章回答三个问题：月球基地建在哪里、用什么资源维持、人体能否长期适应。选址方面，南极沙克尔顿环形山（Shackleton Crater）以"近永久光照 + 永久阴影区（PSR）水冰"的双重禀赋成为公认的最优解。资源方面，月壤含氧约 42%（质量分数），熔融电解等工艺已在地面完成月壤模拟物验证（TRL 4–5），构成原位资源利用（ISRU）的主线；氦-3 开采则是远期愿景。医学方面，0.16 g 对人体的长期影响几乎没有任何实测数据，这是月球殖民最大的不确定性之一。月球同时是深空门户：逃逸速度仅 2.38 km/s，配合水冰推进剂生产，可使火星任务的推进剂需求部分就地解决。本章与第 8–9 章的辐射防护、生命保障技术直接衔接，并为第 13 章火星方案提供工程基准：凡是月球上验证失败的技术，在火星（通信延迟 3–22 分钟、更深的重力井）上失败的代价只会更高。</p>
+</blockquote>
+<h3 id="sec-1">12.1 南极沙克尔顿环形山基地选址分析</h3>
+<h3 id="sec-2">12.1.1 选址依据</h3>
+<p>月球南极（~89.9°S）的沙克尔顿环形山（Shackleton Crater）是当前月球基地的首选选址，原因如下：</p>
+<p><strong>（1）近永久光照</strong>：</p>
+<ul>
+<li>环形山边缘某些高点（"光峰"，Peaks of Eternal Light）日照率 &gt;80-90%</li>
+<li>太阳能持续可用（无月球夜间 ~14天的问题）</li>
+<li>光伏输出：~1300 W/m²（月球太阳常数），年均可用 ~7000小时</li>
+</ul>
+<p><strong>（2）永久阴影区（PSR）水冰</strong>：</p>
+<ul>
+<li>环形山内部底部处于永久阴影中（温度 &lt;40 K）</li>
+<li>LCROSS任务（2009）确认：南极PSR含水冰 ~5.6%（质量分数）</li>
+<li>水冰来源：彗星撞击、太阳风质子与月壤氧反应</li>
+<li>水 = 生命保障 + 推进剂（H₂/O₂电解）</li>
+</ul>
+<p><strong>月球南极水冰探测史</strong>：</p>
+<p>水冰从假说到确认经历了约三十年的多任务接力：</p>
+<ol>
+<li><strong>Clementine（1994）</strong>：双基地雷达实验首次暗示南极 PSR 存在介电特性异常，但结论存在争议。</li>
+<li><strong>Lunar Prospector（1998）</strong>：中子谱仪（Neutron Spectrometer）显示两极 PSR 的超热中子通量被抑制，推断存在富氢物质（水冰当量 0.3–1 wt% 量级），首次给出全局分布证据。</li>
+<li><strong>Chandrayaan-1（2008–2009）</strong>：月矿物绘图仪 M³（Moon Mineralogy Mapper）在日照区表层检测到 ~2.8–3.0 μm 的 OH/H₂O 吸收特征（含量 ~500–1000 ppm），证明太阳风质子注入是全局性水源；其搭载的 Mini-SAR 雷达在南极 PSR 发现多个高圆极化比（CPR）异常区，与冰的体积散射一致。</li>
+<li><strong>LCROSS（2009）</strong>：半人马座上面级以 ~2.5 km/s 撞击卡比厄斯环形山（Cabeus），扬起的羽流经近红外光谱定量分析，给出 ~5.6%（±2.9%）的水冰质量分数，并检测到 H₂S、NH₃、CH₃OH 等挥发物。这是迄今唯一对 PSR 物质的原位采样。</li>
+<li><strong>LRO（2009 至今）</strong>：Diviner 辐射计绘制极区温度场，确认 PSR 内最低温度可低至 ~25–40 K；LOLA 激光高度计与 LEND 中子探测器联合圈定了数十处候选富冰区。</li>
+<li><strong>SOFIA（2020）</strong>：机载红外望远镜在克拉维斯环形山（Clavius，日照区）检测到 ~458 μm 特征，确认水分子可被捕获在玻璃质颗粒中（丰度 ~100–412 ppm），说明水的赋存形态比"纯冰层"更复杂。</li>
+</ol>
+<p><strong>对工程的意义</strong>：~5.6% 的品位意味着每采 1 t 月壤约产 56 kg 水；但冰的横向连续性、埋深分布（预计 0–2 m）与土壤力学性质仍无实测数据——这正是 NASA VIPER 任务（计划登陆诺比尔环形山西缘钻探取样）与后续示范任务要回答的问题。在品位与形态确认之前，所有产水率估算都应视为"待验证"。</p>
+<p><strong>（3）通信优势</strong>：</p>
+<ul>
+<li>南极高地可与地球保持近持续通信（低仰角但可见）</li>
+<li>需要中继卫星覆盖环形山内部</li>
+</ul>
+<p><strong>（4）科学价值</strong>：</p>
+<ul>
+<li>永久阴影区保存了太阳系早期挥发物记录</li>
+<li>极低温环境（&lt;40 K）适合红外观测</li>
+<li>地质多样性（撞击坑、高地、可能的火山沉积）</li>
+</ul>
+<h3 id="sec-3">12.1.2 选址挑战</h3>
+<table>
+<thead>
+<tr>
+<th>挑战</th>
+<th>详情</th>
+<th>缓解方案</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>极端温度</td>
+<td>PSR内部 &lt;40 K，设备启动困难</td>
+<td>RHU加热、隔热设计</td>
+</tr>
+<tr>
+<td>地形崎岖</td>
+<td>环形山边缘坡度大</td>
+<td>着陆区选在平坦高地</td>
+</tr>
+<tr>
+<td>尘埃</td>
+<td>静电悬浮月壤（光照/阴影边界）</td>
+<td>密封设计、静电排斥</td>
+</tr>
+<tr>
+<td>通信遮挡</td>
+<td>环形山内部无法直视地球</td>
+<td>中继卫星（如LunaNet）</td>
+</tr>
+<tr>
+<td>低太阳光照角</td>
+<td>太阳高度角 &lt;1.5°</td>
+<td>垂直光伏阵列优化</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sec-4">12.1.3 基地布局概念</h3>
+<pre><code>                    ┌─────────────┐
+                    │  太阳能阵列  │
+                    │ （光峰区域） │
+                    └──────┬──────┘
+                           │ 电力传输 ~2 km
+                    ┌──────┴──────┐
+                    │  主基地     │
+                    │ （环形山边缘）│
+                    │  ├─ 栖息地  │
+                    │  ├─ 实验室  │
+                    │  └─ 气闸   │
+                    └──────┬──────┘
+                           │ 通道
+                    ┌──────┴──────┐
+                    │  水冰开采   │
+                    │ （PSR内部） │
+                    │  ├─ 采矿车 │
+                    │  └─ 加工厂 │
+                    └─────────────┘
+</code></pre>
+<h3 id="sec-5">12.2 月壤成分与ISRU</h3>
+<h3 id="sec-6">12.2.1 月壤资源</h3>
+<p><strong>主要成分与用途</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>成分</th>
+<th>含量</th>
+<th>提取方法</th>
+<th>产品</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>O（氧化物中）</td>
+<td>~42%</td>
+<td>氢还原/熔融电解</td>
+<td>O₂（呼吸/推进剂）</td>
+</tr>
+<tr>
+<td>Fe（FeO, Fe₂O₃）</td>
+<td>~5-15%</td>
+<td>氢还原</td>
+<td>Fe金属（建筑/制造）</td>
+</tr>
+<tr>
+<td>Al（Al₂O₃）</td>
+<td>~10-17%</td>
+<td>熔融电解</td>
+<td>Al金属</td>
+</tr>
+<tr>
+<td>Ti（TiO₂）</td>
+<td>~3-12%</td>
+<td>熔融电解</td>
+<td>Ti金属</td>
+</tr>
+<tr>
+<td>Si（SiO₂）</td>
+<td>~40-50%</td>
+<td>碳热还原</td>
+<td>Si（太阳能/电子）</td>
+</tr>
+<tr>
+<td>He-3</td>
+<td>~10-50 ppb</td>
+<td>加热月壤（~700°C）</td>
+<td>聚变燃料（远期）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sec-7">12.2.2 氧提取技术</h3>
+<p><strong>（1）氢还原</strong>：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.2581em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel x-arrow"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1081em;"><span style="top:-3.322em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"><span class="mord mtight">700</span><span class="mbin mtight">−</span><span class="mord mtight">1000°</span><span class="mord mathnormal mtight" style="margin-right:0.07153em;">C</span></span></span></span><span class="svg-align" style="top:-2.689em;"><span class="pstrut" style="height:2.7em;"></span><span class="hide-tail" style="height:0.522em;min-width:1.469em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.011em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mord mathnormal">e</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span></span></span></span></span></p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2503em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel x-arrow"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1003em;"><span style="top:-3.322em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"><span class="mord cjk_fallback mtight">电解</span></span></span></span><span class="svg-align" style="top:-2.689em;"><span class="pstrut" style="height:2.7em;"></span><span class="hide-tail" style="height:0.522em;min-width:1.469em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.011em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:2.0074em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+<ul>
+<li>净反应：FeO → Fe + ½O₂</li>
+<li>温度：~700-1000°C</li>
+<li>氧产率：~月壤质量的 ~2-5%（取决于FeO含量）</li>
+<li>优势：温度较低，H₂循环使用</li>
+<li>局限：仅还原FeO（不提取其他氧化物的氧）</li>
+</ul>
+<p><strong>（2）熔融电解（FFC Cambridge Process）</strong>：</p>
+<p>月壤溶解在熔融CaCl₂中，电解提取O₂和金属：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1191em;vertical-align:-0.011em;"></span><span class="mord cjk_fallback">月壤（氧化物）</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel x-arrow"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1081em;"><span style="top:-3.322em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"><span class="mord cjk_fallback mtight">电解</span><span class="mpunct mtight">,</span><span class="mord mtight">900</span><span class="mbin mtight">−</span><span class="mord mtight">950°</span><span class="mord mathnormal mtight" style="margin-right:0.07153em;">C</span></span></span></span><span class="svg-align" style="top:-2.689em;"><span class="pstrut" style="height:2.7em;"></span><span class="hide-tail" style="height:0.522em;min-width:1.469em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.011em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord cjk_fallback">金属</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+<ul>
+<li>氧产率：~月壤质量的 ~30-40%（全部氧化物）</li>
+<li>优势：提取全部氧 + 金属合金</li>
+<li>挑战：高温、熔盐腐蚀、能耗高（~10-15 kWh/kg O₂）</li>
+</ul>
+<p><strong>（3）Carboterm还原</strong>：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord cjk_fallback">月壤</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.1191em;vertical-align:-0.011em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel x-arrow"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1081em;"><span style="top:-3.322em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"><span class="mrel mtight">&gt;</span><span class="mord mtight">1500°</span><span class="mord mathnormal mtight" style="margin-right:0.07153em;">C</span><span class="mord cjk_fallback mtight">（太阳能聚焦）</span></span></span></span><span class="svg-align" style="top:-2.689em;"><span class="pstrut" style="height:2.7em;"></span><span class="hide-tail" style="height:0.522em;min-width:1.469em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.011em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord cjk_fallback">金属</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">CO</span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2581em;vertical-align:-0.15em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel x-arrow"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1081em;"><span style="top:-3.322em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"><span class="mord cjk_fallback mtight">电解或</span><span class="mord mathnormal mtight" style="margin-right:0.05017em;">B</span><span class="mord mathnormal mtight">osc</span><span class="mord mathnormal mtight">h</span></span></span></span><span class="svg-align" style="top:-2.689em;"><span class="pstrut" style="height:2.7em;"></span><span class="hide-tail" style="height:0.522em;min-width:1.469em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.011em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+<ul>
+<li>优势：利用太阳能直接加热（无需电力）</li>
+<li>挑战：极高温、碳消耗</li>
+</ul>
+<p><strong>（4）地面与飞行验证进展</strong>：</p>
+<p>三条路线的成熟度均已超过纯概念阶段：</p>
+<ul>
+<li><strong>熔融电解</strong>：ESA"空间资源创新中心"（ESRIC，卢森堡）与比利时 Metalysis 公司合作，以月壤模拟物（如 EAC-1A）完成了 FFC 工艺的公斤级产氧演示，氧提取率可达 ~90% 以上（实验室条件，TRL 4）。ESA 的 PROSPECT 载荷（含"熔盐电解制备氧气"实验模块）原计划随俄罗斯 Luna 27 着陆，后调整为搭载于美国 CLPS（商业月球载荷服务）着陆器，将在月面首次实测电解产氧。</li>
+<li><strong>氢还原</strong>：欧洲多个团队完成了流化床反应器模拟物实验，并提出了"月球村"（Moon Village）配套的原型工厂概念；关键瓶颈是 H₂ 的循环损耗与密封。</li>
+<li><strong>碳热/微波烧结</strong>：以色列 Beresheet 任务（2019，着陆失败）原搭载的"月球砖"实验、以及多个大学实验，验证了微波烧结月壤的可行性（TRL 3–4）。</li>
+</ul>
+<p>三条路线的工程权衡可概括为：<strong>氢还原温度最低但产氧率最低（2–5%）；熔融电解产氧率最高（30–40%）但能耗与腐蚀问题最突出（10–15 kWh/kg O₂）；碳热还原依赖大规模太阳能聚光，系统最重</strong>。月球基地一期大概率以氢还原供氧 + 水冰开采并行，熔融电解在电力富余后接力。火星大气 CO₂ 制氧（MOXIE 路线）与月壤制氧互为对照，详见 13.3.1 节。</p>
+<h3 id="sec-8">12.2.3 氦-3开采</h3>
+<p><strong>He-3价值</strong>：</p>
+<ul>
+<li>D-³He聚变燃料（无中子，高效推进/能源）</li>
+<li>月球表面富集（太阳风注入，数十亿年积累）</li>
+<li>浓度：~10-50 ppb（月壤质量）</li>
+</ul>
+<p><strong>开采规模估算</strong>：</p>
+<ul>
+<li>处理1吨月壤 → 提取 ~10-50 mg He-3</li>
+<li>1 kg He-3聚变 → ~10¹⁵ J（等效 ~20万桶石油）</li>
+<li>年需求（全球能源）：~100 kg He-3 → 处理 ~2-10 百万吨月壤</li>
+</ul>
+<p><strong>工程挑战</strong>：</p>
+<ul>
+<li>月壤加热到 ~700°C释放He-3</li>
+<li>需要大规模采矿（百万吨级/年）</li>
+<li>当前聚变技术不可行 → 远期愿景（22世纪+）</li>
+</ul>
+<h3 id="sec-9">12.3 月球低重力长期人体影响</h3>
+<h3 id="sec-10">12.3.1 已知数据</h3>
+<p>月球重力 0.16g（地球的 ~1/6），长期人体效应数据极为有限：</p>
+<ul>
+<li>Apollo任务：仅 ~3天月表停留，不足以评估</li>
+<li>动物实验：大鼠在0.16g模拟（离心机）下骨密度下降 ~30%（6个月）</li>
+<li>理论推测：0.16g可能不足以维持骨骼/肌肉健康</li>
+</ul>
+<h3 id="sec-11">12.3.2 预期生理效应</h3>
+<table>
+<thead>
+<tr>
+<th>系统</th>
+<th>预期效应</th>
+<th>严重程度</th>
+<th>不确定性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>骨骼</td>
+<td>骨密度下降（但优于微重力）</td>
+<td>中-高</td>
+<td>高</td>
+</tr>
+<tr>
+<td>肌肉</td>
+<td>肌肉萎缩（抗重力肌）</td>
+<td>中</td>
+<td>高</td>
+</tr>
+<tr>
+<td>心血管</td>
+<td>立位耐受下降</td>
+<td>中</td>
+<td>高</td>
+</tr>
+<tr>
+<td>前庭</td>
+<td>运动病（初期），适应</td>
+<td>低-中</td>
+<td>中</td>
+</tr>
+<tr>
+<td>肾脏</td>
+<td>肾结石风险（高钙尿）</td>
+<td>中</td>
+<td>中</td>
+</tr>
+<tr>
+<td>免疫</td>
+<td>免疫功能下降</td>
+<td>中</td>
+<td>高</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sec-12">12.3.3 对策</h3>
+<ul>
+<li><strong>人工重力</strong>：旋转居住舱（短期暴露，如每天数小时）</li>
+<li><strong>运动</strong>：抗阻 + 有氧（类似ISS但可能不足）</li>
+<li><strong>药物</strong>：双膦酸盐（抗骨吸收）</li>
+<li><strong>基因/营养</strong>：优化钙/Vit D摄入</li>
+<li><strong>关键问题</strong>：0.16g是否低于人体重力阈值？需要长期驻留数据</li>
+</ul>
+<p><strong>部分重力研究的现状</strong>：</p>
+<p>迄今没有任何人或动物在 0.16 g 或 0.38 g 下连续生活超过数日，"部分重力阈值"只能通过间接证据外推：</p>
+<ul>
+<li><strong>微重力基准</strong>：ISS 上 6 个月驻留的宇航员若无对抗措施，骨密度平均下降 ~1–1.5%/月（承重骨）；抗阻训练 + 营养方案可将损失降到 ~0.5%/月 量级，但无法归零。</li>
+<li><strong>动物部分重力实验</strong>：日本 JAXA 在 ISS 的"动物饲养单元"（MHU）中用离心机对小鼠施加 0.2 g–1 g 的分档重力（Multiple Artificial-gravity Experiment, 2017），结果显示 0.2 g 组小鼠已出现骨量与肌肉的显著损失，接近微重力组，提示阈值可能高于 0.2 g。</li>
+<li><strong>地面类比</strong>：卧床实验（bed rest）模拟微重力但无法模拟部分重力；动物后肢悬吊模型同样只能给出 0 g 端点。</li>
+</ul>
+<p>因此学界普遍认为，获取 0.16 g 生理学数据的<strong>唯一途径是月面长期驻留本身</strong>——阿尔忒弥斯计划的月面驻留时长（Artemis II 约 10 天绕月，Artemis III 起逐步延长）与后续商业任务将构成首批样本。若数据表明 0.16 g 不足以维持健康，月球基地的定位将从"永久定居点"退化为"轮换驻留站"，这是殖民规划中必须预留的情景。人工重力居住舱（见第 9 章）在此情形下由"可选"变为"必需"。</p>
+<h3 id="sec-13">12.4 月球工业与中转站角色</h3>
+<h3 id="sec-14">12.4.1 月球作为深空门户</h3>
+<p><strong>优势</strong>：</p>
+<ul>
+<li>低重力井（逃离速度 2.38 km/s，vs. 地球 11.2 km/s）</li>
+<li>无水大气 → 太阳能丰富</li>
+<li>水冰资源 → 推进剂生产</li>
+<li>低辐射环境（月表 vs. 深空，有月壤屏蔽）</li>
+</ul>
+<p><strong>中转站功能</strong>：</p>
+<pre><code>地球发射 → LEO组装 → 地月转移 → 月球轨道站（Gateway）
+                                      ↓
+                              月表着陆 → ISRU（水→H₂/O₂）
+                                      ↓
+                              推进剂加注 → 火星/深空出发
+</code></pre>
+<p><strong>经济分析</strong>：</p>
+<ul>
+<li>月表发射到月球轨道：Δv ~1.6-1.8 km/s</li>
+<li>月表发射到地火转移：Δv ~2.5-3.0 km/s（vs. 地球发射 ~10 km/s）</li>
+<li>质量优势：月表发射1 kg到火星转移 ≈ 地球发射 ~5-10 kg</li>
+</ul>
+<p><strong>阿尔忒弥斯计划进展</strong>（截至 2025 年初，时间表均为计划值，存在滑动历史）：</p>
+<ul>
+<li><strong>Artemis I（2022-11 至 12）</strong>：SLS 火箭 + 无乘员 Orion 飞船完成绕月飞行并返回，验证了再入热防护（~9 km/s 再入速度）与深空导航，任务时长 25.5 天。这是载人重返月球的先决条件，已达成。</li>
+<li><strong>Artemis II（计划 2026 年 4 月）</strong>：4 名乘员绕月自由返回轨道飞行，不登月，验证 Orion 生命保障与手动驾驶。</li>
+<li><strong>Artemis III（计划 2027 年）</strong>：首次载人登月（南极区域），依赖 SpaceX Starship HLS（着陆器版）或 Blue Origin Blue Moon 着陆器的开发进度，两者均存在进度风险。</li>
+<li><strong>Gateway（2027 年前后开始部署）</strong>：月球轨道空间站，初期由 HALO 居住舱与 PPE 电力推进舱组成，运行于近直线晕轨道（NRHO），作为月面任务的中继与组装节点。</li>
+<li><strong>CLPS 商业着陆器</strong>：Intuitive Machines 的 IM-1（Nova-C，2024-02）实现首次商业月面软着陆；后续 IM-2（瞄准南极着陆）、Astrobotic Griffin（携带 NASA VIPER 水冰探测车）等任务将持续积累南极着陆与操作经验。</li>
+<li><strong>平行项目</strong>：中国主导的国际月球科研站（ILRS）计划 2030 年前后完成基本型建设，同样瞄准南极；印度 Chandrayaan-3（2023）已在南极圈附近成功着陆。</li>
+</ul>
+<p>上述计划的共同含义是：<strong>2025–2035 年间将有十余次南极着陆与采样任务，水冰赋存状态的"待验证"标签有望在基地动工前被摘除</strong>（若进展顺利）。本节所述的经济性分析建立在 ISRU 产水成功的前提上，该前提的验证窗口就是这十年。</p>
+<h3 id="sec-15">12.4.2 月球制造业</h3>
+<p><strong>近期（2030-2050）</strong>：</p>
+<ul>
+<li>3D打印备件/工具（月壤烧结）</li>
+<li>氧/水生产（生命保障）</li>
+<li>简单金属冶炼（Fe, Al）</li>
+</ul>
+<p><strong>中期（2050-2100）</strong>：</p>
+<ul>
+<li>太阳能电池板制造（月壤Si提纯）</li>
+<li>结构构件制造（金属/陶瓷）</li>
+<li>推进剂大规模生产（H₂/O₂）</li>
+</ul>
+<p><strong>远期（2100+）</strong>：</p>
+<ul>
+<li>氦-3开采（聚变燃料）</li>
+<li>太空船建造（利用月球资源）</li>
+<li>月球作为太阳系工业中心</li>
+</ul>
+<h3 id="sec-16">12.5 本章小结</h3>
+<p>月球殖民的技术主线已经清晰：<strong>选址看南极（光照 + 水冰），生存靠 ISRU（水与氧），扩展靠低重力井</strong>。沙克尔顿环形山的 ~80–90% 日照率与 ~5.6% 品位水冰构成基地的能源与物质基础；月壤制氧三条路线中熔融电解产率最高但能耗代价为 10–15 kWh/kg O₂。两大不确定性悬而未决：其一，水冰的真实赋存形态需 2025–2035 年的着陆采样任务确认；其二，0.16 g 长期生理效应的实测数据为零，最坏情形下月球只能作为轮换驻留站而非永久定居点。作为深空门户，月球 2.38 km/s 的逃逸速度与原位推进剂生产能力，可使火星任务的地球发射质量降低一个数量级——这是月球基地对后续所有章节的战略价值。</p>
+<p><strong>关键参数速查表</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>典型值</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>沙克尔顿边缘日照率</td>
+<td>&gt;80–90%（年）</td>
+<td>太阳能持续可用，基地选址核心依据</td>
+</tr>
+<tr>
+<td>PSR 水冰品位（LCROSS）</td>
+<td>~5.6%（±2.9%）质量分数</td>
+<td>每采 1 t 月壤产 ~56 kg 水（待钻探确认）</td>
+</tr>
+<tr>
+<td>PSR 温度</td>
+<td>&lt;40 K（低至 ~25 K）</td>
+<td>水冰稳定存在的热力学条件</td>
+</tr>
+<tr>
+<td>月壤含氧量</td>
+<td>~42%（质量分数）</td>
+<td>ISRU 制氧的理论上限</td>
+</tr>
+<tr>
+<td>FFC 熔融电解能耗</td>
+<td>~10–15 kWh/kg O₂</td>
+<td>制氧工艺的主要成本项，产氧率 30–40%</td>
+</tr>
+<tr>
+<td>氢还原产氧率</td>
+<td>~2–5%（月壤质量）</td>
+<td>低能耗低产率的过渡路线</td>
+</tr>
+<tr>
+<td>氦-3 浓度</td>
+<td>~10–50 ppb</td>
+<td>需处理百万吨级月壤/kg He-3，仅远期愿景</td>
+</tr>
+<tr>
+<td>月球逃逸速度</td>
+<td>2.38 km/s</td>
+<td>深空门户优势（vs. 地球 11.2 km/s）</td>
+</tr>
+<tr>
+<td>月表→火星转移 Δv</td>
+<td>~2.5–3.0 km/s</td>
+<td>较地球发射节省 ~70%</td>
+</tr>
+<tr>
+<td>月面重力</td>
+<td>0.16 g（1.62 m/s²）</td>
+<td>长期健康效应无实测数据</td>
+</tr>
+<tr>
+<td>ISS 骨密度损失基准</td>
+<td>~1–1.5%/月（无对抗措施）</td>
+<td>部分重力阈值研究的 0 g 端点参照</td>
+</tr>
+</tbody>
+</table>
+<hr /></div><div class="prevnext"><a class="pn pn-prev" href="ch11.html"><span class="pn-k">上一篇</span><span class="pn-t">第11章 通信与导航</span></a><a class="pn pn-next" href="ch13.html"><span class="pn-k">下一篇</span><span class="pn-t">第13章 火星</span></a></div></article><footer class="foot"><span>未来太空移民技术手册 · 完整版 v2.0</span><span class="foot-mono">AD ASTRA PER ASPERA</span></footer></main>
+<aside class="toc"><div class="toc-title">本页目录</div>
+<a class="toc-h3" href="#sec-1">12.1 南极沙克尔顿环形山基地选址分析</a>
+<a class="toc-h3" href="#sec-2">12.1.1 选址依据</a>
+<a class="toc-h3" href="#sec-3">12.1.2 选址挑战</a>
+<a class="toc-h3" href="#sec-4">12.1.3 基地布局概念</a>
+<a class="toc-h3" href="#sec-5">12.2 月壤成分与ISRU</a>
+<a class="toc-h3" href="#sec-6">12.2.1 月壤资源</a>
+<a class="toc-h3" href="#sec-7">12.2.2 氧提取技术</a>
+<a class="toc-h3" href="#sec-8">12.2.3 氦-3开采</a>
+<a class="toc-h3" href="#sec-9">12.3 月球低重力长期人体影响</a>
+<a class="toc-h3" href="#sec-10">12.3.1 已知数据</a>
+<a class="toc-h3" href="#sec-11">12.3.2 预期生理效应</a>
+<a class="toc-h3" href="#sec-12">12.3.3 对策</a>
+<a class="toc-h3" href="#sec-13">12.4 月球工业与中转站角色</a>
+<a class="toc-h3" href="#sec-14">12.4.1 月球作为深空门户</a>
+<a class="toc-h3" href="#sec-15">12.4.2 月球制造业</a>
+<a class="toc-h3" href="#sec-16">12.5 本章小结</a>
+</aside>
+</div>
+<script src="../search-index.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

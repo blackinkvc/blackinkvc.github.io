@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第14章 小行星与太空殖民地 · 未来太空移民技术手册</title>
+<meta name="description" content="未来太空移民技术手册 —— 面向专业读者的综合性太空殖民技术参考，涵盖推进、生保、栖息地、治理与前沿技术。">
+<link rel="icon" type="image/png" href="../assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script>(function(){try{var t=localStorage.getItem('smh-theme');if(!t)t='dark';document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="目录"><span></span><span></span><span></span></button>
+  <a class="brand" href="../index.html">
+    <img class="brand-icon" src="../assets/icon.png" alt="">
+    <span class="brand-zh">未来太空移民技术手册</span>
+    <span class="brand-en">SPACE SETTLEMENT HANDBOOK</span>
+  </a>
+  <div class="top-actions">
+    <button class="search-btn" id="searchBtn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg><span>检索</span><kbd>⌘K</kbd></button>
+    <button class="theme-btn" id="themeBtn" aria-label="切换主题"></button>
+  </div>
+</header>
+
+<div class="search-overlay" id="searchOverlay" hidden>
+  <div class="search-box">
+    <div class="search-head">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg>
+      <input id="searchInput" type="text" placeholder="检索全书：术语、参数、章节…" autocomplete="off">
+      <kbd>ESC</kbd>
+    </div>
+    <div class="search-results" id="searchResults"><div class="search-hint">输入关键词，检索 23 章正文与附录</div></div>
+  </div>
+</div>
+<div class="layout">
+<nav class="sidebar" id="sidebar">
+<div class="sb-group"><div class="sb-label">卷首</div>
+<a class="sb-item" href="intro.html"><span class="sb-num">◎</span><span class="sb-t">前言与导读</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第一部分 · 基础物理与宇宙环境</div>
+<a class="sb-item" href="ch01.html"><span class="sb-num">01</span><span class="sb-t">太空环境物理</span></a>
+<a class="sb-item" href="ch02.html"><span class="sb-num">02</span><span class="sb-t">天体物理与轨道力学</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第二部分 · 推进与运输系统</div>
+<a class="sb-item" href="ch03.html"><span class="sb-num">03</span><span class="sb-t">化学推进与近中期方案</span></a>
+<a class="sb-item" href="ch04.html"><span class="sb-num">04</span><span class="sb-t">先进推进理论</span></a>
+<a class="sb-item" href="ch05.html"><span class="sb-num">05</span><span class="sb-t">星际航行工程</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第三部分 · 生命保障与人体工程</div>
+<a class="sb-item" href="ch06.html"><span class="sb-num">06</span><span class="sb-t">封闭生态生命保障系统（CELSS）</span></a>
+<a class="sb-item" href="ch07.html"><span class="sb-num">07</span><span class="sb-t">太空医学</span></a>
+<a class="sb-item" href="ch08.html"><span class="sb-num">08</span><span class="sb-t">食品与营养</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第四部分 · 栖息地与基础设施</div>
+<a class="sb-item" href="ch09.html"><span class="sb-num">09</span><span class="sb-t">栖息地结构设计</span></a>
+<a class="sb-item" href="ch10.html"><span class="sb-num">10</span><span class="sb-t">能源系统</span></a>
+<a class="sb-item" href="ch11.html"><span class="sb-num">11</span><span class="sb-t">通信与导航</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第五部分 · 目的地与殖民方案</div>
+<a class="sb-item" href="ch12.html"><span class="sb-num">12</span><span class="sb-t">月球</span></a>
+<a class="sb-item" href="ch13.html"><span class="sb-num">13</span><span class="sb-t">火星</span></a>
+<a class="sb-item current" href="ch14.html"><span class="sb-num">14</span><span class="sb-t">小行星与太空殖民地</span></a>
+<a class="sb-item" href="ch15.html"><span class="sb-num">15</span><span class="sb-t">外太阳系与冰卫星</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第六部分 · 材料与制造</div>
+<a class="sb-item" href="ch16.html"><span class="sb-num">16</span><span class="sb-t">太空材料科学</span></a>
+<a class="sb-item" href="ch17.html"><span class="sb-num">17</span><span class="sb-t">太空制造与原位资源利用</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第七部分 · 社会、文化与治理</div>
+<a class="sb-item" href="ch18.html"><span class="sb-num">18</span><span class="sb-t">太空治理与法律框架</span></a>
+<a class="sb-item" href="ch19.html"><span class="sb-num">19</span><span class="sb-t">太空经济学</span></a>
+<a class="sb-item" href="ch20.html"><span class="sb-num">20</span><span class="sb-t">太空文化演化</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第八部分 · 前沿与推测性技术</div>
+<a class="sb-item" href="ch21.html"><span class="sb-num">21</span><span class="sb-t">脑机接口与人类增强</span></a>
+<a class="sb-item" href="ch22.html"><span class="sb-num">22</span><span class="sb-t">AI治理与超级智能</span></a>
+<a class="sb-item" href="ch23.html"><span class="sb-num">23</span><span class="sb-t">意识上传与数字存在</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">附录 · 参考数据</div>
+<a class="sb-item" href="appA.html"><span class="sb-num">A</span><span class="sb-t">A 物理常数与换算</span></a>
+<a class="sb-item" href="appB.html"><span class="sb-num">B</span><span class="sb-t">B 太阳系天体参数</span></a>
+<a class="sb-item" href="appC.html"><span class="sb-num">C</span><span class="sb-t">C 推进系统对比</span></a>
+<a class="sb-item" href="appD.html"><span class="sb-num">D</span><span class="sb-t">D 辐射与屏蔽</span></a>
+<a class="sb-item" href="appE.html"><span class="sb-num">E</span><span class="sb-t">E 术语表（中英对照）</span></a>
+<a class="sb-item" href="appF.html"><span class="sb-num">F</span><span class="sb-t">F 参考文献与推荐阅读</span></a>
+</div>
+</nav><main class="content"><article class="article"><div class="crumb"><span class="crumb-part">第五部分 · 目的地与殖民方案</span><span class="crumb-sep">/</span><span class="crumb-ch">CHAPTER 14</span></div><div class="ch-head"><div class="ch-num">14</div><h1 class="ch-title">小行星与太空殖民地</h1></div><div class="article-body"><blockquote>
+<p><strong>章首导语</strong></p>
+<p>与月球、火星不同，小行星和太空殖民地不是"去某个天体定居"，而是"把天体变成资源"或"自己建造栖息地"——它们代表殖民谱系的另一端：不依赖任何行星表面，以人工结构提供全部生存条件。本章覆盖三条路线：近地小行星（NEA）的捕获与开采（14.1），其中 OSIRIS-REx、Hayabusa2 采样返回与 DART 动能撞击三项任务已在 2020–2023 年间完成关键技术验证；碎石堆小行星的内部改造（14.2）；以及 O'Neill 圆柱体与 Kalpana One 这类自由空间巨型栖息地（14.3）。14.4 节给出资源经济学的定量框架：主带金属总量 ~10²⁰ kg，但决定开发顺序的不是储量而是 Δv（NEA ~4–6 km/s，主带 ~8–12 km/s）。本章的关键结论是：<strong>水先于金属</strong>——太空经济中最先被开采的是 C 型小行星的水（电解为 H₂/O₂ 推进剂），贵金属回运地球在经济上几乎必然不成立。旋转栖息地的人工重力设计准则与第 9 章衔接，建造所需的太空制造能力与第 12 章月球工业互为前提。</p>
+</blockquote>
+<h3 id="sec-1">14.1 近地小行星捕获与资源开采</h3>
+<h3 id="sec-2">14.1.1 小行星分类与资源</h3>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>成分</th>
+<th>资源价值</th>
+<th>可达性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C型（碳质）</td>
+<td>碳、水、有机物</td>
+<td>水、挥发物</td>
+<td>中</td>
+</tr>
+<tr>
+<td>S型（硅质）</td>
+<td>硅酸盐、金属</td>
+<td>Fe、Ni、Co、铂族</td>
+<td>高</td>
+</tr>
+<tr>
+<td>M型（金属）</td>
+<td>Fe、Ni、铂族金属</td>
+<td>贵金属极高</td>
+<td>低</td>
+</tr>
+</tbody>
+</table>
+<p><strong>资源价值估算</strong>：</p>
+<ul>
+<li>一颗 ~500 m M型小行星含 ~10¹² kg 金属</li>
+<li>铂族金属价值：~$30,000/kg → 理论价值 ~$10¹⁶（但市场会崩溃）</li>
+<li>更实际：水（太空经济中最有价值的资源）</li>
+<li>1吨水在LEO价值 ~$10,000-100,000（从地球发射成本）</li>
+<li>小行星水开采成本：理论 ~$100-1000/kg</li>
+</ul>
+<h3 id="sec-3">14.1.2 捕获方案</h3>
+<p><strong>ARM（Asteroid Redirect Mission, 已取消）概念</strong>：</p>
+<ul>
+<li>机器人捕获 ~4 m直径小行星巨石</li>
+<li>拖回月球轨道（DRO, Distant Retrograde Orbit）</li>
+<li>宇航员访问、采样、测试ISRU</li>
+</ul>
+<p><strong>现代方案</strong>：</p>
+<ol>
+<li>
+<p><strong>原位开采</strong>（不移动小行星）：
+   - 探测器着陆 → 采矿 → 返回
+   - 适合高价值目标（铂族、稀土）</p>
+</li>
+<li>
+<p><strong>整体拖曳</strong>（小型NEA）：
+   - 低Δv小行星（~100 m级）→ 离子推进拖曳
+   - 目标：地月空间资源站
+   - 时间尺度：2040-2060</p>
+</li>
+<li>
+<p><strong>水开采优先</strong>：
+   - C型小行星 → 加热水冰 → 蒸汽收集 → 电解 → H₂/O₂推进剂
+   - 为地月空间运输提供"加油站"</p>
+</li>
+</ol>
+<p><strong>近年采样返回与动能撞击任务成果（2018–2023）</strong>：</p>
+<p>三项任务为小行星工程提供了第一批原位数据，直接改写了对小行星力学性质的认知：</p>
+<ol>
+<li><strong>Hayabusa2（JAXA，目标：C 型小行星龙宫/Ryugu，直径 ~900 m）</strong>：2018-06 抵达；两次触地采样（2019-02、07），并用小型撞击器（SCI）人工制造撞击坑、采集次表层物质；2020-12 返回舱带回 ~5.4 g 样本。分析确认含水层状硅酸盐与 20 余种氨基酸（含尿嘧啶），支持"C 型小行星是挥发物与前生命物质载体"的判断。<strong>工程发现</strong>：龙宫是孔隙率 ~45% 的碎石堆（rubble pile），表面遍布巨石，几乎没有平坦着陆区。</li>
+<li><strong>OSIRIS-REx（NASA，目标：B 型小行星贝努/Bennu，直径 ~490 m）</strong>：2018-12 抵达；光谱确认含水矿物；2020-10 以触地即走（TAG）方式采样，实际采集 ~121.6 g（2023-09 返回地球）。贝努同样是碎石堆（整体密度 ~1.19 g/cm³，孔隙率 ~40%），其极低的逃逸速度（~20 cm/s）使采样机构下压时表面如"流体"般塌陷——这预示任何采矿锚固机构都不能按岩石力学设计。</li>
+<li><strong>DART（NASA，2022-09）</strong>：以 ~6.1 km/s 撞击双小行星系统 Didymos 的卫星 Dimorphos（直径 ~160 m），将其轨道周期缩短 ~33 分钟；喷射物反冲带来的动量增强因子 β ≈ 3.6，验证了动能撞击行星防御的可行性。对小行星工程的副产品是：<strong>拖曳/偏转一颗碎石堆小行星所需的 Δv 预算必须计入喷射物与结构响应的不确定性</strong>。</li>
+</ol>
+<p>对开采方案的综合启示：锚定与移动需按"零重力流沙"设计（鱼叉 + 网兜 + 螺旋钻的组合已在多个概念研究中采用）；水冰赋存形态以含水矿物为主，提取需加热至数百摄氏度而非简单融化。</p>
+<h3 id="sec-4">14.2 小行星栖息地改造</h3>
+<h3 id="sec-5">14.2.1 Stanford Torus的小行星变体</h3>
+<p><strong>概念</strong>：</p>
+<p>将大型小行星（~1-10 km直径）内部挖空，改造为旋转栖息地。</p>
+<p><strong>改造步骤</strong>：</p>
+<ol>
+<li><strong>选择</strong>：M型或S型小行星（金属/硅酸盐结构更坚固）</li>
+<li><strong>拖曳</strong>：离子推进拖到稳定轨道（地月L4/L5或日心轨道）</li>
+<li><strong>挖空</strong>：机器人挖掘内部 → 形成空腔</li>
+<li><strong>内衬</strong>：安装气密内衬 + 生命保障系统</li>
+<li><strong>旋转</strong>：启动旋转 → 人工重力</li>
+<li><strong>农业</strong>：内部表面铺设土壤 + 照明 → 农业区</li>
+<li><strong>密封</strong>：两端密封（透明窗或 opaque盖）</li>
+</ol>
+<p><strong>优势</strong>：</p>
+<ul>
+<li>小行星质量提供辐射屏蔽（外部岩石/金属层）</li>
+<li>小行星材料可用于内部建造</li>
+<li>无需从地球运输大量建材</li>
+</ul>
+<p><strong>挑战</strong>：</p>
+<ul>
+<li>小行星结构完整性（碎石堆 vs. 单体）</li>
+<li>旋转启动（角动量输入）</li>
+<li>密封（不规则形状 → 复杂内衬）</li>
+</ul>
+<h3 id="sec-6">14.3 自由空间殖民地</h3>
+<h3 id="sec-7">14.3.1 O'Neill圆柱体工程实现</h3>
+<p><strong>建造位置</strong>：</p>
+<ul>
+<li>地月L₄/L₅（Lagrange点，稳定，材料可从小行星/月球运来）</li>
+<li>或高地球轨道（便于与地球交互）</li>
+</ul>
+<p><strong>建造方法</strong>：</p>
+<ol>
+<li><strong>月球发射</strong>：电磁质量驱动器（mass driver）从月球表面发射月壤/金属</li>
+<li><strong>小行星采矿</strong>：NEA材料直接用于建造</li>
+<li><strong>在轨制造</strong>：微重力工厂生产结构构件</li>
+<li><strong>组装</strong>：机器人 + 宇航员在轨组装</li>
+</ol>
+<p><strong>O'Neill "三级岛"的经典参数</strong>（O'Neill, 1970s 普林斯顿研究）：</p>
+<table>
+<thead>
+<tr>
+<th>方案</th>
+<th>构型与尺寸</th>
+<th>旋转速率</th>
+<th>人口</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Island One（伯纳尔球）</td>
+<td>球体，直径 ~500 m</td>
+<td>~2 rpm</td>
+<td>~10,000</td>
+</tr>
+<tr>
+<td>Island Two</td>
+<td>球体，直径 ~1.8 km</td>
+<td>~1 rpm</td>
+<td>~140,000</td>
+</tr>
+<tr>
+<td>Island Three（O'Neill 圆柱体）</td>
+<td>双圆柱反向旋转，单缸直径 ~6.4 km × 长 ~32 km</td>
+<td>~0.5 rpm</td>
+<td>数百万（上限 ~10⁷）</td>
+</tr>
+</tbody>
+</table>
+<p>Island Three 是 O'Neill 方案的终局形态：两根反向旋转的圆柱体抵消陀螺效应，每根圆柱表面沿轴向分为三条居住带与三条窗带交替布置，外部铰接镜面将阳光反射入窗。半径 3.2 km 处产生 1 g 所需角速度为 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">ω</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.24em;vertical-align:-0.305em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.935em;"><span class="svg-align" style="top:-3.2em;"><span class="pstrut" style="height:3.2em;"></span><span class="mord" style="padding-left:1em;"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span><span style="top:-2.895em;"><span class="pstrut" style="height:3.2em;"></span><span class="hide-tail" style="min-width:1.02em;height:1.28em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.28em" viewBox="0 0 400000 1296" preserveAspectRatio="xMinYMin slice"><path d="M263,681c0.7,0,18,39.7,52,119
+c34,79.3,68.167,158.7,102.5,238c34.3,79.3,51.8,119.3,52.5,120
+c340,-704.7,510.7,-1060.3,512,-1067
+l0 -0
+c4.7,-7.3,11,-11,19,-11
+H40000v40H1012.3
+s-271.3,567,-271.3,567c-38.7,80.7,-84,175,-136,283c-52,108,-89.167,185.3,-111.5,232
+c-22.3,46.7,-33.8,70.3,-34.5,71c-4.7,4.7,-12.3,7,-23,7s-12,-1,-12,-1
+s-109,-253,-109,-253c-72.7,-168,-109.3,-252,-110,-252c-10.7,8,-22,16.7,-34,26
+c-22,17.3,-33.3,26,-34,26s-26,-26,-26,-26s76,-59,76,-59s76,-60,76,-60z
+M1001 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.305em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.53</span></span></span></span> rpm，低于人体前庭不适的经验阈值（~2 rpm，见第 9 章）。<strong>注</strong>：下文"材料需求"中的 6.4 km 直径即 Island Three 规格。该系列研究表明，结构应力、科里奥利力与镜面控制均有解，真正的瓶颈在于材料供给——这正是建造方法中"月球质量驱动器 + 小行星采矿"存在的理由。</p>
+<p><strong>材料需求</strong>（Island One级，~6.4 km直径）：</p>
+<ul>
+<li>壳体质量：~10⁹-10¹⁰ kg（取决于材料和厚度）</li>
+<li>月壤屏蔽：~10¹⁰ kg（3 m覆盖层）</li>
+<li>总计：~10¹⁰ kg级（需要数十年-数百年运输）</li>
+</ul>
+<h3 id="sec-8">14.3.2 Kalpana One设计</h3>
+<p><strong>改进型O'Neill圆柱体</strong>（Space Studies Institute, 2000s）：</p>
+<ul>
+<li>直径：~1.8 km</li>
+<li>长度：~10 km</li>
+<li>旋转：~1 rpm（1g）</li>
+<li>屏蔽：内部辐射屏蔽（非外部覆盖）</li>
+<li>水层 + 聚乙烯 + 月壤填充夹层</li>
+<li>人口：~10,000-100,000</li>
+</ul>
+<p><strong>优势</strong>：</p>
+<ul>
+<li>比Island One小 ~10倍 → 建造更可行</li>
+<li>内部屏蔽 → 无需外部月壤覆盖（节省质量）</li>
+<li>模块化建造 → 逐步扩展</li>
+</ul>
+<p><strong>设计细节与工程逻辑</strong>：</p>
+<ul>
+<li><strong>命名与背景</strong>：该方案由空间研究所（Space Studies Institute, SSI）于 2000 年代提出，以在哥伦比亚号事故（2003）中遇难的宇航员 Kalpana Chawla 命名，定位为"第一代可实际建造的圆柱殖民地"。</li>
+<li><strong>单圆柱构型</strong>：放弃 Island Three 的双缸反向旋转，改为单圆柱 + 角动量补偿（飞轮或非旋转配重环），结构与对接系统更简单，代价是轴承系统需持续承受反作用力矩。</li>
+<li><strong>屏蔽层功能化</strong>：把水储箱、食物库、聚乙烯等富氢消耗品布置在居住区外围，形成"以日常物资充当辐射屏蔽"的布局（与第 9 章屏蔽设计原则一致）；月壤填充夹层仅用于舱壁外侧，避免 Island Three 方案中 ~10¹⁰ kg 级外部覆盖质量。</li>
+<li><strong>建造序列</strong>：中央桁架 → 环段逐节挂载 → 分段加压 → 逐步起旋至设计转速；人口随容积增长而增加，原文 10⁴–10⁵ 人为满容值。</li>
+<li><strong>位置与物流</strong>：材料依赖月球质量驱动器供给（月面→L₄/L₅ 的 Δv 仅 ~0.7–1 km/s，见 12.4），因此 Kalpana One 的动工时间实际上由第 12 章月球工业的成熟度决定。</li>
+</ul>
+<h3 id="sec-9">14.4 小行星带资源经济学</h3>
+<h3 id="sec-10">14.4.1 小行星带资源总量</h3>
+<p><strong>估计</strong>：</p>
+<ul>
+<li>主带小行星总质量：~3 × 10²¹ kg（月球的 ~4%）</li>
+<li>金属总量：~10²⁰ kg（超过地球可采储量）</li>
+<li>水/挥发物：~10²⁰ kg</li>
+</ul>
+<p><strong>关键资源</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>资源</th>
+<th>估计总量</th>
+<th>地球年消费</th>
+<th>可用年限</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>铂族金属</td>
+<td>~10¹⁵ kg</td>
+<td>~250 t</td>
+<td>&gt;10⁹年</td>
+</tr>
+<tr>
+<td>铁/镍</td>
+<td>~10²⁰ kg</td>
+<td>~3 Gt</td>
+<td>&gt;10⁷年</td>
+</tr>
+<tr>
+<td>水</td>
+<td>~10¹⁹ kg</td>
+<td>~4 Tt</td>
+<td>&gt;10⁶年</td>
+</tr>
+<tr>
+<td>稀土</td>
+<td>~10¹⁴ kg</td>
+<td>~300 kt</td>
+<td>&gt;10⁸年</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sec-11">14.4.2 太空经济学</h3>
+<p><strong>核心论点</strong>：</p>
+<p>在太空经济中，资源的价值不由地球市场价格决定，而由"太空本地需求"决定：</p>
+<ul>
+<li>水在LEO的价值 &gt;&gt; 地球水价（运输成本）</li>
+<li>金属在太空殖民地的价值 = 本地加工成本节省</li>
+<li>推进剂在地月L₁的价值 &gt;&gt; 地球发射成本</li>
+</ul>
+<p><strong>小行星带 vs. NEA</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>NEA</th>
+<th>主带小行星</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Δv（从地球）</td>
+<td>~4-6 km/s</td>
+<td>~8-12 km/s</td>
+</tr>
+<tr>
+<td>往返时间</td>
+<td>~1-3年</td>
+<td>~5-10年</td>
+</tr>
+<tr>
+<td>通信延迟</td>
+<td>~分钟级</td>
+<td>~30-50分钟</td>
+</tr>
+<tr>
+<td>可达性</td>
+<td>高</td>
+<td>中</td>
+</tr>
+<tr>
+<td>资源多样性</td>
+<td>中</td>
+<td>高</td>
+</tr>
+</tbody>
+</table>
+<p><strong>近期优先</strong>：NEA（可达性高），远期：主带（资源更丰富）</p>
+<h3 id="sec-12">14.5 本章小结</h3>
+<p>本章的三条路线共享同一条底层逻辑：<strong>离开行星表面，把资源与栖息地都变成人造物</strong>。任务数据已经改写了工程假设——龙宫与贝努证明多数小行星是碎石堆而非岩石体，锚固与采样必须按"零重力流沙"力学设计；DART 证明动能作用可以显著改变小行星轨道，为拖曳与行星防御提供了共同的技术基础。经济学的结论是反直觉的：决定开发顺序的不是储量（主带铁镍 ~10²⁰ kg），而是 Δv 与本地需求——水（推进剂）的价值在太空本地远高于回运地球的铂族金属。自由空间殖民地（O'Neill 圆柱体、Kalpana One）在物理上完全可行，瓶颈是 ~10¹⁰ kg 级的材料供给，这使其动工时间取决于第 12 章月球工业与第 11 章太空制造的发展速度。小行星带与旋转栖息地是同一枚硬币的两面：前者供料，后者容人。</p>
+<p><strong>关键参数速查表</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>典型值</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NEA 往返 Δv</td>
+<td>~4–6 km/s（单程）</td>
+<td>开采目标首选近地小行星的根本原因</td>
+</tr>
+<tr>
+<td>主带 Δv</td>
+<td>~8–12 km/s</td>
+<td>远期资源库，通信延迟 30–50 分钟</td>
+</tr>
+<tr>
+<td>碎石堆孔隙率</td>
+<td>~40–45%（龙宫/贝努实测）</td>
+<td>锚固与采矿机构的设计基准</td>
+</tr>
+<tr>
+<td>Bennu 逃逸速度</td>
+<td>~20 cm/s</td>
+<td>采样/采矿设备需防"压塌-逃逸"失效</td>
+</tr>
+<tr>
+<td>DART 轨道周期改变</td>
+<td>~33 分钟（β ≈ 3.6）</td>
+<td>动能偏转验证，拖曳 Δv 预算须含喷射物效应</td>
+</tr>
+<tr>
+<td>Island Three 尺寸</td>
+<td>单缸 ~6.4 km × 32 km，~0.5 rpm</td>
+<td>经典 O'Neill 圆柱体规格</td>
+</tr>
+<tr>
+<td>Kalpana One</td>
+<td>直径 ~1.8 km × 长 ~10 km，~1 rpm</td>
+<td>第一代可建造圆柱殖民地（SSI，2000s）</td>
+</tr>
+<tr>
+<td>栖息地材料需求</td>
+<td>~10¹⁰ kg 级（含屏蔽）</td>
+<td>依赖月球质量驱动器与小行星采矿</td>
+</tr>
+<tr>
+<td>LEO 水价</td>
+<td>~$10,000–100,000/t</td>
+<td>"水先于金属"经济学论据</td>
+</tr>
+<tr>
+<td>主带金属总量</td>
+<td>~10²⁰ kg</td>
+<td>超过地球可采储量，但开发受 Δv 约束</td>
+</tr>
+</tbody>
+</table>
+<hr /></div><div class="prevnext"><a class="pn pn-prev" href="ch13.html"><span class="pn-k">上一篇</span><span class="pn-t">第13章 火星</span></a><a class="pn pn-next" href="ch15.html"><span class="pn-k">下一篇</span><span class="pn-t">第15章 外太阳系与冰卫星</span></a></div></article><footer class="foot"><span>未来太空移民技术手册 · 完整版 v2.0</span><span class="foot-mono">AD ASTRA PER ASPERA</span></footer></main>
+<aside class="toc"><div class="toc-title">本页目录</div>
+<a class="toc-h3" href="#sec-1">14.1 近地小行星捕获与资源开采</a>
+<a class="toc-h3" href="#sec-2">14.1.1 小行星分类与资源</a>
+<a class="toc-h3" href="#sec-3">14.1.2 捕获方案</a>
+<a class="toc-h3" href="#sec-4">14.2 小行星栖息地改造</a>
+<a class="toc-h3" href="#sec-5">14.2.1 Stanford Torus的小行星变体</a>
+<a class="toc-h3" href="#sec-6">14.3 自由空间殖民地</a>
+<a class="toc-h3" href="#sec-7">14.3.1 O'Neill圆柱体工程实现</a>
+<a class="toc-h3" href="#sec-8">14.3.2 Kalpana One设计</a>
+<a class="toc-h3" href="#sec-9">14.4 小行星带资源经济学</a>
+<a class="toc-h3" href="#sec-10">14.4.1 小行星带资源总量</a>
+<a class="toc-h3" href="#sec-11">14.4.2 太空经济学</a>
+<a class="toc-h3" href="#sec-12">14.5 本章小结</a>
+</aside>
+</div>
+<script src="../search-index.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

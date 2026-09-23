@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第7章 太空医学 · 未来太空移民技术手册</title>
+<meta name="description" content="未来太空移民技术手册 —— 面向专业读者的综合性太空殖民技术参考，涵盖推进、生保、栖息地、治理与前沿技术。">
+<link rel="icon" type="image/png" href="../assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script>(function(){try{var t=localStorage.getItem('smh-theme');if(!t)t='dark';document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="目录"><span></span><span></span><span></span></button>
+  <a class="brand" href="../index.html">
+    <img class="brand-icon" src="../assets/icon.png" alt="">
+    <span class="brand-zh">未来太空移民技术手册</span>
+    <span class="brand-en">SPACE SETTLEMENT HANDBOOK</span>
+  </a>
+  <div class="top-actions">
+    <button class="search-btn" id="searchBtn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg><span>检索</span><kbd>⌘K</kbd></button>
+    <button class="theme-btn" id="themeBtn" aria-label="切换主题"></button>
+  </div>
+</header>
+
+<div class="search-overlay" id="searchOverlay" hidden>
+  <div class="search-box">
+    <div class="search-head">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg>
+      <input id="searchInput" type="text" placeholder="检索全书：术语、参数、章节…" autocomplete="off">
+      <kbd>ESC</kbd>
+    </div>
+    <div class="search-results" id="searchResults"><div class="search-hint">输入关键词，检索 23 章正文与附录</div></div>
+  </div>
+</div>
+<div class="layout">
+<nav class="sidebar" id="sidebar">
+<div class="sb-group"><div class="sb-label">卷首</div>
+<a class="sb-item" href="intro.html"><span class="sb-num">◎</span><span class="sb-t">前言与导读</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第一部分 · 基础物理与宇宙环境</div>
+<a class="sb-item" href="ch01.html"><span class="sb-num">01</span><span class="sb-t">太空环境物理</span></a>
+<a class="sb-item" href="ch02.html"><span class="sb-num">02</span><span class="sb-t">天体物理与轨道力学</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第二部分 · 推进与运输系统</div>
+<a class="sb-item" href="ch03.html"><span class="sb-num">03</span><span class="sb-t">化学推进与近中期方案</span></a>
+<a class="sb-item" href="ch04.html"><span class="sb-num">04</span><span class="sb-t">先进推进理论</span></a>
+<a class="sb-item" href="ch05.html"><span class="sb-num">05</span><span class="sb-t">星际航行工程</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第三部分 · 生命保障与人体工程</div>
+<a class="sb-item" href="ch06.html"><span class="sb-num">06</span><span class="sb-t">封闭生态生命保障系统（CELSS）</span></a>
+<a class="sb-item current" href="ch07.html"><span class="sb-num">07</span><span class="sb-t">太空医学</span></a>
+<a class="sb-item" href="ch08.html"><span class="sb-num">08</span><span class="sb-t">食品与营养</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第四部分 · 栖息地与基础设施</div>
+<a class="sb-item" href="ch09.html"><span class="sb-num">09</span><span class="sb-t">栖息地结构设计</span></a>
+<a class="sb-item" href="ch10.html"><span class="sb-num">10</span><span class="sb-t">能源系统</span></a>
+<a class="sb-item" href="ch11.html"><span class="sb-num">11</span><span class="sb-t">通信与导航</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第五部分 · 目的地与殖民方案</div>
+<a class="sb-item" href="ch12.html"><span class="sb-num">12</span><span class="sb-t">月球</span></a>
+<a class="sb-item" href="ch13.html"><span class="sb-num">13</span><span class="sb-t">火星</span></a>
+<a class="sb-item" href="ch14.html"><span class="sb-num">14</span><span class="sb-t">小行星与太空殖民地</span></a>
+<a class="sb-item" href="ch15.html"><span class="sb-num">15</span><span class="sb-t">外太阳系与冰卫星</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第六部分 · 材料与制造</div>
+<a class="sb-item" href="ch16.html"><span class="sb-num">16</span><span class="sb-t">太空材料科学</span></a>
+<a class="sb-item" href="ch17.html"><span class="sb-num">17</span><span class="sb-t">太空制造与原位资源利用</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第七部分 · 社会、文化与治理</div>
+<a class="sb-item" href="ch18.html"><span class="sb-num">18</span><span class="sb-t">太空治理与法律框架</span></a>
+<a class="sb-item" href="ch19.html"><span class="sb-num">19</span><span class="sb-t">太空经济学</span></a>
+<a class="sb-item" href="ch20.html"><span class="sb-num">20</span><span class="sb-t">太空文化演化</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第八部分 · 前沿与推测性技术</div>
+<a class="sb-item" href="ch21.html"><span class="sb-num">21</span><span class="sb-t">脑机接口与人类增强</span></a>
+<a class="sb-item" href="ch22.html"><span class="sb-num">22</span><span class="sb-t">AI治理与超级智能</span></a>
+<a class="sb-item" href="ch23.html"><span class="sb-num">23</span><span class="sb-t">意识上传与数字存在</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">附录 · 参考数据</div>
+<a class="sb-item" href="appA.html"><span class="sb-num">A</span><span class="sb-t">A 物理常数与换算</span></a>
+<a class="sb-item" href="appB.html"><span class="sb-num">B</span><span class="sb-t">B 太阳系天体参数</span></a>
+<a class="sb-item" href="appC.html"><span class="sb-num">C</span><span class="sb-t">C 推进系统对比</span></a>
+<a class="sb-item" href="appD.html"><span class="sb-num">D</span><span class="sb-t">D 辐射与屏蔽</span></a>
+<a class="sb-item" href="appE.html"><span class="sb-num">E</span><span class="sb-t">E 术语表（中英对照）</span></a>
+<a class="sb-item" href="appF.html"><span class="sb-num">F</span><span class="sb-t">F 参考文献与推荐阅读</span></a>
+</div>
+</nav><main class="content"><article class="article"><div class="crumb"><span class="crumb-part">第三部分 · 生命保障与人体工程</span><span class="crumb-sep">/</span><span class="crumb-ch">CHAPTER 07</span></div><div class="ch-head"><div class="ch-num">07</div><h1 class="ch-title">太空医学</h1></div><div class="article-body"><blockquote>
+<p><strong>章首导语</strong></p>
+<p>人体是在 1 g、富氧大气和地球辐射环境中演化出的系统，太空的每一项物理条件都与之相悖。本章回答的问题是：微重力、辐射与隔离环境会造成哪些可量化的医学损伤，现有对抗措施能挽回多少，以及火星任务（往返加表面驻留约 2.5–3 年）还差什么。60 多年的载人航天已积累了清晰的剂量-效应数据：骨流失 ~1–1.5%/月、肌肉流失 ~5%/月、SANS（Spaceflight-Associated Neuro-ocular Syndrome）在长期乘员中的发生率 ~60%——这些都是 ISS 上的实测值。本章按"生理损伤 → 辐射医学 → 心理学 → 远程医疗 → 人体增强"的顺序展开，关键结论有二：其一，运动加营养加药物的组合只能部分对抗（骨丢失预防 ~50%），人工重力是唯一针对病因的措施，但尚无飞行验证；其二，火星任务的最大医学风险不是单项损伤，而是 3–22 分钟通信延迟下必须实现医疗自主。辐射剂量约束与屏蔽设计的物理侧详见第1、2章，屏蔽结构工程见第9章。</p>
+</blockquote>
+<h3 id="sec-1">7.1 微重力生理学</h3>
+<h3 id="sec-2">7.1.1 骨质流失</h3>
+<p><strong>机制</strong>：</p>
+<p>微重力下骨骼失去机械负荷刺激，导致骨重建失衡：</p>
+<ul>
+<li>破骨细胞活性 ↑（骨吸收增加）</li>
+<li>成骨细胞活性 ↓（骨形成减少）</li>
+<li>净效应：骨密度下降</li>
+</ul>
+<p><strong>ISS数据</strong>：</p>
+<ul>
+<li>骨密度流失率：~1-1.5%/月（承重骨：腰椎、股骨）</li>
+<li>6个月任务：骨密度下降 ~6-9%</li>
+<li>恢复：返回地球后 ~1-3年（部分不可逆）</li>
+</ul>
+<p><strong>生物标志物</strong>：</p>
+<ul>
+<li>尿钙 ↑（骨吸收标志物）</li>
+<li>血清骨钙素 ↓（骨形成标志物）</li>
+<li>NTX（N-末端肽）↑（骨胶原降解）</li>
+</ul>
+<p><strong>对抗措施</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>措施</th>
+<th>效果</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>抗阻运动（ARED）</td>
+<td>~50%骨丢失预防</td>
+<td>ISS标准设备</td>
+</tr>
+<tr>
+<td>药物（双膦酸盐）</td>
+<td>~30-50%骨丢失预防</td>
+<td>临床试验中</td>
+</tr>
+<tr>
+<td>人工重力（旋转）</td>
+<td>理论有效</td>
+<td>未实际验证</td>
+</tr>
+<tr>
+<td>营养（Ca + Vit D）</td>
+<td>辅助作用</td>
+<td>基础措施</td>
+</tr>
+</tbody>
+</table>
+<p><strong>火星任务挑战</strong>：</p>
+<ul>
+<li>转移期（6个月微重力）：骨丢失 ~6-9%</li>
+<li>火星表面（0.38g）：是否足以维持骨密度？未知</li>
+<li>返回地球（再次微重力）：累积效应</li>
+<li>长期风险：骨质疏松、骨折风险增加</li>
+</ul>
+<h3 id="sec-3">7.1.2 肌肉萎缩</h3>
+<p><strong>机制</strong>：</p>
+<p>微重力下肌肉失去抗重力负荷：</p>
+<ul>
+<li>慢肌纤维（Type I）→ 快肌纤维（Type II）转化</li>
+<li>肌肉蛋白质合成 ↓，降解 ↑</li>
+<li>净效应：肌肉质量和力量下降</li>
+</ul>
+<p><strong>ISS数据</strong>：</p>
+<ul>
+<li>肌肉质量流失：~5%/月（下肢明显）</li>
+<li>力量下降：~20-30%（6个月后）</li>
+<li>恢复：~2-3个月训练（与流失时间相当）</li>
+</ul>
+<p><strong>对抗措施</strong>：</p>
+<ul>
+<li>抗阻运动（ARED）：每周 ~6次，每次 ~45分钟</li>
+<li>有氧运动（CEVIS/RVE）：维持心肺功能</li>
+<li>营养：高蛋白饮食（~1.2-1.5 g/kg/day）</li>
+<li>电刺激：辅助措施（效果有限）</li>
+</ul>
+<h3 id="sec-4">7.1.3 心血管去适应</h3>
+<p><strong>机制</strong>：</p>
+<p>微重力下血液从头部分布到下肢的静水压梯度消失：</p>
+<ul>
+<li>中心血容量 ↑（~15-20%）</li>
+<li>心脏前负荷 ↑ → 心输出量 ↑（急性）</li>
+<li>长期适应：心脏质量 ↓（~10%）、心输出量 ↓、血管阻力 ↓</li>
+<li>立位耐受不良：返回地球后 ~20-30%乘员出现晕厥前兆</li>
+</ul>
+<p><strong>ISS数据</strong>：</p>
+<ul>
+<li>心脏质量下降：~10%（6个月）</li>
+<li>最大摄氧量（VO₂max）下降：~15-20%</li>
+<li>立位耐受：~50%乘员出现不同程度的立位不耐受</li>
+</ul>
+<p><strong>对抗措施</strong>：</p>
+<ul>
+<li>有氧运动：维持心肺功能</li>
+<li>下体负压（LBNP）：模拟站立时血液分布</li>
+<li>压缩服：返回前穿戴，防止血液淤滞</li>
+<li>盐片 + 水分：增加血容量</li>
+</ul>
+<h3 id="sec-5">7.1.4 SANS综合征（Spaceflight-Associated Neuro-ocular Syndrome）</h3>
+<p><strong>症状</strong>：</p>
+<ul>
+<li>视盘水肿（视神经乳头肿胀）</li>
+<li>眼球后部扁平化</li>
+<li>脉络膜褶皱</li>
+<li>远视漂移（屈光度改变）</li>
+</ul>
+<p><strong>机制</strong>（假说）：</p>
+<ul>
+<li>颅内压（ICP）升高：微重力下脑脊液向头部转移</li>
+<li>静脉回流受阻：颈静脉瓣功能改变</li>
+<li>一碳代谢异常：叶酸/B12代谢影响甲基化</li>
+</ul>
+<p><strong>ISS数据</strong>：</p>
+<ul>
+<li>发生率：~60%长期乘员（&gt;6个月）</li>
+<li>严重程度：轻度 ~40%，中度 ~20%，重度 ~5%</li>
+<li>恢复：部分可逆（数月-数年），部分不可逆</li>
+</ul>
+<p><strong>火星任务影响</strong>：</p>
+<ul>
+<li>3年任务（转移 + 表面 + 返回）：累积效应未知</li>
+<li>0.38g火星重力：是否缓解SANS？未知</li>
+<li>任务风险：视力损伤可能影响关键操作（着陆、EVA）</li>
+</ul>
+<p><strong>机制研究进展与在轨监测</strong>：</p>
+<p>SANS 的病因至今没有定论，但 ISS 上的在轨超声、OCT（光学相干断层扫描，Optical Coherence Tomography）与返回后的 MRI 数据已把候选机制收敛到三条主线：</p>
+<ol>
+<li><strong>头向体液转移与静脉淤滞</strong>：微重力消除静水压梯度后，颅内与眶后静脉压持续升高，视神经鞘扩张（超声可测），脉络膜增厚。颈静脉血流在轨监测显示部分乘员出现血流减缓甚至血栓（ISS 上曾记录 1 例颈内静脉血栓），提示静脉回流受阻是重要环节。</li>
+<li><strong>脑脊液与类淋巴（glymphatic）循环改变</strong>：微重力下脑脊液的搏动性引流减弱，返回后 MRI 显示脑室容积与脑脊液间隙的再分布，与视盘水肿程度相关。</li>
+<li><strong>个体易感性</strong>：一碳代谢（叶酸/B₁₂/同型半胱氨酸）基因多态性的流行病学关联已被提出，但未获前瞻性验证；这解释了为何同样任务时长下 ~40% 乘员几乎无症状。</li>
+</ol>
+<p><strong>在轨监测与候选对策</strong>：</p>
+<ul>
+<li>监测：定期眼部超声（ISS 已常规开展）+ OCT + 视功能主观评估；火星任务需实现乘员自助操作</li>
+<li>下体负压（LBNP）与大腿束缚带（thigh cuffs）：把体液拉回下肢，短期缓解头向转移，长期依从性与效果待验证</li>
+<li>间歇人工重力：从病因上针对体液分布，是最有希望的长期对策（见 7.1.5 节）</li>
+<li>药物：乙酰唑胺（acetazolamide，降低脑脊液生成）在特发性颅内高压中有效，但长期副作用（代谢性酸中毒、肾结石风险）限制其在太空的应用；目前无获准的 SANS 专用药物</li>
+</ul>
+<p>需要强调：SANS 是当前 NASA 载人研究计划中优先级最高的医学风险之一，其不确定性直接约束火星任务的乘员筛查标准与任务时长上限。</p>
+<h3 id="sec-6">7.1.5 人工重力：处方与工程约束</h3>
+<p>前述所有对抗措施（运动、药物、LBNP）都是对损伤的"下游补偿"，人工重力（Artificial Gravity, AG）是唯一直接恢复重力刺激的"上游干预"，理论上可同时对抗骨流失、肌肉萎缩、心血管去适应与 SANS 的头向体液转移。其工程实现只有旋转一条路径：向心加速度 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">ω</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span>，其中 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">ω</span></span></span></span> 为角速度（rad/s）、<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span> 为旋转半径。</p>
+<p><strong>转速耐受性是处方的核心约束</strong>：</p>
+<ul>
+<li>人体对旋转的耐受主要受科里奥利（Coriolis）效应限制：头部运动时产生交叉耦合角加速度，引起前庭不适与恶心。</li>
+<li>地面短臂离心机数据：~2–3 rpm 下大多数人可长期耐受；经数日适应后 ~6 rpm 可行；10 rpm 以上基本不可接受。</li>
+<li>由 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">ω</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span> 反推半径：1 g、2 rpm 需 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4831em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">22</span></span></span></span> m；1 g、4 rpm 需 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4831em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">5.6</span></span></span></span> m；1 g、6 rpm 需 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4831em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2.5</span></span></span></span> m。这意味着<strong>舒适的连续人工重力需要大型结构</strong>（栖息地设计详见第9章），而短臂离心机只能提供间歇剂量。</li>
+</ul>
+<p><strong>间歇人工重力（Intermittent Artificial Gravity）处方</strong>：</p>
+<p>地面与抛物线飞行研究支持的候选方案是每天 30–60 分钟、等效 ~1 g 的间歇暴露（连续或分段）。生理依据：骨重建对间歇性负荷敏感（地面研究显示每日数十次高应变率负荷即可抑制骨吸收）；心血管系统每天短时的立位静水压刺激即可维持立位耐受。但必须明确：<strong>该处方尚未在真实微重力环境中验证</strong>——ISS 的离心机舱（Centrifuge Accommodation Module）于 2005 年被取消，迄今没有在轨人体实验数据。</p>
+<p><strong>工程实现路径对比</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>路径</th>
+<th>构型</th>
+<th>现状</th>
+<th>主要障碍</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>短臂离心机</td>
+<td>舱内旋转装置（r ~2–3 m）</td>
+<td>地面原型（TRL 2–3）</td>
+<td>仅头部以下梯度大，头-足压差引起不适</td>
+</tr>
+<tr>
+<td>tether 双体旋转</td>
+<td>飞船与配重以系绳连接对旋</td>
+<td>概念研究（TRL 1–2）</td>
+<td>系绳动力学控制、对接复杂度</td>
+</tr>
+<tr>
+<td>整船旋转</td>
+<td>环形居住舱</td>
+<td>概念级（TRL 1）</td>
+<td>结构质量、发射包装</td>
+</tr>
+</tbody>
+</table>
+<p>对火星任务，短臂间歇离心机是近期最现实的选项（估计干质量 ~1–2 t 级）；其医学有效性验证被列为火星任务前必须完成的关键实验之一。</p>
+<h3 id="sec-7">7.1.6 冬眠与低代谢研究现状</h3>
+<p>低代谢状态（torpor/冬眠）能从源头减少消耗：体温每降低 ~1 °C，基础代谢率约降 ~6–7%；深度低温（~32 °C）可使代谢率降 ~40–50%。这同时降低 O₂/食物需求、CO₂ 与废物产出，并减少乘员活动空间需求——NASA 的深空中转栖息地研究估计，4 人乘组 180 天航段采用冬眠可削减生命保障消耗品质量 ~50–75%（依系统架构而异）。</p>
+<p><strong>研究现状</strong>（截至 2020 年代中期）：</p>
+<ul>
+<li><strong>治疗性低温</strong>：临床成熟技术（目标温度管理，Targeted Temperature Management，用于心脏骤停后神经保护），通过血管内冷却导管或体表冷却垫实现，TRL 8–9（地面医疗）。SpaceWorks 公司据此提出火星转运"冬眠舱"概念：乘员轮替进入 14–30 天的低温状态，经鼻冷却至 ~32–34 °C，配合镇静与肠外营养。</li>
+<li><strong>冬眠诱导药物</strong>：尚无可用于人体的安全诱导剂。氢硫化氢（H₂S）诱导的"悬浮动画"仅在小鼠（非冬眠物种）中短暂演示，且在大型动物与人体未能复现；5′-AMP、腺苷受体激动剂等候选物处于动物实验阶段。</li>
+<li><strong>低温的辐射防护协同</strong>：低温降低氧自由基代谢率，动物实验显示低温状态可部分减轻辐射损伤（剂量效应修正因子 ~1.1–1.3 量级，数据有限）；这对深空航段有附加价值。</li>
+<li><strong>熊类冬眠的启示</strong>：冬眠熊在数月不动中骨丢失 &lt;5%、肌肉萎缩轻微，其机制（肌抑素抑制、尿素氮再循环）是抗骨流失/肌萎缩药物研发的仿生方向。</li>
+</ul>
+<p><strong>风险与评估</strong>：长期低温的临床并发症（感染、凝血异常、肌萎缩、冷利尿致电解质紊乱）在卧床+低温叠加条件下会放大；乘组部分冬眠时的值守安排与应急处置程序尚无先例。总体判断：<strong>冬眠航行的医学可行性为中期发展目标（TRL 3–5，航天应用口径），首个应用更可能出现在无人货运或应急返航场景，而非首批火星载人任务</strong>。</p>
+<h3 id="sec-8">7.2 辐射防护医学</h3>
+<h3 id="sec-9">7.2.1 急性辐射效应</h3>
+<p><strong>急性辐射综合征（ARS）分级</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>剂量 (Sv)</th>
+<th>综合征类型</th>
+<th>症状</th>
+<th>治疗</th>
+<th>预后</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.5-1</td>
+<td>造血</td>
+<td>淋巴细胞↓，感染风险</td>
+<td>支持治疗，G-CSF</td>
+<td>良好</td>
+</tr>
+<tr>
+<td>1-2</td>
+<td>造血+胃肠</td>
+<td>恶心、呕吐、腹泻</td>
+<td>液体、电解质、抗生素</td>
+<td>中等</td>
+</tr>
+<tr>
+<td>2-6</td>
+<td>骨髓抑制</td>
+<td>全血细胞减少，出血</td>
+<td>输血，隔离，生长因子</td>
+<td>差（LD₅₀ ~3.5-4 Sv）</td>
+</tr>
+<tr>
+<td>6-10</td>
+<td>胃肠+心血管</td>
+<td>严重腹泻，脱水，休克</td>
+<td>积极支持</td>
+<td>极差</td>
+</tr>
+<tr>
+<td>&gt;10</td>
+<td>中枢神经</td>
+<td>抽搐，昏迷</td>
+<td>姑息治疗</td>
+<td>致死</td>
+</tr>
+</tbody>
+</table>
+<p><strong>SPE场景</strong>：</p>
+<ul>
+<li>未屏蔽：极端SPE可在数小时内达到 &gt;5 Sv（致死剂量）</li>
+<li>风暴 shelter（10-20 g/cm²水屏蔽）：剂量降至 ~0.5-1 Sv（可存活）</li>
+<li>预警时间：~15-60分钟（太阳X射线/质子监测）</li>
+</ul>
+<h3 id="sec-10">7.2.2 慢性辐射效应</h3>
+<p><strong>致癌风险</strong>：</p>
+<ul>
+<li>LNT模型：每 Sv 增加 ~5% 致死癌症风险</li>
+<li>火星任务（~1 Sv）：增加 ~5% 致死癌症概率</li>
+<li>不确定性：低剂量率、高LET辐射（GCR重离子）的风险模型不确定</li>
+</ul>
+<p><strong>非致癌效应</strong>：</p>
+<ul>
+<li>心血管疾病：&gt;0.5 Sv 可能增加风险（相对风险 ~1.1-1.5/Sv）</li>
+<li>白内障：阈值 ~0.5 Sv（重离子），ISS乘员中观察到早期白内障</li>
+<li>认知功能：GCR重离子可能造成神经元损伤（动物实验证据）</li>
+</ul>
+<h3 id="sec-11">7.2.3 辐射防护药物</h3>
+<p><strong>辐射防护剂（Radioprotectors）</strong>：</p>
+<ul>
+<li>氨磷汀（Amifostine, WR-2721）：自由基清除剂，可降低正常组织辐射损伤</li>
+<li>问题：副作用（低血压、恶心），保护选择性有限</li>
+<li>黑色素（Melanin）：天然辐射防护剂（真菌中发现）</li>
+<li>概念：基因工程增加人体黑色素表达</li>
+<li>状态：早期研究</li>
+</ul>
+<p><strong>辐射缓解剂（Radiomitigators）</strong>：</p>
+<ul>
+<li>在辐射暴露后给予，减轻损伤</li>
+<li>例子：GS-nitroxide（抗氧化）、CBLB502（TLR5激动剂）</li>
+<li>状态：动物实验阶段</li>
+</ul>
+<p><strong>火星任务应用</strong>：</p>
+<ul>
+<li>预防性：任务前/中服用辐射防护剂（效果有限，~20-30%剂量降低）</li>
+<li>应急：SPE后给予辐射缓解剂</li>
+<li>综合策略：屏蔽 + 药物 + 任务时序（太阳活动极大年发射）</li>
+</ul>
+<h3 id="sec-12">7.3 隔离与限制环境心理学</h3>
+<h3 id="sec-13">7.3.1 ICE环境特征</h3>
+<p><strong>ICE（Isolated, Confined, Extreme）环境心理挑战</strong>：</p>
+<ul>
+<li>隔离：与地球/家人分离，通信延迟</li>
+<li>限制：空间狭小，隐私有限</li>
+<li>极端：生命危险，资源依赖技术系统</li>
+</ul>
+<p><strong>心理症状谱</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>时间</th>
+<th>症状</th>
+<th>干预</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>急性适应</td>
+<td>0-4周</td>
+<td>焦虑、失眠、思乡</td>
+<td>支持性咨询，保持联系</td>
+</tr>
+<tr>
+<td>稳定期</td>
+<td>1-6月</td>
+<td>适应， routine建立</td>
+<td>维持活动结构</td>
+</tr>
+<tr>
+<td>疲劳期</td>
+<td>6-12月</td>
+<td>厌倦、动机下降、人际冲突</td>
+<td>新鲜刺激，轮换任务</td>
+</tr>
+<tr>
+<td>长期慢性</td>
+<td>&gt;12月</td>
+<td>抑郁、认知衰退、社会退缩</td>
+<td>强化心理支持，药物</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sec-14">7.3.2 团队动力学</h3>
+<p><strong>乘员选择标准</strong>：</p>
+<ul>
+<li>技术能力：基础要求</li>
+<li>心理韧性：压力耐受、情绪稳定</li>
+<li>人际技能：冲突解决、沟通、合作</li>
+<li>文化适应：跨文化团队（国际任务）</li>
+</ul>
+<p><strong>团队组成优化</strong>：</p>
+<ul>
+<li>规模：4-6人（最小化冲突，最大化技能覆盖）</li>
+<li>性别混合：改善团队氛围，但增加人际复杂性</li>
+<li>年龄分布：混合经验（老）与活力（年轻）</li>
+<li>角色明确：指挥链清晰，但允许自主性</li>
+</ul>
+<p><strong>冲突管理</strong>：</p>
+<ul>
+<li>预防：严格选拔、团队训练、明确规则</li>
+<li>监测：定期心理评估、同伴报告</li>
+<li>干预：调解、任务调整、地球支持</li>
+</ul>
+<h3 id="sec-15">7.3.3 认知表现维护</h3>
+<p><strong>微重力对认知的影响</strong>：</p>
+<ul>
+<li>空间定向：微重力下空间参考系改变，影响心理旋转任务</li>
+<li>反应时间：轻度延长（~5-10%）</li>
+<li>工作记忆：影响较小（训练可补偿）</li>
+<li>长期任务：疲劳、睡眠不足累积效应</li>
+</ul>
+<p><strong>对抗措施</strong>：</p>
+<ul>
+<li>睡眠卫生：固定作息、暗周期、限制咖啡因</li>
+<li>光照管理：蓝光照明调节昼夜节律</li>
+<li>认知训练：定期脑力锻炼</li>
+<li>药物：必要时使用促智药物（modafinil等）</li>
+</ul>
+<h3 id="sec-16">7.4 远程外科手术与自动化医疗</h3>
+<h3 id="sec-17">7.4.1 医疗能力分级</h3>
+<p><strong>太空医疗能力层次</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>级别</th>
+<th>能力</th>
+<th>设备</th>
+<th>人员</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>一级（ISS当前）</td>
+<td>急救、基础护理</td>
+<td>药箱、除颤器、超声</td>
+<td>乘员医师助理</td>
+</tr>
+<tr>
+<td>二级（火星转移）</td>
+<td>高级创伤生命支持、手术</td>
+<td>手术机器人、麻醉机</td>
+<td>乘员外科医生</td>
+</tr>
+<tr>
+<td>三级（火星基地）</td>
+<td>完整医院</td>
+<td>CT/MRI、手术室、ICU</td>
+<td>医疗团队</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sec-18">7.4.2 远程手术挑战</h3>
+<p><strong>通信延迟问题</strong>：</p>
+<ul>
+<li>月球：1.3秒延迟 → 远程手术可行（机器人辅助）</li>
+<li>火星：3-22分钟延迟 → 实时远程手术不可能</li>
+<li>解决方案：</li>
+<li>乘员外科医生（自主手术）</li>
+<li>AI辅助手术系统（术前规划、术中指导）</li>
+<li>远程专家咨询（延迟对话模式）</li>
+</ul>
+<p><strong>微重力手术</strong>：</p>
+<ul>
+<li>血液/液体管理：微重力下液体不流动，需要封闭系统</li>
+<li>器官固定：需要机械固定装置</li>
+<li>无菌环境：空气流动差，气溶胶悬浮时间长</li>
+<li>麻醉：气体分布改变，需要特殊麻醉机</li>
+</ul>
+<p><strong>手术机器人</strong>：</p>
+<ul>
+<li>da Vinci系统（地球）：远程操作，精细控制</li>
+<li>太空适应版：自主功能增强（缝合、切割自动化）</li>
+<li>AI辅助：计算机视觉识别解剖结构，预警危险</li>
+</ul>
+<h3 id="sec-19">7.4.3 3D生物打印</h3>
+<p><strong>概念</strong>：</p>
+<p>使用乘员自体细胞打印组织/器官，解决移植器官短缺和排斥问题。</p>
+<p><strong>技术路径</strong>：</p>
+<ol>
+<li>细胞采集：皮肤活检 → 干细胞培养</li>
+<li>生物墨水：细胞 + 水凝胶支架</li>
+<li>打印：逐层构建组织结构</li>
+<li>成熟：生物反应器中培养功能组织</li>
+</ol>
+<p><strong>当前状态</strong>：</p>
+<ul>
+<li>皮肤、软骨：已临床验证</li>
+<li>血管化组织：研究阶段</li>
+<li>复杂器官（心脏、肝脏）：长期目标（10-20年）</li>
+</ul>
+<p><strong>太空应用</strong>：</p>
+<ul>
+<li>辐射损伤修复：皮肤、肠道上皮</li>
+<li>创伤修复：烧伤、战伤</li>
+<li>长期任务：器官衰竭替代</li>
+</ul>
+<h3 id="sec-20">7.5 人体增强与基因改造</h3>
+<h3 id="sec-21">7.5.1 抗辐射基因编辑</h3>
+<p><strong>天然辐射抗性基因</strong>：</p>
+<ul>
+<li>Dsup（Deinococcus radiodurans）：保护DNA免受辐射损伤</li>
+<li>p53：肿瘤抑制基因，修复辐射损伤</li>
+<li>ATM/ATR：DNA损伤应答通路</li>
+</ul>
+<p><strong>基因工程策略</strong>：</p>
+<ul>
+<li>过表达DNA修复基因（如 Dsup）</li>
+<li>增强抗氧化系统（SOD、catalase过表达）</li>
+<li>引入辐射抗性蛋白（来自耐辐射微生物）</li>
+</ul>
+<p><strong>伦理与安全问题</strong>：</p>
+<ul>
+<li>脱靶效应：基因编辑可能引入有害突变</li>
+<li>长期影响：跨代效应未知</li>
+<li>公平性：增强 vs. 自然人类的伦理争议</li>
+</ul>
+<h3 id="sec-22">7.5.2 低重力适应型改造</h3>
+<p><strong>理论改造方向</strong>：</p>
+<ul>
+<li>骨骼：增加骨密度或改变骨微结构（适应低重力负荷）</li>
+<li>肌肉：改变肌纤维类型比例（减少慢肌依赖）</li>
+<li>心血管：调整血压调节机制（适应低立压梯度）</li>
+<li>前庭系统：改变重力感知阈值（适应部分重力）</li>
+</ul>
+<p><strong>实现路径</strong>：</p>
+<ul>
+<li>基因编辑：CRISPR/Cas9修改相关基因</li>
+<li>表观遗传：药物或环境诱导基因表达改变</li>
+<li>合成生物学：引入人工基因回路</li>
+</ul>
+<p><strong>现实评估</strong>：</p>
+<ul>
+<li>当前技术：基因编辑人类胚胎仍处实验/争议阶段</li>
+<li>复杂性：多基因性状（如骨密度）涉及数百个基因</li>
+<li>时间尺度：即使可行，也需要数代才能观察群体效应</li>
+</ul>
+<p><strong>本章小结</strong></p>
+<p>太空医学的证据基础扎实而结论克制：ISS 数据给出了各类损伤的定量速率，现有对抗措施（抗阻运动、双膦酸盐、LBNP、心理支持）只能把损伤压低 30–50%，且 SANS、辐射致癌风险等关键项没有完全有效的对策。人工重力针对病因而非症状，是火星任务前最值得投入验证的方向；冬眠可削减消耗品质量但医学成熟度不足。对火星任务而言，真正的范式转变是通信延迟 3–22 分钟带来的医疗自主需求：乘员外科能力、AI 辅助诊断与手术、以及延迟咨询流程必须在出发前建立并演练。基因增强在伦理与技术上都属于远期选项，不应纳入近期任务设计。</p>
+<p><strong>关键参数速查表</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>典型值</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>骨流失率</td>
+<td>~1–1.5%/月</td>
+<td>承重骨（腰椎、股骨），ISS 实测；6 个月任务累计 ~6–9%</td>
+</tr>
+<tr>
+<td>肌肉质量流失</td>
+<td>~5%/月</td>
+<td>下肢为主，力量 6 个月下降 ~20–30%</td>
+</tr>
+<tr>
+<td>心脏质量下降</td>
+<td>~10%（6 个月）</td>
+<td>VO₂max 下降 ~15–20%，立位不耐受 ~50%</td>
+</tr>
+<tr>
+<td>SANS 发生率</td>
+<td>~60%（&gt;6 个月乘员）</td>
+<td>重度 ~5%；部分不可逆，火星任务最高优先级医学风险之一</td>
+</tr>
+<tr>
+<td>ARED 运动处方</td>
+<td>~6 次/周、~45 min/次</td>
+<td>预防 ~50% 骨丢失的 ISS 标准对抗措施</td>
+</tr>
+<tr>
+<td>高蛋白饮食</td>
+<td>~1.2–1.5 g/kg/day</td>
+<td>肌肉维持的营养支持基线</td>
+</tr>
+<tr>
+<td>火星通信延迟</td>
+<td>3–22 分钟（单程）</td>
+<td>实时远程手术不可行，必须医疗自主</td>
+</tr>
+<tr>
+<td>月球通信延迟</td>
+<td>~1.3 秒（单程）</td>
+<td>远程机器人手术基本可行</td>
+</tr>
+<tr>
+<td>火星任务累积剂量</td>
+<td>~1 Sv</td>
+<td>LNT 模型下增加 ~5% 致死癌症风险</td>
+</tr>
+<tr>
+<td>ARS 造血综合征</td>
+<td>0.5–1 Sv</td>
+<td>LD₅₀ ~3.5–4 Sv；风暴掩体（10–20 g/cm²）可把 SPE 剂量降至 ~0.5–1 Sv</td>
+</tr>
+<tr>
+<td>间歇人工重力处方</td>
+<td>~30–60 min/day @ ~1 g</td>
+<td>候选处方，尚无在轨人体验证（ISS 离心机舱 2005 年取消）</td>
+</tr>
+<tr>
+<td>冬眠代谢削减</td>
+<td>~6–7%/°C 体温降低</td>
+<td>深空航段消耗品质量可削减 ~50–75%（概念估算）</td>
+</tr>
+</tbody>
+</table>
+<hr /></div><div class="prevnext"><a class="pn pn-prev" href="ch06.html"><span class="pn-k">上一篇</span><span class="pn-t">第6章 封闭生态生命保障系统（CELSS）</span></a><a class="pn pn-next" href="ch08.html"><span class="pn-k">下一篇</span><span class="pn-t">第8章 食品与营养</span></a></div></article><footer class="foot"><span>未来太空移民技术手册 · 完整版 v2.0</span><span class="foot-mono">AD ASTRA PER ASPERA</span></footer></main>
+<aside class="toc"><div class="toc-title">本页目录</div>
+<a class="toc-h3" href="#sec-1">7.1 微重力生理学</a>
+<a class="toc-h3" href="#sec-2">7.1.1 骨质流失</a>
+<a class="toc-h3" href="#sec-3">7.1.2 肌肉萎缩</a>
+<a class="toc-h3" href="#sec-4">7.1.3 心血管去适应</a>
+<a class="toc-h3" href="#sec-5">7.1.4 SANS综合征（Spaceflight-Associated Neuro-ocular Syndrome）</a>
+<a class="toc-h3" href="#sec-6">7.1.5 人工重力：处方与工程约束</a>
+<a class="toc-h3" href="#sec-7">7.1.6 冬眠与低代谢研究现状</a>
+<a class="toc-h3" href="#sec-8">7.2 辐射防护医学</a>
+<a class="toc-h3" href="#sec-9">7.2.1 急性辐射效应</a>
+<a class="toc-h3" href="#sec-10">7.2.2 慢性辐射效应</a>
+<a class="toc-h3" href="#sec-11">7.2.3 辐射防护药物</a>
+<a class="toc-h3" href="#sec-12">7.3 隔离与限制环境心理学</a>
+<a class="toc-h3" href="#sec-13">7.3.1 ICE环境特征</a>
+<a class="toc-h3" href="#sec-14">7.3.2 团队动力学</a>
+<a class="toc-h3" href="#sec-15">7.3.3 认知表现维护</a>
+<a class="toc-h3" href="#sec-16">7.4 远程外科手术与自动化医疗</a>
+<a class="toc-h3" href="#sec-17">7.4.1 医疗能力分级</a>
+<a class="toc-h3" href="#sec-18">7.4.2 远程手术挑战</a>
+<a class="toc-h3" href="#sec-19">7.4.3 3D生物打印</a>
+<a class="toc-h3" href="#sec-20">7.5 人体增强与基因改造</a>
+<a class="toc-h3" href="#sec-21">7.5.1 抗辐射基因编辑</a>
+<a class="toc-h3" href="#sec-22">7.5.2 低重力适应型改造</a>
+</aside>
+</div>
+<script src="../search-index.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

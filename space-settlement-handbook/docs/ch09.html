@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第9章 栖息地结构设计 · 未来太空移民技术手册</title>
+<meta name="description" content="未来太空移民技术手册 —— 面向专业读者的综合性太空殖民技术参考，涵盖推进、生保、栖息地、治理与前沿技术。">
+<link rel="icon" type="image/png" href="../assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script>(function(){try{var t=localStorage.getItem('smh-theme');if(!t)t='dark';document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="目录"><span></span><span></span><span></span></button>
+  <a class="brand" href="../index.html">
+    <img class="brand-icon" src="../assets/icon.png" alt="">
+    <span class="brand-zh">未来太空移民技术手册</span>
+    <span class="brand-en">SPACE SETTLEMENT HANDBOOK</span>
+  </a>
+  <div class="top-actions">
+    <button class="search-btn" id="searchBtn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg><span>检索</span><kbd>⌘K</kbd></button>
+    <button class="theme-btn" id="themeBtn" aria-label="切换主题"></button>
+  </div>
+</header>
+
+<div class="search-overlay" id="searchOverlay" hidden>
+  <div class="search-box">
+    <div class="search-head">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg>
+      <input id="searchInput" type="text" placeholder="检索全书：术语、参数、章节…" autocomplete="off">
+      <kbd>ESC</kbd>
+    </div>
+    <div class="search-results" id="searchResults"><div class="search-hint">输入关键词，检索 23 章正文与附录</div></div>
+  </div>
+</div>
+<div class="layout">
+<nav class="sidebar" id="sidebar">
+<div class="sb-group"><div class="sb-label">卷首</div>
+<a class="sb-item" href="intro.html"><span class="sb-num">◎</span><span class="sb-t">前言与导读</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第一部分 · 基础物理与宇宙环境</div>
+<a class="sb-item" href="ch01.html"><span class="sb-num">01</span><span class="sb-t">太空环境物理</span></a>
+<a class="sb-item" href="ch02.html"><span class="sb-num">02</span><span class="sb-t">天体物理与轨道力学</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第二部分 · 推进与运输系统</div>
+<a class="sb-item" href="ch03.html"><span class="sb-num">03</span><span class="sb-t">化学推进与近中期方案</span></a>
+<a class="sb-item" href="ch04.html"><span class="sb-num">04</span><span class="sb-t">先进推进理论</span></a>
+<a class="sb-item" href="ch05.html"><span class="sb-num">05</span><span class="sb-t">星际航行工程</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第三部分 · 生命保障与人体工程</div>
+<a class="sb-item" href="ch06.html"><span class="sb-num">06</span><span class="sb-t">封闭生态生命保障系统（CELSS）</span></a>
+<a class="sb-item" href="ch07.html"><span class="sb-num">07</span><span class="sb-t">太空医学</span></a>
+<a class="sb-item" href="ch08.html"><span class="sb-num">08</span><span class="sb-t">食品与营养</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第四部分 · 栖息地与基础设施</div>
+<a class="sb-item current" href="ch09.html"><span class="sb-num">09</span><span class="sb-t">栖息地结构设计</span></a>
+<a class="sb-item" href="ch10.html"><span class="sb-num">10</span><span class="sb-t">能源系统</span></a>
+<a class="sb-item" href="ch11.html"><span class="sb-num">11</span><span class="sb-t">通信与导航</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第五部分 · 目的地与殖民方案</div>
+<a class="sb-item" href="ch12.html"><span class="sb-num">12</span><span class="sb-t">月球</span></a>
+<a class="sb-item" href="ch13.html"><span class="sb-num">13</span><span class="sb-t">火星</span></a>
+<a class="sb-item" href="ch14.html"><span class="sb-num">14</span><span class="sb-t">小行星与太空殖民地</span></a>
+<a class="sb-item" href="ch15.html"><span class="sb-num">15</span><span class="sb-t">外太阳系与冰卫星</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第六部分 · 材料与制造</div>
+<a class="sb-item" href="ch16.html"><span class="sb-num">16</span><span class="sb-t">太空材料科学</span></a>
+<a class="sb-item" href="ch17.html"><span class="sb-num">17</span><span class="sb-t">太空制造与原位资源利用</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第七部分 · 社会、文化与治理</div>
+<a class="sb-item" href="ch18.html"><span class="sb-num">18</span><span class="sb-t">太空治理与法律框架</span></a>
+<a class="sb-item" href="ch19.html"><span class="sb-num">19</span><span class="sb-t">太空经济学</span></a>
+<a class="sb-item" href="ch20.html"><span class="sb-num">20</span><span class="sb-t">太空文化演化</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第八部分 · 前沿与推测性技术</div>
+<a class="sb-item" href="ch21.html"><span class="sb-num">21</span><span class="sb-t">脑机接口与人类增强</span></a>
+<a class="sb-item" href="ch22.html"><span class="sb-num">22</span><span class="sb-t">AI治理与超级智能</span></a>
+<a class="sb-item" href="ch23.html"><span class="sb-num">23</span><span class="sb-t">意识上传与数字存在</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">附录 · 参考数据</div>
+<a class="sb-item" href="appA.html"><span class="sb-num">A</span><span class="sb-t">A 物理常数与换算</span></a>
+<a class="sb-item" href="appB.html"><span class="sb-num">B</span><span class="sb-t">B 太阳系天体参数</span></a>
+<a class="sb-item" href="appC.html"><span class="sb-num">C</span><span class="sb-t">C 推进系统对比</span></a>
+<a class="sb-item" href="appD.html"><span class="sb-num">D</span><span class="sb-t">D 辐射与屏蔽</span></a>
+<a class="sb-item" href="appE.html"><span class="sb-num">E</span><span class="sb-t">E 术语表（中英对照）</span></a>
+<a class="sb-item" href="appF.html"><span class="sb-num">F</span><span class="sb-t">F 参考文献与推荐阅读</span></a>
+</div>
+</nav><main class="content"><article class="article"><div class="crumb"><span class="crumb-part">第四部分 · 栖息地与基础设施</span><span class="crumb-sep">/</span><span class="crumb-ch">CHAPTER 09</span></div><div class="ch-head"><div class="ch-num">09</div><h1 class="ch-title">栖息地结构设计</h1></div><div class="article-body"><blockquote>
+<p>面向航天工程、物理学、生物学等相关专业背景读者。涵盖当前可行技术与理论/科幻级前瞻技术。</p>
+</blockquote>
+<hr />
+<p>人类到达目的地后，需要可长期居住的栖息地和支撑基础设施。本部分涵盖栖息地结构设计、能源系统、通信与导航工程。</p>
+<blockquote>
+<p><strong>章首导语</strong> —— 第9章回答"到了目的地之后住在哪里"：如何在真空或稀薄大气、低重力、强辐射、极端温度循环与微流星轰击之下，建造可长期居住的承压结构。本章按技术成熟度递进给出四条路线：充气式栖息地（Expandable Habitat，已有在轨验证）、地下/熔岩管栖息地（依托天然屏蔽，探测数据仍有限）、原位资源利用（ISRU）建筑（地面模拟验证阶段），以及远期的旋转重力栖息地（概念可行，依赖大型空间建造能力）。预告关键结论：近中期单舱居住体积以数百 m³ 为量级（B330 为 330 m³）；辐射屏蔽需约 2 m 月壤覆盖或等效质量，可将 GCR 年剂量从约 300 mSv 降至约 20 mSv；熔岩管在辐射、恒温与微流星防护上具备天然优势，是永久基地的首选候选。与其他部分的关系：辐射剂量的生物学限值见第三部分第7章；月面/火星选址场景见第五部分第12、13章；ISRU 原料制备工艺见第六部分第17章。</p>
+</blockquote>
+<h3 id="sec-1">9.1 充气式栖息地</h3>
+<h3 id="sec-2">9.1.1 技术路线</h3>
+<p>充气式栖息地（Expandable Habitats）通过柔性织物结构在展开后提供远大于发射体积的内部空间，是近中期太空移民的核心居住方案。</p>
+<p><strong>发射-展开比</strong>：</p>
+<p>传统刚性舱体：发射体积 ≈ 使用体积（受运载火箭整流罩限制，直径 ~4-5 m）</p>
+<p>充气式：发射体积可压缩至使用体积的 ~1/4-1/8，展开后直径可达 6-10 m</p>
+<p><strong>结构层级</strong>（以Bigelow B330为例）：</p>
+<pre><code>外层（Micrometeoroid/Orbital Debris, MMOD防护）
+  ├─ Vectran外罩（0.5-1 mm编织物）
+  ├─ Nextel陶瓷纤维层（缓冲/碎裂弹丸）
+  └─ Kevlar结构层
+中间层（压力保持）
+  ├─ 气密内衬（聚氨酯/丁基橡胶复合膜，~0.5 mm）
+  └─ 约束层（Zylon/Spectra高强度纤维）
+内层（居住面）
+  ├─ 防火层（Nomex/陶瓷纤维）
+  ├─ 隔热层（气凝胶毡）
+  └─ 内饰板（可更换，安装设备/管线）
+</code></pre>
+<p><strong>关键参数</strong>（B330基准）：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>内部体积</td>
+<td>330 m³（展开）</td>
+</tr>
+<tr>
+<td>直径</td>
+<td>~6.7 m</td>
+</tr>
+<tr>
+<td>长度</td>
+<td>~14 m</td>
+</tr>
+<tr>
+<td>工作压力</td>
+<td>1 atm（101.3 kPa）</td>
+</tr>
+<tr>
+<td>设计寿命</td>
+<td>&gt;15年</td>
+</tr>
+<tr>
+<td>质量</td>
+<td>~20 t（含防护层）</td>
+</tr>
+<tr>
+<td>发射直径</td>
+<td>~3.8 m</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sec-3">9.1.2 微流星防护</h3>
+<p>充气式栖息地的核心挑战是MMOD防护——织物结构无法像金属/岩体那样提供等效防护。</p>
+<p><strong>防护设计准则</strong>：</p>
+<ul>
+<li>单层织物（Vectran/Kevlar）可防护 ~1 mm 颗粒（v ~ 10 km/s）</li>
+<li>多层缓冲（Nextel + 气隙）可防护 ~5 mm 颗粒</li>
+<li>完整防护（&gt;1 cm颗粒）需要 ~30-50 cm 间距 + 多层</li>
+</ul>
+<p><strong>工程方案</strong>：</p>
+<ol>
+<li><strong>Whipple增强型外部防护罩</strong>：刚性外罩 + 织物缓冲层</li>
+<li><strong>月壤/火星壤覆盖</strong>：在充气结构外部堆覆 1-3 m 风化层</li>
+<li><strong>水层防护</strong>：夹层充水（同时提供辐射屏蔽）</li>
+<li><strong>自修复材料</strong>：微胶囊封装修复剂，穿孔时自动密封</li>
+</ol>
+<p><strong>穿透应急</strong>：</p>
+<ul>
+<li>小穿孔（&lt;2 cm）：气压下降缓慢，乘员可用密封贴片修复</li>
+<li>大穿孔（&gt;10 cm）：需要隔离舱段，启动应急加压</li>
+<li>设计冗余：多舱段隔离阀，单舱失压不影响整体</li>
+</ul>
+<h3 id="sec-4">9.1.3 热控与辐射</h3>
+<p><strong>热控</strong>：</p>
+<ul>
+<li>充气结构表面积/体积比高 → 热交换面积大</li>
+<li>外层反射涂层（白色或镀铝）控制太阳吸收</li>
+<li>内层MLI隔热（减少向内部的热传导）</li>
+<li>主动热控：流体循环管路嵌入结构层</li>
+</ul>
+<p><strong>辐射屏蔽</strong>：</p>
+<ul>
+<li>织物本身辐射屏蔽能力极弱（&lt;1 g/cm²等效）</li>
+<li>必须依赖外部屏蔽：</li>
+<li>风化层覆盖（2-3 m月壤 → ~500 g/cm²，完全屏蔽SPE，显著降低GCR）</li>
+<li>水屏蔽（50 cm水 → ~50 g/cm²）</li>
+<li>聚乙烯屏蔽（30 cm → ~30 g/cm²）</li>
+</ul>
+<blockquote>
+<p>交叉引用：辐射剂量限值与生物效应的定量约束见第三部分第7章；本节屏蔽方案与 9.5 节的屏蔽设计互为表里。</p>
+</blockquote>
+<h3 id="sec-5">9.1.4 发展史与在轨验证</h3>
+<p>充气式栖息地并非全新概念，其工程谱系可追溯约三十年：</p>
+<p><strong>发展脉络</strong>：</p>
+<ul>
+<li>技术源头是 NASA 的 Transhab（Transhab）方案（1990年代末）：多层柔性壳体 + 凯夫拉约束层，原用于火星转移栖息舱与 ISS 居住舱研究，2000年被国会中止。</li>
+<li>Bigelow Aerospace（1999年成立）获得 NASA 相关专利授权，先后发射两个技术验证舱：Genesis I（2006年，第聂伯火箭）与 Genesis II（2007年6月28日）：舱体长约 4.4 m，可用容积 11.5 m³，质量仅约 1.36 t，在 LEO 长期验证了承压保持与织物结构的空间环境耐受。</li>
+<li>BEAM（Bigelow Expandable Activity Module，毕格罗充气活动舱）：2016年4月8日由 SpaceX CRS-8 送往 ISS，5月28日完成充气加压。发射质量约 1.4 t（折叠状态直径约 2.4 m × 长 2.2 m），展开后直径约 3.2 m × 长 4.0 m，内部容积 16 m³。</li>
+<li>B330 即按 ISS 后时代的独立空间站模块设计（9.1.1 节参数）；NASA 亦在 NextSTEP（Next Space Technologies for Exploration Partnerships）框架下与工业界开展充气舱居住架构研究。</li>
+</ul>
+<p><strong>BEAM 在轨实测数据（2016年至今）</strong>：</p>
+<ul>
+<li><strong>压力保持</strong>：展开后检查确认无泄漏；原设计为 2 年演示任务，实际持续承压运行已近 10 年，期间经历多次 ISS 轨道抬升与外部温度循环。</li>
+<li><strong>MMOD 防护</strong>：传感器记录到数次疑似微流星/碎片小撞击，均未穿透，结构响应与设计预期一致。</li>
+<li><strong>辐射环境</strong>：舱内剂量率与 ISS 其他舱段大体相当（织物多层结构自身屏蔽贡献有限，主要屏蔽来自 ISS 本体）。</li>
+<li><strong>结局</strong>：2021年 Bigelow 将 BEAM 所有权移交 NASA；该舱至今留在 ISS 上兼作储物与持续监测。Bigelow Aerospace 于2020年暂停运营，B330 未及飞行。</li>
+</ul>
+<p><strong>TRL 评估</strong>：充气加压舱体本身达 TRL 7–8（在轨系统验证）；B330 级整舱载人居住系统约为 TRL 4–5（地面样机与部件验证），差距主要在生命保障集成与长期居住人因验证。</p>
+<hr />
+<h3 id="sec-6">9.2 旋转重力栖息地</h3>
+<h3 id="sec-7">9.2.1 O'Neill圆柱体</h3>
+<p><strong>经典设计</strong>（Gerard K. O'Neill, 1974）：</p>
+<ul>
+<li>两个反向旋转圆柱体（抵消陀螺效应）</li>
+<li>直径：~6.4 km（Island One）至 ~30 km（Island Three）</li>
+<li>长度：~30 km</li>
+<li>旋转速率：~1 rpm（产生1g人工重力）</li>
+<li>内部面积：~数百 km²（可容纳数百万人）</li>
+</ul>
+<p><strong>结构力学</strong>：</p>
+<p>圆柱壳体内壁受到的环向应力：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">θ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6389em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">ρ</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8641em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">ω</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8641em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p>其中 ρ 为壳体材料密度，ω 为旋转角速度，R 为圆柱半径。</p>
+<p>对 R = 3.2 km（Island One），ω = 1 rpm = 0.105 rad/s，钢壳体（ρ = 7800 kg/m³）：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">θ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">7800</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.9474em;vertical-align:-0.0833em;"></span><span class="mord">0.10</span><span class="mord"><span class="mord">5</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8641em;"></span><span class="mord">320</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">8.8</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8641em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">8</span></span></span></span></span></span></span></span><span class="mord text"><span class="mord"> Pa</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">880</span><span class="mord text"><span class="mord"> MPa</span></span></span></span></span></span></p>
+<p>这超过了普通结构钢的屈服强度（~250-500 MPa），需要使用高强度材料：</p>
+<ul>
+<li>高强度钢（马氏体时效钢）：σ_y ~ 2000-2500 MPa → 安全系数 ~2.3-2.8</li>
+<li>碳纤维复合材料：σ_y ~ 3000-7000 MPa，ρ ~ 1600 kg/m³ → 应力 ~180 MPa → 安全系数 &gt;15</li>
+<li>碳纳米管（理论）：σ_y ~ 100 GPa → 极端安全</li>
+</ul>
+<p><strong>结论</strong>：O'Neill圆柱体在材料力学上可行，但需要先进复合材料。</p>
+<h3 id="sec-8">9.2.2 Stanford环</h3>
+<p><strong>设计</strong>（NASA Ames, 1975）：</p>
+<ul>
+<li>环形结构（torus），直径 ~1.8 km</li>
+<li>管截面直径 ~130 m</li>
+<li>旋转速率：~1 rpm（1g）</li>
+<li>居住面积：~环形内表面 ~π × 1800 × 130 ≈ 735,000 m²</li>
+<li>人口：~10,000人</li>
+</ul>
+<p><strong>优势（vs. 圆柱体）</strong>：</p>
+<ul>
+<li>结构更紧凑，应力分布更均匀</li>
+<li>可分段建造，逐步扩展</li>
+<li>辐射屏蔽更容易（环形截面小，可用月壤覆盖）</li>
+</ul>
+<h3 id="sec-9">9.2.3 工程实现路径</h3>
+<p><strong>近期方案（2030-2050）</strong>：</p>
+<ul>
+<li>直径 ~50-100 m 旋转舱（LEO或地月Lagrange点）</li>
+<li>碳纤维/凯夫拉复合结构</li>
+<li>2-4 rpm旋转（乘员短期适应）</li>
+<li>用途：中转站、太空酒店、微重力研究</li>
+</ul>
+<p><strong>中期方案（2050-2100）</strong>：</p>
+<ul>
+<li>直径 ~200-500 m（2 rpm，1g）</li>
+<li>小行星材料建造（ISRU）</li>
+<li>永久居住（太空殖民地）</li>
+</ul>
+<p><strong>远期方案（2100+）</strong>：</p>
+<ul>
+<li>O'Neill级（km尺度）</li>
+<li>地月L4/L5位置</li>
+<li>自给自足社会</li>
+</ul>
+<hr />
+<h3 id="sec-10">9.3 地下/熔岩管栖息地</h3>
+<h3 id="sec-11">9.3.1 月球熔岩管</h3>
+<p><strong>发现</strong>：</p>
+<p>Lunar Reconnaissance Orbiter（LRO）和SELENE探测器发现了月球表面下的"天窗"（skylight）——熔岩管顶部坍塌形成的开口。</p>
+<p><strong>参数</strong>（估计）：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>直径</td>
+<td>~100-500 m</td>
+</tr>
+<tr>
+<td>顶部厚度</td>
+<td>~50-200 m</td>
+</tr>
+<tr>
+<td>延伸长度</td>
+<td>~数十km</td>
+</tr>
+<tr>
+<td>温度</td>
+<td>~-20°C（恒温）</td>
+</tr>
+<tr>
+<td>辐射屏蔽</td>
+<td>完全（&gt;100 m岩体）</td>
+</tr>
+<tr>
+<td>微流星防护</td>
+<td>完全</td>
+</tr>
+</tbody>
+</table>
+<p><strong>优势</strong>：</p>
+<ul>
+<li>天然辐射屏蔽（GCR + SPE完全屏蔽）</li>
+<li>恒温环境（无昼夜温差循环）</li>
+<li>微流星完全防护</li>
+<li>巨大内部空间（可容纳整座城市）</li>
+</ul>
+<p><strong>工程挑战</strong>：</p>
+<ol>
+<li><strong>进入</strong>：需要通过天窗开口进入，或使用侧向入口</li>
+<li><strong>地面稳定性</strong>：管底是否稳定？需要地质调查</li>
+<li><strong>密封</strong>：如何在粗糙岩壁上建立气密结构？
+   - 方案：充气式栖息地放置在管内（不依赖岩壁密封）</li>
+<li><strong>光照</strong>：无自然光 → 需要人工照明</li>
+<li><strong>通风</strong>：巨大空间内空气循环 → 需要强制通风系统</li>
+</ol>
+<p><strong>探测方法与候选址（实测数据）</strong>：</p>
+<ul>
+<li><strong>光学遥感识别</strong>：LRO（Lunar Reconnaissance Orbiter）NAC 相机与 SELENE（辉夜姬）地形相机已识别出多个月球天窗候选。Marius Hills 天窗（Marius Hills Hole，2009年由 SELENE 发现）宽约 50 m、深约 50 m；静海天坑（Mare Tranquillitatis Pit）直径约百米量级。</li>
+<li><strong>雷达测深</strong>：SELENE 月球雷达测深仪（LRS）于2017年确认 Marius Hills 天窗下方存在完整熔岩管（Haruyama 等，GRL）：管体宽约 100 m，延伸长度估计可达约 50 km。</li>
+<li><strong>重力梯度测量</strong>：GRAIL 双星重力数据中的局部质量亏缺可用于推断地下空腔，已被用于静海天坑等候选址的空腔筛查（2022年起）。</li>
+<li><strong>成像雷达反演</strong>：Carrer &amp; Bruzzone（特伦托大学）基于 LRO Mini-RF 雷达回波分析，在《自然·天文学》（2024年）发表结果：静海天坑下方深约 130–170 m 处存在一个延伸约 30–80 m、宽约 45 m 的空腔，且与天坑之间可能存在可进入通道——这是迄今最接近"可直接进入的月下洞道"的实测证据。</li>
+</ul>
+<p><strong>选址准则</strong>（需同时评估）：</p>
+<ul>
+<li>顶板与围岩稳定性（重力/雷达反演 + 就位勘察，不能仅靠影像判读）</li>
+<li>可达性（天窗尺寸与坑壁坡度决定吊装下放或侧向掘进）</li>
+<li>资源邻近度（低纬度管址与极区水冰的运输成本取舍）</li>
+<li>通信与光照保障（天窗口部署中继天线或光纤导光）</li>
+</ul>
+<h3 id="sec-12">9.3.2 火星熔岩管</h3>
+<p><strong>存在证据</strong>：</p>
+<p>火星表面存在类似月球的熔岩管特征（坍塌坑、脊状结构），主要分布在Tharsis火山区域。</p>
+<p><strong>差异</strong>：</p>
+<ul>
+<li>火星重力更高（0.38g）→ 熔岩管跨度可能更小</li>
+<li>火星大气 → 表面温度变化较小（vs. 月球）</li>
+<li>火星表面有风化层 → 可能填充管底</li>
+</ul>
+<p><strong>优势</strong>：</p>
+<ul>
+<li>辐射屏蔽（火星大气 + 岩体双重屏蔽）</li>
+<li>温度稳定（~ -20°C 至 -60°C）</li>
+<li>可能接近地下水冰</li>
+</ul>
+<p><strong>探测进展</strong>：</p>
+<ul>
+<li>轨道编目：基于 HiRISE/CTX 影像的候选编目已收录超过一千个火星坑穴与坍塌链，其中约 349 个被归类为可能的熔岩管天窗，主要集中于 Tharsis 区（如 Alba Mons 西麓的坍塌链系统平均长度达数十 km）。</li>
+<li>地下雷达：Mars Express 的 MARSIS 低频雷达于2020年报告（Orosei 等，《自然·天文学》）在 Cydonia Mensae 区域的天窗链下方探测到地下空腔候选，解释为被掩埋的熔岩管腔体；该结果尚需更高频率探地雷达或就位探测进一步证实。</li>
+<li>与月球的差异提示：火星熔岩管形成于更低重力、更高喷发率环境，管径上限与稳定性模型不能直接套用月球结论（待验证）。</li>
+</ul>
+<h3 id="sec-13">9.3.3 改造方案</h3>
+<p><strong>阶段1：初步探索</strong></p>
+<ul>
+<li>机器人先遣队进入熔岩管</li>
+<li>地质测绘、稳定性评估</li>
+<li>资源调查（水冰、矿物）</li>
+</ul>
+<p><strong>阶段2：基础设施部署</strong></p>
+<ul>
+<li>通过天窗下放预制模块</li>
+<li>部署充气式栖息地（管内保护）</li>
+<li>建立电力、通信、生命保障系统</li>
+</ul>
+<p><strong>阶段3：扩建与密封</strong></p>
+<ul>
+<li>3D打印内部结构（使用月壤/火星壤烧结）</li>
+<li>建立气密分隔（多舱段）</li>
+<li>部署农业区、工业区</li>
+</ul>
+<p><strong>阶段4：长期居住</strong></p>
+<ul>
+<li>人口增长 → 扩展居住空间</li>
+<li>建立社会基础设施（公共空间、教育、医疗）</li>
+<li>发展本地经济（采矿、制造、旅游）</li>
+</ul>
+<hr />
+<h3 id="sec-14">9.4 原位资源利用（ISRU）建筑</h3>
+<h3 id="sec-15">9.4.1 月壤烧结</h3>
+<p><strong>原理</strong>：</p>
+<p>使用微波、激光或太阳能聚焦加热月壤到 ~1000-1200°C，使其熔融/烧结成固体结构。</p>
+<p><strong>月壤成分</strong>（典型高地）：</p>
+<table>
+<thead>
+<tr>
+<th>氧化物</th>
+<th>质量分数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SiO₂</td>
+<td>45%</td>
+</tr>
+<tr>
+<td>Al₂O₃</td>
+<td>17%</td>
+</tr>
+<tr>
+<td>CaO</td>
+<td>12%</td>
+</tr>
+<tr>
+<td>FeO</td>
+<td>10%</td>
+</tr>
+<tr>
+<td>MgO</td>
+<td>8%</td>
+</tr>
+<tr>
+<td>TiO₂</td>
+<td>5%</td>
+</tr>
+<tr>
+<td>其他</td>
+<td>3%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>烧结特性</strong>：</p>
+<ul>
+<li>熔点：~1100-1300°C（取决于成分）</li>
+<li>烧结后抗压强度：~30-80 MPa（类似混凝土）</li>
+<li>密度：~2.5-3.0 g/cm³</li>
+</ul>
+<p><strong>技术方案</strong>：</p>
+<ol>
+<li>
+<p><strong>微波烧结</strong>：月壤含铁钛矿物可吸收微波 → 体积加热
+   - 功率：~1-10 kW
+   - 速率：~1-5 cm/小时
+   - 优势：无需模具，可复杂形状</p>
+</li>
+<li>
+<p><strong>激光烧结</strong>：高能激光逐层熔融月壤粉末（3D打印）
+   - 精度：~1-5 mm
+   - 速率：慢（适合精细结构）</p>
+</li>
+<li>
+<p><strong>太阳能聚焦</strong>：大型抛物面镜聚焦阳光
+   - 功率：~10-100 kW（取决于镜面尺寸）
+   - 优势：无需电力转换，直接热能
+   - 局限：仅月球白天可用</p>
+</li>
+</ol>
+<p><strong>地面实测强度数据（模拟月壤实验）</strong>：</p>
+<p>以模拟月壤（JSC-1A、EAC-1、CLRS-1 等）为原料的地面实验显示，烧结体抗压强度范围很宽，且强烈依赖工艺、致密度与后处理：</p>
+<ul>
+<li>微波烧结：实测约 12–120 MPa（Taylor &amp; Meek 2005；Fateri 等 2019；Kim 等 2021），与烧结温度（1000–1200°C）和保温时间强相关</li>
+<li>激光熔融/选区激光熔融（SLM）：约 4–216 MPa（Goulas 等 2018；Caprio 等 2020；Ginés-Palomares 等 2023）；掺入金属粘结相（如 AlSi10Mg）可达 264 MPa，但引入外来材料，偏离纯 ISRU 路线</li>
+<li>太阳能烧结：普遍低于 5 MPa（Meurisse 等 2018；Fateri 等 2019）——ESA 太阳炉制砖实验（2017年）在 1000°C 下逐层（0.1 mm）烘烤模拟月壤，一块 20×10×3 cm 砖耗时约 5 小时，强度仅与石膏相当，且存在边缘翘曲问题</li>
+<li>ESA 工程验证：RegoLight（Horizon 2020）项目延续了激光烧结路线；2018年 ESA 采用 D-Shape 粘结剂喷射技术以 EAC-1 模拟月壤打印出 1.5 t 级建筑砌块，验证了大型构件增材制造的可行性</li>
+</ul>
+<p><strong>工程含义</strong>：纯烧结体的强度足以满足辐射屏蔽层、路基与非承压围护结构的需求；承压与气密结构仍需与充气内衬或粘结剂复合使用。注意：以上均为模拟月壤数据，真实月壤含纳米相铁与玻璃质团聚体，烧结行为与强度可能系统性偏离（待真实样品验证）。</p>
+<h3 id="sec-16">9.4.2 火星混凝土</h3>
+<p><strong>火星壤（regolith）特性</strong>：</p>
+<ul>
+<li>颗粒细小（~50-200 μm平均）</li>
+<li>含高氯酸盐（ClO₄⁻，~0.5-1%）→ 有毒，需处理</li>
+<li>含铁氧化物（Fe₂O₃）→ 红色，可作颜料</li>
+</ul>
+<p><strong>混凝土配方</strong>：</p>
+<ol>
+<li>
+<p><strong>硫混凝土</strong>（Sulfur Concrete）：
+   - 火星壤 + 熔融硫（~130°C）→ 冷却固化
+   - 抗压强度：~40-80 MPa
+   - 优势：低温工艺（无需高温烧结）
+   - 挑战：硫的脆性、水敏感性</p>
+</li>
+<li>
+<p><strong>地质聚合物</strong>（Geopolymer）：
+   - 火星壤 + 碱性激活剂（NaOH/KOH溶液）
+   - 反应温度：~50-100°C
+   - 抗压强度：~20-50 MPa
+   - 优势：低能耗，类似地球混凝土工艺</p>
+</li>
+<li>
+<p><strong>水泥基材料</strong>：
+   - 火星壤煅烧（~800°C）→ 类水泥活性
+   - + 水 + 骨料 → 混凝土
+   - 挑战：水需求（火星水资源有限）</p>
+</li>
+</ol>
+<p><strong>实测数据与工程关注点</strong>：</p>
+<ul>
+<li>华盛顿州立大学（Washington State University）团队（2016–2017）以 MGS-1（Mars Global Simulant，火星全球模拟壤）为骨料、熔融硫为粘结相制备火星硫混凝土，实测抗压强度达约 50 MPa 量级（高于地球常用 C30 混凝土），并进一步演示了该材料的 3D 打印成型——支持本节第 1 条配方的强度区间。</li>
+<li>稳定性关注点：硫的熔点约 115°C，火星表面气压仅约 600 Pa。在火星典型温度（平均约 -60°C）下硫的升华极其缓慢，短期工程使用是可行的；但长期（数十年）升华行为、温度循环下的脆化以及火灾场景下硫燃烧释放 SO₂ 的风险，目前只有地面模拟数据，缺乏火星环境实测（待验证）。</li>
+<li>高氯酸盐（见本节开头的火星壤特性）若混入建材，会在使用期缓慢释放毒性，骨料预处理（水洗/热解）需纳入工艺流程。</li>
+</ul>
+<h3 id="sec-17">9.4.3 3D打印结构</h3>
+<p><strong>技术路线</strong>：</p>
+<ol>
+<li>
+<p><strong>粉末床烧结</strong>（SLS/SLM）：
+   - 月壤/火星壤铺粉 → 激光/微波烧结
+   - 精度：~0.1-1 mm
+   - 速率：慢（适合小件）</p>
+</li>
+<li>
+<p><strong>材料挤出</strong>（类似地球混凝土3D打印）：
+   - 月壤基"墨水"（混合粘结剂）→ 挤出沉积
+   - 精度：~5-20 mm
+   - 速率：快（适合建筑结构）</p>
+</li>
+<li>
+<p><strong>粘结剂喷射</strong>：
+   - 月壤铺粉 → 喷射液态粘结剂
+   - 后处理：加热固化
+   - 优势：无需高温</p>
+</li>
+</ol>
+<p><strong>已验证项目</strong>：</p>
+<ul>
+<li>NASA 3D-Printed Habitat Challenge（2019）：多个团队展示火星壤3D打印栖息地</li>
+<li>ICON（建筑公司）：使用火山灰基"墨水"打印房屋</li>
+<li>ESA + Foster + Partners：月球栖息地概念（D-Shape打印技术）</li>
+</ul>
+<hr />
+<h3 id="sec-18">9.5 辐射屏蔽设计</h3>
+<h3 id="sec-19">9.5.1 被动屏蔽</h3>
+<p><strong>屏蔽材料选择</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>材料</th>
+<th>密度 (g/cm³)</th>
+<th>氢含量</th>
+<th>GCR屏蔽效率</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>聚乙烯</td>
+<td>0.93</td>
+<td>高（~14%）</td>
+<td>优</td>
+<td>舱内衬里</td>
+</tr>
+<tr>
+<td>水</td>
+<td>1.0</td>
+<td>高（~11%）</td>
+<td>优</td>
+<td>水墙屏蔽</td>
+</tr>
+<tr>
+<td>月壤</td>
+<td>1.5-2.0</td>
+<td>低</td>
+<td>中</td>
+<td>表面覆盖</td>
+</tr>
+<tr>
+<td>铝</td>
+<td>2.7</td>
+<td>无</td>
+<td>差（次级中子）</td>
+<td>结构（有限）</td>
+</tr>
+<tr>
+<td>液氢</td>
+<td>0.07</td>
+<td>极高</td>
+<td>最优</td>
+<td>推进剂贮箱屏蔽</td>
+</tr>
+</tbody>
+</table>
+<p><strong>屏蔽厚度计算</strong>：</p>
+<p>GCR剂量衰减（近似）：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.938em;"></span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.938em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mathnormal mtight">x</span><span class="mord mtight">/</span><span class="mord mtight"><span class="mord mathnormal mtight">λ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3488em;margin-left:0em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight" style="margin-right:0.10764em;">ff</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2901em;"><span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p>其中 λ_eff 为有效衰减长度（g/cm²）：</p>
+<ul>
+<li>聚乙烯：λ_eff ~ 120 g/cm²（GCR总剂量）</li>
+<li>铝：λ_eff ~ 150 g/cm²（但次级中子增加）</li>
+<li>月壤：λ_eff ~ 130 g/cm²</li>
+</ul>
+<p><strong>示例</strong>：月球表面栖息地，2 m月壤覆盖（~300-400 g/cm²）：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">s</span><span class="mord mathnormal mtight">hi</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span><span class="mord mathnormal mtight">d</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">300</span><span class="mord text"><span class="mord"> mSv/year</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.938em;"></span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.938em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">350/130</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">300</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.067</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">20</span><span class="mord text"><span class="mord"> mSv/year</span></span></span></span></span></span></p>
+<p>接近地球本底辐射（~2-3 mSv/year）的10倍，但远低于无屏蔽的300 mSv/year。</p>
+<blockquote>
+<p>交叉引用：职业辐照剂量限值与癌症风险的定量约束见第三部分第7章（太空医学）；SPE 事件的剂量率峰值及其屏蔽时序要求亦在该章讨论。</p>
+</blockquote>
+<h3 id="sec-20">9.5.2 主动屏蔽概念</h3>
+<p><strong>超导磁屏蔽</strong>：</p>
+<p>原理：利用超导线圈产生强磁场（~5-10 T），偏转带电GCR粒子。</p>
+<p><strong>设计要求</strong>：</p>
+<ul>
+<li>偏转GCR质子（~1 GeV）：需要磁刚度 B·L ~ 1-5 T·m</li>
+<li>对 R = 5 m 栖息地：B ~ 0.2-1 T（可行）</li>
+<li>偏转重离子（Fe, ~1 GeV/n）：需要更高磁场</li>
+</ul>
+<p><strong>工程挑战</strong>：</p>
+<ol>
+<li><strong>超导线圈质量</strong>：~10-50 t（取决于磁场强度和尺寸）</li>
+<li><strong>低温系统</strong>：高温超导（HTS）~20-77 K，或低温超导（LTS）~4 K</li>
+<li><strong>磁场对内部的影响</strong>：需要磁屏蔽梯度，内部磁场 &lt;1 mT</li>
+<li><strong>能量需求</strong>：超导零电阻，但低温系统需持续制冷（~1-10 kW）</li>
+</ol>
+<p><strong>当前状态</strong>：</p>
+<ul>
+<li>NASA NIAC研究（2010s）：概念验证</li>
+<li>TRL：2-3（实验室组件测试）</li>
+<li>预计实现：2040-2060（如高温超导技术成熟）</li>
+</ul>
+<h3 id="sec-21">第9章小结</h3>
+<p>栖息地设计的本质是"发射质量 vs. 屏蔽质量 vs. 居住体积"的三方权衡。近中期路线以充气舱 + 原位覆盖为主：BEAM 已在轨验证充气结构近十年的承压与 MMOD 耐受，B330 级模块可提供 330 m³ 单舱容积；2 m 月壤覆盖可将 GCR 年剂量从约 300 mSv 压至约 20 mSv。中期依靠 ISRU 建筑降低对地球物资的依赖——模拟月壤烧结体实测 12–216 MPa、火星硫混凝土实测约 50 MPa，均已达到工程建材量级，但真实壤数据仍是空白。熔岩管提供天然辐射、恒温与微流星防护，2024年 Mini-RF 雷达已在静海天坑下方推断出可进入空腔，是永久基地的优先候选。旋转重力栖息地在力学上可行，但依赖先进复合材料与大规模在轨建造，属长期路线。</p>
+<h3 id="sec-22">关键参数速查表（第9章）</h3>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>典型值</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B330 内部容积</td>
+<td>330 m³（直径约 6.7 m × 长 14 m）</td>
+<td>大型充气栖息地基准</td>
+</tr>
+<tr>
+<td>B330 发射直径</td>
+<td>~3.8 m（质量约 20 t）</td>
+<td>可装入现役重型火箭整流罩</td>
+</tr>
+<tr>
+<td>充气/刚性发射体积比</td>
+<td>~1/4–1/8</td>
+<td>充气路线的核心优势</td>
+</tr>
+<tr>
+<td>BEAM 展开容积</td>
+<td>16 m³（发射质量约 1.4 t）</td>
+<td>首个在轨充气舱验证（2016年至今）</td>
+</tr>
+<tr>
+<td>月壤屏蔽厚度</td>
+<td>2 m（约 300–400 g/cm²）</td>
+<td>GCR 剂量降至约 20 mSv/年</td>
+</tr>
+<tr>
+<td>月表无屏蔽 GCR 剂量</td>
+<td>~300 mSv/年</td>
+<td>屏蔽设计输入</td>
+</tr>
+<tr>
+<td>月球熔岩管温度</td>
+<td>~-20°C 恒温</td>
+<td>热控与选址优势</td>
+</tr>
+<tr>
+<td>静海天坑下空腔</td>
+<td>深 130–170 m，长 30–80 m，宽约 45 m</td>
+<td>Mini-RF 反演（2024）</td>
+</tr>
+<tr>
+<td>烧结体抗压强度</td>
+<td>约 12–216 MPa（工艺相关）</td>
+<td>ISRU 建筑可行性（模拟壤）</td>
+</tr>
+<tr>
+<td>火星硫混凝土抗压强度</td>
+<td>~50 MPa（实测）</td>
+<td>火星低温建造路线</td>
+</tr>
+</tbody>
+</table>
+<hr /></div><div class="prevnext"><a class="pn pn-prev" href="ch08.html"><span class="pn-k">上一篇</span><span class="pn-t">第8章 食品与营养</span></a><a class="pn pn-next" href="ch10.html"><span class="pn-k">下一篇</span><span class="pn-t">第10章 能源系统</span></a></div></article><footer class="foot"><span>未来太空移民技术手册 · 完整版 v2.0</span><span class="foot-mono">AD ASTRA PER ASPERA</span></footer></main>
+<aside class="toc"><div class="toc-title">本页目录</div>
+<a class="toc-h3" href="#sec-1">9.1 充气式栖息地</a>
+<a class="toc-h3" href="#sec-2">9.1.1 技术路线</a>
+<a class="toc-h3" href="#sec-3">9.1.2 微流星防护</a>
+<a class="toc-h3" href="#sec-4">9.1.3 热控与辐射</a>
+<a class="toc-h3" href="#sec-5">9.1.4 发展史与在轨验证</a>
+<a class="toc-h3" href="#sec-6">9.2 旋转重力栖息地</a>
+<a class="toc-h3" href="#sec-7">9.2.1 O'Neill圆柱体</a>
+<a class="toc-h3" href="#sec-8">9.2.2 Stanford环</a>
+<a class="toc-h3" href="#sec-9">9.2.3 工程实现路径</a>
+<a class="toc-h3" href="#sec-10">9.3 地下/熔岩管栖息地</a>
+<a class="toc-h3" href="#sec-11">9.3.1 月球熔岩管</a>
+<a class="toc-h3" href="#sec-12">9.3.2 火星熔岩管</a>
+<a class="toc-h3" href="#sec-13">9.3.3 改造方案</a>
+<a class="toc-h3" href="#sec-14">9.4 原位资源利用（ISRU）建筑</a>
+<a class="toc-h3" href="#sec-15">9.4.1 月壤烧结</a>
+<a class="toc-h3" href="#sec-16">9.4.2 火星混凝土</a>
+<a class="toc-h3" href="#sec-17">9.4.3 3D打印结构</a>
+<a class="toc-h3" href="#sec-18">9.5 辐射屏蔽设计</a>
+<a class="toc-h3" href="#sec-19">9.5.1 被动屏蔽</a>
+<a class="toc-h3" href="#sec-20">9.5.2 主动屏蔽概念</a>
+<a class="toc-h3" href="#sec-21">第9章小结</a>
+<a class="toc-h3" href="#sec-22">关键参数速查表（第9章）</a>
+</aside>
+</div>
+<script src="../search-index.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

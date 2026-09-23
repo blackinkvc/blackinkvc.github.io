@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>附录C 推进系统对比 · 未来太空移民技术手册</title>
+<meta name="description" content="未来太空移民技术手册 —— 面向专业读者的综合性太空殖民技术参考，涵盖推进、生保、栖息地、治理与前沿技术。">
+<link rel="icon" type="image/png" href="../assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script>(function(){try{var t=localStorage.getItem('smh-theme');if(!t)t='dark';document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="目录"><span></span><span></span><span></span></button>
+  <a class="brand" href="../index.html">
+    <img class="brand-icon" src="../assets/icon.png" alt="">
+    <span class="brand-zh">未来太空移民技术手册</span>
+    <span class="brand-en">SPACE SETTLEMENT HANDBOOK</span>
+  </a>
+  <div class="top-actions">
+    <button class="search-btn" id="searchBtn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg><span>检索</span><kbd>⌘K</kbd></button>
+    <button class="theme-btn" id="themeBtn" aria-label="切换主题"></button>
+  </div>
+</header>
+
+<div class="search-overlay" id="searchOverlay" hidden>
+  <div class="search-box">
+    <div class="search-head">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg>
+      <input id="searchInput" type="text" placeholder="检索全书：术语、参数、章节…" autocomplete="off">
+      <kbd>ESC</kbd>
+    </div>
+    <div class="search-results" id="searchResults"><div class="search-hint">输入关键词，检索 23 章正文与附录</div></div>
+  </div>
+</div>
+<div class="layout">
+<nav class="sidebar" id="sidebar">
+<div class="sb-group"><div class="sb-label">卷首</div>
+<a class="sb-item" href="intro.html"><span class="sb-num">◎</span><span class="sb-t">前言与导读</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第一部分 · 基础物理与宇宙环境</div>
+<a class="sb-item" href="ch01.html"><span class="sb-num">01</span><span class="sb-t">太空环境物理</span></a>
+<a class="sb-item" href="ch02.html"><span class="sb-num">02</span><span class="sb-t">天体物理与轨道力学</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第二部分 · 推进与运输系统</div>
+<a class="sb-item" href="ch03.html"><span class="sb-num">03</span><span class="sb-t">化学推进与近中期方案</span></a>
+<a class="sb-item" href="ch04.html"><span class="sb-num">04</span><span class="sb-t">先进推进理论</span></a>
+<a class="sb-item" href="ch05.html"><span class="sb-num">05</span><span class="sb-t">星际航行工程</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第三部分 · 生命保障与人体工程</div>
+<a class="sb-item" href="ch06.html"><span class="sb-num">06</span><span class="sb-t">封闭生态生命保障系统（CELSS）</span></a>
+<a class="sb-item" href="ch07.html"><span class="sb-num">07</span><span class="sb-t">太空医学</span></a>
+<a class="sb-item" href="ch08.html"><span class="sb-num">08</span><span class="sb-t">食品与营养</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第四部分 · 栖息地与基础设施</div>
+<a class="sb-item" href="ch09.html"><span class="sb-num">09</span><span class="sb-t">栖息地结构设计</span></a>
+<a class="sb-item" href="ch10.html"><span class="sb-num">10</span><span class="sb-t">能源系统</span></a>
+<a class="sb-item" href="ch11.html"><span class="sb-num">11</span><span class="sb-t">通信与导航</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第五部分 · 目的地与殖民方案</div>
+<a class="sb-item" href="ch12.html"><span class="sb-num">12</span><span class="sb-t">月球</span></a>
+<a class="sb-item" href="ch13.html"><span class="sb-num">13</span><span class="sb-t">火星</span></a>
+<a class="sb-item" href="ch14.html"><span class="sb-num">14</span><span class="sb-t">小行星与太空殖民地</span></a>
+<a class="sb-item" href="ch15.html"><span class="sb-num">15</span><span class="sb-t">外太阳系与冰卫星</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第六部分 · 材料与制造</div>
+<a class="sb-item" href="ch16.html"><span class="sb-num">16</span><span class="sb-t">太空材料科学</span></a>
+<a class="sb-item" href="ch17.html"><span class="sb-num">17</span><span class="sb-t">太空制造与原位资源利用</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第七部分 · 社会、文化与治理</div>
+<a class="sb-item" href="ch18.html"><span class="sb-num">18</span><span class="sb-t">太空治理与法律框架</span></a>
+<a class="sb-item" href="ch19.html"><span class="sb-num">19</span><span class="sb-t">太空经济学</span></a>
+<a class="sb-item" href="ch20.html"><span class="sb-num">20</span><span class="sb-t">太空文化演化</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第八部分 · 前沿与推测性技术</div>
+<a class="sb-item" href="ch21.html"><span class="sb-num">21</span><span class="sb-t">脑机接口与人类增强</span></a>
+<a class="sb-item" href="ch22.html"><span class="sb-num">22</span><span class="sb-t">AI治理与超级智能</span></a>
+<a class="sb-item" href="ch23.html"><span class="sb-num">23</span><span class="sb-t">意识上传与数字存在</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">附录 · 参考数据</div>
+<a class="sb-item" href="appA.html"><span class="sb-num">A</span><span class="sb-t">A 物理常数与换算</span></a>
+<a class="sb-item" href="appB.html"><span class="sb-num">B</span><span class="sb-t">B 太阳系天体参数</span></a>
+<a class="sb-item current" href="appC.html"><span class="sb-num">C</span><span class="sb-t">C 推进系统对比</span></a>
+<a class="sb-item" href="appD.html"><span class="sb-num">D</span><span class="sb-t">D 辐射与屏蔽</span></a>
+<a class="sb-item" href="appE.html"><span class="sb-num">E</span><span class="sb-t">E 术语表（中英对照）</span></a>
+<a class="sb-item" href="appF.html"><span class="sb-num">F</span><span class="sb-t">F 参考文献与推荐阅读</span></a>
+</div>
+</nav><main class="content"><article class="article"><div class="crumb"><span class="crumb-part">附录</span></div><div class="ch-head"><div class="ch-num">C</div><h1 class="ch-title">推进系统对比</h1></div><div class="article-body"><p>I_sp 均为真空比冲；TRL 与第二部分第 3-4 章评估一致。注：聚变推进 I_sp 取 D-³He/Daedalus 量级（10⁶-10⁷ s，见第二部分 §4.1.3 推导的 2-3×10⁶ s）；第一部分表 2.5.4 采用保守的 10⁴-10⁵ s，反映对排气能量利用效率的不同假设。</p>
+<h3 id="sec-1">C.1 性能与成熟度总表</h3>
+<table>
+<thead>
+<tr>
+<th>推进类型</th>
+<th>I_sp (s)</th>
+<th>推力</th>
+<th>效率</th>
+<th>TRL</th>
+<th>适用任务</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>固体火箭</td>
+<td>250-300</td>
+<td>MN级</td>
+<td>—</td>
+<td>9</td>
+<td>发射/着陆</td>
+</tr>
+<tr>
+<td>LH₂/LOX</td>
+<td>450-460</td>
+<td>百kN</td>
+<td>—</td>
+<td>9</td>
+<td>上面级/主推进</td>
+</tr>
+<tr>
+<td>CH₄/LOX</td>
+<td>350-380</td>
+<td>百kN</td>
+<td>—</td>
+<td>7-8</td>
+<td>可复用/ISRU</td>
+</tr>
+<tr>
+<td>NTP</td>
+<td>850-950</td>
+<td>十-百kN</td>
+<td>—</td>
+<td>4-5</td>
+<td>火星转移</td>
+</tr>
+<tr>
+<td>离子推进</td>
+<td>2000-6000</td>
+<td>mN级</td>
+<td>60-80%</td>
+<td>9</td>
+<td>深空货运</td>
+</tr>
+<tr>
+<td>霍尔推进</td>
+<td>1000-3000</td>
+<td>百mN级</td>
+<td>50-70%</td>
+<td>8-9</td>
+<td>卫星/货运</td>
+</tr>
+<tr>
+<td>VASIMR</td>
+<td>500-5000</td>
+<td>N级</td>
+<td>30-60%</td>
+<td>4-5</td>
+<td>行星际</td>
+</tr>
+<tr>
+<td>聚变推进</td>
+<td>10⁶-10⁷</td>
+<td>kN级</td>
+<td>30-60%</td>
+<td>1-2</td>
+<td>快速星际</td>
+</tr>
+<tr>
+<td>光帆（太阳）</td>
+<td>∞</td>
+<td>μN/m²</td>
+<td>—</td>
+<td>7-8</td>
+<td>内行星</td>
+</tr>
+<tr>
+<td>光帆（激光）</td>
+<td>∞</td>
+<td>N级</td>
+<td>—</td>
+<td>2-3</td>
+<td>星际</td>
+</tr>
+<tr>
+<td>反物质</td>
+<td>10⁶-10⁷</td>
+<td>可变</td>
+<td>—</td>
+<td>1</td>
+<td>星际</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sec-2">C.2 典型推力范围与功率水平</h3>
+<table>
+<thead>
+<tr>
+<th>推进类型</th>
+<th>典型推力范围（单台）</th>
+<th>典型功率</th>
+<th>代表实例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>固体火箭</td>
+<td>10 kN ~ 16 MN</td>
+<td>自含化学能</td>
+<td>航天飞机 SRB（约 12 MN）</td>
+</tr>
+<tr>
+<td>LH₂/LOX</td>
+<td>0.1 ~ 2.5 MN</td>
+<td>自含化学能</td>
+<td>RS-25（真空约 2.2 MN）</td>
+</tr>
+<tr>
+<td>CH₄/LOX</td>
+<td>0.1 ~ 2.5 MN</td>
+<td>自含化学能</td>
+<td>Raptor（海平面约 2.3 MN）</td>
+</tr>
+<tr>
+<td>NTP</td>
+<td>十 ~ 数百 kN</td>
+<td>裂变热功率 1-5 GW_th</td>
+<td>NERVA（约 334 kN）</td>
+</tr>
+<tr>
+<td>离子推进</td>
+<td>30 ~ 250 mN</td>
+<td>1-7 kW_e/台</td>
+<td>NEXT（约 236 mN，6.9 kW）</td>
+</tr>
+<tr>
+<td>霍尔推进</td>
+<td>0.05 ~ 5 N</td>
+<td>1-10 kW_e/台</td>
+<td>SPT-100、PPS-5000</td>
+</tr>
+<tr>
+<td>VASIMR</td>
+<td>1 ~ 5 N</td>
+<td>50-200 kW_e</td>
+<td>VX-200</td>
+</tr>
+<tr>
+<td>聚变推进</td>
+<td>kN ~ 数十 kN（脉冲式）</td>
+<td>GW 级</td>
+<td>Daedalus 概念</td>
+</tr>
+<tr>
+<td>光帆（太阳）</td>
+<td>约 9 μN/m²（全反射）</td>
+<td>无（太阳辐射压）</td>
+<td>IKAROS、LightSail 2</td>
+</tr>
+<tr>
+<td>光帆（激光）</td>
+<td>N ~ kN</td>
+<td>外部激光 100 GW 级</td>
+<td>Starshot 概念</td>
+</tr>
+<tr>
+<td>反物质</td>
+<td>设计相关（可变）</td>
+<td>湮灭功率</td>
+<td>AIM 概念</td>
+</tr>
+</tbody>
+</table></div><div class="prevnext"><a class="pn pn-prev" href="appB.html"><span class="pn-k">上一篇</span><span class="pn-t">附录B 太阳系天体参数</span></a><a class="pn pn-next" href="appD.html"><span class="pn-k">下一篇</span><span class="pn-t">附录D 辐射与屏蔽</span></a></div></article><footer class="foot"><span>未来太空移民技术手册 · 完整版 v2.0</span><span class="foot-mono">AD ASTRA PER ASPERA</span></footer></main>
+<aside class="toc"><div class="toc-title">本页目录</div>
+<a class="toc-h3" href="#sec-1">C.1 性能与成熟度总表</a>
+<a class="toc-h3" href="#sec-2">C.2 典型推力范围与功率水平</a>
+</aside>
+</div>
+<script src="../search-index.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

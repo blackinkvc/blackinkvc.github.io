@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第5章 星际航行工程 · 未来太空移民技术手册</title>
+<meta name="description" content="未来太空移民技术手册 —— 面向专业读者的综合性太空殖民技术参考，涵盖推进、生保、栖息地、治理与前沿技术。">
+<link rel="icon" type="image/png" href="../assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script>(function(){try{var t=localStorage.getItem('smh-theme');if(!t)t='dark';document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="目录"><span></span><span></span><span></span></button>
+  <a class="brand" href="../index.html">
+    <img class="brand-icon" src="../assets/icon.png" alt="">
+    <span class="brand-zh">未来太空移民技术手册</span>
+    <span class="brand-en">SPACE SETTLEMENT HANDBOOK</span>
+  </a>
+  <div class="top-actions">
+    <button class="search-btn" id="searchBtn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg><span>检索</span><kbd>⌘K</kbd></button>
+    <button class="theme-btn" id="themeBtn" aria-label="切换主题"></button>
+  </div>
+</header>
+
+<div class="search-overlay" id="searchOverlay" hidden>
+  <div class="search-box">
+    <div class="search-head">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg>
+      <input id="searchInput" type="text" placeholder="检索全书：术语、参数、章节…" autocomplete="off">
+      <kbd>ESC</kbd>
+    </div>
+    <div class="search-results" id="searchResults"><div class="search-hint">输入关键词，检索 23 章正文与附录</div></div>
+  </div>
+</div>
+<div class="layout">
+<nav class="sidebar" id="sidebar">
+<div class="sb-group"><div class="sb-label">卷首</div>
+<a class="sb-item" href="intro.html"><span class="sb-num">◎</span><span class="sb-t">前言与导读</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第一部分 · 基础物理与宇宙环境</div>
+<a class="sb-item" href="ch01.html"><span class="sb-num">01</span><span class="sb-t">太空环境物理</span></a>
+<a class="sb-item" href="ch02.html"><span class="sb-num">02</span><span class="sb-t">天体物理与轨道力学</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第二部分 · 推进与运输系统</div>
+<a class="sb-item" href="ch03.html"><span class="sb-num">03</span><span class="sb-t">化学推进与近中期方案</span></a>
+<a class="sb-item" href="ch04.html"><span class="sb-num">04</span><span class="sb-t">先进推进理论</span></a>
+<a class="sb-item current" href="ch05.html"><span class="sb-num">05</span><span class="sb-t">星际航行工程</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第三部分 · 生命保障与人体工程</div>
+<a class="sb-item" href="ch06.html"><span class="sb-num">06</span><span class="sb-t">封闭生态生命保障系统（CELSS）</span></a>
+<a class="sb-item" href="ch07.html"><span class="sb-num">07</span><span class="sb-t">太空医学</span></a>
+<a class="sb-item" href="ch08.html"><span class="sb-num">08</span><span class="sb-t">食品与营养</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第四部分 · 栖息地与基础设施</div>
+<a class="sb-item" href="ch09.html"><span class="sb-num">09</span><span class="sb-t">栖息地结构设计</span></a>
+<a class="sb-item" href="ch10.html"><span class="sb-num">10</span><span class="sb-t">能源系统</span></a>
+<a class="sb-item" href="ch11.html"><span class="sb-num">11</span><span class="sb-t">通信与导航</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第五部分 · 目的地与殖民方案</div>
+<a class="sb-item" href="ch12.html"><span class="sb-num">12</span><span class="sb-t">月球</span></a>
+<a class="sb-item" href="ch13.html"><span class="sb-num">13</span><span class="sb-t">火星</span></a>
+<a class="sb-item" href="ch14.html"><span class="sb-num">14</span><span class="sb-t">小行星与太空殖民地</span></a>
+<a class="sb-item" href="ch15.html"><span class="sb-num">15</span><span class="sb-t">外太阳系与冰卫星</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第六部分 · 材料与制造</div>
+<a class="sb-item" href="ch16.html"><span class="sb-num">16</span><span class="sb-t">太空材料科学</span></a>
+<a class="sb-item" href="ch17.html"><span class="sb-num">17</span><span class="sb-t">太空制造与原位资源利用</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第七部分 · 社会、文化与治理</div>
+<a class="sb-item" href="ch18.html"><span class="sb-num">18</span><span class="sb-t">太空治理与法律框架</span></a>
+<a class="sb-item" href="ch19.html"><span class="sb-num">19</span><span class="sb-t">太空经济学</span></a>
+<a class="sb-item" href="ch20.html"><span class="sb-num">20</span><span class="sb-t">太空文化演化</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第八部分 · 前沿与推测性技术</div>
+<a class="sb-item" href="ch21.html"><span class="sb-num">21</span><span class="sb-t">脑机接口与人类增强</span></a>
+<a class="sb-item" href="ch22.html"><span class="sb-num">22</span><span class="sb-t">AI治理与超级智能</span></a>
+<a class="sb-item" href="ch23.html"><span class="sb-num">23</span><span class="sb-t">意识上传与数字存在</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">附录 · 参考数据</div>
+<a class="sb-item" href="appA.html"><span class="sb-num">A</span><span class="sb-t">A 物理常数与换算</span></a>
+<a class="sb-item" href="appB.html"><span class="sb-num">B</span><span class="sb-t">B 太阳系天体参数</span></a>
+<a class="sb-item" href="appC.html"><span class="sb-num">C</span><span class="sb-t">C 推进系统对比</span></a>
+<a class="sb-item" href="appD.html"><span class="sb-num">D</span><span class="sb-t">D 辐射与屏蔽</span></a>
+<a class="sb-item" href="appE.html"><span class="sb-num">E</span><span class="sb-t">E 术语表（中英对照）</span></a>
+<a class="sb-item" href="appF.html"><span class="sb-num">F</span><span class="sb-t">F 参考文献与推荐阅读</span></a>
+</div>
+</nav><main class="content"><article class="article"><div class="crumb"><span class="crumb-part">第二部分 · 推进与运输系统</span><span class="crumb-sep">/</span><span class="crumb-ch">CHAPTER 05</span></div><div class="ch-head"><div class="ch-num">05</div><h1 class="ch-title">星际航行工程</h1></div><div class="article-body"><p><strong>章首导语</strong>。当推进技术确定了"能走多快"，星际航行工程要回答的是"人如何活下去"：亚光速下往返最近的恒星也需要以代际计，任务时间尺度从人的寿命膨胀为文明的寿命。本章讨论四组问题：其一，世代飞船（Generation Ship）的总体架构——最小可行人口（遗传学约束）与封闭生态系统的长期闭环（物质循环约束）是核心参数；其二，冬眠与人体冷冻暂停——唯一可能压缩主观任务时间的"捷径"，目前仍处于医学边界之外；其三，相对论时间膨胀及其对任务规划与文明结构的影响；其四，星际介质对飞船的侵蚀与防护工程。这四组问题互相耦合：人口规模决定栖息地质量，生态闭环率决定补给需求，巡航速度同时决定相对论效应与尘埃撞击能量。关键结论预告：封闭生态的闭环率需从当前的 ~98%（ISS 水回收）量级提升到 400 年任务要求的 &lt;0.25%/年 损失率；人体冬眠尚无验证路径；高速星际飞行的主要威胁来自尘埃而非气体。生命保障与医学细节与第6、7、8章交叉。</p>
+<p>本章讨论星际尺度任务的整体工程问题——不仅是推进，还包括飞船设计、乘员生存、时间效应和星际介质防护。</p>
+<h3 id="sec-1">5.1 世代飞船设计</h3>
+<h3 id="sec-2">5.1.1 任务架构</h3>
+<p>世代飞船（Generation Ship）是亚光速星际旅行中唯一不依赖突破性物理的载人方案。</p>
+<p><strong>典型任务参数</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>目标</td>
+<td>α Centauri (4.37 ly)</td>
+<td>最近恒星系统</td>
+</tr>
+<tr>
+<td>巡航速度</td>
+<td>0.001-0.01c</td>
+<td>化学/NTP/聚变推进</td>
+</tr>
+<tr>
+<td>飞行时间</td>
+<td>400-4000年</td>
+<td>远超人类文明记录</td>
+</tr>
+<tr>
+<td>乘员数量</td>
+<td>见下文分析</td>
+<td>遗传学 + 社会学约束</td>
+</tr>
+<tr>
+<td>生态系统</td>
+<td>完全封闭再生</td>
+<td>需运行数百年</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sec-3">5.1.2 最小可行人口</h3>
+<p><strong>遗传学约束</strong>：</p>
+<p>避免近交衰退的最小种群数量：</p>
+<ul>
+<li><strong>50/500规则</strong>（Franklin &amp; Soulé, 1992）：</li>
+<li>N_e ≥ 50：短期避免近交衰退（每代近交增量 ΔF &lt; 1%）</li>
+<li>N_e ≥ 500：长期维持进化潜力（遗传漂变 vs. 突变平衡）</li>
+</ul>
+<p>其中 N_e 为有效种群大小，通常 N_e/N_census ~ 0.1-0.5</p>
+<ul>
+<li><strong>Smith &amp; Conway模型</strong>（2016，针对世代飞船优化）：</li>
+<li>考虑年龄结构、性别比、随机死亡率</li>
+<li>最小乘员数：~160人（初始健康人群，严格生育管理）</li>
+<li>保守估计：~40,000人（无生育限制，完全随机婚配）</li>
+<li>中间方案：~2,000-10,000人（计算机模拟，配合辅助生殖技术）</li>
+</ul>
+<p><strong>与其他研究的对比</strong>。另一项面向星际航行的蒙特卡洛研究（Marin &amp; Beluffi, 2018，针对 ~6,300 年航程）在严格婚配策略与人口结构管理的假设下，给出小得多的最小初始乘员数 ~98 人——但该结果对婚配规则、事故率与生育控制强度的假设高度敏感，与 Smith 模型乐观值 160 人、保守值 40,000 人构成估计光谱的两端。两个数量级的模型分歧说明该领域尚无共识性的模拟基准（待验证）。工程上稳妥的做法是按上界设计：初始乘员取 10⁴ 量级，并把遗传多样性监测与生育规划作为常设制度；人工授精与胚胎库可降低初始人口压力，但引入额外的医学与伦理约束。乘员的营养需求与食物生产规模详见第8章食品与营养。</p>
+<p><strong>人口动力学约束</strong>：</p>
+<ul>
+<li>世代时间：~25-30年</li>
+<li>400年飞行 = ~13-16代</li>
+<li>每代需要维持稳定人口 → 生育率 ~2.1（替代水平）</li>
+<li>年龄结构管理：避免人口老龄化或年轻化失控</li>
+<li>死亡原因分析：事故、疾病、暴力 → 需要冗余人口</li>
+</ul>
+<h3 id="sec-4">5.1.3 封闭生态系统长期运行</h3>
+<p>生物再生式生命保障的一般架构详见第6章封闭生态生命保障系统（CELSS）；本节聚焦百年以上时间尺度下的封闭约束。</p>
+<p><strong>物质闭环率要求</strong>：</p>
+<p>对400年任务，物质损失必须极小：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7224em;vertical-align:-0.0391em;"></span><span class="mord text"><span class="mord cjk_fallback">年损失率</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.0074em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">400</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0.25%/</span><span class="mord text"><span class="mord cjk_fallback">年</span></span></span></span></span></span></p>
+<p>当前ISS水回收率 ~93-98%（目标 &gt;98%），O₂回收率 ~80-90%。世代飞船需要显著改进。</p>
+<p><strong>系统架构</strong>：</p>
+<pre><code>乘员呼吸/代谢 → CO₂ + H₂O + 废物
+                    ↓
+         生物再生系统（植物/藻类）
+                    ↓
+         O₂ + 食物 + 水净化
+                    ↓
+         物理化学备份（Sabatier + 电解）
+                    ↓
+         返回乘员
+</code></pre>
+<p><strong>关键风险</strong>：</p>
+<ol>
+<li><strong>生态系统崩溃</strong>：微生物群落失衡、病原体积累</li>
+<li><strong>微量元素耗竭</strong>：封闭系统中某些元素不可逆损失</li>
+<li><strong>遗传多样性丧失</strong>：作物近交退化</li>
+<li><strong>不可预见化学反应</strong>：400年内材料降解产物积累</li>
+</ol>
+<p><strong>封闭生态实验的历史教训</strong>。在建造世代飞船之前，若干地面封闭生态实验提供了关键数据：</p>
+<ul>
+<li><strong>BIOS-3（1972–1984，苏联克拉斯诺亚尔斯克）</strong>：315 m³ 密封舱，最长实现 3 人 180 天封闭驻留；采用小球藻光生物反应器加高等植物（小麦）组合，水循环闭合 ~85%，O₂ 与 CO₂ 基本平衡，食物仍需部分外部补给。</li>
+<li><strong>Biosphere 2（第一次任务 1991–1993，美国）</strong>：约 1.27 ha 的大型封闭设施，8 名乘员封闭驻留两年。结果：大气 O₂ 浓度从 20.9% 降至 ~14.5%（相当于 ~4000 m 海拔的生理效应），CO₂ 浓度剧烈波动；多数脊椎动物与传粉昆虫灭绝，蚂蚁与蟑螂种群失控；食物减产导致乘员体重下降与健康恶化。该实验证明公顷尺度的封闭仍不充足，且生态失衡具有非线性放大效应。</li>
+<li><strong>月宫一号（2014–2018，中国北京航空航天大学）</strong>：2014 年完成 3 人 105 天封闭驻留；2017–2018 年"月宫365"实验实现 8 人轮换 370 天封闭驻留，食物主要由舱内植物栽培提供，为同类系统的在轨前世界纪录。</li>
+<li><strong>MELiSSA（ESA，1989 年启动）</strong>：基于微生物分解环路的五段式生物反应器链人工生态系统，目前处于部件验证与中试阶段。</li>
+</ul>
+<p>共同结论：O₂、水、食物的闭环难度依次递增；封闭时间越长，微量元素累积、微生物群落漂移等慢过程越重要——从年级外推到世纪级，正是世代飞船设计最大的不确定性所在。</p>
+<h3 id="sec-5">5.1.4 社会与文化维持</h3>
+<p><strong>知识传承</strong>：</p>
+<ul>
+<li>数字存储：固态介质寿命 ~50-100年，需要定期迁移</li>
+<li>生物存储：DNA数据存储（理论密度 ~215 MB/g，稳定性 ~1000年+）</li>
+<li>教育体系：每代必须完整传递技术知识、历史、文化</li>
+<li>"使命衰减"风险：后代可能忘记或拒绝初始任务目标</li>
+</ul>
+<p><strong>治理结构</strong>：</p>
+<ul>
+<li>飞船资源有限 → 需要严格的社会控制</li>
+<li>极权 vs. 民主：资源约束下民主决策效率可能不足</li>
+<li>AI辅助治理：人工智能作为"顾问"或"管理者"</li>
+<li>叛乱/分裂风险：封闭环境中社会冲突的破坏性更大</li>
+</ul>
+<hr />
+<h3 id="sec-6">5.2 冬眠/人体冷冻暂停</h3>
+<h3 id="sec-7">5.2.1 生物学基础</h3>
+<p><strong>自然冬眠（Hibernation）</strong>：</p>
+<p>某些哺乳动物可以在数月至数年内将代谢率降低到正常的 ~1-5%：</p>
+<table>
+<thead>
+<tr>
+<th>物种</th>
+<th>体温降低</th>
+<th>代谢率降低</th>
+<th>持续时间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>地松鼠</td>
+<td>37°C → 5°C</td>
+<td>~95%</td>
+<td>6-8月/年</td>
+</tr>
+<tr>
+<td>熊</td>
+<td>37°C → 31°C</td>
+<td>~50-75%</td>
+<td>5-7月/年</td>
+</tr>
+<tr>
+<td>蝙蝠</td>
+<td>37°C → 6°C</td>
+<td>~90%</td>
+<td>数周-数月</td>
+</tr>
+</tbody>
+</table>
+<p><strong>人类冬眠的生理挑战</strong>：</p>
+<ol>
+<li><strong>体温调节</strong>：人类缺乏自然冬眠的神经内分泌机制</li>
+<li><strong>肌肉/骨骼保护</strong>：冬眠动物通过周期性颤抖和特殊蛋白保护骨骼肌肉</li>
+<li><strong>器官保护</strong>：低温下器官缺血再灌注损伤</li>
+<li><strong>长期营养</strong>：冬眠动物依赖脂肪储备，人类储备不足</li>
+</ol>
+<p><strong>人体冬眠诱导的医学现状</strong>。当前医学能实现的是"受控低温"（controlled hypothermia），而非真正的冬眠：</p>
+<ul>
+<li><strong>治疗性低温</strong>：临床用于心脏骤停后的神经保护，通常维持 32–36°C 约 24 小时。两项大型随机对照试验（TTM, 2013；TTM2, 2021）显示 33°C 低温相对 36°C 或常温管理并无显著生存获益，临床热度随之回落——这提示人类对低温的获益窗口狭窄，而感染、凝血障碍、心律失常等并发症风险真实存在。</li>
+<li><strong>药物诱导</strong>：Roth 与 Nystad（2005）报道小鼠在硫化氢环境中代谢率降低 ~90% 并进入类蛰伏状态，但该结果未能在大鼠与更大型动物中重现；腺苷酸（5'-AMP）等候选分子同样停留在动物实验阶段。</li>
+<li><strong>航天应用概念</strong>：NASA NIAC 资助的"蛰眠栖息地"（torpor habitat）概念（SpaceWorks，2014 年第一阶段）提出在火星转移中让乘员经静脉降温与营养支持，以 ~2 周为周期轮替维持 10–15°C 蛰眠状态，以压缩居住舱体积与后勤需求。该概念不依赖未验证的新生物学，本质是受控低温的延伸应用，但其主要风险（肌肉萎缩、感染、紧急复苏失败）尚无解决方案（生理效应详见第7章太空医学）。</li>
+</ul>
+<h3 id="sec-8">5.2.2 人体冷冻暂停（Cryopreservation）</h3>
+<p><strong>玻璃化（Vitrification）</strong>：</p>
+<p>将组织冷却到玻璃态（非晶态冰），避免冰晶形成：</p>
+<ul>
+<li>需要高浓度冷冻保护剂（CPA）：~40-70% 体积</li>
+<li>冷却速率：&gt;10,000°C/min（小样品）</li>
+<li>当前状态：</li>
+<li>人类卵子/胚胎：可玻璃化复苏（临床常规）</li>
+<li>人类大脑（动物模型）：玻璃化后结构保存完好，但功能恢复未验证</li>
+<li>整个人体：从未实现</li>
+</ul>
+<p><strong>关键障碍</strong>：</p>
+<ol>
+<li><strong>CPA毒性</strong>：高浓度冷冻保护剂在体温下有毒</li>
+<li><strong>热应力裂纹</strong>：大体积样品（人体 ~70 kg）冷却/复温时温度梯度导致裂纹</li>
+<li><strong>复温均匀性</strong>：需要快速均匀复温（&gt;100°C/min），否则冰晶重结晶</li>
+<li><strong>器官复杂度</strong>：不同组织对冷冻/复温的耐受性不同</li>
+</ol>
+<p><strong>理论路径</strong>：</p>
+<ul>
+<li><strong>纳米技术辅助复温</strong>：磁性纳米颗粒均匀分布 → 交变磁场均匀加热（已在大鼠心脏实验中初步验证）</li>
+<li><strong>等速玻璃化（Ischormic vitrification）</strong>：利用高压抑制冰晶形成，降低CPA需求</li>
+<li><strong>可进化CPA</strong>：可代谢清除的冷冻保护剂</li>
+</ul>
+<p><strong>实验路径上的里程碑</strong>。走向全身冷冻暂停的关键节点：Fahy 等（2005）首次实现兔肾玻璃化冷冻、自体移植与长期存活，证明复杂器官可以经受玻璃化-复温循环；人卵母细胞玻璃化已进入临床常规（2012 年美国生殖医学学会将卵母细胞冷冻移出"实验性技术"范畴）；明尼苏达大学团队以磁性纳米颗粒加交变磁场的"纳米复温"（nanowarming）方法，实现玻璃化大鼠肝脏量级器官的快速均匀复温（2017），验证了复温瓶颈的一条可行出路。总体图景是：细胞与小组织已解决，大器官玻璃化处于动物实验阶段，全身人体玻璃化复温没有时间表（TRL 1–2）。</p>
+<h3 id="sec-9">5.2.3 冬眠对星际任务的价值</h3>
+<p><strong>如果实现</strong>：</p>
+<ul>
+<li>减少乘员活动资源消耗（食物、水、O₂降低 ~70-90%）</li>
+<li>减少辐射暴露（冬眠时代谢降低，DNA修复能力可能改变）</li>
+<li>减少心理问题（隔离、冲突）</li>
+<li>有效"时间旅行"：乘员主观体验时间大幅缩短</li>
+</ul>
+<p><strong>任务设计</strong>：</p>
+<ul>
+<li>方案A：全程冬眠（出发→到达）——最省资源但最危险</li>
+<li>方案B：周期性苏醒（每6个月苏醒数周）——维护系统 + 健康检查</li>
+<li>方案C：部分冬眠（降低代谢50%而非完全暂停）——折中方案</li>
+</ul>
+<hr />
+<h3 id="sec-10">5.3 相对论效应与任务规划</h3>
+<h3 id="sec-11">5.3.1 时间膨胀</h3>
+<p><strong>狭义相对论时间膨胀</strong>：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord">Δ</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">s</span><span class="mord mathnormal mtight">hi</span><span class="mord mathnormal mtight">p</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.24em;vertical-align:-0.2561em;"></span><span class="mord">Δ</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05764em;">E</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">h</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9839em;"><span class="svg-align" style="top:-3.2em;"><span class="pstrut" style="height:3.2em;"></span><span class="mord" style="padding-left:1em;"><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mord">/</span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span><span style="top:-2.9439em;"><span class="pstrut" style="height:3.2em;"></span><span class="hide-tail" style="min-width:1.02em;height:1.28em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.28em" viewBox="0 0 400000 1296" preserveAspectRatio="xMinYMin slice"><path d="M263,681c0.7,0,18,39.7,52,119
+c34,79.3,68.167,158.7,102.5,238c34.3,79.3,51.8,119.3,52.5,120
+c340,-704.7,510.7,-1060.3,512,-1067
+l0 -0
+c4.7,-7.3,11,-11,19,-11
+H40000v40H1012.3
+s-271.3,567,-271.3,567c-38.7,80.7,-84,175,-136,283c-52,108,-89.167,185.3,-111.5,232
+c-22.3,46.7,-33.8,70.3,-34.5,71c-4.7,4.7,-12.3,7,-23,7s-12,-1,-12,-1
+s-109,-253,-109,-253c-72.7,-168,-109.3,-252,-110,-252c-10.7,8,-22,16.7,-34,26
+c-22,17.3,-33.3,26,-34,26s-26,-26,-26,-26s76,-59,76,-59s76,-60,76,-60z
+M1001 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2561em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.2408em;vertical-align:-0.8804em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05556em;">γ</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">Δ</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05764em;">E</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">h</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<p>其中 γ = 1/√(1-v²/c²) 为洛伦兹因子。</p>
+<table>
+<thead>
+<tr>
+<th>速度 v</th>
+<th>γ</th>
+<th>4.37 ly飞行（地球参考系）</th>
+<th>飞船时间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.01c</td>
+<td>1.00005</td>
+<td>437年</td>
+<td>437年</td>
+</tr>
+<tr>
+<td>0.1c</td>
+<td>1.005</td>
+<td>43.7年</td>
+<td>43.5年</td>
+</tr>
+<tr>
+<td>0.5c</td>
+<td>1.155</td>
+<td>8.74年</td>
+<td>7.56年</td>
+</tr>
+<tr>
+<td>0.9c</td>
+<td>2.294</td>
+<td>4.86年</td>
+<td>2.12年</td>
+</tr>
+<tr>
+<td>0.99c</td>
+<td>7.089</td>
+<td>4.41年</td>
+<td>0.62年</td>
+</tr>
+<tr>
+<td>0.999c</td>
+<td>22.37</td>
+<td>4.37年</td>
+<td>0.196年</td>
+</tr>
+</tbody>
+</table>
+<p><strong>工程含义</strong>：</p>
+<ul>
+<li>亚光速（&lt;0.1c）：相对论效应可忽略，任务规划用经典力学</li>
+<li>高亚光速（&gt;0.5c）：时间膨胀开始显著，乘员年龄增长慢于地球</li>
+<li>近光速（&gt;0.9c）：时间膨胀巨大，乘员可在主观数年内到达遥远恒星</li>
+</ul>
+<h3 id="sec-12">5.3.2 加速-减速飞行剖面</h3>
+<p><strong>恒定加速度飞行</strong>（1g连续加速-减速，最舒适方案）：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9012em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">s</span><span class="mord mathnormal mtight">hi</span><span class="mord mathnormal mtight">p</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.4em;vertical-align:-0.95em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">a</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span><span class="mord mathnormal">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop"><span class="mop">cosh</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8984em;"><span style="top:-3.1473em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size3">(</span></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">1</span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size3">)</span></span></span></span></span></span></span></p>
+<p>其中 D 为目的地距离，a 为固有加速度。</p>
+<table>
+<thead>
+<tr>
+<th>目的地</th>
+<th>距离</th>
+<th>1g飞行时间（飞船）</th>
+<th>1g飞行时间（地球）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>α Centauri</td>
+<td>4.37 ly</td>
+<td>3.6年</td>
+<td>5.9年</td>
+</tr>
+<tr>
+<td>Sirius</td>
+<td>8.6 ly</td>
+<td>5.1年</td>
+<td>10.3年</td>
+</tr>
+<tr>
+<td>Vega</td>
+<td>25 ly</td>
+<td>6.6年</td>
+<td>26.4年</td>
+</tr>
+<tr>
+<td>银河中心</td>
+<td>26,000 ly</td>
+<td>20年</td>
+<td>26,000年</td>
+</tr>
+<tr>
+<td>仙女座星系</td>
+<td>2.5 Mly</td>
+<td>28年</td>
+<td>2.5 M年</td>
+</tr>
+</tbody>
+</table>
+<p><strong>1g飞行的推进需求</strong>：</p>
+<p>持续1g加速需要持续推力 = 乘员质量 × g。对1000 t飞船：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0585em;vertical-align:-0.1944em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">6</span></span></span></span></span></span></span></span><span class="mord text"><span class="mord"> kg</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.204em;vertical-align:-0.25em;"></span><span class="mord">9.81</span><span class="mord"><span class="mord text"><span class="mord"> m/s</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.954em;"><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8641em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">7</span></span></span></span></span></span></span></span><span class="mord text"><span class="mord"> N</span></span></span></span></span></span></p>
+<p>以反物质推进（I_sp ~ 10⁷ s）为例：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6679em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6679em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">m</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1389em;"><span class="mord">˙</span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.3324em;vertical-align:-0.9721em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">s</span><span class="mord mathnormal mtight">p</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">F</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9721em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.2604em;vertical-align:-0.7693em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.4911em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">7</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">9.81</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">7</span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7693em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0.1</span><span class="mord text"><span class="mord"> kg/s</span></span></span></span></span></span></p>
+<p>4年加速需要 ~12,600 t 反物质-物质对——远超任何可想象的生产能力。</p>
+<p><strong>结论</strong>：1g恒定加速飞行在可预见的物理下不可行，但作为理论极限定义了星际旅行的"黄金标准"。</p>
+<h3 id="sec-13">5.3.3 通信延迟与文明分裂</h3>
+<p><strong>光速延迟</strong>：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9012em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">d</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.0463em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">c</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<table>
+<thead>
+<tr>
+<th>位置</th>
+<th>单向延迟</th>
+<th>往返延迟</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>月球</td>
+<td>1.3秒</td>
+<td>2.6秒</td>
+</tr>
+<tr>
+<td>火星（最近）</td>
+<td>3.2分钟</td>
+<td>6.4分钟</td>
+</tr>
+<tr>
+<td>火星（最远）</td>
+<td>22.4分钟</td>
+<td>44.8分钟</td>
+</tr>
+<tr>
+<td>α Centauri</td>
+<td>4.37年</td>
+<td>8.74年</td>
+</tr>
+<tr>
+<td>银河中心</td>
+<td>26,000年</td>
+<td>52,000年</td>
+</tr>
+</tbody>
+</table>
+<p><strong>对殖民社会的影响</strong>：</p>
+<ul>
+<li>火星：延迟可管理（实时通信不可能，但延迟对话可行）</li>
+<li>星际殖民：通信延迟 &gt; 人类寿命 → 实质上的信息独立</li>
+<li>殖民地将完全自治（无法从地球获得实时指导）</li>
+<li>文化分化不可避免（数代之后形成独立文明身份）</li>
+<li>技术路径分化（基于本地资源和知识的独立发展）</li>
+</ul>
+<hr />
+<h3 id="sec-14">5.4 星际介质侵蚀与防护</h3>
+<h3 id="sec-15">5.4.1 星际介质（ISM）特性</h3>
+<p><strong>局部星际云（Local Interstellar Cloud）参数</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>成分</th>
+<th>数密度 (cm⁻³)</th>
+<th>质量密度 (kg/m³)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H (中性氢)</td>
+<td>~0.1-0.3</td>
+<td>~2×10⁻²⁵</td>
+</tr>
+<tr>
+<td>H⁺ (电离氢)</td>
+<td>~0.05-0.1</td>
+<td>~1×10⁻²⁵</td>
+</tr>
+<tr>
+<td>He</td>
+<td>~0.01-0.02</td>
+<td>~7×10⁻²⁶</td>
+</tr>
+<tr>
+<td>尘埃</td>
+<td>~10⁻¹²-10⁻¹³</td>
+<td>~2×10⁻²⁷</td>
+</tr>
+<tr>
+<td>总计</td>
+<td>~0.3-0.5</td>
+<td>~3×10⁻²⁵</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sec-16">5.4.2 高速撞击损伤</h3>
+<p><strong>对0.1c飞船的侵蚀</strong>：</p>
+<p>飞船速度 v = 0.1c = 3×10⁷ m/s，ISM粒子在飞船参考系中的动能：</p>
+<ul>
+<li>质子：E_k = ½m_p v² ≈ ½ × 1.67×10⁻²⁷ × (3×10⁷)² ≈ 7.5×10⁻¹³ J ≈ 4.7 MeV</li>
+<li>尘埃颗粒（m ~ 10⁻¹⁵ kg）：E_k ≈ ½ × 10⁻¹⁵ × (3×10⁷)² ≈ 450 J</li>
+</ul>
+<p><strong>侵蚀率估算</strong>：</p>
+<p>质子通量：Φ_p = n_p × v = 0.2 × 3×10⁷ = 6×10⁶ /m²/s</p>
+<p>溅射产额（4.7 MeV质子对铝）：Y ~ 0.01 atoms/impact</p>
+<p>质量损失率：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8179em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6679em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">m</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1389em;"><span class="mord">˙</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">eros</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">o</span><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord">Φ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6331em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">A</span><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">6</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.9474em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">6</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">0.01</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">4.5</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8641em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">26</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">2.7</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.204em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">21</span></span></span></span></span></span></span></span></span><span class="mord"><span class="mord text"><span class="mord"> kg/m</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.954em;"><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mord text"><span class="mord">/s</span></span></span></span></span></span></p>
+<p>4.37年（α Cen）累积侵蚀：~3.5×10⁻¹³ kg/m²（可忽略）</p>
+<p><strong>尘埃撞击是真正的威胁</strong>：</p>
+<p>10⁻¹⁵ kg尘埃以0.1c撞击：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">450</span><span class="mord text"><span class="mord"> J</span></span></span></span></span></span></p>
+<p>集中在 ~μm² 面积上 → 局部温度 &gt;10,000 K → 材料气化/穿孔</p>
+<p>尘埃通量（ISM）：~10⁻¹²-10⁻¹³ /m²/s</p>
+<p>对100 m²飞船前缘，4.37年遭遇 ~10⁻³-10⁻² 个尘埃颗粒——概率低但后果严重（单颗粒可穿透船壳）。</p>
+<h3 id="sec-17">5.4.3 防护方案</h3>
+<p><strong>（1）物理防护盾</strong>：</p>
+<ul>
+<li>前方部署厚防护盾（水冰、硼聚乙烯、碳复合材料）</li>
+<li>厚度需求：~1-10 m（防护微尘和辐射）</li>
+<li>质量惩罚：对100 m²盾，1 m水冰 = 100 t</li>
+</ul>
+<p><strong>（2）电磁防护</strong>：</p>
+<ul>
+<li>前方超导线圈产生磁场，偏转带电ISM粒子</li>
+<li>对质子（4.7 MeV）：拉莫尔半径 r_L = mv/(qB)</li>
+<li>对 B = 1 T：r_L = 1.67×10⁻²⁷ × 3×10⁷ / (1.6×10⁻¹⁹ × 1) ≈ 0.3 m</li>
+<li>需要磁场区域 &gt;&gt; 0.3 m → 可行</li>
+<li>对中性氢：磁场无效，需要物理防护或电离后偏转</li>
+</ul>
+<p><strong>（3）烧蚀防护</strong>：</p>
+<ul>
+<li>前方部署可更换烧蚀层</li>
+<li>每次尘埃撞击消耗少量材料</li>
+<li>需要携带备件或自修复材料</li>
+</ul>
+<p><strong>（4）主动防御</strong>：</p>
+<ul>
+<li>前方激光/粒子束探测并蒸发 incoming 尘埃颗粒</li>
+<li>需要快速响应（0.1c相对速度下，探测到撞击的时间窗口 ~ms级）</li>
+</ul>
+<h3 id="sec-18">本章小结</h3>
+<p>星际任务的工程约束由时间与闭环主导。0.001–0.01c 的世代飞船航程为 400–4000 年：遗传学把最小乘员数限定在 ~160 至 40,000 人之间（取决于生育管理强度），物质闭环率需相应达到年损失率 &lt;0.25%；Biosphere 2 证明公顷尺度的封闭仍不充足且失衡非线性放大。人体冬眠目前只有"延伸受控低温"（蛰眠栖息地）这一工程概念，全身玻璃化复温没有时间表。相对论效应仅在 &gt;0.1c 量级才有实质影响：1g 恒加速下 α Centauri 飞船时间 3.6 年，但需要 ~10⁷ N 量级持续推力与天文数字的工质。高速飞行的首要威胁来自尘埃而非气体：气体累积侵蚀可忽略，而单颗 ~μm 级尘埃撞击即可穿孔，防护只能依靠物理屏蔽、电磁偏转与主动探测的组合。世代飞船是当前唯一不依赖物理突破的载人星际方案。</p>
+<h3 id="sec-19">关键参数速查表</h3>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>典型值</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>α Centauri 距离</td>
+<td>4.37 ly</td>
+<td>最近恒星系统</td>
+</tr>
+<tr>
+<td>世代飞船巡航速度</td>
+<td>0.001–0.01c</td>
+<td>航程 400–4000 年</td>
+</tr>
+<tr>
+<td>最小乘员数（Smith 模型）</td>
+<td>~160–40,000 人</td>
+<td>生育管理强度的光谱</td>
+</tr>
+<tr>
+<td>最小乘员数（Marin &amp; Beluffi）</td>
+<td>~98 人</td>
+<td>严格婚配、6,300 年航程（待验证）</td>
+</tr>
+<tr>
+<td>世代时间</td>
+<td>~25–30 年</td>
+<td>400 年 ≈ 13–16 代</td>
+</tr>
+<tr>
+<td>年物质损失率上限</td>
+<td>&lt;0.25%/年</td>
+<td>400 年任务闭环要求</td>
+</tr>
+<tr>
+<td>Biosphere 2 O₂ 下降</td>
+<td>20.9% → ~14.5%</td>
+<td>生态失衡实证案例</td>
+</tr>
+<tr>
+<td>月宫一号封闭纪录</td>
+<td>370 天 / 8 人</td>
+<td>2017–2018</td>
+</tr>
+<tr>
+<td>冬眠资源消耗削减</td>
+<td>~70–90%</td>
+<td>若实现（食物/水/O₂）</td>
+</tr>
+<tr>
+<td>γ @ 0.9c</td>
+<td>2.294</td>
+<td>时间膨胀因子</td>
+</tr>
+<tr>
+<td>1g 恒加速 α Cen 飞船时间</td>
+<td>3.6 年</td>
+<td>对应地球时间 5.9 年</td>
+</tr>
+<tr>
+<td>火星单向通信延迟</td>
+<td>3.2–22.4 分钟</td>
+<td>决定通信与遥操作架构</td>
+</tr>
+<tr>
+<td>0.1c 质子撞击能量</td>
+<td>~4.7 MeV</td>
+<td>ISM 侵蚀能量来源</td>
+</tr>
+<tr>
+<td>物理屏蔽质量代价</td>
+<td>1 m 冰盾 100 m² = 100 t</td>
+<td>防护的质量惩罚</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="sec-20">本部分开放问题清单</h2>
+<ul>
+<li><strong>在轨低温推进剂长期储存与转移</strong>：零蒸发（ZBO）技术能否达到 &lt;0.01%/天 的目标？大质量微重力推进剂转移的飞行演示何时实现（第3章）？</li>
+<li><strong>核热发动机的飞行资格鸿沟</strong>：DRACO 演示之后，从在轨数据到载人任务飞行资格还差几步？核反应堆发射安全的监管路径如何建立（第3章）？</li>
+<li><strong>兆瓦级空间堆与散热器比质量</strong>：散热器比质量能否从 ~15 kg/m²（热管）降到 2–5 kg/m²（薄膜），从而改变 NEP 的质量预算结构（第3章）？</li>
+<li><strong>可控聚变的净增益与重复率</strong>：推进所需的 ~10 Hz 量级 pellet 注入与高重复率点火何时能在地面演示（第4章）？</li>
+<li><strong>D-³He 燃料供应链</strong>：木星大气 ³He 提取是否经济合理，还是应转向 D-D 等自持燃料路线并接受更高的中子屏蔽代价（第4章）？</li>
+<li><strong>反物质生产与储存</strong>：是否存在超越现有加速器产率的数量级提升机制？mg 级约束的工程设计是否可定义（第4章）？</li>
+<li><strong>帆膜材料</strong>：反射率 &gt;99.9999%、吸收耐受与 ~1 g/m² 面密度能否同时满足（第4章）？</li>
+<li><strong>曲率驱动的物理可实现性</strong>：Lentz 类解是否真的满足能量条件，是否存在不依赖奇异物质的时空几何（第4章）？</li>
+<li><strong>世代飞船最小人口</strong>：遗传模拟与社会稳定性要求之间两个数量级的分歧如何收敛（第5章）？</li>
+<li><strong>世纪尺度封闭生态的可预测性</strong>：如何从年级实验（BIOS-3、Biosphere 2、月宫一号）外推到世纪尺度闭环？失衡的监测指标与干预机制是什么（第5章）？</li>
+<li><strong>冬眠/冷冻暂停的医学路径</strong>：延伸受控低温与全身玻璃化哪条路线更可能先行？冷冻期的伦理与法律人格问题如何处理（第5章）？</li>
+<li><strong>星际尘埃通量的统计性质</strong>：现有天文观测对 μm 级尘埃密度的不确定度大，星际任务防护设计余量难以收敛（第5章）。</li>
+</ul>
+<hr />
+<p><em>第二部分完。</em></p></div><div class="prevnext"><a class="pn pn-prev" href="ch04.html"><span class="pn-k">上一篇</span><span class="pn-t">第4章 先进推进理论</span></a><a class="pn pn-next" href="ch06.html"><span class="pn-k">下一篇</span><span class="pn-t">第6章 封闭生态生命保障系统（CELSS）</span></a></div></article><footer class="foot"><span>未来太空移民技术手册 · 完整版 v2.0</span><span class="foot-mono">AD ASTRA PER ASPERA</span></footer></main>
+<aside class="toc"><div class="toc-title">本页目录</div>
+<a class="toc-h3" href="#sec-1">5.1 世代飞船设计</a>
+<a class="toc-h3" href="#sec-2">5.1.1 任务架构</a>
+<a class="toc-h3" href="#sec-3">5.1.2 最小可行人口</a>
+<a class="toc-h3" href="#sec-4">5.1.3 封闭生态系统长期运行</a>
+<a class="toc-h3" href="#sec-5">5.1.4 社会与文化维持</a>
+<a class="toc-h3" href="#sec-6">5.2 冬眠/人体冷冻暂停</a>
+<a class="toc-h3" href="#sec-7">5.2.1 生物学基础</a>
+<a class="toc-h3" href="#sec-8">5.2.2 人体冷冻暂停（Cryopreservation）</a>
+<a class="toc-h3" href="#sec-9">5.2.3 冬眠对星际任务的价值</a>
+<a class="toc-h3" href="#sec-10">5.3 相对论效应与任务规划</a>
+<a class="toc-h3" href="#sec-11">5.3.1 时间膨胀</a>
+<a class="toc-h3" href="#sec-12">5.3.2 加速-减速飞行剖面</a>
+<a class="toc-h3" href="#sec-13">5.3.3 通信延迟与文明分裂</a>
+<a class="toc-h3" href="#sec-14">5.4 星际介质侵蚀与防护</a>
+<a class="toc-h3" href="#sec-15">5.4.1 星际介质（ISM）特性</a>
+<a class="toc-h3" href="#sec-16">5.4.2 高速撞击损伤</a>
+<a class="toc-h3" href="#sec-17">5.4.3 防护方案</a>
+<a class="toc-h3" href="#sec-18">本章小结</a>
+<a class="toc-h3" href="#sec-19">关键参数速查表</a>
+<a class="toc-h2" href="#sec-20">本部分开放问题清单</a>
+</aside>
+</div>
+<script src="../search-index.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

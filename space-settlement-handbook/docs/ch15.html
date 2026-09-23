@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第15章 外太阳系与冰卫星 · 未来太空移民技术手册</title>
+<meta name="description" content="未来太空移民技术手册 —— 面向专业读者的综合性太空殖民技术参考，涵盖推进、生保、栖息地、治理与前沿技术。">
+<link rel="icon" type="image/png" href="../assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script>(function(){try{var t=localStorage.getItem('smh-theme');if(!t)t='dark';document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="目录"><span></span><span></span><span></span></button>
+  <a class="brand" href="../index.html">
+    <img class="brand-icon" src="../assets/icon.png" alt="">
+    <span class="brand-zh">未来太空移民技术手册</span>
+    <span class="brand-en">SPACE SETTLEMENT HANDBOOK</span>
+  </a>
+  <div class="top-actions">
+    <button class="search-btn" id="searchBtn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg><span>检索</span><kbd>⌘K</kbd></button>
+    <button class="theme-btn" id="themeBtn" aria-label="切换主题"></button>
+  </div>
+</header>
+
+<div class="search-overlay" id="searchOverlay" hidden>
+  <div class="search-box">
+    <div class="search-head">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg>
+      <input id="searchInput" type="text" placeholder="检索全书：术语、参数、章节…" autocomplete="off">
+      <kbd>ESC</kbd>
+    </div>
+    <div class="search-results" id="searchResults"><div class="search-hint">输入关键词，检索 23 章正文与附录</div></div>
+  </div>
+</div>
+<div class="layout">
+<nav class="sidebar" id="sidebar">
+<div class="sb-group"><div class="sb-label">卷首</div>
+<a class="sb-item" href="intro.html"><span class="sb-num">◎</span><span class="sb-t">前言与导读</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第一部分 · 基础物理与宇宙环境</div>
+<a class="sb-item" href="ch01.html"><span class="sb-num">01</span><span class="sb-t">太空环境物理</span></a>
+<a class="sb-item" href="ch02.html"><span class="sb-num">02</span><span class="sb-t">天体物理与轨道力学</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第二部分 · 推进与运输系统</div>
+<a class="sb-item" href="ch03.html"><span class="sb-num">03</span><span class="sb-t">化学推进与近中期方案</span></a>
+<a class="sb-item" href="ch04.html"><span class="sb-num">04</span><span class="sb-t">先进推进理论</span></a>
+<a class="sb-item" href="ch05.html"><span class="sb-num">05</span><span class="sb-t">星际航行工程</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第三部分 · 生命保障与人体工程</div>
+<a class="sb-item" href="ch06.html"><span class="sb-num">06</span><span class="sb-t">封闭生态生命保障系统（CELSS）</span></a>
+<a class="sb-item" href="ch07.html"><span class="sb-num">07</span><span class="sb-t">太空医学</span></a>
+<a class="sb-item" href="ch08.html"><span class="sb-num">08</span><span class="sb-t">食品与营养</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第四部分 · 栖息地与基础设施</div>
+<a class="sb-item" href="ch09.html"><span class="sb-num">09</span><span class="sb-t">栖息地结构设计</span></a>
+<a class="sb-item" href="ch10.html"><span class="sb-num">10</span><span class="sb-t">能源系统</span></a>
+<a class="sb-item" href="ch11.html"><span class="sb-num">11</span><span class="sb-t">通信与导航</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第五部分 · 目的地与殖民方案</div>
+<a class="sb-item" href="ch12.html"><span class="sb-num">12</span><span class="sb-t">月球</span></a>
+<a class="sb-item" href="ch13.html"><span class="sb-num">13</span><span class="sb-t">火星</span></a>
+<a class="sb-item" href="ch14.html"><span class="sb-num">14</span><span class="sb-t">小行星与太空殖民地</span></a>
+<a class="sb-item current" href="ch15.html"><span class="sb-num">15</span><span class="sb-t">外太阳系与冰卫星</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第六部分 · 材料与制造</div>
+<a class="sb-item" href="ch16.html"><span class="sb-num">16</span><span class="sb-t">太空材料科学</span></a>
+<a class="sb-item" href="ch17.html"><span class="sb-num">17</span><span class="sb-t">太空制造与原位资源利用</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第七部分 · 社会、文化与治理</div>
+<a class="sb-item" href="ch18.html"><span class="sb-num">18</span><span class="sb-t">太空治理与法律框架</span></a>
+<a class="sb-item" href="ch19.html"><span class="sb-num">19</span><span class="sb-t">太空经济学</span></a>
+<a class="sb-item" href="ch20.html"><span class="sb-num">20</span><span class="sb-t">太空文化演化</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第八部分 · 前沿与推测性技术</div>
+<a class="sb-item" href="ch21.html"><span class="sb-num">21</span><span class="sb-t">脑机接口与人类增强</span></a>
+<a class="sb-item" href="ch22.html"><span class="sb-num">22</span><span class="sb-t">AI治理与超级智能</span></a>
+<a class="sb-item" href="ch23.html"><span class="sb-num">23</span><span class="sb-t">意识上传与数字存在</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">附录 · 参考数据</div>
+<a class="sb-item" href="appA.html"><span class="sb-num">A</span><span class="sb-t">A 物理常数与换算</span></a>
+<a class="sb-item" href="appB.html"><span class="sb-num">B</span><span class="sb-t">B 太阳系天体参数</span></a>
+<a class="sb-item" href="appC.html"><span class="sb-num">C</span><span class="sb-t">C 推进系统对比</span></a>
+<a class="sb-item" href="appD.html"><span class="sb-num">D</span><span class="sb-t">D 辐射与屏蔽</span></a>
+<a class="sb-item" href="appE.html"><span class="sb-num">E</span><span class="sb-t">E 术语表（中英对照）</span></a>
+<a class="sb-item" href="appF.html"><span class="sb-num">F</span><span class="sb-t">F 参考文献与推荐阅读</span></a>
+</div>
+</nav><main class="content"><article class="article"><div class="crumb"><span class="crumb-part">第五部分 · 目的地与殖民方案</span><span class="crumb-sep">/</span><span class="crumb-ch">CHAPTER 15</span></div><div class="ch-head"><div class="ch-num">15</div><h1 class="ch-title">外太阳系与冰卫星</h1></div><div class="article-body"><blockquote>
+<p><strong>章首导语</strong></p>
+<p>越过小行星带，殖民的物理条件发生质变：太阳光照跌至地球的 4% 以下，光伏退出主能源候选；木星辐射带的剂量率（木卫二表面 ~5.4 Sv/天）比任何行星表面都致命；而距离带来的通信延迟（木星 ~30–50 分钟，土星 ~1 小时以上）使实时支援彻底不可能。本章按天体逐一分析：木卫二（Europa）拥有太阳系最可能存在生命的地下海洋，其殖民方案必然走向冰下（15.1）；土卫六（Titan）以 1.5 atm 厚大气和烃类湖泊提供了外太阳系中最温和的表面环境（15.2）；土卫二（Enceladus）的羽流使海洋采样无需着陆（15.3）；15.4 节总结能源方案——RTG 与裂变反应堆是现实选项，聚变属于 2100 年后的远期。本章的定位是"科学前哨先于定居点"：木卫二与土卫二的价值首先在天体生物学，人类设施（若存在）将遵循行星保护最高等级约束；土卫六则是唯一可能发展出永久社区的候选者。与第 12–14 章相比，本章所有时间尺度至少推迟半个世纪，读者应将其视为殖民谱系的最外缘。</p>
+</blockquote>
+<h3 id="sec-1">15.1 木卫二（Europa）</h3>
+<h3 id="sec-2">15.1.1 环境特征</h3>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>轨道半径</td>
+<td>5.2 AU（木星系统）</td>
+</tr>
+<tr>
+<td>直径</td>
+<td>3,122 km</td>
+</tr>
+<tr>
+<td>表面重力</td>
+<td>1.3 m/s²（0.13g）</td>
+</tr>
+<tr>
+<td>表面温度</td>
+<td>~-160°C（赤道）至 ~-220°C（极区）</td>
+</tr>
+<tr>
+<td>表面</td>
+<td>水冰壳（厚 ~10-30 km）</td>
+</tr>
+<tr>
+<td>地下海洋</td>
+<td>全球性，深 ~60-150 km，可能含生命</td>
+</tr>
+<tr>
+<td>辐射环境</td>
+<td>木星辐射带 → 表面 ~5.4 Sv/天（致死）</td>
+</tr>
+<tr>
+<td>大气</td>
+<td>极稀薄O₂（表面压力 ~10⁻¹² atm）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sec-3">15.1.2 栖息地概念</h3>
+<p><strong>冰下海洋栖息地</strong>：</p>
+<pre><code>木星辐射（表面）
+    ↓
+冰壳（10-30 km）→ 完全辐射屏蔽
+    ↓
+冰-水界面
+    ↓
+潜艇栖息地 → 探索海洋
+</code></pre>
+<p><strong>工程设计</strong>：</p>
+<ol>
+<li><strong>着陆</strong>：表面着陆（辐射屏蔽着陆器）</li>
+<li><strong>钻探/融化</strong>：核动力融探器（cryobot）融化穿过冰壳
+   - 功率：~5-10 kW（核反应堆或RTG）
+   - 速率：~1-10 m/小时
+   - 到达海洋时间：~数年-数十年（10-30 km冰壳）</li>
+<li><strong>潜艇栖息地</strong>：在海洋中部署加压栖息地
+   - 能源：核反应堆（或温差发电，利用冰/热液喷口温差）
+   - 生命保障：物理化学再生（无光合作用可能）
+   - 食物：微生物蛋白（化学合成细菌，利用热液喷口能量）</li>
+</ol>
+<h3 id="sec-4">15.1.3 科学驱动</h3>
+<ul>
+<li>地下海洋是否存在生命？（天体生物学最高优先级）</li>
+<li>海洋化学成分（盐度、pH、氧化还原态）</li>
+<li>热液活动（类似地球深海热液喷口）</li>
+<li>冰壳动力学（板块构造？对流？）</li>
+</ul>
+<p><strong>Europa Clipper 与冰下探测路线</strong>：</p>
+<ul>
+<li><strong>Europa Clipper（NASA，2024-10 发射，计划 2030 年抵达）</strong>：不进入木卫二环绕轨道（以规避辐射累积），而是绕木星运行并对木卫二执行 ~49 次近距离飞掠，最近距离低至 ~25 km。载荷包括成像系统 EIS、冰穿透雷达 REASON（探测冰壳厚度与浅层液态水袋）、质谱仪 MASPEX（分析羽流/表面挥发物成分）与尘埃分析仪 SUDA。该任务的首要产出是冰壳厚度与羽流活动的定量数据——这两项直接决定融探器方案的可行性。</li>
+<li><strong>融探器（Cryobot）概念</strong>：核热源或激光融冰探头穿越冰壳。美国 Stone Aerospace 的 VALKYRIE 项目以激光光纤供能融探，已在阿拉斯加 Matanuska 冰川完成自主融冰下潜试验（TRL 4–5），验证了"能量从表面经光纤传输、探头自主避障"的关键环节；JPL 的 BRUIE 项目则测试冰下水-冰界面的自主巡视。核动力融探器（本节工程设计所述 ~5–10 kW 级）仍处于概念研究阶段（TRL 2–3），主要难点是融水再冻结后的通信中继与灭菌。</li>
+<li><strong>逻辑链</strong>：Clipper 测冰壳厚度 → 融探器定深度设计 → 海洋潜艇。人类设施位于这条链的最末端，任何载人方案都必须先完成无人冰下采样并确认行星保护风险可控。</li>
+</ul>
+<p><strong>行星保护</strong>：</p>
+<ul>
+<li>严格无菌要求（COSPAR Category IV）</li>
+<li>避免地球微生物污染海洋（不可逆）</li>
+<li>融探器需要极端灭菌（类似Viking级别）</li>
+</ul>
+<h3 id="sec-5">15.2 土卫六（Titan）</h3>
+<h3 id="sec-6">15.2.1 环境特征</h3>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>轨道半径</td>
+<td>9.5 AU（土星系统）</td>
+</tr>
+<tr>
+<td>直径</td>
+<td>5,150 km（太阳系第二大卫星）</td>
+</tr>
+<tr>
+<td>表面重力</td>
+<td>1.35 m/s²（0.14g）</td>
+</tr>
+<tr>
+<td>表面温度</td>
+<td>~-179°C（94 K）</td>
+</tr>
+<tr>
+<td>大气</td>
+<td>N₂ 95%, CH₄ 5%（表面气压 ~1.5 atm）</td>
+</tr>
+<tr>
+<td>表面</td>
+<td>液态CH₄/C₂H₆湖泊、水冰"岩石"、有机物沙丘</td>
+</tr>
+<tr>
+<td>辐射</td>
+<td>低（厚大气屏蔽）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sec-7">15.2.2 独特优势</h3>
+<p><strong>（1）厚大气</strong>：</p>
+<ul>
+<li>1.5 atm → 栖息地无需承受大压差（内部1 atm vs. 外部1.5 atm → 向外压差）</li>
+<li>辐射屏蔽：厚大气 + 有机 haze → 表面辐射接近地球</li>
+<li>气动制动可行（可从轨道直接着陆）</li>
+<li>降落伞有效（低重力 + 厚大气 → 缓慢下降）</li>
+</ul>
+<p><strong>（2）丰富碳氢化合物</strong>：</p>
+<ul>
+<li>表面湖泊：液态甲烷/乙烷（Kraken Mare面积 ~40万 km²）</li>
+<li>沙丘：有机物颗粒（类似地球沙漠）</li>
+<li>河流/降雨：甲烷水循环（类似地球水循环）</li>
+</ul>
+<p><strong>（3）水冰"岩石"</strong>：</p>
+<ul>
+<li>表面温度下，水冰像岩石一样坚硬</li>
+<li>可作为建筑材料、水源（需加热融化）</li>
+</ul>
+<h3 id="sec-8">15.2.3 能源方案</h3>
+<p><strong>挑战</strong>：</p>
+<ul>
+<li>太阳辐照度：~15 W/m²（地球的 ~1%）→ 光伏不实用</li>
+<li>需要核能或化学能</li>
+</ul>
+<p><strong>方案</strong>：</p>
+<ol>
+<li><strong>核反应堆</strong>：~10-100 kW_e（Kilopower级或更大）</li>
+<li><strong>CH₄/O₂燃烧</strong>：利用大气CH₄ + 电解水产生的O₂
+   - 能量密度：~50 MJ/kg（类似地球天然气）
+   - 需要O₂来源（水冰电解）</li>
+<li><strong>温差发电</strong>：利用Titan表面（-179°C）与反应堆废热温差
+   - Carnot效率高（低温冷源）</li>
+</ol>
+<h3 id="sec-9">15.2.4 栖息地设计</h3>
+<p><strong>方案1：表面栖息地</strong></p>
+<ul>
+<li>加压舱（1 atm内部 vs. 1.5 atm外部 → 结构承受向外压差）</li>
+<li>热绝缘（外部-179°C → 需要加热到内部 ~20°C）</li>
+<li>材料：钛合金或复合材料（低温韧性）</li>
+</ul>
+<p><strong>方案2：湖泊漂浮栖息地</strong></p>
+<ul>
+<li>利用液态CH₄浮力</li>
+<li>水冰结构（在-179°C下强度极高）</li>
+<li>从湖泊中取水（H₂O）→ 电解 → O₂ + H₂</li>
+<li>CH₄从大气直接获取</li>
+</ul>
+<p><strong>方案3：地下栖息地</strong></p>
+<ul>
+<li>水冰层中挖掘洞穴</li>
+<li>天然隔热 + 辐射屏蔽</li>
+<li>利用水冰作为结构材料</li>
+</ul>
+<h3 id="sec-10">15.2.5 科学价值</h3>
+<ul>
+<li>有机化学实验室：复杂有机分子（前生命化学？）</li>
+<li>甲烷水循环：类似地球但完全不同化学基础</li>
+<li>可能的低温生命形式（如果存在，将是第二次生命起源）</li>
+<li>土星系统探索基地</li>
+</ul>
+<p><strong>Dragonfly（蜻蜓号）任务</strong>：</p>
+<p>NASA 新前沿级（New Frontiers）任务 Dragonfly（计划 2028 年发射、2034 年抵达）将向土卫六表面投放一架八旋翼（4 组同轴双桨）核动力飞行器：</p>
+<ul>
+<li>能源：MMRTG（²³⁸Pu 放射性同位素热电发生器），与充电电池配合，支持每次 ~数分钟的飞行；</li>
+<li>飞行能力：在 1.5 atm 大气与 0.14 g 重力下，旋翼升力条件比地球优越（大气密度约为地球 4 倍），巡航速度 ~10 m/s，单次飞行距离可达数公里，任务总航程目标 ~175 km；</li>
+<li>着陆区：Selk 撞击坑区域——那里有撞击融水历史遗留的水-有机物混合物，是搜寻前生命化学的优选地。</li>
+</ul>
+<p>Dragonfly 是人类首次在外星天体上进行可重复移动飞行的任务（Ingenuity 火星直升机为一次性技术演示）。其对殖民方案的意义在于直接验证了 15.2.2 所述"厚大气 + 低重力 = 航空可行"的判断：<strong>在土卫六，飞行器将成为比火星车更高效的表面机动手段</strong>，未来载人前哨的地表运输很可能以电动/化学能旋翼机为主。</p>
+<h3 id="sec-11">15.3 土卫二（Enceladus）与其他冰卫星</h3>
+<h3 id="sec-12">15.3.1 土卫二</h3>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>直径</td>
+<td>504 km</td>
+</tr>
+<tr>
+<td>表面重力</td>
+<td>0.11 m/s²（0.01g）</td>
+</tr>
+<tr>
+<td>表面温度</td>
+<td>~-200°C</td>
+</tr>
+<tr>
+<td>特征</td>
+<td>南极间歇泉（水蒸气 + 冰粒喷射）</td>
+</tr>
+<tr>
+<td>地下海洋</td>
+<td>区域性的（南极下方）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>间歇泉成分</strong>：</p>
+<ul>
+<li>H₂O（主要）</li>
+<li>NaCl（~0.5-2%）→ 海洋与岩石核心接触的证据</li>
+<li>H₂（~1%）→ 水岩反应（蛇纹石化）的证据</li>
+<li>有机分子（CH₄, HCHO, 更复杂有机物）</li>
+<li>硅酸盐颗粒 → 海底热液活动</li>
+</ul>
+<p><strong>科学价值</strong>：</p>
+<ul>
+<li>最易采样的地下海洋（间歇泉直接喷射到太空）</li>
+<li>可能存在化学合成生命</li>
+<li>未来任务：飞越采样（Orbilander概念）或着陆采样</li>
+</ul>
+<p><strong>未来采样任务概念</strong>：</p>
+<ul>
+<li><strong>Cassini 遗产</strong>：Cassini 探测器在 2005–2017 年间多次穿越羽流，其离子与中性粒子质谱仪（INMS）检测到 H₂ 与复杂有机物（质量 &gt;200 u 的大分子，2018 年确认），宇宙尘分析仪（CDA）检测到含钠盐的冰粒——这是当前海洋化学认知的主要来源，但仪器并非为生命探测设计。</li>
+<li><strong>Enceladus Orbilander（NASA 概念研究，2021）</strong>：组合式任务——环绕器长期飞越羽流进行高灵敏度质谱与显微成像分析（生命特征筛选），着陆器在羽流源区（南极"虎纹"裂隙附近）着陆并直接采样羽流沉积物。研究给出的关键约束：羽流颗粒以 ~300–500 m/s 喷出，飞越速度必须与之匹配以降低颗粒破碎风险；着陆器需应对南极地形与极低重力（0.01 g）下的锚定问题。</li>
+<li><strong>EELS（JPL 概念）</strong>：蛇形机器人沿裂隙深入冰壳，规避着陆难题，目前处于早期概念阶段。</li>
+</ul>
+<p>对殖民视角的意义：土卫二的羽流本质上是"免费的钻探"——若未来建立外太阳系前哨，获取海洋样本无需 15.1 节所述的重型融探工程，这使土卫二成为<strong>生命探测性价比最高的目的地</strong>。</p>
+<h3 id="sec-13">15.3.2 其他冰卫星</h3>
+<p><strong>木卫三（Ganymede）</strong>：</p>
+<ul>
+<li>太阳系最大卫星（直径 5,268 km）</li>
+<li>地下海洋（可能多层）</li>
+<li>唯一有磁场的卫星（弱偶极场）</li>
+<li>表面：水冰 + 暗色物质</li>
+</ul>
+<p><strong>探测进展——JUICE 任务</strong>：ESA 的木星冰卫星探测器 JUICE（Jupiter Icy Moons Explorer，2023-04 发射，计划 2031 年抵达木星系统）将依次飞掠木卫三、木卫四与木卫二，最终于 2034 年进入木卫三环绕轨道——人类首个环绕外太阳系卫星运行的探测器。其冰穿透雷达 RIME 与磁强计将约束海洋深度、盐度与冰壳结构。对基地选址而言，JUICE 的辐射剂量测绘与表面成分数据是评估"木卫三 vs. 木卫四"作为木星系统前哨的直接输入。</p>
+<p><strong>木卫四（Callisto）</strong>：</p>
+<ul>
+<li>古老表面（低地质活动）</li>
+<li>可能地下海洋</li>
+<li>低辐射（vs. Europa/Io，远离木星辐射带中心）</li>
+<li>可能是木星系统人类基地的最佳选择</li>
+</ul>
+<p><strong>海卫一（Triton）</strong>：</p>
+<ul>
+<li>海王星最大卫星</li>
+<li>逆行轨道（可能是捕获的柯伊伯带天体）</li>
+<li>表面：N₂冰、水冰、干冰</li>
+<li>间歇泉活动（N₂喷发）</li>
+</ul>
+<h3 id="sec-14">15.4 外太阳系能源方案</h3>
+<h3 id="sec-15">15.4.1 RTG为主</h3>
+<p><strong>现实</strong>：</p>
+<p>外太阳系太阳辐照度极低（木星 ~3.7%，土星 ~1%，天王星 ~0.27%，海王星 ~0.11%），光伏不实用。</p>
+<p>当前唯一可行方案：RTG（²³⁸Pu）</p>
+<ul>
+<li>功率：~100-300 W_e（MMRTG级）</li>
+<li>寿命：&gt;14年</li>
+<li>限制：²³⁸Pu供应有限</li>
+</ul>
+<h3 id="sec-16">15.4.2 核反应堆（中期）</h3>
+<p><strong>Kilopower扩展</strong>：</p>
+<ul>
+<li>1-10 kW_e → 适合外行星探测器/着陆器</li>
+<li>需要开发更大型号（~10-100 kW_e）</li>
+</ul>
+<p><strong>空间裂变系统</strong>：</p>
+<ul>
+<li>100 kW_e级 → 适合冰卫星表面基地</li>
+<li>技术：高温气冷堆或快堆</li>
+<li>时间尺度：2040-2060</li>
+</ul>
+<p><strong>地面验证与在研项目</strong>：</p>
+<ul>
+<li><strong>Kilopower / KRUSTY 试验（2018）</strong>：NASA 与 DOE 在内华达国家安全场完成 1 kW_e 级铀堆原型 KRUSTY 的全功率运行试验，验证了热管导热 + 斯特林转换架构在连续运行下的稳定性（TRL 由 ~3 提升至 ~5）。这是外行星表面核电的现实技术起点。</li>
+<li><strong>Fission Surface Power（FSP，NASA）</strong>：面向月球/火星的 ~40 kW_e 级可部署反应堆项目，2022 年向三个团队授出第二阶段设计合同（目标 2020 年代末月面演示）。其"卡车运输级、免现场组装"的设计约束同样适用于冰卫星基地，可视为 100 kW_e 级外太阳系电站的工程前型。</li>
+<li><strong>²³⁸Pu 供应约束</strong>：MMRTG 依赖钚-238，美国 DOE 的复产线目前年产量为公斤级（目标 ~1.5 kg/年），RTG 数量天然受限——这是"中期必须转向裂变堆"的供给侧原因。</li>
+</ul>
+<h3 id="sec-17">15.4.3 聚变（远期）</h3>
+<p><strong>D-³He聚变</strong>：</p>
+<ul>
+<li>³He来源：木星/土星大气（或月球/ Uranus）</li>
+<li>能量密度极高 → 适合深空长任务</li>
+<li>时间尺度：2100+</li>
+</ul>
+<p><strong>反物质催化</strong>：</p>
+<ul>
+<li>极高能量密度</li>
+<li>适合星际或极远距离任务</li>
+<li>时间尺度：2200+（高度推测性）</li>
+</ul>
+<h3 id="sec-18">15.4.4 能源对比总结</h3>
+<table>
+<thead>
+<tr>
+<th>位置</th>
+<th>太阳辐照度</th>
+<th>主要能源</th>
+<th>备选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>木星轨道</td>
+<td>~50 W/m²</td>
+<td>核反应堆</td>
+<td>大面积光伏（有限）</td>
+</tr>
+<tr>
+<td>土星轨道</td>
+<td>~15 W/m²</td>
+<td>RTG/反应堆</td>
+<td>—</td>
+</tr>
+<tr>
+<td>天王星/海王星</td>
+<td>~4/3 W/m²</td>
+<td>RTG/反应堆</td>
+<td>—</td>
+</tr>
+<tr>
+<td>柯伊伯带</td>
+<td>&lt;1 W/m²</td>
+<td>RTG</td>
+<td>聚变（远期）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sec-19">15.5 本章小结</h3>
+<p>外太阳系殖民的核心约束是三项：<strong>辐射（木卫二 5.4 Sv/天）、能源（光伏失效）、距离（通信延迟 ≥30 分钟）</strong>。三者共同决定了方案形态：木卫二的任何人类设施必须位于冰壳之下，工程链以 Europa Clipper → 融探器 → 冰下潜艇递进，且受行星保护最高等级约束；土卫二凭借羽流成为"免钻探"的生命探测性价比之王；土卫六则以 1.5 atm 大气、近地球级辐射屏蔽与烃类资源成为外太阳系唯一现实的永久社区候选，Dragonfly 任务将率先验证其航空机动性。能源上，RTG（受 ²³⁸Pu 供应约束）向 40–100 kW_e 级裂变堆过渡是未来二十年的主线（KRUSTY 与 FSP 项目已给出工程前型）。与前四章相比，本章所有设施的时间尺度整体后移半个世纪以上，其近期形态是科学前哨而非定居点。</p>
+<p><strong>关键参数速查表</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>典型值</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>木卫二表面辐射</td>
+<td>~5.4 Sv/天</td>
+<td>表面停留分钟级即超年剂量限值，设施必须冰下化</td>
+</tr>
+<tr>
+<td>木卫二冰壳厚度</td>
+<td>~10–30 km</td>
+<td>融探器穿越时间 ~数年–数十年</td>
+</tr>
+<tr>
+<td>木卫二地下海洋</td>
+<td>深 ~60–150 km（全球性）</td>
+<td>天体生物学最高优先级目标</td>
+</tr>
+<tr>
+<td>融探器功率</td>
+<td>~5–10 kW（核动力）</td>
+<td>融冰速率 ~1–10 m/小时</td>
+</tr>
+<tr>
+<td>土卫六表面气压</td>
+<td>~1.5 atm（N₂ 95%, CH₄ 5%）</td>
+<td>栖息地受向外压差；辐射屏蔽接近地球水平</td>
+</tr>
+<tr>
+<td>土卫六表面温度</td>
+<td>~94 K（-179°C）</td>
+<td>水冰硬度如岩石，可作建材</td>
+</tr>
+<tr>
+<td>土卫六太阳辐照度</td>
+<td>~15 W/m²（地球的 ~1%）</td>
+<td>光伏不实用，核能为主</td>
+</tr>
+<tr>
+<td>羽流喷出速度（土卫二）</td>
+<td>~300–500 m/s</td>
+<td>飞越采样速度匹配的工程约束</td>
+</tr>
+<tr>
+<td>MMRTG 功率</td>
+<td>~100–300 W_e（寿命 &gt;14 年）</td>
+<td>外太阳系无人任务的现实电源</td>
+</tr>
+<tr>
+<td>FSP 反应堆</td>
+<td>~40 kW_e（2020 年代末演示）</td>
+<td>冰卫星基地 100 kW_e 级电站的工程前型</td>
+</tr>
+<tr>
+<td>²³⁸Pu 年产量</td>
+<td>~公斤级（目标 ~1.5 kg/年）</td>
+<td>RTG 供应瓶颈，驱动裂变转型</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="sec-20">本部分开放问题清单</h2>
+<p>以下问题在本部分各章中被识别为"尚无定量答案"或"依赖未来任务数据"，按主题归类：</p>
+<p><strong>资源与赋存状态</strong>
+1. 月球 PSR 水冰的真实赋存形态（纯冰层 vs. 冰-土混合 vs. 埋藏透镜体）与横向连续性——待 VIPER 及后续钻探任务回答（12.1）。
+2. C 型小行星中"水"的实际可提取率：含水矿物脱水能耗与原位工艺验证尚为空白（14.1）。
+3. 火星中纬度浅层水冰的可开采性验证（原位加热/微波工艺均为地面外推）（13.2）。</p>
+<p><strong>生理与医学</strong>
+4. 部分重力阈值：0.16 g（月球）与 0.38 g（火星）是否足以维持骨骼、心血管与胎儿发育——无任何人类数据，仅 JAXA MHU 小鼠实验给出 0.2 g 端点（12.3、13.5）。
+5. 火星出生可行性：哺乳动物完整发育从未在部分重力下研究（13.5.2）。</p>
+<p><strong>工程验证</strong>
+6. 20–40 t 级载人火星 EDL（超音速反推 + 充气减速组合）从未飞行验证（13.1.3）。
+7. SOXE/MOXIE 堆栈的 &gt;10,000 小时寿命与防粉尘进气设计（13.3.1）。
+8. 高氯酸盐去除工艺在火星低气压、低水活度环境下的工程放大（13.2.1）。
+9. 碎石堆小行星锚固与采矿机构——现有全部证据来自克级采样（14.1）。
+10. O'Neill 圆柱体/Kalpana One 依赖的 ~10¹⁰ kg 级月基材料供应链（质量驱动器 TRL &lt; 3）（14.3）。</p>
+<p><strong>科学前置</strong>
+11. 木卫二冰壳真实厚度与羽流活动性——待 Europa Clipper 数据（15.1）。
+12. 木卫二/土卫二海洋是否存在生命——决定行星保护约束与载人设施的许可条件（15.1、15.3）。
+13. 土卫六前生命化学与潜在低温生命——待 Dragonfly 数据（15.2）。</p>
+<p><strong>治理与伦理</strong>
+14. 火星地球化与本土生命（若存在）的权利冲突：外层空间条约第 9 条如何适用于主动环境改造（13.4.4）。
+15. 小行星资源开发的法律框架（《阿尔忒弥斯协定》vs. 联合国 COPUOS 讨论）尚未定案（14.4）。</p>
+<p>上述问题多数将在 2025–2040 年的任务窗口内获得第一批实证数据；本手册后续版本应据此更新相应章节的"待验证"标注。</p>
+<hr />
+<p><em>第五部分完。</em></p></div><div class="prevnext"><a class="pn pn-prev" href="ch14.html"><span class="pn-k">上一篇</span><span class="pn-t">第14章 小行星与太空殖民地</span></a><a class="pn pn-next" href="ch16.html"><span class="pn-k">下一篇</span><span class="pn-t">第16章 太空材料科学</span></a></div></article><footer class="foot"><span>未来太空移民技术手册 · 完整版 v2.0</span><span class="foot-mono">AD ASTRA PER ASPERA</span></footer></main>
+<aside class="toc"><div class="toc-title">本页目录</div>
+<a class="toc-h3" href="#sec-1">15.1 木卫二（Europa）</a>
+<a class="toc-h3" href="#sec-2">15.1.1 环境特征</a>
+<a class="toc-h3" href="#sec-3">15.1.2 栖息地概念</a>
+<a class="toc-h3" href="#sec-4">15.1.3 科学驱动</a>
+<a class="toc-h3" href="#sec-5">15.2 土卫六（Titan）</a>
+<a class="toc-h3" href="#sec-6">15.2.1 环境特征</a>
+<a class="toc-h3" href="#sec-7">15.2.2 独特优势</a>
+<a class="toc-h3" href="#sec-8">15.2.3 能源方案</a>
+<a class="toc-h3" href="#sec-9">15.2.4 栖息地设计</a>
+<a class="toc-h3" href="#sec-10">15.2.5 科学价值</a>
+<a class="toc-h3" href="#sec-11">15.3 土卫二（Enceladus）与其他冰卫星</a>
+<a class="toc-h3" href="#sec-12">15.3.1 土卫二</a>
+<a class="toc-h3" href="#sec-13">15.3.2 其他冰卫星</a>
+<a class="toc-h3" href="#sec-14">15.4 外太阳系能源方案</a>
+<a class="toc-h3" href="#sec-15">15.4.1 RTG为主</a>
+<a class="toc-h3" href="#sec-16">15.4.2 核反应堆（中期）</a>
+<a class="toc-h3" href="#sec-17">15.4.3 聚变（远期）</a>
+<a class="toc-h3" href="#sec-18">15.4.4 能源对比总结</a>
+<a class="toc-h3" href="#sec-19">15.5 本章小结</a>
+<a class="toc-h2" href="#sec-20">本部分开放问题清单</a>
+</aside>
+</div>
+<script src="../search-index.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

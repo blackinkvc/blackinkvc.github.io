@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第22章 AI治理与超级智能 · 未来太空移民技术手册</title>
+<meta name="description" content="未来太空移民技术手册 —— 面向专业读者的综合性太空殖民技术参考，涵盖推进、生保、栖息地、治理与前沿技术。">
+<link rel="icon" type="image/png" href="../assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script>(function(){try{var t=localStorage.getItem('smh-theme');if(!t)t='dark';document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="目录"><span></span><span></span><span></span></button>
+  <a class="brand" href="../index.html">
+    <img class="brand-icon" src="../assets/icon.png" alt="">
+    <span class="brand-zh">未来太空移民技术手册</span>
+    <span class="brand-en">SPACE SETTLEMENT HANDBOOK</span>
+  </a>
+  <div class="top-actions">
+    <button class="search-btn" id="searchBtn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg><span>检索</span><kbd>⌘K</kbd></button>
+    <button class="theme-btn" id="themeBtn" aria-label="切换主题"></button>
+  </div>
+</header>
+
+<div class="search-overlay" id="searchOverlay" hidden>
+  <div class="search-box">
+    <div class="search-head">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg>
+      <input id="searchInput" type="text" placeholder="检索全书：术语、参数、章节…" autocomplete="off">
+      <kbd>ESC</kbd>
+    </div>
+    <div class="search-results" id="searchResults"><div class="search-hint">输入关键词，检索 23 章正文与附录</div></div>
+  </div>
+</div>
+<div class="layout">
+<nav class="sidebar" id="sidebar">
+<div class="sb-group"><div class="sb-label">卷首</div>
+<a class="sb-item" href="intro.html"><span class="sb-num">◎</span><span class="sb-t">前言与导读</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第一部分 · 基础物理与宇宙环境</div>
+<a class="sb-item" href="ch01.html"><span class="sb-num">01</span><span class="sb-t">太空环境物理</span></a>
+<a class="sb-item" href="ch02.html"><span class="sb-num">02</span><span class="sb-t">天体物理与轨道力学</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第二部分 · 推进与运输系统</div>
+<a class="sb-item" href="ch03.html"><span class="sb-num">03</span><span class="sb-t">化学推进与近中期方案</span></a>
+<a class="sb-item" href="ch04.html"><span class="sb-num">04</span><span class="sb-t">先进推进理论</span></a>
+<a class="sb-item" href="ch05.html"><span class="sb-num">05</span><span class="sb-t">星际航行工程</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第三部分 · 生命保障与人体工程</div>
+<a class="sb-item" href="ch06.html"><span class="sb-num">06</span><span class="sb-t">封闭生态生命保障系统（CELSS）</span></a>
+<a class="sb-item" href="ch07.html"><span class="sb-num">07</span><span class="sb-t">太空医学</span></a>
+<a class="sb-item" href="ch08.html"><span class="sb-num">08</span><span class="sb-t">食品与营养</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第四部分 · 栖息地与基础设施</div>
+<a class="sb-item" href="ch09.html"><span class="sb-num">09</span><span class="sb-t">栖息地结构设计</span></a>
+<a class="sb-item" href="ch10.html"><span class="sb-num">10</span><span class="sb-t">能源系统</span></a>
+<a class="sb-item" href="ch11.html"><span class="sb-num">11</span><span class="sb-t">通信与导航</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第五部分 · 目的地与殖民方案</div>
+<a class="sb-item" href="ch12.html"><span class="sb-num">12</span><span class="sb-t">月球</span></a>
+<a class="sb-item" href="ch13.html"><span class="sb-num">13</span><span class="sb-t">火星</span></a>
+<a class="sb-item" href="ch14.html"><span class="sb-num">14</span><span class="sb-t">小行星与太空殖民地</span></a>
+<a class="sb-item" href="ch15.html"><span class="sb-num">15</span><span class="sb-t">外太阳系与冰卫星</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第六部分 · 材料与制造</div>
+<a class="sb-item" href="ch16.html"><span class="sb-num">16</span><span class="sb-t">太空材料科学</span></a>
+<a class="sb-item" href="ch17.html"><span class="sb-num">17</span><span class="sb-t">太空制造与原位资源利用</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第七部分 · 社会、文化与治理</div>
+<a class="sb-item" href="ch18.html"><span class="sb-num">18</span><span class="sb-t">太空治理与法律框架</span></a>
+<a class="sb-item" href="ch19.html"><span class="sb-num">19</span><span class="sb-t">太空经济学</span></a>
+<a class="sb-item" href="ch20.html"><span class="sb-num">20</span><span class="sb-t">太空文化演化</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第八部分 · 前沿与推测性技术</div>
+<a class="sb-item" href="ch21.html"><span class="sb-num">21</span><span class="sb-t">脑机接口与人类增强</span></a>
+<a class="sb-item current" href="ch22.html"><span class="sb-num">22</span><span class="sb-t">AI治理与超级智能</span></a>
+<a class="sb-item" href="ch23.html"><span class="sb-num">23</span><span class="sb-t">意识上传与数字存在</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">附录 · 参考数据</div>
+<a class="sb-item" href="appA.html"><span class="sb-num">A</span><span class="sb-t">A 物理常数与换算</span></a>
+<a class="sb-item" href="appB.html"><span class="sb-num">B</span><span class="sb-t">B 太阳系天体参数</span></a>
+<a class="sb-item" href="appC.html"><span class="sb-num">C</span><span class="sb-t">C 推进系统对比</span></a>
+<a class="sb-item" href="appD.html"><span class="sb-num">D</span><span class="sb-t">D 辐射与屏蔽</span></a>
+<a class="sb-item" href="appE.html"><span class="sb-num">E</span><span class="sb-t">E 术语表（中英对照）</span></a>
+<a class="sb-item" href="appF.html"><span class="sb-num">F</span><span class="sb-t">F 参考文献与推荐阅读</span></a>
+</div>
+</nav><main class="content"><article class="article"><div class="crumb"><span class="crumb-part">第八部分 · 前沿与推测性技术</span><span class="crumb-sep">/</span><span class="crumb-ch">CHAPTER 22</span></div><div class="ch-head"><div class="ch-num">22</div><h1 class="ch-title">AI治理与超级智能</h1></div><div class="article-body"><p>殖民地是一个软件依赖度极高的社会：生命保障、医疗、资源调度、飞行控制均由自动化系统承担，而地球监督被光行时阻断。AI 因此既是殖民地的"第 N 重冗余"，也是潜在的单一故障点。本章讨论三个问题：其一，为殖民地各子系统建立 AI 自主级别分级框架——哪些必须自主、哪些必须保留人类决策权（22.1）；其二，分析深空环境下四个特殊价值对齐挑战的机制与案例，以及当前对齐方法的技术要点（22.2）；其三，展望超级智能（Artificial Superintelligence, ASI）情景，讨论其到达时间的预测方法与对殖民地存亡的影响路径（22.3）。关键结论预告：在可预见技术内，AI 应被定位为可审计、分级、人类最终决策的工具；ASI 情景属推测级，但其后果严重到必须纳入殖民规划的长期假设。</p>
+<h3 id="sec-1">22.1 太空殖民中的AI角色</h3>
+<p>AI 在太空殖民中承担的角色及其风险概览如下：</p>
+<table>
+<thead>
+<tr>
+<th>AI角色</th>
+<th>功能</th>
+<th>自主级别</th>
+<th>风险</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>飞行控制</td>
+<td>导航、轨道修正</td>
+<td>高（实时决策必须）</td>
+<td>软件故障</td>
+</tr>
+<tr>
+<td>生命保障管理</td>
+<td>ECLSS优化</td>
+<td>中-高</td>
+<td>系统级错误</td>
+</tr>
+<tr>
+<td>医疗诊断</td>
+<td>疾病检测/治疗建议</td>
+<td>中</td>
+<td>误诊</td>
+</tr>
+<tr>
+<td>资源分配</td>
+<td>能源/水/食物管理</td>
+<td>中</td>
+<td>优化目标偏差</td>
+</tr>
+<tr>
+<td>社会治理</td>
+<td>决策辅助/冲突调解</td>
+<td>低-中</td>
+<td>价值对齐</td>
+</tr>
+<tr>
+<td>科学研究</td>
+<td>数据分析/假设生成</td>
+<td>高</td>
+<td>方向偏差</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sec-2">22.1.1 自主级别参考标尺</h3>
+<p>分级采用 Sheridan–Verplank 自主等级（Sheridan &amp; Verplank, 1978，人机交互经典框架，共 10 级）的四个代表级：</p>
+<table>
+<thead>
+<tr>
+<th>等级</th>
+<th>人机关系</th>
+<th>殖民地场景示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>计算机不建议，人全权决策</td>
+<td>紧急生保手动模式</td>
+</tr>
+<tr>
+<td>4</td>
+<td>计算机建议单一方案，人批准后执行</td>
+<td>医疗诊断的治疗方案审批</td>
+</tr>
+<tr>
+<td>7</td>
+<td>计算机自动执行，人事后可否决</td>
+<td>ECLSS 常规参数调节</td>
+</tr>
+<tr>
+<td>10</td>
+<td>完全自主，人不可介入</td>
+<td>深空探测器舱载决策</td>
+</tr>
+</tbody>
+</table>
+<p>级别选择由四个因子决定：故障容忍时间（秒级还是天级）、决策可验证性（能否预先仿真复核）、价值负载（是否涉及权利与公平）、通信延迟（地面能否参与）。</p>
+<h3 id="sec-3">22.1.2 殖民地子系统分级建议</h3>
+<table>
+<thead>
+<tr>
+<th>子系统</th>
+<th>建议自主级别</th>
+<th>决策时延</th>
+<th>分级理由</th>
+<th>当前技术成熟度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>飞行/导航控制</td>
+<td>高（7–10 级）</td>
+<td>毫秒–秒</td>
+<td>实时性要求超出一切介入可能</td>
+<td>TRL 8–9</td>
+</tr>
+<tr>
+<td>ECLSS 生命保障</td>
+<td>中高（7 级）+ 人类否决权</td>
+<td>秒–分钟</td>
+<td>秒至分钟级故障容忍，通信延迟阻断地面干预</td>
+<td>TRL 7–8</td>
+</tr>
+<tr>
+<td>医疗诊断</td>
+<td>中（4 级）</td>
+<td>分钟–小时</td>
+<td>误诊代价高，乘组小样本限制数据质量</td>
+<td>TRL 5–6</td>
+</tr>
+<tr>
+<td>资源调度</td>
+<td>中高（5–7 级）</td>
+<td>小时</td>
+<td>结构化优化问题，可仿真验证</td>
+<td>TRL 4–6</td>
+</tr>
+<tr>
+<td>治理辅助</td>
+<td>低（2–3 级）</td>
+<td>天</td>
+<td>价值负载高，缺乏合法性</td>
+<td>推测级</td>
+</tr>
+</tbody>
+</table>
+<p>治理辅助保留最低自主级别的理由有三：治理决策涉及价值权衡，缺乏公认的目标函数；算法决策缺乏民主合法性；其错误代价高且难以验证。即使未来技术成熟，其角色也应限于信息聚合与方案列举，最终决策权保留给人类。</p>
+<h3 id="sec-4">22.2 价值对齐问题</h3>
+<p><strong>太空殖民的特殊对齐挑战</strong>：</p>
+<ol>
+<li><strong>不可中断性</strong>：深空任务中无法"关机重启"AI</li>
+<li><strong>信息延迟</strong>：地球无法实时监督AI决策</li>
+<li><strong>价值漂移</strong>：长期运行中AI目标函数可能偏移</li>
+<li><strong>多AI协调</strong>：多个AI系统之间的目标冲突</li>
+</ol>
+<p><strong>对齐方案</strong>：
+- 宪法AI（Constitutional AI）：嵌入基本原则（保护人类生命 &gt; 任务目标）
+- 可解释性：所有关键决策可追溯和审计
+- 人类在环（Human-in-the-loop）：关键决策需人类确认
+- 冗余系统：多个独立AI系统交叉验证</p>
+<h3 id="sec-5">22.2.1 四个挑战的机制与案例</h3>
+<ol>
+<li>不可中断性。机制：深空系统的物理不可回收性使软件更新窗口受通信延迟与验证流程限制；同时，工具性子目标理论（Omohundro, 2008）指出足够智能的系统在追求任意目标时都可能衍生自我保存等工具性子目标，使"关机"本身成为风险点。案例：火星车软件更新通常需数周规划与地面仿真验证，应急修补速度远低于地面系统。对策：硬件级断电开关与安全模式隔离，保证存在不依赖软件配合的物理路径。</li>
+<li>信息延迟。机制：可监督性随光行时衰减，地面永远事后。案例："好奇号"（Curiosity）2012 年的进入-下降-着陆（EDL）全程约 7 min 完全自主（"恐怖七分钟"），地面只能事后接收遥测。对策：预设自主边界，越界行为自动挂起等待。</li>
+<li>价值漂移。机制：运行环境持续偏离训练分布（distribution shift），目标函数在长期运行与自我更新中退化。案例：强化学习中的奖励黑客（reward hacking）现象已有大量公开记录（DeepMind 维护 specification gaming 案例清单）；长期部署的语言模型出现行为漂移（经验观察，机制未定论，推测级）。对策：定期地面再校验、固定测试集上的价值锚点回归测试。</li>
+<li>多AI协调。机制：子系统目标函数不一致引发资源竞争或互相矛盾的动作。案例："火星气候轨道器"（Mars Climate Orbiter, 1999）因子系统间接口单位不一致（磅力与牛顿）坠毁——虽非 AI 系统，但证明子系统接口与语义一致性是真实的失效模式；多智能体强化学习在非合作目标下亦呈现不收敛现象。对策：统一的世界模型与单位规范、仲裁层、异构冗余交叉验证。</li>
+</ol>
+<h3 id="sec-6">22.2.2 对齐方法的技术要点</h3>
+<ol>
+<li>宪法AI（Constitutional AI，Bai 等，2022）。将行为规范表述为成文条款，模型在监督阶段进行自我批评与修订，再基于 AI 反馈做强化学习（RLAIF）。太空适配要求：条款必须显式写出优先序（人类生命 &gt; 任务目标 &gt; 资源效率），且每条可检验、可测试；条款的修订须走治理流程，防止单点擅自修改。</li>
+<li>基于人类反馈的强化学习（Reinforcement Learning from Human Feedback, RLHF；Christiano 等，2017；Ouyang 等，2022）。流程为监督微调、奖励模型训练、策略优化（PPO）三阶段。局限：奖励模型是人类偏好的代理，可被过度优化利用；太空问题：乘组规模（约 10–100 人量级）无法提供足够的偏好标注数据，价值先验必须在地面完成训练并冻结或低频更新。</li>
+<li>人类在环（Human-in-the-loop）。按决策的可逆性 × 时间敏感性二维分类设计：可逆且不紧急的决策可完全自主；不可逆决策必须人类确认。延迟适配机制是"预授权边界"（pre-approval boundary）——在预先约定的参数范围内 AI 自主，越界即挂起等待人类裁决。</li>
+<li>可解释性与冗余。关键决策须保留完整痕迹（输入、模型版本、候选项、选择理由）；异构冗余系统（不同架构、不同训练数据）交叉验证关键输出，压低共模失效概率。</li>
+</ol>
+<h3 id="sec-7">22.2.3 对齐设计框架汇总</h3>
+<p>将挑战、机制、对策与验证方式汇总为可操作的设计清单：</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>机制</th>
+<th>核心对策</th>
+<th>验证方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>不可中断性</td>
+<td>物理不可回收 + 工具性子目标</td>
+<td>硬件断电开关、安全模式隔离</td>
+<td>硬件在环故障注入测试</td>
+</tr>
+<tr>
+<td>信息延迟</td>
+<td>可监督性随光行时衰减</td>
+<td>预授权边界 + 越界挂起</td>
+<td>越界情景仿真回归</td>
+</tr>
+<tr>
+<td>价值漂移</td>
+<td>分布偏移 + 目标函数退化</td>
+<td>价值锚点回归测试、定期再校验</td>
+<td>固定测试集周期性评估</td>
+</tr>
+<tr>
+<td>多AI协调</td>
+<td>目标函数不一致</td>
+<td>统一世界模型、仲裁层、异构冗余</td>
+<td>接口一致性审计、交叉验证</td>
+</tr>
+</tbody>
+</table>
+<p>该清单的定位是殖民地 AI 系统的验收基线：任何承担 4 级以上自主职能的系统，其交付文件必须逐项说明对应设计（推测级治理框架，工程原则类比现行飞行软件验证体系）。</p>
+<h3 id="sec-8">22.3 超级智能与太空扩张</h3>
+<p><strong>如果AGI/ASI实现</strong>：</p>
+<ul>
+<li>ASI可能在数年内设计并部署自我复制的太空探测器</li>
+<li>比人类更适合太空环境（无需生命保障、耐辐射、可休眠）</li>
+<li>关键问题：ASI的目标是否包含"人类太空殖民"？</li>
+</ul>
+<p><strong>场景分析</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>描述</th>
+<th>概率评估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>合作共生</td>
+<td>ASI协助人类殖民太空</td>
+<td>乐观</td>
+</tr>
+<tr>
+<td>替代竞争</td>
+<td>ASI认为自身探索更高效</td>
+<td>中等风险</td>
+</tr>
+<tr>
+<td>目标偏离</td>
+<td>ASI追求与人类无关的目标</td>
+<td>高风险</td>
+</tr>
+<tr>
+<td>工具使用</td>
+<td>ASI仅作为工具存在</td>
+<td>取决于对齐</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sec-9">22.3.1 ASI 到达时间的预测：方法与不确定性</h3>
+<p>现有四类预测方法，均无法给出具有工程意义的置信区间（推测级）：</p>
+<ol>
+<li>专家调查：以 Grace 等（2017、2022）对 AI 研究者的调查为代表，对"高水平机器智能"的中位预期大致落在 2030–2060 年区间，地区与样本差异显著（不同问卷定义下结论不可直接比较）；</li>
+<li>预测市场与聚合平台（如 Metaculus）：聚合预测通常早于学术调查，但结果受流动性与问题定义影响；</li>
+<li>算力外推：沿扩展定律（scaling laws）外推，对"算力–能力"转换效率的假设高度敏感；</li>
+<li>能力基准追踪：测量当前系统在推理、编程、机器人操作等基准上的任务覆盖率，提供下界参考而非时间点预测。</li>
+</ol>
+<p>规划含义：殖民规划应将 ASI 到达作为情景分支而非点估计处理，技术方案保持模块化与可升级性。</p>
+<h3 id="sec-10">22.3.2 对殖民地存亡的影响路径</h3>
+<p>ASI 情景对殖民地的影响可分解为四个量化维度：</p>
+<ol>
+<li>时间窗口：ASI 在殖民地建立之前成熟（殖民方案可能被整体重写）、航行途中成熟（船上 AI 与人类共演化）、建立之后成熟（殖民地单独面对技术冲击），三种时点的治理需求完全不同；</li>
+<li>依赖结构：殖民地生存对 AI 系统可用性存在硬依赖（生保、医疗、调度），ASI 级能力意味着依赖结构可能被单方面重写；</li>
+<li>控制带宽：通信延迟决定实时干预不可行，殖民地天然是"AI–人类共演化的孤立系统"，治理工具只能预先制度化；</li>
+<li>目标函数：ASI 的目标是否包含人类存续与繁荣，直接决定其落入上表"合作共生"还是"替代竞争/目标偏离"。</li>
+</ol>
+<p>一个量化示例：若 ASI 早于殖民时间表 N 年成熟，推进、生保、通信等技术方案可能整体失效，殖民投资面临重资产搁浅风险；因此殖民规划应包含"技术换代"情景的压力测试（推测级）。</p>
+<h3 id="sec-11">22.4 本章小结</h3>
+<p>本章结论：（1）殖民地 AI 自主级别应由故障容忍时间、可验证性、价值负载、通信延迟四因子决定，治理辅助保留最低自主级别；（2）深空对齐的四个特殊挑战（不可中断、延迟、漂移、协调）均有真实工程类比与历史案例，不是纯哲学问题；（3）宪法 AI、RLHF、人类在环各有明确的太空适配约束——小样本偏好数据与通信延迟是最硬的约束；（4）ASI 到达时间预测属推测级，但应作为情景分支纳入殖民规划假设。</p>
+<h3 id="sec-12">22.5 关键参数速查表</h3>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>数值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>地火单向光行时</td>
+<td>约 3–22 min</td>
+<td>可监督性约束</td>
+</tr>
+<tr>
+<td>"好奇号"EDL 自主时长</td>
+<td>约 7 min</td>
+<td>完全自主案例（2012）</td>
+</tr>
+<tr>
+<td>专家调查 AGI 中位预期</td>
+<td>约 2030–2060 年</td>
+<td>推测级，方差极大</td>
+</tr>
+<tr>
+<td>宪法 AI 提出</td>
+<td>2022（Bai 等）</td>
+<td>RLAIF 路线</td>
+</tr>
+<tr>
+<td>RLHF 代表工作</td>
+<td>2017 / 2022</td>
+<td>Christiano / Ouyang 等</td>
+</tr>
+<tr>
+<td>ECLSS 故障容忍</td>
+<td>秒–分钟级</td>
+<td>地面干预不可行</td>
+</tr>
+<tr>
+<td>乘组偏好样本规模</td>
+<td>约 10–100 人量级</td>
+<td>偏好学习瓶颈</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sec-13">22.6 开放问题与展望</h3>
+<ul>
+<li>价值对齐的形式化验证（数学可证明性）是否存在可行路径；</li>
+<li>长期小样本偏好学习与漂移检测；</li>
+<li>自主系统决策的责任归属与法律主体问题；</li>
+<li>ASI 情景下的预先制度化机制设计（宪法条款、硬件开关、多中心冗余）。</li>
+</ul>
+<hr /></div><div class="prevnext"><a class="pn pn-prev" href="ch21.html"><span class="pn-k">上一篇</span><span class="pn-t">第21章 脑机接口与人类增强</span></a><a class="pn pn-next" href="ch23.html"><span class="pn-k">下一篇</span><span class="pn-t">第23章 意识上传与数字存在</span></a></div></article><footer class="foot"><span>未来太空移民技术手册 · 完整版 v2.0</span><span class="foot-mono">AD ASTRA PER ASPERA</span></footer></main>
+<aside class="toc"><div class="toc-title">本页目录</div>
+<a class="toc-h3" href="#sec-1">22.1 太空殖民中的AI角色</a>
+<a class="toc-h3" href="#sec-2">22.1.1 自主级别参考标尺</a>
+<a class="toc-h3" href="#sec-3">22.1.2 殖民地子系统分级建议</a>
+<a class="toc-h3" href="#sec-4">22.2 价值对齐问题</a>
+<a class="toc-h3" href="#sec-5">22.2.1 四个挑战的机制与案例</a>
+<a class="toc-h3" href="#sec-6">22.2.2 对齐方法的技术要点</a>
+<a class="toc-h3" href="#sec-7">22.2.3 对齐设计框架汇总</a>
+<a class="toc-h3" href="#sec-8">22.3 超级智能与太空扩张</a>
+<a class="toc-h3" href="#sec-9">22.3.1 ASI 到达时间的预测：方法与不确定性</a>
+<a class="toc-h3" href="#sec-10">22.3.2 对殖民地存亡的影响路径</a>
+<a class="toc-h3" href="#sec-11">22.4 本章小结</a>
+<a class="toc-h3" href="#sec-12">22.5 关键参数速查表</a>
+<a class="toc-h3" href="#sec-13">22.6 开放问题与展望</a>
+</aside>
+</div>
+<script src="../search-index.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>附录A 物理常数与换算 · 未来太空移民技术手册</title>
+<meta name="description" content="未来太空移民技术手册 —— 面向专业读者的综合性太空殖民技术参考，涵盖推进、生保、栖息地、治理与前沿技术。">
+<link rel="icon" type="image/png" href="../assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script>(function(){try{var t=localStorage.getItem('smh-theme');if(!t)t='dark';document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="目录"><span></span><span></span><span></span></button>
+  <a class="brand" href="../index.html">
+    <img class="brand-icon" src="../assets/icon.png" alt="">
+    <span class="brand-zh">未来太空移民技术手册</span>
+    <span class="brand-en">SPACE SETTLEMENT HANDBOOK</span>
+  </a>
+  <div class="top-actions">
+    <button class="search-btn" id="searchBtn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg><span>检索</span><kbd>⌘K</kbd></button>
+    <button class="theme-btn" id="themeBtn" aria-label="切换主题"></button>
+  </div>
+</header>
+
+<div class="search-overlay" id="searchOverlay" hidden>
+  <div class="search-box">
+    <div class="search-head">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg>
+      <input id="searchInput" type="text" placeholder="检索全书：术语、参数、章节…" autocomplete="off">
+      <kbd>ESC</kbd>
+    </div>
+    <div class="search-results" id="searchResults"><div class="search-hint">输入关键词，检索 23 章正文与附录</div></div>
+  </div>
+</div>
+<div class="layout">
+<nav class="sidebar" id="sidebar">
+<div class="sb-group"><div class="sb-label">卷首</div>
+<a class="sb-item" href="intro.html"><span class="sb-num">◎</span><span class="sb-t">前言与导读</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第一部分 · 基础物理与宇宙环境</div>
+<a class="sb-item" href="ch01.html"><span class="sb-num">01</span><span class="sb-t">太空环境物理</span></a>
+<a class="sb-item" href="ch02.html"><span class="sb-num">02</span><span class="sb-t">天体物理与轨道力学</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第二部分 · 推进与运输系统</div>
+<a class="sb-item" href="ch03.html"><span class="sb-num">03</span><span class="sb-t">化学推进与近中期方案</span></a>
+<a class="sb-item" href="ch04.html"><span class="sb-num">04</span><span class="sb-t">先进推进理论</span></a>
+<a class="sb-item" href="ch05.html"><span class="sb-num">05</span><span class="sb-t">星际航行工程</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第三部分 · 生命保障与人体工程</div>
+<a class="sb-item" href="ch06.html"><span class="sb-num">06</span><span class="sb-t">封闭生态生命保障系统（CELSS）</span></a>
+<a class="sb-item" href="ch07.html"><span class="sb-num">07</span><span class="sb-t">太空医学</span></a>
+<a class="sb-item" href="ch08.html"><span class="sb-num">08</span><span class="sb-t">食品与营养</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第四部分 · 栖息地与基础设施</div>
+<a class="sb-item" href="ch09.html"><span class="sb-num">09</span><span class="sb-t">栖息地结构设计</span></a>
+<a class="sb-item" href="ch10.html"><span class="sb-num">10</span><span class="sb-t">能源系统</span></a>
+<a class="sb-item" href="ch11.html"><span class="sb-num">11</span><span class="sb-t">通信与导航</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第五部分 · 目的地与殖民方案</div>
+<a class="sb-item" href="ch12.html"><span class="sb-num">12</span><span class="sb-t">月球</span></a>
+<a class="sb-item" href="ch13.html"><span class="sb-num">13</span><span class="sb-t">火星</span></a>
+<a class="sb-item" href="ch14.html"><span class="sb-num">14</span><span class="sb-t">小行星与太空殖民地</span></a>
+<a class="sb-item" href="ch15.html"><span class="sb-num">15</span><span class="sb-t">外太阳系与冰卫星</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第六部分 · 材料与制造</div>
+<a class="sb-item" href="ch16.html"><span class="sb-num">16</span><span class="sb-t">太空材料科学</span></a>
+<a class="sb-item" href="ch17.html"><span class="sb-num">17</span><span class="sb-t">太空制造与原位资源利用</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第七部分 · 社会、文化与治理</div>
+<a class="sb-item" href="ch18.html"><span class="sb-num">18</span><span class="sb-t">太空治理与法律框架</span></a>
+<a class="sb-item" href="ch19.html"><span class="sb-num">19</span><span class="sb-t">太空经济学</span></a>
+<a class="sb-item" href="ch20.html"><span class="sb-num">20</span><span class="sb-t">太空文化演化</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第八部分 · 前沿与推测性技术</div>
+<a class="sb-item" href="ch21.html"><span class="sb-num">21</span><span class="sb-t">脑机接口与人类增强</span></a>
+<a class="sb-item" href="ch22.html"><span class="sb-num">22</span><span class="sb-t">AI治理与超级智能</span></a>
+<a class="sb-item" href="ch23.html"><span class="sb-num">23</span><span class="sb-t">意识上传与数字存在</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">附录 · 参考数据</div>
+<a class="sb-item current" href="appA.html"><span class="sb-num">A</span><span class="sb-t">A 物理常数与换算</span></a>
+<a class="sb-item" href="appB.html"><span class="sb-num">B</span><span class="sb-t">B 太阳系天体参数</span></a>
+<a class="sb-item" href="appC.html"><span class="sb-num">C</span><span class="sb-t">C 推进系统对比</span></a>
+<a class="sb-item" href="appD.html"><span class="sb-num">D</span><span class="sb-t">D 辐射与屏蔽</span></a>
+<a class="sb-item" href="appE.html"><span class="sb-num">E</span><span class="sb-t">E 术语表（中英对照）</span></a>
+<a class="sb-item" href="appF.html"><span class="sb-num">F</span><span class="sb-t">F 参考文献与推荐阅读</span></a>
+</div>
+</nav><main class="content"><article class="article"><div class="crumb"><span class="crumb-part">附录</span></div><div class="ch-head"><div class="ch-num">A</div><h1 class="ch-title">物理常数与换算</h1></div><div class="article-body"><blockquote>
+<p>面向航天工程、物理学、生物学等相关专业背景读者。涵盖当前可行技术与理论/科幻级前瞻技术。</p>
+</blockquote>
+<hr />
+<p>本附录汇总全书引用的基础数据与技术参数，供快速查阅与交叉核对。各表数据以正文各部分的分析为准；标注"约"或"估计"的数值为量级估算，未标注者为公认测量值或标准值。物理常数与天体参数统一采用国际单位制（SI），有效数字取 4 位。</p>
+<h3 id="sec-1">A.1 基本物理常数</h3>
+<table>
+<thead>
+<tr>
+<th>常数</th>
+<th>符号</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>光速</td>
+<td>c</td>
+<td>2.998 × 10⁸ m/s</td>
+</tr>
+<tr>
+<td>引力常数</td>
+<td>G</td>
+<td>6.674 × 10⁻¹¹ N·m²/kg²</td>
+</tr>
+<tr>
+<td>普朗克常数</td>
+<td>h</td>
+<td>6.626 × 10⁻³⁴ J·s</td>
+</tr>
+<tr>
+<td>约化普朗克常数</td>
+<td>ħ = h/2π</td>
+<td>1.055 × 10⁻³⁴ J·s</td>
+</tr>
+<tr>
+<td>Boltzmann常数</td>
+<td>k_B</td>
+<td>1.381 × 10⁻²³ J/K</td>
+</tr>
+<tr>
+<td>Stefan-Boltzmann常数</td>
+<td>σ</td>
+<td>5.670 × 10⁻⁸ W/(m²·K⁴)</td>
+</tr>
+<tr>
+<td>标准重力加速度</td>
+<td>g₀</td>
+<td>9.80665 m/s²</td>
+</tr>
+<tr>
+<td>天文单位</td>
+<td>AU</td>
+<td>1.496 × 10¹¹ m</td>
+</tr>
+<tr>
+<td>光年</td>
+<td>ly</td>
+<td>9.461 × 10¹⁵ m</td>
+</tr>
+<tr>
+<td>秒差距</td>
+<td>pc</td>
+<td>3.086 × 10¹⁶ m</td>
+</tr>
+<tr>
+<td>质子质量</td>
+<td>m_p</td>
+<td>1.673 × 10⁻²⁷ kg</td>
+</tr>
+<tr>
+<td>电子质量</td>
+<td>m_e</td>
+<td>9.109 × 10⁻³¹ kg</td>
+</tr>
+<tr>
+<td>电子电荷</td>
+<td>e</td>
+<td>1.602 × 10⁻¹⁹ C</td>
+</tr>
+<tr>
+<td>理想气体常数</td>
+<td>R</td>
+<td>8.314 J/(mol·K)</td>
+</tr>
+<tr>
+<td>Avogadro常数</td>
+<td>N_A</td>
+<td>6.022 × 10²³ /mol</td>
+</tr>
+<tr>
+<td>原子质量单位</td>
+<td>u</td>
+<td>1.661 × 10⁻²⁷ kg</td>
+</tr>
+<tr>
+<td>真空介电常数</td>
+<td>ε₀</td>
+<td>8.854 × 10⁻¹² F/m</td>
+</tr>
+<tr>
+<td>太阳质量</td>
+<td>M_☉</td>
+<td>1.989 × 10³⁰ kg</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sec-2">A.2 太阳系天体参考值</h3>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>符号</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>太阳引力参数</td>
+<td>μ_☉</td>
+<td>1.327 × 10²⁰ m³/s²</td>
+</tr>
+<tr>
+<td>地球引力参数</td>
+<td>μ_E</td>
+<td>3.986 × 10¹⁴ m³/s²</td>
+</tr>
+<tr>
+<td>月球引力参数</td>
+<td>μ_M</td>
+<td>4.905 × 10¹² m³/s²</td>
+</tr>
+<tr>
+<td>火星引力参数</td>
+<td>μ_Mars</td>
+<td>4.283 × 10¹³ m³/s²</td>
+</tr>
+<tr>
+<td>地球质量</td>
+<td>M_E</td>
+<td>5.972 × 10²⁴ kg</td>
+</tr>
+<tr>
+<td>地球平均半径</td>
+<td>R_E</td>
+<td>6.371 × 10⁶ m</td>
+</tr>
+<tr>
+<td>地球表面重力加速度</td>
+<td>g_E</td>
+<td>9.81 m/s²</td>
+</tr>
+<tr>
+<td>月球质量</td>
+<td>M_M</td>
+<td>7.342 × 10²² kg</td>
+</tr>
+<tr>
+<td>月球平均半径</td>
+<td>R_M</td>
+<td>1.737 × 10⁶ m</td>
+</tr>
+<tr>
+<td>月球表面重力加速度</td>
+<td>g_M</td>
+<td>1.62 m/s²</td>
+</tr>
+<tr>
+<td>火星质量</td>
+<td>M_Mars</td>
+<td>6.417 × 10²³ kg</td>
+</tr>
+<tr>
+<td>火星平均半径</td>
+<td>R_Mars</td>
+<td>3.390 × 10⁶ m</td>
+</tr>
+<tr>
+<td>火星表面重力加速度</td>
+<td>g_Mars</td>
+<td>3.72 m/s²</td>
+</tr>
+<tr>
+<td>太阳常数（1 AU）</td>
+<td>S₀</td>
+<td>1361 W/m²</td>
+</tr>
+<tr>
+<td>火星轨道太阳辐照度</td>
+<td>S_Mars</td>
+<td>约 586 W/m²（地球的 ~43%）</td>
+</tr>
+<tr>
+<td>地-月平均距离</td>
+<td>—</td>
+<td>3.844 × 10⁸ m</td>
+</tr>
+<tr>
+<td>地-火会合周期</td>
+<td>T_syn</td>
+<td>779.9 天（约 26 个月）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sec-3">A.3 常用单位换算</h3>
+<table>
+<thead>
+<tr>
+<th>量</th>
+<th>换算关系</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>标准大气压</td>
+<td>1 atm = 101.325 kPa = 1.01325 bar</td>
+</tr>
+<tr>
+<td>电子伏特</td>
+<td>1 eV = 1.602 × 10⁻¹⁹ J</td>
+</tr>
+<tr>
+<td>吸收剂量</td>
+<td>1 Gy = 1 J/kg；1 rad = 0.01 Gy</td>
+</tr>
+<tr>
+<td>剂量当量</td>
+<td>1 Sv = 1 J/kg × Q；1 rem = 0.01 Sv</td>
+</tr>
+<tr>
+<td>儒略年</td>
+<td>1 a = 3.156 × 10⁷ s</td>
+</tr>
+<tr>
+<td>日</td>
+<td>1 d = 86,400 s</td>
+</tr>
+<tr>
+<td>质能转换</td>
+<td>1 kg 质量 → c² = 8.988 × 10¹⁶ J</td>
+</tr>
+</tbody>
+</table></div><div class="prevnext"><a class="pn pn-prev" href="ch23.html"><span class="pn-k">上一篇</span><span class="pn-t">第23章 意识上传与数字存在</span></a><a class="pn pn-next" href="appB.html"><span class="pn-k">下一篇</span><span class="pn-t">附录B 太阳系天体参数</span></a></div></article><footer class="foot"><span>未来太空移民技术手册 · 完整版 v2.0</span><span class="foot-mono">AD ASTRA PER ASPERA</span></footer></main>
+<aside class="toc"><div class="toc-title">本页目录</div>
+<a class="toc-h3" href="#sec-1">A.1 基本物理常数</a>
+<a class="toc-h3" href="#sec-2">A.2 太阳系天体参考值</a>
+<a class="toc-h3" href="#sec-3">A.3 常用单位换算</a>
+</aside>
+</div>
+<script src="../search-index.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

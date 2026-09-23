@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>未来太空移民技术手册 · The Space Settlement Handbook</title>
+<meta name="description" content="面向航天工程、物理学、生物学专业读者的综合性太空移民技术手册：8 大部类、23 章、24 万字，从推进运输到太空治理。">
+<link rel="icon" type="image/png" href="assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/landing.css">
+<script>(function(){try{var t=localStorage.getItem('smh-theme');if(!t)t='dark';document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+</head>
+<body class="landing">
+<div class="progress" id="progress"></div>
+<header class="topbar">
+  <a class="brand" href="index.html">
+    <img class="brand-icon" src="assets/icon.png" alt="">
+    <span class="brand-zh">未来太空移民技术手册</span>
+    <span class="brand-en">SPACE SETTLEMENT HANDBOOK</span>
+  </a>
+  <div class="top-actions">
+    <button class="search-btn" id="searchBtn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg><span>检索</span><kbd>⌘K</kbd></button>
+    <button class="theme-btn" id="themeBtn" aria-label="切换主题"></button>
+    <a class="cta-mini" href="docs/intro.html">开始阅读 →</a>
+  </div>
+</header>
+
+<div class="search-overlay" id="searchOverlay" hidden>
+  <div class="search-box">
+    <div class="search-head">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg>
+      <input id="searchInput" type="text" placeholder="检索全书：术语、参数、章节…" autocomplete="off">
+      <kbd>ESC</kbd>
+    </div>
+    <div class="search-results" id="searchResults"><div class="search-hint">输入关键词，检索 23 章正文与附录</div></div>
+  </div>
+</div>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <canvas id="stars"></canvas>
+  <svg class="orbits" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <ellipse cx="600" cy="430" rx="480" ry="300" class="orbit o1"/>
+    <ellipse cx="600" cy="430" rx="700" ry="430" class="orbit o2"/>
+    <circle class="planet-dot" r="5"/>
+  </svg>
+  <div class="hero-inner">
+    <div class="hero-kicker reveal d1">
+      <span class="tick"></span>MISSION DOSSIER · 完整版 v2.0 · 2026<span class="tick"></span>
+    </div>
+    <h1 class="hero-title">
+      <span class="line reveal d2">未来太空移民</span>
+      <span class="line reveal d3"><em>技术</em>手册</span>
+    </h1>
+    <div class="hero-en reveal d4">THE&nbsp;SPACE&nbsp;SETTLEMENT&nbsp;HANDBOOK</div>
+    <p class="hero-sub reveal d5">
+      从齐奥尔科夫斯基火箭方程到火星宪政原则 —— 一部以数据与公式为骨架的太空殖民全景参考。<br>
+      涵盖当前可行技术，也诚实地标注每一处未解问题。
+    </p>
+    <div class="hero-meta reveal d6">
+      <span class="meta-cell"><b>8</b>大部类</span><span class="meta-sep"></span>
+      <span class="meta-cell"><b>23</b>章</span><span class="meta-sep"></span>
+      <span class="meta-cell"><b>24</b>万字</span><span class="meta-sep"></span>
+      <span class="meta-cell"><b>148</b>组公式</span><span class="meta-sep"></span>
+      <span class="meta-cell"><b>6</b>组附录</span>
+    </div>
+    <div class="hero-cta reveal d7">
+      <a class="btn btn-primary" href="docs/intro.html">开始阅读<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn btn-ghost" href="#structure">全书结构</a>
+    </div>
+  </div>
+  <div class="scroll-cue reveal d8"><span></span>SCROLL</div>
+</section>
+
+<!-- ================= TICKER ================= -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>轨道力学</span><i>✦</i><span>人工重力</span><i>✦</i><span>银河宇宙线</span><i>✦</i><span>核热推进</span><i>✦</i><span>聚变推进</span><i>✦</i><span>世代飞船</span><i>✦</i><span>封闭生态生保</span><i>✦</i><span>太空医学</span><i>✦</i><span>熔岩管基地</span><i>✦</i><span>空间核反应堆</span><i>✦</i><span>深空激光通信</span><i>✦</i><span>月壤原位制氧</span><i>✦</i><span>火星地球化</span><i>✦</i><span>奥尼尔圆柱体</span><i>✦</i><span>太空电梯</span><i>✦</i><span>自复制探测器</span><i>✦</i><span>阿尔忒弥斯协定</span><i>✦</i><span>发射经济学</span><i>✦</i><span>脑机接口</span><i>✦</i><span>意识上传</span><i>✦</i>
+    <span>轨道力学</span><i>✦</i><span>人工重力</span><i>✦</i><span>银河宇宙线</span><i>✦</i><span>核热推进</span><i>✦</i><span>聚变推进</span><i>✦</i><span>世代飞船</span><i>✦</i><span>封闭生态生保</span><i>✦</i><span>太空医学</span><i>✦</i><span>熔岩管基地</span><i>✦</i><span>空间核反应堆</span><i>✦</i><span>深空激光通信</span><i>✦</i><span>月壤原位制氧</span><i>✦</i><span>火星地球化</span><i>✦</i><span>奥尼尔圆柱体</span><i>✦</i><span>太空电梯</span><i>✦</i><span>自复制探测器</span><i>✦</i><span>阿尔忒弥斯协定</span><i>✦</i><span>发射经济学</span><i>✦</i><span>脑机接口</span><i>✦</i><span>意识上传</span><i>✦</i>
+  </div>
+</div>
+
+<!-- ================= 全书结构 ================= -->
+<section class="section" id="structure">
+  <div class="sec-head rv">
+    <div class="sec-index">SECTION 01</div>
+    <h2 class="sec-title">全书结构</h2>
+    <p class="sec-sub">八大部分按「约束 → 运输 → 生存 → 定居 → 治理 → 前沿」递进：先理解太空环境的硬约束，再谈如何抵达、如何存活、如何扎根，最后讨论社会制度与更远的可能。</p>
+  </div>
+  <div class="parts">
+    <a class="part-card rv" href="docs/ch01.html">
+      <div class="pc-num">Ⅰ</div>
+      <div class="pc-body">
+        <h3>基础物理与宇宙环境</h3>
+        <div class="pc-en">PHYSICS &amp; COSMIC ENVIRONMENT</div>
+        <p>微重力与人工重力、宇宙辐射、真空热控、轨道力学 —— 一切工程约束的源头。</p>
+        <div class="pc-chs"><span>01 太空环境物理</span><span>02 天体物理与轨道力学</span></div>
+      </div>
+    </a>
+    <a class="part-card rv" href="docs/ch03.html">
+      <div class="pc-num">Ⅱ</div>
+      <div class="pc-body">
+        <h3>推进与运输系统</h3>
+        <div class="pc-en">PROPULSION &amp; TRANSPORTATION</div>
+        <p>从液氧甲烷与核热推进，到聚变、光帆与世代飞船的完整推进技术谱系。</p>
+        <div class="pc-chs"><span>03 化学推进</span><span>04 先进推进理论</span><span>05 星际航行工程</span></div>
+      </div>
+    </a>
+    <a class="part-card rv" href="docs/ch06.html">
+      <div class="pc-num">Ⅲ</div>
+      <div class="pc-body">
+        <h3>生命保障与人体工程</h3>
+        <div class="pc-en">LIFE SUPPORT &amp; HUMAN FACTORS</div>
+        <p>闭环生保、太空医学与食品营养：让人体在封闭生态中持续运转。</p>
+        <div class="pc-chs"><span>06 封闭生态系统</span><span>07 太空医学</span><span>08 食品与营养</span></div>
+      </div>
+    </a>
+    <a class="part-card rv" href="docs/ch09.html">
+      <div class="pc-num">Ⅳ</div>
+      <div class="pc-body">
+        <h3>栖息地与基础设施</h3>
+        <div class="pc-en">HABITATS &amp; INFRASTRUCTURE</div>
+        <p>充气舱、熔岩管、旋转栖息地，以及核能、激光通信与脉冲星导航。</p>
+        <div class="pc-chs"><span>09 栖息地结构</span><span>10 能源系统</span><span>11 通信与导航</span></div>
+      </div>
+    </a>
+    <a class="part-card rv" href="docs/ch12.html">
+      <div class="pc-num">Ⅴ</div>
+      <div class="pc-body">
+        <h3>目的地与殖民方案</h3>
+        <div class="pc-en">DESTINATIONS &amp; COLONY PLANS</div>
+        <p>月球南极、火星、小行星与外太阳系冰卫星的逐一勘察与殖民路线。</p>
+        <div class="pc-chs"><span>12 月球</span><span>13 火星</span><span>14 小行星与殖民地</span><span>15 外太阳系</span></div>
+      </div>
+    </a>
+    <a class="part-card rv" href="docs/ch16.html">
+      <div class="pc-num">Ⅵ</div>
+      <div class="pc-body">
+        <h3>材料与制造</h3>
+        <div class="pc-en">MATERIALS &amp; MANUFACTURING</div>
+        <p>碳纳米管、自修复材料、微重力制造与原位资源利用，直至自复制系统。</p>
+        <div class="pc-chs"><span>16 太空材料科学</span><span>17 太空制造与 ISRU</span></div>
+      </div>
+    </a>
+    <a class="part-card rv" href="docs/ch18.html">
+      <div class="pc-num">Ⅶ</div>
+      <div class="pc-body">
+        <h3>社会、文化与治理</h3>
+        <div class="pc-en">SOCIETY, CULTURE &amp; GOVERNANCE</div>
+        <p>太空法与行星保护、发射经济学与成本曲线、隔离心理与火星身份。</p>
+        <div class="pc-chs"><span>18 治理与法律</span><span>19 太空经济学</span><span>20 文化演化</span></div>
+      </div>
+    </a>
+    <a class="part-card rv" href="docs/ch21.html">
+      <div class="pc-num">Ⅷ</div>
+      <div class="pc-body">
+        <h3>前沿与推测性技术</h3>
+        <div class="pc-en">FRONTIER &amp; SPECULATIVE</div>
+        <p>脑机接口、AI 治理与意识上传 —— 明确标注为推测级，但论证完整。</p>
+        <div class="pc-chs"><span>21 脑机接口</span><span>22 AI 与超级智能</span><span>23 意识上传</span></div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ================= 关键数字 ================= -->
+<section class="section band" id="figures">
+  <div class="sec-head rv">
+    <div class="sec-index">SECTION 02</div>
+    <h2 class="sec-title">几个决定一切的数字</h2>
+  </div>
+  <div class="figures">
+    <div class="fig rv"><div class="fig-v">450<em> m</em></div><div class="fig-k">舒适 1g 旋转栖息地所需直径（≤2 rpm 耐受阈值）</div></div>
+    <div class="fig rv"><div class="fig-v">0.7–1.2<em> Sv</em></div><div class="fig-k">火星往返任务累积辐射剂量，逼近职业限值</div></div>
+    <div class="fig rv"><div class="fig-v">258.8<em> 天</em></div><div class="fig-k">地火霍曼转移飞行时间，窗口每 26 个月一次</div></div>
+    <div class="fig rv"><div class="fig-v">&gt;99<em> %</em></div><div class="fig-k">火星基地生命保障系统的物质闭环率目标</div></div>
+    <div class="fig rv"><div class="fig-v">100–200<em> $/kg</em></div><div class="fig-k">Starship 目标发射成本，较土星五号下降约两个数量级</div></div>
+    <div class="fig rv"><div class="fig-v">160–40000<em> 人</em></div><div class="fig-k">世代飞船最小自持种群估计区间（含遗传多样性约束）</div></div>
+  </div>
+</section>
+
+<!-- ================= 阅读路线 ================= -->
+<section class="section" id="routes">
+  <div class="sec-head rv">
+    <div class="sec-index">SECTION 03</div>
+    <h2 class="sec-title">三条阅读路线</h2>
+    <p class="sec-sub">不同背景的读者可以从不同入口进入本书。每条路线约覆盖全书三分之一到一半的篇幅。</p>
+  </div>
+  <div class="routes">
+    <div class="route rv">
+      <div class="route-tag">R-01</div>
+      <h3>航天工程师</h3>
+      <p>以任务架构为主线：先掌握环境约束与运输系统，再深入栖息地能源与 ISRU，最后以目的地方案整合全局。</p>
+      <div class="route-steps">
+        <a href="docs/ch01.html">01</a><span>→</span><a href="docs/ch03.html">03–05</a><span>→</span><a href="docs/ch09.html">09–11</a><span>→</span><a href="docs/ch13.html">12–13</a><span>→</span><a href="docs/ch17.html">17</a>
+      </div>
+    </div>
+    <div class="route rv">
+      <div class="route-tag">R-02</div>
+      <h3>理工科学生</h3>
+      <p>按全书顺序建立完整图景，重点消化物理与工程部分；推测级章节作为延伸选读，注意 TRL 标注。</p>
+      <div class="route-steps">
+        <a href="docs/intro.html">导读</a><span>→</span><a href="docs/ch01.html">01–02</a><span>→</span><a href="docs/ch06.html">06–08</a><span>→</span><a href="docs/ch12.html">12–15</a><span>→</span><a href="docs/appA.html">附录</a>
+      </div>
+    </div>
+    <div class="route rv">
+      <div class="route-tag">R-03</div>
+      <h3>政策与人文背景</h3>
+      <p>从治理、经济与社会切入，补读必要的技术背景章节以理解约束来源，最后进入前沿议题。</p>
+      <div class="route-steps">
+        <a href="docs/ch18.html">18–20</a><span>→</span><a href="docs/ch01.html">01</a><span>→</span><a href="docs/ch13.html">13</a><span>→</span><a href="docs/ch21.html">21–23</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 尾声 ================= -->
+<section class="outro rv">
+  <div class="outro-mark">✦</div>
+  <p class="outro-zh">「人类的未来要么在群星之间，要么永远没有未来。」</p>
+  <p class="outro-sub">—— 本书的全部工作，是为前一种可能准备一份尽可能诚实的施工图。</p>
+  <a class="btn btn-primary" href="docs/intro.html">翻开第一页<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+</section>
+
+<footer class="landing-foot">
+  <div class="lf-grid">
+    <div>
+      <div class="lf-brand">未来太空移民技术手册</div>
+      <div class="lf-en">THE SPACE SETTLEMENT HANDBOOK</div>
+    </div>
+    <div class="lf-col">
+      <div class="lf-k">目录</div>
+      <a href="docs/intro.html">前言与导读</a>
+      <a href="docs/ch01.html">第一章 · 太空环境物理</a>
+      <a href="docs/ch13.html">第十三章 · 火星</a>
+      <a href="docs/appE.html">附录E · 术语表</a>
+    </div>
+    <div class="lf-col">
+      <div class="lf-k">版本</div>
+      <span>完整版 v2.0</span>
+      <span>2026 · 基于公开研究与任务数据</span>
+      <span class="lf-mono">AD ASTRA PER ASPERA</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* 星空画布 */
+(function(){
+  var c=document.getElementById('stars');if(!c)return;
+  var ctx=c.getContext('2d'),stars=[],W,H;
+  var reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function resize(){W=c.width=c.offsetWidth*devicePixelRatio;H=c.height=c.offsetHeight*devicePixelRatio;init();}
+  function init(){
+    stars=[];var n=Math.floor(W*H/22000/devicePixelRatio);
+    for(var i=0;i<n;i++){stars.push({x:Math.random()*W,y:Math.random()*H,r:(Math.random()*1.1+0.3)*devicePixelRatio,p:Math.random()*Math.PI*2,s:Math.random()*0.9+0.25});}
+  }
+  function draw(t){
+    ctx.clearRect(0,0,W,H);
+    var css=getComputedStyle(document.documentElement);
+    var col=css.getPropertyValue('--star').trim()||'rgba(233,231,224,.8)';
+    for(var i=0;i<stars.length;i++){
+      var st=stars[i];
+      var a=reduced?0.7:0.35+0.65*Math.abs(Math.sin(st.p+t*0.001*st.s));
+      ctx.globalAlpha=a;ctx.fillStyle=col;
+      ctx.beginPath();ctx.arc(st.x,st.y,st.r,0,6.283);ctx.fill();
+    }
+    ctx.globalAlpha=1;
+    if(!reduced)requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize',resize);resize();requestAnimationFrame(draw);
+})();
+/* 滚动显现 */
+(function(){
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.12});
+  document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
+})();
+</script>
+<script src="search-index.js"></script>
+<script>if(window.SEARCH_INDEX){SEARCH_INDEX.forEach(function(e){e.u='docs/'+e.u;});}</script>
+<script src="assets/site.js"></script>
+</body>
+</html>

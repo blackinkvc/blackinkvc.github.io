@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第10章 能源系统 · 未来太空移民技术手册</title>
+<meta name="description" content="未来太空移民技术手册 —— 面向专业读者的综合性太空殖民技术参考，涵盖推进、生保、栖息地、治理与前沿技术。">
+<link rel="icon" type="image/png" href="../assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script>(function(){try{var t=localStorage.getItem('smh-theme');if(!t)t='dark';document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="目录"><span></span><span></span><span></span></button>
+  <a class="brand" href="../index.html">
+    <img class="brand-icon" src="../assets/icon.png" alt="">
+    <span class="brand-zh">未来太空移民技术手册</span>
+    <span class="brand-en">SPACE SETTLEMENT HANDBOOK</span>
+  </a>
+  <div class="top-actions">
+    <button class="search-btn" id="searchBtn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg><span>检索</span><kbd>⌘K</kbd></button>
+    <button class="theme-btn" id="themeBtn" aria-label="切换主题"></button>
+  </div>
+</header>
+
+<div class="search-overlay" id="searchOverlay" hidden>
+  <div class="search-box">
+    <div class="search-head">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg>
+      <input id="searchInput" type="text" placeholder="检索全书：术语、参数、章节…" autocomplete="off">
+      <kbd>ESC</kbd>
+    </div>
+    <div class="search-results" id="searchResults"><div class="search-hint">输入关键词，检索 23 章正文与附录</div></div>
+  </div>
+</div>
+<div class="layout">
+<nav class="sidebar" id="sidebar">
+<div class="sb-group"><div class="sb-label">卷首</div>
+<a class="sb-item" href="intro.html"><span class="sb-num">◎</span><span class="sb-t">前言与导读</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第一部分 · 基础物理与宇宙环境</div>
+<a class="sb-item" href="ch01.html"><span class="sb-num">01</span><span class="sb-t">太空环境物理</span></a>
+<a class="sb-item" href="ch02.html"><span class="sb-num">02</span><span class="sb-t">天体物理与轨道力学</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第二部分 · 推进与运输系统</div>
+<a class="sb-item" href="ch03.html"><span class="sb-num">03</span><span class="sb-t">化学推进与近中期方案</span></a>
+<a class="sb-item" href="ch04.html"><span class="sb-num">04</span><span class="sb-t">先进推进理论</span></a>
+<a class="sb-item" href="ch05.html"><span class="sb-num">05</span><span class="sb-t">星际航行工程</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第三部分 · 生命保障与人体工程</div>
+<a class="sb-item" href="ch06.html"><span class="sb-num">06</span><span class="sb-t">封闭生态生命保障系统（CELSS）</span></a>
+<a class="sb-item" href="ch07.html"><span class="sb-num">07</span><span class="sb-t">太空医学</span></a>
+<a class="sb-item" href="ch08.html"><span class="sb-num">08</span><span class="sb-t">食品与营养</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第四部分 · 栖息地与基础设施</div>
+<a class="sb-item" href="ch09.html"><span class="sb-num">09</span><span class="sb-t">栖息地结构设计</span></a>
+<a class="sb-item current" href="ch10.html"><span class="sb-num">10</span><span class="sb-t">能源系统</span></a>
+<a class="sb-item" href="ch11.html"><span class="sb-num">11</span><span class="sb-t">通信与导航</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第五部分 · 目的地与殖民方案</div>
+<a class="sb-item" href="ch12.html"><span class="sb-num">12</span><span class="sb-t">月球</span></a>
+<a class="sb-item" href="ch13.html"><span class="sb-num">13</span><span class="sb-t">火星</span></a>
+<a class="sb-item" href="ch14.html"><span class="sb-num">14</span><span class="sb-t">小行星与太空殖民地</span></a>
+<a class="sb-item" href="ch15.html"><span class="sb-num">15</span><span class="sb-t">外太阳系与冰卫星</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第六部分 · 材料与制造</div>
+<a class="sb-item" href="ch16.html"><span class="sb-num">16</span><span class="sb-t">太空材料科学</span></a>
+<a class="sb-item" href="ch17.html"><span class="sb-num">17</span><span class="sb-t">太空制造与原位资源利用</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第七部分 · 社会、文化与治理</div>
+<a class="sb-item" href="ch18.html"><span class="sb-num">18</span><span class="sb-t">太空治理与法律框架</span></a>
+<a class="sb-item" href="ch19.html"><span class="sb-num">19</span><span class="sb-t">太空经济学</span></a>
+<a class="sb-item" href="ch20.html"><span class="sb-num">20</span><span class="sb-t">太空文化演化</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第八部分 · 前沿与推测性技术</div>
+<a class="sb-item" href="ch21.html"><span class="sb-num">21</span><span class="sb-t">脑机接口与人类增强</span></a>
+<a class="sb-item" href="ch22.html"><span class="sb-num">22</span><span class="sb-t">AI治理与超级智能</span></a>
+<a class="sb-item" href="ch23.html"><span class="sb-num">23</span><span class="sb-t">意识上传与数字存在</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">附录 · 参考数据</div>
+<a class="sb-item" href="appA.html"><span class="sb-num">A</span><span class="sb-t">A 物理常数与换算</span></a>
+<a class="sb-item" href="appB.html"><span class="sb-num">B</span><span class="sb-t">B 太阳系天体参数</span></a>
+<a class="sb-item" href="appC.html"><span class="sb-num">C</span><span class="sb-t">C 推进系统对比</span></a>
+<a class="sb-item" href="appD.html"><span class="sb-num">D</span><span class="sb-t">D 辐射与屏蔽</span></a>
+<a class="sb-item" href="appE.html"><span class="sb-num">E</span><span class="sb-t">E 术语表（中英对照）</span></a>
+<a class="sb-item" href="appF.html"><span class="sb-num">F</span><span class="sb-t">F 参考文献与推荐阅读</span></a>
+</div>
+</nav><main class="content"><article class="article"><div class="crumb"><span class="crumb-part">第四部分 · 栖息地与基础设施</span><span class="crumb-sep">/</span><span class="crumb-ch">CHAPTER 10</span></div><div class="ch-head"><div class="ch-num">10</div><h1 class="ch-title">能源系统</h1></div><div class="article-body"><blockquote>
+<p><strong>章首导语</strong> —— 能源系统决定殖民地的生存底线与生产力上限：生命保障与热控需要持续数 kW 电力，ISRU 推进剂生产则将需求推至百 kW 级。本章按功率与成熟度梳理四类方案：空间核裂变（Kilopower 至 FSP，是月夜与火星尘暴季唯一可靠的连续电源，TRL 5–6）、空间太阳能（火星太阳常数约 590 W/m²，为地球的约 43%，受尘暴严重制约）、放射性同位素系统（MMRTG 110 W_e 级，深空与夜间站点的标准电源，TRL 9）以及理论级的反物质能源（当前不可行）。预告关键结论：一个载人火星基地需约 120–240 kW_e 连续功率，典型配置为 2–4 座百 kW 级反应堆加光伏储能冗余；裂变表面电源正进入飞行演示阶段（FSP 项目）。核推进与反应堆的推进应用见第二部分第4章；太阳常数与空间辐射环境的物理背景见第一部分第1章。</p>
+</blockquote>
+<h3 id="sec-1">10.1 空间核反应堆</h3>
+<h3 id="sec-2">10.1.1 Kilopower系统</h3>
+<p><strong>设计概述</strong>：</p>
+<p>Kilopower（KRUSTY, Kilopower Reactor Using Stirling Technology）是NASA开发的小型空间裂变反应堆，目标1-10 kW_e电功率。</p>
+<p><strong>核心参数</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>热功率</td>
+<td>4-43 kW_th</td>
+</tr>
+<tr>
+<td>电功率</td>
+<td>1-10 kW_e</td>
+</tr>
+<tr>
+<td>燃料</td>
+<td>²³⁵U（高浓铀，~93%）</td>
+</tr>
+<tr>
+<td>慢化剂</td>
+<td>铍（Be）</td>
+</tr>
+<tr>
+<td>冷却</td>
+<td>热管（钠热管）</td>
+</tr>
+<tr>
+<td>转换</td>
+<td>斯特林发动机</td>
+</tr>
+<tr>
+<td>质量</td>
+<td>~1500-2000 kg（含屏蔽）</td>
+</tr>
+<tr>
+<td>寿命</td>
+<td>&gt;10年</td>
+</tr>
+<tr>
+<td>尺寸</td>
+<td>~直径1.5 m × 高4 m</td>
+</tr>
+</tbody>
+</table>
+<p><strong>工作原理</strong>：</p>
+<pre><code>²³⁵U裂变 → 热能
+    ↓
+钠热管（等温传热）→ 斯特林发动机热端
+    ↓
+斯特林发动机 → 机械功 → 线性发电机 → 电力
+    ↓
+废热 → 辐射散热器
+</code></pre>
+<p><strong>优势</strong>：</p>
+<ul>
+<li>简单可靠：无运动部件（反应堆内），热管被动传热</li>
+<li>模块化：可并联多个单元（1 kW到100 kW级）</li>
+<li>长寿命：&gt;10年无需换料</li>
+<li>自主运行：自动温度调节（负温度反馈）</li>
+</ul>
+<p><strong>地面验证：KRUSTY 核试验（2017–2018）</strong>：</p>
+<ul>
+<li>时间地点：2017年11月至2018年3月，试验在美国内华达国家安全场区（Nevada National Security Site, NNSS）的装置组装设施（Device Assembly Facility）完成，由 NASA 与能源部（洛斯阿拉莫斯国家实验室）联合实施。</li>
+<li>满功率试验：末次试验完成了启动、逐步升功率、稳态运行到停堆的完整任务剖面，连续运行 28 小时（热功率约 4 kW_th 量级，对应 1 kW_e 设计点）。</li>
+<li>故障测试：试验包含多项异常工况（如单台斯特林转换器失效、单根热管失效、散热器冷却丧失等场景），反应堆依靠负温度反馈自行稳定功率与温度，无需主动干预——直接验证了上文的"自主运行"设计特性。</li>
+<li>意义：这是美国自 1960 年代 SNAP 计划以来首次对新型空间裂变堆开展满功率地面核试验；Kilopower 系统级 TRL 由此提升至约 5–6。后续该路线并入 FSP（见 10.1.2）项目轨道继续发展。</li>
+</ul>
+<h3 id="sec-3">10.1.2 大型空间反应堆</h3>
+<p><strong>Fission Surface Power（FSP）系统</strong>：</p>
+<ul>
+<li>目标：40-100 kW_e（月球/火星表面基地）</li>
+<li>设计：基于NASA SAFE-400或SNRL（Space Nuclear Power Systems）</li>
+<li>冷却：液态金属（Na或NaK）或气体（He）</li>
+<li>转换：Brayton循环（气体涡轮）或 Stirling</li>
+<li>质量：~5000-10000 kg</li>
+<li>寿命：&gt;10年</li>
+</ul>
+<p><strong>火星基地能源需求估算</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>用途</th>
+<th>功率 (kW_e)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>生命保障</td>
+<td>20-30</td>
+</tr>
+<tr>
+<td>栖息地热控</td>
+<td>10-20</td>
+</tr>
+<tr>
+<td>农业（LED光照）</td>
+<td>15-30</td>
+</tr>
+<tr>
+<td>ISRU（推进剂生产）</td>
+<td>50-100</td>
+</tr>
+<tr>
+<td>通信</td>
+<td>5-10</td>
+</tr>
+<tr>
+<td>工业/制造</td>
+<td>20-50</td>
+</tr>
+<tr>
+<td><strong>总计</strong></td>
+<td><strong>120-240</strong></td>
+</tr>
+</tbody>
+</table>
+<p>需要 ~2-4 个 100 kW_e 反应堆（含冗余）。</p>
+<p><strong>FSP 项目进展（2022年至今）</strong>：</p>
+<ul>
+<li>2022年6月：NASA 与 DOE 联合向三家公司授予 FSP Phase 1 系统设计合同：洛克希德·马丁（Lockheed Martin，联合 BWXT、Creare）、西屋电气（Westinghouse）与 IX（Intuitive Machines 与 X-energy 等联合团队）。</li>
+<li>2024年4月：项目进入 Phase 2，洛克希德·马丁获得主合同，负责飞行演示堆的设计与建造；西屋与 IX 获得后续风险消减合同。</li>
+<li>基准目标：约 40 kW_e 连续输出、寿命约 10 年量级，瞄准2030年前后具备发射条件，率先部署于月球表面支撑 Artemis 驻留，火星版本作为后续衍生型号。</li>
+<li>技术取向：各方案普遍采用热管冷却、高浓铀燃料与布雷顿/斯特林转换；发射安全与运行安全遵循 10.1.3 节的亚临界发射与被动安全准则。</li>
+</ul>
+<blockquote>
+<p>交叉引用：光伏冗余配置与尘暴应对见 10.2 节；生命保障系统的功耗剖面见第三部分第6章。</p>
+</blockquote>
+<h3 id="sec-4">10.1.3 核安全与监管</h3>
+<p><strong>发射安全</strong>：</p>
+<ul>
+<li>反应堆亚临界状态发射（k_eff &lt; 0.95）</li>
+<li>入轨/到达后才达到临界（控制棒插入/几何改变）</li>
+<li>发射失败场景：燃料完整性（不分散、不溶入地下水）</li>
+</ul>
+<p><strong>运行安全</strong>：</p>
+<ul>
+<li>多重停堆系统（控制棒 + 中子吸收体）</li>
+<li>被动安全（负温度系数 → 温度升高自动降功率）</li>
+<li>辐射屏蔽（中子 + γ → 乘员剂量 &lt; 1 mSv/年）</li>
+</ul>
+<p><strong>监管框架</strong>：</p>
+<ul>
+<li>外层空间条约（1967）：允许核动力源，但需安全评估</li>
+<li>UN COPUOS指南：空间核动力源安全框架</li>
+<li>各国核监管机构：发射许可</li>
+</ul>
+<h3 id="sec-5">10.2 空间太阳能</h3>
+<h3 id="sec-6">10.2.1 光伏阵列</h3>
+<p><strong>火星表面光伏</strong>：</p>
+<ul>
+<li>太阳常数（火星）：~590 W/m²（地球的 ~43%）</li>
+<li>大气衰减：~30%（尘埃、CO₂）</li>
+<li>表面辐照度：~400 W/m²（正午，晴天）</li>
+</ul>
+<p>光伏系统输出：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6389em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">η</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">P</span><span class="mord mathnormal mtight" style="margin-right:0.22222em;">V</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mop">cos</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.1076em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">d</span><span class="mord mathnormal mtight">u</span><span class="mord mathnormal mtight">s</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.9805em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.1076em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">m</span><span class="mord mathnormal mtight">p</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+<p>其中：
+- η_PV：光伏效率（多结GaAs ~30%，Si ~20%）
+- I：太阳辐照度（~400 W/m²）
+- A：阵列面积
+- θ：太阳入射角
+- f_dust：尘埃衰减因子（~0.5-0.9，取决于清洁频率）
+- f_temp：温度修正（低温有利，火星平均 ~-60°C → 效率提升 ~10-20%）</p>
+<p><strong>示例</strong>：10 kW_e 火星光伏系统</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.0908em;vertical-align:-0.7693em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">0.30</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">400</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">0.7</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">0.8</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">10</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">000</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7693em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8641em;"></span><span class="mord">150</span><span class="mord"><span class="mord text"><span class="mord"> m</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p>考虑夜间（~50%占空比）和沙尘暴（可降至 ~10%辐照度）：</p>
+<ul>
+<li>实际需要 ~300-500 m² 阵列</li>
+<li>配合储能（电池 ~100-500 kWh）</li>
+</ul>
+<p><strong>沙尘暴挑战</strong>：</p>
+<ul>
+<li>全球性沙尘暴持续 ~数周-数月（火星年 ~687地球日）</li>
+<li>辐照度可降至 ~10-50 W/m²</li>
+<li>光伏输出降至 ~1-5% 正常值</li>
+<li>解决方案：核能备份、储能、减少负载</li>
+</ul>
+<p><strong>实测教训</strong>（两个太阳能深空任务的实际结局）：</p>
+<ul>
+<li>机遇号（Opportunity，2004年着陆）：2018年6月遭遇全球性沙尘暴，太阳电池输出跌破维持生存的下限，进入休眠后失联；NASA 于2019年2月正式结束任务（最终运行约 14.7 年）。</li>
+<li>洞察号（InSight，2018年着陆）：太阳翼积尘且无清洁手段，发电能力持续衰减，2022年输出低于维持运行的最低功率，12月15日最后一次通信后任务结束。</li>
+<li>对载人任务的含义：尘暴季长达数月且不可预测，纯光伏架构不满足载人任务的风险可接受性；工程共识为"核主光辅"加除尘手段（倾角优化、静电、CO₂ 喷射与机器人清扫，多数仍在验证）。</li>
+</ul>
+<h3 id="sec-7">10.2.2 轨道太阳能电站（SBSP）</h3>
+<p><strong>概念</strong>：</p>
+<p>在地球同步轨道（GEO）或其他高辐照轨道部署大型光伏阵列，将电力通过微波/激光传输到地面或其他航天器。</p>
+<p><strong>GEO太阳能环境</strong>：</p>
+<ul>
+<li>太阳辐照度：~1361 W/m²（无大气衰减）</li>
+<li>日照时间：~99%（仅春分/秋分附近有地影）</li>
+<li>年等效小时数：~8700小时（vs. 地面 ~1500-2000小时）</li>
+</ul>
+<p><strong>系统架构</strong>：</p>
+<pre><code>GEO光伏阵列（km²级）
+    ↓
+DC → RF转换（微波 ~2.45 GHz或5.8 GHz）
+    ↓
+相控阵天线（波束指向地面接收站）
+    ↓
+地面整流天线（rectenna）→ DC电力
+</code></pre>
+<p><strong>关键参数</strong>：</p>
+<ul>
+<li>光伏效率：~30-40%（多结）</li>
+<li>RF转换效率：~80-90%</li>
+<li>传输效率：~70-85%（取决于波束发散和大气损耗）</li>
+<li>总效率：~17-30%</li>
+<li>功率密度（地面接收）：~100-1000 W/m²（安全限值内）</li>
+</ul>
+<p><strong>工程规模</strong>：</p>
+<p>1 GW SBSP系统：</p>
+<ul>
+<li>光伏面积：~10 km²（η ~ 30%，I ~ 1361 W/m²）</li>
+<li>质量：~10,000-50,000 t（取决于结构效率）</li>
+<li>发射成本：即使 $100/kg → $1-5 billion（仅发射）</li>
+<li>当前可行性：极低（需要大规模太空制造）</li>
+</ul>
+<p><strong>太空移民应用</strong>：</p>
+<ul>
+<li>为地月空间设施供电（微波传输到月球/空间站）</li>
+<li>为深空任务提供高功率能源（激光传输）</li>
+<li>长期愿景：太空工业化后大规模部署</li>
+</ul>
+<h3 id="sec-8">10.3 放射性同位素系统</h3>
+<h3 id="sec-9">10.3.1 RTG（放射性同位素热电发电机）</h3>
+<p><strong>原理</strong>：</p>
+<p>利用 ²³⁸Pu 衰变热（α衰变，半衰期 87.7年）通过热电偶（Seebeck效应）直接转换为电力。</p>
+<p><strong>性能</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>型号</th>
+<th>热功率 (W_th)</th>
+<th>电功率 (W_e)</th>
+<th>效率</th>
+<th>质量 (kg)</th>
+<th>寿命</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MMRTG</td>
+<td>~2000</td>
+<td>~110</td>
+<td>~5.5%</td>
+<td>~45</td>
+<td>&gt;14年</td>
+</tr>
+<tr>
+<td>GPHS-RTG</td>
+<td>~4400</td>
+<td>~300</td>
+<td>~6.8%</td>
+<td>~56</td>
+<td>&gt;10年</td>
+</tr>
+<tr>
+<td>ASRG（已取消）</td>
+<td>~1400</td>
+<td>~140</td>
+<td>~10%</td>
+<td>~30</td>
+<td>&gt;17年</td>
+</tr>
+</tbody>
+</table>
+<p><strong>²³⁸Pu供应</strong>：</p>
+<ul>
+<li>生产：美国ORNL（Oak Ridge National Laboratory）重启生产</li>
+<li>年产量：~0.5-1.5 kg（当前），目标 ~2 kg/年</li>
+<li>成本：~$5-10 million/kg</li>
+<li>限制：全球供应有限，不适合大规模应用</li>
+</ul>
+<p><strong>应用</strong>：</p>
+<ul>
+<li>深空探测（Voyager, Curiosity, Perseverance, New Horizons）</li>
+<li>月球夜间生存（月球表面RTG加热 + 供电）</li>
+<li>偏远站点（无人气象站、通信中继）</li>
+</ul>
+<p><strong>在轨验证与供应瓶颈</strong>：</p>
+<ul>
+<li>好奇号（2011年发射）与毅力号（2020年发射）火星车均搭载 MMRTG：电功率自发射时约 110 W_e 起，随 ²³⁸Pu 衰变（半衰期 87.7 年）与热电偶性能退化逐年缓慢下降，多年实际运行验证了设计寿命区间；毅力号任务期间 MMRTG 还承担为车载电池夜间保温供热的职能。</li>
+<li>蜻蜓号（Dragonfly）核动力旋翼机（计划2028年发射，目的地土卫六）也将搭载 MMRTG。</li>
+<li>供应瓶颈量化：单台 MMRTG 装载约 4.8 kg ²³⁸PuO₂（折合约 4 kg ²³⁸Pu）；按当前年产约 1 kg（见上），每年仅够约 1/4 台 MMRTG 当量——同位素产能而非转换效率，才是 RTG 规模化的硬约束。</li>
+</ul>
+<h3 id="sec-10">10.3.2 动态同位素系统</h3>
+<p><strong>SRG（Stirling Radioisotope Generator）</strong>：</p>
+<ul>
+<li>原理：²³⁸Pu衰变热 → 斯特林发动机 → 电力</li>
+<li>效率：~20-25%（vs. RTG ~5-7%）</li>
+<li>电功率：~100-240 W_e（使用 ~1 kg ²³⁸Pu）</li>
+<li>质量：~30-40 kg</li>
+<li>挑战：运动部件（斯特林发动机振动、寿命）</li>
+</ul>
+<p><strong>优势</strong>：</p>
+<ul>
+<li>相同²³⁸Pu量，电力输出 ~3-4倍RTG</li>
+<li>适合中等功率任务（~100 W_e级）</li>
+</ul>
+<h3 id="sec-11">10.4 反物质能源理论</h3>
+<h3 id="sec-12">10.4.1 质能转换效率</h3>
+<p>反物质-物质湮灭是100%质能转换（E = mc²），远超其他能源：</p>
+<table>
+<thead>
+<tr>
+<th>能源</th>
+<th>能量密度 (J/kg)</th>
+<th>效率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>化学（CH₄/O₂）</td>
+<td>~5 × 10⁷</td>
+<td>~10⁻¹⁰</td>
+</tr>
+<tr>
+<td>核裂变（²³⁵U）</td>
+<td>~8 × 10¹³</td>
+<td>~10⁻³</td>
+</tr>
+<tr>
+<td>核聚变（D-T）</td>
+<td>~3.4 × 10¹⁴</td>
+<td>~4 × 10⁻³</td>
+</tr>
+<tr>
+<td>反物质湮灭</td>
+<td>9 × 10¹⁶</td>
+<td>1.0</td>
+</tr>
+</tbody>
+</table>
+<p>1 g反物质 + 1 g物质 → 1.8 × 10¹¹ J ≈ 50 GWh ≈ 43吨TNT当量</p>
+<h3 id="sec-13">10.4.2 能量收集挑战</h3>
+<p><strong>湮灭产物能量分布</strong>（p-p̄湮灭）：</p>
+<ul>
+<li>π介子（带电）：~70% 能量 → 可磁场引导收集</li>
+<li>π⁰介子：~30% 能量 → 立即衰变为γ光子（难以收集）</li>
+<li>中微子：~少量 → 无法收集</li>
+</ul>
+<p><strong>热机方案</strong>：</p>
+<p>湮灭产物在吸收体中沉积热能 → 热机发电</p>
+<ul>
+<li>吸收体温度：~2000-3000 K（受材料限制）</li>
+<li>热机效率：~40-60%（Carnot极限）</li>
+<li>总效率：~30-40%（考虑γ逃逸）</li>
+</ul>
+<p><strong>直接转换方案</strong>：</p>
+<ul>
+<li>带电π介子 → 减速 → 收集电荷 → 直接电能</li>
+<li>理论效率：~70-90%</li>
+<li>挑战：极高能量粒子（~GeV）减速困难</li>
+</ul>
+<h3 id="sec-14">10.4.3 工程可行性评估</h3>
+<p><strong>生产</strong>：</p>
+<ul>
+<li>当前：~ng/年全球</li>
+<li>需求：1 g/年 → 需要 ~10⁸ 倍提升</li>
+<li>时间尺度：即使乐观估计，也需要数十年基础设施发展</li>
+</ul>
+<p><strong>储存</strong>：</p>
+<ul>
+<li>潘宁阱：~10¹² 反质子（~ng级）</li>
+<li>长期大量储存：无可行方案</li>
+<li>安全：任何储存失效 = 灾难性能量释放</li>
+</ul>
+<p><strong>结论</strong>：</p>
+<p>反物质能源在当前和可预见的未来不可行。作为科幻概念有探索价值，但工程实现需要物理和工程的多重突破。</p>
+<h3 id="sec-15">10.5 能源传输与分配</h3>
+<h3 id="sec-16">10.5.1 超导电缆</h3>
+<p><strong>优势</strong>：</p>
+<ul>
+<li>零电阻 → 无传输损耗</li>
+<li>高电流密度 → 小截面电缆</li>
+<li>适合长距离传输（基地内/基地间）</li>
+</ul>
+<p><strong>挑战</strong>：</p>
+<ul>
+<li>低温需求：高温超导（HTS）~20-77 K，低温超导（LTS）~4 K</li>
+<li>冷却功率：每 W 制冷需要 ~10-100 W 电力（Carnot效率限制）</li>
+<li>失超保护：超导态→正常态转变时瞬间释放大能量</li>
+</ul>
+<p><strong>太空应用</strong>：</p>
+<ul>
+<li>月球基地：长距离电力传输（太阳能电站 → 栖息地）</li>
+<li>火星基地：中等距离（核反应堆 → 各设施）</li>
+<li>太空殖民地：内部电力分配</li>
+</ul>
+<h3 id="sec-17">10.5.2 微波功率传输</h3>
+<p><strong>原理</strong>：</p>
+<p>电力 → 微波（2.45 GHz或5.8 GHz）→ 天线发射 → 接收整流天线 → 电力</p>
+<p><strong>效率</strong>：</p>
+<ul>
+<li>DC-RF转换：~80-90%（固态功放）</li>
+<li>天线增益：~30-50 dBi（取决于尺寸）</li>
+<li>自由空间损耗：取决于距离和频率</li>
+<li>RF-DC转换：~80-90%（整流天线）</li>
+<li>总效率：~50-70%（短距离），~20-40%（长距离）</li>
+</ul>
+<p><strong>应用</strong>：</p>
+<ul>
+<li>轨道太阳能电站 → 地面/月球</li>
+<li>无人机/漫游车无线充电</li>
+<li>基地间电力传输（无物理电缆）</li>
+</ul>
+<h3 id="sec-18">第10章小结</h3>
+<p>移民能源架构是分层的：瓦–百瓦级（无人站点、月夜生存）由 RTG 承担，MMRTG 以约 110 W_e 成为深空标准电源；千瓦–十千瓦级（前哨站、小型基地）对应 Kilopower（1–10 kW_e），其核心特性已由 KRUSTY 的 28 小时满功率核试验与故障自稳测试证实；百千瓦级（永久基地）依赖 FSP 类裂变堆（约 40 kW_e 单机，配置 2–4 台，瞄准2030年前后飞行演示）。太阳能在火星仍有价值（太阳常数约 590 W/m²），但机遇号与洞察号的结局证明全球尘暴可使其输出降至 1–5%，载人基地必须"核主光辅"。SBSP 受制于发射质量与太空制造规模，反物质能源受制于产量与储存的物理极限，两者均不在近中期选项之列。</p>
+<h3 id="sec-19">关键参数速查表（第10章）</h3>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>典型值</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kilopower 电功率</td>
+<td>1–10 kW_e（热功率 4–43 kW_th）</td>
+<td>模块化裂变供电单元</td>
+</tr>
+<tr>
+<td>KRUSTY 满功率试验</td>
+<td>连续 28 h（2017–2018）</td>
+<td>飞行堆关键地面验证</td>
+</tr>
+<tr>
+<td>FSP 目标电功率</td>
+<td>~40 kW_e（寿命约 10 年）</td>
+<td>月面/火星基地基准电源</td>
+</tr>
+<tr>
+<td>火星基地总功率需求</td>
+<td>~120–240 kW_e</td>
+<td>反应堆台数配置依据</td>
+</tr>
+<tr>
+<td>火星太阳常数</td>
+<td>~590 W/m²（地球的 ~43%）</td>
+<td>光伏设计输入</td>
+</tr>
+<tr>
+<td>火星尘暴期辐照度</td>
+<td>降至 ~10–50 W/m²</td>
+<td>光伏架构主要风险</td>
+</tr>
+<tr>
+<td>MMRTG 初始电功率</td>
+<td>~110 W_e（热功率 ~2000 W_th，效率 ~5.5%）</td>
+<td>深空探测器标准电源</td>
+</tr>
+<tr>
+<td>MMRTG 燃料装载</td>
+<td>~4.8 kg ²³⁸PuO₂</td>
+<td>同位素供应瓶颈量化</td>
+</tr>
+<tr>
+<td>GEO 太阳辐照度</td>
+<td>~1361 W/m²，日照比 ~99%</td>
+<td>SBSP 设计输入</td>
+</tr>
+<tr>
+<td>²³⁸Pu 年产量</td>
+<td>~1 kg 量级（目标 ~2 kg/年）</td>
+<td>RTG 规模化硬约束</td>
+</tr>
+</tbody>
+</table>
+<hr /></div><div class="prevnext"><a class="pn pn-prev" href="ch09.html"><span class="pn-k">上一篇</span><span class="pn-t">第9章 栖息地结构设计</span></a><a class="pn pn-next" href="ch11.html"><span class="pn-k">下一篇</span><span class="pn-t">第11章 通信与导航</span></a></div></article><footer class="foot"><span>未来太空移民技术手册 · 完整版 v2.0</span><span class="foot-mono">AD ASTRA PER ASPERA</span></footer></main>
+<aside class="toc"><div class="toc-title">本页目录</div>
+<a class="toc-h3" href="#sec-1">10.1 空间核反应堆</a>
+<a class="toc-h3" href="#sec-2">10.1.1 Kilopower系统</a>
+<a class="toc-h3" href="#sec-3">10.1.2 大型空间反应堆</a>
+<a class="toc-h3" href="#sec-4">10.1.3 核安全与监管</a>
+<a class="toc-h3" href="#sec-5">10.2 空间太阳能</a>
+<a class="toc-h3" href="#sec-6">10.2.1 光伏阵列</a>
+<a class="toc-h3" href="#sec-7">10.2.2 轨道太阳能电站（SBSP）</a>
+<a class="toc-h3" href="#sec-8">10.3 放射性同位素系统</a>
+<a class="toc-h3" href="#sec-9">10.3.1 RTG（放射性同位素热电发电机）</a>
+<a class="toc-h3" href="#sec-10">10.3.2 动态同位素系统</a>
+<a class="toc-h3" href="#sec-11">10.4 反物质能源理论</a>
+<a class="toc-h3" href="#sec-12">10.4.1 质能转换效率</a>
+<a class="toc-h3" href="#sec-13">10.4.2 能量收集挑战</a>
+<a class="toc-h3" href="#sec-14">10.4.3 工程可行性评估</a>
+<a class="toc-h3" href="#sec-15">10.5 能源传输与分配</a>
+<a class="toc-h3" href="#sec-16">10.5.1 超导电缆</a>
+<a class="toc-h3" href="#sec-17">10.5.2 微波功率传输</a>
+<a class="toc-h3" href="#sec-18">第10章小结</a>
+<a class="toc-h3" href="#sec-19">关键参数速查表（第10章）</a>
+</aside>
+</div>
+<script src="../search-index.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

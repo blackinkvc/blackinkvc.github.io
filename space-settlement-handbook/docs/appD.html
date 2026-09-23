@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>附录D 辐射与屏蔽 · 未来太空移民技术手册</title>
+<meta name="description" content="未来太空移民技术手册 —— 面向专业读者的综合性太空殖民技术参考，涵盖推进、生保、栖息地、治理与前沿技术。">
+<link rel="icon" type="image/png" href="../assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script>(function(){try{var t=localStorage.getItem('smh-theme');if(!t)t='dark';document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="目录"><span></span><span></span><span></span></button>
+  <a class="brand" href="../index.html">
+    <img class="brand-icon" src="../assets/icon.png" alt="">
+    <span class="brand-zh">未来太空移民技术手册</span>
+    <span class="brand-en">SPACE SETTLEMENT HANDBOOK</span>
+  </a>
+  <div class="top-actions">
+    <button class="search-btn" id="searchBtn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg><span>检索</span><kbd>⌘K</kbd></button>
+    <button class="theme-btn" id="themeBtn" aria-label="切换主题"></button>
+  </div>
+</header>
+
+<div class="search-overlay" id="searchOverlay" hidden>
+  <div class="search-box">
+    <div class="search-head">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg>
+      <input id="searchInput" type="text" placeholder="检索全书：术语、参数、章节…" autocomplete="off">
+      <kbd>ESC</kbd>
+    </div>
+    <div class="search-results" id="searchResults"><div class="search-hint">输入关键词，检索 23 章正文与附录</div></div>
+  </div>
+</div>
+<div class="layout">
+<nav class="sidebar" id="sidebar">
+<div class="sb-group"><div class="sb-label">卷首</div>
+<a class="sb-item" href="intro.html"><span class="sb-num">◎</span><span class="sb-t">前言与导读</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第一部分 · 基础物理与宇宙环境</div>
+<a class="sb-item" href="ch01.html"><span class="sb-num">01</span><span class="sb-t">太空环境物理</span></a>
+<a class="sb-item" href="ch02.html"><span class="sb-num">02</span><span class="sb-t">天体物理与轨道力学</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第二部分 · 推进与运输系统</div>
+<a class="sb-item" href="ch03.html"><span class="sb-num">03</span><span class="sb-t">化学推进与近中期方案</span></a>
+<a class="sb-item" href="ch04.html"><span class="sb-num">04</span><span class="sb-t">先进推进理论</span></a>
+<a class="sb-item" href="ch05.html"><span class="sb-num">05</span><span class="sb-t">星际航行工程</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第三部分 · 生命保障与人体工程</div>
+<a class="sb-item" href="ch06.html"><span class="sb-num">06</span><span class="sb-t">封闭生态生命保障系统（CELSS）</span></a>
+<a class="sb-item" href="ch07.html"><span class="sb-num">07</span><span class="sb-t">太空医学</span></a>
+<a class="sb-item" href="ch08.html"><span class="sb-num">08</span><span class="sb-t">食品与营养</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第四部分 · 栖息地与基础设施</div>
+<a class="sb-item" href="ch09.html"><span class="sb-num">09</span><span class="sb-t">栖息地结构设计</span></a>
+<a class="sb-item" href="ch10.html"><span class="sb-num">10</span><span class="sb-t">能源系统</span></a>
+<a class="sb-item" href="ch11.html"><span class="sb-num">11</span><span class="sb-t">通信与导航</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第五部分 · 目的地与殖民方案</div>
+<a class="sb-item" href="ch12.html"><span class="sb-num">12</span><span class="sb-t">月球</span></a>
+<a class="sb-item" href="ch13.html"><span class="sb-num">13</span><span class="sb-t">火星</span></a>
+<a class="sb-item" href="ch14.html"><span class="sb-num">14</span><span class="sb-t">小行星与太空殖民地</span></a>
+<a class="sb-item" href="ch15.html"><span class="sb-num">15</span><span class="sb-t">外太阳系与冰卫星</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第六部分 · 材料与制造</div>
+<a class="sb-item" href="ch16.html"><span class="sb-num">16</span><span class="sb-t">太空材料科学</span></a>
+<a class="sb-item" href="ch17.html"><span class="sb-num">17</span><span class="sb-t">太空制造与原位资源利用</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第七部分 · 社会、文化与治理</div>
+<a class="sb-item" href="ch18.html"><span class="sb-num">18</span><span class="sb-t">太空治理与法律框架</span></a>
+<a class="sb-item" href="ch19.html"><span class="sb-num">19</span><span class="sb-t">太空经济学</span></a>
+<a class="sb-item" href="ch20.html"><span class="sb-num">20</span><span class="sb-t">太空文化演化</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第八部分 · 前沿与推测性技术</div>
+<a class="sb-item" href="ch21.html"><span class="sb-num">21</span><span class="sb-t">脑机接口与人类增强</span></a>
+<a class="sb-item" href="ch22.html"><span class="sb-num">22</span><span class="sb-t">AI治理与超级智能</span></a>
+<a class="sb-item" href="ch23.html"><span class="sb-num">23</span><span class="sb-t">意识上传与数字存在</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">附录 · 参考数据</div>
+<a class="sb-item" href="appA.html"><span class="sb-num">A</span><span class="sb-t">A 物理常数与换算</span></a>
+<a class="sb-item" href="appB.html"><span class="sb-num">B</span><span class="sb-t">B 太阳系天体参数</span></a>
+<a class="sb-item" href="appC.html"><span class="sb-num">C</span><span class="sb-t">C 推进系统对比</span></a>
+<a class="sb-item current" href="appD.html"><span class="sb-num">D</span><span class="sb-t">D 辐射与屏蔽</span></a>
+<a class="sb-item" href="appE.html"><span class="sb-num">E</span><span class="sb-t">E 术语表（中英对照）</span></a>
+<a class="sb-item" href="appF.html"><span class="sb-num">F</span><span class="sb-t">F 参考文献与推荐阅读</span></a>
+</div>
+</nav><main class="content"><article class="article"><div class="crumb"><span class="crumb-part">附录</span></div><div class="ch-head"><div class="ch-num">D</div><h1 class="ch-title">辐射与屏蔽</h1></div><div class="article-body"><h3 id="sec-1">D.1 辐射剂量率汇总</h3>
+<table>
+<thead>
+<tr>
+<th>环境</th>
+<th>GCR (mSv/天)</th>
+<th>SPE峰值</th>
+<th>年累计</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LEO (ISS)</td>
+<td>0.2</td>
+<td>~1</td>
+<td>150-200</td>
+</tr>
+<tr>
+<td>月球表面</td>
+<td>0.3</td>
+<td>数Sv</td>
+<td>200-300</td>
+</tr>
+<tr>
+<td>火星转移</td>
+<td>0.5-0.7</td>
+<td>数Sv</td>
+<td>300-500</td>
+</tr>
+<tr>
+<td>火星表面</td>
+<td>0.2</td>
+<td>0.5-1</td>
+<td>150-250</td>
+</tr>
+<tr>
+<td>深空 (1AU)</td>
+<td>0.5</td>
+<td>—</td>
+<td>180</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sec-2">D.2 屏蔽材料对比（对GCR质子）</h3>
+<table>
+<thead>
+<tr>
+<th>材料</th>
+<th>衰减长度 λ (g/cm²)</th>
+<th>密度 (g/cm³)</th>
+<th>1/e厚度 (cm)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>聚乙烯</td>
+<td>~150</td>
+<td>0.97</td>
+<td>~155</td>
+</tr>
+<tr>
+<td>水</td>
+<td>~150</td>
+<td>1.0</td>
+<td>~150</td>
+</tr>
+<tr>
+<td>铝</td>
+<td>~120</td>
+<td>2.7</td>
+<td>~44</td>
+</tr>
+<tr>
+<td>铅</td>
+<td>~100</td>
+<td>11.3</td>
+<td>~9</td>
+</tr>
+<tr>
+<td>月壤</td>
+<td>~130</td>
+<td>1.5</td>
+<td>~87</td>
+</tr>
+<tr>
+<td>火星壤</td>
+<td>~130</td>
+<td>1.5</td>
+<td>~87</td>
+</tr>
+</tbody>
+</table>
+<p>注：高 Z 材料（铝、铅）对 GCR 重离子产生次级中子，实际剂量衰减劣于表中质子衰减长度所示；氢富集材料（聚乙烯、水）为载人屏蔽首选（第一部分 §1.2.4）。SPE 质子能量较低，20-50 g/cm² 聚乙烯即可有效屏蔽。</p>
+<h3 id="sec-3">D.3 典型任务剂量对照表</h3>
+<p>按 D.1 剂量率对典型任务时长积分（无屏蔽或最小屏蔽），太阳活动相位可使数值变动约 50%。</p>
+<table>
+<thead>
+<tr>
+<th>任务场景</th>
+<th>时长</th>
+<th>累计剂量当量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LEO（ISS）驻留</td>
+<td>6 个月</td>
+<td>~75-100 mSv</td>
+</tr>
+<tr>
+<td>月球表面（无屏蔽）</td>
+<td>6 个月</td>
+<td>~100-150 mSv</td>
+</tr>
+<tr>
+<td>月球表面（2-3 m 月壤覆盖）</td>
+<td>6 个月</td>
+<td>约 10 mSv</td>
+</tr>
+<tr>
+<td>火星转移（单程，转移舱最小屏蔽）</td>
+<td>~250 天</td>
+<td>~125-175 mSv</td>
+</tr>
+<tr>
+<td>火星表面驻留</td>
+<td>~500 天</td>
+<td>~100-165 mSv</td>
+</tr>
+<tr>
+<td>火星往返任务总计（转移+表面）</td>
+<td>~1000 天</td>
+<td>~0.7-1.2 Sv</td>
+</tr>
+<tr>
+<td>极端 SPE（无屏蔽暴露）</td>
+<td>数小时</td>
+<td>数 Sv（接近致死）</td>
+</tr>
+<tr>
+<td>极端 SPE（风暴避难所，10-20 g/cm² 水）</td>
+<td>数小时</td>
+<td>~0.5-1 Sv</td>
+</tr>
+</tbody>
+</table>
+<p>注：火星往返总剂量已接近 NASA 职业生涯限值（第一部分 §1.2.3），是辐射防护设计的约束性输入。</p>
+<h3 id="sec-4">D.4 补充屏蔽材料特性</h3>
+<table>
+<thead>
+<tr>
+<th>材料</th>
+<th>密度 (g/cm³)</th>
+<th>氢质量分数</th>
+<th>屏蔽特性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>含硼聚乙烯（BPE）</td>
+<td>约 1.0</td>
+<td>~12%</td>
+<td>硼吸收热中子，抑制次级辐射，舱内衬里候选</td>
+</tr>
+<tr>
+<td>液氢（推进剂）</td>
+<td>0.071</td>
+<td>100%</td>
+<td>单位质量屏蔽效能最优，可兼作贮箱外围屏蔽层</td>
+</tr>
+<tr>
+<td>水（水墙/水箱）</td>
+<td>1.0</td>
+<td>11.2%</td>
+<td>消耗品双重用途，风暴避难所常用方案</td>
+</tr>
+<tr>
+<td>烧结风化层块</td>
+<td>2.5-3.0</td>
+<td>&lt;0.1%</td>
+<td>结构-屏蔽一体化，适合原位建造</td>
+</tr>
+<tr>
+<td>玄武岩纤维/风化层复合材料</td>
+<td>约 2.0（估计）</td>
+<td>低</td>
+<td>发展中，兼顾原位资源利用与防护</td>
+</tr>
+</tbody>
+</table></div><div class="prevnext"><a class="pn pn-prev" href="appC.html"><span class="pn-k">上一篇</span><span class="pn-t">附录C 推进系统对比</span></a><a class="pn pn-next" href="appE.html"><span class="pn-k">下一篇</span><span class="pn-t">附录E 术语表（中英对照）</span></a></div></article><footer class="foot"><span>未来太空移民技术手册 · 完整版 v2.0</span><span class="foot-mono">AD ASTRA PER ASPERA</span></footer></main>
+<aside class="toc"><div class="toc-title">本页目录</div>
+<a class="toc-h3" href="#sec-1">D.1 辐射剂量率汇总</a>
+<a class="toc-h3" href="#sec-2">D.2 屏蔽材料对比（对GCR质子）</a>
+<a class="toc-h3" href="#sec-3">D.3 典型任务剂量对照表</a>
+<a class="toc-h3" href="#sec-4">D.4 补充屏蔽材料特性</a>
+</aside>
+</div>
+<script src="../search-index.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

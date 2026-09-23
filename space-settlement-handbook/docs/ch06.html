@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第6章 封闭生态生命保障系统（CELSS） · 未来太空移民技术手册</title>
+<meta name="description" content="未来太空移民技术手册 —— 面向专业读者的综合性太空殖民技术参考，涵盖推进、生保、栖息地、治理与前沿技术。">
+<link rel="icon" type="image/png" href="../assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script>(function(){try{var t=localStorage.getItem('smh-theme');if(!t)t='dark';document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="目录"><span></span><span></span><span></span></button>
+  <a class="brand" href="../index.html">
+    <img class="brand-icon" src="../assets/icon.png" alt="">
+    <span class="brand-zh">未来太空移民技术手册</span>
+    <span class="brand-en">SPACE SETTLEMENT HANDBOOK</span>
+  </a>
+  <div class="top-actions">
+    <button class="search-btn" id="searchBtn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg><span>检索</span><kbd>⌘K</kbd></button>
+    <button class="theme-btn" id="themeBtn" aria-label="切换主题"></button>
+  </div>
+</header>
+
+<div class="search-overlay" id="searchOverlay" hidden>
+  <div class="search-box">
+    <div class="search-head">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg>
+      <input id="searchInput" type="text" placeholder="检索全书：术语、参数、章节…" autocomplete="off">
+      <kbd>ESC</kbd>
+    </div>
+    <div class="search-results" id="searchResults"><div class="search-hint">输入关键词，检索 23 章正文与附录</div></div>
+  </div>
+</div>
+<div class="layout">
+<nav class="sidebar" id="sidebar">
+<div class="sb-group"><div class="sb-label">卷首</div>
+<a class="sb-item" href="intro.html"><span class="sb-num">◎</span><span class="sb-t">前言与导读</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第一部分 · 基础物理与宇宙环境</div>
+<a class="sb-item" href="ch01.html"><span class="sb-num">01</span><span class="sb-t">太空环境物理</span></a>
+<a class="sb-item" href="ch02.html"><span class="sb-num">02</span><span class="sb-t">天体物理与轨道力学</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第二部分 · 推进与运输系统</div>
+<a class="sb-item" href="ch03.html"><span class="sb-num">03</span><span class="sb-t">化学推进与近中期方案</span></a>
+<a class="sb-item" href="ch04.html"><span class="sb-num">04</span><span class="sb-t">先进推进理论</span></a>
+<a class="sb-item" href="ch05.html"><span class="sb-num">05</span><span class="sb-t">星际航行工程</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第三部分 · 生命保障与人体工程</div>
+<a class="sb-item current" href="ch06.html"><span class="sb-num">06</span><span class="sb-t">封闭生态生命保障系统（CELSS）</span></a>
+<a class="sb-item" href="ch07.html"><span class="sb-num">07</span><span class="sb-t">太空医学</span></a>
+<a class="sb-item" href="ch08.html"><span class="sb-num">08</span><span class="sb-t">食品与营养</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第四部分 · 栖息地与基础设施</div>
+<a class="sb-item" href="ch09.html"><span class="sb-num">09</span><span class="sb-t">栖息地结构设计</span></a>
+<a class="sb-item" href="ch10.html"><span class="sb-num">10</span><span class="sb-t">能源系统</span></a>
+<a class="sb-item" href="ch11.html"><span class="sb-num">11</span><span class="sb-t">通信与导航</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第五部分 · 目的地与殖民方案</div>
+<a class="sb-item" href="ch12.html"><span class="sb-num">12</span><span class="sb-t">月球</span></a>
+<a class="sb-item" href="ch13.html"><span class="sb-num">13</span><span class="sb-t">火星</span></a>
+<a class="sb-item" href="ch14.html"><span class="sb-num">14</span><span class="sb-t">小行星与太空殖民地</span></a>
+<a class="sb-item" href="ch15.html"><span class="sb-num">15</span><span class="sb-t">外太阳系与冰卫星</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第六部分 · 材料与制造</div>
+<a class="sb-item" href="ch16.html"><span class="sb-num">16</span><span class="sb-t">太空材料科学</span></a>
+<a class="sb-item" href="ch17.html"><span class="sb-num">17</span><span class="sb-t">太空制造与原位资源利用</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第七部分 · 社会、文化与治理</div>
+<a class="sb-item" href="ch18.html"><span class="sb-num">18</span><span class="sb-t">太空治理与法律框架</span></a>
+<a class="sb-item" href="ch19.html"><span class="sb-num">19</span><span class="sb-t">太空经济学</span></a>
+<a class="sb-item" href="ch20.html"><span class="sb-num">20</span><span class="sb-t">太空文化演化</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第八部分 · 前沿与推测性技术</div>
+<a class="sb-item" href="ch21.html"><span class="sb-num">21</span><span class="sb-t">脑机接口与人类增强</span></a>
+<a class="sb-item" href="ch22.html"><span class="sb-num">22</span><span class="sb-t">AI治理与超级智能</span></a>
+<a class="sb-item" href="ch23.html"><span class="sb-num">23</span><span class="sb-t">意识上传与数字存在</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">附录 · 参考数据</div>
+<a class="sb-item" href="appA.html"><span class="sb-num">A</span><span class="sb-t">A 物理常数与换算</span></a>
+<a class="sb-item" href="appB.html"><span class="sb-num">B</span><span class="sb-t">B 太阳系天体参数</span></a>
+<a class="sb-item" href="appC.html"><span class="sb-num">C</span><span class="sb-t">C 推进系统对比</span></a>
+<a class="sb-item" href="appD.html"><span class="sb-num">D</span><span class="sb-t">D 辐射与屏蔽</span></a>
+<a class="sb-item" href="appE.html"><span class="sb-num">E</span><span class="sb-t">E 术语表（中英对照）</span></a>
+<a class="sb-item" href="appF.html"><span class="sb-num">F</span><span class="sb-t">F 参考文献与推荐阅读</span></a>
+</div>
+</nav><main class="content"><article class="article"><div class="crumb"><span class="crumb-part">第三部分 · 生命保障与人体工程</span><span class="crumb-sep">/</span><span class="crumb-ch">CHAPTER 06</span></div><div class="ch-head"><div class="ch-num">06</div><h1 class="ch-title">封闭生态生命保障系统（CELSS）</h1></div><div class="article-body"><blockquote>
+<p>面向航天工程、物理学、生物学等相关专业背景读者。涵盖当前可行技术与理论/科幻级前瞻技术。</p>
+</blockquote>
+<hr />
+<p>太空移民的核心挑战不仅是到达目的地，更是让人类在太空环境中长期生存。本部分系统分析封闭生态系统、太空医学和食品营养的工程与生物学问题。</p>
+<blockquote>
+<p><strong>章首导语</strong></p>
+<p>人是一个持续消耗物质流：每人每天约消耗 0.84 kg O₂、2.5 kg 水和 1.8 kg 食物，并排出近似质量的废物。若全部依赖地球补给，一次 6 人火星任务的消耗品质量将达到数十吨，运输成本不可承受。封闭生态生命保障系统（Controlled Ecological Life Support System, CELSS）的目标是把这条开放的物质流闭合成循环：用物理化学手段再生氧气与水，用生物组件生产食物并深度闭环碳、氮元素。本章先给出物理化学生命保障的成熟工程方案（ISS 已飞行验证，TRL 7–9），再讨论生物再生组件（微藻、高等植物，TRL 3–6）与混合架构的物质闭环率建模，最后覆盖痕量污染物与废物处理这两个决定系统能否长期稳定运行的"短板"。半个世纪的地面封闭实验（BIOS-3、Biosphere 2、MELiSSA）证明：闭环的瓶颈不在单项技术，而在生态系统的长期稳定性。本章的关键结论：近期可行的是"物理化学为主、生物为辅"的混合架构，水闭环率可达 98% 以上；食物生产则需与能源预算联合设计（植物光照负荷详见第10章）。</p>
+</blockquote>
+<h3 id="sec-1">6.1 物理化学再生式生命保障</h3>
+<h3 id="sec-2">6.1.1 系统架构</h3>
+<p>物理化学再生式生命保障系统（Physicochemical Regenerative Life Support System）通过化学反应和物理过程实现大气和水的再生，不依赖生物组件。</p>
+<p><strong>核心子系统</strong>：</p>
+<pre><code>乘员 → CO₂ + H₂O + 废物
+         ↓
+    CO₂去除（分子筛/Sabatier/Bosch）
+         ↓
+    O₂生成（水电解）
+         ↓
+    水回收（多级处理）
+         ↓
+    返回乘员
+</code></pre>
+<p><strong>物质平衡方程</strong>（每人每天）：</p>
+<table>
+<thead>
+<tr>
+<th>输入</th>
+<th>质量 (kg/day)</th>
+<th>输出</th>
+<th>质量 (kg/day)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>O₂</td>
+<td>0.84</td>
+<td>CO₂</td>
+<td>1.00</td>
+</tr>
+<tr>
+<td>H₂O</td>
+<td>2.50</td>
+<td>H₂O（汗/尿/呼吸）</td>
+<td>2.50</td>
+</tr>
+<tr>
+<td>食物</td>
+<td>1.80</td>
+<td>固体废物</td>
+<td>0.15</td>
+</tr>
+<tr>
+<td><strong>总计</strong></td>
+<td><strong>5.14</strong></td>
+<td><strong>总计</strong></td>
+<td><strong>3.65</strong></td>
+</tr>
+</tbody>
+</table>
+<p>质量差（5.14 - 3.65 = 1.49 kg/day）为食物中的氧结合水，通过代谢释放。</p>
+<h3 id="sec-3">6.1.2 CO₂去除与O₂再生</h3>
+<p><strong>（1）Sabatier反应</strong></p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.297em;vertical-align:-0.15em;"></span><span class="mord">4</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel x-arrow"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.147em;"><span style="top:-3.322em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.00773em;">R</span><span class="mord mathnormal mtight">u</span><span class="mord mtight">/</span><span class="mord mathnormal mtight">A</span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3173em;"><span style="top:-2.357em;margin-left:-0.0197em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3173em;"><span style="top:-2.357em;margin-left:-0.0278em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span><span class="mpunct mtight">,</span><span class="mord mtight">300</span><span class="mbin mtight">−</span><span class="mord mtight">400°</span><span class="mord mathnormal mtight" style="margin-right:0.07153em;">C</span></span></span></span><span class="svg-align" style="top:-2.689em;"><span class="pstrut" style="height:2.7em;"></span><span class="hide-tail" style="height:0.522em;min-width:1.469em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.011em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord">2</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span></span></span></span></span></p>
+<ul>
+<li>反应热：ΔH = -165 kJ/mol（放热）</li>
+<li>催化剂：钌/氧化铝（Ru/Al₂O₃）或镍基</li>
+<li>H₂来源：水电解</li>
+<li>产物：CH₄（排放或储存）+ H₂O（回收）</li>
+</ul>
+<p><strong>物质平衡</strong>（每人每天）：</p>
+<ul>
+<li>输入：1.00 kg CO₂ + 0.23 kg H₂（来自电解）</li>
+<li>输出：0.36 kg CH₄ + 0.91 kg H₂O</li>
+<li>净O₂回收率：~50%（CO₂中的氧部分回收为H₂O，电解后释放O₂）</li>
+</ul>
+<p><strong>工程实现</strong>：</p>
+<ul>
+<li>ISS Sabatier反应器：处理 ~1 kg CO₂/day，H₂O回收率 ~85%</li>
+<li>火星任务扩展：需要处理 ~1.5 kg CO₂/day（更高代谢率或更多乘员）</li>
+<li>挑战：催化剂寿命（&gt;2年连续运行）、反应器启停瞬态、微量污染物中毒</li>
+</ul>
+<p><strong>（2）Bosch反应</strong></p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.297em;vertical-align:-0.15em;"></span><span class="mord">2</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel x-arrow"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.147em;"><span style="top:-3.322em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">F</span><span class="mord mathnormal mtight">e</span><span class="mord mtight">/</span><span class="mord mathnormal mtight" style="margin-right:0.07153em;">C</span><span class="mord mathnormal mtight">o</span><span class="mord cjk_fallback mtight">催化剂</span><span class="mpunct mtight">,</span><span class="mord mtight">600</span><span class="mbin mtight">−</span><span class="mord mtight">700°</span><span class="mord mathnormal mtight" style="margin-right:0.07153em;">C</span></span></span></span><span class="svg-align" style="top:-2.689em;"><span class="pstrut" style="height:2.7em;"></span><span class="hide-tail" style="height:0.522em;min-width:1.469em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.011em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord">2</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span></span></span></span></span></p>
+<ul>
+<li>优势：直接产生固态碳（无CH₄排放），O₂回收率 ~100%</li>
+<li>挑战：反应温度高（~650°C）、催化剂失活（碳沉积）、反应速率慢</li>
+<li>应用：长期任务（火星表面基地）的CO₂还原</li>
+</ul>
+<p><strong>（3）水电解</strong></p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2503em;vertical-align:-0.15em;"></span><span class="mord">2</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel x-arrow"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1003em;"><span style="top:-3.322em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"><span class="mord cjk_fallback mtight">电解</span></span></span></span><span class="svg-align" style="top:-2.689em;"><span class="pstrut" style="height:2.7em;"></span><span class="hide-tail" style="height:0.522em;min-width:1.469em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.011em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord">2</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+<ul>
+<li>能量需求：237 kJ/mol H₂O（理论），实际 ~280-320 kJ/mol（过电位损失）</li>
+<li>每人每天O₂需求 0.84 kg → 电解 ~0.9 kg H₂O → 耗电 ~1.5 kWh/day</li>
+<li>技术：质子交换膜（PEM）电解，ISS已验证（Oxygen Generation Assembly）</li>
+</ul>
+<p><strong>（4）分子筛CO₂去除</strong></p>
+<ul>
+<li>Zeolite 13X或LiX分子筛：物理吸附CO₂</li>
+<li>循环：吸附（低温/高压）→ 脱附（高温/真空）</li>
+<li>ISS应用：CDRA（Carbon Dioxide Removal Assembly），处理 ~4 kg CO₂/day（4人乘组）</li>
+<li>局限：仅去除CO₂，不再生O₂（需配合Sabatier或电解）</li>
+</ul>
+<p><strong>（5）Sabatier与Bosch反应的工程对比</strong></p>
+<p>两条 CO₂ 还原路径的热力学与工程特性差异显著，选择取决于任务时长与氢源供给：</p>
+<table>
+<thead>
+<tr>
+<th>对比项</th>
+<th>Sabatier</th>
+<th>Bosch</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>反应温度</td>
+<td>300–400 °C</td>
+<td>600–700 °C</td>
+</tr>
+<tr>
+<td>催化剂</td>
+<td>Ru/Al₂O₃（或镍基）</td>
+<td>Fe、Co、Ni 基</td>
+</tr>
+<tr>
+<td>单程转化率</td>
+<td>~95%（化学计量比进料）</td>
+<td>~15–25%（受热力学与碳沉积限制）</td>
+</tr>
+<tr>
+<td>O₂净回收率</td>
+<td>~50%（CH₄中的氧未回收）</td>
+<td>理论 ~100%</td>
+</tr>
+<tr>
+<td>副产物</td>
+<td>CH₄（气体，需排放或利用）</td>
+<td>固态碳（需定期清出反应器）</td>
+</tr>
+<tr>
+<td>飞行验证</td>
+<td>ISS 在轨运行（TRL 7–8）</td>
+<td>仅地面原型（TRL 3–4）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>工程权衡要点</strong>：</p>
+<ul>
+<li><strong>氢成本是核心变量</strong>：Sabatier 每还原 1 kg CO₂ 需 ~0.23 kg H₂，Bosch 需 ~0.09 kg，但 Bosch 单程转化率低，未反应气体须循环压缩，实际 H₂ 消耗与功耗优势被削弱。</li>
+<li><strong>副产物处置决定架构</strong>：Sabatier 的 CH₄ 在 ISS 上直接排空（损失的氧约等于 CH₄ 中所含氧）；火星基地可将 CH₄ 导入甲烷氧化菌反应器生产单细胞蛋白（见第8章 8.2.2 节），把"废气"转化为食物，实现碳的二次利用。Bosch 的固态碳可封存或作材料填料，但反应器需设计碳刮除与周期性重启机构，这是其工程化的主要障碍。</li>
+<li><strong>方案选择判据</strong>：3 年以内的任务（如火星往返）优先 Sabatier——成熟度高、维护简单；表面永久基地（&gt;5 年、有原位 H₂ 供给）可引入 Bosch 提升 O₂ 闭环率至 ~90% 以上。</li>
+</ul>
+<h3 id="sec-4">6.1.3 水回收系统</h3>
+<p><strong>多级处理链</strong>：</p>
+<pre><code>尿液 → 预处理（酸化防沉淀）→ 蒸馏/膜分离 → 催化氧化 → 离子交换 → 产品水
+         ↓
+汗液/冷凝水 → 过滤 → 催化氧化 → 离子交换 → 产品水
+         ↓
+灰水（洗涤水）→ 过滤 → 生物处理 → 膜过滤 → 产品水
+</code></pre>
+<p><strong>ISS水回收系统（Water Recovery System, WRS）</strong>：</p>
+<ul>
+<li>尿液处理：蒸馏 + 催化氧化（Thermoelectric Integrated Membrane Subsystem, TIMS）</li>
+<li>冷凝水处理：过滤 + 离子交换</li>
+<li>回收率：~93-98%（目标 &gt;98%）</li>
+<li>产品水质量：优于地球饮用水标准</li>
+</ul>
+<p><strong>火星任务水回收挑战</strong>：</p>
+<ul>
+<li>回收率需 &gt;99%（长期任务物质闭环要求）</li>
+<li>固体废物（粪便）中的水分回收：需要干燥/热解处理</li>
+<li>痕量污染物控制：长期运行下VOCs、氨、尿素积累</li>
+<li>微生物控制：生物膜形成、内毒素释放</li>
+</ul>
+<h3 id="sec-5">6.2 生物再生式生命保障</h3>
+<h3 id="sec-6">6.2.1 微藻生物反应器</h3>
+<p><strong>微藻的优势</strong>：</p>
+<ul>
+<li>高光合效率：C3植物 ~1-2%，微藻 ~5-10%（理论上限 ~11%）</li>
+<li>快速生长：倍增时间 ~6-24小时（vs. 作物数周-数月）</li>
+<li>高蛋白质含量：螺旋藻 ~60-70%蛋白，小球藻 ~50-60%蛋白</li>
+<li>可食用：部分种类可直接作为食物来源</li>
+</ul>
+<p><strong>光合反应</strong>（简化）：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.2503em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel x-arrow"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1003em;"><span style="top:-3.322em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"><span class="mord cjk_fallback mtight">光能</span></span></span></span><span class="svg-align" style="top:-2.689em;"><span class="pstrut" style="height:2.7em;"></span><span class="hide-tail" style="height:0.522em;min-width:1.469em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.011em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+<p>每人每天CO₂固定需求 ~1.0 kg → 需要微藻生物量 ~2-3 kg（干重）</p>
+<p><strong>系统设计</strong>：</p>
+<ul>
+<li>反应器类型：平板光生物反应器（PBR）或管式PBR</li>
+<li>光照：LED（红光660 nm + 蓝光450 nm，光合有效辐射PAR）</li>
+<li>光强：~200-400 μmol photons/m²/s</li>
+<li>CO₂供应：直接通入乘员呼出气体（需控制CO₂浓度 &lt;1%）</li>
+<li>收获：连续离心或膜过滤</li>
+</ul>
+<p><strong>工程挑战</strong>：</p>
+<ul>
+<li>光穿透限制：高细胞密度下光衰减 → 反应器厚度限制 ~5-10 cm</li>
+<li>温度控制：光合产热 + LED散热 → 需要冷却系统</li>
+<li>污染控制：细菌、真菌、噬藻体污染风险</li>
+<li>长期稳定性：藻种退化、群落演替</li>
+</ul>
+<h3 id="sec-7">6.2.2 高等植物气培系统</h3>
+<p><strong>气培（Aeroponics）vs. 水培（Hydroponics）</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>气培</th>
+<th>水培</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>根系环境</td>
+<td>雾状营养液</td>
+<td>液体营养液</td>
+</tr>
+<tr>
+<td>氧气供应</td>
+<td>优（空气接触）</td>
+<td>需充氧</td>
+</tr>
+<tr>
+<td>水利用效率</td>
+<td>高（~95%回收）</td>
+<td>中（~80%回收）</td>
+</tr>
+<tr>
+<td>生长速率</td>
+<td>快（氧气充足）</td>
+<td>中</td>
+</tr>
+<tr>
+<td>系统复杂度</td>
+<td>高（喷嘴堵塞风险）</td>
+<td>中</td>
+</tr>
+<tr>
+<td>质量/体积</td>
+<td>低</td>
+<td>中</td>
+</tr>
+</tbody>
+</table>
+<p><strong>NASA Veggie系统</strong>（ISS蔬菜生产）：</p>
+<ul>
+<li>作物：生菜、萝卜、辣椒、番茄</li>
+<li>基质：Arcillite（煅烧粘土颗粒）</li>
+<li>光照：LED（红:蓝 = 6:1，PPFD ~300 μmol/m²/s）</li>
+<li>生产周期：生菜 ~33天（播种到收获）</li>
+<li>产量：~0.5-1.0 kg鲜重/m²/月</li>
+</ul>
+<p><strong>火星基地植物生产规模估算</strong>：</p>
+<p>每人每天食物需求 ~1.8 kg（鲜重，含水）→ 干物质 ~0.5 kg</p>
+<p>假设平均作物产量 ~1.0 kg干物质/m²/月（优化条件下）：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">cro</span><span class="mord mathnormal mtight">p</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.0074em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1.0</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">0.5</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">30</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1141em;vertical-align:-0.25em;"></span><span class="mord">15</span><span class="mord"><span class="mord text"><span class="mord"> m</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mord">/</span><span class="mord text"><span class="mord cjk_fallback">人</span></span></span></span></span></span></p>
+<p>考虑路径、设备、轮作：实际面积 ~30-50 m²/人</p>
+<p>对6人乘组：~180-300 m² 植物生产面积（~2000-3000 ft²）</p>
+<p><strong>光照功率需求</strong>：</p>
+<ul>
+<li>PAR光效：~2.5 μmol/J（LED）</li>
+<li>每日光照：16小时</li>
+<li>光强：300 μmol/m²/s</li>
+<li>面积：200 m²</li>
+</ul>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">g</span><span class="mord mathnormal mtight">h</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.0908em;vertical-align:-0.7693em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2.5</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">6</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">16</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">300</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">200</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">16</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">3600</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7693em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord">17</span><span class="mord text"><span class="mord"> kW</span></span></span></span></span></span></p>
+<p>这是显著的电力负荷（占火星基地总功率 ~10-20%）。</p>
+<h3 id="sec-8">6.2.3 历史封闭生态实验：数据与教训</h3>
+<p>生物再生式生命保障的可行性不能只靠实验室光合数据推断——封闭系统的失稳往往来自意料之外的生物地球化学过程。过去半个世纪的四个大型地面实验提供了不可替代的证据：</p>
+<p><strong>（1）BIOS-3（苏联/俄罗斯，1972–1984）</strong></p>
+<p>位于克拉斯诺亚尔斯克（Krasnoyarsk）的地下密闭设施，4 个舱室、总容积 ~315 m³。最长乘员实验 180 天（3 人）。小麦（水培）与小球藻（Chlorella）气体交换回路实现了 O₂ 与水的基本闭环：水回收率 ~85–90%，O₂/CO₂ 平衡由小麦光合维持；但食物自给率仅 ~30–50%，其余依赖外部补给。教训：<strong>藻类单一栽培的稳定性差</strong>（群落退化需频繁重接种），且人体食物需求无法仅靠谷物满足。</p>
+<p><strong>（2）Biosphere 2（美国，1991–1993）</strong></p>
+<p>亚利桑那州 1.27 公顷、容积 ~200,000 m³ 的玻璃钢结构，8 人驻留两次（第一次 2 年）。最深刻的教训是<strong>大气失控</strong>：O₂ 浓度在 16 个月内从 21% 降至 ~14.2%（相当于海拔 4,000 m 的分压），原因事后查明为农业土壤中过量有机质的微生物呼吸，以及混凝土结构碳酸化固碳吸收 O₂；CO₂ 则呈现剧烈日变化与季节波动。此外食物生产不足导致乘员平均减重 ~10–18%，并出现严重的团队冲突。教训：<strong>任何未计入的碳汇/碳源（建材、土壤有机质）都足以破坏气体平衡</strong>；大型生物圈的缓冲大，但一旦出现偏差几乎无法纠正。</p>
+<p><strong>（3）MELiSSA（ESA，1987 至今）</strong></p>
+<p>欧洲空间局的"替代微生态生命保障系统"（Micro-Ecological Life Support System Alternative）采用工程化的分舱回路而非整体生态圈：I 室（光异养降解，处理有机废物）→ II 室（硝化）→ III 室（螺旋藻产 O₂ 与蛋白）→ IV 室（高等植物），乘员居中。地面设施 MELiSSA Pilot Plant（巴塞罗那）持续运行，其上游废水处理单元 CUBES 已在 ISS 上开展技术验证（2019 年起）。教训：<strong>工程化分舱比整体生态圈可控</strong>，但接口（物质流匹配、瞬态响应）成为新的设计难点。</p>
+<p><strong>（4）月宫一号（中国，北京航空航天大学，2014 至今）</strong></p>
+<p>三舱结构（植物舱面积约 160 m²），"月宫365"实验（2017–2018）实现 3 人乘组连续密闭 370 天，食物自给率 ~100%（以小麦、蔬菜为主），水回收率 ~99%，O₂/CO₂ 由植物光合平衡。这是迄今时间最长、闭合度最高的"人-植物"密闭实验。教训：<strong>高等植物主导的气体回路可行，但波动大</strong>——作物轮换期（播种/收获间隙）光合能力骤降，需物理化学缓冲（储 O₂ 罐与 CO₂ 去除装置）兜底。</p>
+<p><strong>综合教训</strong>（对未来火星基地设计）：</p>
+<ol>
+<li>气体平衡必须把所有碳源碳汇计入预算，包括建材、土壤基质与微生物呼吸；</li>
+<li>生物组件的瞬态（作物轮换、藻种退化）必须由物理化学系统缓冲，不存在"纯生物"的可靠方案；</li>
+<li>密闭时间越长，微生物污染与心理因素的影响越大，系统设计需预留乘员干预手段；</li>
+<li>食物自给率与光照功率强耦合，须与能源系统联合优化（能源供给详见第10章）。</li>
+</ol>
+<h3 id="sec-9">6.3 混合系统架构与物质闭环率建模</h3>
+<h3 id="sec-10">6.3.1 混合系统设计</h3>
+<p><strong>物理化学 + 生物再生混合</strong>：</p>
+<pre><code>物理化学子系统（基础负荷）：
+- Sabatier/Bosch：CO₂还原，O₂再生
+- 水电解：O₂生产
+- 水回收：多级处理
+
+生物再生子系统（补充负荷）：
+- 微藻反应器：CO₂去除 + 蛋白质生产
+- 高等植物：食物生产 + 心理效益
+- 废物处理：有机废物生物降解
+</code></pre>
+<p><strong>优势</strong>：</p>
+<ul>
+<li>冗余：物理化学备份确保生物系统故障时生存</li>
+<li>效率：生物系统处理低浓度CO₂和有机废物更高效</li>
+<li>食物生产：减少地球补给依赖</li>
+<li>心理效益：植物照料改善乘员心理健康</li>
+</ul>
+<h3 id="sec-11">6.3.2 物质闭环率建模</h3>
+<p><strong>闭环率定义</strong>：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">η</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">c</span><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span><span class="mord mathnormal mtight">os</span><span class="mord mathnormal mtight">u</span><span class="mord mathnormal mtight">re</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.1606em;vertical-align:-1.053em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1076em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">o</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span><span class="mord mtight" style="margin-right:0.02778em;">_</span><span class="mord mathnormal mtight">co</span><span class="mord mathnormal mtight">n</span><span class="mord mathnormal mtight">s</span><span class="mord mathnormal mtight">u</span><span class="mord mathnormal mtight">m</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.367em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">recyc</span><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.053em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8056em;vertical-align:-0.0556em;"></span><span class="mord">100%</span></span></span></span></span></p>
+<p><strong>ISS当前闭环率</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>物质</th>
+<th>闭环率</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>O₂</td>
+<td>~50%</td>
+<td>Sabatier + 电解</td>
+</tr>
+<tr>
+<td>H₂O</td>
+<td>~93-98%</td>
+<td>尿液/冷凝水回收</td>
+</tr>
+<tr>
+<td>食物</td>
+<td>~0%</td>
+<td>全部从地球补给</td>
+</tr>
+<tr>
+<td><strong>总质量</strong></td>
+<td><strong>~30-40%</strong></td>
+<td>食物占质量比例大</td>
+</tr>
+</tbody>
+</table>
+<p><strong>火星任务目标闭环率</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>物质</th>
+<th>目标闭环率</th>
+<th>技术路径</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>O₂</td>
+<td>&gt;95%</td>
+<td>Sabatier + 电解 + 植物</td>
+</tr>
+<tr>
+<td>H₂O</td>
+<td>&gt;99%</td>
+<td>多级回收 + 废物干燥</td>
+</tr>
+<tr>
+<td>食物</td>
+<td>&gt;80%</td>
+<td>植物生产 + 细胞培养肉</td>
+</tr>
+<tr>
+<td><strong>总质量</strong></td>
+<td><strong>&gt;90%</strong></td>
+<td>混合系统</td>
+</tr>
+</tbody>
+</table>
+<p><strong>物质损失途径</strong>：</p>
+<ol>
+<li><strong>不可逆化学反应</strong>：CO₂ → CH₄（Sabatier）排放</li>
+<li><strong>固体废物</strong>：粪便、不可食用植物部分（需热解或堆肥）</li>
+<li><strong>泄漏</strong>：舱体密封泄漏（微流星穿孔、密封老化）</li>
+<li><strong>痕量积累</strong>：VOCs、CO、H₂在大气中积累（需催化氧化去除）</li>
+</ol>
+<h3 id="sec-12">6.4 大气痕量污染物控制</h3>
+<h3 id="sec-13">6.4.1 污染物来源与种类</h3>
+<p><strong>主要痕量污染物</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>代表物质</th>
+<th>来源</th>
+<th>健康限值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VOCs</td>
+<td>甲醛、苯、甲苯</td>
+<td>材料出气、设备</td>
+<td>0.01-0.1 ppm</td>
+</tr>
+<tr>
+<td>CO</td>
+<td>一氧化碳</td>
+<td>设备燃烧、人体代谢</td>
+<td>9 ppm（8小时TWA）</td>
+</tr>
+<tr>
+<td>H₂</td>
+<td>氢气</td>
+<td>电解、Sabatier</td>
+<td>爆炸下限 4%</td>
+</tr>
+<tr>
+<td>NH₃</td>
+<td>氨</td>
+<td>人体代谢、废物</td>
+<td>0.5 ppm</td>
+</tr>
+<tr>
+<td>硅氧烷</td>
+<td>D4、D5</td>
+<td>个人护理产品</td>
+<td>0.01 ppm</td>
+</tr>
+</tbody>
+</table>
+<p><strong>ISS大气监测数据</strong>：</p>
+<ul>
+<li>总VOCs：~0.1-1 ppm（随任务时长增加）</li>
+<li>CO：~1-5 ppm（正常），偶尔 &gt;10 ppm（设备故障）</li>
+<li>甲醛：~0.01-0.05 ppm</li>
+</ul>
+<h3 id="sec-14">6.4.2 痕量污染物去除技术</h3>
+<p><strong>（1）催化氧化</strong></p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mord mathnormal" style="margin-right:0.07153em;">OC</span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.297em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel x-arrow"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.147em;"><span style="top:-3.322em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"><span class="mord mathnormal mtight">Pt</span><span class="mord mtight">/</span><span class="mord mathnormal mtight" style="margin-right:0.13889em;">P</span><span class="mord mathnormal mtight">d</span><span class="mord cjk_fallback mtight">催化剂</span><span class="mpunct mtight">,</span><span class="mord mtight">200</span><span class="mbin mtight">−</span><span class="mord mtight">400°</span><span class="mord mathnormal mtight" style="margin-right:0.07153em;">C</span></span></span></span><span class="svg-align" style="top:-2.689em;"><span class="pstrut" style="height:2.7em;"></span><span class="hide-tail" style="height:0.522em;min-width:1.469em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.011em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span></span></span></span></span></p>
+<ul>
+<li>技术：Thermal Oxidizer（ISS应用）或 Catalytic Oxidizer</li>
+<li>去除效率：&gt;95%（对大多数VOCs）</li>
+<li>挑战：能耗高（需加热到200-400°C）、催化剂中毒（硅氧烷）</li>
+</ul>
+<p><strong>（2）吸附</strong></p>
+<ul>
+<li>活性炭：广谱吸附VOCs，需定期更换或再生</li>
+<li>分子筛：选择性吸附特定分子（如CO₂、H₂O）</li>
+<li>局限：吸附容量有限，不适合高浓度</li>
+</ul>
+<p><strong>（3）生物过滤</strong></p>
+<ul>
+<li>原理：微生物降解VOCs</li>
+<li>应用：概念阶段，适合长期火星基地</li>
+<li>优势：低能耗、可再生</li>
+<li>挑战：启动慢、对某些VOCs无效、湿度控制</li>
+</ul>
+<h3 id="sec-15">6.5 水回收与废物处理</h3>
+<h3 id="sec-16">6.5.1 固体废物处理</h3>
+<p><strong>废物分类</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>质量占比</th>
+<th>处理方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>粪便</td>
+<td>~30%</td>
+<td>干燥/热解/堆肥</td>
+</tr>
+<tr>
+<td>食物残渣</td>
+<td>~25%</td>
+<td>堆肥/饲料转化</td>
+</tr>
+<tr>
+<td>不可食用植物部分</td>
+<td>~20%</td>
+<td>堆肥/热解</td>
+</tr>
+<tr>
+<td>纸巾/织物</td>
+<td>~15%</td>
+<td>焚烧/热解</td>
+</tr>
+<tr>
+<td>塑料/包装</td>
+<td>~10%</td>
+<td>热解/回收</td>
+</tr>
+</tbody>
+</table>
+<p><strong>热解（Pyrolysis）</strong>：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1191em;vertical-align:-0.011em;"></span><span class="mord cjk_fallback">有机废物</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel x-arrow"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1081em;"><span style="top:-3.322em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"><span class="mord mtight">500</span><span class="mbin mtight">−</span><span class="mord mtight">800°</span><span class="mord mathnormal mtight" style="margin-right:0.07153em;">C</span><span class="mpunct mtight">,</span><span class="mord cjk_fallback mtight">缺氧</span></span></span></span><span class="svg-align" style="top:-2.689em;"><span class="pstrut" style="height:2.7em;"></span><span class="hide-tail" style="height:0.522em;min-width:1.469em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.011em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord cjk_fallback">生物炭</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord cjk_fallback">合成气</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback">生物油</span></span></span></span></span></p>
+<ul>
+<li>产物：</li>
+<li>生物炭：土壤改良剂（火星基地）或碳储存</li>
+<li>合成气（CO + H₂）：燃料或化学原料</li>
+<li>生物油：进一步精炼</li>
+<li>优势：减容 ~90%、回收碳和能量</li>
+<li>挑战：设备复杂度、焦油处理</li>
+</ul>
+<p><strong>堆肥（Composting）</strong>：</p>
+<ul>
+<li>原理：好氧微生物降解有机物</li>
+<li>条件：C/N比 ~25-30:1，湿度 ~50-60%，温度 ~55-65°C</li>
+<li>产物：稳定腐殖质（土壤改良剂）</li>
+<li>应用：火星基地植物生产系统的有机肥料</li>
+</ul>
+<h3 id="sec-17">6.5.2 尿液处理深化</h3>
+<p><strong>尿液组成</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>成分</th>
+<th>浓度 (g/L)</th>
+<th>每人每天 (g)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>尿素</td>
+<td>20</td>
+<td>30</td>
+</tr>
+<tr>
+<td>肌酐</td>
+<td>1.5</td>
+<td>2.3</td>
+</tr>
+<tr>
+<td>尿酸</td>
+<td>0.5</td>
+<td>0.75</td>
+</tr>
+<tr>
+<td>Na⁺</td>
+<td>3-5</td>
+<td>4.5-7.5</td>
+</tr>
+<tr>
+<td>K⁺</td>
+<td>1.5-3</td>
+<td>2.3-4.5</td>
+</tr>
+<tr>
+<td>Cl⁻</td>
+<td>3-6</td>
+<td>4.5-9</td>
+</tr>
+</tbody>
+</table>
+<p><strong>处理技术</strong>：</p>
+<ol>
+<li><strong>蒸馏</strong>：ISS当前方法，能耗高（~1 kWh/L）</li>
+<li><strong>膜分离</strong>：反渗透（RO）或正向渗透（FO），能耗低</li>
+<li><strong>生物处理</strong>：硝化/反硝化去除氮（适合长期基地）</li>
+</ol>
+<p><strong>水回收率提升</strong>：</p>
+<ul>
+<li>当前ISS：~93-98%</li>
+<li>目标（火星任务）：&gt;99%</li>
+<li>技术路径：尿液蒸馏 + 冷凝水回收 + 膜浓缩液热解</li>
+</ul>
+<p><strong>本章小结</strong></p>
+<p>CELSS 的可行性已由 ISS 的工程实践部分证实：水闭环率 93–98%、O₂ 再生 ~50% 均是飞行验证过的数字。但食物闭环率几乎为零，这是火星任务物质预算的最大缺口。Sabatier 反应器（TRL 7–8）是近期 O₂ 再生的主力，Bosch 反应提供更高的理论氧回收率但工程成熟度不足；生物组件（微藻、气培作物）贡献食物与心理价值，代价是 ~17 kW 级的光照电力负荷与 ~30–50 m²/人 的种植面积。BIOS-3、Biosphere 2 与月宫一号的历史实验一致表明：单一技术路线都不可靠，物理化学缓冲加生物生产的混合架构，加上严格的碳收支核算，才是工程上站得住的方案。火星任务的设计目标是总质量闭环率 &gt;90%，其中水 &gt;99%、食物 &gt;80%。</p>
+<p><strong>关键参数速查表</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>典型值</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ISS 水回收率</td>
+<td>93–98%</td>
+<td>当前飞行验证的最高水平，火星任务需 &gt;99%</td>
+</tr>
+<tr>
+<td>水电解制氧能耗</td>
+<td>~1.5 kWh/人日</td>
+<td>0.84 kg O₂/day 的电力成本，PEM 电解已飞行验证</td>
+</tr>
+<tr>
+<td>Sabatier 反应温度</td>
+<td>300–400 °C</td>
+<td>Ru/Al₂O₃ 催化，ISS 在轨运行（TRL 7–8）</td>
+</tr>
+<tr>
+<td>Bosch 反应温度</td>
+<td>600–700 °C</td>
+<td>理论 O₂ 回收率 ~100%，仅地面原型（TRL 3–4）</td>
+</tr>
+<tr>
+<td>CDRA 处理能力</td>
+<td>~4 kg CO₂/day</td>
+<td>4 人乘组的分子筛 CO₂ 去除（ISS）</td>
+</tr>
+<tr>
+<td>微藻蛋白含量</td>
+<td>~60–70%（螺旋藻干重）</td>
+<td>倍增时间 ~6–24 h，光合效率 ~5–10%</td>
+</tr>
+<tr>
+<td>气培种植面积</td>
+<td>30–50 m²/人</td>
+<td>含路径、设备与轮作余量的食物生产需求</td>
+</tr>
+<tr>
+<td>植物光照功率</td>
+<td>~17 kW（6 人级，200 m²）</td>
+<td>占火星基地总功率 ~10–20%，需与能源系统联合设计</td>
+</tr>
+<tr>
+<td>ISS 总质量闭环率</td>
+<td>~30–40%</td>
+<td>食物几乎全部依赖地球补给所致</td>
+</tr>
+<tr>
+<td>火星任务目标闭环率</td>
+<td>&gt;90%（水 &gt;99%，食物 &gt;80%）</td>
+<td>混合架构（物理化学 + 生物再生）的设计目标</td>
+</tr>
+<tr>
+<td>月宫365 密闭时长</td>
+<td>370 天（3 人）</td>
+<td>迄今闭合度最高的"人-植物"实验，食物自给 ~100%</td>
+</tr>
+</tbody>
+</table>
+<hr /></div><div class="prevnext"><a class="pn pn-prev" href="ch05.html"><span class="pn-k">上一篇</span><span class="pn-t">第5章 星际航行工程</span></a><a class="pn pn-next" href="ch07.html"><span class="pn-k">下一篇</span><span class="pn-t">第7章 太空医学</span></a></div></article><footer class="foot"><span>未来太空移民技术手册 · 完整版 v2.0</span><span class="foot-mono">AD ASTRA PER ASPERA</span></footer></main>
+<aside class="toc"><div class="toc-title">本页目录</div>
+<a class="toc-h3" href="#sec-1">6.1 物理化学再生式生命保障</a>
+<a class="toc-h3" href="#sec-2">6.1.1 系统架构</a>
+<a class="toc-h3" href="#sec-3">6.1.2 CO₂去除与O₂再生</a>
+<a class="toc-h3" href="#sec-4">6.1.3 水回收系统</a>
+<a class="toc-h3" href="#sec-5">6.2 生物再生式生命保障</a>
+<a class="toc-h3" href="#sec-6">6.2.1 微藻生物反应器</a>
+<a class="toc-h3" href="#sec-7">6.2.2 高等植物气培系统</a>
+<a class="toc-h3" href="#sec-8">6.2.3 历史封闭生态实验：数据与教训</a>
+<a class="toc-h3" href="#sec-9">6.3 混合系统架构与物质闭环率建模</a>
+<a class="toc-h3" href="#sec-10">6.3.1 混合系统设计</a>
+<a class="toc-h3" href="#sec-11">6.3.2 物质闭环率建模</a>
+<a class="toc-h3" href="#sec-12">6.4 大气痕量污染物控制</a>
+<a class="toc-h3" href="#sec-13">6.4.1 污染物来源与种类</a>
+<a class="toc-h3" href="#sec-14">6.4.2 痕量污染物去除技术</a>
+<a class="toc-h3" href="#sec-15">6.5 水回收与废物处理</a>
+<a class="toc-h3" href="#sec-16">6.5.1 固体废物处理</a>
+<a class="toc-h3" href="#sec-17">6.5.2 尿液处理深化</a>
+</aside>
+</div>
+<script src="../search-index.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

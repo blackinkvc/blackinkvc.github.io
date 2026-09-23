@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第8章 食品与营养 · 未来太空移民技术手册</title>
+<meta name="description" content="未来太空移民技术手册 —— 面向专业读者的综合性太空殖民技术参考，涵盖推进、生保、栖息地、治理与前沿技术。">
+<link rel="icon" type="image/png" href="../assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script>(function(){try{var t=localStorage.getItem('smh-theme');if(!t)t='dark';document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="目录"><span></span><span></span><span></span></button>
+  <a class="brand" href="../index.html">
+    <img class="brand-icon" src="../assets/icon.png" alt="">
+    <span class="brand-zh">未来太空移民技术手册</span>
+    <span class="brand-en">SPACE SETTLEMENT HANDBOOK</span>
+  </a>
+  <div class="top-actions">
+    <button class="search-btn" id="searchBtn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg><span>检索</span><kbd>⌘K</kbd></button>
+    <button class="theme-btn" id="themeBtn" aria-label="切换主题"></button>
+  </div>
+</header>
+
+<div class="search-overlay" id="searchOverlay" hidden>
+  <div class="search-box">
+    <div class="search-head">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg>
+      <input id="searchInput" type="text" placeholder="检索全书：术语、参数、章节…" autocomplete="off">
+      <kbd>ESC</kbd>
+    </div>
+    <div class="search-results" id="searchResults"><div class="search-hint">输入关键词，检索 23 章正文与附录</div></div>
+  </div>
+</div>
+<div class="layout">
+<nav class="sidebar" id="sidebar">
+<div class="sb-group"><div class="sb-label">卷首</div>
+<a class="sb-item" href="intro.html"><span class="sb-num">◎</span><span class="sb-t">前言与导读</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第一部分 · 基础物理与宇宙环境</div>
+<a class="sb-item" href="ch01.html"><span class="sb-num">01</span><span class="sb-t">太空环境物理</span></a>
+<a class="sb-item" href="ch02.html"><span class="sb-num">02</span><span class="sb-t">天体物理与轨道力学</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第二部分 · 推进与运输系统</div>
+<a class="sb-item" href="ch03.html"><span class="sb-num">03</span><span class="sb-t">化学推进与近中期方案</span></a>
+<a class="sb-item" href="ch04.html"><span class="sb-num">04</span><span class="sb-t">先进推进理论</span></a>
+<a class="sb-item" href="ch05.html"><span class="sb-num">05</span><span class="sb-t">星际航行工程</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第三部分 · 生命保障与人体工程</div>
+<a class="sb-item" href="ch06.html"><span class="sb-num">06</span><span class="sb-t">封闭生态生命保障系统（CELSS）</span></a>
+<a class="sb-item" href="ch07.html"><span class="sb-num">07</span><span class="sb-t">太空医学</span></a>
+<a class="sb-item current" href="ch08.html"><span class="sb-num">08</span><span class="sb-t">食品与营养</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第四部分 · 栖息地与基础设施</div>
+<a class="sb-item" href="ch09.html"><span class="sb-num">09</span><span class="sb-t">栖息地结构设计</span></a>
+<a class="sb-item" href="ch10.html"><span class="sb-num">10</span><span class="sb-t">能源系统</span></a>
+<a class="sb-item" href="ch11.html"><span class="sb-num">11</span><span class="sb-t">通信与导航</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第五部分 · 目的地与殖民方案</div>
+<a class="sb-item" href="ch12.html"><span class="sb-num">12</span><span class="sb-t">月球</span></a>
+<a class="sb-item" href="ch13.html"><span class="sb-num">13</span><span class="sb-t">火星</span></a>
+<a class="sb-item" href="ch14.html"><span class="sb-num">14</span><span class="sb-t">小行星与太空殖民地</span></a>
+<a class="sb-item" href="ch15.html"><span class="sb-num">15</span><span class="sb-t">外太阳系与冰卫星</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第六部分 · 材料与制造</div>
+<a class="sb-item" href="ch16.html"><span class="sb-num">16</span><span class="sb-t">太空材料科学</span></a>
+<a class="sb-item" href="ch17.html"><span class="sb-num">17</span><span class="sb-t">太空制造与原位资源利用</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第七部分 · 社会、文化与治理</div>
+<a class="sb-item" href="ch18.html"><span class="sb-num">18</span><span class="sb-t">太空治理与法律框架</span></a>
+<a class="sb-item" href="ch19.html"><span class="sb-num">19</span><span class="sb-t">太空经济学</span></a>
+<a class="sb-item" href="ch20.html"><span class="sb-num">20</span><span class="sb-t">太空文化演化</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第八部分 · 前沿与推测性技术</div>
+<a class="sb-item" href="ch21.html"><span class="sb-num">21</span><span class="sb-t">脑机接口与人类增强</span></a>
+<a class="sb-item" href="ch22.html"><span class="sb-num">22</span><span class="sb-t">AI治理与超级智能</span></a>
+<a class="sb-item" href="ch23.html"><span class="sb-num">23</span><span class="sb-t">意识上传与数字存在</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">附录 · 参考数据</div>
+<a class="sb-item" href="appA.html"><span class="sb-num">A</span><span class="sb-t">A 物理常数与换算</span></a>
+<a class="sb-item" href="appB.html"><span class="sb-num">B</span><span class="sb-t">B 太阳系天体参数</span></a>
+<a class="sb-item" href="appC.html"><span class="sb-num">C</span><span class="sb-t">C 推进系统对比</span></a>
+<a class="sb-item" href="appD.html"><span class="sb-num">D</span><span class="sb-t">D 辐射与屏蔽</span></a>
+<a class="sb-item" href="appE.html"><span class="sb-num">E</span><span class="sb-t">E 术语表（中英对照）</span></a>
+<a class="sb-item" href="appF.html"><span class="sb-num">F</span><span class="sb-t">F 参考文献与推荐阅读</span></a>
+</div>
+</nav><main class="content"><article class="article"><div class="crumb"><span class="crumb-part">第三部分 · 生命保障与人体工程</span><span class="crumb-sep">/</span><span class="crumb-ch">CHAPTER 08</span></div><div class="ch-head"><div class="ch-num">08</div><h1 class="ch-title">食品与营养</h1></div><div class="article-body"><blockquote>
+<p><strong>章首导语</strong></p>
+<p>食物是生命保障三要素（O₂、水、食物）中闭环率最低的一项：ISS 上的食物闭环率为零，而食物恰恰占消耗品质量的最大份额。本章讨论两条互补的供给路线：太空农业（LED 光配方、气培/水培、根区微生物组）提供新鲜食物与心理价值，但受 ~30–50 m²/人 种植面积与 ~17 kW 级光照功率约束；细胞培养肉与微生物蛋白则以生物反应器方式生产高密度蛋白，摆脱种植面积的线性限制。营养学层面，太空环境提出两个地球上没有的问题：无 UVB 暴露下的维生素 D 合成缺失（火星表面条件更微妙），以及 3–5 年储存期内微量营养素的降解——辐照灭菌食品的保质期目标是 &gt;5 年。本章与第6章（物质闭环与能源耦合）、第7章（骨代谢与肌肉维持的营养支持）共同构成"人"的完整供给链；火星表面农业的原位资源条件（光照、大气、土壤）详见第13章。关键结论：首批火星任务的食物系统必然是"地球储备（辐照长寿命食品）+ 舱内生鲜补充 + 生物反应器蛋白"的三层结构，闭环率随基地电力能力增长而提高。</p>
+</blockquote>
+<h3 id="sec-1">8.1 太空农业</h3>
+<h3 id="sec-2">8.1.1 LED光谱优化</h3>
+<p><strong>光合有效辐射（PAR）</strong>：</p>
+<ul>
+<li>波长范围：400-700 nm</li>
+<li>植物吸收峰：叶绿素a（430, 662 nm），叶绿素b（453, 642 nm）</li>
+</ul>
+<p><strong>光谱组合优化</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>作物</th>
+<th>红光比例</th>
+<th>蓝光比例</th>
+<th>补充</th>
+<th>产量提升</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>生菜</td>
+<td>70%</td>
+<td>20%</td>
+<td>10%远红</td>
+<td>+20%</td>
+</tr>
+<tr>
+<td>番茄</td>
+<td>75%</td>
+<td>15%</td>
+<td>10% UV</td>
+<td>+15%</td>
+</tr>
+<tr>
+<td>小麦</td>
+<td>80%</td>
+<td>15%</td>
+<td>5%绿光</td>
+<td>+10%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>LED技术</strong>：</p>
+<ul>
+<li>效率：~2.5-3.0 μmol/J（当前商用）</li>
+<li>寿命：&gt;50,000小时</li>
+<li>可调性：独立控制红/蓝/远红/UV通道</li>
+<li>热管理：低辐射热，可近距离照射</li>
+</ul>
+<h3 id="sec-3">8.1.2 气培/水培系统</h3>
+<p><strong>气培优势（太空应用）</strong>：</p>
+<ul>
+<li>水利用效率：~95%（vs. 土壤 ~50%）</li>
+<li>生长速率：快20-30%（氧气充足）</li>
+<li>质量/体积：低（无土壤基质）</li>
+<li>自动化：易于监控和控制</li>
+</ul>
+<p><strong>系统设计</strong>：</p>
+<pre><code>营养液储槽 → 泵 → 喷嘴 → 根系雾室 → 回流 → 储槽
+         ↓
+    传感器（pH, EC, 温度, DO）→ 控制系统
+</code></pre>
+<p><strong>营养液管理</strong>：</p>
+<ul>
+<li>pH：5.5-6.5（大多数作物）</li>
+<li>电导率（EC）：1.0-2.5 mS/cm（作物依赖）</li>
+<li>溶解氧（DO）：&gt;6 mg/L</li>
+<li>温度：18-22°C</li>
+</ul>
+<h3 id="sec-4">8.1.3 根区微生物组</h3>
+<p><strong>植物-微生物互作</strong>：</p>
+<ul>
+<li>根际微生物：促进营养吸收（固氮、解磷）、抑制病原体</li>
+<li>菌根真菌：扩展根系吸收面积（P、Zn、Cu）</li>
+<li>植物促生菌（PGPR）：产生植物激素（IAA、GA）</li>
+</ul>
+<p><strong>太空应用</strong>：</p>
+<ul>
+<li>接种剂：特定微生物菌剂（如 Bacillus, Pseudomonas）</li>
+<li>功能：提高产量、减少肥料需求、生物防治</li>
+<li>挑战：封闭系统中微生物群落演替、病原体积累</li>
+</ul>
+<h3 id="sec-5">8.2 细胞培养肉与微生物蛋白</h3>
+<h3 id="sec-6">8.2.1 细胞培养肉</h3>
+<p><strong>原理</strong>：</p>
+<p>从动物提取干细胞，在生物反应器中培养分化为肌肉/脂肪组织。</p>
+<p><strong>技术路径</strong>：</p>
+<ol>
+<li>细胞系建立：胚胎干细胞（ESC）或诱导多能干细胞（iPSC）</li>
+<li>增殖：生物反应器中大量扩增（悬浮培养或微载体）</li>
+<li>分化：诱导分化为肌细胞、脂肪细胞</li>
+<li>支架构建：可食用支架（植物蛋白、藻酸盐）引导组织形成</li>
+<li>成熟：生物反应器中培养功能组织</li>
+</ol>
+<p><strong>当前状态</strong>（地球）：</p>
+<ul>
+<li>商业产品：培养鸡肉、牛肉汉堡（新加坡、美国批准）</li>
+<li>成本：~$10-50/kg（目标 &lt;$5/kg）</li>
+<li>挑战：血清替代（无胎牛血清）、支架规模化、质地模拟</li>
+</ul>
+<p><strong>太空应用优势</strong>：</p>
+<ul>
+<li>资源效率：比传统畜牧业节水 ~90%、节地 ~99%</li>
+<li>无动物福利问题</li>
+<li>可控营养：调整脂肪/蛋白质比例</li>
+<li>适合封闭系统：无活体动物管理</li>
+</ul>
+<p><strong>太空应用研究进展</strong>：</p>
+<p>培养肉与航天的结合有二十余年历史，且微重力对细胞培养本身有特殊价值：</p>
+<ul>
+<li><strong>NASA 早期资助</strong>：1990 年代末至 2000 年代初，NASA 的商业太空中心发展计划（CSCD）资助了体外培养肉研究（图兰大学与 Morris 等人的金鱼/火鸡细胞实验），目标是长期航行的蛋白质供给；同期"旋转壁反应器"（Rotating Wall Vessel）微载体培养技术在 ISS 上得到验证，用于三维细胞聚集体培养。</li>
+<li><strong>ISS 磁悬浮生物打印</strong>：2019 年，以色列 Aleph Farms 联合 3D Bioprinting Solutions 在国际空间站用磁悬浮（magnetic levitation）技术打印了牛肌肉组织原型的培养肉——利用磁场在无支架条件下组装细胞，这一构型在地面重力下无法实现。这验证了<strong>微重力/无容器组装是培养结构化肉类的独特优势</strong>，而非仅仅是"把地面工艺搬上天"。</li>
+<li><strong>微重力的工艺优势</strong>：无沉降与对流使细胞聚集体可维持更大尺寸（&gt;1 cm 级）而不坏死；无需刚性支架即可构建组织结构；生物反应器中的剪切环境也更温和。</li>
+<li><strong>对封闭系统的适配</strong>：培养基成分（氨基酸、糖、无机盐、生长因子）可与 CELSS 的碳氮循环耦合——葡萄糖来自植物光合产物，氨基酸来自微生物发酵，从而把培养肉纳入物质闭环而非依赖地球供给的血清与培养基。</li>
+</ul>
+<p><strong>TRL 评估</strong>：地面商业化刚起步（美国 FDA/USDA 于 2023 年批准首批培养鸡肉销售，TRL 7–8），太空专用闭环工艺处于原理验证阶段（TRL 3–4）。对火星基地而言，培养肉的价值排序是：高蛋白密度（~20% 湿重蛋白）&gt; 资源效率 &gt; 食物多样性心理价值；其电力与生物反应器质量需求须与第6章的闭环预算联合评估。</p>
+<h3 id="sec-7">8.2.2 微生物蛋白</h3>
+<p><strong>单细胞蛋白（SCP）</strong>：</p>
+<ul>
+<li>来源：酵母（Saccharomyces）、真菌（Fusarium）、藻类（Spirulina）、细菌（Methylococcus）</li>
+<li>蛋白质含量：~40-70%（干重）</li>
+<li>生产速率：倍增时间 ~2-24小时（vs. 牛 ~2年）</li>
+</ul>
+<p><strong>甲烷氧化菌蛋白</strong>：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.2581em;vertical-align:-0.15em;"></span><span class="mord">2</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel x-arrow"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1081em;"><span style="top:-3.322em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">M</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">h</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span><span class="mord mathnormal mtight">ococc</span><span class="mord mathnormal mtight">u</span><span class="mord mathnormal mtight">s</span></span></span></span><span class="svg-align" style="top:-2.689em;"><span class="pstrut" style="height:2.7em;"></span><span class="hide-tail" style="height:0.522em;min-width:1.469em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.011em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord cjk_fallback">细胞质（蛋白质）</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span></span></span></span></span></p>
+<ul>
+<li>底物：CH₄（可由Sabatier反应产生）</li>
+<li>蛋白质产率：~1.5 g蛋白/g CH₄</li>
+<li>优势：利用废气生产食物</li>
+</ul>
+<p><strong>螺旋藻（Spirulina）</strong>：</p>
+<ul>
+<li>蛋白质含量：~60-70%</li>
+<li>生长条件：碱性水（pH 9-11），减少污染</li>
+<li>营养：完整蛋白质、维生素B12、铁</li>
+<li>历史：苏联空间站实验、墨西哥传统食品</li>
+</ul>
+<h3 id="sec-8">8.3 长期营养平衡与微量元素管理</h3>
+<h3 id="sec-9">8.3.1 宏量营养素</h3>
+<p><strong>推荐摄入（太空任务）</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>营养素</th>
+<th>推荐量</th>
+<th>太空特殊考虑</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>蛋白质</td>
+<td>1.2-1.5 g/kg/day</td>
+<td>肌肉维持需求增加</td>
+</tr>
+<tr>
+<td>脂肪</td>
+<td>20-35%总能量</td>
+<td>Omega-3抗炎</td>
+</tr>
+<tr>
+<td>碳水</td>
+<td>45-65%总能量</td>
+<td>纤维促进肠道健康</td>
+</tr>
+<tr>
+<td>能量</td>
+<td>2500-3500 kcal/day</td>
+<td>取决于活动水平</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sec-10">8.3.2 微量营养素</h3>
+<p><strong>关键微量营养素</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>营养素</th>
+<th>功能</th>
+<th>缺乏症状</th>
+<th>太空来源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>维生素D</td>
+<td>骨代谢</td>
+<td>骨软化</td>
+<td>补充剂（无阳光）</td>
+</tr>
+<tr>
+<td>维生素B12</td>
+<td>神经/血液</td>
+<td>贫血</td>
+<td>微生物发酵</td>
+</tr>
+<tr>
+<td>铁</td>
+<td>氧运输</td>
+<td>贫血</td>
+<td>植物/培养肉</td>
+</tr>
+<tr>
+<td>钙</td>
+<td>骨骼</td>
+<td>骨质疏松</td>
+<td>强化食品</td>
+</tr>
+<tr>
+<td>锌</td>
+<td>免疫</td>
+<td>免疫抑制</td>
+<td>植物/微生物</td>
+</tr>
+<tr>
+<td>硒</td>
+<td>抗氧化</td>
+<td>心肌病</td>
+<td>巴西坚果/微生物</td>
+</tr>
+</tbody>
+</table>
+<p><strong>维生素D特殊问题</strong>：</p>
+<ul>
+<li>地球来源：阳光（UVB）照射皮肤合成</li>
+<li>太空：无自然阳光（栖息地内）或火星阳光弱（~43%地球）</li>
+<li>解决方案：口服补充（1000-2000 IU/day）或UVB照明</li>
+</ul>
+<p><strong>火星光照条件下的维生素D问题深化</strong>：</p>
+<p>火星的维生素 D 问题存在一个"悖论"：舱外 UVB 过量，舱内 UVB 为零。</p>
+<ul>
+<li><strong>火星表面 UV 环境</strong>：火星大气稀薄（表面气压 ~600 Pa）且无臭氧层，TOA 太阳辐照 ~590 W/m²（约地球的 43%），但 280–315 nm 的 UVB 乃至部分 UVC 可直达表面，表面 UVB 通量远高于地球表面——这对乘员是辐射危害（与皮肤癌、材料降解相关，详见第7章辐射医学），而非可利用的合成资源。</li>
+<li><strong>舱内合成通路被切断</strong>：皮肤合成维生素 D₃ 依赖 UVB（峰值效率波长 ~295–300 nm），而栖息地舷窗与 EVA 服面窗出于辐射防护与微流星防护设计，UVB 透过率极低；尘暴季节与高纬度冬季还会进一步压缩有效日照。因此火星基地乘员与 ISS 乘员一样，<strong>实际处于"功能性无 UVB 暴露"状态</strong>——尽管窗外阳光充足。</li>
+<li><strong>叠加风险</strong>：维生素 D 是骨代谢的关键调节物，而火星任务乘员同时承受微重力航段的骨流失与可能的火星低重力（0.38 g）骨维持不确定性（见第7章 7.1.1 节）；缺乏维生素 D 会放大骨丢失并削弱钙补充的效果。此外，储存食品中的维生素 D 随储存时间与温度升高而降解，任务后期膳食来源的贡献下降。</li>
+<li><strong>对策组合</strong>：（1）口服补充 600–1000 IU/day（NASA 膳食标准采用 IOM 推荐值，上限 4000 IU/day）；（2）任务中定期检测血清 25(OH)D（充足阈值 ≥30 ng/mL，即 75 nmol/L），按结果滴定剂量；（3）备选窄带 UVB 灯（~311 nm）限时皮肤照射，需权衡皮肤癌风险与照射协议；（4）在新鲜蔬菜与微藻膳食中强化维生素 D₂/D₃ 来源。</li>
+</ul>
+<h3 id="sec-11">8.3.3 微量元素闭环</h3>
+<p><strong>挑战</strong>：</p>
+<ul>
+<li>封闭系统中微量元素不可再生</li>
+<li>人体排泄、废物处理造成损失</li>
+<li>长期任务（&gt;2年）可能耗竭</li>
+</ul>
+<p><strong>管理策略</strong>：</p>
+<ul>
+<li>监测：定期血液/尿液检测</li>
+<li>补充：地球补给或原位提取（火星土壤）</li>
+<li>回收：从废物中提取微量元素（技术挑战大）</li>
+</ul>
+<h3 id="sec-12">8.4 食品辐照保鲜与长期储存化学</h3>
+<h3 id="sec-13">8.4.1 辐照保鲜</h3>
+<p><strong>原理</strong>：</p>
+<p>电离辐射（γ射线、电子束）杀灭微生物和昆虫，抑制发芽，延长保质期。</p>
+<p><strong>剂量与效果</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>剂量 (kGy)</th>
+<th>效果</th>
+<th>应用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.1-0.5</td>
+<td>抑制发芽</td>
+<td>土豆、洋葱</td>
+</tr>
+<tr>
+<td>0.5-1.0</td>
+<td>延长货架期</td>
+<td>草莓、蘑菇</td>
+</tr>
+<tr>
+<td>1-3</td>
+<td>杀灭寄生虫</td>
+<td>肉类、海鲜</td>
+</tr>
+<tr>
+<td>3-10</td>
+<td>灭菌</td>
+<td>太空食品、医院饮食</td>
+</tr>
+<tr>
+<td>10-50</td>
+<td>完全灭菌</td>
+<td>特殊用途</td>
+</tr>
+</tbody>
+</table>
+<p><strong>太空应用</strong>：</p>
+<ul>
+<li>火星任务食品：辐照灭菌 + 真空包装 → 保质期 2-5年</li>
+<li>优势：无需防腐剂、常温储存、营养保留好</li>
+</ul>
+<h3 id="sec-14">8.4.2 长期储存化学</h3>
+<p><strong>食品降解机制</strong>：</p>
+<ol>
+<li>
+<p><strong>美拉德反应（Maillard Reaction）</strong>：还原糖 + 氨基酸 → 褐色色素 + 风味变化
+   - 温度依赖：每升高10°C，速率增加 ~2-3倍
+   - 控制：低温储存、低水分活度</p>
+</li>
+<li>
+<p><strong>脂质氧化</strong>：不饱和脂肪酸 + O₂ → 过氧化物 → 酸败
+   - 控制：真空包装、抗氧化剂（VE、BHA）、避光</p>
+</li>
+<li>
+<p><strong>酶促褐变</strong>：多酚氧化酶（PPO）催化酚类氧化
+   - 控制：热处理（烫漂）、酸化、螯合剂</p>
+</li>
+</ol>
+<p><strong>火星任务食品储存目标</strong>：</p>
+<ul>
+<li>保质期：&gt;5年（往返任务 + 应急储备）</li>
+<li>营养保留：&gt;80%初始维生素含量</li>
+<li>感官质量：可接受（不要求新鲜口感）</li>
+</ul>
+<p><strong>包装技术</strong>：</p>
+<ul>
+<li>多层阻隔膜：铝箔 + 尼龙 + 聚乙烯（阻O₂、阻湿）</li>
+<li>脱氧剂：铁粉包装（残余O₂ &lt;0.1%）</li>
+<li>干燥剂：硅胶或分子筛（水分活度 &lt;0.3）</li>
+</ul>
+<p><strong>本章小结</strong></p>
+<p>食物系统是 CELSS 中工程难度最高的一环，因为它同时涉及能源（光照）、面积（种植）、生物稳定性（微生物群落）与营养化学（储存降解）四个约束的耦合。LED 光谱优化与气培已在 ISS 上验证了生鲜蔬菜生产的可行性，但主粮生产所需的 ~30–50 m²/人 面积与 ~17 kW 级功率决定了首批任务只能以"辐照储备食品为主、生鲜为辅"。培养肉与微生物蛋白（螺旋藻、甲烷氧化菌）提供了摆脱种植面积线性约束的路线，其中甲烷氧化菌还能消化 Sabatier 副产物 CH₄，把废气变成蛋白。营养管理上，维生素 D 的火星悖论（舱外 UVB 过量、舱内为零）与储存期维生素降解是两个必须主动管理的问题。食物系统的设计必须与能源系统（第10章）、物质闭环（第6章）联合迭代，不存在独立最优解。</p>
+<p><strong>关键参数速查表</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>典型值</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LED 光效</td>
+<td>~2.5–3.0 μmol/J</td>
+<td>当前商用水平，决定种植功率预算</td>
+</tr>
+<tr>
+<td>生菜生产周期</td>
+<td>~33 天（播种至收获）</td>
+<td>ISS Veggie 系统实测，产量 ~0.5–1.0 kg 鲜重/m²/月</td>
+</tr>
+<tr>
+<td>营养液参数</td>
+<td>pH 5.5–6.5、EC 1.0–2.5 mS/cm</td>
+<td>大多数水培作物的适生区间，DO &gt;6 mg/L</td>
+</tr>
+<tr>
+<td>火星太阳辐照</td>
+<td>~590 W/m²（TOA，约地球 43%）</td>
+<td>无臭氧层，表面 UVB/UVC 通量高，构成辐射危害</td>
+</tr>
+<tr>
+<td>培养肉成本</td>
+<td>~$10–50/kg（目标 &lt;$5/kg）</td>
+<td>地面商业化起步，太空闭环工艺 TRL 3–4</td>
+</tr>
+<tr>
+<td>SCP 蛋白含量</td>
+<td>~40–70%（干重）</td>
+<td>倍增时间 ~2–24 h；甲烷氧化菌产率 ~1.5 g 蛋白/g CH₄</td>
+</tr>
+<tr>
+<td>太空任务能量需求</td>
+<td>2500–3500 kcal/day</td>
+<td>蛋白质 1.2–1.5 g/kg/day（肌肉维持）</td>
+</tr>
+<tr>
+<td>维生素 D 补充</td>
+<td>600–1000 IU/day（上限 4000 IU/day）</td>
+<td>火星乘员处于功能性无 UVB 暴露状态</td>
+</tr>
+<tr>
+<td>血清 25(OH)D 充足阈值</td>
+<td>≥30 ng/mL（75 nmol/L）</td>
+<td>任务中监测滴定剂量的依据</td>
+</tr>
+<tr>
+<td>辐照灭菌剂量</td>
+<td>3–10 kGy</td>
+<td>太空食品灭菌档位，配合真空包装</td>
+</tr>
+<tr>
+<td>辐照食品保质期</td>
+<td>&gt;5 年</td>
+<td>火星任务目标：往返 + 应急储备，维生素保留 &gt;80%</td>
+</tr>
+<tr>
+<td>储存水分活度</td>
+<td>&lt;0.3</td>
+<td>配合脱氧剂（残余 O₂ &lt;0.1%）抑制美拉德反应与脂质氧化</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="sec-15">本部分开放问题清单</h2>
+<p>以下问题在本部分涉及的三章中均无确定答案，属于火星任务设计前必须收敛的关键未知项：</p>
+<p><strong>第6章（CELSS）</strong></p>
+<ol>
+<li>生物组件的长期稳定性：作物/藻类群落在 2–3 年封闭运行中的退化与污染控制，无飞行数据，仅有月宫一号等地面类比。</li>
+<li>气体回路瞬态管理：作物轮换期与微生物呼吸波动的缓冲容量设计，Biosphere 2 的教训尚无定量设计准则。</li>
+<li>水闭环率从 ~98% 到 &gt;99% 的最后一级：膜浓缩液与固体废物中水分的热解回收能耗与可靠性未验证。</li>
+<li>痕量污染物在 3 年尺度上的积累与催化氧化催化剂寿命（硅氧烷中毒）。</li>
+</ol>
+<p><strong>第7章（太空医学）</strong></p>
+<ol start="5">
+<li>SANS 病因与个体易感性：无确定机制、无获批药物、无可靠筛查指标，直接约束任务时长上限。</li>
+<li>间歇人工重力的医学处方：每日 30–60 分钟的剂量是否足以对抗全部去适应综合征，尚无在轨验证（ISS 离心机舱 2005 年取消后无后续飞行实验）。</li>
+<li>部分重力生理效应：0.38 g（火星）与 0.16 g（月球）是否足以维持骨、心血管与视觉系统，人类数据为零。</li>
+<li>深空辐射的致癌风险模型：GCR 重离子的剂量-效应关系在低剂量率下的外推不确定性约 2–3 倍。</li>
+<li>冬眠/低温航行的医学安全性：长期（&gt;14 天）低温下感染、凝血与肌萎缩的综合风险未量化。</li>
+<li>医疗自主能力边界：乘员外科医生 + AI 辅助能覆盖的诊疗范围，缺乏任务场景的系统验证。</li>
+</ol>
+<p><strong>第8章（食品与营养）</strong></p>
+<ol start="11">
+<li>主粮作物的舱内生产经济性：光照功率（~17 kW 级）与面积（30–50 m²/人）约束下，何时值得从地球运输切换为原位生产。</li>
+<li>培养肉的太空闭环工艺：培养基与 CELSS 碳氮循环的耦合仅有概念设计（TRL 3–4）。</li>
+<li>5 年期储存食品的微量营养素衰减：维生素 D、C 等的降解动力学与实际膳食贡献，缺乏 &gt;3 年的实测数据。</li>
+<li>火星原位微量元素供给：从火星风化层提取 K、Ca、Fe、Zn 等农业微量元素的工艺可行性（与第17章 ISRU 交叉）。</li>
+<li>封闭系统根区微生物组的长期演替与病原控制。</li>
+</ol>
+<hr />
+<p><em>第三部分完。</em></p></div><div class="prevnext"><a class="pn pn-prev" href="ch07.html"><span class="pn-k">上一篇</span><span class="pn-t">第7章 太空医学</span></a><a class="pn pn-next" href="ch09.html"><span class="pn-k">下一篇</span><span class="pn-t">第9章 栖息地结构设计</span></a></div></article><footer class="foot"><span>未来太空移民技术手册 · 完整版 v2.0</span><span class="foot-mono">AD ASTRA PER ASPERA</span></footer></main>
+<aside class="toc"><div class="toc-title">本页目录</div>
+<a class="toc-h3" href="#sec-1">8.1 太空农业</a>
+<a class="toc-h3" href="#sec-2">8.1.1 LED光谱优化</a>
+<a class="toc-h3" href="#sec-3">8.1.2 气培/水培系统</a>
+<a class="toc-h3" href="#sec-4">8.1.3 根区微生物组</a>
+<a class="toc-h3" href="#sec-5">8.2 细胞培养肉与微生物蛋白</a>
+<a class="toc-h3" href="#sec-6">8.2.1 细胞培养肉</a>
+<a class="toc-h3" href="#sec-7">8.2.2 微生物蛋白</a>
+<a class="toc-h3" href="#sec-8">8.3 长期营养平衡与微量元素管理</a>
+<a class="toc-h3" href="#sec-9">8.3.1 宏量营养素</a>
+<a class="toc-h3" href="#sec-10">8.3.2 微量营养素</a>
+<a class="toc-h3" href="#sec-11">8.3.3 微量元素闭环</a>
+<a class="toc-h3" href="#sec-12">8.4 食品辐照保鲜与长期储存化学</a>
+<a class="toc-h3" href="#sec-13">8.4.1 辐照保鲜</a>
+<a class="toc-h3" href="#sec-14">8.4.2 长期储存化学</a>
+<a class="toc-h2" href="#sec-15">本部分开放问题清单</a>
+</aside>
+</div>
+<script src="../search-index.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

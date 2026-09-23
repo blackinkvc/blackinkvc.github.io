@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>附录B 太阳系天体参数 · 未来太空移民技术手册</title>
+<meta name="description" content="未来太空移民技术手册 —— 面向专业读者的综合性太空殖民技术参考，涵盖推进、生保、栖息地、治理与前沿技术。">
+<link rel="icon" type="image/png" href="../assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script>(function(){try{var t=localStorage.getItem('smh-theme');if(!t)t='dark';document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="目录"><span></span><span></span><span></span></button>
+  <a class="brand" href="../index.html">
+    <img class="brand-icon" src="../assets/icon.png" alt="">
+    <span class="brand-zh">未来太空移民技术手册</span>
+    <span class="brand-en">SPACE SETTLEMENT HANDBOOK</span>
+  </a>
+  <div class="top-actions">
+    <button class="search-btn" id="searchBtn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg><span>检索</span><kbd>⌘K</kbd></button>
+    <button class="theme-btn" id="themeBtn" aria-label="切换主题"></button>
+  </div>
+</header>
+
+<div class="search-overlay" id="searchOverlay" hidden>
+  <div class="search-box">
+    <div class="search-head">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg>
+      <input id="searchInput" type="text" placeholder="检索全书：术语、参数、章节…" autocomplete="off">
+      <kbd>ESC</kbd>
+    </div>
+    <div class="search-results" id="searchResults"><div class="search-hint">输入关键词，检索 23 章正文与附录</div></div>
+  </div>
+</div>
+<div class="layout">
+<nav class="sidebar" id="sidebar">
+<div class="sb-group"><div class="sb-label">卷首</div>
+<a class="sb-item" href="intro.html"><span class="sb-num">◎</span><span class="sb-t">前言与导读</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第一部分 · 基础物理与宇宙环境</div>
+<a class="sb-item" href="ch01.html"><span class="sb-num">01</span><span class="sb-t">太空环境物理</span></a>
+<a class="sb-item" href="ch02.html"><span class="sb-num">02</span><span class="sb-t">天体物理与轨道力学</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第二部分 · 推进与运输系统</div>
+<a class="sb-item" href="ch03.html"><span class="sb-num">03</span><span class="sb-t">化学推进与近中期方案</span></a>
+<a class="sb-item" href="ch04.html"><span class="sb-num">04</span><span class="sb-t">先进推进理论</span></a>
+<a class="sb-item" href="ch05.html"><span class="sb-num">05</span><span class="sb-t">星际航行工程</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第三部分 · 生命保障与人体工程</div>
+<a class="sb-item" href="ch06.html"><span class="sb-num">06</span><span class="sb-t">封闭生态生命保障系统（CELSS）</span></a>
+<a class="sb-item" href="ch07.html"><span class="sb-num">07</span><span class="sb-t">太空医学</span></a>
+<a class="sb-item" href="ch08.html"><span class="sb-num">08</span><span class="sb-t">食品与营养</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第四部分 · 栖息地与基础设施</div>
+<a class="sb-item" href="ch09.html"><span class="sb-num">09</span><span class="sb-t">栖息地结构设计</span></a>
+<a class="sb-item" href="ch10.html"><span class="sb-num">10</span><span class="sb-t">能源系统</span></a>
+<a class="sb-item" href="ch11.html"><span class="sb-num">11</span><span class="sb-t">通信与导航</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第五部分 · 目的地与殖民方案</div>
+<a class="sb-item" href="ch12.html"><span class="sb-num">12</span><span class="sb-t">月球</span></a>
+<a class="sb-item" href="ch13.html"><span class="sb-num">13</span><span class="sb-t">火星</span></a>
+<a class="sb-item" href="ch14.html"><span class="sb-num">14</span><span class="sb-t">小行星与太空殖民地</span></a>
+<a class="sb-item" href="ch15.html"><span class="sb-num">15</span><span class="sb-t">外太阳系与冰卫星</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第六部分 · 材料与制造</div>
+<a class="sb-item" href="ch16.html"><span class="sb-num">16</span><span class="sb-t">太空材料科学</span></a>
+<a class="sb-item" href="ch17.html"><span class="sb-num">17</span><span class="sb-t">太空制造与原位资源利用</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第七部分 · 社会、文化与治理</div>
+<a class="sb-item" href="ch18.html"><span class="sb-num">18</span><span class="sb-t">太空治理与法律框架</span></a>
+<a class="sb-item" href="ch19.html"><span class="sb-num">19</span><span class="sb-t">太空经济学</span></a>
+<a class="sb-item" href="ch20.html"><span class="sb-num">20</span><span class="sb-t">太空文化演化</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第八部分 · 前沿与推测性技术</div>
+<a class="sb-item" href="ch21.html"><span class="sb-num">21</span><span class="sb-t">脑机接口与人类增强</span></a>
+<a class="sb-item" href="ch22.html"><span class="sb-num">22</span><span class="sb-t">AI治理与超级智能</span></a>
+<a class="sb-item" href="ch23.html"><span class="sb-num">23</span><span class="sb-t">意识上传与数字存在</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">附录 · 参考数据</div>
+<a class="sb-item" href="appA.html"><span class="sb-num">A</span><span class="sb-t">A 物理常数与换算</span></a>
+<a class="sb-item current" href="appB.html"><span class="sb-num">B</span><span class="sb-t">B 太阳系天体参数</span></a>
+<a class="sb-item" href="appC.html"><span class="sb-num">C</span><span class="sb-t">C 推进系统对比</span></a>
+<a class="sb-item" href="appD.html"><span class="sb-num">D</span><span class="sb-t">D 辐射与屏蔽</span></a>
+<a class="sb-item" href="appE.html"><span class="sb-num">E</span><span class="sb-t">E 术语表（中英对照）</span></a>
+<a class="sb-item" href="appF.html"><span class="sb-num">F</span><span class="sb-t">F 参考文献与推荐阅读</span></a>
+</div>
+</nav><main class="content"><article class="article"><div class="crumb"><span class="crumb-part">附录</span></div><div class="ch-head"><div class="ch-num">B</div><h1 class="ch-title">太阳系天体参数</h1></div><div class="article-body"><h3 id="sec-1">B.1 主要天体物理参数</h3>
+<p>气态巨行星的 g 与 v_esc 取 1 bar 气压层参考值。</p>
+<table>
+<thead>
+<tr>
+<th>天体</th>
+<th>质量 (kg)</th>
+<th>半径 (km)</th>
+<th>g (m/s²)</th>
+<th>v_esc (km/s)</th>
+<th>大气</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>太阳</td>
+<td>1.989×10³⁰</td>
+<td>696,000</td>
+<td>274</td>
+<td>617.5</td>
+<td>等离子体</td>
+</tr>
+<tr>
+<td>水星</td>
+<td>3.301×10²³</td>
+<td>2,440</td>
+<td>3.70</td>
+<td>4.25</td>
+<td>极稀薄</td>
+</tr>
+<tr>
+<td>金星</td>
+<td>4.867×10²⁴</td>
+<td>6,052</td>
+<td>8.87</td>
+<td>10.36</td>
+<td>CO₂, 92 atm</td>
+</tr>
+<tr>
+<td>地球</td>
+<td>5.972×10²⁴</td>
+<td>6,371</td>
+<td>9.81</td>
+<td>11.19</td>
+<td>N₂/O₂, 1 atm</td>
+</tr>
+<tr>
+<td>月球</td>
+<td>7.342×10²²</td>
+<td>1,737</td>
+<td>1.62</td>
+<td>2.38</td>
+<td>无</td>
+</tr>
+<tr>
+<td>火星</td>
+<td>6.417×10²³</td>
+<td>3,390</td>
+<td>3.72</td>
+<td>5.03</td>
+<td>CO₂, 0.006 atm</td>
+</tr>
+<tr>
+<td>木星</td>
+<td>1.898×10²⁷</td>
+<td>69,911</td>
+<td>24.79</td>
+<td>59.54</td>
+<td>H₂/He</td>
+</tr>
+<tr>
+<td>土星</td>
+<td>5.683×10²⁶</td>
+<td>58,232</td>
+<td>10.44</td>
+<td>35.48</td>
+<td>H₂/He</td>
+</tr>
+<tr>
+<td>天王星</td>
+<td>8.681×10²⁵</td>
+<td>25,362</td>
+<td>8.87</td>
+<td>21.30</td>
+<td>H₂/He/CH₄</td>
+</tr>
+<tr>
+<td>海王星</td>
+<td>1.024×10²⁶</td>
+<td>24,622</td>
+<td>11.15</td>
+<td>23.56</td>
+<td>H₂/He/CH₄</td>
+</tr>
+<tr>
+<td>冥王星</td>
+<td>1.303×10²²</td>
+<td>1,188</td>
+<td>0.62</td>
+<td>1.21</td>
+<td>极稀薄N₂</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sec-2">B.2 其他主要目的地物理参数（卫星与矮行星）</h3>
+<table>
+<thead>
+<tr>
+<th>天体</th>
+<th>质量 (kg)</th>
+<th>平均半径 (km)</th>
+<th>g (m/s²)</th>
+<th>v_esc (km/s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>火卫一（Phobos）</td>
+<td>1.066×10¹⁶</td>
+<td>11.3</td>
+<td>0.0057</td>
+<td>0.011</td>
+</tr>
+<tr>
+<td>火卫二（Deimos）</td>
+<td>1.476×10¹⁵</td>
+<td>6.2</td>
+<td>0.0030</td>
+<td>0.0056</td>
+</tr>
+<tr>
+<td>谷神星（Ceres）</td>
+<td>9.38×10²⁰</td>
+<td>469.7</td>
+<td>0.28</td>
+<td>0.51</td>
+</tr>
+<tr>
+<td>木卫二（Europa）</td>
+<td>4.800×10²²</td>
+<td>1,560.8</td>
+<td>1.315</td>
+<td>2.03</td>
+</tr>
+<tr>
+<td>木卫三（Ganymede）</td>
+<td>1.482×10²³</td>
+<td>2,634.1</td>
+<td>1.428</td>
+<td>2.74</td>
+</tr>
+<tr>
+<td>木卫四（Callisto）</td>
+<td>1.076×10²³</td>
+<td>2,410.3</td>
+<td>1.236</td>
+<td>2.44</td>
+</tr>
+<tr>
+<td>土卫二（Enceladus）</td>
+<td>1.08×10²⁰</td>
+<td>252.1</td>
+<td>0.113</td>
+<td>0.24</td>
+</tr>
+<tr>
+<td>土卫六（Titan）</td>
+<td>1.345×10²³</td>
+<td>2,574.7</td>
+<td>1.352</td>
+<td>2.64</td>
+</tr>
+<tr>
+<td>海卫一（Triton）</td>
+<td>2.139×10²²</td>
+<td>1,353.4</td>
+<td>0.779</td>
+<td>1.46</td>
+</tr>
+<tr>
+<td>冥卫一（Charon）</td>
+<td>1.586×10²¹</td>
+<td>606</td>
+<td>0.29</td>
+<td>0.59</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sec-3">B.3 轨道、自转与温度参数</h3>
+<table>
+<thead>
+<tr>
+<th>天体</th>
+<th>轨道半长轴</th>
+<th>公转周期</th>
+<th>自转周期</th>
+<th>表面温度范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>月球</td>
+<td>384,400 km（绕地球）</td>
+<td>27.3 d</td>
+<td>27.3 d（潮汐锁定）</td>
+<td>-173 ~ 127 °C</td>
+</tr>
+<tr>
+<td>火卫一</td>
+<td>9,376 km（距火星质心）</td>
+<td>7.66 h</td>
+<td>7.66 h（潮汐锁定）</td>
+<td>约 -112 ~ -5 °C</td>
+</tr>
+<tr>
+<td>火卫二</td>
+<td>23,463 km（距火星质心）</td>
+<td>30.3 h</td>
+<td>30.3 h（潮汐锁定）</td>
+<td>约 -150 ~ -40 °C（估计）</td>
+</tr>
+<tr>
+<td>火星</td>
+<td>1.524 AU</td>
+<td>687.0 d</td>
+<td>24.62 h</td>
+<td>-125 ~ 20 °C</td>
+</tr>
+<tr>
+<td>谷神星</td>
+<td>2.77 AU</td>
+<td>4.60 a</td>
+<td>9.07 h</td>
+<td>约 -110 ~ -30 °C</td>
+</tr>
+<tr>
+<td>木星</td>
+<td>5.20 AU</td>
+<td>11.86 a</td>
+<td>9.93 h</td>
+<td>云顶约 -145 °C</td>
+</tr>
+<tr>
+<td>木卫二</td>
+<td>671,000 km（距木星质心）</td>
+<td>3.55 d</td>
+<td>3.55 d（潮汐锁定）</td>
+<td>-220 ~ -160 °C</td>
+</tr>
+<tr>
+<td>木卫三</td>
+<td>1,070,400 km（距木星质心）</td>
+<td>7.15 d</td>
+<td>潮汐锁定</td>
+<td>约 -200 ~ -120 °C</td>
+</tr>
+<tr>
+<td>木卫四</td>
+<td>1,882,700 km（距木星质心）</td>
+<td>16.69 d</td>
+<td>潮汐锁定</td>
+<td>约 -190 ~ -110 °C</td>
+</tr>
+<tr>
+<td>土卫二</td>
+<td>238,000 km（距土星质心）</td>
+<td>1.37 d</td>
+<td>潮汐锁定</td>
+<td>约 -200 °C</td>
+</tr>
+<tr>
+<td>土卫六</td>
+<td>1,221,900 km（距土星质心）</td>
+<td>15.95 d</td>
+<td>潮汐锁定</td>
+<td>约 -179 °C</td>
+</tr>
+<tr>
+<td>海卫一</td>
+<td>354,800 km（距海王星质心）</td>
+<td>5.88 d</td>
+<td>潮汐锁定（逆行）</td>
+<td>约 -235 °C</td>
+</tr>
+<tr>
+<td>冥王星</td>
+<td>39.48 AU</td>
+<td>248 a</td>
+<td>6.39 d</td>
+<td>-240 ~ -218 °C</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sec-4">B.4 大气与已知资源</h3>
+<table>
+<thead>
+<tr>
+<th>天体</th>
+<th>大气成分</th>
+<th>表面气压</th>
+<th>已知资源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>月球</td>
+<td>无（极稀薄外逸层）</td>
+<td>约 10⁻¹⁰ Pa</td>
+<td>极区水冰（~1-10 wt%）、氦-3（~10-50 ppb）、氧化物中的氧（~40-45 wt%）、Fe/Al/Ti</td>
+</tr>
+<tr>
+<td>火卫一/火卫二</td>
+<td>无</td>
+<td>—</td>
+<td>可能含水冰（待验证）</td>
+</tr>
+<tr>
+<td>火星</td>
+<td>CO₂ 95.3%、N₂ 2.7%、Ar 1.6%、O₂ 0.13%</td>
+<td>约 610 Pa</td>
+<td>地下水冰（中纬度浅层）、大气 CO₂（MOXIE/Sabatier 原料）、高氯酸盐（~0.5-1%）</td>
+</tr>
+<tr>
+<td>谷神星</td>
+<td>极稀薄水汽（间歇性）</td>
+<td>极稀薄</td>
+<td>地壳水冰、碳酸钠、含氨化合物</td>
+</tr>
+<tr>
+<td>木星</td>
+<td>H₂ ~90%、He ~10%</td>
+<td>—</td>
+<td>氦-3（远期聚变燃料候选）</td>
+</tr>
+<tr>
+<td>木卫二</td>
+<td>极稀薄 O₂</td>
+<td>约 10⁻¹² atm</td>
+<td>地下海洋液态水、冰壳水冰</td>
+</tr>
+<tr>
+<td>木卫三</td>
+<td>极稀薄 O₂</td>
+<td>约 10⁻⁶ Pa</td>
+<td>水冰</td>
+</tr>
+<tr>
+<td>木卫四</td>
+<td>极稀薄 CO₂</td>
+<td>极稀薄</td>
+<td>水冰；木星辐射带外低辐射环境</td>
+</tr>
+<tr>
+<td>土卫二</td>
+<td>无水汽羽流（南极）</td>
+<td>无全球大气</td>
+<td>液态水、H₂、有机分子、盐类</td>
+</tr>
+<tr>
+<td>土卫六</td>
+<td>N₂ ~95%、CH₄ ~5%</td>
+<td>约 1.5 atm</td>
+<td>液态 CH₄/C₂H₆ 湖泊（Kraken Mare 约 4×10⁵ km²）、水冰、有机物沙丘</td>
+</tr>
+<tr>
+<td>海卫一</td>
+<td>极稀薄 N₂</td>
+<td>约 1 Pa</td>
+<td>氮冰、水冰、干冰</td>
+</tr>
+<tr>
+<td>冥王星</td>
+<td>极稀薄 N₂/CH₄/CO</td>
+<td>约 1 Pa</td>
+<td>氮冰、水冰、甲烷冰</td>
+</tr>
+</tbody>
+</table></div><div class="prevnext"><a class="pn pn-prev" href="appA.html"><span class="pn-k">上一篇</span><span class="pn-t">附录A 物理常数与换算</span></a><a class="pn pn-next" href="appC.html"><span class="pn-k">下一篇</span><span class="pn-t">附录C 推进系统对比</span></a></div></article><footer class="foot"><span>未来太空移民技术手册 · 完整版 v2.0</span><span class="foot-mono">AD ASTRA PER ASPERA</span></footer></main>
+<aside class="toc"><div class="toc-title">本页目录</div>
+<a class="toc-h3" href="#sec-1">B.1 主要天体物理参数</a>
+<a class="toc-h3" href="#sec-2">B.2 其他主要目的地物理参数（卫星与矮行星）</a>
+<a class="toc-h3" href="#sec-3">B.3 轨道、自转与温度参数</a>
+<a class="toc-h3" href="#sec-4">B.4 大气与已知资源</a>
+</aside>
+</div>
+<script src="../search-index.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

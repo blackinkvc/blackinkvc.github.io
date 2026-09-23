@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>附录E 术语表（中英对照） · 未来太空移民技术手册</title>
+<meta name="description" content="未来太空移民技术手册 —— 面向专业读者的综合性太空殖民技术参考，涵盖推进、生保、栖息地、治理与前沿技术。">
+<link rel="icon" type="image/png" href="../assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script>(function(){try{var t=localStorage.getItem('smh-theme');if(!t)t='dark';document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="目录"><span></span><span></span><span></span></button>
+  <a class="brand" href="../index.html">
+    <img class="brand-icon" src="../assets/icon.png" alt="">
+    <span class="brand-zh">未来太空移民技术手册</span>
+    <span class="brand-en">SPACE SETTLEMENT HANDBOOK</span>
+  </a>
+  <div class="top-actions">
+    <button class="search-btn" id="searchBtn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg><span>检索</span><kbd>⌘K</kbd></button>
+    <button class="theme-btn" id="themeBtn" aria-label="切换主题"></button>
+  </div>
+</header>
+
+<div class="search-overlay" id="searchOverlay" hidden>
+  <div class="search-box">
+    <div class="search-head">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg>
+      <input id="searchInput" type="text" placeholder="检索全书：术语、参数、章节…" autocomplete="off">
+      <kbd>ESC</kbd>
+    </div>
+    <div class="search-results" id="searchResults"><div class="search-hint">输入关键词，检索 23 章正文与附录</div></div>
+  </div>
+</div>
+<div class="layout">
+<nav class="sidebar" id="sidebar">
+<div class="sb-group"><div class="sb-label">卷首</div>
+<a class="sb-item" href="intro.html"><span class="sb-num">◎</span><span class="sb-t">前言与导读</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第一部分 · 基础物理与宇宙环境</div>
+<a class="sb-item" href="ch01.html"><span class="sb-num">01</span><span class="sb-t">太空环境物理</span></a>
+<a class="sb-item" href="ch02.html"><span class="sb-num">02</span><span class="sb-t">天体物理与轨道力学</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第二部分 · 推进与运输系统</div>
+<a class="sb-item" href="ch03.html"><span class="sb-num">03</span><span class="sb-t">化学推进与近中期方案</span></a>
+<a class="sb-item" href="ch04.html"><span class="sb-num">04</span><span class="sb-t">先进推进理论</span></a>
+<a class="sb-item" href="ch05.html"><span class="sb-num">05</span><span class="sb-t">星际航行工程</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第三部分 · 生命保障与人体工程</div>
+<a class="sb-item" href="ch06.html"><span class="sb-num">06</span><span class="sb-t">封闭生态生命保障系统（CELSS）</span></a>
+<a class="sb-item" href="ch07.html"><span class="sb-num">07</span><span class="sb-t">太空医学</span></a>
+<a class="sb-item" href="ch08.html"><span class="sb-num">08</span><span class="sb-t">食品与营养</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第四部分 · 栖息地与基础设施</div>
+<a class="sb-item" href="ch09.html"><span class="sb-num">09</span><span class="sb-t">栖息地结构设计</span></a>
+<a class="sb-item" href="ch10.html"><span class="sb-num">10</span><span class="sb-t">能源系统</span></a>
+<a class="sb-item" href="ch11.html"><span class="sb-num">11</span><span class="sb-t">通信与导航</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第五部分 · 目的地与殖民方案</div>
+<a class="sb-item" href="ch12.html"><span class="sb-num">12</span><span class="sb-t">月球</span></a>
+<a class="sb-item" href="ch13.html"><span class="sb-num">13</span><span class="sb-t">火星</span></a>
+<a class="sb-item" href="ch14.html"><span class="sb-num">14</span><span class="sb-t">小行星与太空殖民地</span></a>
+<a class="sb-item" href="ch15.html"><span class="sb-num">15</span><span class="sb-t">外太阳系与冰卫星</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第六部分 · 材料与制造</div>
+<a class="sb-item" href="ch16.html"><span class="sb-num">16</span><span class="sb-t">太空材料科学</span></a>
+<a class="sb-item" href="ch17.html"><span class="sb-num">17</span><span class="sb-t">太空制造与原位资源利用</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第七部分 · 社会、文化与治理</div>
+<a class="sb-item" href="ch18.html"><span class="sb-num">18</span><span class="sb-t">太空治理与法律框架</span></a>
+<a class="sb-item" href="ch19.html"><span class="sb-num">19</span><span class="sb-t">太空经济学</span></a>
+<a class="sb-item" href="ch20.html"><span class="sb-num">20</span><span class="sb-t">太空文化演化</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第八部分 · 前沿与推测性技术</div>
+<a class="sb-item" href="ch21.html"><span class="sb-num">21</span><span class="sb-t">脑机接口与人类增强</span></a>
+<a class="sb-item" href="ch22.html"><span class="sb-num">22</span><span class="sb-t">AI治理与超级智能</span></a>
+<a class="sb-item" href="ch23.html"><span class="sb-num">23</span><span class="sb-t">意识上传与数字存在</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">附录 · 参考数据</div>
+<a class="sb-item" href="appA.html"><span class="sb-num">A</span><span class="sb-t">A 物理常数与换算</span></a>
+<a class="sb-item" href="appB.html"><span class="sb-num">B</span><span class="sb-t">B 太阳系天体参数</span></a>
+<a class="sb-item" href="appC.html"><span class="sb-num">C</span><span class="sb-t">C 推进系统对比</span></a>
+<a class="sb-item" href="appD.html"><span class="sb-num">D</span><span class="sb-t">D 辐射与屏蔽</span></a>
+<a class="sb-item current" href="appE.html"><span class="sb-num">E</span><span class="sb-t">E 术语表（中英对照）</span></a>
+<a class="sb-item" href="appF.html"><span class="sb-num">F</span><span class="sb-t">F 参考文献与推荐阅读</span></a>
+</div>
+</nav><main class="content"><article class="article"><div class="crumb"><span class="crumb-part">附录</span></div><div class="ch-head"><div class="ch-num">E</div><h1 class="ch-title">术语表（中英对照）</h1></div><div class="article-body"><p>按主题分组，覆盖全书八个部分的核心术语。</p>
+<h3 id="sec-1">E.1 轨道力学与飞行动力学</h3>
+<table>
+<thead>
+<tr>
+<th>中文</th>
+<th>英文</th>
+<th>缩写</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>霍曼转移</td>
+<td>Hohmann Transfer</td>
+<td>—</td>
+</tr>
+<tr>
+<td>弱稳定边界</td>
+<td>Weak Stability Boundary</td>
+<td>WSB</td>
+</tr>
+<tr>
+<td>弹道捕获</td>
+<td>Ballistic Capture</td>
+<td>—</td>
+</tr>
+<tr>
+<td>拉格朗日点</td>
+<td>Lagrange Point</td>
+<td>LP</td>
+</tr>
+<tr>
+<td>晕轨道</td>
+<td>Halo Orbit</td>
+<td>—</td>
+</tr>
+<tr>
+<td>近直线晕轨道</td>
+<td>Near-Rectilinear Halo Orbit</td>
+<td>NRHO</td>
+</tr>
+<tr>
+<td>引力辅助</td>
+<td>Gravity Assist</td>
+<td>—</td>
+</tr>
+<tr>
+<td>蒂塞朗参数</td>
+<td>Tisserand Parameter</td>
+<td>—</td>
+</tr>
+<tr>
+<td>特征能量</td>
+<td>Characteristic Energy</td>
+<td>C3</td>
+</tr>
+<tr>
+<td>比冲</td>
+<td>Specific Impulse</td>
+<td>I_sp</td>
+</tr>
+<tr>
+<td>质量比</td>
+<td>Mass Ratio</td>
+<td>MR</td>
+</tr>
+<tr>
+<td>Δv 预算</td>
+<td>Delta-v Budget</td>
+<td>Δv</td>
+</tr>
+<tr>
+<td>会合周期</td>
+<td>Synodic Period</td>
+<td>—</td>
+</tr>
+<tr>
+<td>潮汐锁定</td>
+<td>Tidal Locking</td>
+<td>—</td>
+</tr>
+<tr>
+<td>冻结轨道</td>
+<td>Frozen Orbit</td>
+<td>—</td>
+</tr>
+<tr>
+<td>气动制动</td>
+<td>Aerobraking</td>
+<td>—</td>
+</tr>
+<tr>
+<td>气动捕获</td>
+<td>Aerocapture</td>
+<td>—</td>
+</tr>
+<tr>
+<td>进入下降着陆</td>
+<td>Entry, Descent, Landing</td>
+<td>EDL</td>
+</tr>
+<tr>
+<td>超音速反推</td>
+<td>Supersonic Retropropulsion</td>
+<td>SRP</td>
+</tr>
+<tr>
+<td>充气式气动减速器</td>
+<td>Hypersonic Inflatable Aerodynamic Decelerator</td>
+<td>HIAD</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sec-2">E.2 空间环境与辐射</h3>
+<table>
+<thead>
+<tr>
+<th>中文</th>
+<th>英文</th>
+<th>缩写</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>银河宇宙线</td>
+<td>Galactic Cosmic Rays</td>
+<td>GCR</td>
+</tr>
+<tr>
+<td>太阳粒子事件</td>
+<td>Solar Particle Events</td>
+<td>SPE</td>
+</tr>
+<tr>
+<td>辐射剂量当量</td>
+<td>Radiation Dose Equivalent</td>
+<td>H (Sv)</td>
+</tr>
+<tr>
+<td>吸收剂量</td>
+<td>Absorbed Dose</td>
+<td>D (Gy)</td>
+</tr>
+<tr>
+<td>线性能量传输</td>
+<td>Linear Energy Transfer</td>
+<td>LET</td>
+</tr>
+<tr>
+<td>范艾伦辐射带</td>
+<td>Van Allen Radiation Belts</td>
+<td>—</td>
+</tr>
+<tr>
+<td>南大西洋异常区</td>
+<td>South Atlantic Anomaly</td>
+<td>SAA</td>
+</tr>
+<tr>
+<td>帕克螺旋</td>
+<td>Parker Spiral</td>
+<td>—</td>
+</tr>
+<tr>
+<td>太阳合</td>
+<td>Solar Conjunction</td>
+<td>—</td>
+</tr>
+<tr>
+<td>微流星体与轨道碎片</td>
+<td>Micrometeoroid and Orbital Debris</td>
+<td>MMOD</td>
+</tr>
+<tr>
+<td>Whipple 防护罩</td>
+<td>Whipple Shield</td>
+<td>—</td>
+</tr>
+<tr>
+<td>弹道极限方程</td>
+<td>Ballistic Limit Equation</td>
+<td>BLE</td>
+</tr>
+<tr>
+<td>多层隔热</td>
+<td>Multi-Layer Insulation</td>
+<td>MLI</td>
+</tr>
+<tr>
+<td>永久阴影区</td>
+<td>Permanently Shadowed Region</td>
+<td>PSR</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sec-3">E.3 推进与能源</h3>
+<table>
+<thead>
+<tr>
+<th>中文</th>
+<th>英文</th>
+<th>缩写</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>核热推进</td>
+<td>Nuclear Thermal Propulsion</td>
+<td>NTP</td>
+</tr>
+<tr>
+<td>核电推进</td>
+<td>Nuclear Electric Propulsion</td>
+<td>NEP</td>
+</tr>
+<tr>
+<td>惯性约束聚变</td>
+<td>Inertial Confinement Fusion</td>
+<td>ICF</td>
+</tr>
+<tr>
+<td>磁化靶聚变</td>
+<td>Magnetized Target Fusion</td>
+<td>MTF/MIF</td>
+</tr>
+<tr>
+<td>磁喷嘴</td>
+<td>Magnetic Nozzle</td>
+<td>—</td>
+</tr>
+<tr>
+<td>太阳帆</td>
+<td>Solar Sail</td>
+<td>—</td>
+</tr>
+<tr>
+<td>巴萨德冲压发动机</td>
+<td>Bussard Ramjet</td>
+<td>—</td>
+</tr>
+<tr>
+<td>反物质催化微聚变</td>
+<td>Antimatter-Initiated Microfusion</td>
+<td>AIM</td>
+</tr>
+<tr>
+<td>在轨推进剂加注</td>
+<td>Orbital Propellant Depot / Refueling</td>
+<td>—</td>
+</tr>
+<tr>
+<td>蒸发损失</td>
+<td>Boil-off</td>
+<td>—</td>
+</tr>
+<tr>
+<td>放射性同位素热电发电机</td>
+<td>Radioisotope Thermoelectric Generator</td>
+<td>RTG</td>
+</tr>
+<tr>
+<td>斯特林放射性同位素发电机</td>
+<td>Stirling Radioisotope Generator</td>
+<td>SRG</td>
+</tr>
+<tr>
+<td>裂变表面电源</td>
+<td>Fission Surface Power</td>
+<td>FSP</td>
+</tr>
+<tr>
+<td>轨道太阳能电站</td>
+<td>Space-Based Solar Power</td>
+<td>SBSP</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sec-4">E.4 生命保障与太空医学</h3>
+<table>
+<thead>
+<tr>
+<th>中文</th>
+<th>英文</th>
+<th>缩写</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>受控生态生命保障系统</td>
+<td>Controlled Ecological Life Support System</td>
+<td>CELSS</td>
+</tr>
+<tr>
+<td>环境控制与生命保障系统</td>
+<td>Environmental Control and Life Support System</td>
+<td>ECLSS</td>
+</tr>
+<tr>
+<td>生物再生式生命保障</td>
+<td>Bioregenerative Life Support System</td>
+<td>BLSS</td>
+</tr>
+<tr>
+<td>Sabatier 反应</td>
+<td>Sabatier Reaction</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Bosch 反应</td>
+<td>Bosch Reaction</td>
+<td>—</td>
+</tr>
+<tr>
+<td>固体氧化物电解</td>
+<td>Solid Oxide Electrolysis</td>
+<td>SOXE</td>
+</tr>
+<tr>
+<td>光生物反应器</td>
+<td>Photobioreactor</td>
+<td>PBR</td>
+</tr>
+<tr>
+<td>水培</td>
+<td>Hydroponics</td>
+<td>—</td>
+</tr>
+<tr>
+<td>气培</td>
+<td>Aeroponics</td>
+<td>—</td>
+</tr>
+<tr>
+<td>细胞培养肉</td>
+<td>Cultured Meat</td>
+<td>—</td>
+</tr>
+<tr>
+<td>单细胞蛋白</td>
+<td>Single Cell Protein</td>
+<td>SCP</td>
+</tr>
+<tr>
+<td>航天相关神经-眼部综合征</td>
+<td>Spaceflight Associated Neuro-ocular Syndrome</td>
+<td>SANS</td>
+</tr>
+<tr>
+<td>急性辐射综合征</td>
+<td>Acute Radiation Syndrome</td>
+<td>ARS</td>
+</tr>
+<tr>
+<td>隔离-限制-极端环境</td>
+<td>Isolated, Confined, Extreme</td>
+<td>ICE</td>
+</tr>
+<tr>
+<td>第三季度现象</td>
+<td>Third-Quarter Phenomenon</td>
+<td>—</td>
+</tr>
+<tr>
+<td>下体负压</td>
+<td>Lower Body Negative Pressure</td>
+<td>LBNP</td>
+</tr>
+<tr>
+<td>高级抗阻训练装置</td>
+<td>Advanced Resistive Exercise Device</td>
+<td>ARED</td>
+</tr>
+<tr>
+<td>冬眠/人体冷冻暂停</td>
+<td>Hibernation / Cryopreservation</td>
+<td>—</td>
+</tr>
+<tr>
+<td>玻璃化（冷冻）</td>
+<td>Vitrification</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sec-5">E.5 栖息地、目的地与原位资源利用</h3>
+<table>
+<thead>
+<tr>
+<th>中文</th>
+<th>英文</th>
+<th>缩写</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>原位资源利用</td>
+<td>In-Situ Resource Utilization</td>
+<td>ISRU</td>
+</tr>
+<tr>
+<td>充气式栖息地</td>
+<td>Expandable / Inflatable Habitat</td>
+<td>—</td>
+</tr>
+<tr>
+<td>熔岩管栖息地</td>
+<td>Lava Tube Habitat</td>
+<td>—</td>
+</tr>
+<tr>
+<td>O'Neill 圆柱体</td>
+<td>O'Neill Cylinder</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Stanford 环</td>
+<td>Stanford Torus</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Kalpana One 殖民地</td>
+<td>Kalpana One</td>
+<td>—</td>
+</tr>
+<tr>
+<td>月壤烧结</td>
+<td>Regolith Sintering</td>
+<td>—</td>
+</tr>
+<tr>
+<td>FFC Cambridge 熔盐电解工艺</td>
+<td>FFC Cambridge Process</td>
+<td>—</td>
+</tr>
+<tr>
+<td>高氯酸盐</td>
+<td>Perchlorate</td>
+<td>ClO₄⁻</td>
+</tr>
+<tr>
+<td>地球化改造</td>
+<td>Terraforming</td>
+<td>—</td>
+</tr>
+<tr>
+<td>行星保护</td>
+<td>Planetary Protection</td>
+<td>—</td>
+</tr>
+<tr>
+<td>电磁质量驱动器</td>
+<td>Mass Driver</td>
+<td>—</td>
+</tr>
+<tr>
+<td>太空电梯</td>
+<td>Space Elevator</td>
+<td>—</td>
+</tr>
+<tr>
+<td>融探器</td>
+<td>Cryobot</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sec-6">E.6 通信与导航</h3>
+<table>
+<thead>
+<tr>
+<th>中文</th>
+<th>英文</th>
+<th>缩写</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>深空网络</td>
+<td>Deep Space Network</td>
+<td>DSN</td>
+</tr>
+<tr>
+<td>延迟容忍网络</td>
+<td>Delay/Disruption-Tolerant Networking</td>
+<td>DTN</td>
+</tr>
+<tr>
+<td>束协议</td>
+<td>Bundle Protocol</td>
+<td>BP</td>
+</tr>
+<tr>
+<td>X 射线脉冲星导航</td>
+<td>X-ray Pulsar Navigation</td>
+<td>XNAV</td>
+</tr>
+<tr>
+<td>光学导航</td>
+<td>Optical Navigation</td>
+<td>OpNav</td>
+</tr>
+<tr>
+<td>激光通信（光通信）</td>
+<td>Laser / Optical Communication</td>
+<td>—</td>
+</tr>
+<tr>
+<td>量子密钥分发</td>
+<td>Quantum Key Distribution</td>
+<td>QKD</td>
+</tr>
+<tr>
+<td>量子隐形传态</td>
+<td>Quantum Teleportation</td>
+<td>—</td>
+</tr>
+<tr>
+<td>甚长基线干涉测量</td>
+<td>Very Long Baseline Interferometry</td>
+<td>VLBI</td>
+</tr>
+<tr>
+<td>火星氧气原位资源利用实验</td>
+<td>Mars Oxygen ISRU Experiment</td>
+<td>MOXIE</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sec-7">E.7 材料与制造</h3>
+<table>
+<thead>
+<tr>
+<th>中文</th>
+<th>英文</th>
+<th>缩写</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>碳纤维增强聚合物</td>
+<td>Carbon Fiber Reinforced Polymer</td>
+<td>CFRP</td>
+</tr>
+<tr>
+<td>陶瓷基复合材料</td>
+<td>Ceramic Matrix Composite</td>
+<td>CMC</td>
+</tr>
+<tr>
+<td>碳纳米管</td>
+<td>Carbon Nanotube</td>
+<td>CNT</td>
+</tr>
+<tr>
+<td>气凝胶</td>
+<td>Aerogel</td>
+<td>—</td>
+</tr>
+<tr>
+<td>金属有机框架</td>
+<td>Metal-Organic Framework</td>
+<td>MOF</td>
+</tr>
+<tr>
+<td>自修复材料</td>
+<td>Self-Healing Material</td>
+<td>—</td>
+</tr>
+<tr>
+<td>高温超导体</td>
+<td>High-Temperature Superconductor</td>
+<td>HTS</td>
+</tr>
+<tr>
+<td>增材制造</td>
+<td>Additive Manufacturing</td>
+<td>AM</td>
+</tr>
+<tr>
+<td>冯·诺依曼探测器</td>
+<td>Von Neumann Probe</td>
+<td>—</td>
+</tr>
+<tr>
+<td>灰蛊（失控自复制）</td>
+<td>Gray Goo</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sec-8">E.8 前沿概念、社会与治理</h3>
+<table>
+<thead>
+<tr>
+<th>中文</th>
+<th>英文</th>
+<th>缩写</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>技术就绪度</td>
+<td>Technology Readiness Level</td>
+<td>TRL</td>
+</tr>
+<tr>
+<td>世代飞船</td>
+<td>Generation Ship</td>
+<td>—</td>
+</tr>
+<tr>
+<td>最小可行人口</td>
+<td>Minimum Viable Population</td>
+<td>MVP</td>
+</tr>
+<tr>
+<td>50/500 规则</td>
+<td>50/500 Rule</td>
+<td>—</td>
+</tr>
+<tr>
+<td>曲率驱动</td>
+<td>Warp Drive</td>
+<td>—</td>
+</tr>
+<tr>
+<td>虫洞</td>
+<td>Wormhole</td>
+<td>—</td>
+</tr>
+<tr>
+<td>戴森球</td>
+<td>Dyson Sphere</td>
+<td>—</td>
+</tr>
+<tr>
+<td>戴森云</td>
+<td>Dyson Swarm</td>
+<td>—</td>
+</tr>
+<tr>
+<td>卡尔达肖夫等级</td>
+<td>Kardashev Scale</td>
+<td>—</td>
+</tr>
+<tr>
+<td>脑机接口</td>
+<td>Brain-Computer Interface</td>
+<td>BCI</td>
+</tr>
+<tr>
+<td>通用人工智能</td>
+<td>Artificial General Intelligence</td>
+<td>AGI</td>
+</tr>
+<tr>
+<td>超级人工智能</td>
+<td>Artificial Super Intelligence</td>
+<td>ASI</td>
+</tr>
+<tr>
+<td>价值对齐</td>
+<td>Value Alignment</td>
+<td>—</td>
+</tr>
+<tr>
+<td>意识上传</td>
+<td>Mind Uploading</td>
+<td>—</td>
+</tr>
+<tr>
+<td>存在风险</td>
+<td>Existential Risk</td>
+<td>—</td>
+</tr>
+<tr>
+<td>《外层空间条约》</td>
+<td>Outer Space Treaty</td>
+<td>OST</td>
+</tr>
+<tr>
+<td>《阿尔忒弥斯协定》</td>
+<td>Artemis Accords</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div><div class="prevnext"><a class="pn pn-prev" href="appD.html"><span class="pn-k">上一篇</span><span class="pn-t">附录D 辐射与屏蔽</span></a><a class="pn pn-next" href="appF.html"><span class="pn-k">下一篇</span><span class="pn-t">附录F 参考文献与推荐阅读</span></a></div></article><footer class="foot"><span>未来太空移民技术手册 · 完整版 v2.0</span><span class="foot-mono">AD ASTRA PER ASPERA</span></footer></main>
+<aside class="toc"><div class="toc-title">本页目录</div>
+<a class="toc-h3" href="#sec-1">E.1 轨道力学与飞行动力学</a>
+<a class="toc-h3" href="#sec-2">E.2 空间环境与辐射</a>
+<a class="toc-h3" href="#sec-3">E.3 推进与能源</a>
+<a class="toc-h3" href="#sec-4">E.4 生命保障与太空医学</a>
+<a class="toc-h3" href="#sec-5">E.5 栖息地、目的地与原位资源利用</a>
+<a class="toc-h3" href="#sec-6">E.6 通信与导航</a>
+<a class="toc-h3" href="#sec-7">E.7 材料与制造</a>
+<a class="toc-h3" href="#sec-8">E.8 前沿概念、社会与治理</a>
+</aside>
+</div>
+<script src="../search-index.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

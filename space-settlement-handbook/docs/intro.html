@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>前言与导读 · 未来太空移民技术手册</title>
+<meta name="description" content="未来太空移民技术手册 —— 面向专业读者的综合性太空殖民技术参考，涵盖推进、生保、栖息地、治理与前沿技术。">
+<link rel="icon" type="image/png" href="../assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script>(function(){try{var t=localStorage.getItem('smh-theme');if(!t)t='dark';document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="目录"><span></span><span></span><span></span></button>
+  <a class="brand" href="../index.html">
+    <img class="brand-icon" src="../assets/icon.png" alt="">
+    <span class="brand-zh">未来太空移民技术手册</span>
+    <span class="brand-en">SPACE SETTLEMENT HANDBOOK</span>
+  </a>
+  <div class="top-actions">
+    <button class="search-btn" id="searchBtn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg><span>检索</span><kbd>⌘K</kbd></button>
+    <button class="theme-btn" id="themeBtn" aria-label="切换主题"></button>
+  </div>
+</header>
+
+<div class="search-overlay" id="searchOverlay" hidden>
+  <div class="search-box">
+    <div class="search-head">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg>
+      <input id="searchInput" type="text" placeholder="检索全书：术语、参数、章节…" autocomplete="off">
+      <kbd>ESC</kbd>
+    </div>
+    <div class="search-results" id="searchResults"><div class="search-hint">输入关键词，检索 23 章正文与附录</div></div>
+  </div>
+</div>
+<div class="layout">
+<nav class="sidebar" id="sidebar">
+<div class="sb-group"><div class="sb-label">卷首</div>
+<a class="sb-item current" href="intro.html"><span class="sb-num">◎</span><span class="sb-t">前言与导读</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第一部分 · 基础物理与宇宙环境</div>
+<a class="sb-item" href="ch01.html"><span class="sb-num">01</span><span class="sb-t">太空环境物理</span></a>
+<a class="sb-item" href="ch02.html"><span class="sb-num">02</span><span class="sb-t">天体物理与轨道力学</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第二部分 · 推进与运输系统</div>
+<a class="sb-item" href="ch03.html"><span class="sb-num">03</span><span class="sb-t">化学推进与近中期方案</span></a>
+<a class="sb-item" href="ch04.html"><span class="sb-num">04</span><span class="sb-t">先进推进理论</span></a>
+<a class="sb-item" href="ch05.html"><span class="sb-num">05</span><span class="sb-t">星际航行工程</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第三部分 · 生命保障与人体工程</div>
+<a class="sb-item" href="ch06.html"><span class="sb-num">06</span><span class="sb-t">封闭生态生命保障系统（CELSS）</span></a>
+<a class="sb-item" href="ch07.html"><span class="sb-num">07</span><span class="sb-t">太空医学</span></a>
+<a class="sb-item" href="ch08.html"><span class="sb-num">08</span><span class="sb-t">食品与营养</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第四部分 · 栖息地与基础设施</div>
+<a class="sb-item" href="ch09.html"><span class="sb-num">09</span><span class="sb-t">栖息地结构设计</span></a>
+<a class="sb-item" href="ch10.html"><span class="sb-num">10</span><span class="sb-t">能源系统</span></a>
+<a class="sb-item" href="ch11.html"><span class="sb-num">11</span><span class="sb-t">通信与导航</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第五部分 · 目的地与殖民方案</div>
+<a class="sb-item" href="ch12.html"><span class="sb-num">12</span><span class="sb-t">月球</span></a>
+<a class="sb-item" href="ch13.html"><span class="sb-num">13</span><span class="sb-t">火星</span></a>
+<a class="sb-item" href="ch14.html"><span class="sb-num">14</span><span class="sb-t">小行星与太空殖民地</span></a>
+<a class="sb-item" href="ch15.html"><span class="sb-num">15</span><span class="sb-t">外太阳系与冰卫星</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第六部分 · 材料与制造</div>
+<a class="sb-item" href="ch16.html"><span class="sb-num">16</span><span class="sb-t">太空材料科学</span></a>
+<a class="sb-item" href="ch17.html"><span class="sb-num">17</span><span class="sb-t">太空制造与原位资源利用</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第七部分 · 社会、文化与治理</div>
+<a class="sb-item" href="ch18.html"><span class="sb-num">18</span><span class="sb-t">太空治理与法律框架</span></a>
+<a class="sb-item" href="ch19.html"><span class="sb-num">19</span><span class="sb-t">太空经济学</span></a>
+<a class="sb-item" href="ch20.html"><span class="sb-num">20</span><span class="sb-t">太空文化演化</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第八部分 · 前沿与推测性技术</div>
+<a class="sb-item" href="ch21.html"><span class="sb-num">21</span><span class="sb-t">脑机接口与人类增强</span></a>
+<a class="sb-item" href="ch22.html"><span class="sb-num">22</span><span class="sb-t">AI治理与超级智能</span></a>
+<a class="sb-item" href="ch23.html"><span class="sb-num">23</span><span class="sb-t">意识上传与数字存在</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">附录 · 参考数据</div>
+<a class="sb-item" href="appA.html"><span class="sb-num">A</span><span class="sb-t">A 物理常数与换算</span></a>
+<a class="sb-item" href="appB.html"><span class="sb-num">B</span><span class="sb-t">B 太阳系天体参数</span></a>
+<a class="sb-item" href="appC.html"><span class="sb-num">C</span><span class="sb-t">C 推进系统对比</span></a>
+<a class="sb-item" href="appD.html"><span class="sb-num">D</span><span class="sb-t">D 辐射与屏蔽</span></a>
+<a class="sb-item" href="appE.html"><span class="sb-num">E</span><span class="sb-t">E 术语表（中英对照）</span></a>
+<a class="sb-item" href="appF.html"><span class="sb-num">F</span><span class="sb-t">F 参考文献与推荐阅读</span></a>
+</div>
+</nav><main class="content"><article class="article"><div class="crumb"><span class="crumb-part">卷首</span></div><div class="ch-head"><div class="ch-num">◎</div><h1 class="ch-title">前言与导读</h1></div><div class="article-body"><blockquote>
+<p>面向航天工程、物理学、生物学等相关专业背景读者的综合性技术手册。</p>
+</blockquote>
+<p><strong>版本信息</strong>：完整版 v2.0 · 2026年</p>
+<hr />
+<h2 id="sec-1">前言</h2>
+<p>航天事业正处于自阿波罗时代以来未曾有过的转折期。阿尔忒弥斯计划（Artemis Program）正在推进人类重返月球，载人登月任务从规划转入工程实施；商业运载火箭通过回收复用，将低轨发射成本较一次性火箭时代降低了一个数量级以上，超重型完全复用运载器已进入飞行试验阶段；火星表面，巡视器持续采样并封存样本，多项火星采样返回任务虽经历方案调整，仍在推进之中。太空移民正在走出纯粹的愿景讨论，进入可以用工程时间表、预算与物理参数加以审视的阶段。</p>
+<p>本手册的编写目的，是为具有相关专业背景的读者提供一套关于太空移民的系统、定量、可核查的知识框架。现有相关著作往往分属两个极端：一类是科普式叙述，缺乏工程细节；另一类是愿景式展望，缺乏物理约束。本书试图取其中道：将太空移民视为一个由推进、生命保障、栖息地、能源、通信、材料、原位资源利用等具体子系统构成的工程领域，逐一讨论各子系统的物理原理、当前性能参数、技术成熟度与主要风险。</p>
+<p>全书的立场是务实的。书中涉及的技术被明确区分为三类：当前可行（近期）、发展中（中期）、理论/推测级；关键系统标注技术成熟度（TRL 1–9）。凡给出重要结论，均以数据和单位支撑；凡涉及估算，标明量级或"约"。本书不回避失败案例与不可行方案，但对其不可行性必须给出定量理由。</p>
+<p>有必要向读者作一诚实声明。本书第一至第六部分的主体内容基于已经飞行任务或地面试验验证的工程实践，但相当数量的核心问题仍是开放的：部分重力（月球 0.16 g、火星 0.38 g）对人体的长期生理效应几乎没有载人数据；载人火星任务的累积辐射剂量接近甚至可能超过航天员职业限值；封闭生态生命保障尚未在年级尺度上完成闭环验证；原位资源利用的经济性尚未经过工程规模检验。第八部分（脑机接口、AI治理、意识上传）所涉内容则属于尚未定论的前沿研究与哲学讨论，读者应依据文中明确标注的边界加以理解，而不应将其视为工程指南。</p>
+<p>太空移民大概率是一项跨越数代人的工程。本手册不试图预言时间表，只试图说清楚：这条路径上的每一步依赖什么物理与工程事实，而这些事实的边界在哪里。</p>
+<hr />
+<h2 id="sec-2">本书结构与阅读指南</h2>
+<h3 id="sec-3">全书逻辑脉络</h3>
+<p>全书二十三章分为八个部分，编排遵循"从约束到方案、从单系统到完整任务"的工程逻辑：</p>
+<ol>
+<li><strong>第一部分 · 基础物理与宇宙环境</strong>（第1–2章）：界定全部后续讨论的边界条件——重力环境、辐射环境、真空与碎片、轨道力学。任何殖民方案必须首先满足这些约束。</li>
+<li><strong>第二部分 · 推进与运输系统</strong>（第3–5章）：解决"如何去"。从成熟的化学推进出发，经电推进与核推进，延伸至尚处于概念阶段的先进推进与星际航行。</li>
+<li><strong>第三部分 · 生命保障与人体工程</strong>（第6–8章）：解决"如何存活"。封闭生态系统、太空医学、食品与营养。</li>
+<li><strong>第四部分 · 栖息地与基础设施</strong>（第9–11章）：解决"如何长期生活"。栖息地结构、能源系统、通信与导航。</li>
+<li><strong>第五部分 · 目的地与殖民方案</strong>（第12–15章）：将前四部分的技术应用到具体目的地——月球、火星、小行星、外太阳系——并给出殖民方案与选址分析。</li>
+<li><strong>第六部分 · 材料与制造</strong>（第16–17章）：回答"用什么建造"。材料科学与原位资源利用（ISRU）决定殖民地能否摆脱对地球补给的依赖。</li>
+<li><strong>第七部分 · 社会、文化与治理</strong>（第18–20章）：讨论离开地球的人类如何组织自身——法律框架、经济模型、文化演化。</li>
+<li><strong>第八部分 · 前沿与推测性技术</strong>（第21–23章）：向知识边界外延伸——人类增强、AI治理、数字存在。各结论均明确标注推测性质。</li>
+</ol>
+<p>各部分之间的依赖关系可以概括为：环境约束决定运输方式，运输能力决定可投送的有效载荷，载荷规模决定生命保障与栖息地的形态，目的地资源禀赋决定自给程度，而自给程度最终决定治理结构。全书末尾设附录A–F，提供物理常数、天体数据、推进系统对比、辐射参考、术语表与参考文献，供查阅。</p>
+<h3 id="sec-4">读者基础与准备</h3>
+<p>本书默认读者具备以下基础：</p>
+<ul>
+<li>单变量微积分与常微分方程（用于第2章轨道力学与火箭方程的推导）；</li>
+<li>大学物理层面的经典力学与热力学（用于第二、四部分）；</li>
+<li>基础化学知识：摩尔概念、反应平衡（用于第6章生命保障与第17章原位资源利用）；</li>
+<li>不需要生物学或法学背景；第三、第七部分在正文中给出必要的入门性说明。</li>
+</ul>
+<p>正文公式均给出符号定义与量级说明。只关心结论的读者可以略去中间推导步骤，直接阅读每章末尾的"本章小结"与"关键参数速查表"。</p>
+<h3 id="sec-5">三条推荐阅读路线</h3>
+<p><strong>路线一：航天工程师</strong></p>
+<ul>
+<li>建议顺序：第1、2章 → 第3–5章 → 第9–11章 → 第12–15章 → 第17章 → 附录C、D。</li>
+<li>理由：该背景读者已具备轨道力学与推进基础，第1、2章可作环境约束的快速回顾；重点应放在运输系统设计、栖息地与基础设施工程、以及各目的地的具体方案上。第七部分可按需选读。</li>
+</ul>
+<p><strong>路线二：理工科学生</strong></p>
+<ul>
+<li>建议顺序：按全书顺序阅读第一至第六部分，随后选读第18–23章；阅读中善用附录A、B、E查对常数与术语。</li>
+<li>理由：全书顺序即依赖关系的递进顺序，先建立物理基础再讨论系统，有助于形成完整知识框架。第2、3、6章的公式推导建议亲手验算一遍。</li>
+</ul>
+<p><strong>路线三：政策/人文背景读者</strong></p>
+<ul>
+<li>建议顺序：第1章（可仅读1.1、1.2节）→ 第12、13章 → 第18、19、20章 → 第21、22章 → 第5章。</li>
+<li>理由：该路线的目标是理解治理与伦议题背后的技术约束。公式推导部分可以跳过，只读公式附带的结论。第1章说明辐射与重力的生理代价；第12、13章提供月球与火星殖民的具体场景；第18–20章讨论法律、经济与文化问题；第21、22章涉及人类增强与AI治理的伦理边界；第5章的星际航行部分提供长时尺度的思考背景。</li>
+</ul>
+<h3 id="sec-6">一般性建议</h3>
+<ul>
+<li>阅读公式时，建议先看符号的量纲定义，再看数值量级，最后才看推导过程；</li>
+<li>每章末尾的"关键参数速查表"是该章最值得记忆的最小信息集合，可作为复习与检索入口；</li>
+<li>第八部分的全部结论属于理论或推测级别，不应作为工程决策或政策论证的依据。</li>
+</ul>
+<hr />
+<h2 id="sec-7">记号与约定</h2>
+<h3 id="sec-8">公式记法</h3>
+<ul>
+<li>公式使用 LaTeX 排版：行内公式写作 <code><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.1056em;"></span><span class="mord">...</span></span></span></span></code>，独立公式块写作 `</li>
+</ul>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.1056em;"></span><span class="mord">...</span></span></span></span></span></p>
+<p>`。
+- 正文统一采用国际单位制（SI）。例外包括：比冲 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">s</span><span class="mord mathnormal mtight">p</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span> 按惯例以秒（s）为单位；辐射剂量当量以希沃特（Sv）为单位；天文距离在相应语境下使用天文单位（AU）、光年（ly）等，换算关系见附录A。
+- 数字与单位之间留空格，如 100 m、45 s；中文语境下百分比写作 30%。</p>
+<h3 id="sec-9">技术成熟度（TRL）</h3>
+<p>全书按 NASA 技术就绪度（Technology Readiness Level）量表标注技术成熟度：</p>
+<table>
+<thead>
+<tr>
+<th>等级</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TRL 1</td>
+<td>技术的基本原理被观察并报道</td>
+</tr>
+<tr>
+<td>TRL 2</td>
+<td>形成技术概念或应用方案</td>
+</tr>
+<tr>
+<td>TRL 3</td>
+<td>完成概念验证实验</td>
+</tr>
+<tr>
+<td>TRL 4</td>
+<td>实验室环境下组件级验证</td>
+</tr>
+<tr>
+<td>TRL 5</td>
+<td>相关环境下组件级验证</td>
+</tr>
+<tr>
+<td>TRL 6</td>
+<td>相关环境下系统/子系统原型演示</td>
+</tr>
+<tr>
+<td>TRL 7</td>
+<td>运行环境下系统原型演示</td>
+</tr>
+<tr>
+<td>TRL 8</td>
+<td>实际系统完成并通过试验鉴定</td>
+</tr>
+<tr>
+<td>TRL 9</td>
+<td>实际系统经任务运行考核验证</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sec-10">数值约定</h3>
+<ul>
+<li>波浪号（~）与"约"表示量级估算或不精确确定值，如 ~150 mSv/年；</li>
+<li>区间值（如 350–380 s）表示参数随工况、构型或数据来源的变化范围；</li>
+<li>重要数值尽可能标注数据或任务来源（如 MSL/RAD 火星表面测量、CRaTER/LRO 月球测量）；</li>
+<li>未标注来源的数值应视为标称值或设计值，使用前请核对最新公开资料。</li>
+</ul>
+<h3 id="sec-11">术语中英对照</h3>
+<ul>
+<li>专业术语首次出现时给出中英对照，如"霍曼转移（Hohmann Transfer）"；</li>
+<li>常用缩写（如 ISRU、GCR、SPE、EDL、CELSS）在首次出现时说明全称与含义，完整对照表集中于附录E；</li>
+<li>同一章内后续出现一律沿用缩写。</li>
+</ul>
+<h3 id="sec-12">技术等级分类</h3>
+<p>书中讨论的技术按三级分类，并在相应章节开头标注：</p>
+<ul>
+<li><strong>当前可行（近期）</strong>：已有飞行验证或成熟地面工程，TRL ≥ 7；</li>
+<li><strong>发展中（中期）</strong>：已完成实验室或相关环境验证，TRL 3–6，工程化取决于后续投入；</li>
+<li><strong>理论/推测级</strong>：仅存在理论可行性或概念研究，TRL ≤ 2，其物理可行性或工程经济性可能仍是开放问题。</li>
+</ul>
+<h3 id="sec-13">全书章节结构说明</h3>
+<p>本书各章按统一结构组织：</p>
+<ul>
+<li><strong>章首导语</strong>：说明本章解决什么问题、与前后章的关系，并预告关键结论；</li>
+<li><strong>正文</strong>：按小节展开技术内容，包含公式推导、工程实例、方案对比与风险分析；</li>
+<li><strong>本章小结</strong>：核心结论的提炼；</li>
+<li><strong>关键参数速查表</strong>：以表格汇总本章最重要的量级数据（如比冲、剂量、成本、尺寸）；</li>
+<li><strong>开放问题与展望</strong>（视情况设置）：本章涉及的尚未解决的科学或工程问题。</li>
+</ul>
+<h3 id="sec-14">表格与图记约定</h3>
+<ul>
+<li>表格均有表头，列数不超过 6 列，数值单位标注在表头；</li>
+<li>系统框图与结构层级示意以文本结构图表示，不依赖外部图片文件；</li>
+<li>表格数值与正文数值保持一致；不同来源数据存在出入时，并列给出并注明来源。</li>
+</ul>
+<h3 id="sec-15">交叉引用约定</h3>
+<ul>
+<li>跨章引用写作"第13章 13.3节"形式；同章内引用只写节号；</li>
+<li>引用附录写作"附录A""附录E"等；</li>
+<li>数据来源标注到具体测量任务或文献，文献的完整信息集中于附录F。</li>
+</ul>
+<hr />
+<h2 id="sec-16">全书目录</h2>
+<h2 id="sec-17">第一部分：基础物理与宇宙环境</h2>
+<h3 id="sec-18">第1章 太空环境物理</h3>
+<p>微重力与人工重力、宇宙辐射、真空与极端温度、微流星体与空间碎片、行星际等离子体环境及其工程约束。</p>
+<h3 id="sec-19">第2章 天体物理与轨道力学</h3>
+<p>霍曼转移与低能量转移、拉格朗日点与晕轨道、引力辅助与弹道捕获、Δv预算与火箭方程的工程极限。</p>
+<h2 id="sec-20">第二部分：推进与运输系统</h2>
+<h3 id="sec-21">第3章 化学推进与近中期方案</h3>
+<p>液体推进剂组合与发动机循环、可复用运载器、在轨推进剂加注、核热推进（NTP）与核电推进（NEP）。</p>
+<h3 id="sec-22">第4章 先进推进理论</h3>
+<p>核聚变推进、反物质催化微聚变、光帆、巴萨德冲压发动机，以及曲率驱动与虫洞等推测性概念。</p>
+<h3 id="sec-23">第5章 星际航行工程</h3>
+<p>世代飞船设计、冬眠与人体冷冻暂停、相对论效应对任务规划的影响、星际介质侵蚀与防护。</p>
+<h2 id="sec-24">第三部分：生命保障与人体工程</h2>
+<h3 id="sec-25">第6章 封闭生态生命保障系统（CELSS）</h3>
+<p>物理化学与生物再生式生命保障、物质闭环率建模、大气痕量污染物控制、水回收与废物处理。</p>
+<h3 id="sec-26">第7章 太空医学</h3>
+<p>微重力生理学、辐射防护医学、隔离与限制环境心理学、远程外科手术与自动化医疗、人体增强议题。</p>
+<h3 id="sec-27">第8章 食品与营养</h3>
+<p>太空农业、细胞培养肉与微生物蛋白、长期营养平衡与微量元素管理、食品辐照保鲜与长期储存。</p>
+<h2 id="sec-28">第四部分：栖息地与基础设施</h2>
+<h3 id="sec-29">第9章 栖息地结构设计</h3>
+<p>充气式栖息地、旋转重力栖息地、地下与熔岩管栖息地、原位资源利用建筑、辐射屏蔽设计。</p>
+<h3 id="sec-30">第10章 能源系统</h3>
+<p>空间核反应堆、空间太阳能、放射性同位素系统、反物质能源理论、能源传输与分配。</p>
+<h3 id="sec-31">第11章 通信与导航</h3>
+<p>深空光通信、延迟容忍网络（DTN）、行星际导航、量子密钥分发、光速延迟对殖民社会信息架构的影响。</p>
+<h2 id="sec-32">第五部分：目的地与殖民方案</h2>
+<h3 id="sec-33">第12章 月球</h3>
+<p>南极沙克尔顿环形山选址、月壤成分与ISRU、月球低重力的人体影响、月球工业与中转站角色。</p>
+<h3 id="sec-34">第13章 火星</h3>
+<p>进入-下降-着陆（EDL）与大气制动、火星表面化学、大气原位利用、地球化改造理论、长期生存策略。</p>
+<h3 id="sec-35">第14章 小行星与太空殖民地</h3>
+<p>近地小行星捕获与资源开采、小行星栖息地改造、自由空间殖民地、小行星带资源经济学。</p>
+<h3 id="sec-36">第15章 外太阳系与冰卫星</h3>
+<p>木卫二、土卫六、土卫二等候选天体的环境与开发方案、外太阳系能源方案。</p>
+<h2 id="sec-37">第六部分：材料与制造</h2>
+<h3 id="sec-38">第16章 太空材料科学</h3>
+<p>传统航天结构材料、纳米材料、自修复材料、超导材料的性能与太空应用。</p>
+<h3 id="sec-39">第17章 太空制造与原位资源利用</h3>
+<p>微重力制造物理、月球与火星ISRU工艺链、冯·诺依曼探测器与自复制系统。</p>
+<h2 id="sec-40">第七部分：社会、文化与治理</h2>
+<h3 id="sec-41">第18章 太空治理与法律框架</h3>
+<p>联合国太空条约体系、资源开采权与轨道位置争议、火星殖民治理模型。</p>
+<h3 id="sec-42">第19章 太空经济学</h3>
+<p>发射成本经济学、太空资源经济与商业模式分析。</p>
+<h3 id="sec-43">第20章 太空文化演化</h3>
+<p>封闭社会心理学、太空艺术与文学、殖民社会的文化分化。</p>
+<h2 id="sec-44">第八部分：前沿与推测性技术</h2>
+<h3 id="sec-45">第21章 脑机接口与人类增强</h3>
+<p>太空环境中的BCI需求、各类接口的技术现状、人类增强的伦理争议。</p>
+<h3 id="sec-46">第22章 AI治理与超级智能</h3>
+<p>AI在太空殖民中的角色、价值对齐问题、超级智能与太空扩张。</p>
+<h3 id="sec-47">第23章 意识上传与数字存在</h3>
+<p>计算主义假说与扫描方法、数字存在的太空优势、存在风险与卡尔达肖夫等级。</p>
+<h2 id="sec-48">附录</h2>
+<h3 id="sec-49">附录A 物理常数与换算</h3>
+<p>常用物理常数与天文单位换算表。</p>
+<h3 id="sec-50">附录B 太阳系天体数据</h3>
+<p>太阳系主要天体的质量、半径、表面重力、逃逸速度与大气参数。</p>
+<h3 id="sec-51">附录C 推进系统对比</h3>
+<p>主要推进系统的比冲、推力、成熟度与适用任务对比表。</p>
+<h3 id="sec-52">附录D 辐射参考</h3>
+<p>各环境辐射剂量率汇总与屏蔽材料衰减特性。</p>
+<h3 id="sec-53">附录E 术语表（中英对照）</h3>
+<p>全书专业术语的中英文与缩写对照。</p>
+<h3 id="sec-54">附录F 参考文献与推荐阅读</h3>
+<p>按主题组织的文献列表与延伸阅读建议。</p>
+<hr />
+<p><em>完整版 v2.0 · 2026年</em></p></div><div class="prevnext"><span></span><a class="pn pn-next" href="ch01.html"><span class="pn-k">下一篇</span><span class="pn-t">第1章 太空环境物理</span></a></div></article><footer class="foot"><span>未来太空移民技术手册 · 完整版 v2.0</span><span class="foot-mono">AD ASTRA PER ASPERA</span></footer></main>
+<aside class="toc"><div class="toc-title">本页目录</div>
+<a class="toc-h2" href="#sec-1">前言</a>
+<a class="toc-h2" href="#sec-2">本书结构与阅读指南</a>
+<a class="toc-h3" href="#sec-3">全书逻辑脉络</a>
+<a class="toc-h3" href="#sec-4">读者基础与准备</a>
+<a class="toc-h3" href="#sec-5">三条推荐阅读路线</a>
+<a class="toc-h3" href="#sec-6">一般性建议</a>
+<a class="toc-h2" href="#sec-7">记号与约定</a>
+<a class="toc-h3" href="#sec-8">公式记法</a>
+<a class="toc-h3" href="#sec-9">技术成熟度（TRL）</a>
+<a class="toc-h3" href="#sec-10">数值约定</a>
+<a class="toc-h3" href="#sec-11">术语中英对照</a>
+<a class="toc-h3" href="#sec-12">技术等级分类</a>
+<a class="toc-h3" href="#sec-13">全书章节结构说明</a>
+<a class="toc-h3" href="#sec-14">表格与图记约定</a>
+<a class="toc-h3" href="#sec-15">交叉引用约定</a>
+<a class="toc-h2" href="#sec-16">全书目录</a>
+<a class="toc-h2" href="#sec-17">第一部分：基础物理与宇宙环境</a>
+<a class="toc-h3" href="#sec-18">第1章 太空环境物理</a>
+<a class="toc-h3" href="#sec-19">第2章 天体物理与轨道力学</a>
+<a class="toc-h2" href="#sec-20">第二部分：推进与运输系统</a>
+<a class="toc-h3" href="#sec-21">第3章 化学推进与近中期方案</a>
+<a class="toc-h3" href="#sec-22">第4章 先进推进理论</a>
+<a class="toc-h3" href="#sec-23">第5章 星际航行工程</a>
+<a class="toc-h2" href="#sec-24">第三部分：生命保障与人体工程</a>
+<a class="toc-h3" href="#sec-25">第6章 封闭生态生命保障系统（CELSS）</a>
+<a class="toc-h3" href="#sec-26">第7章 太空医学</a>
+<a class="toc-h3" href="#sec-27">第8章 食品与营养</a>
+<a class="toc-h2" href="#sec-28">第四部分：栖息地与基础设施</a>
+<a class="toc-h3" href="#sec-29">第9章 栖息地结构设计</a>
+<a class="toc-h3" href="#sec-30">第10章 能源系统</a>
+<a class="toc-h3" href="#sec-31">第11章 通信与导航</a>
+<a class="toc-h2" href="#sec-32">第五部分：目的地与殖民方案</a>
+<a class="toc-h3" href="#sec-33">第12章 月球</a>
+<a class="toc-h3" href="#sec-34">第13章 火星</a>
+<a class="toc-h3" href="#sec-35">第14章 小行星与太空殖民地</a>
+<a class="toc-h3" href="#sec-36">第15章 外太阳系与冰卫星</a>
+<a class="toc-h2" href="#sec-37">第六部分：材料与制造</a>
+<a class="toc-h3" href="#sec-38">第16章 太空材料科学</a>
+<a class="toc-h3" href="#sec-39">第17章 太空制造与原位资源利用</a>
+<a class="toc-h2" href="#sec-40">第七部分：社会、文化与治理</a>
+<a class="toc-h3" href="#sec-41">第18章 太空治理与法律框架</a>
+<a class="toc-h3" href="#sec-42">第19章 太空经济学</a>
+<a class="toc-h3" href="#sec-43">第20章 太空文化演化</a>
+<a class="toc-h2" href="#sec-44">第八部分：前沿与推测性技术</a>
+<a class="toc-h3" href="#sec-45">第21章 脑机接口与人类增强</a>
+<a class="toc-h3" href="#sec-46">第22章 AI治理与超级智能</a>
+<a class="toc-h3" href="#sec-47">第23章 意识上传与数字存在</a>
+<a class="toc-h2" href="#sec-48">附录</a>
+<a class="toc-h3" href="#sec-49">附录A 物理常数与换算</a>
+<a class="toc-h3" href="#sec-50">附录B 太阳系天体数据</a>
+<a class="toc-h3" href="#sec-51">附录C 推进系统对比</a>
+<a class="toc-h3" href="#sec-52">附录D 辐射参考</a>
+<a class="toc-h3" href="#sec-53">附录E 术语表（中英对照）</a>
+<a class="toc-h3" href="#sec-54">附录F 参考文献与推荐阅读</a>
+</aside>
+</div>
+<script src="../search-index.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第19章 太空经济学 · 未来太空移民技术手册</title>
+<meta name="description" content="未来太空移民技术手册 —— 面向专业读者的综合性太空殖民技术参考，涵盖推进、生保、栖息地、治理与前沿技术。">
+<link rel="icon" type="image/png" href="../assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script>(function(){try{var t=localStorage.getItem('smh-theme');if(!t)t='dark';document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<header class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="目录"><span></span><span></span><span></span></button>
+  <a class="brand" href="../index.html">
+    <img class="brand-icon" src="../assets/icon.png" alt="">
+    <span class="brand-zh">未来太空移民技术手册</span>
+    <span class="brand-en">SPACE SETTLEMENT HANDBOOK</span>
+  </a>
+  <div class="top-actions">
+    <button class="search-btn" id="searchBtn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg><span>检索</span><kbd>⌘K</kbd></button>
+    <button class="theme-btn" id="themeBtn" aria-label="切换主题"></button>
+  </div>
+</header>
+
+<div class="search-overlay" id="searchOverlay" hidden>
+  <div class="search-box">
+    <div class="search-head">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg>
+      <input id="searchInput" type="text" placeholder="检索全书：术语、参数、章节…" autocomplete="off">
+      <kbd>ESC</kbd>
+    </div>
+    <div class="search-results" id="searchResults"><div class="search-hint">输入关键词，检索 23 章正文与附录</div></div>
+  </div>
+</div>
+<div class="layout">
+<nav class="sidebar" id="sidebar">
+<div class="sb-group"><div class="sb-label">卷首</div>
+<a class="sb-item" href="intro.html"><span class="sb-num">◎</span><span class="sb-t">前言与导读</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第一部分 · 基础物理与宇宙环境</div>
+<a class="sb-item" href="ch01.html"><span class="sb-num">01</span><span class="sb-t">太空环境物理</span></a>
+<a class="sb-item" href="ch02.html"><span class="sb-num">02</span><span class="sb-t">天体物理与轨道力学</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第二部分 · 推进与运输系统</div>
+<a class="sb-item" href="ch03.html"><span class="sb-num">03</span><span class="sb-t">化学推进与近中期方案</span></a>
+<a class="sb-item" href="ch04.html"><span class="sb-num">04</span><span class="sb-t">先进推进理论</span></a>
+<a class="sb-item" href="ch05.html"><span class="sb-num">05</span><span class="sb-t">星际航行工程</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第三部分 · 生命保障与人体工程</div>
+<a class="sb-item" href="ch06.html"><span class="sb-num">06</span><span class="sb-t">封闭生态生命保障系统（CELSS）</span></a>
+<a class="sb-item" href="ch07.html"><span class="sb-num">07</span><span class="sb-t">太空医学</span></a>
+<a class="sb-item" href="ch08.html"><span class="sb-num">08</span><span class="sb-t">食品与营养</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第四部分 · 栖息地与基础设施</div>
+<a class="sb-item" href="ch09.html"><span class="sb-num">09</span><span class="sb-t">栖息地结构设计</span></a>
+<a class="sb-item" href="ch10.html"><span class="sb-num">10</span><span class="sb-t">能源系统</span></a>
+<a class="sb-item" href="ch11.html"><span class="sb-num">11</span><span class="sb-t">通信与导航</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第五部分 · 目的地与殖民方案</div>
+<a class="sb-item" href="ch12.html"><span class="sb-num">12</span><span class="sb-t">月球</span></a>
+<a class="sb-item" href="ch13.html"><span class="sb-num">13</span><span class="sb-t">火星</span></a>
+<a class="sb-item" href="ch14.html"><span class="sb-num">14</span><span class="sb-t">小行星与太空殖民地</span></a>
+<a class="sb-item" href="ch15.html"><span class="sb-num">15</span><span class="sb-t">外太阳系与冰卫星</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第六部分 · 材料与制造</div>
+<a class="sb-item" href="ch16.html"><span class="sb-num">16</span><span class="sb-t">太空材料科学</span></a>
+<a class="sb-item" href="ch17.html"><span class="sb-num">17</span><span class="sb-t">太空制造与原位资源利用</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第七部分 · 社会、文化与治理</div>
+<a class="sb-item" href="ch18.html"><span class="sb-num">18</span><span class="sb-t">太空治理与法律框架</span></a>
+<a class="sb-item current" href="ch19.html"><span class="sb-num">19</span><span class="sb-t">太空经济学</span></a>
+<a class="sb-item" href="ch20.html"><span class="sb-num">20</span><span class="sb-t">太空文化演化</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">第八部分 · 前沿与推测性技术</div>
+<a class="sb-item" href="ch21.html"><span class="sb-num">21</span><span class="sb-t">脑机接口与人类增强</span></a>
+<a class="sb-item" href="ch22.html"><span class="sb-num">22</span><span class="sb-t">AI治理与超级智能</span></a>
+<a class="sb-item" href="ch23.html"><span class="sb-num">23</span><span class="sb-t">意识上传与数字存在</span></a>
+</div>
+<div class="sb-group"><div class="sb-label">附录 · 参考数据</div>
+<a class="sb-item" href="appA.html"><span class="sb-num">A</span><span class="sb-t">A 物理常数与换算</span></a>
+<a class="sb-item" href="appB.html"><span class="sb-num">B</span><span class="sb-t">B 太阳系天体参数</span></a>
+<a class="sb-item" href="appC.html"><span class="sb-num">C</span><span class="sb-t">C 推进系统对比</span></a>
+<a class="sb-item" href="appD.html"><span class="sb-num">D</span><span class="sb-t">D 辐射与屏蔽</span></a>
+<a class="sb-item" href="appE.html"><span class="sb-num">E</span><span class="sb-t">E 术语表（中英对照）</span></a>
+<a class="sb-item" href="appF.html"><span class="sb-num">F</span><span class="sb-t">F 参考文献与推荐阅读</span></a>
+</div>
+</nav><main class="content"><article class="article"><div class="crumb"><span class="crumb-part">第七部分 · 社会、文化与治理</span><span class="crumb-sep">/</span><span class="crumb-ch">CHAPTER 19</span></div><div class="ch-head"><div class="ch-num">19</div><h1 class="ch-title">太空经济学</h1></div><div class="article-body"><p><strong>章首导语</strong>。太空移民最终是一个经济问题：运输、生命保障与基础设施的成本能否压缩到社会融资能力可承受的范围，决定移民从实验性任务走向规模化的时点。本章首先给出 1960 年代以来的发射成本历史数据与赖特定律（Wright's Law）学习曲线模型，论证成本数量级下降的真实来源是复用与规模而非学习效应本身；随后构建单次火星移民的成本模型与分解结构，并与阿波罗、国际空间站两大历史项目对比；再依次讨论小行星采矿、太空太阳能电站的经济模型，以及太空旅游市场规模与资源估值方法学。关键结论预告：其一，仅靠学习曲线无法把近地轨道成本再压低一个数量级，必须依赖架构级创新；其二，在可见未来，"在太空中使用"的资源价值高于"运回地球"的资源；其三，估值不确定性而非技术本身，是太空资源投资的首要风险。</p>
+<h3 id="sec-1">19.1 发射成本经济学</h3>
+<h3 id="sec-2">19.1.1 历史发射成本趋势</h3>
+<table>
+<thead>
+<tr>
+<th>火箭</th>
+<th>年份</th>
+<th>LEO成本 ($/kg)</th>
+<th>可复用性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Saturn V</td>
+<td>1969</td>
+<td>~$11,000</td>
+<td>一次性</td>
+</tr>
+<tr>
+<td>航天飞机</td>
+<td>1981</td>
+<td>~$54,000</td>
+<td>部分可复用</td>
+</tr>
+<tr>
+<td>Falcon 9</td>
+<td>2020</td>
+<td>~$2,720</td>
+<td>一级可复用</td>
+</tr>
+<tr>
+<td>Falcon 9（全复用概念）</td>
+<td>未来</td>
+<td>~$500-1000</td>
+<td>完全可复用</td>
+</tr>
+<tr>
+<td>Starship（目标）</td>
+<td>未来</td>
+<td>~$100-200</td>
+<td>完全可复用</td>
+</tr>
+</tbody>
+</table>
+<p><strong>数据口径说明</strong>。表中数值为近地轨道（LEO）单位质量成本，按 2020 年前后美元币值口径的估算值（Saturn V 与航天飞机由当年成本经通胀调整）。Saturn V 的 LEO 运载能力约 118–140 t（随构型变化），单次发射名义成本约 $1.2×10⁹（2020 年美元量级）。航天飞机运载能力约 27.5 t，若按全计划成本分摊，单次发射成本估计达 $0.5–1.5×10⁹（口径差异大），是历史上单位质量成本最高的 LEO 运输系统——"部分复用 + 低发射频率 + 高维护成本"的组合反而推高了单价，这一反例值得所有复用方案引以为戒。Falcon 9 以标价约 $6.2×10⁷ 与约 22.8 t 的 LEO 能力计得表中 ~$2,720/kg；其一级助推器复用次数截至 2024 年已超过 20 次（单枚纪录）。Falcon Heavy 在完全一次性构型下 LEO 能力约 63.8 t，单位成本最低约 $1,500/kg。Starship（截至 2024 年底处于迭代飞行试验阶段，TRL 5–6，当年实现助推器塔架回收）设计 LEO 运力约 100–150 t，表中 $100–200/kg 为 SpaceX 公开宣称的远期目标，属工程目标值而非已验证数据。</p>
+<p><strong>运载器参数对照</strong>（用于理解单位成本差异的来源）：</p>
+<table>
+<thead>
+<tr>
+<th>运载器</th>
+<th>LEO 运载能力</th>
+<th>单次名义成本</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Saturn V</td>
+<td>~118–140 t</td>
+<td>~$1.2×10⁹</td>
+<td>2020 年美元口径，估算</td>
+</tr>
+<tr>
+<td>航天飞机</td>
+<td>~27.5 t</td>
+<td>~$0.5–1.5×10⁹</td>
+<td>全成本分摊，口径差异大</td>
+</tr>
+<tr>
+<td>Falcon 9</td>
+<td>~22.8 t</td>
+<td>~$6.2×10⁷</td>
+<td>标价口径</td>
+</tr>
+<tr>
+<td>Falcon Heavy</td>
+<td>~63.8 t</td>
+<td>~$9–15×10⁷</td>
+<td>一次性构型</td>
+</tr>
+<tr>
+<td>Starship</td>
+<td>~100–150 t</td>
+<td>目标 &lt; $2×10⁷</td>
+<td>设计目标，未验证</td>
+</tr>
+</tbody>
+</table>
+<p>单位成本的分子是单次总成本、分母是运力，两条曲线的相对运动决定降本速度：Saturn V 靠巨大运力摊薄成本，但一次性使用使分子居高不下；航天飞机分子失控（翻修与地面保障人力）；Falcon 9 靠复用压低分子；Starship 路线则试图同时做大分母（百吨级运力）与压低分子（完全复用 + 低成本推进剂）。</p>
+<p><strong>趋势解读</strong>。1969–2020 年间 LEO 单位成本下降超过一个数量级，但路径非单调：航天飞机时代成本不降反升，说明复用本身不保证降本，高频次发射与低维护成本才是关键变量。Falcon 9 的成本曲线伴随着发射频率的跃升（SpaceX 年轨道发射次数 2024 年已超 100 次），复用收益只有在高频摊销下才能实现。</p>
+<p><strong>成本学习曲线</strong>：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8991em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8991em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mathnormal mtight">b</span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p>其中 N 为累积发射次数，b 为学习率（航天工业 b ~ 0.1-0.2）。</p>
+<h3 id="sec-3">19.1.2 火星移民经济模型</h3>
+<p><strong>单次火星移民成本估算</strong>（近中期，2040s-2050s）：</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>成本（估计）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Starship发射（可复用）</td>
+<td>~$20-50M</td>
+</tr>
+<tr>
+<td>在轨加注（8-12次）</td>
+<td>~$100-200M</td>
+</tr>
+<tr>
+<td>生命保障/栖息模块</td>
+<td>~$200-500M</td>
+</tr>
+<tr>
+<td>推进剂储备</td>
+<td>~$50-100M</td>
+</tr>
+<tr>
+<td>辐射防护/医疗</td>
+<td>~$50-100M</td>
+</tr>
+<tr>
+<td><strong>单人成本</strong></td>
+<td><strong>~$500M-1.5B</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>成本分解结构</strong>（按早期载人任务架构，示意，量级估计）：</p>
+<table>
+<thead>
+<tr>
+<th>子系统</th>
+<th>占比（估计）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>发射与在途运输</td>
+<td>20–30%</td>
+</tr>
+<tr>
+<td>在轨加注与推进剂</td>
+<td>15–20%</td>
+</tr>
+<tr>
+<td>进入—下降—着陆（EDL）</td>
+<td>10–15%</td>
+</tr>
+<tr>
+<td>表面栖息地与能源</td>
+<td>25–35%</td>
+</tr>
+<tr>
+<td>ISRU 与火星上升器（MAV）</td>
+<td>10–15%</td>
+</tr>
+<tr>
+<td>生保消耗品、医疗与辐射防护</td>
+<td>10–15%</td>
+</tr>
+</tbody>
+</table>
+<p>两个值得注意的结构特征：其一，表面系统（栖息地 + ISRU + EDL）合计约占一半，意味着移民成本的优化空间更多在目的地工程而非运载火箭本身；其二，在轨加注占比可观，其成本对加注次数与推进剂价格高度敏感，是近期降本的关键环节（技术现状见第3章）。</p>
+<p><strong>在轨加注的敏感性</strong>。按上表口径，加注费用约占总成本的 15–20% 且与次数成正比：若任务架构需要的加注次数从 8 次增至 12 次（对应更大的地火转移推进剂需求），仅此一项即可使总成本上浮约 5–10%；反之，若火星本地 ISRU 能生产返程推进剂，加注需求与单人成本可同比例下降。这解释了移民架构设计对"单艘运力 × 加注次数 × 本地生产"三者的联合优化为何比单一火箭参数更关键。</p>
+<p><strong>与历史大项目的对比</strong>。阿波罗计划总成本约 $2.57×10¹⁰（1973 年币值），折合约 $2.6×10¹¹（2020 年美元）；国际空间站的累计建设与运营成本估计约 $1–1.5×10¹¹（多国合计，量级估计）。一次早期载人火星活动的预算量级与二者相当：若发射成本不能下降 1–2 个数量级并实现大规模 ISRU，移民无法越过"实验性任务"与"持续定居"之间的经济门槛。</p>
+<p><strong>长期目标</strong>（完全ISRU + 规模化）：
+- 目标：$100,000-500,000/人（约等于地球一套房的价格）
+- 需要：完全可复用运输 + 火星本地经济 + 规模化</p>
+<p>该目标最早由 SpaceX 创始人 J. Musk 于 2016 年公开提出（当时表述为约 $200,000，对标美国房价中位数）。其前提链条包括：完全复用运输体系成熟、在轨推进剂加注常态化（当前 TRL 约 4–5）、火星本地推进剂生产（基于 Sabatier 反应 $\mathrm{CO_2 + 4H_2 \rightarrow CH_4 + 2H_2O}$，原料为火星大气 CO₂ 与水冰氢源，工艺路线见第17章）、以及数百至上千艘规模的船队运营。<strong>任何一环缺失，该目标都不可达，应视为推测级指标而非规划输入。</strong></p>
+<h3 id="sec-4">19.1.3 赖特定律与成本下降极限</h3>
+<p>赖特定律（Wright's Law）由 T. P. Wright 于 1936 年基于飞机制造数据提出：每累积产量翻倍，单位成本按固定比例下降。由 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.9991em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8491em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mathnormal mtight">b</span></span></span></span></span></span></span></span></span></span></span></span> 可得成本每翻倍下降一次的"学习率"（learning rate）：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">L</span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8991em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8991em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mathnormal mtight">b</span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p>代入不同 b 值：b = 0.1 时 LR ≈ 6.7%；b = 0.2 时 LR ≈ 12.9%；b = 0.32 时 LR ≈ 20%（Wright 原始航空数据的典型值）。跨行业对比（历史经验值）：航空制造 LR 约 15–20%，光伏组件约 20%，半导体约 20–40%；而发射工业历史上 b &lt; 0.1，学习效应显著弱于其他行业。原因是学习效应依赖累积产量的增长，而发射工业长期低频（累积发射次数增长缓慢）、单件小批量、高度定制，学习曲线被"饿死"。</p>
+<p><strong>各行业学习率经验值</strong>（量级参考）：</p>
+<table>
+<thead>
+<tr>
+<th>行业</th>
+<th>学习率 LR（经验值）</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>飞机制造</td>
+<td>~15–20%</td>
+<td>Wright (1936) 原始数据域</td>
+</tr>
+<tr>
+<td>光伏组件</td>
+<td>~20%</td>
+<td>与规模制造强相关</td>
+</tr>
+<tr>
+<td>半导体</td>
+<td>~20–40%</td>
+<td>工艺迭代极快</td>
+</tr>
+<tr>
+<td>发射工业（历史）</td>
+<td>&lt;10%</td>
+<td>低频、小批量、高定制</td>
+</tr>
+</tbody>
+</table>
+<p>由此可以定量检验"仅靠学习曲线能否实现下一个数量级降本"。设成本需从 ~$2,700/kg（Falcon 9）降至 ~$200/kg（约 13.6 倍），则所需累积发射次数增长倍数为 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.138em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">13.6</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.888em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1/</span><span class="mord mathnormal mtight">b</span></span></span></span></span></span></span></span></span></span></span></span>：取 b = 0.2 得约 4.6×10⁵ 倍；即便取乐观的 b = 0.3 也得约 6×10³ 倍。以当前全球累积发射规模衡量，两者均不现实。结论：<strong>数量级级别的成本下降不能依赖学习曲线外推，必须来自架构级创新（完全复用、大规模制造、在轨加注）与规模经济的叠加</strong>——这正是 Starship 路线与传统渐进改进路线的本质区别。</p>
+<p>学习曲线也给出了成本的物理下限参考：以 Starship 级运载器计，单次发射推进剂（液氧/甲烷，总量约 4,600 t 量级）成本约 $10⁶，若 LEO 运力取 100 t，则推进剂成本对应约 $10/kg。$100–200/kg 的目标约为物理下限的 10–20 倍，其余部分取决于复用次数、翻修成本与运营费用，属于可通过工程压缩但无法归零的成本。</p>
+<h3 id="sec-5">19.2 太空资源经济</h3>
+<h3 id="sec-6">19.2.1 小行星采矿经济</h3>
+<p><strong>近地小行星（NEA）资源价值</strong>：</p>
+<p>一颗典型M型（金属）小行星（直径 ~1 km）：
+- 铁镍含量：~50-90%
+- 铂族金属：~1-10 ppm
+- 总金属价值：~$10¹²-10¹⁵（理论）</p>
+<p><strong>实际经济约束</strong>：
+- 往返Δv：~5-10 km/s（部分NEA更低）
+- 采矿+返回时间：~5-10年
+- 返回质量限制：仅高价值材料值得带回地球
+- 市场冲击：大量铂族金属涌入将压低价格</p>
+<p><strong>更现实的经济模型</strong>：
+- 太空使用（in-space）资源 &gt; 地球返回资源
+- 水（从C型小行星）→ 推进剂（LEO加注）
+- 金属 → 太空制造原材料
+- 价值评估应基于"太空中的边际价值"而非"地球市场价格"</p>
+<p><strong>NEA 类型与可达性</strong>。近地小行星按成分类比陨石谱系分为 C 型（碳质，含水矿物与水冰，水含量约 10–20% 量级）、S 型（硅酸盐 + 铁镍）与 M 型（铁镍金属为主）。截至 2024 年前后，已发现的 NEA 超过 3×10⁴ 颗，其中往返 Δv 低于约 6 km/s 的易达目标有数百颗（具体清单随发射窗口变化），为采矿任务提供了候选池；资源品位的确证仍依赖遥感与原位采样，目前仅有 OSIRIS-REx 与隼鸟2号返回了少量样品，品位不确定性跨越数量级。</p>
+<p><strong>水在 LEO 的价值链</strong>。当前在轨水/推进剂完全依赖地面发射，其到岸价格由发射成本设定下限（按 $2,000–3,000/kg 计，LEO 水的边际价值即为同量级）。小行星水的价值链为：C 型小行星水冰开采 → 在轨加工（电解制 H₂/O₂，或直接储存）→ 推进剂仓库（depot，可布置于 LEO、GEO 或地月空间）→ 加注服务。竞争条件为：小行星推进剂的在轨交付成本低于"从地球发射等效推进剂"的价格加上供应安全溢价。该市场的鸡生蛋问题突出：仓库需要需求支撑，需求又依赖稳定供给。2010 年代的第一波商业尝试（Planetary Resources，2012；Deep Space Industries，2013）均因市场缺位与技术跨度过大而转型或被收购，其教训可概括为：市场先于采矿。月球路线（极区水冰，LCROSS 任务 2009 年测得 Cabeus 坑溅射物含水约 5.6%）是中期内与小行星水竞争的替代供给源。</p>
+<p><strong>水价值链关键环节</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>环节</th>
+<th>技术内容</th>
+<th>现状与成本驱动</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>勘探选矿</td>
+<td>遥感光谱 + 原位采样确证品位</td>
+<td>品位不确定性跨数量级，勘探成本前置</td>
+</tr>
+<tr>
+<td>开采</td>
+<td>微重力下水冰/含水矿物提取</td>
+<td>无工业先例（TRL 3–4 量级）</td>
+</tr>
+<tr>
+<td>加工</td>
+<td>电解制 H₂/O₂ 或直接储存</td>
+<td>地面成熟，需空间环境适配</td>
+</tr>
+<tr>
+<td>仓库运营</td>
+<td>在轨储存、热管理与转运接口</td>
+<td>演示验证阶段，资本成本高</td>
+</tr>
+<tr>
+<td>加注服务</td>
+<td>面向客户的推进剂转移与计量</td>
+<td>需求侧尚未成形</td>
+</tr>
+</tbody>
+</table>
+<p><strong>铂族返地的市场冲击（定量）</strong>。全球铂年产量约 180 t，近年价格约 $3×10⁴/kg，年市场规模约 $5–6×10⁹。据此：若单次任务返地 50–100 t 铂族金属，即相当于全球年供给的三分之一至一半以上，必然击穿价格——返地模式在规模化条件下自我否定，仅小批量高价值返地（吨级/年以内）或完全在轨利用成立。这也是 16 Psyche（金属小行星，NASA Psyche 探测器 2023 年发射、预计 2029 年抵达）常被引用的 $10¹⁹ 量级"名义金属价值"不具经济意义的原因：该估值隐含的供给量会摧毁估值本身所依据的价格。</p>
+<h3 id="sec-7">19.2.2 太空太阳能电站</h3>
+<p><strong>概念</strong>：GEO太阳能电站收集太阳能，微波/激光传输到地球或太空设施。</p>
+<p><strong>地球供电</strong>：
+- GEO太阳辐照度：~1361 W/m²（几乎24/7，除春分/秋分附近数周）
+- 光伏效率：~30-35%
+- 微波传输效率：~50-80%
+- 总效率：~15-25%
+- 1 km²电站输出功率：~200-340 MW
+- 成本：~$10-50B/GW（当前估计）</p>
+<p><strong>太空供电</strong>（更近期可行）：
+- 微波束为LEO/月球/火星中转站供电
+- 避免地球大气损耗和天气依赖</p>
+<p><strong>研究与示范进展</strong>。概念由 P. Glaser 于 1968 年提出；1978–1980 年 NASA/DOE 参考系统研究因发射成本过高而结论为当时不经济——该结论对发射成本的敏感性至今未变。无线能量传输方面：JAXA 于 2015 年实现 55 m 距离上约 1.8 kW 的微波束能传输；Caltech 空间太阳能项目（SSPP）于 2023 年完成 MAPLE 在轨实验，实现约 1 kW 级的星地微波传输。ESA 于 2022 年启动 SOLARIS 可行性研究，中国建有璧山空间太阳能电站实验基地并提出 2030 年代 MW 级、2050 年前后 GW 级的阶段路线（规划，待验证）。综合判断：面向地球供电的经济拐点取决于发射成本与大规模在轨组装能力（TRL 3–4）；面向太空设施的束能供电（在轨服务、月球基地辅助电源）需求侧约束更松，可能先行落地。</p>
+<h3 id="sec-8">19.2.3 太空资源估值方法学与不确定性</h3>
+<p><strong>标准框架</strong>。太空资源项目估值通常采用现金流贴现（DCF）：<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">NP</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0497em;vertical-align:-0.2997em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1308em;"><span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2997em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0436em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7936em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mathnormal mtight">t</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>。该行业的参数特征对 NPV 极不友好：开发周期 5–15 年、现金流集中于后期、风险贴现率 r ≈ 10–20%（深科技/矿业项目的典型区间）——远期现金流被重度折现，导致 NPV 对 r 的取值高度敏感，r 从 10% 变到 20% 足以把同一项目从"值得投资"翻转为"明显亏损"。</p>
+<p><strong>贴现率敏感性数值示例</strong>（示意）：设某采矿项目前期投入 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span></span></span></span></span></span></span></span> 美元，投产后 10 年每年净现金流 $8\times10^8$ 美元。取 r = 10% 时 NPV ≈ +$3×10⁸；取 r = 15% 时 NPV ≈ −$7×10⁸。同一项目、同一现金流序列，仅因贴现率取值不同而结论相反——这就是估值争议的核心来源，也是"制度风险（产权不确定性）→ 贴现率溢价 → 项目不可融资"传导链的量化形态。</p>
+<p><strong>不确定性的层次</strong>。（1）资源不确定性：遥感只能给出成分与品位的粗略约束，吨量与品位的不确定性跨越数量级，须以原位勘探逐步收敛；（2）回收率与工艺不确定性：微重力采矿、选冶与在轨加工均无工业先例；（3）运输成本不确定性：与发射成本演化（19.1.3）耦合；（4）价格内生性：大宗返地供给会压低目标商品价格（19.2.1），静态价格假设系统性高估收益；（5）制度风险：产权与许可框架未定（第18章），直接影响项目的可融资性。</p>
+<p><strong>方法与常见错误</strong>。实务上以蒙特卡洛模拟（对品位、成本、价格做联合分布抽样）与实物期权分析（Real Options，把分阶段投资视为可放弃/可扩张的期权）处理上述不确定性；并借用矿业"边界品位"（cut-off grade）概念确定可采阈值。最常见的估值错误是"小行星资源总量 × 地球市场价格"的名义估值法：它同时忽略了折现、开采成本与市场容量，学术层面的可行性分析（如 Sonter 1998、Blair 等 2002 的早期系统研究）给出的共识是：只有面向在轨市场或极小批量高价值返地的方案存在正的期望 NPV。</p>
+<h3 id="sec-9">19.3 太空旅游经济</h3>
+<p><strong>各细分市场价格与状态</strong>（截至 2024 年前后）：</p>
+<table>
+<thead>
+<tr>
+<th>细分市场</th>
+<th>代表载具/项目</th>
+<th>席单价（约）</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>亚轨道</td>
+<td>Virgin Galactic</td>
+<td>~$4.5×10⁵</td>
+<td>商业运营</td>
+</tr>
+<tr>
+<td>亚轨道</td>
+<td>Blue Origin New Shepard</td>
+<td>拍卖/邀请制（首次拍卖席 ~$2.8×10⁷）</td>
+<td>不定期运营</td>
+</tr>
+<tr>
+<td>轨道驻留</td>
+<td>Axiom 国际空间站任务</td>
+<td>~$5.5×10⁷</td>
+<td>运营中</td>
+</tr>
+<tr>
+<td>轨道包船</td>
+<td>SpaceX Inspiration4</td>
+<td>未公开（包船模式）</td>
+<td>2021 年完成验证</td>
+</tr>
+<tr>
+<td>环月</td>
+<td>dearMoon（SpaceX 星舰）</td>
+<td>未公开</td>
+<td>2024 年取消</td>
+</tr>
+</tbody>
+</table>
+<p><strong>亚轨道旅游</strong>。Blue Origin New Shepard 于 2021 年 7 月完成首次载人飞行；Virgin Galactic 的亚轨道飞船票面价格从早期约 $2.5×10⁵ 上调至 2022 年的 $4.5×10⁵/席。受发射节奏与安全流程限制，年供给能力为数十席量级，短期内是高价稀缺品市场而非规模市场。</p>
+<p><strong>轨道旅游</strong>。Axiom Space 的国际空间站私人任务（2022 年起）报价约 $5.5×10⁷/席（含训练与在轨服务）；SpaceX 的 Inspiration4（2021 年 9 月）实现首次全平民轨道飞行，验证了包船模式。环月方向上，SpaceX 星舰环月项目 dearMoon（2018 年公布）因进度问题于 2024 年取消，提示高票价产品对运载系统成熟度的依赖。</p>
+<p><strong>市场规模与预测</strong>。各机构对 2030 年太空旅游市场规模的预测大致落在约 $10⁹–8×10⁹ 区间（预测，分歧大）；更宏观的口径中，Morgan Stanley 估计全球太空经济规模约 $3.5×10¹¹（2016），预测 2040 年达约 $10¹²，旅游仅为其细分项。监管方面，美国 FAA 对商业载人航天采取"知情同意"框架，在"学习期"结束前不实施乘客安全强制标准（学习期已延至 2025 年），监管取向本身即是产业风险变量。</p>
+<p><strong>需求侧与结构性风险</strong>。中期需求的关键变量是目的地供给：国际空间站退役（规划于 2030 年前后）后，轨道旅游依赖商业空间站（如 Axiom Station、Orbital Reef 等在建项目）接棒，供给断档将直接压缩轨道细分市场。结构上，亚轨道与轨道旅游面向的是高净值客群，全球年需求容量上限受该人群规模约束（千人—万人量级/年，推测），难以自发形成大众市场；同时，该市场对安全事件高度敏感——一次重大事故可能使需求与保险供给同时冻结数年。因此，太空旅游更可能长期维持"高价低频"形态，其规模扩张的真正杠杆是发射成本下降带来的票价下探，而非营销。</p>
+<h3 id="sec-10">本章小结</h3>
+<p>发射成本在 1969–2020 年间下降超过一个数量级，但路径非单调：航天飞机的反例表明部分复用不保证降本，高频次与低维护成本才是复用收益的实现条件。赖特定律分析表明，航天工业的学习率（b ~ 0.1–0.2）不足以支撑下一个数量级降本——从 ~$2,700/kg 到 ~$200/kg 所需的学习倍数为 10³–10⁵ 倍累积发射量，不现实；数量级降本只能来自完全复用、规模制造与在轨加注等架构级创新。近中期单次火星移民成本估算为 ~$5×10⁸–1.5×10⁹/人，其中表面系统约占一半；长期目标 $10⁵–5×10⁵/人 依赖完全复用 + 火星 ISRU + 船队规模化的完整链条，属推测级。资源经济方面：在轨利用优于返地（水/推进剂价值链是当前最现实的切入点），铂族返地受 ~$5×10⁹/年 的市场容量硬约束；估值的首要风险是不确定性本身而非技术。</p>
+<h3 id="sec-11">关键参数速查表</h3>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>数值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Saturn V LEO 单位成本</td>
+<td>~$11,000/kg</td>
+<td>2020 年币值口径</td>
+</tr>
+<tr>
+<td>航天飞机 LEO 单位成本</td>
+<td>~$54,000/kg</td>
+<td>全成本分摊口径</td>
+</tr>
+<tr>
+<td>Falcon 9 LEO 单位成本</td>
+<td>~$2,720/kg</td>
+<td>标价口径</td>
+</tr>
+<tr>
+<td>Starship 目标成本</td>
+<td>~$100–200/kg</td>
+<td>未验证目标</td>
+</tr>
+<tr>
+<td>航天工业学习指数 b</td>
+<td>~0.1–0.2</td>
+<td>LR ≈ 7–13%</td>
+</tr>
+<tr>
+<td>单次火星移民成本（近中期）</td>
+<td>~$5×10⁸–1.5×10⁹/人</td>
+<td>估算</td>
+</tr>
+<tr>
+<td>长期目标成本</td>
+<td>~$10⁵–5×10⁵/人</td>
+<td>推测</td>
+</tr>
+<tr>
+<td>1 km 级 M 型小行星名义价值</td>
+<td>~$10¹²–10¹⁵</td>
+<td>理论上限，非可实现价值</td>
+</tr>
+<tr>
+<td>铂年市场规模</td>
+<td>~$5–6×10⁹</td>
+<td>近年量级</td>
+</tr>
+<tr>
+<td>GEO 太阳能电站成本</td>
+<td>~$10–50 B/GW</td>
+<td>当前估计</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sec-12">开放问题与展望</h3>
+<ul>
+<li>在轨推进剂市场何时形成第一笔规模化需求（星座维护、地月运输）？其会计与定价机制如何设计？</li>
+<li>月球极区水与小行星水在中期内谁先成为在轨推进剂供给主力？</li>
+<li>火星任务的保险与风险分摊机制（国家、商业保险、任务方自留）如何构造？</li>
+<li>太空资源产权制度（第18章）与项目可融资性的定量关系：制度不确定性对应多少个百分点的贴现率溢价？</li>
+</ul>
+<hr /></div><div class="prevnext"><a class="pn pn-prev" href="ch18.html"><span class="pn-k">上一篇</span><span class="pn-t">第18章 太空治理与法律框架</span></a><a class="pn pn-next" href="ch20.html"><span class="pn-k">下一篇</span><span class="pn-t">第20章 太空文化演化</span></a></div></article><footer class="foot"><span>未来太空移民技术手册 · 完整版 v2.0</span><span class="foot-mono">AD ASTRA PER ASPERA</span></footer></main>
+<aside class="toc"><div class="toc-title">本页目录</div>
+<a class="toc-h3" href="#sec-1">19.1 发射成本经济学</a>
+<a class="toc-h3" href="#sec-2">19.1.1 历史发射成本趋势</a>
+<a class="toc-h3" href="#sec-3">19.1.2 火星移民经济模型</a>
+<a class="toc-h3" href="#sec-4">19.1.3 赖特定律与成本下降极限</a>
+<a class="toc-h3" href="#sec-5">19.2 太空资源经济</a>
+<a class="toc-h3" href="#sec-6">19.2.1 小行星采矿经济</a>
+<a class="toc-h3" href="#sec-7">19.2.2 太空太阳能电站</a>
+<a class="toc-h3" href="#sec-8">19.2.3 太空资源估值方法学与不确定性</a>
+<a class="toc-h3" href="#sec-9">19.3 太空旅游经济</a>
+<a class="toc-h3" href="#sec-10">本章小结</a>
+<a class="toc-h3" href="#sec-11">关键参数速查表</a>
+<a class="toc-h3" href="#sec-12">开放问题与展望</a>
+</aside>
+</div>
+<script src="../search-index.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>
