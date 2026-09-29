@@ -1,407 +1,766 @@
 ---
-layout: default
-title: 全部项目
+layout: none
+title: 项目展板
+description: 个人项目、研究知识库、股权投资札记与旅行方案的归档展板
 wide: true
 ---
 
-{% assign projects = site.projects | sort: 'date' | reverse %}
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BLACKINKVC · 项目展板</title>
+<meta name="description" content="{{ site.description | default: '个人项目、研究知识库、股权投资札记与旅行方案的归档展板' }}">
+<link rel="icon" href="{{ '/favicon.svg' | relative_url }}" type="image/svg+xml">
+<style>
+/* ============================================================
+   BLACKINKVC · 项目展板 —— 复古未来主义 / CRT 科幻主题
+   （基于 AI PROJECT NEXUS 视觉语言重做，Jekyll 集合数据驱动）
+   ============================================================ */
 
+/* ---------- 主题变量 ---------- */
+:root {
+  /* 深色（默认）· 深夜终端 */
+  --bg: #0d0b0e;
+  --bg-2: #131016;
+  --panel: #191420;
+  --panel-2: #1f1826;
+  --ink: #ece4d6;
+  --ink-2: #b3a899;
+  --ink-3: #7d7367;
+  --line: rgba(236, 228, 214, 0.12);
+  --line-2: rgba(236, 228, 214, 0.22);
+
+  --amber: #ffb445;
+  --crt: #56e0c0;
+  --rust: #e0604a;
+  --violet: #a88bff;
+
+  --accent: var(--amber);
+  --glow: 0 0 0 1px rgba(255, 180, 69, 0.35), 0 8px 30px -12px rgba(255, 180, 69, 0.5);
+
+  --radius: 14px;
+  --radius-sm: 9px;
+  --shadow: 0 18px 40px -22px rgba(0, 0, 0, 0.9);
+
+  --font-display: "Space Grotesk", "Chakra Petch", ui-sans-serif, system-ui,
+    -apple-system, "PingFang SC", "HarmonyOS Sans SC", "Microsoft YaHei", sans-serif;
+  --font-mono: ui-monospace, "JetBrains Mono", "SF Mono", "Cascadia Mono", Menlo,
+    Consolas, "Noto Sans Mono CJK SC", "Microsoft YaHei", monospace;
+
+  --grid: rgba(236, 228, 214, 0.045);
+  --scan-opacity: 0.05;
+}
+
+/* 浅色 · 旧纸档案 */
+[data-theme="paper"] {
+  --bg: #e7dfcd;
+  --bg-2: #f2ebda;
+  --panel: #fbf6e9;
+  --panel-2: #f4eddc;
+  --ink: #26201a;
+  --ink-2: #5c5248;
+  --ink-3: #8a7e70;
+  --line: rgba(38, 32, 26, 0.14);
+  --line-2: rgba(38, 32, 26, 0.26);
+  --amber: #b85d10;
+  --crt: #0f7566;
+  --rust: #b0402c;
+  --violet: #5c46b8;
+  --glow: 0 0 0 1px rgba(184, 93, 16, 0.3), 0 8px 30px -14px rgba(184, 93, 16, 0.35);
+  --shadow: 0 18px 40px -26px rgba(60, 45, 25, 0.5);
+  --grid: rgba(38, 32, 26, 0.05);
+  --scan-opacity: 0.03;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 15px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* 背景网格 + 扫描线 */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 46px 46px;
+  mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, #000 20%, transparent 85%);
+}
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: var(--scan-opacity);
+  background: repeating-linear-gradient(to bottom, var(--ink) 0 1px, transparent 1px 3px);
+  mix-blend-mode: overlay;
+}
+
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; }
+img { max-width: 100%; display: block; }
+::selection { background: var(--amber); color: var(--bg); }
+
+:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; border-radius: 4px; }
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--line-2); border-radius: 99px; border: 3px solid var(--bg); }
+::-webkit-scrollbar-thumb:hover { background: var(--amber); }
+
+.wrap { width: min(1240px, 92vw); margin-inline: auto; position: relative; z-index: 2; }
+.mono { font-family: var(--font-mono); }
+
+/* ---------- 顶栏 ---------- */
+.topbar {
+  position: sticky; top: 0; z-index: 60;
+  backdrop-filter: blur(14px);
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  border-bottom: 1px solid var(--line);
+}
+.topbar-in { display: flex; align-items: center; gap: 18px; height: 62px; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: 0.02em; }
+.brand-mark {
+  width: 30px; height: 30px; display: grid; place-items: center;
+  border: 1px solid var(--line-2); border-radius: 8px;
+  background: linear-gradient(150deg, color-mix(in srgb, var(--amber) 22%, transparent), transparent);
+  font-family: var(--font-mono); font-size: 13px; color: var(--amber);
+  box-shadow: inset 0 0 14px color-mix(in srgb, var(--amber) 18%, transparent);
+}
+.brand-sub { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--ink-3); display: block; line-height: 1.2; font-weight: 400; }
+.nav { display: flex; gap: 4px; margin-left: 14px; }
+.nav a { padding: 7px 12px; border-radius: 8px; font-size: 13.5px; color: var(--ink-2); transition: 0.2s; }
+.nav a:hover { color: var(--ink); background: var(--line); }
+.spacer { flex: 1; }
+
+.search { position: relative; display: flex; align-items: center; min-width: 210px; }
+.search svg { position: absolute; left: 11px; width: 15px; height: 15px; color: var(--ink-3); }
+.search input {
+  width: 100%; padding: 9px 34px 9px 34px; background: var(--panel);
+  border: 1px solid var(--line); border-radius: 9px; color: var(--ink);
+  font-family: var(--font-mono); font-size: 13px; transition: 0.2s;
+}
+.search input::placeholder { color: var(--ink-3); }
+.search input:focus { outline: none; border-color: var(--amber); box-shadow: var(--glow); }
+.search kbd { position: absolute; right: 9px; font-family: var(--font-mono); font-size: 10px;
+  padding: 2px 5px; border: 1px solid var(--line); border-radius: 5px; color: var(--ink-3); pointer-events: none; }
+
+.icon-btn {
+  width: 36px; height: 36px; display: grid; place-items: center;
+  border: 1px solid var(--line); border-radius: 9px; color: var(--ink-2);
+  transition: 0.2s; background: var(--panel);
+}
+.icon-btn:hover { color: var(--amber); border-color: var(--line-2); transform: translateY(-1px); }
+.icon-btn svg { width: 17px; height: 17px; }
+
+/* ---------- HERO ---------- */
+.hero { padding: 78px 0 54px; position: relative; }
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 9px; font-family: var(--font-mono);
+  font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--crt);
+  border: 1px solid color-mix(in srgb, var(--crt) 30%, transparent);
+  background: color-mix(in srgb, var(--crt) 8%, transparent); padding: 5px 12px; border-radius: 99px;
+}
+.eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--crt);
+  box-shadow: 0 0 8px var(--crt); animation: pulse 2.2s infinite; }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+.hero h1 { font-size: clamp(34px, 6.4vw, 68px); line-height: 1.06; letter-spacing: -0.02em;
+  margin: 22px 0 0; font-weight: 700; }
+.hero h1 .grad { background: linear-gradient(100deg, var(--amber), var(--rust) 45%, var(--violet));
+  -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero .lead { margin: 20px 0 0; max-width: 640px; color: var(--ink-2); font-size: 16px; }
+.typer { font-family: var(--font-mono); color: var(--ink-2); font-size: 14px; margin-top: 16px; min-height: 22px; }
+.typer .caret { display: inline-block; width: 8px; height: 15px; background: var(--amber);
+  vertical-align: -2px; margin-left: 3px; animation: blink 1s steps(2) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+
+.hero-stats { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+.stat { border: 1px solid var(--line); background: var(--panel); border-radius: var(--radius-sm);
+  padding: 12px 18px; min-width: 96px; }
+.stat b { display: block; font-family: var(--font-mono); font-size: 24px; line-height: 1.1; color: var(--amber); }
+.stat span { font-size: 11.5px; letter-spacing: 0.1em; color: var(--ink-3);
+  text-transform: uppercase; font-family: var(--font-mono); }
+
+/* ---------- 区块标题 ---------- */
+.sec-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px;
+  flex-wrap: wrap; margin-bottom: 22px; }
+.sec-head h2 { font-size: clamp(21px, 3vw, 28px); margin: 0; letter-spacing: -0.01em;
+  display: flex; align-items: center; gap: 11px; }
+.sec-head h2::before { content: ""; width: 4px; height: 22px; border-radius: 2px;
+  background: linear-gradient(var(--amber), var(--rust)); }
+.sec-head p { margin: 6px 0 0; color: var(--ink-3); font-size: 13.5px; font-family: var(--font-mono); }
+
+/* ---------- 工具栏（分类 chips + 视图切换） ---------- */
+.board-sec { padding: 14px 0 80px; }
+.toolbar {
+  display: flex; flex-wrap: wrap; gap: 10px; align-items: center; padding: 12px;
+  border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel);
+  margin-bottom: 22px; position: sticky; top: 70px; z-index: 40; backdrop-filter: blur(12px);
+}
+.chips { display: flex; gap: 7px; flex-wrap: wrap; }
+.chip {
+  font-family: var(--font-mono); font-size: 12px; padding: 6px 12px; border-radius: 99px;
+  border: 1px solid var(--line); color: var(--ink-2); transition: 0.18s; white-space: nowrap;
+}
+.chip:hover { border-color: var(--line-2); color: var(--ink); }
+.chip.on { background: var(--amber); border-color: var(--amber); color: #17110c; font-weight: 600; }
+.tool-div { width: 1px; height: 22px; background: var(--line); }
+.seg { display: flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.seg button { padding: 6px 11px; font-size: 12px; font-family: var(--font-mono); color: var(--ink-3); transition: 0.18s; }
+.seg button.on { background: var(--line); color: var(--ink); }
+.seg button + button { border-left: 1px solid var(--line); }
+.count { font-family: var(--font-mono); font-size: 12px; color: var(--ink-3); }
+
+/* ---------- 看板网格 ---------- */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(292px, 1fr)); gap: 18px; }
+.dcard {
+  position: relative; border: 1px solid var(--line); border-radius: var(--radius);
+  background: var(--panel); overflow: hidden; display: flex; flex-direction: column;
+  transition: 0.28s cubic-bezier(0.2, 0.8, 0.2, 1); animation: rise 0.45s backwards;
+}
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } }
+.dcard:hover { border-color: color-mix(in srgb, var(--amber) 60%, transparent);
+  transform: translateY(-5px); box-shadow: var(--shadow); }
+.dcard-head { display: flex; align-items: center; gap: 9px; padding: 15px 16px 0; }
+.dcard-head .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--crt); box-shadow: 0 0 7px var(--crt); flex: 0 0 auto; }
+.st-developing .dcard-head .dot { background: var(--violet); box-shadow: 0 0 7px var(--violet); }
+.st-idea .dcard-head .dot { background: var(--ink-3); }
+.dcard-head h3 { margin: 0; font-size: 15.5px; font-weight: 700; flex: 1; }
+.dcard-head h3 a:hover { color: var(--amber); }
+.status-label { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.06em;
+  text-transform: uppercase; padding: 3px 8px; border-radius: 99px; border: 1px solid var(--line-2); color: var(--ink-3); }
+.dcard-summary { margin: 10px 16px 0; font-size: 13px; color: var(--ink-3);
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.dcard-foot { margin-top: auto; padding: 14px 16px 16px; display: flex; align-items: center; gap: 12px; }
+.dcard-foot .bar { flex: 1; height: 5px; border-radius: 99px; background: var(--line); overflow: hidden; }
+.dcard-foot .bar i { display: block; height: 100%; background: linear-gradient(90deg, var(--amber), var(--rust)); }
+.dcard-go { font-family: var(--font-mono); font-size: 12px; color: var(--ink-2);
+  border: 1px solid var(--line-2); padding: 6px 12px; border-radius: 8px; transition: 0.2s; }
+.dcard:hover .dcard-go { color: var(--amber); border-color: var(--amber); }
+
+/* 列表视图里的 column-card（札记 / 研究 / 旅行） */
+.column-card {
+  border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel);
+  padding: 15px 16px; transition: 0.22s; display: flex; flex-direction: column; gap: 8px;
+}
+.column-card:hover { border-color: color-mix(in srgb, var(--amber) 55%, transparent); transform: translateY(-3px); box-shadow: var(--shadow); }
+.column-card-head { display: flex; align-items: center; gap: 11px; }
+.column-card-icon { width: 34px; height: 34px; flex: 0 0 34px; display: grid; place-items: center;
+  border: 1px solid var(--line-2); border-radius: 9px; font-size: 16px; background: var(--panel-2); }
+.column-card-head h3 { margin: 0; font-size: 15px; font-weight: 700; }
+.column-card-head small { font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); }
+.column-card p { margin: 0; font-size: 13px; color: var(--ink-3);
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.download-note { font-size: 13px; color: var(--ink-2); margin-top: 16px; }
+.download-note a { color: var(--crt); }
+.download-note a:hover { color: var(--amber); }
+
+/* 简洁视图 */
+.compact-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; }
+.compact-group { border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); padding: 16px 18px; }
+.compact-group h3 { margin: 0 0 12px; font-size: 16px; display: flex; align-items: center; gap: 8px; }
+.compact-group h3 small { font-family: var(--font-mono); color: var(--ink-3); font-size: 12px; font-weight: 400; }
+.compact-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 7px; }
+.compact-list li a { display: block; padding: 8px 11px; border-radius: 8px; border: 1px solid transparent;
+  color: var(--ink-2); font-size: 14px; transition: 0.18s; }
+.compact-list li a:hover { color: var(--ink); background: var(--line); border-color: var(--line); }
+
+/* 列表视图 */
+.proj-list { list-style: none; margin: 0 0 8px; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.proj-list li a { display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 11px 14px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--panel); transition: 0.2s; }
+.proj-list li a:hover { border-color: color-mix(in srgb, var(--amber) 55%, transparent); color: var(--amber); }
+.pl-title { font-size: 14.5px; font-weight: 600; }
+.pl-meta { display: flex; gap: 6px; flex-wrap: wrap; }
+.pl-tag { font-family: var(--font-mono); font-size: 10.5px; padding: 3px 8px; border-radius: 99px;
+  border: 1px solid var(--line-2); color: var(--ink-3); }
+
+.list-head { font-size: clamp(18px, 2.6vw, 23px); margin: 26px 0 14px; display: flex; align-items: center; gap: 10px; }
+.list-head::before { content: ""; width: 4px; height: 18px; border-radius: 2px; background: linear-gradient(var(--amber), var(--rust)); }
+
+/* 视图开关 */
+.dashboard.mode-compact .board-view,
+.dashboard.mode-compact .list-view { display: none; }
+.dashboard.mode-board .compact-view,
+.dashboard.mode-board .list-view { display: none; }
+.dashboard.mode-list .compact-view,
+.dashboard.mode-list .board-view { display: none; }
+
+/* 隐藏（搜索 / 分类筛选） */
+.search-hide, .cat-hide { display: none !important; }
+
+/* ---------- 关于 ---------- */
+.about-sec { padding: 10px 0 60px; }
+.about-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; }
+.about-card { border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); padding: 18px; }
+.about-card h3 { margin: 0 0 8px; font-size: 16px; display: flex; align-items: center; gap: 8px; }
+.about-card p { margin: 0; font-size: 13.5px; color: var(--ink-3); line-height: 1.7; }
+.about-card code { font-family: var(--font-mono); color: var(--amber); font-size: 12.5px; }
+
+/* ---------- 页脚 ---------- */
+.footer { border-top: 1px solid var(--line); padding: 34px 0 44px; color: var(--ink-3);
+  font-size: 13px; position: relative; z-index: 2; }
+.footer-in { display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; align-items: center; }
+.footer .mono { font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; }
+.footer a:hover { color: var(--amber); }
+
+/* ---------- 响应式 ---------- */
+@media (max-width: 1000px) { .nav { display: none; } }
+@media (max-width: 720px) {
+  .hero { padding: 46px 0 34px; }
+  .topbar-in { height: 56px; gap: 10px; }
+  .search { min-width: 0; flex: 1; }
+  .search kbd { display: none; }
+  .brand-sub { display: none; }
+  .stat { padding: 10px 14px; min-width: 78px; }
+  .stat b { font-size: 20px; }
+  .toolbar { position: static; padding: 10px; }
+  .chips { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 2px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .chips::-webkit-scrollbar { display: none; }
+  .tool-div { display: none; }
+  .grid, .compact-grid, .about-grid { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+</head>
+<body>
+
+<!-- ========== 顶栏 ========== -->
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="#top">
+      <span class="brand-mark mono">BI</span>
+      <span>BLACKINKVC<span class="brand-sub">项目展板</span></span>
+    </a>
+    <nav class="nav">
+      <a href="#board">看板</a>
+      <a href="#about">关于</a>
+    </nav>
+    <span class="spacer"></span>
+    <label class="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="q" type="search" placeholder="搜索项目 / 札记 / 研究…" autocomplete="off" aria-label="搜索">
+      <kbd>/</kbd>
+    </label>
+    <button class="icon-btn" id="themeBtn" title="切换主题（复古纸 / 深夜终端）" aria-label="切换主题">
+      <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.4M12 19.6V22M2 12h2.4M19.6 12H22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M19.1 4.9l-1.7 1.7M6.6 17.4l-1.7 1.7"/></svg>
+    </button>
+  </div>
+</header>
+
+{% assign projects = site.projects | sort: 'date' | reverse %}
 {% assign game_projects = projects | where: 'category', 'game' %}
 {% assign research_projects = projects | where: 'category', 'research' %}
 {% assign soft_projects = projects | where: 'category', 'soft' %}
-
 {% assign online_count = projects | where: 'status', 'online' | size %}
 {% assign developing_count = projects | where: 'status', 'developing' | size %}
 {% assign idea_count = projects | where: 'status', 'idea' | size %}
 {% assign total_count = projects | size %}
-
 {% assign notes = site.notes | sort: 'date' | reverse %}
-
 {% assign studies = site.studies | where_exp: "n", "n.exclude_from_index != true" | sort: 'date' | reverse %}
 
-<!-- 水豚池 · 页面最顶部 -->
-<div class="pond" aria-hidden="true">
-  <div class="pond-caption">🌿 池塘角 · 有只水豚在慢慢走 <small>（点点它试试）</small></div>
-  <div class="pond-water">
-    <div class="ripple r1"></div>
-    <div class="ripple r2"></div>
-    <div class="lilypad"></div>
-
-    <div class="capy-track">
-      <div class="capy-bob">
-        <div class="capy-face">
-          <img id="capy" src="{{ '/assets/img/capybara.png' | relative_url }}" alt="水豚" width="110">
-        </div>
-        <span class="squeak">咕噜～</span>
-      </div>
+<main id="top">
+  <!-- ========== HERO ========== -->
+  <section class="hero wrap">
+    <span class="eyebrow"><i class="dot"></i><span id="sysLine">SYSTEM ONLINE</span></span>
+    <h1>我的 <span class="grad">项目展板</span><br>归档与生长</h1>
+    <p class="lead">
+      个人项目、研究知识库、股权投资札记与旅行方案，都收在这个馆里。往下是看板，
+      支持分类筛选、搜索与三种视图；更新日志读取本站提交历史，自动生成。
+    </p>
+    <div class="typer mono"><span id="typerText"></span><i class="caret"></i></div>
+    <div class="hero-stats">
+      <div class="stat"><b>{{ total_count }}</b><span>Projects</span></div>
+      <div class="stat"><b>{{ online_count }}</b><span>Live</span></div>
+      <div class="stat"><b>{{ notes.size }}</b><span>Notes</span></div>
+      <div class="stat"><b>{{ studies.size }}</b><span>Studies</span></div>
     </div>
+  </section>
 
-    <div class="pond-front"></div>
-  </div>
-</div>
-
-<div class="dashboard mode-compact">
-
-  <!-- ===== 左侧导航 ===== -->
-  <aside class="dash-side">
-    <button class="dash-brand" id="viewToggle" type="button" title="点击在 简洁 / 看板 / 列表 之间切换">
-      <span class="dash-logo">⬢</span>
+  <!-- ========== 看板 ========== -->
+  <section class="board-sec wrap" id="board">
+    <div class="sec-head">
       <div>
-        <strong>blackinkvc</strong>
-        <small>项目展板 · <span id="viewMode">简洁</span></small>
+        <h2>项目看板</h2>
+        <p>// 支持分类筛选 · 搜索 · 简洁 / 看板 / 列表 三视图</p>
       </div>
-    </button>
-
-    <nav class="dash-nav">
-      <button class="cat-btn active" data-cat="all">全部<span>{{ total_count }}</span></button>
-      <button class="cat-btn" data-cat="game">🎮 游戏<span>{{ game_projects | size }}</span></button>
-      <button class="cat-btn" data-cat="research">📚 研究 · 知识库<span>{{ research_projects | size }}</span></button>
-      <button class="cat-btn" data-cat="soft">🛠 软件 · 工具<span>{{ soft_projects | size }}</span></button>
-      <button class="cat-btn" data-cat="invest">📈 股权投资札记<span>{{ notes | size }}</span></button>
-      <button class="cat-btn" data-cat="travel">🏍️ 旅行计划&amp;札记<span>{{ site.travel | size }}</span></button>
-      <button class="cat-btn" data-cat="studies">🧪 小项目研究<span>{{ studies | size }}</span></button>
-      <button class="cat-btn" data-cat="log">📋 更新日志<span id="logCountNav">…</span></button>
-    </nav>
-
-    <div class="dash-progress">
-      <div class="dash-progress-num">
-        <strong>{{ online_count }}</strong> / {{ total_count }} 已上线
-      </div>
-      <div class="bar"><i style="width: {{ online_count | times: 100 | divided_by: total_count }}%"></i></div>
-      <div class="dash-progress-meta">
-        开发中 {{ developing_count }} · 构思中 {{ idea_count }}
+      <div class="seg" role="group" aria-label="视图切换">
+        <button data-view="compact" class="on">简洁</button>
+        <button data-view="board">看板</button>
+        <button data-view="list">列表</button>
       </div>
     </div>
-  </aside>
 
-  <!-- ===== 右侧展板 ===== -->
-  <div class="dash-main">
+    <div class="toolbar">
+      <div class="chips" id="catChips">
+        <button class="chip on" data-cat="all">全部<span style="opacity:.55"> {{ total_count }}</span></button>
+        <button class="chip" data-cat="game">🎮 游戏<span style="opacity:.55"> {{ game_projects.size }}</span></button>
+        <button class="chip" data-cat="research">📚 研究·知识库<span style="opacity:.55"> {{ research_projects.size }}</span></button>
+        <button class="chip" data-cat="soft">🛠 软件·工具<span style="opacity:.55"> {{ soft_projects.size }}</span></button>
+        <button class="chip" data-cat="invest">📈 股权投资札记<span style="opacity:.55"> {{ notes.size }}</span></button>
+        <button class="chip" data-cat="travel">🏍️ 旅行<span style="opacity:.55"> {{ site.travel.size }}</span></button>
+        <button class="chip" data-cat="studies">🧪 小项目研究<span style="opacity:.55"> {{ studies.size }}</span></button>
+        <button class="chip" data-cat="log">📋 更新日志</button>
+      </div>
+      <span class="tool-div"></span>
+      <span class="spacer"></span>
+      <span class="count" id="resultCount"></span>
+    </div>
 
-    <!-- 简洁视图（默认） -->
-    <div class="compact-view" id="compactView">
-      <p class="compact-hint">项目以标题列出，点标题直达。点击左上角「blackinkvc 项目展板」可在 简洁 / 看板 / 列表 之间切换。</p>
+    <div class="dashboard mode-compact">
 
-      <div class="compact-grid">
-        <div class="compact-group" data-cat="game">
-          <h3>🎮 游戏 <small>{{ game_projects | size }}</small></h3>
-          <ul class="compact-list">
-            {% for p in game_projects %}<li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>{% endfor %}
-          </ul>
+      <!-- 简洁视图 -->
+      <div class="compact-view" id="compactView">
+        <div class="compact-grid">
+          <div class="compact-group" data-cat="game">
+            <h3>🎮 游戏 <small>{{ game_projects.size }}</small></h3>
+            <ul class="compact-list">
+              {% for p in game_projects %}<li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>{% endfor %}
+            </ul>
+          </div>
+          <div class="compact-group" data-cat="research">
+            <h3>📚 研究·知识库 <small>{{ research_projects.size }}</small></h3>
+            <ul class="compact-list">
+              {% for p in research_projects %}<li><a href="{{ p.link | default: p.url | relative_url }}">{{ p.title }}</a></li>{% endfor %}
+            </ul>
+          </div>
+          <div class="compact-group" data-cat="soft">
+            <h3>🛠 软件·工具 <small>{{ soft_projects.size }}</small></h3>
+            <ul class="compact-list">
+              {% for p in soft_projects %}<li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>{% endfor %}
+            </ul>
+          </div>
+          <div class="compact-group" data-cat="invest">
+            <h3>📈 股权投资札记 <small>{{ notes.size }} 篇</small></h3>
+            <ul class="compact-list">
+              {% for n in notes limit: 6 %}<li><a href="{{ n.url | relative_url }}">{{ n.title }}</a></li>{% endfor %}
+              <li><a href="{{ '/notes/' | relative_url }}">全部文章 →</a></li>
+            </ul>
+          </div>
+          <div class="compact-group" data-cat="travel">
+            <h3>🏍️ 旅行计划&amp;札记 <small>{{ site.travel.size }} 个</small></h3>
+            <ul class="compact-list">
+              {% assign travels = site.travel | sort: 'date' | reverse %}
+              {% for t in travels %}<li><a href="{{ t.link | relative_url }}">{{ t.title }}</a></li>{% endfor %}
+            </ul>
+          </div>
+          <div class="compact-group" data-cat="studies">
+            <h3>🧪 小项目研究 <small>{{ studies.size }}</small></h3>
+            <ul class="compact-list">
+              {% for s in studies limit: 6 %}<li><a href="{{ s.url | relative_url }}">{{ s.title }}</a></li>{% endfor %}
+              <li><a href="{{ '/studies/' | relative_url }}">全部研究 →</a></li>
+            </ul>
+            <p class="download-note"><a href="{{ '/downloads/机械硬盘HDD产业链研究归档包.zip' | relative_url }}">📎 机械硬盘 HDD 产业链研究归档包（zip 下载）</a> · <a href="{{ '/downloads/' | relative_url }}">📁 资料下载专区</a></p>
+          </div>
+          <div class="compact-group" data-cat="log">
+            <h3>📋 更新日志 <small id="logCount">…</small></h3>
+            <ul class="compact-list" id="logRecent"><li class="log-empty">加载中…</li></ul>
+            <p class="download-note"><a href="{{ '/log/' | relative_url }}">全部更新日志 →</a></p>
+          </div>
         </div>
+      </div>
 
-        <div class="compact-group" data-cat="research">
-          <h3>📚 研究 · 知识库 <small>{{ research_projects | size }}</small></h3>
-          <ul class="compact-list">
-            {% for p in research_projects %}<li><a href="{{ p.link | default: p.url | relative_url }}">{{ p.title }}</a></li>{% endfor %}
-          </ul>
-        </div>
-
-        <div class="compact-group" data-cat="soft">
-          <h3>🛠 软件 · 工具 <small>{{ soft_projects | size }}</small></h3>
-          <ul class="compact-list">
-            {% for p in soft_projects %}<li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>{% endfor %}
-          </ul>
-        </div>
-
-        <div class="compact-group" data-cat="invest">
-          <h3>📈 股权投资札记 <small>{{ notes | size }} 篇</small></h3>
-          <ul class="compact-list">
-            {% for n in notes limit: 5 %}<li><a href="{{ n.url | relative_url }}">{{ n.title }}</a></li>{% endfor %}
-            <li><a href="{{ '/notes/' | relative_url }}">全部文章 →</a></li>
-          </ul>
-        </div>
-
-        <div class="compact-group" data-cat="travel">
-          <h3>🏍️ 旅行计划&amp;札记 <small>{{ site.travel | size }} 个</small></h3>
-          <ul class="compact-list">
+      <!-- 看板视图 -->
+      <div class="board-view" id="boardView">
+        <section class="dash-section" data-cat="game">
+          <h2 class="list-head">🎮 游戏 <small>{{ game_projects.size }}</small></h2>
+          <div class="grid">
+            {% for p in game_projects %}{% include dash-card.html p=p %}{% endfor %}
+          </div>
+        </section>
+        <section class="dash-section" data-cat="research">
+          <h2 class="list-head">📚 研究·知识库 <small>{{ research_projects.size }}</small></h2>
+          <div class="grid">
+            {% for p in research_projects %}{% include dash-card.html p=p %}{% endfor %}
+          </div>
+        </section>
+        <section class="dash-section" data-cat="soft">
+          <h2 class="list-head">🛠 软件·工具 <small>{{ soft_projects.size }}</small></h2>
+          <div class="grid">
+            {% for p in soft_projects %}{% include dash-card.html p=p %}{% endfor %}
+          </div>
+        </section>
+        <section class="dash-section" data-cat="invest">
+          <h2 class="list-head">📈 股权投资札记 <small>{{ notes.size }} 篇</small></h2>
+          <div class="grid">
+            {% for n in notes limit: 6 %}
+            <a class="column-card" href="{{ n.url | relative_url }}">
+              <div class="column-card-head"><span class="column-card-icon">📈</span><div><h3>{{ n.title }}</h3><small>{{ n.date | date: '%Y-%m-%d' }}</small></div></div>
+              <p>{{ n.summary | strip_html | truncate: 80 }}</p>
+            </a>
+            {% endfor %}
+            <a class="column-card" href="{{ '/notes/' | relative_url }}">
+              <div class="column-card-head"><span class="column-card-icon">→</span><div><h3>全部文章</h3><small>共 {{ notes.size }} 篇</small></div></div>
+              <p>阅读股权投资札记的全部文章 →</p>
+            </a>
+          </div>
+        </section>
+        <section class="dash-section" data-cat="travel">
+          <h2 class="list-head">🏍️ 旅行计划&amp;札记 <small>{{ site.travel.size }} 个计划</small></h2>
+          <div class="grid">
             {% assign travels = site.travel | sort: 'date' | reverse %}
-            {% for t in travels %}<li><a href="{{ t.link | relative_url }}">{{ t.title }}</a></li>{% endfor %}
-          </ul>
-        </div>
-
-        <div class="compact-group" data-cat="studies">
-          <h3>🧪 小项目研究 <small>{{ studies | size }}</small></h3>
-          <ul class="compact-list">
-            {% for s in studies limit: 5 %}<li><a href="{{ s.url | relative_url }}">{{ s.title }}</a></li>{% endfor %}
-            <li><a href="{{ '/studies/' | relative_url }}">全部研究 →</a></li>
-          </ul>
+            {% for t in travels %}
+            <a class="column-card" href="{{ t.link | relative_url }}">
+              <div class="column-card-head"><span class="column-card-icon">{{ t.icon | default: '🧭' }}</span><div><h3>{{ t.title }}</h3><small>{{ t.meta }}</small></div></div>
+              <p>{{ t.summary }}</p>
+            </a>
+            {% endfor %}
+          </div>
+        </section>
+        <section class="dash-section" data-cat="studies">
+          <h2 class="list-head">🧪 小项目研究 <small>{{ studies.size }}</small></h2>
+          <div class="grid">
+            {% for s in studies limit: 6 %}
+            <a class="column-card" href="{{ s.url | relative_url }}">
+              <div class="column-card-head"><span class="column-card-icon">🧪</span><div><h3>{{ s.title }}</h3><small>{{ s.date | date: '%Y-%m-%d' }}</small></div></div>
+              <p>{{ s.summary }}</p>
+            </a>
+            {% endfor %}
+            <a class="column-card" href="{{ '/studies/' | relative_url }}">
+              <div class="column-card-head"><span class="column-card-icon">→</span><div><h3>全部研究</h3><small>共 {{ studies.size }} 个</small></div></div>
+              <p>查看全部小项目研究 →</p>
+            </a>
+          </div>
           <p class="download-note"><a href="{{ '/downloads/机械硬盘HDD产业链研究归档包.zip' | relative_url }}">📎 机械硬盘 HDD 产业链研究归档包（zip 下载）</a> · <a href="{{ '/downloads/' | relative_url }}">📁 资料下载专区</a></p>
-        </div>
-
-        <div class="compact-group" data-cat="log">
-          <h3>📋 更新日志 <small id="logCount">…</small></h3>
-          <ul class="compact-list" id="logRecent">
-            <li class="log-empty">加载中…</li>
-          </ul>
-          <p class="log-all-link"><a href="{{ '/log/' | relative_url }}">全部更新日志 →</a></p>
-        </div>
+        </section>
+        <section class="dash-section" data-cat="log">
+          <h2 class="list-head">📋 更新日志 <small id="logCount2">…</small></h2>
+          <div class="grid" id="logCards"><p class="log-empty">加载中…</p></div>
+          <p class="download-note"><a href="{{ '/log/' | relative_url }}">查看全部更新日志 →</a></p>
+        </section>
       </div>
-    </div>
 
-    <!-- 看板视图 -->
-    <div class="board-view" id="boardView">
-
-    <div class="dash-stats" id="dash-stats">
-      <div class="stat stat-online">
-        <b>{{ online_count }}</b><span>已上线 · 可玩 / 可浏览</span>
-      </div>
-      <div class="stat stat-dev">
-        <b>{{ developing_count }}</b><span>开发中</span>
-      </div>
-      <div class="stat stat-idea">
-        <b>{{ idea_count }}</b><span>构思中</span>
-      </div>
-    </div>
-
-    <!-- 游戏 -->
-    <section class="dash-section" data-cat="game">
-      <h2>🎮 游戏 <small>{{ game_projects | size }}</small></h2>
-      <div class="dash-grid">
-        {% for p in game_projects %}
-          {% include dash-card.html p=p %}
-        {% endfor %}
-      </div>
-    </section>
-
-    <!-- 研究 -->
-    <section class="dash-section" data-cat="research">
-      <h2>📚 研究 · 知识库 <small>{{ research_projects | size }}</small></h2>
-      <div class="dash-grid">
-        {% for p in research_projects %}
-          {% include dash-card.html p=p %}
-        {% endfor %}
-      </div>
-    </section>
-
-    <!-- 软件 -->
-    <section class="dash-section" data-cat="soft">
-      <h2>🛠 软件 · 工具 <small>{{ soft_projects | size }}</small></h2>
-      <div class="dash-grid">
-        {% for p in soft_projects %}
-          {% include dash-card.html p=p %}
-        {% endfor %}
-      </div>
-    </section>
-
-    <!-- 股权投资札记 -->
-    <section class="dash-section" data-cat="invest">
-      <h2>📈 股权投资札记 <small>{{ notes | size }} 篇</small></h2>
-      <div class="dash-grid">
-        {% for n in notes limit: 5 %}
-        <a class="column-card" href="{{ n.url | relative_url }}">
-          <div class="column-card-head">
-            <span class="column-card-icon">📈</span>
-            <div>
-              <h3>{{ n.title }}</h3>
-              <small>{{ n.date | date: '%Y-%m-%d' }}</small>
-            </div>
-          </div>
-          <p>{{ n.summary | strip_html | truncate: 80 }}</p>
-        </a>
-        {% endfor %}
-        <a class="column-card" href="{{ '/notes/' | relative_url }}">
-          <div class="column-card-head">
-            <span class="column-card-icon">→</span>
-            <div>
-              <h3>全部文章</h3>
-              <small>共 {{ notes | size }} 篇</small>
-            </div>
-          </div>
-          <p>阅读股权投资札记的全部文章 →</p>
-        </a>
-      </div>
-    </section>
-
-    <!-- 旅行计划&札记 · 栏目入口 -->
-    <section class="dash-section" data-cat="travel">
-      <h2>🏍️ 旅行计划&amp;札记 <small>{{ site.travel | size }} 个计划</small></h2>
-      <div class="dash-grid">
-        {% assign travels = site.travel | sort: 'date' | reverse %}
-        {% for t in travels %}
-        <a class="column-card" href="{{ t.link | relative_url }}">
-          <div class="column-card-head">
-            <span class="column-card-icon">{{ t.icon | default: '🧭' }}</span>
-            <div>
-              <h3>{{ t.title }}</h3>
-              <small>{{ t.meta }}</small>
-            </div>
-          </div>
-          <p>{{ t.summary }}</p>
-        </a>
-        {% endfor %}
-      </div>
-    </section>
-
-    <!-- 小项目研究 -->
-    <section class="dash-section" data-cat="studies">
-      <h2>🧪 小项目研究 <small>{{ studies | size }}</small></h2>
-      <div class="dash-grid">
-        {% for s in studies limit: 5 %}
-        <a class="column-card" href="{{ s.url | relative_url }}">
-          <div class="column-card-head">
-            <span class="column-card-icon">🧪</span>
-            <div>
-              <h3>{{ s.title }}</h3>
-              <small>{{ s.date | date: '%Y-%m-%d' }}</small>
-            </div>
-          </div>
-          <p>{{ s.summary }}</p>
-        </a>
-        {% endfor %}
-        <a class="column-card" href="{{ '/studies/' | relative_url }}">
-          <div class="column-card-head">
-            <span class="column-card-icon">→</span>
-            <div>
-              <h3>全部研究</h3>
-              <small>共 {{ studies | size }} 个</small>
-            </div>
-          </div>
-          <p>查看全部小项目研究 →</p>
-        </a>
-      </div>
-      <p class="download-note"><a href="{{ '/downloads/机械硬盘HDD产业链研究归档包.zip' | relative_url }}">📎 机械硬盘 HDD 产业链研究归档包（zip 下载）</a> · <a href="{{ '/downloads/' | relative_url }}">📁 资料下载专区</a></p>
-    </section>
-
-    <!-- 更新日志（读取 git 提交历史，自动生成） -->
-    <section class="dash-section" data-cat="log">
-      <h2>📋 更新日志 <small id="logCount2">…</small></h2>
-      <div class="dash-grid" id="logCards">
-        <p class="log-empty">加载中…</p>
-      </div>
-      <p class="log-all-link"><a href="{{ '/log/' | relative_url }}">查看全部更新日志 →</a></p>
-    </section>
-
-    </div><!-- /board-view -->
-
-    <!-- 列表视图（点击品牌切换） -->
-    <div class="list-view" id="listView">
-      <h2 class="list-head">📋 全部项目 <small>{{ projects.size }} 个</small></h2>
-      <ul class="proj-list">
-        {% for p in projects %}
-        <li>
-          <a href="{{ p.link | default: p.url | relative_url }}">
+      <!-- 列表视图 -->
+      <div class="list-view" id="listView">
+        <h2 class="list-head">📋 全部项目 <small>{{ total_count }} 个</small></h2>
+        <ul class="proj-list">
+          {% for p in projects %}
+          <li><a href="{{ p.link | default: p.url | relative_url }}">
             <span class="pl-title">{{ p.title }}</span>
             <span class="pl-meta">
               {% if p.category %}<span class="pl-tag">{{ p.category }}</span>{% endif %}
-              {% if p.status %}<span class="pl-tag pl-{{ p.status }}">{{ p.status }}</span>{% endif %}
+              {% if p.status %}<span class="pl-tag">{{ p.status }}</span>{% endif %}
               {% if p.progress %}<span class="pl-tag">进度 {{ p.progress }}%</span>{% endif %}
             </span>
-          </a>
-        </li>
-        {% endfor %}
-      </ul>
+          </a></li>
+          {% endfor %}
+        </ul>
+        <h2 class="list-head">📈 股权投资札记 <small>{{ notes.size }} 篇</small></h2>
+        <ul class="proj-list">
+          {% for n in notes limit: 6 %}
+          <li><a href="{{ n.url | relative_url }}"><span class="pl-title">{{ n.title }}</span><span class="pl-meta"><span class="pl-tag">{{ n.date | date: '%Y-%m-%d' }}</span></span></a></li>
+          {% endfor %}
+          <li><a href="{{ '/notes/' | relative_url }}"><span class="pl-title">全部文章</span><span class="pl-meta"><span class="pl-tag">共 {{ notes.size }} 篇</span></span></a></li>
+        </ul>
+        <h2 class="list-head">🏍️ 旅行计划&amp;札记 <small>{{ site.travel.size }} 个计划</small></h2>
+        <ul class="proj-list">
+          {% assign travels = site.travel | sort: 'date' | reverse %}
+          {% for t in travels %}
+          <li><a href="{{ t.link | relative_url }}"><span class="pl-title">{{ t.title }}</span><span class="pl-meta"><span class="pl-tag">{{ t.meta }}</span></span></a></li>
+          {% endfor %}
+        </ul>
+        <h2 class="list-head">🧪 小项目研究 <small>{{ studies.size }} 个</small></h2>
+        <ul class="proj-list">
+          {% for s in studies limit: 6 %}
+          <li><a href="{{ s.url | relative_url }}"><span class="pl-title">{{ s.title }}</span><span class="pl-meta"><span class="pl-tag">{{ s.date | date: '%Y-%m-%d' }}</span></span></a></li>
+          {% endfor %}
+          <li><a href="{{ '/studies/' | relative_url }}"><span class="pl-title">全部研究</span><span class="pl-meta"><span class="pl-tag">共 {{ studies.size }} 个</span></span></a></li>
+        </ul>
+        <p class="download-note"><a href="{{ '/downloads/机械硬盘HDD产业链研究归档包.zip' | relative_url }}">📎 机械硬盘 HDD 产业链研究归档包（zip 下载）</a> · <a href="{{ '/downloads/' | relative_url }}">📁 资料下载专区</a></p>
+        <h2 class="list-head">📋 更新日志 <small id="logCount3">…</small></h2>
+        <ul class="proj-list" id="logList"><li class="log-empty"><span class="pl-title">加载中…</span></li></ul>
+        <p class="download-note"><a href="{{ '/log/' | relative_url }}">查看全部更新日志 →</a></p>
+      </div>
 
-      <h2 class="list-head">📈 股权投资札记 <small>{{ notes.size }} 篇</small></h2>
-      <ul class="proj-list">
-        {% for n in notes limit: 5 %}
-        <li><a href="{{ n.url | relative_url }}"><span class="pl-title">{{ n.title }}</span><span class="pl-meta"><span class="pl-tag">{{ n.date | date: '%Y-%m-%d' }}</span></span></a></li>
-        {% endfor %}
-        <li><a href="{{ '/notes/' | relative_url }}"><span class="pl-title">全部文章</span><span class="pl-meta"><span class="pl-tag">共 {{ notes.size }} 篇</span></span></a></li>
-      </ul>
-
-      <h2 class="list-head">🏍️ 旅行计划&amp;札记 <small>{{ site.travel.size }} 个计划</small></h2>
-      <ul class="proj-list">
-        {% assign travels = site.travel | sort: 'date' | reverse %}
-        {% for t in travels %}
-        <li><a href="{{ t.link | relative_url }}"><span class="pl-title">{{ t.title }}</span><span class="pl-meta"><span class="pl-tag">{{ t.meta }}</span></span></a></li>
-        {% endfor %}
-      </ul>
-
-      <h2 class="list-head">🧪 小项目研究 <small>{{ studies.size }} 个</small></h2>
-      <ul class="proj-list">
-        {% for s in studies limit: 5 %}
-        <li><a href="{{ s.url | relative_url }}"><span class="pl-title">{{ s.title }}</span><span class="pl-meta"><span class="pl-tag">{{ s.date | date: '%Y-%m-%d' }}</span></span></a></li>
-        {% endfor %}
-        <li><a href="{{ '/studies/' | relative_url }}"><span class="pl-title">全部研究</span><span class="pl-meta"><span class="pl-tag">共 {{ studies.size }} 个</span></span></a></li>
-      </ul>
-      <p class="download-note"><a href="{{ '/downloads/机械硬盘HDD产业链研究归档包.zip' | relative_url }}">📎 机械硬盘 HDD 产业链研究归档包（zip 下载）</a> · <a href="{{ '/downloads/' | relative_url }}">📁 资料下载专区</a></p>
-
-      <h2 class="list-head">📋 更新日志 <small id="logCount3">…</small></h2>
-      <ul class="proj-list" id="logList">
-        <li class="log-empty"><span class="pl-title">加载中…</span></li>
-      </ul>
-      <p class="log-all-link"><a href="{{ '/log/' | relative_url }}">查看全部更新日志 →</a></p>
     </div>
+  </section>
 
+  <!-- ========== 关于 ========== -->
+  <section class="wrap about-sec" id="about" style="padding-top:0">
+    <div class="sec-head"><div><h2>关于这个馆</h2><p>// HOW IT WORKS</p></div></div>
+    <div class="about-grid">
+      <div class="about-card">
+        <h3>01 · 三类收藏</h3>
+        <p>项目（游戏 / 研究·知识库 / 软件·工具）、股权投资札记、小项目研究，各有独立集合，首页统一聚合呈现。</p>
+      </div>
+      <div class="about-card">
+        <h3>02 · 自动更新日志</h3>
+        <p>更新日志读取本站 GitHub 提交历史，每次 push 后自动出现，无需手工维护任何文件。</p>
+      </div>
+      <div class="about-card">
+        <h3>03 · 三视图浏览</h3>
+        <p>简洁 / 看板 / 列表 三种视图，配合分类筛选与搜索；主题可在「深夜终端 / 复古纸」间切换。</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-in">
+    <span class="mono">© <span id="year"></span> BLACKINKVC · 由 GitHub Pages 驱动</span>
+    <span class="mono"><a href="#top">回到顶部</a> · <a href="https://github.com/blackinkvc/blackinkvc.github.io" target="_blank" rel="noopener">源码</a></span>
   </div>
-</div>
+</footer>
 
-<script>
-(function () {
-  var btns = document.querySelectorAll('.cat-btn');
-  var sections = document.querySelectorAll('.dash-section, .compact-group');
-  var stats = document.getElementById('dash-stats');
-  btns.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var cat = btn.dataset.cat;
-      btns.forEach(function (b) { b.classList.toggle('active', b === btn); });
-      sections.forEach(function (s) {
-        s.style.display = (cat === 'all' || s.dataset.cat === cat) ? '' : 'none';
-      });
-      if (stats) stats.style.display = cat === 'all' ? '' : 'none';
-    });
-  });
-
-  // 简洁 / 看板 / 列表 三视图切换（默认 简洁）
-  var toggle = document.getElementById('viewToggle');
-  var dash = document.querySelector('.dashboard');
-  var modeLabel = document.getElementById('viewMode');
-  if (toggle && dash) {
-    var modes = ['compact', 'board', 'list'];
-    var modeLabels = { compact: '简洁', board: '看板', list: '列表' };
-    var mi = 0;
-    toggle.addEventListener('click', function () {
-      mi = (mi + 1) % modes.length;
-      dash.className = 'dashboard mode-' + modes[mi];
-      if (modeLabel) modeLabel.textContent = modeLabels[modes[mi]];
-    });
-  }
-
-  var capy = document.getElementById('capy');
-  if (capy) {
-    capy.addEventListener('click', function () {
-      var squeak = capy.closest('.capy-bob').querySelector('.squeak');
-      squeak.classList.add('show');
-      setTimeout(function () { squeak.classList.remove('show'); }, 1600);
-    });
-  }
-})();
-</script>
-
-<!-- 更新日志：读取本站 GitHub 提交历史，自动生成（无需手工维护） -->
+<!-- 先加载更新日志脚本，内联脚本依赖 window.Changelog -->
 <script src="{{ '/assets/js/changelog.js' | relative_url }}"></script>
 <script>
+/* ============================================================
+   交互主逻辑（Jekyll 集合驱动，视觉基于 AI PROJECT NEXUS）
+   ============================================================ */
 (function () {
   'use strict';
-  var C = window.Changelog;
-  if (!C) return;
 
-  var LOG_URL = '{{ "/log/" | relative_url }}';
-  var COUNT_IDS = ['logCount', 'logCount2', 'logCount3', 'logCountNav'];
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
 
-  function hrefOf(it) { return LOG_URL + '#c-' + it.short; }
+  var LS = { theme: 'blackinkvc:theme', view: 'blackinkvc:view' };
+  var read = function (k, d) { try { var v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } };
+  var write = function (k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} };
 
-  function setCount(text) {
-    COUNT_IDS.forEach(function (id) {
-      var node = document.getElementById(id);
-      if (node) node.textContent = text;
+  /* 主题 */
+  function applyTheme(t) {
+    document.documentElement.setAttribute('data-theme', t);
+    write(LS.theme, t);
+    var b = $('#themeBtn'); if (b) b.title = t === 'paper' ? '切换到深夜终端' : '切换到复古纸';
+  }
+  applyTheme(read(LS.theme, null) || 'dark');
+  var themeBtn = $('#themeBtn');
+  if (themeBtn) themeBtn.addEventListener('click', function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    applyTheme(cur === 'paper' ? 'dark' : 'paper');
+  });
+
+  /* 年份 */
+  var y = $('#year'); if (y) y.textContent = new Date().getFullYear();
+
+  /* 打字机 */
+  var TYPER = [
+    '正在索引集合：projects / notes / studies…',
+    '每一个项目，都是一次独立的实验。',
+    '更新日志 = 本站提交历史，自动生成。',
+    '复古终端 · 现代归档 · 持续生长。'
+  ];
+  (function typer() {
+    var el = $('#typerText'); if (!el) return;
+    var li = 0, ci = 0, del = false;
+    (function tick() {
+      var line = TYPER[li % TYPER.length];
+      if (!del) { el.textContent = line.slice(0, ++ci); if (ci >= line.length) { del = true; return setTimeout(tick, 1900); } }
+      else { el.textContent = line.slice(0, --ci); if (ci <= 0) { del = false; li++; return setTimeout(tick, 420); } }
+      setTimeout(tick, 58 + Math.random() * 42);
+    })();
+  })();
+
+  /* 视图切换（简洁 / 看板 / 列表），记忆选择 */
+  var dash = $('.dashboard');
+  var savedView = read(LS.view, 'compact');
+  function setView(mode) {
+    if (!dash) return;
+    dash.className = 'dashboard mode-' + mode;
+    $$('.seg [data-view]').forEach(function (b) { b.classList.toggle('on', b.dataset.view === mode); });
+    write(LS.view, mode);
+  }
+  setView(savedView);
+  $$('.seg [data-view]').forEach(function (b) {
+    b.addEventListener('click', function () { setView(b.dataset.view); applyFilter(); });
+  });
+
+  /* 分类筛选 + 搜索 */
+  var currentCat = 'all';
+  function applyFilter() {
+    var q = ($('#q') ? $('#q').value : '').trim().toLowerCase();
+
+    $$('#catChips .chip').forEach(function (c) { c.classList.toggle('on', c.dataset.cat === currentCat); });
+
+    $$('.compact-group').forEach(function (g) {
+      g.classList.toggle('cat-hide', !(currentCat === 'all' || g.dataset.cat === currentCat));
+    });
+    $$('.dash-section').forEach(function (s) {
+      s.classList.toggle('cat-hide', !(currentCat === 'all' || s.dataset.cat === currentCat));
+    });
+
+    if (q) { filterText(q); } else { $$('.search-hide').forEach(function (n) { n.classList.remove('search-hide'); }); }
+    updateCount();
+  }
+
+  function filterText(q) {
+    $$('.compact-group').forEach(function (g) {
+      $$('a', g).forEach(function (a) { a.classList.toggle('search-hide', (a.textContent || '').toLowerCase().indexOf(q) < 0); });
+    });
+    $$('.dash-section').forEach(function (s) {
+      $$('a', s).forEach(function (a) { a.classList.toggle('search-hide', (a.textContent || '').toLowerCase().indexOf(q) < 0); });
+    });
+    $$('.proj-list').forEach(function (ul) {
+      $$('li', ul).forEach(function (li) { li.classList.toggle('search-hide', (li.textContent || '').toLowerCase().indexOf(q) < 0); });
     });
   }
 
-  C.load().then(function (items) {
-    setCount(items.length + (C.hasMore() ? '+' : ''));
-    C.renderCompact(document.getElementById('logRecent'), items.slice(0, 5), hrefOf);
-    C.renderCards(document.getElementById('logCards'), items.slice(0, 4), hrefOf);
-    C.renderRows(document.getElementById('logList'), items.slice(0, 8), hrefOf);
-  }).catch(function () {
-    setCount('—');
-    var mini = '<li class="log-empty">暂时无法读取更新日志</li>';
-    var a = document.getElementById('logRecent');
-    if (a) a.innerHTML = mini;
-    var b = document.getElementById('logCards');
-    if (b) b.innerHTML = '<p class="log-empty">暂时无法读取更新日志，可到 GitHub 提交记录查看</p>';
-    var c = document.getElementById('logList');
-    if (c) c.innerHTML = mini;
+  function updateCount() {
+    var el = $('#resultCount'); if (!el) return;
+    el.textContent = currentCat === 'all' ? ('全部 ' + '{{ total_count }}' + ' 个项目') : ('分类：' + currentCat);
+  }
+
+  $$('#catChips .chip').forEach(function (c) {
+    c.addEventListener('click', function () { currentCat = c.dataset.cat; applyFilter(); });
   });
+
+  var qInput = $('#q');
+  if (qInput) {
+    var t;
+    qInput.addEventListener('input', function () { clearTimeout(t); t = setTimeout(applyFilter, 160); });
+  }
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === '/' && document.activeElement !== qInput) { e.preventDefault(); if (qInput) qInput.focus(); }
+    if (e.key === 'Escape' && document.activeElement === qInput) { qInput.value = ''; applyFilter(); qInput.blur(); }
+  });
+
+  applyFilter();
+
+  /* 更新日志：读取 GitHub 提交历史，自动生成（沿用原有逻辑） */
+  (function loadChangelog() {
+    var C = window.Changelog;
+    if (!C) return;
+    var LOG_URL = '{{ "/log/" | relative_url }}';
+    var COUNT_IDS = ['logCount', 'logCount2', 'logCount3'];
+    function hrefOf(it) { return LOG_URL + '#c-' + it.short; }
+    function setCount(text) {
+      COUNT_IDS.forEach(function (id) { var n = document.getElementById(id); if (n) n.textContent = text; });
+    }
+    C.load().then(function (items) {
+      setCount(items.length + (C.hasMore() ? '+' : ''));
+      C.renderCompact(document.getElementById('logRecent'), items.slice(0, 5), hrefOf);
+      C.renderCards(document.getElementById('logCards'), items.slice(0, 4), hrefOf);
+      C.renderRows(document.getElementById('logList'), items.slice(0, 8), hrefOf);
+    }).catch(function () {
+      setCount('—');
+      var mini = '<li class="log-empty">暂时无法读取更新日志</li>';
+      var a = document.getElementById('logRecent'); if (a) a.innerHTML = mini;
+      var b = document.getElementById('logCards'); if (b) b.innerHTML = '<p class="log-empty">暂时无法读取更新日志，可到 GitHub 提交记录查看</p>';
+      var c = document.getElementById('logList'); if (c) c.innerHTML = mini;
+    });
+  })();
 })();
 </script>
+</body>
+</html>
