@@ -340,6 +340,86 @@ img { max-width: 100%; display: block; }
   .grid, .compact-grid, .about-grid { grid-template-columns: 1fr; }
 }
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+/* ---------- 滚动剪影 REEL ---------- */
+.reel-sec { padding: 30px 0 54px; }
+.reel {
+  position: relative;
+  overflow: hidden;
+  padding: 6px 0;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+.reel + .reel { margin-top: 16px; }
+.reel:hover .track { animation-play-state: paused; }
+.track {
+  display: flex;
+  gap: 16px;
+  width: max-content;
+  animation: reelSlide var(--dur, 64s) linear infinite;
+}
+.track.rev { animation-direction: reverse; }
+@keyframes reelSlide {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-50% - 8px)); }
+}
+
+.silhouette {
+  position: relative;
+  width: 268px;
+  flex: 0 0 268px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+  overflow: hidden;
+  transition: 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  text-align: left;
+  display: block;
+  color: var(--ink);
+}
+.silhouette:hover {
+  border-color: var(--amber);
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: var(--glow);
+  z-index: 5;
+}
+.sil-shot {
+  aspect-ratio: 16 / 9;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-2);
+  border-bottom: 1px solid var(--line);
+}
+.sil-shot svg { width: 100%; height: 100%; display: block; opacity: 0.92; transition: 0.4s; }
+.silhouette:hover .sil-shot svg { opacity: 1; transform: scale(1.05); }
+.sil-shot::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 40%, color-mix(in srgb, var(--panel) 85%, transparent));
+}
+.sil-body { padding: 12px 14px 14px; }
+.sil-title {
+  font-weight: 700;
+  font-size: 14.5px;
+  display: flex; align-items: center; gap: 7px;
+}
+.sil-desc {
+  font-size: 12.5px;
+  color: var(--ink-3);
+  margin-top: 4px;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 34px;
+}
+.sil-tags { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
+.tag-mini {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  padding: 2px 7px;
+  border-radius: 5px;
+  border: 1px solid var(--line);
+  color: var(--ink-3);
+}
+
 </style>
 </head>
 <body>
@@ -393,6 +473,33 @@ img { max-width: 100%; display: block; }
       <div class="stat"><b>{{ online_count }}</b><span>Live</span></div>
       <div class="stat"><b>{{ notes.size }}</b><span>Notes</span></div>
       <div class="stat"><b>{{ studies.size }}</b><span>Studies</span></div>
+    </div>
+  </section>
+
+  <!-- ========== 滚动剪影 ========== -->
+  <section class="reel-sec" id="reel">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <h2>剪影滚动</h2>
+          <p>// 悬停暂停 · 点击展开详情</p>
+        </div>
+        <span class="count mono">// {{ site.projects.size }} 个项目剪影</span>
+      </div>
+    </div>
+    {% assign plist = site.projects | sort: 'date' | reverse %}
+    <div class="reel">
+      <div class="track">
+        {% for p in plist %}{% include sil-card.html p=p %}{% endfor %}
+        {% for p in plist %}{% include sil-card.html p=p %}{% endfor %}
+      </div>
+    </div>
+    <div class="reel">
+      <div class="track rev" style="--dur:78s">
+        {% assign plistB = plist | reverse %}
+        {% for p in plistB %}{% include sil-card.html p=p %}{% endfor %}
+        {% for p in plistB %}{% include sil-card.html p=p %}{% endfor %}
+      </div>
     </div>
   </section>
 
@@ -632,6 +739,56 @@ img { max-width: 100%; display: block; }
 
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+
+  /* 剪影滚动：项目无封面时，用 genArt 生成确定性 SVG 占位 */
+  var PALETTE = ['#ffb445', '#56e0c0', '#e0604a', '#a88bff', '#7fb2ff', '#f0d264'];
+  function hashStr(str) {
+    var h = 2166136261;
+    for (var i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 16777619); }
+    return Math.abs(h);
+  }
+  function genArt(seed) {
+    var h = hashStr(String(seed));
+    var a = PALETTE[h % PALETTE.length];
+    var b = PALETTE[(h >> 4) % PALETTE.length];
+    var kind = h % 4, W = 640, H = 360, art = '', x, y, i, k, d;
+    if (kind === 0) {
+      for (i = 1; i <= 6; i++) art += '<circle cx="320" cy="180" r="' + (i * 52) + '" fill="none" stroke="' + b + '" stroke-opacity="' + (0.5 - i * 0.06) + '" stroke-width="1.4"/>';
+      art += '<path d="M320 180 L' + (320 + 220 * Math.cos(h % 6)) + ' ' + (180 + 220 * Math.sin(h % 6)) + '" stroke="' + a + '" stroke-width="1.6"/>';
+      art += '<circle cx="320" cy="180" r="7" fill="' + a + '"/>';
+    } else if (kind === 1) {
+      for (k = 0; k < 5; k++) {
+        var off = k * 26, amp = 30 + (h % 40) + k * 4; d = '';
+        for (x = 0; x <= W; x += 16) { var yy = 180 + off - 60 + Math.sin((x / 70) + k) * amp * 0.5; d += (x === 0 ? 'M' : 'L') + x + ' ' + yy.toFixed(1) + ' '; }
+        art += '<path d="' + d + '" fill="none" stroke="' + (k === 2 ? a : b) + '" stroke-opacity="' + (0.75 - k * 0.1) + '" stroke-width="1.6"/>';
+      }
+    } else if (kind === 2) {
+      for (i = 0; i < 26; i++) {
+        var bh = 26 + ((h >> (i % 8)) % 3) * 40 + (i * 37) % 150;
+        art += '<rect x="' + (24 + i * 24) + '" y="' + (330 - bh) + '" width="12" height="' + bh + '" rx="3" fill="' + (i % 5 === 0 ? a : b) + '" fill-opacity="' + (0.35 + (i % 4) * 0.16) + '"/>';
+      }
+    } else {
+      for (y = 0; y < 9; y++) for (x = 0; x < 16; x++) {
+        if ((h + x * 7 + y * 13) % 5 === 0) continue;
+        art += '<circle cx="' + (24 + x * 40) + '" cy="' + (26 + y * 38) + '" r="' + (((h + x + y) % 3) + 1.6) + '" fill="' + ((x + y) % 7 === 0 ? a : b) + '" fill-opacity="0.55"/>';
+      }
+      art += '<path d="M0 300 L640 120" stroke="' + a + '" stroke-width="2" stroke-opacity="0.8"/>';
+    }
+    var uid = 'sa' + h;
+    return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + W + ' ' + H + '" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">' +
+      '<defs><linearGradient id="' + uid + 'g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#171320"/><stop offset="1" stop-color="#0d0b10"/></linearGradient>' +
+      '<pattern id="' + uid + 'p" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="' + b + '" stroke-opacity="0.1" stroke-width="1"/></pattern></defs>' +
+      '<rect width="' + W + '" height="' + H + '" fill="url(#' + uid + 'g)"/><rect width="' + W + '" height="' + H + '" fill="url(#' + uid + 'p)"/>' +
+      art +
+      '<rect width="' + W + '" height="' + H + '" fill="none" stroke="' + a + '" stroke-opacity="0.25" stroke-width="2"/></svg>';
+  }
+  function renderSilhouettes() {
+    $$('.sil-shot[data-art]').forEach(function (el) {
+      var seed = el.getAttribute('data-seed') || 'x';
+      el.innerHTML = genArt(seed);
+    });
+  }
+  renderSilhouettes();
 
   var LS = { theme: 'blackinkvc:theme', view: 'blackinkvc:view' };
   var read = function (k, d) { try { var v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } };

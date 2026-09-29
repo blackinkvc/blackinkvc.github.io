@@ -1,0 +1,22 @@
+{% assign p = include.p %}
+{% case p.category %}
+  {% when 'game' %}{% assign catColor = 'var(--violet)' %}
+  {% when 'research' %}{% assign catColor = 'var(--crt)' %}
+  {% when 'soft' %}{% assign catColor = 'var(--amber)' %}
+  {% when 'invest' %}{% assign catColor = 'var(--rust)' %}
+  {% else %}{% assign catColor = 'var(--amber)' %}
+{% endcase %}
+<a class="silhouette" href="{{ p.link | default: p.url | relative_url }}" title="{{ p.title | escape }}" data-seed="{{ p.id | escape }}">
+  <div class="sil-shot" data-art="1" data-seed="{{ p.id | escape }}"></div>
+  <div class="sil-body">
+    <div class="sil-title"><span style="color:{{ catColor }}">▚</span>{{ p.title | escape }}</div>
+    <div class="sil-desc">{{ p.summary | default: '一个 AI 网页实验' | escape }}</div>
+    <div class="sil-tags">
+      {% if p.tags and p.tags.size > 0 %}
+        {% for t in p.tags limit:3 %}<span class="tag-mini">{{ t | escape }}</span>{% endfor %}
+      {% else %}
+        <span class="tag-mini">未分类</span>
+      {% endif %}
+    </div>
+  </div>
+</a>
