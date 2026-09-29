@@ -110,7 +110,6 @@ body::after {
   z-index: 1;
   opacity: var(--scan-opacity);
   background: repeating-linear-gradient(to bottom, var(--ink) 0 1px, transparent 1px 3px);
-  mix-blend-mode: overlay;
 }
 
 a { color: inherit; text-decoration: none; }
@@ -355,6 +354,7 @@ img { max-width: 100%; display: block; }
   display: flex;
   gap: 16px;
   width: max-content;
+  will-change: transform;
   animation: reelSlide var(--dur, 64s) linear infinite;
 }
 .track.rev { animation-direction: reverse; }
