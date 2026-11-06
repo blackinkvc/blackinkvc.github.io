@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="doc">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>数据来源与许可 · 战争纪元</title>
+<meta name="description" content="「战争纪元 · 全球冲突 3D 地球时间轴」逐项列出 UCDP GED、DBpedia/Wikipedia、Natural Earth、地球影像贴图与 three.js 等第三方库的来源、许可义务、加工方式与再分发注意事项。">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="styles.css?v=20261106">
+</head>
+<body class="doc-body">
+<div class="doc-bg" aria-hidden="true"></div>
+
+<header class="doc-topbar">
+  <div class="doc-brand">
+    <div class="sigil" aria-hidden="true"><span>✦</span></div>
+    <div>
+      <b>战争纪元</b>
+      <span class="sub" data-zh="LICENCES / DATA PROVENANCE" data-en="LICENCES / DATA PROVENANCE">LICENCES / DATA PROVENANCE</span>
+    </div>
+  </div>
+  <nav class="doc-nav">
+    <a class="icon-btn" href="index.html" data-zh="← 返回地球" data-en="← Back to globe">← 返回地球</a>
+    <button class="icon-btn" id="langBtn" type="button" aria-label="切换中文 / 英文">English</button>
+  </nav>
+</header>
+
+<main class="doc-shell">
+
+  <section class="doc-hero">
+    <span class="eyebrow" data-zh="数据档案 · 许可说明" data-en="DATA DOSSIER · LICENSING">数据档案 · 许可说明</span>
+    <h1 data-zh="数据来源与许可" data-en="Data sources &amp; licences">数据来源与许可</h1>
+    <p class="doc-lead" data-zh="本页逐项说明本项目实际使用的数据与素材：来源名称与官方链接、版本与获取日期、许可类型与法律义务、本项目对其所做的加工（抽样、坐标处理、字段派生、译名生成），以及再分发时的注意事项。所有条目均可在页面数据或构建脚本中复核。" data-en="This page documents every dataset and asset the project actually uses: source name and official link, version and access date, licence and legal obligations, the processing applied here (sampling, coordinate handling, field derivation, name generation), and what to watch out for when redistributing. Each item can be verified against the shipped data or the build scripts.">本页逐项说明本项目实际使用的数据与素材：来源名称与官方链接、版本与获取日期、许可类型与法律义务、本项目对其所做的加工（抽样、坐标处理、字段派生、译名生成），以及再分发时的注意事项。所有条目均可在页面数据或构建脚本中复核。</p>
+
+    <dl class="doc-facts">
+      <div>
+        <dt data-zh="数据集版本" data-en="DATASET VERSION">数据集版本</dt>
+        <dd>v5-1946-2026</dd>
+      </div>
+      <div>
+        <dt data-zh="数据生成时间" data-en="DATA GENERATED">数据生成时间</dt>
+        <dd>2026-11-06 14:15</dd>
+      </div>
+      <div>
+        <dt data-zh="本页校对日期" data-en="PAGE REVISED">本页校对日期</dt>
+        <dd>2026-11-06</dd>
+      </div>
+      <div>
+        <dt data-zh="事件记录" data-en="EVENT RECORDS">事件记录</dt>
+        <dd data-zh="14,028 条" data-en="14,028">14,028 条</dd>
+      </div>
+      <div>
+        <dt data-zh="许可审阅" data-en="LEGAL REVIEW">许可审阅</dt>
+        <dd data-zh="项目自述 · 非法律意见" data-en="self-declared · not legal advice">项目自述 · 非法律意见</dd>
+      </div>
+    </dl>
+
+    <div class="doc-note" data-zh="<b>阅读提示</b>：本页是项目方的来源自述，<b>不构成法律意见</b>。许可条款以各官方页面为准，链接见每张卡片。页面运行时不向任何第三方发起网络请求，全部数据在构建阶段静态嵌入。" data-en="<b>How to read this page</b>: this is the project's own provenance statement, <b>not legal advice</b>. The official terms of each source govern; links are given in every card. At runtime the page makes no third-party network requests — all data is embedded at build time."><b>阅读提示</b>：本页是项目方的来源自述，<b>不构成法律意见</b>。许可条款以各官方页面为准，链接见每张卡片。页面运行时不向任何第三方发起网络请求，全部数据在构建阶段静态嵌入。</div>
+
+    <nav class="doc-toc" aria-label="本页目录">
+      <a href="#overview" data-zh="1 · 来源总览" data-en="1 · Overview">1 · 来源总览</a>
+      <a href="#ucdp" data-zh="2 · UCDP GED" data-en="2 · UCDP GED">2 · UCDP GED</a>
+      <a href="#dbpedia" data-zh="3 · DBpedia / Wikipedia" data-en="3 · DBpedia / Wikipedia">3 · DBpedia / Wikipedia</a>
+      <a href="#curated" data-zh="4 · 重点考据条目" data-en="4 · Curated entries">4 · 重点考据条目</a>
+      <a href="#naturalearth" data-zh="5 · Natural Earth" data-en="5 · Natural Earth">5 · Natural Earth</a>
+      <a href="#textures" data-zh="6 · 影像与贴图" data-en="6 · Imagery &amp; textures">6 · 影像与贴图</a>
+      <a href="#libraries" data-zh="7 · 第三方代码库" data-en="7 · Libraries">7 · 第三方代码库</a>
+      <a href="#inference" data-zh="8 · 抽样与推断" data-en="8 · Sampling &amp; inference">8 · 抽样与推断</a>
+      <a href="#redistribution" data-zh="9 · 商用与再分发" data-en="9 · Commercial use">9 · 商用与再分发</a>
+      <a href="#citation" data-zh="10 · 引用与核验" data-en="10 · Citation">10 · 引用与核验</a>
+    </nav>
+  </section>
+
+  <!-- ==================== 1. 总览 ==================== -->
+  <section class="doc-sec" id="overview">
+    <header>
+      <span class="sec-no">01</span>
+      <h2 data-zh="来源总览" data-en="Source overview">来源总览</h2>
+      <p class="sub" data-zh="先看全局：谁提供了什么、许可是什么、在本项目里占多少。" data-en="The whole picture first: who supplied what, under which licence, and how much of it is used here.">先看全局：谁提供了什么、许可是什么、在本项目里占多少。</p>
+    </header>
+
+    <table class="doc-table">
+      <thead>
+        <tr>
+          <th data-zh="来源" data-en="Source">来源</th>
+          <th data-zh="版本 / 获取日期" data-en="Version / access date">版本 / 获取日期</th>
+          <th data-zh="许可" data-en="Licence">许可</th>
+          <th data-zh="本项目用量" data-en="Used here">本项目用量</th>
+          <th data-zh="商业使用" data-en="Commercial use">商业使用</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>UCDP GED</b><br><span class="muted" data-zh="乌普萨拉冲突数据项目" data-en="Uppsala Conflict Data Program">乌普萨拉冲突数据项目</span></td>
+          <td>v26.1<br><span class="mono">2026-11-06</span></td>
+          <td>CC BY 4.0</td>
+          <td data-zh="8,405 / 417,968（固定抽样）" data-en="8,405 / 417,968 (fixed sample)">8,405 / 417,968（固定抽样）</td>
+          <td data-zh="可以，须署名 + 标明修改" data-en="Yes, with attribution + changes noted">可以，须署名 + 标明修改</td>
+        </tr>
+        <tr>
+          <td><b>DBpedia / Wikipedia</b><br><span class="muted" data-zh="军事冲突条目" data-en="Military conflict entries">军事冲突条目</span></td>
+          <td><span class="mono">2026-11-06</span><br><span data-zh="覆盖至 1988 年" data-en="coverage to 1988">覆盖至 1988 年</span></td>
+          <td data-zh="CC BY-SA 3.0（数据）<br>CC BY-SA 4.0（维基文本）" data-en="CC BY-SA 3.0 (data)<br>CC BY-SA 4.0 (Wikipedia text)">CC BY-SA 3.0（数据）<br>CC BY-SA 4.0（维基文本）</td>
+          <td data-zh="5,427 / 7,409 候选" data-en="5,427 of 7,409 candidates">5,427 / 7,409 候选</td>
+          <td data-zh="可以，须署名 + 相同方式共享" data-en="Yes, with attribution + share-alike">可以，须署名 + 相同方式共享</td>
+        </tr>
+        <tr>
+          <td><b data-zh="重点考据条目" data-en="Curated entries">重点考据条目</b><br><span class="muted" data-zh="项目人工整理" data-en="compiled in-house">项目人工整理</span></td>
+          <td><span class="mono">2026-11-06</span></td>
+          <td data-zh="未单独授权" data-en="No separate licence">未单独授权</td>
+          <td data-zh="196 条（中国古代 108 条）" data-en="196 entries (108 ancient Chinese)">196 条（中国古代 108 条）</td>
+          <td data-zh="需先与作者确认" data-en="Ask the author first">需先与作者确认</td>
+        </tr>
+        <tr>
+          <td><b>Natural Earth</b><br><span class="muted" data-zh="Admin 0 国界（110m）" data-en="Admin 0 countries (110m)">Admin 0 国界（110m）</span></td>
+          <td><span class="mono">110m</span><br><span class="mono">2026-11-06</span></td>
+          <td data-zh="公有领域" data-en="Public domain">公有领域</td>
+          <td><code>borders.js</code> · 107,781 B</td>
+          <td data-zh="可以，建议署名" data-en="Yes, citation appreciated">可以，建议署名</td>
+        </tr>
+        <tr>
+          <td><b>Natural Earth</b><br><span class="muted" data-zh="Admin 1 省州界（10m）" data-en="Admin 1 state/province lines (10m)">Admin 1 省州界（10m）</span></td>
+          <td><span class="mono">10m</span><br><span class="mono">2026-11-06</span></td>
+          <td data-zh="公有领域" data-en="Public domain">公有领域</td>
+          <td><code>admin1.js</code> · 4,205,524 B</td>
+          <td data-zh="可以，建议署名" data-en="Yes, citation appreciated">可以，建议署名</td>
+        </tr>
+        <tr>
+          <td><b data-zh="地球影像与贴图" data-en="Earth imagery &amp; textures">地球影像与贴图</b><br><span class="muted" data-zh="昼 / 夜 / 高光" data-en="day / night / specular">昼 / 夜 / 高光</span></td>
+          <td data-zh="2048×1024<br>影像约 2010 年" data-en="2048×1024<br>imagery c. 2010">2048×1024<br>影像约 2010 年</td>
+          <td data-zh="待核（疑为 three.js 示例 / NASA）" data-en="Unverified (likely three.js examples / NASA)">待核（疑为 three.js 示例 / NASA）</td>
+          <td><code>textures.js</code> · 1,230,445 B</td>
+          <td data-zh="核实前不建议商用再分发" data-en="Not advised until verified">核实前不建议商用再分发</td>
+        </tr>
+        <tr>
+          <td><b>three.js + OrbitControls</b></td>
+          <td><span class="mono">r128</span></td>
+          <td>MIT</td>
+          <td><code>vendor/</code> · 629,820 B</td>
+          <td data-zh="可以，保留声明" data-en="Yes, keep the notice">可以，保留声明</td>
+        </tr>
+        <tr>
+          <td><b>topojson-client</b></td>
+          <td><span class="mono">3.1.0</span></td>
+          <td>ISC</td>
+          <td><code>vendor/</code> · 7,169 B</td>
+          <td data-zh="可以，保留声明" data-en="Yes, keep the notice">可以，保留声明</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ==================== 2. UCDP ==================== -->
+  <section class="doc-sec" id="ucdp">
+    <header>
+      <span class="sec-no">02</span>
+      <h2 data-zh="UCDP GED（现代逐事件数据）" data-en="UCDP GED (modern event data)">UCDP GED（现代逐事件数据）</h2>
+      <p class="sub" data-zh="1989 年以后的冲突点位全部来自这一数据集，但只使用了固定抽样。" data-en="Every post-1989 conflict point comes from this dataset — but only a fixed sample of it is used.">1989 年以后的冲突点位全部来自这一数据集，但只使用了固定抽样。</p>
+    </header>
+
+    <article class="src-card">
+      <header>
+        <div>
+          <h3>UCDP Georeferenced Event Dataset (GED)</h3>
+          <p class="src-sub" data-zh="UPPSALA CONFLICT DATA PROGRAM · UPPSALA UNIVERSITY" data-en="UPPSALA CONFLICT DATA PROGRAM · UPPSALA UNIVERSITY">UPPSALA CONFLICT DATA PROGRAM · UPPSALA UNIVERSITY</p>
+        </div>
+        <span class="src-badge by">CC BY 4.0</span>
+      </header>
+      <dl class="src-grid">
+        <dt data-zh="来源名称" data-en="Source">来源名称</dt>
+        <dd>
+          <b>UCDP Georeferenced Event Dataset (GED), Global version 26.1</b><br>
+          <span data-zh="瑞典乌普萨拉大学 和平与冲突研究系 · 乌普萨拉冲突数据项目（UCDP）" data-en="Department of Peace and Conflict Research, Uppsala University · Uppsala Conflict Data Program (UCDP)">瑞典乌普萨拉大学 和平与冲突研究系 · 乌普萨拉冲突数据项目（UCDP）</span>
+          <div class="src-links">
+            <a href="https://ucdp.uu.se/downloads/" target="_blank" rel="noopener">ucdp.uu.se/downloads</a>
+            <a href="https://ucdp.uu.se/" target="_blank" rel="noopener">ucdp.uu.se</a>
+            <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0 条款</a>
+          </div>
+        </dd>
+
+        <dt data-zh="版本与日期" data-en="Version &amp; date">版本与日期</dt>
+        <dd data-zh="数据集版本 v26.1，记录覆盖 <b>1989–2025</b>。本项目于 <b>2026-11-06</b> 解析原始 CSV 包（<code>_raw/ged261-csv.zip</code>，39,122,522 B），构建进 <code>data/world_data.js</code>。" data-en="Dataset version v26.1, records covering <b>1989–2025</b>. The raw CSV package (<code>_raw/ged261-csv.zip</code>, 39,122,522 B) was parsed on <b>2026-11-06</b> and built into <code>data/world_data.js</code>.">数据集版本 v26.1，记录覆盖 <b>1989–2025</b>。本项目于 <b>2026-11-06</b> 解析原始 CSV 包（<code>_raw/ged261-csv.zip</code>，39,122,522 B），构建进 <code>data/world_data.js</code>。</dd>
+
+        <dt data-zh="许可类型" data-en="Licence">许可类型</dt>
+        <dd data-zh="<b>CC BY 4.0</b>（知识共享 署名 4.0 国际）。允许复制、再分发、修改与商业使用。" data-en="<b>CC BY 4.0</b> (Creative Commons Attribution 4.0 International). Copying, redistribution, adaptation and commercial use are permitted."><b>CC BY 4.0</b>（知识共享 署名 4.0 国际）。允许复制、再分发、修改与商业使用。</dd>
+
+        <dt data-zh="法律要求" data-en="Obligations">法律要求</dt>
+        <dd>
+          <ul>
+            <li data-zh="<b>署名</b>：注明 UCDP 与数据集版本（v26.1），并保留指向官方下载页或 CC BY 4.0 条款的链接。" data-en="<b>Attribution</b>: credit UCDP and the dataset version (v26.1), and keep a link to the official download page or the CC BY 4.0 deed."><b>署名</b>：注明 UCDP 与数据集版本（v26.1），并保留指向官方下载页或 CC BY 4.0 条款的链接。</li>
+            <li data-zh="<b>标明修改</b>：本项目做了抽样、字段裁剪、类型映射与译名生成，再分发时必须说明「已修改」，不能让人误以为是 UCDP 原始发布。" data-en="<b>Indicate changes</b>: this project sampled, trimmed fields, mapped types and generated names; redistribution must state that changes were made and must not imply it is UCDP's original release."><b>标明修改</b>：本项目做了抽样、字段裁剪、类型映射与译名生成，再分发时必须说明「已修改」，不能让人误以为是 UCDP 原始发布。</li>
+            <li data-zh="<b>不得暗示背书</b>：不能声称乌普萨拉大学或 UCDP 认可、认证了本项目。" data-en="<b>No endorsement</b>: do not claim that Uppsala University or UCDP endorses or certifies this project."><b>不得暗示背书</b>：不能声称乌普萨拉大学或 UCDP 认可、认证了本项目。</li>
+            <li data-zh="<b>不附加额外限制</b>：不能对下游施加比 CC BY 4.0 更严格的条款。" data-en="<b>No extra restrictions</b>: do not impose stricter terms on downstream users than CC BY 4.0 does."><b>不附加额外限制</b>：不能对下游施加比 CC BY 4.0 更严格的条款。</li>
+          </ul>
+        </dd>
+
+        <dt data-zh="本项目加工" data-en="Processing">本项目加工</dt>
+        <dd>
+          <ul>
+            <li data-zh="<b>固定抽样</b>：只保留事件 <code>id % 50 == 0</code> 的记录，<b>417,968 → 8,405</b>（约 2.0%）。这是规则抽样而非随机抽样，年份与地区分布可能带系统性偏差，<b>不能用于统计推断</b>。" data-en="<b>Fixed sampling</b>: only records with <code>id % 50 == 0</code> are kept, <b>417,968 → 8,405</b> (about 2.0%). This is a rule-based, not random, sample; year and region distributions may carry systematic bias and it <b>must not be used for statistical inference</b>."><b>固定抽样</b>：只保留事件 <code>id % 50 == 0</code> 的记录，<b>417,968 → 8,405</b>（约 2.0%）。这是规则抽样而非随机抽样，年份与地区分布可能带系统性偏差，<b>不能用于统计推断</b>。</li>
+            <li data-zh="<b>字段保留</b>：开始/结束日期、经纬度、暴力类型、best/low/high 死亡估计、地点名、国家、交战方、conflict_name、来源标题、<code>where_prec</code> 精度等级。" data-en="<b>Fields kept</b>: start/end date, lat/lon, violence type, best/low/high fatality estimates, location name, country, actors, conflict_name, source headline and the <code>where_prec</code> precision tier."><b>字段保留</b>：开始/结束日期、经纬度、暴力类型、best/low/high 死亡估计、地点名、国家、交战方、conflict_name、来源标题、<code>where_prec</code> 精度等级。</li>
+            <li data-zh="<b>类型映射</b>：<code>type_of_violence = 3</code>（单边暴力）显示为「单边暴力」；国家间与非国家冲突（1、2）统一归入「会战 / 战斗」。因此「围城」全部来自历史数据，不来自 UCDP。" data-en="<b>Type mapping</b>: <code>type_of_violence = 3</code> (one-sided violence) is shown as “one-sided”; state-based and non-state conflicts (1, 2) are both shown as “battle”. All “siege” records therefore come from historical data, not UCDP."><b>类型映射</b>：<code>type_of_violence = 3</code>（单边暴力）显示为「单边暴力」；国家间与非国家冲突（1、2）统一归入「会战 / 战斗」。因此「围城」全部来自历史数据，不来自 UCDP。</li>
+            <li data-zh="<b>置信度派生</b>：按 <code>where_prec</code> 分级——1–2 为高、3–4 为中、5–6 为低。这是本项目对位置精度的映射，不是 UCDP 自带的「可信度」字段。" data-en="<b>Derived confidence</b>: mapped from <code>where_prec</code> — 1–2 high, 3–4 medium, 5–6 low. This is our mapping of location precision, not a UCDP “confidence” field."><b>置信度派生</b>：按 <code>where_prec</code> 分级——1–2 为高、3–4 为中、5–6 为低。这是本项目对位置精度的映射，不是 UCDP 自带的「可信度」字段。</li>
+            <li data-zh="<b>地区派生</b>：按经纬度落入五个矩形区域（中东、非洲、欧洲、美洲、亚太），都不命中则记为「跨区域」。" data-en="<b>Derived region</b>: latitude/longitude tested against five bounding boxes (Middle East, Africa, Europe, Americas, Asia-Pacific); records outside all of them are labelled “transregional”."><b>地区派生</b>：按经纬度落入五个矩形区域（中东、非洲、欧洲、美洲、亚太），都不命中则记为「跨区域」。</li>
+            <li data-zh="<b>未做</b>：不做死亡人数外推、不补全缺失伤亡、不合并重复事件、不改变原始坐标。" data-en="<b>Not done</b>: no fatality extrapolation, no filling of missing casualty figures, no deduplication of distinct events, no alteration of original coordinates."><b>未做</b>：不做死亡人数外推、不补全缺失伤亡、不合并重复事件、不改变原始坐标。</li>
+          </ul>
+        </dd>
+
+        <dt data-zh="再分发注意" data-en="Redistribution">再分发注意</dt>
+        <dd data-zh="必须同时保留 <b>UCDP 署名、v26.1 版本号、CC BY 4.0 链接</b>，并明确写出「按事件 ID 模 50 抽样、非全量」。任何图表若基于本页样本，应标注样本量（8,405），不得表述为「1989 年以来全球冲突总数」。" data-en="Keep the <b>UCDP credit, the v26.1 version number and the CC BY 4.0 link</b>, and state clearly that this is “a mod-50 sample of event IDs, not the full dataset”. Any chart built on this sample must show the sample size (8,405) and must not be described as “the total number of conflicts since 1989”.">必须同时保留 <b>UCDP 署名、v26.1 版本号、CC BY 4.0 链接</b>，并明确写出「按事件 ID 模 50 抽样、非全量」。任何图表若基于本页样本，应标注样本量（8,405），不得表述为「1989 年以来全球冲突总数」。</dd>
+      </dl>
+    </article>
+  </section>
+
+  <!-- ==================== 3. DBpedia ==================== -->
+  <section class="doc-sec" id="dbpedia">
+    <header>
+      <span class="sec-no">03</span>
+      <h2 data-zh="DBpedia / Wikipedia（历史条目）" data-en="DBpedia / Wikipedia (historical entries)">DBpedia / Wikipedia（历史条目）</h2>
+      <p class="sub" data-zh="公元前 3000 年至 1988 年的历史点位，主体来自百科条目，是「有条目才有记录」的选择性覆盖。" data-en="Historical points from 3000 BC to 1988 come mainly from encyclopaedic entries — coverage is selective: a record exists only if an article exists.">公元前 3000 年至 1988 年的历史点位，主体来自百科条目，是「有条目才有记录」的选择性覆盖。</p>
+    </header>
+
+    <article class="src-card">
+      <header>
+        <div>
+          <h3>DBpedia · Wikipedia</h3>
+          <p class="src-sub" data-zh="DBPEDIA ASSOCIATION · WIKIMEDIA FOUNDATION" data-en="DBPEDIA ASSOCIATION · WIKIMEDIA FOUNDATION">DBPEDIA ASSOCIATION · WIKIMEDIA FOUNDATION</p>
+        </div>
+        <span class="src-badge sa">CC BY-SA 3.0 / 4.0</span>
+      </header>
+      <dl class="src-grid">
+        <dt data-zh="来源名称" data-en="Source">来源名称</dt>
+        <dd>
+          <b>DBpedia</b>（MilitaryConflict 等相关条目）与对应的 <b>Wikipedia</b> 条目
+          <div class="src-links">
+            <a href="https://www.dbpedia.org/" target="_blank" rel="noopener">dbpedia.org</a>
+            <a href="https://dumps.wikimedia.org/" target="_blank" rel="noopener">dumps.wikimedia.org</a>
+            <a href="https://www.wikipedia.org/" target="_blank" rel="noopener">wikipedia.org</a>
+            <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0 条款</a>
+          </div>
+        </dd>
+
+        <dt data-zh="版本与日期" data-en="Version &amp; date">版本与日期</dt>
+        <dd data-zh="项目内 SPARQL 查询结果分片（<code>_raw/dbpedia_a.json</code>、<code>dbpedia_b.json</code>、<code>dbpedia_c.json</code>、<code>dbpedia_d.json</code>、<code>dbpedia_cw.json</code> 等），于 <b>2026-11-06</b> 去重、筛选并构建。候选 <b>7,409</b> 条，采用 <b>5,427</b> 条；实际纳入的最早记录为 <b>前 1457 年</b>，最晚 <b>1988 年</b>。" data-en="Local SPARQL result shards (<code>_raw/dbpedia_a.json</code>, <code>dbpedia_b.json</code>, <code>dbpedia_c.json</code>, <code>dbpedia_d.json</code>, <code>dbpedia_cw.json</code> and others), deduplicated, filtered and built on <b>2026-11-06</b>. <b>7,409</b> unique candidates, <b>5,427</b> used; the earliest record included is <b>1457 BC</b> and the latest <b>AD 1988</b>.">项目内 SPARQL 查询结果分片（<code>_raw/dbpedia_a.json</code>、<code>dbpedia_b.json</code>、<code>dbpedia_c.json</code>、<code>dbpedia_d.json</code>、<code>dbpedia_cw.json</code> 等），于 <b>2026-11-06</b> 去重、筛选并构建。候选 <b>7,409</b> 条，采用 <b>5,427</b> 条；实际纳入的最早记录为 <b>前 1457 年</b>，最晚 <b>1988 年</b>。</dd>
+
+        <dt data-zh="许可类型" data-en="Licence">许可类型</dt>
+        <dd data-zh="DBpedia 数据集以 <b>CC BY-SA 3.0</b> 发布；其内容源自 Wikipedia，维基百科条目文本按 <b>CC BY-SA 4.0</b> 授权（较早发布的部分内容可能仍为 3.0）。条目中的坐标、日期等事实性数据可能来自 Wikidata（CC0），但本项目未逐条区分来源层级。" data-en="DBpedia datasets are released under <b>CC BY-SA 3.0</b>; their content derives from Wikipedia, whose article text is licensed <b>CC BY-SA 4.0</b> (some earlier material may still be 3.0). Factual fields such as coordinates and dates may originate from Wikidata (CC0), but this project does not distinguish source layers record by record.">DBpedia 数据集以 <b>CC BY-SA 3.0</b> 发布；其内容源自 Wikipedia，维基百科条目文本按 <b>CC BY-SA 4.0</b> 授权（较早发布的部分内容可能仍为 3.0）。条目中的坐标、日期等事实性数据可能来自 Wikidata（CC0），但本项目未逐条区分来源层级。</dd>
+
+        <dt data-zh="法律要求" data-en="Obligations">法律要求</dt>
+        <dd>
+          <ul>
+            <li data-zh="<b>署名</b>：注明内容来自 Wikipedia / DBpedia，并给出条目链接；页面内每条记录都保留 <code>src</code> 字段（DBpedia 资源页 + 对应 Wikipedia 条目）。" data-en="<b>Attribution</b>: credit Wikipedia / DBpedia and link the article; every record in this project keeps a <code>src</code> field (DBpedia resource page + corresponding Wikipedia article)."><b>署名</b>：注明内容来自 Wikipedia / DBpedia，并给出条目链接；页面内每条记录都保留 <code>src</code> 字段（DBpedia 资源页 + 对应 Wikipedia 条目）。</li>
+            <li data-zh="<b>相同方式共享</b>：若再分发的是对条目的改编（摘编、结构化改写、合并进新数据库），改编部分须以相同许可（CC BY-SA）发布，不能改为「保留所有权利」。" data-en="<b>Share-alike</b>: if you redistribute an adaptation of the articles (excerpts, structured rewrites, merged databases), the adapted material must be released under the same licence (CC BY-SA), not “all rights reserved”."><b>相同方式共享</b>：若再分发的是对条目的改编（摘编、结构化改写、合并进新数据库），改编部分须以相同许可（CC BY-SA）发布，不能改为「保留所有权利」。</li>
+            <li data-zh="<b>标明修改</b>：本项目只保留名称、日期、坐标与类型，未复制条目正文；这仍属于「修改/摘编」，须注明。" data-en="<b>Indicate changes</b>: only names, dates, coordinates and types are kept; no article prose is copied. This still counts as modification/excerpting and must be disclosed."><b>标明修改</b>：本项目只保留名称、日期、坐标与类型，未复制条目正文；这仍属于「修改/摘编」，须注明。</li>
+            <li data-zh="<b>保留许可与免责声明</b>：不得移除来源页的许可声明，也不得暗示维基百科编者认可本项目。" data-en="<b>Keep the licence and disclaimers</b>: do not strip the licence notice from the source pages, and do not imply that Wikipedia editors endorse this project."><b>保留许可与免责声明</b>：不得移除来源页的许可声明，也不得暗示维基百科编者认可本项目。</li>
+          </ul>
+        </dd>
+
+        <dt data-zh="本项目加工" data-en="Processing">本项目加工</dt>
+        <dd>
+          <ul>
+            <li data-zh="<b>去重</b>：同一资源 URI 只保留一次，得到 7,409 条唯一候选。" data-en="<b>Deduplication</b>: one record per resource URI, leaving 7,409 unique candidates."><b>去重</b>：同一资源 URI 只保留一次，得到 7,409 条唯一候选。</li>
+            <li data-zh="<b>完整性筛选</b>：无坐标、坐标越界（纬度 ±90 / 经度 ±180）、日期无法解析或落在公元前 3000 年–1988 年之外的条目剔除。" data-en="<b>Completeness filters</b>: records without coordinates, with out-of-range coordinates (lat ±90 / lon ±180), unparsable dates, or dates outside 3000 BC–AD 1988 are dropped."><b>完整性筛选</b>：无坐标、坐标越界（纬度 ±90 / 经度 ±180）、日期无法解析或落在公元前 3000 年–1988 年之外的条目剔除。</li>
+            <li data-zh="<b>占位坐标剔除</b>：部分「中国内战 Campaign」条目在源数据里使用北京通用坐标（39.9167, 116.3833），无法定位，已识别并跳过。" data-en="<b>Placeholder coordinates</b>: some “Chinese Civil War Campaign” entries carry a generic Beijing coordinate (39.9167, 116.3833); these are detected and skipped as unlocatable."><b>占位坐标剔除</b>：部分「中国内战 Campaign」条目在源数据里使用北京通用坐标（39.9167, 116.3833），无法定位，已识别并跳过。</li>
+            <li data-zh="<b>类型派生</b>：按标题关键词判定——<code>siege / fall of / capture of / sack of</code> → 围城；<code>massacre / pogrom</code> → 单边暴力；<code>battle</code> → 会战；其余战役级标题 → 战役线。无法判定的条目直接排除。" data-en="<b>Type derivation</b>: by title keywords — <code>siege / fall of / capture of / sack of</code> → siege; <code>massacre / pogrom</code> → one-sided violence; <code>battle</code> → battle; other campaign-level titles → campaign line. Unclassifiable entries are excluded."><b>类型派生</b>：按标题关键词判定——<code>siege / fall of / capture of / sack of</code> → 围城；<code>massacre / pogrom</code> → 单边暴力；<code>battle</code> → 会战；其余战役级标题 → 战役线。无法判定的条目直接排除。</li>
+            <li data-zh="<b>去重（与考据条目）</b>：若同名事件已由考据条目覆盖，则不再重复收录，避免同一事件出现两条记录。" data-en="<b>Cross-deduplication</b>: if an identically named event is already covered by a curated entry, the DBpedia record is skipped so the same event is not shown twice."><b>去重（与考据条目）</b>：若同名事件已由考据条目覆盖，则不再重复收录，避免同一事件出现两条记录。</li>
+            <li data-zh="<b>中文名生成</b>：DBpedia 中文标签 <b>1,108</b> 条；地名译名库 <b>156</b> 条；规则音译 <b>3,987</b> 条（机械转写，不保证是通行译名）；中英混排 <b>89</b> 条；直接沿用英文原名 <b>87</b> 条。每条在 <code>tz</code> 字段标注来源。" data-en="<b>Chinese names</b>: DBpedia Chinese labels <b>1,108</b>; gazetteer <b>156</b>; rule-based transliteration <b>3,987</b> (mechanical, not guaranteed to be the conventional name); mixed Chinese/English <b>89</b>; original English title kept <b>87</b>. The <code>tz</code> field records which route was used."><b>中文名生成</b>：DBpedia 中文标签 <b>1,108</b> 条；地名译名库 <b>156</b> 条；规则音译 <b>3,987</b> 条（机械转写，不保证是通行译名）；中英混排 <b>89</b> 条；直接沿用英文原名 <b>87</b> 条。每条在 <code>tz</code> 字段标注来源。</li>
+            <li data-zh="<b>年份与置信度</b>：ISO 风格日期截取为整数年（公元前为负数）；公元 1000 年及以后记为「中置信度」，更早记为「低置信度」。这是保守的可核验性分级，不是对史实真伪的判断。" data-en="<b>Year &amp; confidence</b>: ISO-style dates are cut to an integer year (BC negative); AD 1000 and later are marked medium confidence, earlier ones low. This is a conservative verifiability tier, not a verdict on historical truth."><b>年份与置信度</b>：ISO 风格日期截取为整数年（公元前为负数）；公元 1000 年及以后记为「中置信度」，更早记为「低置信度」。这是保守的可核验性分级，不是对史实真伪的判断。</li>
+            <li data-zh="<b>未做</b>：不抓取条目正文或摘要（所以历史事件详情不补写背景），不做测绘级坐标校正，不逐条人工复核。" data-en="<b>Not done</b>: article prose/abstracts are not fetched (hence no background narrative for these events), no survey-grade coordinate correction, no record-by-record manual review."><b>未做</b>：不抓取条目正文或摘要（所以历史事件详情不补写背景），不做测绘级坐标校正，不逐条人工复核。</li>
+          </ul>
+        </dd>
+
+        <dt data-zh="再分发注意" data-en="Redistribution">再分发注意</dt>
+        <dd data-zh="坐标是条目坐标（多为现代地名位置），不是古战场测绘点，再分发时不要标为「精确位置」。若把本项目的结构化历史表单独发布，需评估 CC BY-SA 的相同方式共享义务；商业使用本身不被禁止，但署名与共享义务仍然适用。" data-en="Coordinates are article coordinates (usually the modern place), not surveyed battlefield points — do not relabel them as “exact locations”. If you republish the structured historical table on its own, assess the CC BY-SA share-alike obligation; commercial use is not prohibited, but attribution and share-alike still apply.">坐标是条目坐标（多为现代地名位置），不是古战场测绘点，再分发时不要标为「精确位置」。若把本项目的结构化历史表单独发布，需评估 CC BY-SA 的相同方式共享义务；商业使用本身不被禁止，但署名与共享义务仍然适用。</dd>
+      </dl>
+    </article>
+  </section>
+
+  <!-- ==================== 4. 考据 ==================== -->
+  <section class="doc-sec" id="curated">
+    <header>
+      <span class="sec-no">04</span>
+      <h2 data-zh="重点考据条目（项目人工整理）" data-en="Curated entries (compiled in-house)">重点考据条目（项目人工整理）</h2>
+      <p class="sub" data-zh="用于补足代表性战役的细节与 1946–1988 的空白，也是全站唯一没有统一上游数据集的部分。" data-en="Used to add detail to representative battles and to fill 1946–1988 — the only part of the site without a single upstream dataset.">用于补足代表性战役的细节与 1946–1988 的空白，也是全站唯一没有统一上游数据集的部分。</p>
+    </header>
+
+    <article class="src-card">
+      <header>
+        <div>
+          <h3 data-zh="考据档案 · 196 条" data-en="Curated dossier · 196 entries">考据档案 · 196 条</h3>
+          <p class="src-sub" data-zh="中国古代 108 条 · 近现代补录与 2026 延续记录" data-en="108 ancient Chinese · modern gap-fill and 2026 continuations">中国古代 108 条 · 近现代补录与 2026 延续记录</p>
+        </div>
+        <span class="src-badge tbd" data-zh="未单独授权" data-en="No separate licence">未单独授权</span>
+      </header>
+      <dl class="src-grid">
+        <dt data-zh="来源名称" data-en="Source">来源名称</dt>
+        <dd data-zh="项目人工整理的考据条目（<code>_raw/curated.json</code>、<code>curated_cn_1–3.js</code>、<code>curated_2026.json</code>、<code>curated_cw*.json</code>），每条在事件详情中列出参考链接。" data-en="Entries compiled by hand (<code>_raw/curated.json</code>, <code>curated_cn_1–3.js</code>, <code>curated_2026.json</code>, <code>curated_cw*.json</code>); each record lists its reference links in the event dossier.">项目人工整理的考据条目（<code>_raw/curated.json</code>、<code>curated_cn_1–3.js</code>、<code>curated_2026.json</code>、<code>curated_cw*.json</code>），每条在事件详情中列出参考链接。</dd>
+
+        <dt data-zh="版本与日期" data-en="Version &amp; date">版本与日期</dt>
+        <dd data-zh="随数据集 <b>v5-1946-2026</b> 定稿，生成时间 <b>2026-11-06 14:15</b>。" data-en="Frozen with dataset <b>v5-1946-2026</b>, generated <b>2026-11-06 14:15</b>.">随数据集 <b>v5-1946-2026</b> 定稿，生成时间 <b>2026-11-06 14:15</b>。</dd>
+
+        <dt data-zh="许可类型" data-en="Licence">许可类型</dt>
+        <dd data-zh="<b>未单独发布开放许可</b>。史实本身不受版权保护，但这些条目的文字表述、结构化字段、区间估计与注释属于本项目成果。条目所引用的外部史料各自保留原有版权。" data-en="<b>No separate open licence has been declared.</b> Historical facts themselves are not copyrightable, but the wording, structured fields, range estimates and annotations here are this project's work. External references cited by each entry retain their own rights."><b>未单独发布开放许可</b>。史实本身不受版权保护，但这些条目的文字表述、结构化字段、区间估计与注释属于本项目成果。条目所引用的外部史料各自保留原有版权。</dd>
+
+        <dt data-zh="本项目加工" data-en="Processing">本项目加工</dt>
+        <dd>
+          <ul>
+            <li data-zh="<b>兵力与伤亡</b>：只给区间与「史料不一 / 估计」标注，不做单一数字的伪精确。" data-en="<b>Strength &amp; casualties</b>: ranges only, flagged “sources disagree / estimated”; no false precision from a single figure."><b>兵力与伤亡</b>：只给区间与「史料不一 / 估计」标注，不做单一数字的伪精确。</li>
+            <li data-zh="<b>坐标</b>：取现代遗址或地名对应的经纬度，按文献互证程度分高 / 中 / 低置信度，低置信度在球面上以更暗更小的方式呈现。" data-en="<b>Coordinates</b>: modern site/place coordinates, graded high / medium / low by documentary corroboration; low-confidence points render dimmer and smaller."><b>坐标</b>：取现代遗址或地名对应的经纬度，按文献互证程度分高 / 中 / 低置信度，低置信度在球面上以更暗更小的方式呈现。</li>
+            <li data-zh="<b>1946–1988 补录</b>：按朝鲜战争、越南战争、中东战争、印巴冲突、非洲独立与内战、拉美内战、中苏与中印边境冲突等线索补入，粒度为「战争 / 战役级」。" data-en="<b>1946–1988 gap-fill</b>: Korean War, Vietnam War, Middle East wars, India–Pakistan, African independence and civil wars, Latin American civil wars, Sino-Soviet and Sino-Indian border clashes; granularity is war/campaign level."><b>1946–1988 补录</b>：按朝鲜战争、越南战争、中东战争、印巴冲突、非洲独立与内战、拉美内战、中苏与中印边境冲突等线索补入，粒度为「战争 / 战役级」。</li>
+            <li data-zh="<b>2026 延续记录</b>：UCDP 逐事件编码截至 2025 年，2026 年条目来自公开报道整理，并带「推断结束年」标记。" data-en="<b>2026 continuations</b>: UCDP event coding ends in 2025; 2026 records come from public reporting and carry an “estimated end year” flag."><b>2026 延续记录</b>：UCDP 逐事件编码截至 2025 年，2026 年条目来自公开报道整理，并带「推断结束年」标记。</li>
+          </ul>
+        </dd>
+
+        <dt data-zh="再分发注意" data-en="Redistribution">再分发注意</dt>
+        <dd data-zh="如需在公开或商业项目中使用这些条目，<b>请先与项目作者确认</b>。引用具体史实时，请沿事件详情里的参考链接回溯原始史料，不要只引用本页的区间数字。" data-en="If you want to use these entries in a public or commercial product, <b>ask the project author first</b>. When citing a historical claim, follow the reference links in the event dossier back to the primary material rather than citing the ranges here alone.">如需在公开或商业项目中使用这些条目，<b>请先与项目作者确认</b>。引用具体史实时，请沿事件详情里的参考链接回溯原始史料，不要只引用本页的区间数字。</dd>
+      </dl>
+    </article>
+  </section>
+
+  <!-- ==================== 5. Natural Earth ==================== -->
+  <section class="doc-sec" id="naturalearth">
+    <header>
+      <span class="sec-no">05</span>
+      <h2 data-zh="Natural Earth（国界与行政区）" data-en="Natural Earth (borders &amp; admin areas)">Natural Earth（国界与行政区）</h2>
+      <p class="sub" data-zh="球体与平面地图上的海岸线、国界、省州界都来自这里；公有领域，是许可负担最轻的一层。" data-en="Coastlines, national borders and admin-1 lines on both the globe and the flat map come from here — public domain, the lightest layer to redistribute.">球体与平面地图上的海岸线、国界、省州界都来自这里；公有领域，是许可负担最轻的一层。</p>
+    </header>
+
+    <article class="src-card">
+      <header>
+        <div>
+          <h3>Natural Earth · Admin 0 / Admin 1</h3>
+          <p class="src-sub" data-zh="NATURAL EARTH · 1:110M 与 1:10M" data-en="NATURAL EARTH · 1:110M AND 1:10M">NATURAL EARTH · 1:110M 与 1:10M</p>
+        </div>
+        <span class="src-badge pd" data-zh="公有领域" data-en="Public domain">公有领域</span>
+      </header>
+      <dl class="src-grid">
+        <dt data-zh="来源名称" data-en="Source">来源名称</dt>
+        <dd>
+          <b>Natural Earth</b> — Admin 0 Countries（1:110m）与 Admin 1 States/Provinces Lines（1:10m）
+          <div class="src-links">
+            <a href="https://www.naturalearthdata.com/downloads/110m-cultural-vectors/110m-admin-0-countries/" target="_blank" rel="noopener">Admin 0 · 110m</a>
+            <a href="https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-admin-1-states-provinces/" target="_blank" rel="noopener">Admin 1 · 10m</a>
+            <a href="https://www.naturalearthdata.com/about/terms-of-use/" target="_blank" rel="noopener">Terms of use</a>
+          </div>
+        </dd>
+
+        <dt data-zh="版本与日期" data-en="Version &amp; date">版本与日期</dt>
+        <dd data-zh="本地归档 <code>_raw/ne_10m_admin1_lines.zip</code>（5,993,148 B）与 <code>_raw/ne_50m_admin_1_lines.zip</code>（261,730 B）；<code>assets/countries-110m.json</code>（107,761 B）为 TopoJSON 输入。构建日期 <b>2026-11-06</b>。" data-en="Local archives <code>_raw/ne_10m_admin1_lines.zip</code> (5,993,148 B) and <code>_raw/ne_50m_admin_1_lines.zip</code> (261,730 B); <code>assets/countries-110m.json</code> (107,761 B) is the TopoJSON input. Built on <b>2026-11-06</b>.">本地归档 <code>_raw/ne_10m_admin1_lines.zip</code>（5,993,148 B）与 <code>_raw/ne_50m_admin_1_lines.zip</code>（261,730 B）；<code>assets/countries-110m.json</code>（107,761 B）为 TopoJSON 输入。构建日期 <b>2026-11-06</b>。</dd>
+
+        <dt data-zh="许可类型" data-en="Licence">许可类型</dt>
+        <dd data-zh="<b>公有领域（Public Domain）</b>。Natural Earth 明确说明无需许可即可使用、修改与再分发，包括商业用途；官方仅请求在使用时注明 <b>“Made with Natural Earth”</b>。" data-en="<b>Public domain.</b> Natural Earth states that no permission is needed to use, modify or redistribute the data, including commercially; the project asks only for the credit <b>“Made with Natural Earth”</b>."><b>公有领域（Public Domain）</b>。Natural Earth 明确说明无需许可即可使用、修改与再分发，包括商业用途；官方仅请求在使用时注明 <b>“Made with Natural Earth”</b>。</dd>
+
+        <dt data-zh="本项目加工" data-en="Processing">本项目加工</dt>
+        <dd>
+          <ul>
+            <li data-zh="<b>Admin 0</b>：TopoJSON 转为项目内几何数组 <code>window.WORLD_ATLAS</code>（<code>data/borders.js</code>，107,781 B），保留数字 ISO 码与多边形环；用于国界描边和交战国整国填色。" data-en="<b>Admin 0</b>: TopoJSON converted into <code>window.WORLD_ATLAS</code> (<code>data/borders.js</code>, 107,781 B), keeping numeric ISO codes and polygon rings; used for national outlines and belligerent country fills."><b>Admin 0</b>：TopoJSON 转为项目内几何数组 <code>window.WORLD_ATLAS</code>（<code>data/borders.js</code>，107,781 B），保留数字 ISO 码与多边形环；用于国界描边和交战国整国填色。</li>
+            <li data-zh="<b>Admin 1</b>：10m 省州界线抽取为纯折线 <code>window.ADMIN1_LINES</code>（<code>data/admin1.js</code>，4,205,524 B），只保留坐标串，丢弃名称与属性字段，以降低首屏体积。" data-en="<b>Admin 1</b>: 10m state/province lines reduced to pure polylines <code>window.ADMIN1_LINES</code> (<code>data/admin1.js</code>, 4,205,524 B), keeping coordinates only and discarding names and attributes to cut payload."><b>Admin 1</b>：10m 省州界线抽取为纯折线 <code>window.ADMIN1_LINES</code>（<code>data/admin1.js</code>，4,205,524 B），只保留坐标串，丢弃名称与属性字段，以降低首屏体积。</li>
+            <li data-zh="<b>坐标</b>：保持 WGS84 经纬度，不做投影变换；球面渲染时按经纬度实时转三维，平面视图用等距圆柱投影。" data-en="<b>Coordinates</b>: kept as WGS84 lon/lat with no reprojection; the globe converts them to 3D at runtime, while the flat view uses an equirectangular projection."><b>坐标</b>：保持 WGS84 经纬度，不做投影变换；球面渲染时按经纬度实时转三维，平面视图用等距圆柱投影。</li>
+            <li data-zh="<b>未使用</b>：未使用 Natural Earth 的人口、经济、争议边界属性；也未对边界做任何主权判断。" data-en="<b>Not used</b>: population, economic and disputed-boundary attributes are unused; no sovereignty judgement is made about any border."><b>未使用</b>：未使用 Natural Earth 的人口、经济、争议边界属性；也未对边界做任何主权判断。</li>
+          </ul>
+        </dd>
+
+        <dt data-zh="再分发注意" data-en="Redistribution">再分发注意</dt>
+        <dd data-zh="可自由再分发与商用，建议保留 “Made with Natural Earth” 字样。整国填色是<b>现代国界的示意代理</b>，用于历史政权时会被明确标注为「不代表历史疆域」，再分发时请保留这一说明，避免被误读为领土主张。" data-en="Free to redistribute and use commercially; keeping “Made with Natural Earth” is appreciated. Country fills are an <b>indicative proxy using modern borders</b>; when applied to historical polities they are explicitly labelled “not historical territory” — keep that note when redistributing to avoid misreading it as a territorial claim.">可自由再分发与商用，建议保留 “Made with Natural Earth” 字样。整国填色是<b>现代国界的示意代理</b>，用于历史政权时会被明确标注为「不代表历史疆域」，再分发时请保留这一说明，避免被误读为领土主张。</dd>
+      </dl>
+    </article>
+  </section>
+
+  <!-- ==================== 6. 贴图 ==================== -->
+  <section class="doc-sec" id="textures">
+    <header>
+      <span class="sec-no">06</span>
+      <h2 data-zh="地球影像与贴图" data-en="Earth imagery &amp; textures">地球影像与贴图</h2>
+      <p class="sub" data-zh="这是全站唯一一处来源未能完全核实、因而谨慎标注的素材。" data-en="The only assets on the site whose provenance could not be fully verified — hence the cautious labelling.">这是全站唯一一处来源未能完全核实、因而谨慎标注的素材。</p>
+    </header>
+
+    <article class="src-card">
+      <header>
+        <div>
+          <h3 data-zh="昼 / 夜 / 高光贴图 · 3 张" data-en="Day / night / specular · 3 maps">昼 / 夜 / 高光贴图 · 3 张</h3>
+          <p class="src-sub" data-zh="2048 × 1024 · 以 BASE64 内嵌" data-en="2048 × 1024 · EMBEDDED AS BASE64">2048 × 1024 · 以 BASE64 内嵌</p>
+        </div>
+        <span class="src-badge tbd" data-zh="来源待核" data-en="Provenance unverified">来源待核</span>
+      </header>
+      <dl class="src-grid">
+        <dt data-zh="文件与指纹" data-en="Files &amp; hashes">文件与指纹</dt>
+        <dd>
+          <ul>
+            <li><code>assets/earth_atmos.jpg</code> · 512,606 B · MD5 <code>E15EB8D2A32D001AA4E06884F6A566CD</code></li>
+            <li><code>assets/earth_lights.png</code> · 410,160 B · MD5 <code>B7AA53CABE1568CA70D0789C0E9EADA2</code></li>
+            <li><code>assets/earth_specular.jpg</code> · 223,421 B · MD5 <code>7DD1857A60A7A7BEE6FB9E4B6C9FC9DD</code></li>
+            <li data-zh="构建产物：<code>data/textures.js</code>（1,230,445 B），键为 <code>day</code> / <code>night</code>，均为 2048×1024；高光图在着色器中按灰度采样。" data-en="Build output: <code>data/textures.js</code> (1,230,445 B), keys <code>day</code> / <code>night</code>, both 2048×1024; the specular map is sampled as greyscale in the shader.">构建产物：<code>data/textures.js</code>（1,230,445 B），键为 <code>day</code> / <code>night</code>，均为 2048×1024；高光图在着色器中按灰度采样。</li>
+          </ul>
+        </dd>
+
+        <dt data-zh="来源判断" data-en="What we know">来源判断</dt>
+        <dd data-zh="项目内<b>没有保留原始下载记录</b>。可核实的线索是：文件名与尺寸与 three.js 官方示例贴图 <code>earth_atmos_2048.jpg</code>、<code>earth_lights_2048.png</code>、<code>earth_specular_2048.jpg</code> 完全一致；昼图 JPEG 的 EXIF 为 <b>GIMP 2.6.7 / 2010-06-08 21:50:24</b>，与 three.js 仓库长期分发的版本特征吻合。上游影像通常标注为 <b>NASA Visible Earth / Blue Marble</b> 系列。因此本页将其标为「待核」，而不是直接断言为 MIT 或公有领域。" data-en="<b>No original download record was kept.</b> What can be verified: the filenames and dimensions match the three.js example textures <code>earth_atmos_2048.jpg</code>, <code>earth_lights_2048.png</code> and <code>earth_specular_2048.jpg</code> exactly; the day map's JPEG EXIF reads <b>GIMP 2.6.7 / 2010-06-08 21:50:24</b>, consistent with the versions long distributed in the three.js repository. The upstream imagery is usually credited to <b>NASA Visible Earth / Blue Marble</b>. This page therefore marks the textures “unverified” rather than asserting MIT or public domain outright.">项目内<b>没有保留原始下载记录</b>。可核实的线索是：文件名与尺寸与 three.js 官方示例贴图 <code>earth_atmos_2048.jpg</code>、<code>earth_lights_2048.png</code>、<code>earth_specular_2048.jpg</code> 完全一致；昼图 JPEG 的 EXIF 为 <b>GIMP 2.6.7 / 2010-06-08 21:50:24</b>，与 three.js 仓库长期分发的版本特征吻合。上游影像通常标注为 <b>NASA Visible Earth / Blue Marble</b> 系列。因此本页将其标为「待核」，而不是直接断言为 MIT 或公有领域。</dd>
+
+        <dt data-zh="许可类型" data-en="Licence">许可类型</dt>
+        <dd data-zh="<b>待核。</b>若确为 three.js 示例目录中的文件：three.js 仓库整体采用 MIT，但官方并未对每张示例贴图单独出具授权声明；若确为 NASA 影像：NASA 影像一般属公有领域，但不得使用 NASA 标识暗示官方背书。" data-en="<b>Unverified.</b> If these are the files from the three.js examples folder, the repository as a whole is MIT, but individual example textures are not separately licensed in writing; if they are NASA imagery, NASA images are generally public domain, but NASA insignia may not be used to imply endorsement."><b>待核。</b>若确为 three.js 示例目录中的文件：three.js 仓库整体采用 MIT，但官方并未对每张示例贴图单独出具授权声明；若确为 NASA 影像：NASA 影像一般属公有领域，但不得使用 NASA 标识暗示官方背书。</dd>
+
+        <dt data-zh="本项目加工" data-en="Processing">本项目加工</dt>
+        <dd>
+          <ul>
+            <li data-zh="<b>内嵌</b>：三张图在构建阶段转为 base64 data URI，避免 file:// 下的跨域与路径问题，代价是首屏体积增加约 1.2 MB。" data-en="<b>Embedding</b>: the three images are converted to base64 data URIs at build time to avoid file:// CORS and path issues, at a cost of roughly 1.2 MB on first load."><b>内嵌</b>：三张图在构建阶段转为 base64 data URI，避免 file:// 下的跨域与路径问题，代价是首屏体积增加约 1.2 MB。</li>
+            <li data-zh="<b>用途</b>：昼图作基础色，夜图作城市灯光，高光图作海面镜面反射；云层与大气散射由着色器程序生成，未使用第三方云贴图。" data-en="<b>Use</b>: day map as base colour, night map for city lights, specular map for ocean highlights; clouds and atmospheric scattering are generated procedurally in the shader, with no third-party cloud texture."><b>用途</b>：昼图作基础色，夜图作城市灯光，高光图作海面镜面反射；云层与大气散射由着色器程序生成，未使用第三方云贴图。</li>
+            <li data-zh="<b>未改图</b>：未对影像内容做拼接、重绘或地理位置修改。" data-en="<b>No editing</b>: no stitching, repainting or geographic alteration of the imagery."><b>未改图</b>：未对影像内容做拼接、重绘或地理位置修改。</li>
+          </ul>
+        </dd>
+
+        <dt data-zh="核验方法" data-en="How to verify">核验方法</dt>
+        <dd data-zh="① 用上面的 MD5 与 three.js 官方仓库同名文件比对；② 或直接用 NASA Visible Earth 明确标注为公有领域的 Blue Marble 影像替换，并在本节更新来源；③ 若替换，请同时更新 <code>assets/</code> 与 <code>data/textures.js</code>。" data-en="① Compare the MD5 values above against the same-named files in the official three.js repository; ② or replace them with Blue Marble imagery explicitly marked public domain by NASA Visible Earth and update this section; ③ if replaced, update both <code>assets/</code> and <code>data/textures.js</code>.">① 用上面的 MD5 与 three.js 官方仓库同名文件比对；② 或直接用 NASA Visible Earth 明确标注为公有领域的 Blue Marble 影像替换，并在本节更新来源；③ 若替换，请同时更新 <code>assets/</code> 与 <code>data/textures.js</code>。</dd>
+
+        <dt data-zh="再分发注意" data-en="Redistribution">再分发注意</dt>
+        <dd data-zh="<b>在来源核实之前，不建议将这三张贴图单独抽出再分发，也不建议用于商业发行。</b>如果只是转发本项目整站，请连同本页一起保留，让下游知道这一项仍是「待核」状态。" data-en="<b>Until provenance is confirmed, do not extract and redistribute these three textures on their own, and do not use them in a commercial release.</b> If you share the site as a whole, keep this page so downstream users know this item is still unverified."><b>在来源核实之前，不建议将这三张贴图单独抽出再分发，也不建议用于商业发行。</b>如果只是转发本项目整站，请连同本页一起保留，让下游知道这一项仍是「待核」状态。</dd>
+      </dl>
+    </article>
+  </section>
+
+  <!-- ==================== 7. 代码库 ==================== -->
+  <section class="doc-sec" id="libraries">
+    <header>
+      <span class="sec-no">07</span>
+      <h2 data-zh="第三方代码库" data-en="Third-party libraries">第三方代码库</h2>
+      <p class="sub" data-zh="全部锁定版本、本地存放，运行时不走 CDN。" data-en="All versions are pinned and served locally — no CDN at runtime.">全部锁定版本、本地存放，运行时不走 CDN。</p>
+    </header>
+
+    <article class="src-card">
+      <header>
+        <div>
+          <h3>three.js r128 · OrbitControls · topojson-client 3.1.0</h3>
+          <p class="src-sub" data-zh="VENDOR / 本地副本" data-en="VENDOR / LOCAL COPIES">VENDOR / 本地副本</p>
+        </div>
+        <span class="src-badge mit">MIT / ISC</span>
+      </header>
+      <dl class="src-grid">
+        <dt data-zh="来源与版本" data-en="Sources &amp; versions">来源与版本</dt>
+        <dd>
+          <ul>
+            <li data-zh="<b>three.js r128</b> · <code>vendor/three.min.js</code>（603,445 B）· 文件头保留 <code>Copyright 2010-2021 Three.js Authors</code> 与 <code>SPDX-License-Identifier: MIT</code>。" data-en="<b>three.js r128</b> · <code>vendor/three.min.js</code> (603,445 B) · header retains <code>Copyright 2010-2021 Three.js Authors</code> and <code>SPDX-License-Identifier: MIT</code>."><b>three.js r128</b> · <code>vendor/three.min.js</code>（603,445 B）· 文件头保留 <code>Copyright 2010-2021 Three.js Authors</code> 与 <code>SPDX-License-Identifier: MIT</code>。</li>
+            <li data-zh="<b>OrbitControls</b> · <code>vendor/OrbitControls.js</code>（26,375 B）· three.js 官方示例组件，同属 MIT。" data-en="<b>OrbitControls</b> · <code>vendor/OrbitControls.js</code> (26,375 B) · an official three.js example component, also MIT."><b>OrbitControls</b> · <code>vendor/OrbitControls.js</code>（26,375 B）· three.js 官方示例组件，同属 MIT。</li>
+            <li data-zh="<b>topojson-client v3.1.0</b> · <code>vendor/topojson-client.min.js</code>（7,169 B）· 文件头为 <code>Copyright 2019 Mike Bostock</code>，ISC 许可。" data-en="<b>topojson-client v3.1.0</b> · <code>vendor/topojson-client.min.js</code> (7,169 B) · header reads <code>Copyright 2019 Mike Bostock</code>, ISC licence."><b>topojson-client v3.1.0</b> · <code>vendor/topojson-client.min.js</code>（7,169 B）· 文件头为 <code>Copyright 2019 Mike Bostock</code>，ISC 许可。</li>
+          </ul>
+          <div class="src-links">
+            <a href="https://github.com/mrdoob/three.js" target="_blank" rel="noopener">github.com/mrdoob/three.js</a>
+            <a href="https://threejs.org/" target="_blank" rel="noopener">threejs.org</a>
+            <a href="https://github.com/topojson/topojson-client" target="_blank" rel="noopener">topojson-client</a>
+          </div>
+        </dd>
+
+        <dt data-zh="许可与义务" data-en="Licence &amp; duties">许可与义务</dt>
+        <dd data-zh="<b>MIT</b> 与 <b>ISC</b> 都允许使用、修改、再分发与商业使用，条件是<b>保留版权声明与许可声明</b>；软件按「原样」提供，作者不承担担保责任。不得使用作者或项目名义为下游产品背书。" data-en="<b>MIT</b> and <b>ISC</b> both permit use, modification, redistribution and commercial use provided the <b>copyright and permission notices are retained</b>; the software is provided “as is”, without warranty. Do not use the authors' names to endorse downstream products."><b>MIT</b> 与 <b>ISC</b> 都允许使用、修改、再分发与商业使用，条件是<b>保留版权声明与许可声明</b>；软件按「原样」提供，作者不承担担保责任。不得使用作者或项目名义为下游产品背书。</dd>
+
+        <dt data-zh="本项目加工" data-en="Processing">本项目加工</dt>
+        <dd data-zh="<b>未修改库源码</b>。仅通过全局 <code>THREE</code> 调用，用 topojson-client 在浏览器端把 TopoJSON 转成几何；渲染、着色器、动画、图层与全部界面逻辑均为本项目自有代码。所有库均为非模块化脚本，按顺序在 <code>index.html</code> 中引入。" data-en="<b>No library source was modified.</b> The code calls the global <code>THREE</code> and uses topojson-client in the browser to convert TopoJSON into geometry; rendering, shaders, animation, layers and all interface logic are this project's own code. Every library is a non-module script loaded in order from <code>index.html</code>."><b>未修改库源码</b>。仅通过全局 <code>THREE</code> 调用，用 topojson-client 在浏览器端把 TopoJSON 转成几何；渲染、着色器、动画、图层与全部界面逻辑均为本项目自有代码。所有库均为非模块化脚本，按顺序在 <code>index.html</code> 中引入。</dd>
+
+        <dt data-zh="再分发注意" data-en="Redistribution">再分发注意</dt>
+        <dd data-zh="<code>vendor/</code> 内的文件头声明必须原样保留，不要用压缩工具把注释剥掉后再发布。若要升级 three.js，需重新核对 r128 之后的 API 变更（本项目使用非模块化的全局构建）。" data-en="The header notices inside <code>vendor/</code> must be preserved verbatim — do not strip comments with a minifier before republishing. Upgrading three.js requires re-checking API changes after r128, since this project uses the non-module global build."><code>vendor/</code> 内的文件头声明必须原样保留，不要用压缩工具把注释剥掉后再发布。若要升级 three.js，需重新核对 r128 之后的 API 变更（本项目使用非模块化的全局构建）。</dd>
+      </dl>
+    </article>
+  </section>
+
+  <!-- ==================== 8. 抽样与推断 ==================== -->
+  <section class="doc-sec" id="inference">
+    <header>
+      <span class="sec-no">08</span>
+      <h2 data-zh="抽样、派生与推断清单" data-en="Sampling, derivation and inference">抽样、派生与推断清单</h2>
+      <p class="sub" data-zh="哪些数字是原始记录、哪些是规则派生、哪些是带标记的推断——一次列清。" data-en="Which figures are original records, which are rule-derived, and which are flagged inferences — all in one place.">哪些数字是原始记录、哪些是规则派生、哪些是带标记的推断——一次列清。</p>
+    </header>
+
+    <table class="doc-table">
+      <thead>
+        <tr>
+          <th data-zh="项目" data-en="Item">项目</th>
+          <th data-zh="性质" data-en="Nature">性质</th>
+          <th data-zh="具体做法" data-en="How">具体做法</th>
+          <th data-zh="影响与限制" data-en="Impact / limits">影响与限制</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-zh="1989–2025 现代事件" data-en="1989–2025 modern events">1989–2025 现代事件</td>
+          <td><span class="tag tag-sample" data-zh="抽样" data-en="Sample">抽样</span></td>
+          <td data-zh="事件 <code>id % 50 == 0</code>" data-en="Event <code>id % 50 == 0</code>">事件 <code>id % 50 == 0</code></td>
+          <td data-zh="8,405 / 417,968 ≈ 2.0%；规则抽样，不可外推为总量" data-en="8,405 / 417,968 ≈ 2.0%; rule-based, not extrapolable to totals">8,405 / 417,968 ≈ 2.0%；规则抽样，不可外推为总量</td>
+        </tr>
+        <tr>
+          <td data-zh="1946–1988 记录" data-en="1946–1988 records">1946–1988 记录</td>
+          <td><span class="tag tag-fill" data-zh="人工补录" data-en="Gap-fill">人工补录</span></td>
+          <td data-zh="按具名战争与战役线索补入" data-en="Added from named wars and campaigns">按具名战争与战役线索补入</td>
+          <td data-zh="粒度为战争/战役级，明显低于逐事件数据，跨段不可比" data-en="War/campaign granularity, far coarser than event data; not comparable across periods">粒度为战争/战役级，明显低于逐事件数据，跨段不可比</td>
+        </tr>
+        <tr>
+          <td data-zh="2025–2026 记录" data-en="2025–2026 records">2025–2026 记录</td>
+          <td><span class="tag tag-infer" data-zh="报道整理" data-en="Press-compiled">报道整理</span></td>
+          <td data-zh="UCDP 编码截至 2025 年，2026 年据公开报道整理" data-en="UCDP coding ends 2025; 2026 compiled from public reporting">UCDP 编码截至 2025 年，2026 年据公开报道整理</td>
+          <td data-zh="2026 年空白不代表无战事，只是没有逐事件数据集" data-en="A blank 2026 means no event dataset, not an absence of fighting">2026 年空白不代表无战事，只是没有逐事件数据集</td>
+        </tr>
+        <tr>
+          <td data-zh="历史坐标" data-en="Historical coordinates">历史坐标</td>
+          <td><span class="tag tag-infer" data-zh="近似" data-en="Approximate">近似</span></td>
+          <td data-zh="条目坐标 / 现代遗址位置" data-en="Article coordinates / modern site locations">条目坐标 / 现代遗址位置</td>
+          <td data-zh="非古战场测绘点，古今河道与海岸线变化会造成偏移" data-en="Not surveyed battlefield points; river and coastline change shifts them">非古战场测绘点，古今河道与海岸线变化会造成偏移</td>
+        </tr>
+        <tr>
+          <td data-zh="结束年与战争区间" data-en="End years &amp; war spans">结束年与战争区间</td>
+          <td><span class="tag tag-infer" data-zh="推断" data-en="Inferred">推断</span></td>
+          <td data-zh="按抽样事件年份跨度推断，标 <code>approx</code>" data-en="Inferred from the year span of sampled events, flagged <code>approx</code>">按抽样事件年份跨度推断，标 <code>approx</code></td>
+          <td data-zh="端点可能因抽样与记录缺失而偏移" data-en="Endpoints may shift because of sampling and missing records">端点可能因抽样与记录缺失而偏移</td>
+        </tr>
+        <tr>
+          <td data-zh="冲突类型" data-en="Conflict type">冲突类型</td>
+          <td><span class="tag tag-derive" data-zh="字段派生" data-en="Derived">字段派生</span></td>
+          <td data-zh="UCDP 暴力类型；历史条目按标题关键词" data-en="UCDP violence type; historical entries by title keywords">UCDP 暴力类型；历史条目按标题关键词</td>
+          <td data-zh="边界个案可能误分类（如「围城后强攻」）" data-en="Borderline cases may be misclassified (e.g. siege followed by assault)">边界个案可能误分类（如「围城后强攻」）</td>
+        </tr>
+        <tr>
+          <td data-zh="地区归属" data-en="Region">地区归属</td>
+          <td><span class="tag tag-derive" data-zh="字段派生" data-en="Derived">字段派生</span></td>
+          <td data-zh="经纬度落入五个矩形区域框" data-en="Latitude/longitude tested against five bounding boxes">经纬度落入五个矩形区域框</td>
+          <td data-zh="边界国家可能归错，跨区域战争单独标注" data-en="Border countries may fall in the wrong box; transregional wars are labelled separately">边界国家可能归错，跨区域战争单独标注</td>
+        </tr>
+        <tr>
+          <td data-zh="中文译名" data-en="Chinese names">中文译名</td>
+          <td><span class="tag tag-derive" data-zh="派生" data-en="Derived">派生</span></td>
+          <td data-zh="官方标签 1,108 · 地名库 156 · 音译 3,987 · 混排 89 · 英文原名 87" data-en="Official labels 1,108 · gazetteer 156 · transliteration 3,987 · mixed 89 · English 87">官方标签 1,108 · 地名库 156 · 音译 3,987 · 混排 89 · 英文原名 87</td>
+          <td data-zh="音译是机械转写，不等于通行译名" data-en="Transliteration is mechanical, not the conventional name">音译是机械转写，不等于通行译名</td>
+        </tr>
+        <tr>
+          <td data-zh="置信度分级" data-en="Confidence tiers">置信度分级</td>
+          <td><span class="tag tag-derive" data-zh="本项目规则" data-en="Project rule">本项目规则</span></td>
+          <td data-zh="UCDP 按 <code>where_prec</code>；历史条目按年份阈值" data-en="UCDP by <code>where_prec</code>; historical entries by year threshold">UCDP 按 <code>where_prec</code>；历史条目按年份阈值</td>
+          <td data-zh="是位置/可核验性分级，不是来源自带的真实性评分" data-en="A locational/verifiability tier, not a source-provided truth score">是位置/可核验性分级，不是来源自带的真实性评分</td>
+        </tr>
+        <tr>
+          <td data-zh="贴图来源" data-en="Texture provenance">贴图来源</td>
+          <td><span class="tag tag-tbd" data-zh="待核" data-en="Unverified">待核</span></td>
+          <td data-zh="按文件名、尺寸与 EXIF 推断" data-en="Inferred from filename, dimensions and EXIF">按文件名、尺寸与 EXIF 推断</td>
+          <td data-zh="无原始下载记录，见第 6 节" data-en="No download record; see section 6">无原始下载记录，见第 6 节</td>
+        </tr>
+        <tr>
+          <td data-zh="整国填色 / 战区轮廓" data-en="Country fills / zone hulls">整国填色 / 战区轮廓</td>
+          <td><span class="tag tag-infer" data-zh="示意" data-en="Indicative">示意</span></td>
+          <td data-zh="现代国界代理历史政权；事件点 6° 聚类 + 12% 外扩" data-en="Modern borders as proxy for historic polities; 6° event clustering buffered 12%">现代国界代理历史政权；事件点 6° 聚类 + 12% 外扩</td>
+          <td data-zh="不代表历史疆域，也不是官方战线" data-en="Neither historic territory nor official front lines">不代表历史疆域，也不是官方战线</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ==================== 9. 商用 ==================== -->
+  <section class="doc-sec" id="redistribution">
+    <header>
+      <span class="sec-no">09</span>
+      <h2 data-zh="商业使用与再分发" data-en="Commercial use &amp; redistribution">商业使用与再分发</h2>
+      <p class="sub" data-zh="先纠正一个常见误解：CC BY / CC BY-SA 不禁止商业使用；真正需要谨慎的是来源未核实的素材。" data-en="One common myth first: CC BY / CC BY-SA do not forbid commercial use. What actually needs caution is material of unverified provenance.">先纠正一个常见误解：CC BY / CC BY-SA 不禁止商业使用；真正需要谨慎的是来源未核实的素材。</p>
+    </header>
+
+    <table class="doc-table">
+      <thead>
+        <tr>
+          <th data-zh="来源" data-en="Source">来源</th>
+          <th data-zh="可以商业使用？" data-en="Commercial use?">可以商业使用？</th>
+          <th data-zh="必须同时做到" data-en="Must also do">必须同时做到</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>UCDP GED</td>
+          <td class="ok" data-zh="可以" data-en="Yes">可以</td>
+          <td data-zh="署名 UCDP + 版本号；链接 CC BY 4.0；说明抽样与字段修改" data-en="Credit UCDP + version; link CC BY 4.0; state sampling and field changes">署名 UCDP + 版本号；链接 CC BY 4.0；说明抽样与字段修改</td>
+        </tr>
+        <tr>
+          <td>DBpedia / Wikipedia</td>
+          <td class="ok" data-zh="可以" data-en="Yes">可以</td>
+          <td data-zh="署名并链接条目；改编部分以 CC BY-SA 相同方式共享；标明修改" data-en="Credit and link articles; release adaptations under CC BY-SA; indicate changes">署名并链接条目；改编部分以 CC BY-SA 相同方式共享；标明修改</td>
+        </tr>
+        <tr>
+          <td>Natural Earth</td>
+          <td class="ok" data-zh="可以" data-en="Yes">可以</td>
+          <td data-zh="无强制义务；建议注明 “Made with Natural Earth”" data-en="No mandatory duty; “Made with Natural Earth” is requested">无强制义务；建议注明 “Made with Natural Earth”</td>
+        </tr>
+        <tr>
+          <td>three.js / OrbitControls / topojson-client</td>
+          <td class="ok" data-zh="可以" data-en="Yes">可以</td>
+          <td data-zh="保留 <code>vendor/</code> 中的版权与许可声明" data-en="Keep the copyright and permission notices in <code>vendor/</code>">保留 <code>vendor/</code> 中的版权与许可声明</td>
+        </tr>
+        <tr>
+          <td data-zh="地球影像贴图" data-en="Earth textures">地球影像贴图</td>
+          <td class="no" data-zh="核实前不建议" data-en="Not advised until verified">核实前不建议</td>
+          <td data-zh="先追溯出处；若确认 NASA，注明影像来源且不使用 NASA 标识背书" data-en="Trace the source first; if NASA, credit the imagery and do not use NASA insignia as endorsement">先追溯出处；若确认 NASA，注明影像来源且不使用 NASA 标识背书</td>
+        </tr>
+        <tr>
+          <td data-zh="本项目考据文本与界面" data-en="Curated text &amp; interface">本项目考据文本与界面</td>
+          <td class="no" data-zh="需先取得同意" data-en="Permission required">需先取得同意</td>
+          <td data-zh="项目未声明开放许可，再分发前请联系作者" data-en="No open licence is declared; contact the author before redistribution">项目未声明开放许可，再分发前请联系作者</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 class="doc-h3" data-zh="再分发检查清单" data-en="Redistribution checklist">再分发检查清单</h3>
+    <ul class="checklist">
+      <li data-zh="保留 UCDP 署名、v26.1 版本号与 CC BY 4.0 链接。" data-en="Keep the UCDP credit, the v26.1 version number and the CC BY 4.0 link.">保留 UCDP 署名、v26.1 版本号与 CC BY 4.0 链接。</li>
+      <li data-zh="保留每条记录的 DBpedia / Wikipedia 链接，以及 CC BY-SA 声明；改编内容以相同许可发布。" data-en="Keep the DBpedia / Wikipedia links on each record and the CC BY-SA notice; publish adaptations under the same licence.">保留每条记录的 DBpedia / Wikipedia 链接，以及 CC BY-SA 声明；改编内容以相同许可发布。</li>
+      <li data-zh="保留 <code>vendor/</code> 内 three.js、OrbitControls、topojson-client 的版权与许可声明。" data-en="Keep the copyright and permission notices for three.js, OrbitControls and topojson-client inside <code>vendor/</code>.">保留 <code>vendor/</code> 内 three.js、OrbitControls、topojson-client 的版权与许可声明。</li>
+      <li data-zh="显著标注「UCDP 为事件 ID 模 50 固定抽样，非全量」。" data-en="State prominently that “UCDP data here is a mod-50 fixed sample, not the full dataset”.">显著标注「UCDP 为事件 ID 模 50 固定抽样，非全量」。</li>
+      <li data-zh="标注 1946–1988 为战争/战役级补录，2026 年为公开报道整理。" data-en="Label 1946–1988 as war/campaign-level gap-fill and 2026 as press-compiled.">标注 1946–1988 为战争/战役级补录，2026 年为公开报道整理。</li>
+      <li data-zh="不把抽样计数、热度颜色或聚类数量表述为事件总数或死亡统计。" data-en="Do not present sample counts, heat colours or cluster counts as event totals or fatality statistics.">不把抽样计数、热度颜色或聚类数量表述为事件总数或死亡统计。</li>
+      <li data-zh="古代坐标标明为「考据近似位置」，不称「精确坐标」。" data-en="Mark ancient coordinates as “approximate” and never as “exact”.">古代坐标标明为「考据近似位置」，不称「精确坐标」。</li>
+      <li data-zh="整国填色与战区轮廓保留「示意 / 非官方」说明。" data-en="Keep the “indicative / unofficial” note on country fills and war-zone outlines.">整国填色与战区轮廓保留「示意 / 非官方」说明。</li>
+      <li data-zh="贴图来源核实之前，不单独抽取再分发、不用于商业发行。" data-en="Until texture provenance is confirmed, do not extract them for redistribution or commercial release.">贴图来源核实之前，不单独抽取再分发、不用于商业发行。</li>
+      <li data-zh="不暗示 UCDP、DBpedia、维基百科、Natural Earth 或 three.js 作者为本项目背书。" data-en="Do not imply endorsement by UCDP, DBpedia, Wikipedia, Natural Earth or the three.js authors.">不暗示 UCDP、DBpedia、维基百科、Natural Earth 或 three.js 作者为本项目背书。</li>
+    </ul>
+  </section>
+
+  <!-- ==================== 10. 引用 ==================== -->
+  <section class="doc-sec" id="citation">
+    <header>
+      <span class="sec-no">10</span>
+      <h2 data-zh="引用格式与核验方法" data-en="Citation &amp; verification">引用格式与核验方法</h2>
+      <p class="sub" data-zh="可直接复制到论文、新闻稿或产品说明的署名段落。" data-en="Attribution blocks you can paste into a paper, press piece or product page.">可直接复制到论文、新闻稿或产品说明的署名段落。</p>
+    </header>
+
+    <h3 class="doc-h3" data-zh="数据与素材" data-en="Data &amp; assets">数据与素材</h3>
+    <div class="cite">Uppsala Conflict Data Program (UCDP), UCDP Georeferenced Event Dataset (GED), Global version 26.1, Uppsala University, accessed 2026-11-06. CC BY 4.0. This project uses a fixed mod-50 sample of event IDs (8,405 of 417,968 records).</div>
+    <div class="cite">Historical entries: DBpedia (https://dbpedia.org) and Wikipedia, CC BY-SA 3.0 / 4.0. Deduplicated, filtered and structurally derived by this project; coordinates are article locations, not surveyed battlefield points.</div>
+    <div class="cite">Boundaries: Made with Natural Earth. Free vector and raster map data @ naturalearthdata.com. Public domain.</div>
+    <div class="cite">Code: three.js r128 (MIT, © 2010-2021 Three.js Authors); OrbitControls (MIT); topojson-client 3.1.0 (ISC, © 2019 Mike Bostock).</div>
+    <div class="cite" data-zh="地球影像：来源待核；文件名与尺寸与 three.js 示例贴图一致，上游影像疑为 NASA Visible Earth。核实前请勿单独再分发。" data-en="Earth imagery: provenance unverified; filenames and dimensions match the three.js example textures, upstream imagery likely NASA Visible Earth. Do not redistribute separately until verified.">地球影像：来源待核；文件名与尺寸与 three.js 示例贴图一致，上游影像疑为 NASA Visible Earth。核实前请勿单独再分发。</div>
+
+    <h3 class="doc-h3" data-zh="如何自行核验" data-en="How to verify yourself">如何自行核验</h3>
+    <ul class="checklist">
+      <li data-zh="打开 <code>data/world_data.js</code>，查看 <code>ATLAS_DATA.meta</code>：<code>version</code>、<code>generatedAt</code>、<code>ucdp</code>、<code>dbpedia</code>、<code>curated</code>、<code>localization</code> 均可直接对照本页数字。" data-en="Open <code>data/world_data.js</code> and inspect <code>ATLAS_DATA.meta</code>: <code>version</code>, <code>generatedAt</code>, <code>ucdp</code>, <code>dbpedia</code>, <code>curated</code> and <code>localization</code> match the figures on this page.">打开 <code>data/world_data.js</code>，查看 <code>ATLAS_DATA.meta</code>：<code>version</code>、<code>generatedAt</code>、<code>ucdp</code>、<code>dbpedia</code>、<code>curated</code>、<code>localization</code> 均可直接对照本页数字。</li>
+      <li data-zh="任意点开一条事件，详情中的 <code>src</code> 字段给出 DBpedia 资源页与 Wikipedia 条目的原始链接。" data-en="Open any event: the <code>src</code> field in its dossier links to the original DBpedia resource and Wikipedia article.">任意点开一条事件，详情中的 <code>src</code> 字段给出 DBpedia 资源页与 Wikipedia 条目的原始链接。</li>
+      <li data-zh="构建逻辑可复核：<code>_raw/ucdp_extract.ps1</code>（抽样）、<code>_raw/build_v2.js</code>（DBpedia 筛选与字段派生）、<code>_raw/build_world_data.ps1</code>（汇总与统计）。" data-en="Build logic is auditable: <code>_raw/ucdp_extract.ps1</code> (sampling), <code>_raw/build_v2.js</code> (DBpedia filtering and derivation), <code>_raw/build_world_data.ps1</code> (assembly and statistics).">构建逻辑可复核：<code>_raw/ucdp_extract.ps1</code>（抽样）、<code>_raw/build_v2.js</code>（DBpedia 筛选与字段派生）、<code>_raw/build_world_data.ps1</code>（汇总与统计）。</li>
+      <li data-zh="贴图可用第 6 节的 MD5 与 three.js 官方仓库同名文件比对。" data-en="Textures can be compared against the same-named files in the official three.js repository using the MD5 hashes in section 6.">贴图可用第 6 节的 MD5 与 three.js 官方仓库同名文件比对。</li>
+    </ul>
+
+    <div class="doc-note" data-zh="<b>发现错误？</b>本页的数字与措辞应与数据集版本 <b>v5-1946-2026</b>（2026-11-06 14:15）保持一致。若数据集更新而本页未同步，以 <code>meta</code> 字段为准，并请把差异反馈给项目作者。" data-en="<b>Found an error?</b> The figures and wording here should match dataset <b>v5-1946-2026</b> (2026-11-06 14:15). If the dataset is updated without this page, treat the <code>meta</code> fields as authoritative and report the discrepancy to the project author."><b>发现错误？</b>本页的数字与措辞应与数据集版本 <b>v5-1946-2026</b>（2026-11-06 14:15）保持一致。若数据集更新而本页未同步，以 <code>meta</code> 字段为准，并请把差异反馈给项目作者。</div>
+  </section>
+
+  <footer class="doc-foot">
+    <span data-zh="最后更新 2026-11-06 · 数据集 v5-1946-2026" data-en="Last updated 2026-11-06 · dataset v5-1946-2026">最后更新 2026-11-06 · 数据集 v5-1946-2026</span>
+    <span data-zh="本页不构成法律意见" data-en="Not legal advice">本页不构成法律意见</span>
+    <a href="index.html" data-zh="返回 3D 地球 →" data-en="Back to the 3D globe →">返回 3D 地球 →</a>
+  </footer>
+
+</main>
+
+<script>
+(function () {
+  'use strict';
+  var lang = 'zh';
+  try {
+    if (new URLSearchParams(window.location.search).get('lang') === 'en') lang = 'en';
+  } catch (e) {}
+
+  function apply(l) {
+    lang = l;
+    document.documentElement.lang = l === 'en' ? 'en' : 'zh-CN';
+    document.documentElement.setAttribute('data-lang', l);
+    var nodes = document.querySelectorAll('[data-zh]');
+    for (var i = 0; i < nodes.length; i++) {
+      var v = nodes[i].getAttribute('data-' + l);
+      if (v == null) continue;
+      nodes[i].innerHTML = v;
+    }
+    var btn = document.getElementById('langBtn');
+    if (btn) btn.textContent = l === 'en' ? '中文' : 'English';
+    document.title = l === 'en'
+      ? 'Data sources & licences · Age of War'
+      : '数据来源与许可 · 战争纪元';
+  }
+
+  var btn = document.getElementById('langBtn');
+  if (btn) {
+    btn.addEventListener('click', function () {
+      apply(lang === 'en' ? 'zh' : 'en');
+    });
+  }
+  apply(lang);
+})();
+</script>
+</body>
+</html>
