@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>浙江 · 三维历史地图 | 九时代</title>
+<style>
+  :root{
+    --bg:#060b10;
+    --bg2:#0a141c;
+    --panel:rgba(10,18,25,.80);
+    --panel-solid:#0b141c;
+    --line:rgba(206,176,120,.20);
+    --line-strong:rgba(224,193,137,.46);
+    --gold:#d9b979;
+    --gold-bright:#f3dda9;
+    --text:#ece6d8;
+    --muted:#a79c89;
+    --faint:#7d7465;
+    --teal:#6fb6c0;
+    --serif:"Songti SC","Noto Serif SC","STSong","SimSun",serif;
+    --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html,body{height:100%;margin:0;padding:0;overflow:hidden;background:var(--bg);}
+  body{
+    font-family:var(--sans);color:var(--text);
+    -webkit-font-smoothing:antialiased;
+    user-select:none;
+  }
+  #scene{position:fixed;inset:0;width:100%;height:100%;display:block;background:
+    radial-gradient(120% 90% at 50% 8%, #12222e 0%, #0a141c 42%, #05090d 100%);}
+  body.bare .masthead,body.bare #era-panel,body.bare #timeline,
+  body.bare #district-bar,body.bare #ve-box,body.bare #event-card{display:none!important;}
+  .vignette{position:fixed;inset:0;pointer-events:none;z-index:2;
+    background:radial-gradient(115% 100% at 50% 45%, rgba(0,0,0,0) 46%, rgba(0,0,0,.55) 100%);}
+  .grain{position:fixed;inset:0;pointer-events:none;z-index:3;opacity:.20;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/></filter><rect width='140' height='140' filter='n' opacity='0.55'/></svg>");}
+
+  /* ---------- masthead ---------- */
+  .masthead{position:fixed;left:26px;top:22px;z-index:8;pointer-events:none;}
+  .brandline{font-size:10px;letter-spacing:.34em;color:var(--gold);opacity:.72;text-transform:uppercase;}
+  .masthead h1{
+    font-family:var(--serif);font-weight:600;font-size:30px;letter-spacing:.12em;
+    margin:7px 0 0;color:var(--text);text-shadow:0 2px 18px rgba(0,0,0,.65);
+  }
+  .masthead h1 em{font-style:normal;color:var(--gold-bright);}
+  .masthead .subline{margin-top:6px;font-size:11px;letter-spacing:.18em;color:var(--muted);}
+
+  /* ---------- side panel ---------- */
+  .panel{
+    background:linear-gradient(160deg, rgba(16,27,36,.88), rgba(7,13,18,.82));
+    border:1px solid var(--line);
+    backdrop-filter:blur(14px) saturate(115%);
+    -webkit-backdrop-filter:blur(14px) saturate(115%);
+    box-shadow:0 20px 50px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,255,255,.05);
+  }
+  #era-panel{
+    position:fixed;z-index:8;left:26px;top:130px;width:336px;max-height:calc(100vh - 268px);
+    border-radius:4px;padding:20px 20px 16px;overflow:auto;scrollbar-width:thin;
+  }
+  #era-panel::-webkit-scrollbar{width:5px}
+  #era-panel::-webkit-scrollbar-thumb{background:rgba(217,185,121,.25)}
+  .era-index{display:flex;align-items:center;gap:9px;font-size:10px;letter-spacing:.26em;color:var(--gold);}
+  .era-index .rule{flex:1;height:1px;background:linear-gradient(90deg,var(--line-strong),transparent);}
+  .era-name{font-family:var(--serif);font-size:26px;line-height:1.28;margin:12px 0 4px;letter-spacing:.04em;}
+  .era-years{font-size:11.5px;color:var(--gold-bright);letter-spacing:.10em;opacity:.9;}
+  .era-desc{margin:13px 0 0;font-size:12.5px;line-height:1.95;color:#cfc6b6;text-align:justify;}
+  .era-hr{height:1px;background:linear-gradient(90deg,var(--line),transparent);margin:15px 0 13px;}
+  .note-row{display:flex;gap:10px;margin-bottom:10px;font-size:11.5px;line-height:1.7;color:var(--muted);}
+  .note-row b{flex:0 0 46px;color:var(--gold);font-weight:500;letter-spacing:.06em;}
+  .note-row span{flex:1;color:#bdb4a4;}
+  .legend-title{font-size:10px;letter-spacing:.24em;color:var(--gold);margin:4px 0 9px;}
+  .ramp{height:8px;border-radius:1px;background:linear-gradient(90deg,#1c4a58 0%,#4d6a4a 20%,#7b7a52 38%,#8a7a55 55%,#6f6250 72%,#958c7b 88%,#d2cdbf 100%);border:1px solid rgba(255,255,255,.08);}
+  .ramp-lab{display:flex;justify-content:space-between;font-size:10px;color:var(--faint);margin-top:5px;letter-spacing:.06em;}
+  .marker-legend{display:flex;flex-wrap:wrap;gap:9px 14px;margin-top:11px;font-size:10.5px;color:var(--muted);}
+  .marker-legend i{display:inline-block;width:7px;height:7px;margin-right:5px;vertical-align:1px;border-radius:50%;}
+  .mk-city{background:var(--gold-bright);box-shadow:0 0 6px rgba(243,221,169,.7);}
+  .mk-event{background:#e0a15c;border-radius:1px!important;transform:rotate(45deg);width:6px!important;height:6px!important;}
+  .mk-build{background:#9fb2a9;border-radius:1px!important;}
+  .disclaimer{margin-top:14px;padding-top:11px;border-top:1px dashed rgba(206,176,120,.18);font-size:10.5px;line-height:1.75;color:#8b8274;}
+
+  /* ---------- precision / data ---------- */
+  .precision-badge{display:inline-block;margin-top:10px;font-size:10px;letter-spacing:.08em;
+    padding:4px 8px;border-radius:2px;line-height:1.5;}
+  .precision-badge.real{color:#8fd0b6;border:1px solid rgba(143,208,182,.4);background:rgba(143,208,182,.09);}
+  .precision-badge.inferred{color:#e0b47c;border:1px dashed rgba(224,180,124,.45);background:rgba(224,180,124,.07);}
+  .precision-legend{margin-top:13px;}
+  .pl-title{font-size:10px;letter-spacing:.24em;color:var(--gold);margin-bottom:8px;}
+  .pl-row{display:flex;gap:8px;align-items:flex-start;font-size:10.5px;line-height:1.65;color:#a99f8e;margin-bottom:6px;}
+  .pl-row i{flex:0 0 16px;height:8px;margin-top:4px;border-radius:1px;}
+  .pl-real{background:linear-gradient(90deg,#9ad6bd,#6fb6c0);}
+  .pl-est{background:linear-gradient(90deg,#5f8489,#415c62);}
+  .pl-inf{background:repeating-linear-gradient(90deg,#e0b47c 0 4px,transparent 4px 7px);border:1px dashed rgba(224,180,124,.4);}
+  .pl-row b{flex:0 0 76px;color:#d8cfbe;font-weight:500;}
+  .pl-row span{flex:1;}
+  .pl-title{display:flex;align-items:baseline;justify-content:space-between;}
+  .pl-more{background:none;border:0;padding:0;color:#8fb9c2;font-size:9.5px;letter-spacing:.06em;
+    cursor:pointer;font-family:var(--sans);}
+  .pl-more:hover{color:var(--gold-bright);}
+
+  /* ---------- precision sheet ---------- */
+  .about-card.wide{width:min(920px,calc(100vw - 40px));}
+  .ptable{width:100%;border-collapse:collapse;margin-top:4px;font-size:11px;line-height:1.62;color:#c5bcaa;}
+  .ptable th{text-align:left;font-size:9.5px;letter-spacing:.14em;color:var(--gold);font-weight:500;
+    padding:6px 8px;border-bottom:1px solid rgba(206,176,120,.28);white-space:nowrap;}
+  .ptable td{padding:7px 8px;border-bottom:1px solid rgba(206,176,120,.11);vertical-align:top;}
+  .ptable tr:last-child td{border-bottom:0;}
+  .ptable td:first-child{color:#e4dbc9;white-space:nowrap;}
+  .ptable td:nth-child(2){color:#a99f8e;}
+  .ptable td:nth-child(3){color:#b7ae9d;}
+  .ptag{display:inline-block;padding:1px 5px;border-radius:2px;font-size:9px;letter-spacing:.04em;white-space:nowrap;}
+  .ptag.real{color:#9ad6bd;border:1px solid rgba(154,214,189,.35);background:rgba(154,214,189,.07);}
+  .ptag.est{color:#9bbcc0;border:1px solid rgba(155,188,192,.32);background:rgba(95,132,137,.13);}
+  .ptag.inf{color:#e0b47c;border:1px dashed rgba(224,180,124,.45);background:rgba(224,180,124,.06);}
+  .prule{margin-top:14px;padding:10px 12px;background:rgba(255,255,255,.025);
+    border-left:2px solid rgba(155,188,192,.35);font-size:11px;line-height:1.8;color:#b9b0a0;}
+  .prule b{color:#e4dbc9;font-weight:500;}
+  .prule.warn{border-left-color:rgba(224,180,124,.5);color:#d8c6a6;}
+
+  #district-bar{position:fixed;z-index:9;right:26px;bottom:26px;display:flex;flex-direction:column;
+    align-items:flex-end;gap:7px;}
+  .dchips{display:flex;gap:6px;}
+  .dchip{border:1px solid var(--line);background:rgba(10,18,25,.78);color:#a99f8e;cursor:pointer;
+    font-size:11px;letter-spacing:.1em;padding:6px 11px;border-radius:2px;font-family:var(--sans);transition:.2s;}
+  .dchip:hover{color:var(--gold-bright);border-color:var(--line-strong);}
+  .dchip.on{color:#0a1218;background:linear-gradient(180deg,#e5cd9c,#c9ad73);border-color:#e5cd9c;}
+  #district-state{font-size:10px;letter-spacing:.08em;color:#8b8274;background:rgba(7,13,18,.5);
+    padding:4px 9px;border:1px solid rgba(206,176,120,.12);border-radius:2px;}
+  #district-state.on{color:#8fd0b6;border-color:rgba(143,208,182,.25);}
+
+  #ve-box{position:fixed;z-index:9;left:26px;bottom:26px;display:flex;align-items:center;gap:10px;
+    background:rgba(7,13,18,.62);border:1px solid rgba(206,176,120,.14);border-radius:2px;padding:7px 12px;}
+  #ve-box label{font-size:10px;letter-spacing:.16em;color:var(--gold);}
+  #ve-box input[type=range]{width:96px;-webkit-appearance:none;height:2px;background:rgba(217,185,121,.3);outline:none;}
+  #ve-box input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:9px;height:12px;
+    background:var(--gold-bright);border-radius:1px;cursor:pointer;}
+  #ve-val{font-size:11px;color:var(--gold-bright);min-width:28px;}
+  #scale-note{font-size:9.5px;color:#7d7465;letter-spacing:.04em;}
+
+  /* ---------- event card ---------- */
+  #event-card{
+    position:fixed;z-index:12;right:26px;top:130px;width:332px;border-radius:4px;padding:19px 20px 18px;
+    transform:translateX(calc(100% + 40px));opacity:0;transition:transform .45s cubic-bezier(.22,.8,.22,1),opacity .35s;
+  }
+  #event-card.show{transform:translateX(0);opacity:1;}
+  .ev-top{display:flex;justify-content:space-between;align-items:center;}
+  .ev-tag{font-size:9.5px;letter-spacing:.22em;color:#e0a15c;border:1px solid rgba(224,161,92,.35);padding:3px 7px;border-radius:2px;}
+  .ev-close{background:none;border:0;color:var(--muted);font-size:17px;line-height:1;cursor:pointer;padding:2px 4px;}
+  .ev-close:hover{color:var(--gold-bright);}
+  .ev-time{font-size:11.5px;color:var(--gold-bright);letter-spacing:.08em;margin-top:14px;}
+  .ev-title{font-family:var(--serif);font-size:22px;line-height:1.4;margin:5px 0 9px;letter-spacing:.03em;}
+  .ev-place{font-size:11px;color:var(--muted);margin-bottom:13px;}
+  .ev-fact,.ev-meaning{font-size:12.5px;line-height:1.9;color:#cfc6b6;margin:0 0 12px;text-align:justify;}
+  .ev-label{display:block;font-size:10px;letter-spacing:.22em;color:var(--gold);margin-bottom:5px;}
+  .ev-meaning{color:#b9b0a0;border-left:1px solid rgba(217,185,121,.28);padding-left:11px;}
+
+  /* ---------- top right buttons ---------- */
+  .tools{position:fixed;z-index:10;right:26px;top:26px;display:flex;gap:8px;}
+  .tool{width:34px;height:34px;border-radius:2px;border:1px solid var(--line);background:rgba(10,18,25,.72);
+    color:var(--muted);cursor:pointer;font-size:12px;display:flex;align-items:center;justify-content:center;
+    transition:.2s;backdrop-filter:blur(8px);font-family:var(--serif);}
+  .tool:hover{color:var(--gold-bright);border-color:var(--line-strong);background:rgba(21,33,43,.9);}
+  .tool.wide{width:auto;padding:0 13px;font-size:11px;letter-spacing:.12em;font-family:var(--sans);}
+  .tool.on{color:#0a1218;background:linear-gradient(180deg,#e5cd9c,#c9ad73);border-color:#e5cd9c;}
+
+  /* ---------- hint / toast ---------- */
+  #hint{position:fixed;z-index:7;left:50%;bottom:96px;transform:translateX(-50%);
+    font-size:11px;color:#9d9484;letter-spacing:.13em;background:rgba(7,13,18,.55);padding:7px 16px;
+    border:1px solid rgba(206,176,120,.13);border-radius:20px;pointer-events:none;
+    transition:opacity .7s;white-space:nowrap;}
+  #hint.hide{opacity:0;}
+
+  /* ---------- about modal ---------- */
+  #about,#precision{position:fixed;inset:0;z-index:20;display:flex;align-items:center;justify-content:center;
+    background:rgba(3,7,10,.72);backdrop-filter:blur(6px);opacity:0;pointer-events:none;transition:opacity .3s;}
+  #about.show,#precision.show{opacity:1;pointer-events:auto;}
+  .about-card{width:min(680px,calc(100vw - 40px));max-height:82vh;overflow:auto;border-radius:4px;
+    padding:28px 30px;background:linear-gradient(160deg,#101c25,#080f14);border:1px solid var(--line-strong);
+    box-shadow:0 30px 80px rgba(0,0,0,.6);transform:translateY(12px);transition:transform .35s;}
+  #about.show .about-card,#precision.show .about-card{transform:translateY(0);}
+  .about-card h2{font-family:var(--serif);font-size:23px;margin:0 0 4px;letter-spacing:.08em;}
+  .about-card .cap{font-size:10.5px;color:var(--gold);letter-spacing:.22em;margin-bottom:17px;}
+  .about-card h3{font-size:12px;color:var(--gold-bright);letter-spacing:.14em;margin:20px 0 8px;font-weight:600;}
+  .about-card p,.about-card li{font-size:12px;line-height:1.85;color:#bfb6a6;}
+  .about-card ul{margin:0;padding-left:18px;}
+  .about-card li{margin-bottom:4px;}
+  .about-card .warn{font-size:11px;line-height:1.8;color:#d8b98d;background:rgba(216,185,141,.07);
+    border-left:2px solid rgba(216,185,141,.4);padding:10px 12px;margin-top:16px;}
+
+  /* ---------- intro ---------- */
+  #intro{position:fixed;inset:0;z-index:30;display:flex;align-items:center;justify-content:center;
+    background:radial-gradient(120% 90% at 50% 20%,rgba(18,36,48,.90) 0%,rgba(9,17,25,.94) 46%,rgba(4,7,10,.97) 100%);
+    backdrop-filter:blur(3px);transition:opacity .7s;}
+  #intro.hide{opacity:0;pointer-events:none;}
+  .intro-inner{width:min(640px,calc(100vw - 44px));text-align:center;padding:10px;}
+  .intro-orn{font-size:10px;letter-spacing:.36em;color:var(--gold);opacity:.8;}
+  .intro-title{font-family:var(--serif);font-size:44px;letter-spacing:.12em;margin:18px 0 6px;color:#f2eadb;
+    text-shadow:0 4px 40px rgba(0,0,0,.7);}
+  .intro-sub{font-size:12px;letter-spacing:.3em;color:#8e8477;margin-bottom:20px;}
+  .intro-est{font-size:10px;letter-spacing:.22em;color:#7e7568;margin-bottom:30px;}
+  .intro-grid{display:flex;gap:12px;justify-content:center;margin:0 0 32px;}
+  .intro-item{flex:1;max-width:172px;padding:15px 12px 13px;border:1px solid rgba(206,176,120,.16);
+    background:rgba(12,22,29,.5);border-radius:3px;}
+  .intro-item .ic{font-size:16px;color:var(--gold);margin-bottom:8px;font-family:var(--serif);}
+  .intro-item b{display:block;font-size:11.5px;letter-spacing:.1em;color:#ddd4c2;font-weight:500;margin-bottom:4px;}
+  .intro-item span{font-size:10px;line-height:1.6;color:#8d8475;}
+  .start-btn{display:inline-block;cursor:pointer;border:1px solid rgba(217,185,121,.55);color:var(--gold-bright);
+    background:linear-gradient(180deg,rgba(217,185,121,.14),rgba(217,185,121,.04));padding:11px 42px;
+    font-size:12.5px;letter-spacing:.28em;border-radius:2px;transition:.25s;font-family:var(--serif);}
+  .start-btn:hover{background:rgba(217,185,121,.2);box-shadow:0 0 26px rgba(217,185,121,.16);}
+  .intro-foot{margin-top:17px;font-size:10px;color:#6d6559;letter-spacing:.1em;}
+
+  /* ---------- fallback ---------- */
+  #fallback{position:fixed;inset:0;z-index:40;display:none;align-items:center;justify-content:center;background:#070d13;padding:24px;}
+  #fallback.show{display:flex;}
+  .fallback-card{max-width:520px;border:1px solid var(--line);padding:30px;text-align:center;border-radius:4px;background:#0b141c;}
+  .fallback-card h2{font-family:var(--serif);font-size:20px;margin-bottom:12px;color:var(--gold-bright);}
+  .fallback-card p{font-size:12.5px;line-height:1.9;color:#b7ae9e;}
+
+  .fade-in{animation:fadeUp .9s ease both;}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+  @media (max-width:1080px){
+    #era-panel{width:302px;top:118px;max-height:calc(100vh - 250px);}
+    .masthead h1{font-size:25px;}
+  }
+  @media (max-width:820px){
+    .masthead{left:16px;top:16px;}
+    .masthead h1{font-size:20px;}
+    .masthead .subline{display:none;}
+    .tools{right:16px;top:16px;}
+    #era-panel{left:16px;right:16px;top:auto;bottom:132px;width:auto;max-height:34vh;padding:15px 16px;}
+    .era-name{font-size:20px;margin-top:8px;}
+    .era-desc{font-size:11.5px;line-height:1.8;margin-top:9px;}
+    .legend-wrap{display:none;}
+    #timeline{left:10px;right:10px;bottom:10px;padding:11px 14px 13px;}
+    .tick .tname{font-size:9.5px;}
+    .tick .tyear{display:none;}
+    #hint{display:none;}
+    #ve-box{display:none;}
+    #district-bar{right:16px;bottom:84px;}
+    #event-card{left:16px;right:16px;top:84px;width:auto;}
+    .intro-title{font-size:30px;}
+    .intro-grid{flex-direction:column;align-items:center;}
+    .intro-item{max-width:none;width:100%;}
+  }
+#timeline{
+    position:fixed;z-index:9;left:26px;right:26px;bottom:18px;border-radius:4px;
+    padding:15px 26px 17px;
+  }
+  .tl-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:11px;}
+  .tl-head .tlab{font-size:10px;letter-spacing:.28em;color:var(--gold);}
+  .tl-head .readout{font-size:11px;color:var(--muted);letter-spacing:.06em;}
+  .tl-head .readout b{color:var(--text);font-weight:500;font-family:var(--serif);font-size:13px;letter-spacing:.04em;}
+  .rail{position:relative;height:48px;cursor:ew-resize;touch-action:none;}
+  .track{position:absolute;left:0;right:0;top:13px;height:2px;
+    background:linear-gradient(90deg,rgba(217,185,121,.18),rgba(217,185,121,.10) 50%,rgba(217,185,121,.18));}
+  .progress{position:absolute;left:0;top:13px;height:2px;width:0;
+    background:linear-gradient(90deg,rgba(243,221,169,.28),rgba(243,221,169,.92));box-shadow:0 0 10px rgba(243,221,169,.35);}
+  .thumb{position:absolute;top:5px;left:0;width:3px;height:18px;margin-left:-1.5px;
+    background:var(--gold-bright);box-shadow:0 0 12px rgba(243,221,169,.75);border-radius:1px;}
+  .thumb:after{content:"";position:absolute;left:50%;top:-4px;width:9px;height:9px;margin-left:-4.5px;
+    border:1px solid var(--gold-bright);transform:rotate(45deg);background:rgba(243,221,169,.12);}
+  .ticks{position:absolute;left:0;right:0;top:22px;display:flex;justify-content:space-between;}
+  .tick{position:relative;flex:1;text-align:left;cursor:pointer;padding-top:4px;}
+  .tick:last-child{flex:0 0 auto;text-align:right;margin-left:0;}
+  .tick .dot{position:absolute;top:-9px;left:0;width:5px;height:5px;border-radius:50%;background:rgba(217,185,121,.35);
+    transition:background .25s,box-shadow .25s,transform .25s;}
+  .tick:last-child .dot{left:auto;right:0;}
+  .tick .tname{font-size:11px;color:#8d8475;letter-spacing:.05em;transition:color .25s;white-space:nowrap;}
+  .tick .tyear{font-size:9px;color:#655e52;margin-top:2px;white-space:nowrap;transition:color .25s;}
+  .tick.on .dot{background:var(--gold-bright);box-shadow:0 0 9px rgba(243,221,169,.75);transform:scale(1.25);}
+  .tick.on .tname{color:var(--gold-bright);}
+  .tick.on .tyear{color:#b4a58a;}
+
+.tick .tname,.tick .tyear{display:block;}
+</style>
+</head>
+<body>
+<canvas id="scene"></canvas>
+<div class="vignette"></div>
+<div class="grain"></div>
+
+<header class="masthead">
+  <div class="brandline">ZHEJIANG · 3D HISTORICAL ATLAS</div>
+  <h1>浙江<em>·</em>三维历史地图</h1>
+  <div class="subline">真实 DEM 地形 · OSM 河网与建筑 · 九时代</div>
+</header>
+
+<div class="tools">
+  <a class="tool wide" href="index.html" title="返回地区选择">‹ 地区</a>
+  <button class="tool wide on" id="btn-streets" title="街道级行政边界开关（上城/拱墅/西湖/滨江/萧山/余杭）">街道</button>
+  <button class="tool wide" id="btn-precision" title="数据来源与精度分级">精度</button>
+  <button class="tool wide" id="btn-about" title="关于与参考">关于</button>
+  <button class="tool" id="btn-reset" title="复位视角">⟲</button>
+</div>
+
+<aside id="era-panel" class="panel">
+  <div class="era-index"><span id="era-count">时代 09 / 9</span><span class="rule"></span></div>
+  <div class="precision-badge real" id="precision-badge">当代 · 真实地形 + 真实建筑（OSM）</div>
+  <div class="era-name" id="era-name">当代 · 城市群与港口</div>
+  <div class="era-years" id="era-years">1949年—今　·　湾区时代</div>
+  <p class="era-desc" id="era-desc">改革开放后杭州、宁波、温州迅速扩张；宁波舟山港成为世界级大港，杭州湾跨海大桥（2008）与舟山跨海大桥（2009）把湾区连成一体。</p>
+  <div class="era-hr"></div>
+  <div class="note-row"><b>海岸</b><span id="note-coast">围垦与港口建设使岸线进一步外推</span></div>
+  <div class="note-row"><b>湖沼</b><span id="note-lake">西湖成为城市中央的景观湖泊</span></div>
+  <div class="note-row"><b>建筑</b><span id="note-build">跨海大桥、集装箱码头、摩天楼群</span></div>
+  <div class="note-row"><b>海面</b><span id="sea-readout">海平面 现代 0 m</span></div>
+  <div class="legend-wrap">
+    <div class="era-hr" style="margin:13px 0 11px"></div>
+    <div class="legend-title">高程色彩 / ELEVATION</div>
+    <div class="ramp"></div>
+    <div class="ramp-lab"><span>海面</span><span>滩涂</span><span>平原</span><span>丘陵</span><span>山地</span><span>高峰</span></div>
+    <div class="marker-legend">
+      <span><i class="mk-city"></i>城市 / 地名</span>
+      <span><i class="mk-event"></i>历史事件</span>
+      <span><i class="mk-build"></i>构筑物</span>
+    </div>
+    <div class="precision-legend">
+      <div class="pl-title"><span>数据精度 / PRECISION</span><button class="pl-more" id="btn-precision-inline">完整说明 ›</button></div>
+      <div class="pl-row"><i class="pl-real"></i><b>真实数据</b><span>地形高程（DEM）、河网与湖泊、当代建筑轮廓与高度（OSM）</span></div>
+      <div class="pl-row"><i class="pl-inf"></i><b>复原 / 推断</b><span>历史海岸线（现代 DEM + 重建海平面）、城池、海塘、事件与构筑物</span></div>
+    </div>
+  </div>
+  <div class="disclaimer">地形为真实 DEM（约 780 m 网格，片区 60 m），垂直方向经过夸张，可用左下角滑杆调整。古代海岸线由现代地形叠加重建海平面推断，存在不确定性，不作测绘或考古依据。</div>
+</aside>
+
+<div id="event-card" class="panel">
+  <div class="ev-top">
+    <span class="ev-tag">历史事件</span>
+    <button class="ev-close" id="ev-close" aria-label="关闭">×</button>
+  </div>
+  <div class="ev-time" id="ev-time"></div>
+  <div class="ev-title" id="ev-title"></div>
+  <div class="ev-place" id="ev-place"></div>
+  <span class="ev-label">史实</span>
+  <p class="ev-fact" id="ev-fact"></p>
+  <span class="ev-label">意义</span>
+  <p class="ev-meaning" id="ev-meaning"></p>
+</div>
+
+<div id="ve-box">
+  <label for="ve-range">垂直夸张</label>
+  <input type="range" id="ve-range" min="4" max="24" step="1" value="10">
+  <span id="ve-val">×10</span>
+  <span id="scale-note">垂直夸张 ×10（地形与楼高相同，1 km 水平 ≈ 100 m 高差）</span>
+</div>
+
+<div id="district-bar">
+  <div class="dchips" id="district-chips"></div>
+  <div id="district-state">LOD · 全省视角（仅地形与标记）</div>
+</div>
+
+<section id="timeline" class="panel">
+  <div class="tl-head">
+    <span class="tlab">时间轴 / TIMELINE</span>
+    <span class="readout" id="tl-readout"><b>当代 · 城市群与港口</b>　1949年—今</span>
+  </div>
+  <div class="rail" id="rail">
+    <div class="track"></div>
+    <div class="progress" id="progress"></div>
+    <div class="thumb" id="thumb"></div>
+    <div class="ticks" id="ticks"><div class="tick" data-i="0"><span class="dot"></span><span class="tname">史前</span><span class="tyear">前5000</span></div><div class="tick" data-i="1"><span class="dot"></span><span class="tname">越国</span><span class="tyear">前600</span></div><div class="tick" data-i="2"><span class="dot"></span><span class="tname">秦汉</span><span class="tyear">前222</span></div><div class="tick" data-i="3"><span class="dot"></span><span class="tname">六朝隋唐</span><span class="tyear">220</span></div><div class="tick" data-i="4"><span class="dot"></span><span class="tname">吴越</span><span class="tyear">907</span></div><div class="tick" data-i="5"><span class="dot"></span><span class="tname">南宋</span><span class="tyear">1138</span></div><div class="tick" data-i="6"><span class="dot"></span><span class="tname">元明清</span><span class="tyear">1279</span></div><div class="tick" data-i="7"><span class="dot"></span><span class="tname">近代</span><span class="tyear">1840</span></div><div class="tick" data-i="8"><span class="dot"></span><span class="tname">当代</span><span class="tyear">1949</span></div></div>
+  </div>
+</section>
+
+<div id="hint">拖动旋转 · 滚轮缩放 · 拖动时间轴推进时代</div>
+
+<div id="precision">
+  <div class="about-card wide">
+    <h2>数据来源与精度分级</h2>
+    <div class="cap">DATA SOURCES · PRECISION GRADING</div>
+    <p>本页把每类数据分成三级：<b>真实</b>（遥感/实测或 OSM 测绘几何）、<b>估算</b>（由规则推算的数值）、<b>推测性复原</b>（城市形态、历史层与古代岸线）。地形、河网、湖泊轮廓与建筑 footprint 为真实数据；城市整体形态与历史叙述仍属推测，与真实城市差距较大。</p>
+
+    <h3>真实数据</h3>
+    <table class="ptable">
+      <thead><tr><th>数据类别</th><th>来源</th><th>精度量级</th><th>性质</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>地形高程（DEM）</td>
+          <td>AWS Terrain Tiles（Terrarium / Mapzen：SRTM + GMTED + ETOPO1，免密钥）</td>
+          <td>全省 z10 → 780 m 网格；四片区 z12 → 60 m 网格。高程误差 ±10–30 m；3×3 平滑后山峰偏低约 10–25%</td>
+          <td><span class="ptag real">真实</span></td>
+        </tr>
+        <tr>
+          <td>河网</td>
+          <td>OpenStreetMap <code>waterway=river/canal</code>（Overpass，ODbL）</td>
+          <td>折线 RDP 简化容差 0.0022°（约 220–245 m）；河宽优先 OSM <code>width</code>，缺失按名称表（钱塘江 900 m、瓯江 620 m … 默认 90 m）</td>
+          <td><span class="ptag real">真实几何</span> <span class="ptag est">河宽部分估算</span></td>
+        </tr>
+        <tr>
+          <td>湖泊轮廓</td>
+          <td>OSM relation 外环（西湖、东钱湖）</td>
+          <td>轮廓 RDP 0.0003°（约 30 m）；水面按湖盆 DEM 的 p97 分位 +1.2 m 贴合，<b>非实测水位</b></td>
+          <td><span class="ptag real">真实轮廓</span> <span class="ptag est">水位推算</span></td>
+        </tr>
+        <tr>
+          <td>建筑轮廓</td>
+          <td>OSM building footprint</td>
+          <td>RDP 0.000005°（约 0.5 m）+ 0.5 m 量化；OSM 位置误差通常数米，新区/山地更大；仅覆盖杭州、宁波、温州、绍兴 4 个片区</td>
+          <td><span class="ptag real">真实</span></td>
+        </tr>
+        <tr>
+          <td>建筑高度（真实）</td>
+          <td>OSM <code>height</code>（2–400 m）或 <code>building:levels</code>（层数 × 3.1 m + 1.5 m）</td>
+          <td>半米量化；<b>杭州 6 区 4,034 栋，占 9.4%</b></td>
+          <td><span class="ptag real">真实标签</span></td>
+        </tr>
+        <tr>
+          <td>建筑高度（估算）</td>
+          <td>无高度标签时按 <code>building</code> 类型分级</td>
+          <td>住宅 19 / 商业 28 / 零售 15 / 办公 26 / 工业 9 / 公寓 26 / 酒店 30 / 医院 20 / 学校 12 / 政府 16 / 默认 9 m；单栋误差可达 ±50–100%；<b>杭州 6 区 38,988 栋，占 90.6%</b></td>
+          <td><span class="ptag est">推断</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="prule"><b>高度两级规则：</b>① 有 <code>height</code> → 取首个数值（2–400 m 视为有效）；② 否则有 <code>building:levels</code> → 层数 × 3.1 m + 1.5 m；③ 两者皆无 → 按上表类型估算。① ② 为「真实高度」（暖灰、略亮），③ 为「估算高度」（冷灰青、略暗），两者在楼体颜色与图例中始终分开。</div>
+    <div class="prule"><b>垂直夸张分两档：</b>地形始终按左下角滑杆 ×4–24；<b>楼高在街道级（≤6 km）单独降到地形的 0.2 倍</b>（×10 时即 ×2，100 m 楼 ≈ 200 m 视觉高度，接近真实比例的 1:1 量级），6–20 km 按对数过渡，≥20 km 与地形同倍。<code>#scale-note</code> 始终显示当前两个倍数。</div>
+    <div class="prule"><b>建筑底面：</b>footprint 内最多 7 点采样 DEM 取 p75，再钳到「所在水体水面 + 0.6 m」。旧规则用质心单点，质心落进被下切的河槽/湖盆时会整栋沉入水下；跨水栈桥/码头等真实水上结构不删除，按水面 +0.6 m 抬升。</div>
+
+    <h3>仍属示意、无法精确</h3>
+    <div class="prule warn">
+      ① <b>河床深度为估算</b>：按河宽 × 0.012 下切（2.5–10 m 夹紧），非实测断面；山区宽河仍可能被 780 m 粗网格埋没；<br>
+      ② <b>网格 0.75 km 分辨率限制</b>：小于网格的山体、岛屿、河道与湖汊被平均，舟山小岛仅保留较大者；<br>
+      ③ <b>建筑高度 90.6% 为估算</b>（OSM 无 height/levels 标签，只能按类型近似），只可用于形态参考；<br>
+      ④ <b>城市形态与城市叙述为推测</b>，本页不展示古代层，也不代表真实城市；<br>
+      ⑤ <b>湖面水位</b>按 DEM 湖盆拟合，非实测水位；<br>
+      ⑥ 地形始终夸张 ×4–24，街道级楼高另按地形倍数的 0.2 倍渲染（图例显示当前倍数）；<br>
+      ⑦ <b>footprint 跨水</b>的桥、码头、水上建筑等无法判定真伪，一律按水面 +0.6 m 保留。
+      以上均<b>不作测绘、日照、高度分析或历史定位依据</b>。
+    </div>
+    <div style="text-align:right;margin-top:18px"><button class="tool wide" id="btn-precision-close">关闭</button></div>
+  </div>
+</div>
+
+<div id="about">
+  <div class="about-card">
+    <h2>关于这幅地图</h2>
+    <div class="cap">ZHEJIANG · 3D HISTORICAL ATLAS</div>
+    <p>本作品以浙江省为范围，用可交互的三维地形串联九个历史时期。地形高程来自公开 DEM 瓦片（真实米数），河网与当代建筑来自 OpenStreetMap（真实几何）。历史海岸线、城池、海塘与事件属史料复原或推断，页面上以不同标记区分。</p>
+    <h3>如何使用</h3>
+    <ul>
+      <li>按住左键拖动：旋转视角；滚轮：缩放；右键 / Shift + 拖动：平移。</li>
+      <li>拖动底部时间轴，或在刻度上点击，查看不同时代；过渡为补间动画。</li>
+      <li>右下角「杭州 / 宁波 / 温州 / 绍兴」：飞入高精度片区，加载 1:1 建筑轮廓与 60 m 地形。</li>
+      <li>左下角滑杆调整垂直夸张；点击金色菱形标记展开史实与意义。</li>
+      <li>双击画面或右上角 ⟲ 可复位到全省视角。</li>
+    </ul>
+    <h3>数据来源与覆盖</h3>
+    <ul>
+      <li><b>地形</b>：AWS Terrain Tiles（Mapzen Terrarium，免密钥），浙江范围 z10（约 130 m 原始采样）重采样为 780 m 网格；四个片区使用 z12（约 30 m 采样）重采样为 60 m 网格。数据缓存于 <code>assets/dem-cache</code>，页面运行时读取已烘焙的 <code>js/dem.js</code> / <code>js/dem-districts.js</code>，断网可用。</li>
+      <li><b>河网 / 湖泊 / 建筑</b>：© OpenStreetMap contributors（ODbL），经 Overpass API 获取，河网简化至约 180 m 容差；建筑取 footprint + <code>height</code> / <code>building:levels</code>，缺失时按建筑类型估算并标记。</li>
+      <li><b>历史部分</b>：谭其骧《中国历史地图集》、邹逸麟《中国历史地理概述》、浙江省文物考古研究所《河姆渡》等；海平面重建参考全新世海侵研究。</li>
+    </ul>
+    <div class="warn">精度分级：地形、当代河网与建筑为<b>真实数据</b>；古代海岸线由「现代 DEM + 重建海平面」推断，海岸形态、湖沼范围与围垦过程仍有学术分歧；城池、海塘、事件位置为<b>史料复原示意</b>。垂直方向经过夸张（默认 ×10），不作测绘依据。</div>
+    <div style="text-align:right;margin-top:18px"><button class="tool wide" id="btn-about-close">关闭</button></div>
+  </div>
+</div>
+
+<div id="intro">
+  <div class="intro-inner">
+    <div class="intro-orn">ZHEJIANG PROVINCE · EAST CHINA</div>
+    <div class="intro-title">浙江 · 三维历史地图</div>
+    <div class="intro-sub">从河姆渡的沼泽，到杭州湾的灯火</div>
+    <div class="intro-est">九时代 · 真实 DEM 地形 · OSM 河网与 1:1 建筑</div>
+    <div class="intro-grid">
+      <div class="intro-item"><div class="ic">◐</div><b>拖动旋转</b><span>按住左键拖动，转动三维地形</span></div>
+      <div class="intro-item"><div class="ic">＋</div><b>滚轮缩放</b><span>推近后自动加载片区楼群</span></div>
+      <div class="intro-item"><div class="ic">⇠</div><b>拖动时间轴</b><span>底部时间轴，推进或回溯时代</span></div>
+    </div>
+    <button class="start-btn" id="btn-start">进入地图</button>
+    <div class="intro-foot">地形 / 河网 / 建筑为真实数据 · 历史层为复原示意 · 首次打开约需数秒</div>
+  </div>
+</div>
+
+<div id="fallback">
+  <div class="fallback-card">
+    <h2>无法启动三维地图</h2>
+    <p id="fallback-msg">当前浏览器未能创建 WebGL 上下文，或本地 Three.js 文件缺失。<br>请使用较新的 Chrome / Edge / Firefox 打开，并确认 <b>vendor/three.min.js</b> 与 <b>zhejiang.html</b> 位于同一目录层级。<br><br>本页面无需联网，也不依赖后端服务。</p>
+  </div>
+</div>
+
+<script>
+  window.__ATLAS_T0__ = performance.now();
+  window.__ERRORS__ = [];
+  window.addEventListener('error', function (e) {
+    window.__ERRORS__.push((e.message || 'error') + ' @ ' + (e.filename || '?') + ':' + (e.lineno || 0));
+    document.documentElement.setAttribute('data-js-error', window.__ERRORS__.join(' | '));
+  });
+</script>
+<script src="vendor/three.min.js"></script>
+<script src="js/dem.js"></script>
+<script src="js/dem-districts.js"></script>
+<script src="js/rivers.js"></script>
+<script src="js/lakes.js"></script>
+<script src="js/streets-hz.js"></script>
+<script src="js/bld-blocks.js"></script>
+<script src="js/data.js"></script>
+<script src="js/terrain.js"></script>
+<script src="js/buildings.js"></script>
+<!-- js/bld-*.js 不在此引入：由 app.js 在进入片区视野时按需注入，全省视角零建筑数据 -->
+<script src="js/app.js"></script>
+<script src="js/era-ui.js"></script>
+</body>
+</html>
