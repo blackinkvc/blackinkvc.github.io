@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>数据来源与许可 | DATA SOURCES &amp; LICENSES</title>
+<style>
+  :root{
+    --bg:#060b10;
+    --panel:rgba(11,20,27,.80);
+    --line:rgba(206,176,120,.20);
+    --line-strong:rgba(224,193,137,.46);
+    --gold:#d9b979;
+    --gold-bright:#f3dda9;
+    --text:#ece6d8;
+    --muted:#a79c89;
+    --faint:#7d7465;
+    --teal:#6fb6c0;
+    --green:#8fd0b6;
+    --amber:#e0b47c;
+    --violet:#b9a6d0;
+    --serif:"Songti SC","Noto Serif SC","STSong","SimSun",serif;
+    --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+    --mono:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;min-height:100%;background:var(--bg);}
+  body{
+    font-family:var(--sans);color:var(--text);-webkit-font-smoothing:antialiased;
+    background:
+      radial-gradient(120% 80% at 50% -10%, rgba(24,46,60,.85) 0%, rgba(9,17,25,.92) 46%, #05090d 100%),
+      #05090d;
+  }
+  body:before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.45;
+    background-image:
+      repeating-linear-gradient(0deg, rgba(111,182,192,.045) 0 1px, transparent 1px 96px),
+      repeating-linear-gradient(90deg, rgba(111,182,192,.045) 0 1px, transparent 1px 96px);
+    mask-image:radial-gradient(90% 80% at 50% 20%, #000 20%, transparent 100%);
+    -webkit-mask-image:radial-gradient(90% 80% at 50% 20%, #000 20%, transparent 100%);
+  }
+  .wrap{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding:52px 28px 64px;}
+
+  /* ---------------- 页头 ---------------- */
+  .back{display:inline-flex;align-items:center;gap:6px;font-size:11px;letter-spacing:.18em;
+    color:var(--muted);text-decoration:none;border:1px solid var(--line);border-radius:2px;
+    padding:6px 11px;background:var(--panel);transition:color .2s,border-color .2s;}
+  .back:hover{color:var(--gold-bright);border-color:var(--line-strong);}
+  header{margin-top:26px;padding-bottom:26px;border-bottom:1px solid var(--line);}
+  .brandline{font-size:10px;letter-spacing:.34em;color:var(--gold);opacity:.8;}
+  h1{font-family:var(--serif);font-weight:600;font-size:38px;letter-spacing:.13em;margin:12px 0 0;}
+  h1 em{font-style:normal;color:var(--gold-bright);}
+  .lead{margin:14px 0 0;max-width:760px;font-size:12.5px;line-height:2.0;color:#c3baa9;}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;}
+  .chip{font-size:10px;letter-spacing:.10em;padding:4px 9px;border-radius:2px;border:1px solid transparent;}
+  .chip.real{color:var(--green);border-color:rgba(143,208,182,.38);background:rgba(143,208,182,.08);}
+  .chip.est{color:var(--amber);border-color:rgba(224,180,124,.38);background:rgba(224,180,124,.07);}
+  .chip.art{color:var(--violet);border-color:rgba(185,166,208,.38);background:rgba(185,166,208,.07);}
+
+  /* ---------------- 通用区块 ---------------- */
+  section{margin-top:44px;}
+  .sec-head{display:flex;align-items:baseline;gap:14px;padding-bottom:10px;border-bottom:1px solid var(--line);}
+  .sec-no{font-family:var(--serif);font-size:12px;letter-spacing:.18em;color:rgba(217,185,121,.62);}
+  .sec-head h2{font-family:var(--serif);font-weight:600;font-size:21px;letter-spacing:.10em;margin:0;}
+  .sec-head .en{margin-left:auto;font-size:9.5px;letter-spacing:.22em;color:var(--faint);}
+  .sec-note{margin:14px 0 0;font-size:11.5px;line-height:1.9;color:#9c9284;}
+
+  /* ---------------- 总览表 ---------------- */
+  .tbl-wrap{overflow-x:auto;margin-top:18px;border:1px solid var(--line);border-radius:3px;background:rgba(8,15,21,.55);}
+  table{width:100%;border-collapse:collapse;font-size:11.5px;min-width:820px;}
+  th,td{text-align:left;vertical-align:top;padding:11px 13px;border-bottom:1px solid rgba(206,176,120,.10);}
+  th{font-weight:500;font-size:9.5px;letter-spacing:.16em;color:var(--gold);background:rgba(206,176,120,.05);white-space:nowrap;}
+  tbody tr:last-child td{border-bottom:none;}
+  tbody tr:hover{background:rgba(111,182,192,.04);}
+  td.name{color:var(--text);}
+  td.name b{display:block;font-weight:500;}
+  td.name span{display:block;margin-top:3px;font-size:10px;color:var(--faint);letter-spacing:.04em;}
+  td.lic{font-family:var(--mono);font-size:10.5px;color:#b6ac99;}
+  .dot{display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:6px;vertical-align:1px;}
+  .dot.real{background:#7fc7a7;}
+  .dot.est{background:#d8a468;}
+  .dot.art{background:#a68fc6;}
+  .dot.none{background:#5d564b;}
+
+  /* ---------------- 来源卡片 ---------------- */
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(430px,1fr));gap:16px;margin-top:18px;}
+  .card{position:relative;border:1px solid var(--line);border-radius:3px;
+    background:linear-gradient(160deg, rgba(16,27,36,.72), rgba(7,13,18,.66));
+    padding:17px 18px 15px;}
+  .card .head{display:flex;align-items:flex-start;gap:10px;padding-bottom:10px;border-bottom:1px dashed rgba(206,176,120,.16);}
+  .card .no{font-family:var(--serif);font-size:11px;color:rgba(217,185,121,.55);letter-spacing:.14em;padding-top:3px;}
+  .card h3{margin:0;font-size:15px;font-weight:600;letter-spacing:.04em;}
+  .card .sub{margin-top:4px;font-size:10px;color:var(--faint);letter-spacing:.10em;}
+  .card .head .chip{margin-left:auto;flex:0 0 auto;}
+  .kv2{display:grid;grid-template-columns:76px 1fr;gap:5px 10px;margin-top:12px;font-size:11.5px;line-height:1.85;}
+  .kv2 dt{color:var(--faint);font-size:10px;letter-spacing:.10em;padding-top:2px;}
+  .kv2 dd{margin:0;color:#c0b7a6;}
+  .kv2 dd a{color:var(--teal);text-decoration:none;border-bottom:1px dotted rgba(111,182,192,.4);}
+  .kv2 dd a:hover{color:#a8dde4;}
+  .kv2 code{font-family:var(--mono);font-size:10.5px;color:#b8ae9b;background:rgba(206,176,120,.07);
+    padding:1px 4px;border-radius:2px;}
+  .card .tail{margin-top:11px;padding-top:10px;border-top:1px dashed rgba(206,176,120,.16);
+    font-size:10.5px;line-height:1.8;color:#8b8274;}
+  .card .tail b{color:#c9a878;font-weight:500;}
+  .card.off{opacity:.78;}
+
+  /* ---------------- ODbL 署名 ---------------- */
+  .odbl{margin-top:18px;border:1px solid rgba(143,208,182,.34);border-radius:3px;
+    background:linear-gradient(150deg, rgba(143,208,182,.10), rgba(8,15,21,.75));
+    padding:20px 22px;}
+  .odbl .t{font-size:10px;letter-spacing:.24em;color:var(--green);}
+  .odbl h3{margin:8px 0 0;font-family:var(--serif);font-size:23px;letter-spacing:.05em;}
+  .odbl p{margin:10px 0 0;font-size:11.5px;line-height:1.95;color:#c3baa9;}
+  .odbl .links{display:flex;flex-wrap:wrap;gap:9px;margin-top:13px;}
+  .odbl .links a{font-size:10.5px;letter-spacing:.10em;color:var(--green);text-decoration:none;
+    border:1px solid rgba(143,208,182,.34);border-radius:2px;padding:5px 10px;background:rgba(143,208,182,.06);}
+  .odbl .links a:hover{background:rgba(143,208,182,.13);}
+
+  /* ---------------- 三档说明 ---------------- */
+  .grade{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:18px;}
+  .gbox{border:1px solid var(--line);border-radius:3px;padding:15px 16px;background:rgba(9,17,23,.62);}
+  .gbox h4{margin:0 0 8px;font-size:12px;letter-spacing:.14em;}
+  .gbox.real h4{color:var(--green);}
+  .gbox.est h4{color:var(--amber);}
+  .gbox.art h4{color:var(--violet);}
+  .gbox ul{margin:0;padding-left:16px;font-size:11.5px;line-height:1.95;color:#b6ac99;}
+  .gbox li{margin:3px 0;}
+
+  /* ---------------- 管线 ---------------- */
+  .pipe{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin-top:18px;}
+  .step{border:1px solid var(--line);border-radius:3px;padding:13px 14px;background:rgba(9,17,23,.55);}
+  .step .k{font-size:9.5px;letter-spacing:.16em;color:var(--gold);opacity:.8;}
+  .step h5{margin:6px 0 6px;font-size:12.5px;font-weight:500;}
+  .step p{margin:0;font-size:11px;line-height:1.8;color:#9c9284;}
+
+  /* ---------------- 再分发 ---------------- */
+  .rules{margin-top:16px;border:1px solid var(--line);border-radius:3px;background:rgba(8,15,21,.55);}
+  .rule{display:grid;grid-template-columns:112px 1fr;gap:14px;padding:13px 16px;border-bottom:1px solid rgba(206,176,120,.10);}
+  .rule:last-child{border-bottom:none;}
+  .rule .tagline{font-size:10px;letter-spacing:.14em;padding-top:2px;}
+  .rule.ok .tagline{color:var(--green);}
+  .rule.care .tagline{color:var(--amber);}
+  .rule.no .tagline{color:#d08f8f;}
+  .rule p{margin:0;font-size:11.5px;line-height:1.9;color:#b6ac99;}
+  .rule p b{color:#ded3bd;font-weight:500;}
+
+  footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--line);
+    font-size:10.5px;line-height:1.9;color:var(--faint);letter-spacing:.04em;}
+  footer b{color:var(--gold);font-weight:500;letter-spacing:.12em;}
+  footer a{color:var(--teal);text-decoration:none;}
+
+  @media (max-width:760px){
+    .wrap{padding:30px 16px 44px;}
+    h1{font-size:27px;}
+    .cards{grid-template-columns:1fr;}
+    .rule{grid-template-columns:1fr;gap:6px;}
+    .card .head{flex-wrap:wrap;}
+    .card .head .chip{margin-left:0;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="index.html">‹ 返回地区</a>
+
+  <header>
+    <div class="brandline">DATA SOURCES &amp; LICENSES</div>
+    <h1>数据来源<em>与</em>许可</h1>
+    <p class="lead">
+      本图集完全离线运行，但每一块地形、每一条河、每一栋楼都来自公开数据。下面逐项列出本项目<b>实际使用</b>的数据与素材，
+      写清提供方与官方链接、许可类型与义务、本项目对其做的加工，以及再分发与商用时的注意事项。
+      同时明确区分哪些是真实测量、哪些是估算或艺术化处理。
+    </p>
+    <div class="chips">
+      <span class="chip real">真实测量 · 直接来自公开数据</span>
+      <span class="chip est">估算 / 推断 · 由规则或史料推导</span>
+      <span class="chip art">艺术化 · 为可读性做的视觉处理</span>
+    </div>
+  </header>
+
+  <!-- ------------------------------ 总览 ------------------------------ -->
+  <section id="overview">
+    <div class="sec-head">
+      <span class="sec-no">01</span>
+      <h2>总览</h2>
+      <span class="en">AT A GLANCE</span>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr><th>数据 / 素材</th><th>提供方</th><th>许可</th><th>用在哪</th><th>性质</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="name"><b>OSM · building</b><span>建筑轮廓与高度标签</span></td>
+            <td>OpenStreetMap 贡献者<br>经 Overpass API 获取</td>
+            <td class="lic">ODbL 1.0</td>
+            <td>浙江四片区、巴黎、悉尼的建筑体块</td>
+            <td><span class="dot real"></span>真实轮廓<br><span class="dot est"></span>高度部分估算</td>
+          </tr>
+          <tr>
+            <td class="name"><b>OSM · water / waterway</b><span>水体多边形、河道中心线</span></td>
+            <td>OpenStreetMap 贡献者</td>
+            <td class="lic">ODbL 1.0</td>
+            <td>塞纳河、悉尼港、浙江河网与西湖等湖泊</td>
+            <td><span class="dot real"></span>真实几何<br><span class="dot art"></span>水面高程近似</td>
+          </tr>
+          <tr>
+            <td class="name"><b>OSM · highway</b><span>道路中心线与等级</span></td>
+            <td>OpenStreetMap 贡献者</td>
+            <td class="lic">ODbL 1.0</td>
+            <td>城市道路网</td>
+            <td><span class="dot real"></span>真实走向<br><span class="dot est"></span>宽度按等级赋值</td>
+          </tr>
+          <tr>
+            <td class="name"><b>AWS Terrain Tiles</b><span>Mapzen / joerd · Terrarium DEM</span></td>
+            <td>Mapzen（Linux 基金会项目）<br>AWS Open Data 托管</td>
+            <td class="lic">上游多为公有领域<br>（见 joerd 署名文档）</td>
+            <td>所有页面的地形高程</td>
+            <td><span class="dot real"></span>真实高程</td>
+          </tr>
+          <tr>
+            <td class="name"><b>three.js r128</b><span>WebGL 渲染引擎</span></td>
+            <td>Three.js Authors</td>
+            <td class="lic">MIT</td>
+            <td>全部三维页面</td>
+            <td><span class="dot none"></span>软件依赖</td>
+          </tr>
+          <tr>
+            <td class="name"><b>历史文献与考据</b><span>时代划分、史实叙述</span></td>
+            <td>公开出版物（见 06）</td>
+            <td class="lic">出版物著作权<br>仅引用事实与结论</td>
+            <td>「浙江历史地图」的九个时代</td>
+            <td><span class="dot est"></span>参考叙述<br><span class="dot art"></span>场景为示意</td>
+          </tr>
+          <tr>
+            <td class="name"><b>巴黎地标形制</b><span>14 处景点的尺寸与体块</span></td>
+            <td>公开的建筑数据与照片观察</td>
+            <td class="lic">事实性数据，不复制图件</td>
+            <td>「著名景点专题」</td>
+            <td><span class="dot est"></span>手工近似</td>
+          </tr>
+          <tr>
+            <td class="name"><b>Natural Earth</b><span>矢量底图（国界 / 海岸线）</span></td>
+            <td>Natural Earth</td>
+            <td class="lic">公有领域</td>
+            <td><b style="color:#a79c89">未使用</b></td>
+            <td><span class="dot none"></span>—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="sec-note">
+      表中「真实」指几何或高程直接来自公开测量数据，未做主观改写；「估算」指由标签缺失时的规则推导，或由史料／参数模型生成；
+      「艺术化」指为了在屏幕上可读而做的夸张与装饰。三者会在各页面的图例与说明里分别标注。
+    </p>
+  </section>
+
+  <!-- ------------------------------ 逐项 ------------------------------ -->
+  <section id="sources">
+    <div class="sec-head">
+      <span class="sec-no">02–08</span>
+      <h2>逐项说明</h2>
+      <span class="en">SOURCE BY SOURCE</span>
+    </div>
+
+    <div class="cards">
+
+      <!-- 02 OSM 建筑 -->
+      <article class="card">
+        <div class="head">
+          <div class="no">02</div>
+          <div>
+            <h3>OpenStreetMap · 建筑轮廓</h3>
+            <div class="sub">BUILDING FOOTPRINTS &amp; HEIGHTS</div>
+          </div>
+          <span class="chip real">真实 + 估算</span>
+        </div>
+        <dl class="kv2">
+          <dt>官方链接</dt>
+          <dd><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">openstreetmap.org/copyright</a>　·　
+              <a href="https://wiki.openstreetmap.org/wiki/Key:building" target="_blank" rel="noopener">building 标签说明</a></dd>
+          <dt>获取方式</dt>
+          <dd>Overpass API 按经纬度分块拉取 <code>way/relation[building]</code>，缓存在 <code>assets/osm-raw</code>。</dd>
+          <dt>许可</dt>
+          <dd>ODbL 1.0（Open Database License）。数据本身与由它衍生的数据库都受该许可约束。</dd>
+          <dt>义务</dt>
+          <dd>必须署名「© OpenStreetMap contributors」；若对外分发衍生数据库，须以 ODbL 相同方式共享；不得暗示 OpenStreetMap 基金会为本项目背书。</dd>
+          <dt>本项目加工</dt>
+          <dd>轮廓抽稀并量化到 0.5 m；高度依次取 <code>height</code> → <code>building:levels × 3 m</code> → 按建筑类型估算
+              （浙江片区真实高度占比 5.2%，悉尼约 31%）；按空间分块合批成少量 Mesh；景点页对与精细模型重叠的体块按半径剔除。</dd>
+          <dt>再分发 / 商用</dt>
+          <dd>可商用。发布渲染截图或视频属「作品（Produced Work）」，署名即可；<b>直接分发</b>本项目烘焙出的
+              <code>js/*-bld.js</code> 等数据文件，则须按 ODbL 提供。</dd>
+        </dl>
+        <div class="tail"><b>精度提示：</b>轮廓来自志愿者的手工测绘，城市之间疏密差异很大；缺 <code>height</code> 标签时的高度是估算值，不适用于日照、消防或工程计算。</div>
+      </article>
+
+      <!-- 03 OSM 水系 -->
+      <article class="card">
+        <div class="head">
+          <div class="no">03</div>
+          <div>
+            <h3>OpenStreetMap · 水系</h3>
+            <div class="sub">WATER POLYGONS &amp; WATERWAYS</div>
+          </div>
+          <span class="chip real">真实几何</span>
+        </div>
+        <dl class="kv2">
+          <dt>官方链接</dt>
+          <dd><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">openstreetmap.org/copyright</a>　·　
+              <a href="https://wiki.openstreetmap.org/wiki/Key:water" target="_blank" rel="noopener">water</a> /
+              <a href="https://wiki.openstreetmap.org/wiki/Key:waterway" target="_blank" rel="noopener">waterway</a></dd>
+          <dt>取用对象</dt>
+          <dd><code>natural=water</code>、<code>water=lake/river/pond</code> 多边形（含内环）；<code>waterway=river/canal</code> 中心线。</dd>
+          <dt>许可 / 义务</dt>
+          <dd>ODbL 1.0；署名与相同方式共享义务同上。</dd>
+          <dt>本项目加工</dt>
+          <dd>多边形带洞三角化后压平为水面；河道中心线按 Ramer–Douglas–Peucker 抽稀（浙江容差约 0.0022°，约 220 m）；
+              河宽优先取 <code>width</code> 标签，缺失时按河流名称表赋值；水面高程取「中心线与左右岸三点最低值」再加 0.8–1.2 m，
+              再按「现代 DEM + 重建海平面」推断历史岸线（见 06）。</dd>
+          <dt>再分发 / 商用</dt>
+          <dd>与建筑相同：作品署名即可，数据文件再分发须遵循 ODbL。</dd>
+        </dl>
+        <div class="tail"><b>精度提示：</b>水面高程是为贴合 DEM 湖盆而反推的近似值，<b>不等于</b>实测水位；历史岸线是模型推断，不是考古结论。</div>
+      </article>
+
+      <!-- 04 OSM 道路 -->
+      <article class="card">
+        <div class="head">
+          <div class="no">04</div>
+          <div>
+            <h3>OpenStreetMap · 道路</h3>
+            <div class="sub">HIGHWAY NETWORK</div>
+          </div>
+          <span class="chip real">真实走向</span>
+        </div>
+        <dl class="kv2">
+          <dt>官方链接</dt>
+          <dd><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">openstreetmap.org/copyright</a>　·　
+              <a href="https://wiki.openstreetmap.org/wiki/Key:highway" target="_blank" rel="noopener">highway 标签说明</a></dd>
+          <dt>许可 / 义务</dt>
+          <dd>ODbL 1.0；署名 + 衍生数据库相同方式共享。</dd>
+          <dt>本项目加工</dt>
+          <dd>按道路等级取渲染宽度（约 6–26 m），沿中心线生成带状面；未做立交、桥梁架空与隧道分层，
+              因此高架与地面路在视觉上会压在同一层。</dd>
+          <dt>再分发 / 商用</dt>
+          <dd>同上。宽度是<b>按等级赋值的视觉参数</b>，不是实测路宽。</dd>
+        </dl>
+        <div class="tail"><b>精度提示：</b>大道与小巷的真实宽度差异远大于本项目的分级；页面上的路宽仅用于辨识路网结构。</div>
+      </article>
+
+      <!-- 05 DEM -->
+      <article class="card">
+        <div class="head">
+          <div class="no">05</div>
+          <div>
+            <h3>AWS Terrain Tiles（Terrarium DEM）</h3>
+            <div class="sub">ELEVATION · MAPZEN JOERD</div>
+          </div>
+          <span class="chip real">真实高程</span>
+        </div>
+        <dl class="kv2">
+          <dt>官方链接</dt>
+          <dd><a href="https://registry.opendata.aws/terrain-tiles/" target="_blank" rel="noopener">registry.opendata.aws/terrain-tiles</a>　·　
+              <a href="https://github.com/tilezen/joerd/blob/master/docs/attribution.md" target="_blank" rel="noopener">joerd 署名文档</a></dd>
+          <dt>数据构成</dt>
+          <dd>由 Mapzen 的 joerd 管线汇总全球多套 DEM 生成：NASA SRTM、USGS GMTED2010 / NED、NOAA ETOPO1、GEBCO 等，
+              以 Terrarium PNG 瓦片发布，AWS Open Data 免费托管。</dd>
+          <dt>许可</dt>
+          <dd>上游数据多为<b>公有领域</b>或开放许可；AWS 注册页把许可指向 joerd 的 attribution 文档。
+              再分发衍生作品时应保留该文档要求的上游来源说明。</dd>
+          <dt>本项目加工</dt>
+          <dd>按瓦片级别抓取（浙江 z10 / 片区 z12；巴黎与悉尼 z13，约 11 m 采样）；
+              用 <code>h = R×256 + G + B/256 − 32768</code> 解码，双线性重采样到规则网格（浙江 780 m / 60 m），
+              再编码为 int16 + base64 内嵌进 <code>js/dem*.js</code>，运行时 <code>atob</code> 解码，零网络请求。</dd>
+          <dt>再分发 / 商用</dt>
+          <dd>一般可自由使用与商用；保留上游署名；不提供精度担保。</dd>
+        </dl>
+        <div class="tail"><b>精度提示：</b>DEM 是地表模型而非建筑表面，城区高程受树冠与建筑影响；巴黎、悉尼的 11 m 采样仍不足以表达台阶与堤岸。</div>
+      </article>
+
+      <!-- 06 历史文献 -->
+      <article class="card">
+        <div class="head">
+          <div class="no">06</div>
+          <div>
+            <h3>历史文献与考据</h3>
+            <div class="sub">HISTORICAL REFERENCES</div>
+          </div>
+          <span class="chip est">推断 / 参考</span>
+        </div>
+        <dl class="kv2">
+          <dt>参考书目</dt>
+          <dd>谭其骧主编《中国历史地图集》（中国地图出版社）；邹逸麟《中国历史地理概述》；浙江省文物考古研究所《河姆渡》；
+              以及全新世海侵与杭州湾岸线演变的相关研究。</dd>
+          <dt>许可</dt>
+          <dd>以上均为受著作权保护的出版物。本项目<b>只参考其结论与时代框架</b>，不复制图版、扫描件或成段文字；
+              页面中的历史叙述为自行撰写的概述。</dd>
+          <dt>本项目加工</dt>
+          <dd>把九个时代抽象为一组参数（海平面、岸线退缩、潟湖封闭、湖面、河口、淤积、围垦），
+              再用「现代 DEM + 该参数」生成对应的海面与岸线；城池、海塘、事件以标注点表示。
+              这是一种<b>可交互的示意模型</b>，不是历史地理信息系统（HGIS）的复原成果。</dd>
+          <dt>再分发 / 商用</dt>
+          <dd>本项目自撰的文字与参数模型可随项目分发；若你要引用原书观点或图版，请自行核对版本、页码并遵守原书版权。</dd>
+        </dl>
+        <div class="tail"><b>重要：</b>本页书目是<b>阅读与叙述的依据</b>，不是逐条脚注。海岸形态、湖沼范围与围垦时序在学界仍有分歧，页面上的历史层不应被当作史实结论引用。</div>
+      </article>
+
+      <!-- 07 地标 -->
+      <article class="card">
+        <div class="head">
+          <div class="no">07</div>
+          <div>
+            <h3>巴黎地标形制与尺寸</h3>
+            <div class="sub">LANDMARK MASSING</div>
+          </div>
+          <span class="chip est">手工近似</span>
+        </div>
+        <dl class="kv2">
+          <dt>依据</dt>
+          <dd>各建筑的公开高度、面宽、轴线与平面格局（例如埃菲尔铁塔 330 m、圣母院尖塔 96 m、凯旋门 50 m），
+              以及公开照片中可观察到的体块关系。</dd>
+          <dt>许可</dt>
+          <dd>建筑尺寸与形制属事实性信息，本项目未使用任何受版权保护的测绘图、模型或照片贴图；
+              全部几何为代码程序化生成。</dd>
+          <dt>本项目加工</dt>
+          <dd>用基础体块 + 程序化构件重建可辨识特征：埃菲尔铁塔的四条外撇塔腿与三层平台、
+              圣母院的双塔与飞扶壁、卢浮宫的 U 形庭院与玻璃金字塔、圣心堂的穹顶群、凯旋门的拱洞与阁楼等。
+              地标位置取真实经纬度，朝向按街道轴线人工设定。</dd>
+          <dt>再分发 / 商用</dt>
+          <dd>模型代码可随项目分发；不得作为测绘、工程或修缮依据。</dd>
+        </dl>
+        <div class="tail"><b>精度提示：</b>这是「看得出的轮廓」，不是 BIM 或摄影测量成果。细部、比例与真实建筑存在简化与偏差；圣心堂等位于山丘上的建筑，基座高度随 DEM 起伏。</div>
+      </article>
+
+      <!-- 08 其他 / 未使用 -->
+      <article class="card off">
+        <div class="head">
+          <div class="no">08</div>
+          <div>
+            <h3>其他素材与未使用项</h3>
+            <div class="sub">OTHERS &amp; NOT USED</div>
+          </div>
+          <span class="chip art">说明</span>
+        </div>
+        <dl class="kv2">
+          <dt>three.js</dt>
+          <dd>r128，<b>MIT</b> 许可。文件 <code>vendor/three.min.js</code> 头部保留了版权与 SPDX 声明；
+              可商用，再分发时保留该声明即可。<a href="https://threejs.org/" target="_blank" rel="noopener">threejs.org</a></dd>
+          <dt>字体</dt>
+          <dd>全部使用系统字体（Songti SC / PingFang SC / Microsoft YaHei 等），<b>未打包任何字库文件</b>，不涉及字体再分发。</dd>
+          <dt>图标 / 图片</dt>
+          <dd>界面元素由 CSS 与内联 SVG 绘制；<b>没有</b>第三方图片、纹理或图标库。</dd>
+          <dt>Natural Earth</dt>
+          <dd><b>本项目未使用。</b>海岸线由 DEM 的 0 m 等值线与 OSM 水体生成，国界与行政区划不在展示范围内。
+              若后续引入其矢量底图，其数据为公有领域，需在页面补一行来源说明。
+              <a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener">naturalearthdata.com</a></dd>
+          <dt>行政区划缓存</dt>
+          <dd>构建期缓存的 OSM 行政边界原始数据（<code>assets/osm-raw/admin-*.json</code>）
+              <b>未进入任何页面</b>，也未随页面加载；如后续启用，仍按 ODbL 处理。</dd>
+        </dl>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ------------------------------ ODbL 署名 ------------------------------ -->
+  <section id="odbl">
+    <div class="sec-head">
+      <span class="sec-no">09</span>
+      <h2>ODbL 署名</h2>
+      <span class="en">REQUIRED ATTRIBUTION</span>
+    </div>
+    <div class="odbl">
+      <div class="t">ATTRIBUTION · ODbL 1.0</div>
+      <h3>© OpenStreetMap contributors</h3>
+      <p>
+        本图集的<b>建筑轮廓与高度、水系与河道、道路网、湖泊轮廓</b>来自 OpenStreetMap，由 OpenStreetMap 贡献者手工测绘，
+        以 <b>Open Database License (ODbL) 1.0</b> 授权使用。OpenStreetMap 是 OpenStreetMap Foundation 的商标。
+      </p>
+      <p>
+        由这些数据烘焙得到的 <code>js/city-*-bld.js</code>、<code>js/city-*-water.js</code>、<code>js/city-*-roads.js</code>、
+        <code>js/bld-*.js</code>、<code>js/rivers.js</code>、<code>js/lakes.js</code> 属于 ODbL 意义上的<b>衍生数据库</b>：
+        若对外分发这些文件，须继续以 ODbL 1.0 提供，并保留本署名。页面渲染出的截图与视频属<b>作品（Produced Work）</b>，
+        公开发布时保留「© OpenStreetMap contributors」即可，不必以相同方式共享作品本身。
+      </p>
+      <div class="links">
+        <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap 版权页 ↗</a>
+        <a href="https://opendatacommons.org/licenses/odbl/1-0/" target="_blank" rel="noopener">ODbL 1.0 全文 ↗</a>
+        <a href="https://osmfoundation.org/wiki/Licence/Attribution_Guidelines" target="_blank" rel="noopener">OSMF 署名指南 ↗</a>
+        <a href="https://github.com/tilezen/joerd/blob/master/docs/attribution.md" target="_blank" rel="noopener">DEM 上游署名（joerd）↗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ------------------------------ 三档 ------------------------------ -->
+  <section id="grade">
+    <div class="sec-head">
+      <span class="sec-no">10</span>
+      <h2>真实、估算与艺术化</h2>
+      <span class="en">WHAT IS REAL</span>
+    </div>
+    <div class="grade">
+      <div class="gbox real">
+        <h4>真实测量 / 公开数据</h4>
+        <ul>
+          <li>DEM 高程（Terrarium 瓦片，真实米数）</li>
+          <li>OSM 建筑轮廓、水体边界、河道与道路走向</li>
+          <li>OSM 标注的 <code>height</code> / <code>building:levels</code></li>
+          <li>巴黎 14 处地标的经纬度位置</li>
+          <li>地标高度与主要面宽（公开数据）</li>
+        </ul>
+      </div>
+      <div class="gbox est">
+        <h4>估算 / 推断</h4>
+        <ul>
+          <li>无标签建筑的高度（按层数或类型估算）</li>
+          <li>道路宽度（按等级赋值 6–26 m）</li>
+          <li>历史海岸线、湖沼范围、河口退缩</li>
+          <li>水面高程（贴合 DEM 湖盆反推）</li>
+          <li>地标体块的比例与细部简省</li>
+          <li>市区地表色带（按高程分层设色）</li>
+        </ul>
+      </div>
+      <div class="gbox art">
+        <h4>艺术化处理</h4>
+        <ul>
+          <li>垂直夸张：浙江 ×10、城市总览 ×3、景点页 ×1</li>
+          <li>道路加宽、水面平铺、地标剔除带</li>
+          <li>地面光环、悬浮标记、选中高亮</li>
+          <li>雾效、光照、配色主题（铜金 / 石膏白 / 冷蓝钢 / 霓虹）</li>
+          <li>历史层的事件标注与场景化叙述</li>
+        </ul>
+      </div>
+    </div>
+    <p class="sec-note">
+      垂直夸张是影响观感最大的一项：它只放大高程，不改变平面坐标。因此任何「看起来」的坡度、山势与建筑高矮对比，
+      都需要按该页标注的倍数还原后再判断。景点专题页使用 1:1 真实比例，就是为了让地标与周边普通建筑的高度关系保持真实。
+    </p>
+  </section>
+
+  <!-- ------------------------------ 管线 ------------------------------ -->
+  <section id="pipeline">
+    <div class="sec-head">
+      <span class="sec-no">11</span>
+      <h2>本项目的加工链</h2>
+      <span class="en">PROCESSING PIPELINE</span>
+    </div>
+    <div class="pipe">
+      <div class="step"><div class="k">STEP 01</div><h5>抓取与缓存</h5><p>DEM 按瓦片、OSM 按 bbox 分块从公开端点拉取，原始数据留在 <code>assets/</code>，可复现。</p></div>
+      <div class="step"><div class="k">STEP 02</div><h5>解码与重采样</h5><p>Terrarium 解码为米，双线性重采样到目标网格；OSM 几何去空点、拼环、修复绕序。</p></div>
+      <div class="step"><div class="k">STEP 03</div><h5>抽稀与量化</h5><p>RDP 抽稀（河网约 220 m、建筑轮廓 0.5 m 量化），用 int16 定点存储，显著压缩体积。</p></div>
+      <div class="step"><div class="k">STEP 04</div><h5>烘焙为脚本</h5><p>几何与高程编码成 base64，写成 <code>js/*.js</code> 全局变量，运行时零网络、可直接 <code>file://</code> 打开。</p></div>
+      <div class="step"><div class="k">STEP 05</div><h5>建模与合批</h5><p>建筑按空间分块合批；地标用程序化体块重建；重叠的 OSM 体块按半径剔除。</p></div>
+      <div class="step"><div class="k">STEP 06</div><h5>渲染与标注</h5><p>垂直夸张、分层设色、光环与标记叠加；页面内标注数据性质与精度分级。</p></div>
+    </div>
+  </section>
+
+  <!-- ------------------------------ 再分发 ------------------------------ -->
+  <section id="rules">
+    <div class="sec-head">
+      <span class="sec-no">12</span>
+      <h2>再分发与商用</h2>
+      <span class="en">REDISTRIBUTION</span>
+    </div>
+    <div class="rules">
+      <div class="rule ok">
+        <div class="tagline">可以</div>
+        <p><b>离线自用、教学演示、内部汇报、公开发布截图与录屏。</b>发布图片或视频时保留「© OpenStreetMap contributors」署名即可。</p>
+      </div>
+      <div class="rule ok">
+        <div class="tagline">可以</div>
+        <p><b>商业项目中使用渲染结果。</b>OSM 数据允许商用；three.js 为 MIT 许可，同样允许商用。</p>
+      </div>
+      <div class="rule care">
+        <div class="tagline">需注意</div>
+        <p><b>分发数据文件。</b>把 <code>js/*.js</code> 中的数据文件（而非仅页面）对外提供时，这些文件属于 ODbL 衍生数据库，须以 ODbL 1.0 提供并保留署名与许可链接。</p>
+      </div>
+      <div class="rule care">
+        <div class="tagline">需注意</div>
+        <p><b>DEM 上游署名。</b>再分发地形衍生数据时，按 joerd attribution 文档保留 SRTM / GMTED2010 / NED / ETOPO1 / GEBCO 等上游来源说明。</p>
+      </div>
+      <div class="rule care">
+        <div class="tagline">需注意</div>
+        <p><b>不要暗示背书。</b>不得让第三方以为 OpenStreetMap、OpenStreetMap Foundation、Mapzen 或 AWS 认可、担保了本项目。</p>
+      </div>
+      <div class="rule no">
+        <div class="tagline">不建议</div>
+        <p><b>当作测绘或工程依据。</b>垂直夸张、高度估算、水面近似与手工地标都不满足测量精度；历史层是示意模型，不能作为史实引用。</p>
+      </div>
+      <div class="rule no">
+        <div class="tagline">不可</div>
+        <p><b>移除署名后二次分发 OSM 数据。</b>这违反 ODbL 的署名条款；也不得把 OSM 数据整体转授为更宽松的许可。</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <b>版本</b>　数据快照：2026 年 11 月（构建期抓取）。OpenStreetMap 持续更新，本页数据为当时状态。<br>
+    <b>反馈</b>　如发现来源标注遗漏或错误，请以本页所列官方链接核对后修正。<br>
+    <b>返回</b>　<a href="index.html">地区选择</a>　·　<a href="paris.html">巴黎</a>　·　<a href="paris-landmarks.html">巴黎 · 著名景点</a>　·　<a href="sydney.html">悉尼</a>　·　<a href="zhejiang.html">浙江历史地图</a>　·　<a href="fantasy1.html">幻想 1 号</a>
+  </footer>
+
+</div>
+</body>
+</html>

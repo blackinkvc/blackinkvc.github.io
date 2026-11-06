@@ -21,7 +21,9 @@
   const M = DEM.meta;
   const CLON = (M.lon0 + M.lon1) / 2, CLAT = (M.lat0 + M.lat1) / 2;
   const KX = BLD.kx, KY = BLD.ky;
-  const VE = 3;                       // 纵向夸张倍数（真实米 × VE）
+  /* 纵向夸张倍数（真实米 × VE）：城市总览页用 3 便于看清地形起伏；
+     景点专题页用 1（真实比例），否则普通建筑会被拉成细针、挡住地标轮廓。 */
+  const VE = typeof PAGE.ve === 'number' ? PAGE.ve : 3;
   const OFF = M.offset || 1000;
 
   /* ------------------------------ 解码 ------------------------------ */
@@ -292,6 +294,10 @@
   /* ------------------------------ 建筑 ------------------------------ */
   function buildBuildings() {
     const v = i16(BLD.v), m = i32(BLD.m);
+    /* 景点专题页：OSM 里同一栋地标的简易体块会和精细模型重叠，按 clear 半径剔除 */
+    const CLEAR = (window.CITY_LANDMARKS || [])
+      .filter(function (l) { return l.clear > 0; })
+      .map(function (l) { return { x: xOf(l.lon), z: zOf(l.lat), r: l.clear }; });
     const wall = { pos: [], nor: [], idx: [] };
     const roof = { pos: [], nor: [], idx: [] };
     let wBase = 0, rBase = 0;
@@ -304,6 +310,14 @@
       let sx = 0, sz = 0;
       for (let i = 0; i < nv; i++) { sx += v[(off + i) * 2]; sz += v[(off + i) * 2 + 1]; }
       sx /= nv * 2; sz /= nv * 2;                   // 中心（米）
+      if (CLEAR.length) {
+        let hit = false;
+        for (let ci = 0; ci < CLEAR.length; ci++) {
+          const c = CLEAR[ci];
+          if ((sx - c.x) * (sx - c.x) + (sz - c.z) * (sz - c.z) < c.r * c.r) { hit = true; break; }
+        }
+        if (hit) continue;
+      }
       const baseY = (hAt(CLON + sx / KX, CLAT - sz / KY) - 1.0) * VE;
       const topY = baseY + h * VE;
       // 墙：底环 + 顶环（每点两个顶点）
@@ -355,6 +369,19 @@
 
   /* ------------------------------ 相机 ------------------------------ */
   const cam = { az: Math.PI * 0.34, pol: 0.92, dist: 10500, tx: 0, ty: 0, tz: 0 };
+  /* 页面级默认机位（景点专题页用），URL 参数优先 */
+  (function () {
+    const v = PAGE.view;
+    if (!v) return;
+    if (v.dist) cam.dist = v.dist;
+    if (typeof v.ty === 'number') cam.ty = v.ty;
+    cam.az = v.az;
+    cam.pol = v.pol;
+    if (typeof v.lon === 'number' && typeof v.lat === 'number') {
+      cam.tx = xOf(v.lon);
+      cam.tz = zOf(v.lat);
+    }
+  })();
   /* 可选定位参数（便于截图与分享机位） */
   (function () {
     const q = new URLSearchParams(location.search);
@@ -362,6 +389,7 @@
     if (q.has('dist')) cam.dist = parseFloat(q.get('dist')) || cam.dist;
     if (q.has('az')) cam.az = parseFloat(q.get('az'));
     if (q.has('pol')) cam.pol = parseFloat(q.get('pol'));
+    if (q.has('ty')) cam.ty = parseFloat(q.get('ty'));   // 目标高程（场景单位，VE=1 时即米）
   })();
   const HOME = Object.assign({}, cam);
   function applyCamera() {
@@ -480,6 +508,7 @@
       de.setAttribute('data-atlas-bld', String(stats.bld));
       de.setAttribute('data-atlas-tris', String(Math.round(stats.tris)));
       de.setAttribute('data-atlas-city', PAGE.id || '');
+      de.setAttribute('data-atlas-ve', String(VE));
     }
   }
   loop();
@@ -489,4 +518,12 @@
   if (el) {
     el.textContent = `建筑 ${stats.bld.toLocaleString()} 栋 · 三角面 ${(Math.round(stats.tris) / 10000).toFixed(0)} 万 · 高程 ${Math.round(M.minM)}–${Math.round(M.maxM)} m`;
   }
+
+  /* 专题图层（景点等）挂载点：页面可按需加载 js/landmarks.js，
+     用这里暴露的场景对象往 world 里加模型，并复用同一台相机。 */
+  window.__ATLAS_CITY__ = {
+    THREE: THREE, scene: scene, world: world, camera: camera, renderer: renderer,
+    hAt: hAt, xOf: xOf, zOf: zOf, VE: VE, M: M, cam: cam,
+    applyCamera: applyCamera, updateScale: updateScale, stats: stats
+  };
 })();

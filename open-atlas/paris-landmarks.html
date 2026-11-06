@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>巴黎 · 著名景点专题 | PARIS LANDMARKS</title>
+<style>
+  :root{
+    --bg:#0a1117;
+    --panel:rgba(9,17,23,.82);
+    --line:rgba(206,176,120,.20);
+    --gold:#d9b979;
+    --gold-bright:#f3dda9;
+    --text:#ece6d8;
+    --muted:#a79c89;
+    --faint:#7d7465;
+    --teal:#6fb6c0;
+    --serif:"Songti SC","Noto Serif SC","STSong","SimSun",serif;
+    --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+    --accent:#e8c98a;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;height:100%;overflow:hidden;background:var(--bg);}
+  body{font-family:var(--sans);color:var(--text);-webkit-font-smoothing:antialiased;}
+  #scene{position:fixed;inset:0;width:100%;height:100%;display:block;cursor:grab;}
+  #scene:active{cursor:grabbing;}
+
+  /* ---------- 顶部 ---------- */
+  .hud{position:fixed;left:0;right:0;top:0;z-index:6;padding:18px 22px;
+    display:flex;align-items:flex-start;justify-content:space-between;gap:16px;pointer-events:none;}
+  .hud > *{pointer-events:auto;}
+  .back{display:inline-flex;align-items:center;gap:6px;font-size:11px;letter-spacing:.18em;
+    color:var(--muted);text-decoration:none;border:1px solid var(--line);border-radius:2px;
+    padding:6px 11px;background:var(--panel);transition:color .2s,border-color .2s;}
+  .back:hover{color:var(--gold-bright);border-color:rgba(224,193,137,.5);}
+  .title{margin-left:14px;}
+  .title .en{font-size:9.5px;letter-spacing:.30em;color:var(--gold);opacity:.8;}
+  .title h1{font-family:var(--serif);font-weight:600;font-size:25px;letter-spacing:.14em;margin:5px 0 0;}
+  .title small{display:block;margin-top:4px;font-size:10px;letter-spacing:.12em;color:var(--faint);}
+
+  /* ---------- 主题切换 ---------- */
+  .theme{display:flex;align-items:center;gap:6px;padding:5px;border:1px solid var(--line);
+    border-radius:3px;background:var(--panel);backdrop-filter:blur(6px);}
+  .theme .lb{font-size:9.5px;letter-spacing:.18em;color:var(--faint);padding:0 6px 0 4px;}
+  .theme button{font-family:var(--sans);font-size:10.5px;letter-spacing:.08em;color:var(--muted);
+    background:transparent;border:1px solid transparent;border-radius:2px;padding:5px 9px;cursor:pointer;
+    display:inline-flex;align-items:center;gap:6px;transition:color .18s,border-color .18s,background .18s;}
+  .theme button i{width:9px;height:9px;border-radius:50%;display:inline-block;}
+  .theme button[data-theme="bronze"] i{background:#c9a35c;}
+  .theme button[data-theme="ivory"] i{background:#e6dfcf;}
+  .theme button[data-theme="steel"] i{background:#93b4c9;}
+  .theme button[data-theme="neon"] i{background:#2ee6d6;}
+  .theme button:hover{color:var(--text);}
+  .theme button.on{color:var(--gold-bright);border-color:rgba(224,193,137,.45);background:rgba(217,185,121,.08);}
+
+  /* ---------- 左侧列表 ---------- */
+  .side{position:fixed;left:22px;top:122px;z-index:5;width:236px;max-height:calc(100vh - 170px);
+    display:flex;flex-direction:column;gap:6px;padding:12px 12px 10px;border:1px solid var(--line);
+    border-radius:3px;background:var(--panel);backdrop-filter:blur(6px);}
+  .side .hd{font-size:9.5px;letter-spacing:.22em;color:var(--gold);opacity:.85;
+    display:flex;justify-content:space-between;align-items:baseline;}
+  .side .hd em{font-style:normal;color:var(--faint);letter-spacing:.1em;font-size:9.5px;}
+  #lm-list{overflow:auto;display:flex;flex-direction:column;gap:2px;margin-top:4px;}
+  #lm-list::-webkit-scrollbar{width:5px;}
+  #lm-list::-webkit-scrollbar-thumb{background:rgba(206,176,120,.25);border-radius:3px;}
+  .li{display:flex;align-items:baseline;gap:8px;width:100%;text-align:left;cursor:pointer;
+    font-family:var(--sans);font-size:11.5px;color:#bdb3a2;background:transparent;border:0;
+    border-left:2px solid transparent;padding:5px 6px;transition:color .16s,background .16s,border-color .16s;}
+  .li i{font-style:normal;font-size:9px;color:var(--faint);letter-spacing:.06em;}
+  .li span{flex:1;}
+  .li em{font-style:normal;font-size:9.5px;color:var(--faint);}
+  .li:hover{color:var(--gold-bright);background:rgba(217,185,121,.06);}
+  .li.on{color:var(--gold-bright);border-left-color:var(--gold);background:rgba(217,185,121,.09);}
+
+  /* ---------- 右侧详情 ---------- */
+  .detail{position:fixed;right:22px;top:104px;z-index:5;width:300px;padding:16px 18px 15px;
+    border:1px solid var(--line);border-radius:3px;background:var(--panel);backdrop-filter:blur(8px);
+    opacity:0;transform:translateX(12px);pointer-events:none;transition:opacity .28s,transform .28s;}
+  .detail.on{opacity:1;transform:none;pointer-events:auto;}
+  .detail .idx{font-size:9px;letter-spacing:.22em;color:var(--faint);}
+  .detail .en{font-size:9.5px;letter-spacing:.24em;color:var(--gold);opacity:.85;margin-top:8px;}
+  .detail h2{font-family:var(--serif);font-size:22px;font-weight:600;letter-spacing:.10em;margin:4px 0 6px;}
+  .detail .meta{font-size:10.5px;letter-spacing:.08em;color:var(--teal);margin-bottom:9px;}
+  .detail p{margin:0;font-size:11.5px;line-height:1.95;color:#c3baa9;}
+
+  /* ---------- 标记 ---------- */
+  #lm-markers{position:fixed;inset:0;z-index:4;pointer-events:none;}
+  .mk{position:absolute;left:0;top:0;pointer-events:auto;cursor:pointer;background:transparent;border:0;
+    padding:0;font-family:var(--sans);display:flex;flex-direction:column;align-items:center;gap:3px;
+    transform:translate(-50%,-100%);transition:opacity .2s;}
+  .mk .dot{width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px rgba(232,201,138,.18);
+    transition:transform .18s,box-shadow .18s,background .18s;}
+  .mk .name{font-size:10px;letter-spacing:.06em;color:#efe7d6;white-space:nowrap;
+    padding:2px 6px;border-radius:2px;background:rgba(8,14,19,.72);border:1px solid rgba(232,201,138,.26);}
+  .mk:hover .dot{transform:scale(1.35);}
+  .mk:hover .name{color:var(--gold-bright);border-color:rgba(232,201,138,.6);}
+  .mk.on .dot{background:#fff3d4;transform:scale(1.5);box-shadow:0 0 0 5px rgba(255,243,212,.22);}
+  .mk.on .name{color:#fff6e0;border-color:rgba(255,243,212,.8);background:rgba(20,16,10,.85);}
+
+  /* ---------- 右下工具 ---------- */
+  .tools{position:fixed;right:22px;bottom:22px;z-index:6;display:flex;flex-direction:column;
+    align-items:flex-end;gap:9px;}
+  #btn-reset{font-family:var(--sans);font-size:10.5px;letter-spacing:.16em;color:var(--muted);
+    border:1px solid var(--line);border-radius:2px;background:var(--panel);padding:6px 11px;
+    cursor:pointer;transition:color .2s,border-color .2s;}
+  #btn-reset:hover{color:var(--gold-bright);border-color:rgba(224,193,137,.5);}
+  .tool-link{font-size:10.5px;letter-spacing:.14em;color:var(--teal);text-decoration:none;
+    border:1px solid var(--line);border-radius:2px;background:var(--panel);padding:6px 11px;
+    transition:color .2s,border-color .2s;}
+  .tool-link:hover{color:#a8dde4;border-color:rgba(111,182,192,.45);}
+  .scale{display:flex;flex-direction:column;align-items:flex-end;gap:4px;
+    font-size:10px;letter-spacing:.08em;color:var(--muted);}
+  #scale-bar{height:3px;border-left:1px solid var(--muted);border-right:1px solid var(--muted);
+    border-bottom:1px solid var(--muted);width:120px;}
+
+  .hint{position:fixed;left:22px;bottom:22px;z-index:5;font-size:10px;letter-spacing:.10em;
+    color:var(--faint);line-height:1.9;}
+  .hint b{color:var(--muted);font-weight:400;}
+
+  #loading{position:fixed;inset:0;z-index:20;display:flex;align-items:center;justify-content:center;
+    background:#070d12;color:var(--muted);font-size:12px;letter-spacing:.24em;transition:opacity .5s;}
+  #loading.gone{opacity:0;pointer-events:none;}
+
+  @media (max-width:900px){
+    .side{display:none;}
+    .detail{left:14px;right:14px;top:auto;bottom:80px;width:auto;}
+    .hint{display:none;}
+  }
+</style>
+</head>
+<body data-page="paris-landmarks">
+<canvas id="scene"></canvas>
+<div id="loading">正在构建巴黎与景点模型…</div>
+
+<div class="hud">
+  <div style="display:flex;align-items:flex-start;">
+    <a class="back" href="paris.html">‹ 巴黎</a>
+    <div class="title">
+      <div class="en">PARIS · LANDMARKS</div>
+      <h1>巴黎 · 著名景点</h1>
+      <small>真实地形与街区之上，按 1:1 真实比例重建的 <span id="lm-count">—</span> 处地标</small>
+    </div>
+  </div>
+  <div class="theme" id="lm-theme">
+    <span class="lb">高亮</span>
+    <button type="button" data-theme="bronze" class="on"><i></i>铜金</button>
+    <button type="button" data-theme="ivory"><i></i>石膏白</button>
+    <button type="button" data-theme="steel"><i></i>冷蓝钢</button>
+    <button type="button" data-theme="neon"><i></i>霓虹</button>
+  </div>
+</div>
+
+<div class="side">
+  <div class="hd"><span>景点 / LANDMARKS</span><em>点击定位</em></div>
+  <div id="lm-list"></div>
+</div>
+
+<div class="detail" id="lm-panel">
+  <div class="idx" id="lm-index">—</div>
+  <div class="en" id="lm-en">—</div>
+  <h2 id="lm-name">—</h2>
+  <div class="meta" id="lm-meta">—</div>
+  <p id="lm-intro">—</p>
+</div>
+
+<div id="lm-markers"></div>
+
+<div class="hint">
+  <b>标记</b>点击定位并查看简介　·　<b>拖动</b>旋转　·　<b>滚轮</b>缩放　·　<b>右键 / Shift</b> 平移
+</div>
+
+<div class="tools">
+  <a class="tool-link" href="data-sources.html">数据来源与许可</a>
+  <button id="btn-reset">复位视角</button>
+  <div class="scale"><span id="scale-text">1 km</span><div id="scale-bar"></div></div>
+</div>
+
+<div class="panel" style="display:none"><span id="stat-line"></span></div>
+
+<script>
+window.CITY_PAGE = {
+  id: 'paris', name: '巴黎', en: 'PARIS',
+  ve: 1,                                        // 真实比例：景点与普通建筑按真实米数对比
+  view: { lon: 2.3280, lat: 48.8580, dist: 5600, pol: 0.93, az: 0.90, ty: 40 }
+};
+</script>
+<script src="vendor/three.min.js"></script>
+<script src="js/city-paris-dem.js"></script>
+<script src="js/city-paris-water.js"></script>
+<script src="js/city-paris-roads.js"></script>
+<script src="js/city-paris-bld.js"></script>
+<script src="js/paris-landmarks-data.js"></script>
+<script src="js/city-app.js"></script>
+<script src="js/landmarks.js"></script>
+</body>
+</html>

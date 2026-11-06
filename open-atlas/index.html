@@ -91,6 +91,11 @@
     display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;
     font-size:10.5px;line-height:1.8;color:var(--faint);letter-spacing:.06em;}
   footer b{color:var(--gold);font-weight:500;letter-spacing:.14em;}
+  .data-link{display:inline-flex;align-items:center;gap:6px;margin-top:9px;
+    font-size:10.5px;letter-spacing:.14em;color:var(--gold);text-decoration:none;
+    border:1px solid var(--line);border-radius:2px;padding:5px 10px;background:var(--panel);
+    transition:color .2s,border-color .2s;}
+  .data-link:hover{color:var(--gold-bright);border-color:var(--line-strong);}
   @media (max-width:760px){
     .wrap{padding:38px 18px 40px;}
     header{flex-direction:column;align-items:flex-start;}
@@ -118,7 +123,8 @@
 
   <footer>
     <div><b>数据说明</b>　地形来自公开 DEM；水系与建筑轮廓来自 © OpenStreetMap contributors（ODbL）。<br>
-      「幻想 1 号」为推测性复原，巴黎 / 悉尼按真实数据重建，精度差异在各页内单独标注。</div>
+      「幻想 1 号」为推测性复原，巴黎 / 悉尼按真实数据重建，精度差异在各页内单独标注。<br>
+      <a class="data-link" href="data-sources.html">数据来源与许可 ›</a></div>
     <div><b>新增地区</b>　在 <code>js/regions.js</code> 追加一项并放入对应页面即可。</div>
   </footer>
 </div>

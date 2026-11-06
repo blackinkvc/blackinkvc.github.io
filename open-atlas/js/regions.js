@@ -40,9 +40,9 @@ window.ATLAS_REGIONS = [
     en: 'SYDNEY · NEW SOUTH WALES',
     page: 'sydney.html',
     tag: '真实数据',
-    status: 'building',
+    status: 'ready',
     desc: '悉尼港、太平洋岸线与市区：真实 DEM 地形、真实海湾与水体、真实街区与建筑轮廓，按城市尺度重建。',
-    meta: ['真实 DEM', 'OSM 水系', '建筑 footprint'],
-    warn: '数据管线与页面正在建设，尚未开放。'
+    meta: ['真实 DEM z13', 'OSM 海湾 / 水系', '6.7 万栋建筑'],
+    warn: '范围 151.130–151.320°E / 33.960–33.780°S，约 17.6 × 20 km；建筑高度取 OSM，缺标注者按类型估算；桥梁按路面平铺，未做架空结构。'
   }
 ];

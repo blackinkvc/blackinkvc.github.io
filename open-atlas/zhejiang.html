@@ -159,7 +159,7 @@
   .tools{position:fixed;z-index:10;right:26px;top:26px;display:flex;gap:8px;}
   .tool{width:34px;height:34px;border-radius:2px;border:1px solid var(--line);background:rgba(10,18,25,.72);
     color:var(--muted);cursor:pointer;font-size:12px;display:flex;align-items:center;justify-content:center;
-    transition:.2s;backdrop-filter:blur(8px);font-family:var(--serif);}
+    transition:.2s;backdrop-filter:blur(8px);font-family:var(--serif);text-decoration:none;}
   .tool:hover{color:var(--gold-bright);border-color:var(--line-strong);background:rgba(21,33,43,.9);}
   .tool.wide{width:auto;padding:0 13px;font-size:11px;letter-spacing:.12em;font-family:var(--sans);}
   .tool.on{color:#0a1218;background:linear-gradient(180deg,#e5cd9c,#c9ad73);border-color:#e5cd9c;}
@@ -293,6 +293,7 @@
   <button class="tool wide on" id="btn-streets" title="街道级行政边界开关（上城/拱墅/西湖/滨江/萧山/余杭）">街道</button>
   <button class="tool wide" id="btn-precision" title="数据来源与精度分级">精度</button>
   <button class="tool wide" id="btn-about" title="关于与参考">关于</button>
+  <a class="tool wide" href="data-sources.html" title="数据来源与许可">许可</a>
   <button class="tool" id="btn-reset" title="复位视角">⟲</button>
 </div>
 
