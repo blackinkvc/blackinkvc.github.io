@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>开箱模拟器</title>
+<style>html,body{margin:0;height:100%;background:#0d0f14;color:#cfd6e4;font-family:system-ui,-apple-system,"Segoe UI",sans-serif}#boot{display:flex;align-items:center;justify-content:center;height:100%;font-size:14px;letter-spacing:.05em;opacity:.8}</style>
+</head>
+<body>
+<div id="boot">正在加载开箱模拟器…</div>
+<script>
+(async function () {
+  try {
+    var res = await fetch('app.b64', { cache: 'no-cache' });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    var b64 = (await res.text()).trim();
+    var bin = atob(b64);
+    var bytes = new Uint8Array(bin.length);
+    for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+    var html = new TextDecoder('utf-8').decode(bytes);
+    document.open();
+    document.write(html);
+    document.close();
+  } catch (e) {
+    document.getElementById('boot').textContent = '加载失败：' + e.message;
+  }
+})();
+</script>
+</body>
+</html>

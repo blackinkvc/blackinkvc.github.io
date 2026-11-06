@@ -13,21 +13,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Materialize kaibox
+      - name: Fetch payload
         run: |
           set -euo pipefail
-          URL="$(tr -d '\r\n ' < .publish/kaibox.url)"
+          URL="$(head -n1 .publish/kaibox.url | tr -d '\r\n ')"
+          echo "payload: $URL"
           mkdir -p kaibox
-          curl -fsSL --retry 3 --retry-delay 5 "$URL" -o /tmp/kaibox.b64
-          base64 -d /tmp/kaibox.b64 > kaibox/index.html
-          test -s kaibox/index.html
-          ls -l kaibox/index.html
+          curl -fsSL --retry 3 --retry-delay 5 "$URL" -o kaibox/app.b64
+          wc -c kaibox/app.b64
       - name: Commit
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add kaibox/index.html
-          if git diff --cached --quiet; then echo "no change"; exit 0; fi
-          git commit -m "publish: kaibox"
+          git add kaibox/app.b64
+          if git diff --cached --quiet; then echo 'no change'; exit 0; fi
+          git commit -m "publish: kaibox payload"
           git push
