@@ -1,6 +1,10 @@
 /* 巴黎 · 著名景点专题图层
    依赖 city-app.js 暴露的 window.__ATLAS_CITY__（场景 / 相机 / 高程查询）。
    每个景点按真实体量在米制坐标里建模，再整体按 VE 竖向夸张，与周边 OSM 建筑同尺度。 */
+/* 14 座精细模型同步建完约 0.45 s，会把首帧一起堵掉；
+   先让地形/水系/道路那一帧上屏，隔两帧再建。 */
+requestAnimationFrame(function () {
+  requestAnimationFrame(function () {
 (function () {
   'use strict';
   const C = window.__ATLAS_CITY__;
@@ -552,3 +556,5 @@
     if (i >= 0) setTimeout(function () { select(i, false); }, 80);
   }
 })();
+  });
+});
