@@ -6,7 +6,7 @@
 <title>战争纪元 · 全球冲突 3D 地球时间轴</title>
 <meta name="description" content="从公元前3000年到当代的全球战争冲突三维地球时间轴。数据来自 UCDP GED、DBpedia 与公开史料考据整理。">
 <link rel="icon" href="data:,">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=20261106">
 </head>
 <body>
 <div id="app">
@@ -334,6 +334,31 @@
 <script src="data/admin1.js"></script>
 <script src="data/textures.js"></script>
 <script src="data/world_data.js"></script>
-<script src="app.js"></script>
+<script src="app.js?v=20261106"></script>
+<script>
+/* 启动看门狗：脚本或数据未完成初始化时，把“一直转圈”变成可读的失败原因 */
+(function () {
+  var failed = false;
+  function fail(why) {
+    if (failed || window.__ATLAS) return;
+    failed = true;
+    var box = document.getElementById('errorBox');
+    if (!box) return;
+    box.classList.add('show');
+    var ld = document.getElementById('loading');
+    if (ld) ld.classList.add('hide');
+    var et = document.getElementById('errorText');
+    if (et) et.textContent = '页面未能完成初始化：' + why;
+    var ed = document.getElementById('errorDetail');
+    if (ed) ed.textContent = 'URL: ' + location.href + '\n若为线上访问，请确认网络能打开 data/world_data.js；若为本地双击打开，请确认 data/ 与 vendor/ 文件完整，且浏览器已启用 WebGL。';
+  }
+  window.addEventListener('error', function (ev) {
+    var t = ev && ev.target;
+    if (t && t.tagName === 'SCRIPT') fail('脚本加载失败（' + (t.src || '') + '）');
+    else setTimeout(function () { fail('脚本执行出错'); }, 1200);
+  }, true);
+  setTimeout(function () { fail('30 秒内未完成加载（数据约 19 MB，网络过慢或被拦截）'); }, 30000);
+})();
+</script>
 </body>
 </html>

@@ -8,6 +8,13 @@
 
   var DATA = window.ATLAS_DATA;
 
+  /* 数据脚本缺失/被网络中断时不再抛 TypeError 白屏，直接给出可读原因 */
+  if (!DATA || !DATA.events || !DATA.events.length) {
+    showError('数据文件未载入',
+      '未能读取 data/world_data.js（页面数据）。请检查网络后刷新；本地打开时请确认 data/ 与 vendor/ 目录与 index.html 在同一层且文件完整。');
+    return;
+  }
+
   function $(sel, root) { return (root || document).querySelector(sel); }
   function $all(sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
   function esc(s) {
@@ -3133,9 +3140,19 @@
     /* 地域：事件数 + 国家热点 */
     var regionCount = {};
     var countryCount = {};
+    var enSkip = 0;
     all.forEach(function (e) {
       regionCount[e.r] = (regionCount[e.r] || 0) + 1;
-      var cs = String(e.loc || '').split('·')[0].trim();
+      var cs;
+      if (isEN()) {
+        /* 英文界面：取英文地点末段（UCDP 为 “Place, Country”）；
+           只有中文地名的考据条目无法在运行时可靠翻译，单列计数而不混入国家榜。 */
+        var raw = String(e.lce || e.loc || '');
+        cs = raw.split(',').pop().trim();
+        if (!cs || /[\u4e00-\u9fff]/.test(cs)) { enSkip++; return; }
+      } else {
+        cs = String(e.loc || '').split('·')[0].trim();
+      }
       if (cs) countryCount[cs] = (countryCount[cs] || 0) + 1;
     });
     var regionItems = Object.keys(regionCount).sort(function (a, b) { return regionCount[b] - regionCount[a]; })
@@ -3206,7 +3223,8 @@
       svgHBar(regionItems) + '</section>' +
 
       '<section class="dash-sec"><h3>' + L('二 · 地理分布：热点国家（前 10）', 'II · GEOGRAPHY: TOP 10 COUNTRIES') + '</h3>' +
-      '<p class="dash-cap">' + L('按条目地点字段中的国家名统计，同一国家不同政权未合并。', 'Counted from the country segment of each location string; different polities are not merged.') + '</p>' +
+      '<p class="dash-cap">' + L('按条目地点字段中的国家名统计，同一国家不同政权未合并。', 'Counted from the country segment of each location string; different polities are not merged.')
+        + (isEN() && enSkip ? ' ' + enSkip + ' records have no English place name and are excluded here.' : '') + '</p>' +
       svgHBar(topCountries) + '</section>' +
 
       '<section class="dash-sec"><h3>' + L('三 · 规模：交战方数量', 'III · SCALE: BELLIGERENTS') + '</h3>' +
