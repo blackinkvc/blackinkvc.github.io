@@ -11,16 +11,19 @@
     document.documentElement.setAttribute('data-js-error', String(e.message || e));
   });
 
-  const DEM = window.CITY_DEM, BLD = window.CITY_BLD, RD = window.CITY_ROADS, WT = window.CITY_WATER;
+  const DEM = window.CITY_DEM, RD = window.CITY_ROADS, WT = window.CITY_WATER;
   const PAGE = window.CITY_PAGE || {};
-  if (!DEM || !BLD || !RD || !WT) {
+  /* 建筑数据体量最大（巴黎 11.7 MB），允许页面把它推迟到首帧之后再加载：
+     PAGE.bld 给出脚本地址，city-app 会在画面上屏后自行注入。 */
+  let BLD = window.CITY_BLD || null;
+  if (!DEM || !RD || !WT) {
     document.getElementById('loading').textContent = '数据缺失：城市数据脚本未加载';
     return;
   }
 
   const M = DEM.meta;
   const CLON = (M.lon0 + M.lon1) / 2, CLAT = (M.lat0 + M.lat1) / 2;
-  const KX = BLD.kx, KY = BLD.ky;
+  const KX = RD.kx, KY = RD.ky;
   /* 纵向夸张倍数（真实米 × VE）：城市总览页用 3 便于看清地形起伏；
      景点专题页用 1（真实比例），否则普通建筑会被拉成细针、挡住地标轮廓。 */
   const VE = typeof PAGE.ve === 'number' ? PAGE.ve : 3;
@@ -82,7 +85,7 @@
   const world = new THREE.Group();
   scene.add(world);
 
-  const stats = { tris: 0, bld: BLD.n, roads: RD.n };
+  const stats = { tris: 0, bld: 0, roads: RD.n };
 
   /* ------------------------------ 地形 ------------------------------ */
   function buildTerrain() {
@@ -292,8 +295,19 @@
   }
 
   /* ------------------------------ 建筑 ------------------------------ */
-  function buildBuildings() {
-    const v = i16(BLD.v), m = i32(BLD.m);
+  /* 183k 栋建筑一次性建完会形成 1 秒级长任务，把首帧堵死。
+     解码只做一次，几何按 features 区间分块构建，块间让出主线程。 */
+  let BL = null;
+  function prepBuildings() {
+    if (!BLD) return false;
+    BL = { v: i16(BLD.v), m: i32(BLD.m) };
+    window.CITY_BLD = null;          // 释放 11.7 MB 的 base64 字符串
+    BLD = null;
+    return true;
+  }
+  function buildBuildings(from, to) {
+    if (!BL) return 0;
+    const v = BL.v, m = BL.m;
     /* 景点专题页：OSM 里同一栋地标的简易体块会和精细模型重叠，按 clear 半径剔除 */
     const CLEAR = (window.CITY_LANDMARKS || [])
       .filter(function (l) { return l.clear > 0; })
@@ -304,7 +318,7 @@
     let rendered = 0;
     const cap = 560;   // 高度上限（米），防止异常标签把地块拉飞
 
-    for (let e = 0; e < m.length; e += 3) {
+    for (let e = from; e < to; e += 3) {
       const off = m[e], nv = m[e + 1], hs = m[e + 2];
       const h = Math.min(cap, Math.abs(hs) / 2);
       let sx = 0, sz = 0;
@@ -364,7 +378,8 @@
     }
     mesh(wall, 0x8e857a, 0x151515);
     mesh(roof, 0x555049, 0x101010);
-    stats.bld = rendered;
+    stats.bld += rendered;
+    return rendered;
   }
 
   /* ------------------------------ 相机 ------------------------------ */
@@ -479,13 +494,21 @@
   }
 
   /* ------------------------------ 启动 ------------------------------ */
-  buildTerrain();
-  buildSea();
-  buildWater();
-  buildRoads();
-  buildBuildings();
-  applyCamera();
-  updateScale();
+  const de = document.documentElement;
+  de.setAttribute('data-atlas-city', PAGE.id || '');
+  de.setAttribute('data-atlas-ve', String(VE));
+
+  /* 专题图层（景点等）挂载点：页面可按需加载 js/landmarks.js，
+     用这里暴露的场景对象往 world 里加模型，并复用同一台相机。
+     必须同步挂上，因为 landmarks.js 紧随本脚本执行。 */
+  window.__ATLAS_CITY__ = {
+    THREE: THREE, scene: scene, world: world, camera: camera, renderer: renderer,
+    hAt: hAt, xOf: xOf, zOf: zOf, VE: VE, M: M, cam: cam,
+    applyCamera: applyCamera, updateScale: updateScale, stats: stats
+  };
+
+  const statEl = document.getElementById('stat-line');
+  function setStatus(t) { if (statEl) statEl.textContent = t; }
 
   window.addEventListener('resize', function () {
     camera.aspect = window.innerWidth / window.innerHeight;
@@ -494,36 +517,69 @@
     updateScale();
   });
 
+  function nextFrame() {
+    return new Promise(function (res) { requestAnimationFrame(function () { res(); }); });
+  }
+  function loadScript(src) {
+    return new Promise(function (res) {
+      const s = document.createElement('script');
+      s.src = src;
+      s.onload = res;
+      s.onerror = res;                    // 失败也要往下走，至少保留地形/水系/道路
+      document.body.appendChild(s);
+    });
+  }
+
   let first = true;
   function loop() {
     requestAnimationFrame(loop);
     renderer.render(scene, camera);
     if (first) {
+      /* 首帧：地形已经在场，先把画面放出来，建筑随后分块补上 */
       first = false;
       const ld = document.getElementById('loading');
       if (ld) ld.classList.add('gone');
-      const de = document.documentElement;
-      de.setAttribute('data-atlas-ready', '1');
-      de.setAttribute('data-atlas-ready-ms', String(Math.round(performance.now() - T0)));
-      de.setAttribute('data-atlas-bld', String(stats.bld));
-      de.setAttribute('data-atlas-tris', String(Math.round(stats.tris)));
-      de.setAttribute('data-atlas-city', PAGE.id || '');
-      de.setAttribute('data-atlas-ve', String(VE));
+      de.setAttribute('data-atlas-first', '1');
+      de.setAttribute('data-atlas-first-ms', String(Math.round(performance.now() - T0)));
     }
   }
-  loop();
 
-  /* 页脚统计 */
-  const el = document.getElementById('stat-line');
-  if (el) {
-    el.textContent = `建筑 ${stats.bld.toLocaleString()} 栋 · 三角面 ${(Math.round(stats.tris) / 10000).toFixed(0)} 万 · 高程 ${Math.round(M.minM)}–${Math.round(M.maxM)} m`;
+  function finish() {
+    de.setAttribute('data-atlas-ready', '1');
+    de.setAttribute('data-atlas-ready-ms', String(Math.round(performance.now() - T0)));
+    de.setAttribute('data-atlas-bld', String(stats.bld));
+    de.setAttribute('data-atlas-tris', String(Math.round(stats.tris)));
+    setStatus(`建筑 ${stats.bld.toLocaleString()} 栋 · 三角面 ${(Math.round(stats.tris) / 10000).toFixed(0)} 万 · 高程 ${Math.round(M.minM)}–${Math.round(M.maxM)} m`);
   }
 
-  /* 专题图层（景点等）挂载点：页面可按需加载 js/landmarks.js，
-     用这里暴露的场景对象往 world 里加模型，并复用同一台相机。 */
-  window.__ATLAS_CITY__ = {
-    THREE: THREE, scene: scene, world: world, camera: camera, renderer: renderer,
-    hAt: hAt, xOf: xOf, zOf: zOf, VE: VE, M: M, cam: cam,
-    applyCamera: applyCamera, updateScale: updateScale, stats: stats
-  };
+  /* 分阶段构建：地形 → 首帧 → 水系/道路 → 建筑（可延迟加载 + 分块）→ 就绪 */
+  (async function boot() {
+    buildTerrain();
+    buildSea();
+    applyCamera();
+    updateScale();
+    loop();
+
+    await nextFrame();
+    buildWater();
+    buildRoads();
+    setStatus('正在加载建筑数据…');
+    await nextFrame();
+
+    if (!BLD && PAGE.bld) {
+      await loadScript(PAGE.bld);
+      BLD = window.CITY_BLD || null;
+    }
+    if (prepBuildings()) {
+      const total = BL.m.length / 3;
+      const CHUNKS = 6;
+      const per = Math.ceil(total / CHUNKS) * 3;
+      for (let c = 0; c < CHUNKS; c++) {
+        const hit = buildBuildings(c * per, Math.min(BL.m.length, (c + 1) * per));
+        setStatus(`建筑 ${Math.round((c + 1) / CHUNKS * 100)}% · ${stats.bld.toLocaleString()} 栋 · 三角面 ${(Math.round(stats.tris) / 10000).toFixed(0)} 万`);
+        if (hit) await nextFrame();
+      }
+    }
+    finish();
+  })();
 })();
