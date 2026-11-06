@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>数据来源与许可 · 全球自然灾害 3D 地球监测</title>
+<style>
+:root{
+  --bg:#070a12;
+  --bg-2:#0b0f18;
+  --surface:rgba(19,25,35,.82);
+  --surface-deep:rgba(10,14,21,.93);
+  --rule:rgba(224,212,195,.12);
+  --rule-2:rgba(224,212,195,.26);
+  --ink:#f3efe8;
+  --ink-2:#d2d8df;
+  --muted:#98a2b0;
+  --dim:#6b7583;
+  --brass:#d8a86a;
+  --brass-2:#f2cd98;
+  --brass-3:rgba(216,168,106,.16);
+  --steel:#8fa8bd;
+  --ok:#8cbfa0;
+  --warn:#d9a44e;
+  --danger:#d9645c;
+  --mono:"Cascadia Mono","Consolas","SFMono-Regular",ui-monospace,monospace;
+  --sans:"Segoe UI","PingFang SC","Microsoft YaHei UI","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:92px}
+body{margin:0;background:
+  radial-gradient(ellipse 70% 50% at 50% -10%,#12202f 0%,transparent 60%),
+  radial-gradient(ellipse 40% 40% at 92% 12%,rgba(216,168,106,.07) 0%,transparent 70%),
+  var(--bg);
+  color:var(--ink);font-family:var(--sans);font-size:14px;line-height:1.65;
+  -webkit-font-smoothing:antialiased}
+::selection{background:rgba(216,168,106,.28);color:#fff}
+a{color:var(--brass-2);text-decoration:none;border-bottom:1px solid rgba(242,205,152,.24)}
+a:hover{border-bottom-color:var(--brass-2)}
+code{font-family:var(--mono);font-size:11.5px;color:#c9d3dd;background:rgba(255,255,255,.045);
+  padding:1px 5px;border-radius:4px;word-break:break-all}
+
+/* ---------- top bar ---------- */
+.topbar{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:18px;
+  padding:0 22px;height:64px;border-bottom:1px solid rgba(224,212,195,.08);
+  background:linear-gradient(180deg,rgba(8,11,18,.96),rgba(8,11,18,.82));
+  backdrop-filter:blur(16px) saturate(1.1)}
+.brand{display:flex;align-items:center;gap:11px;min-width:0}
+.brand .mark{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;flex:0 0 32px;
+  background:linear-gradient(145deg,rgba(216,168,106,.22),rgba(216,168,106,.04));
+  border:1px solid rgba(216,168,106,.34)}
+.brand .mark svg{width:17px;height:17px;stroke:var(--brass-2);fill:none;stroke-width:1.5}
+.brand b{font-size:13.5px;font-weight:600;letter-spacing:.1em;white-space:nowrap}
+.brand small{display:block;font-family:var(--mono);font-size:8.5px;letter-spacing:.16em;color:var(--dim)}
+.topbar .spacer{flex:1}
+.back-btn{display:inline-flex;align-items:center;gap:7px;height:32px;padding:0 14px;border-radius:9px;
+  border:1px solid var(--rule);background:rgba(255,255,255,.025);color:var(--ink-2);
+  font-size:11.5px;letter-spacing:.04em;border-bottom:1px solid var(--rule);
+  transition:border-color .18s var(--ease),color .18s,background .18s}
+.back-btn:hover{border-color:rgba(216,168,106,.46);color:var(--brass-2);background:rgba(216,168,106,.08)}
+.back-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.7}
+
+/* ---------- layout ---------- */
+.wrap{max-width:1220px;margin:0 auto;padding:44px 26px 90px;display:grid;
+  grid-template-columns:228px minmax(0,1fr);gap:52px;align-items:start}
+.content{min-width:0}
+.toc{position:sticky;top:92px;align-self:start;font-size:12px}
+.toc h4{margin:0 0 10px;font-size:9px;font-weight:600;letter-spacing:.2em;color:var(--dim)}
+.toc a{display:block;padding:5px 10px;margin:1px 0;border-radius:7px;border:none;color:var(--muted);
+  border-left:2px solid transparent;transition:color .16s,background .16s,border-color .16s}
+.toc a:hover{color:var(--ink-2);background:rgba(255,255,255,.035)}
+.toc a.on{color:var(--brass-2);background:rgba(216,168,106,.08);border-left-color:var(--brass)}
+.toc .sub{padding-left:20px;font-size:11.5px;color:var(--dim)}
+.toc .sep{height:1px;margin:12px 10px;background:var(--rule)}
+
+/* ---------- hero ---------- */
+.hero{margin-bottom:44px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:9.5px;
+  letter-spacing:.18em;color:var(--brass);text-transform:uppercase;margin-bottom:14px}
+.eyebrow:before{content:"";width:22px;height:1px;background:var(--brass)}
+.hero h1{margin:0 0 12px;font-size:34px;line-height:1.22;letter-spacing:.02em;font-weight:600}
+.hero .lede{margin:0;max-width:760px;font-size:14px;color:var(--ink-2);line-height:1.8}
+.hero .lede b{color:var(--ink);font-weight:600}
+.meta-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.chip{display:inline-flex;align-items:center;gap:6px;height:27px;padding:0 11px;border-radius:999px;
+  border:1px solid var(--rule);background:rgba(255,255,255,.022);
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.05em;color:var(--muted)}
+.chip b{color:var(--brass-2);font-weight:600}
+
+/* ---------- sections / cards ---------- */
+section{scroll-margin-top:92px;margin-bottom:46px}
+.sec-head{display:flex;align-items:baseline;gap:12px;margin:0 0 6px;padding-bottom:10px;
+  border-bottom:1px solid var(--rule)}
+.sec-head h2{margin:0;font-size:18px;font-weight:600;letter-spacing:.06em;display:flex;align-items:center;gap:10px}
+.sec-head h2:before{content:"";width:2px;height:15px;border-radius:2px;
+  background:linear-gradient(180deg,var(--brass-2),var(--brass))}
+.sec-head .no{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:.12em}
+.sec-note{margin:10px 0 18px;font-size:12.5px;color:var(--muted);line-height:1.75}
+
+.src{position:relative;border:1px solid var(--rule);border-radius:16px;padding:20px 22px 18px;
+  background:linear-gradient(155deg,rgba(24,30,41,.72),rgba(10,14,21,.86));
+  box-shadow:0 16px 44px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,246,232,.05);
+  margin-bottom:14px;overflow:hidden}
+.src:before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--rail,var(--steel))}
+.src.pd{--rail:var(--ok)}
+.src.open{--rail:var(--steel)}
+.src.restrict{--rail:var(--warn)}
+.src.tbd{--rail:var(--danger)}
+.src-top{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 16px}
+.src-top h3{margin:0;font-size:15.5px;font-weight:600;letter-spacing:.02em;color:var(--ink)}
+.src-top h3 .en{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:.04em;margin-left:8px;font-weight:400}
+.src-top .url{font-family:var(--mono);font-size:10.5px;color:var(--steel);border-bottom:none;white-space:nowrap}
+.src-top .url:hover{color:var(--brass-2);border-bottom:1px solid rgba(242,205,152,.4)}
+.src-url{margin:-6px 0 13px;font-family:var(--mono);font-size:10px;line-height:1.5}
+.src-url a{color:var(--steel);border-bottom:none;word-break:break-all}
+.src-url a:hover{color:var(--brass-2);border-bottom:1px solid rgba(242,205,152,.4)}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 14px}
+.badge{display:inline-flex;align-items:center;height:21px;padding:0 8px;border-radius:6px;
+  font-size:9.5px;letter-spacing:.03em;border:1px solid transparent;white-space:nowrap}
+.b-pd{color:#aad6b8;border-color:rgba(140,191,160,.34);background:rgba(140,191,160,.08)}
+.b-open{color:#b6c9d8;border-color:rgba(143,168,189,.34);background:rgba(143,168,189,.08)}
+.b-restrict{color:#edc78c;border-color:rgba(217,164,78,.38);background:rgba(217,164,78,.08)}
+.b-tbd{color:#e8a9a4;border-color:rgba(217,100,92,.36);background:rgba(217,100,92,.07)}
+.b-neutral{color:var(--muted);border-color:var(--rule);background:rgba(255,255,255,.02)}
+
+.fields{display:grid;grid-template-columns:96px minmax(0,1fr);gap:7px 16px;margin:0;font-size:12.5px}
+.fields dt{color:var(--dim);font-size:10.5px;letter-spacing:.08em;padding-top:2px}
+.fields dd{margin:0;color:var(--ink-2);line-height:1.72}
+.fields dd b{color:var(--ink);font-weight:600}
+.fields dd ul{margin:2px 0 0;padding-left:16px}
+.fields dd li{margin:2px 0}
+.fields .warn{color:#e7bd82}
+.fields .tbd{color:#e8a9a4}
+
+/* ---------- tables ---------- */
+.table-wrap{overflow-x:auto;border:1px solid var(--rule);border-radius:14px;
+  background:rgba(10,14,21,.62);margin:4px 0 18px}
+table{width:100%;border-collapse:collapse;font-size:11.5px;min-width:680px}
+thead th{position:relative;text-align:left;font-weight:500;font-size:9.5px;letter-spacing:.12em;
+  color:var(--dim);padding:11px 13px;border-bottom:1px solid var(--rule-2);white-space:nowrap;
+  background:rgba(255,255,255,.018)}
+tbody td{padding:10px 13px;border-bottom:1px solid rgba(224,212,195,.065);color:var(--ink-2);vertical-align:top;line-height:1.55}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover td{background:rgba(255,255,255,.02)}
+tbody td b{color:var(--ink);font-weight:600}
+td .mono,.mono{font-family:var(--mono);font-size:10px;color:var(--dim)}
+.tag{display:inline-block;padding:1px 6px;border-radius:5px;font-size:9px;border:1px solid var(--rule);color:var(--muted);white-space:nowrap}
+.tag.ok{color:#aad6b8;border-color:rgba(140,191,160,.3);background:rgba(140,191,160,.06)}
+.tag.warn{color:#edc78c;border-color:rgba(217,164,78,.32);background:rgba(217,164,78,.06)}
+.tag.bad{color:#e8a9a4;border-color:rgba(217,100,92,.3);background:rgba(217,100,92,.05)}
+
+/* ---------- callouts ---------- */
+.callout{border:1px solid var(--rule);border-left:2px solid var(--brass);border-radius:12px;
+  padding:15px 18px;background:rgba(216,168,106,.045);margin:16px 0;font-size:12.5px;color:var(--ink-2)}
+.callout b{color:var(--brass-2);font-weight:600}
+.callout.danger{border-left-color:var(--danger);background:rgba(217,100,92,.05)}
+.callout.danger b{color:#e8a9a4}
+.callout.neutral{border-left-color:var(--steel);background:rgba(143,168,189,.045)}
+.callout.neutral b{color:#bfd2e0}
+.callout p{margin:6px 0 0}
+.callout p:first-child{margin-top:0}
+
+/* ---------- misc ---------- */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.mini{border:1px solid var(--rule);border-radius:13px;padding:14px 16px;background:rgba(255,255,255,.018)}
+.mini h5{margin:0 0 6px;font-size:11px;letter-spacing:.1em;color:var(--brass-2);font-weight:600}
+.mini p{margin:0;font-size:12px;color:var(--muted);line-height:1.7}
+.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0 30px}
+.stat{border:1px solid var(--rule);border-radius:12px;padding:12px 14px;background:rgba(255,255,255,.018)}
+.stat .n{font-family:var(--mono);font-size:20px;color:var(--brass-2);letter-spacing:.02em}
+.stat .l{margin-top:2px;font-size:10px;color:var(--dim);letter-spacing:.06em}
+.foot{margin-top:56px;padding-top:18px;border-top:1px solid var(--rule);font-size:11px;color:var(--dim);line-height:1.8}
+.foot b{color:var(--muted)}
+.kbd{font-family:var(--mono);font-size:10px;border:1px solid var(--rule-2);border-bottom-width:2px;
+  border-radius:4px;padding:0 4px;color:var(--muted)}
+
+@media (max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:34px 20px 70px}
+  .toc{display:none}
+  .stat-row{grid-template-columns:1fr 1fr}
+}
+@media (max-width:720px){
+  .topbar{padding:0 14px;gap:10px}
+  .brand small{display:none}
+  .hero h1{font-size:26px}
+  .fields{grid-template-columns:1fr;gap:3px}
+  .fields dt{margin-top:9px}
+  .grid-2{grid-template-columns:1fr}
+  .src{padding:17px 16px 15px}
+  .src-top h3{font-size:14px}
+  .src-top .url{white-space:normal;word-break:break-all}
+  .stat-row{gap:8px}
+  table{font-size:11px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important;animation:none!important}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <div class="mark">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="8.4"/>
+        <ellipse cx="12" cy="12" rx="4" ry="8.4"/>
+        <path d="M3.6 12h16.8"/>
+      </svg>
+    </div>
+    <div>
+      <b>全球自然灾害监测</b>
+      <small>SOURCES &amp; LICENSES</small>
+    </div>
+  </div>
+  <div class="spacer"></div>
+  <a class="back-btn" href="index.html">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+    返回地球
+  </a>
+</header>
+
+<main class="wrap">
+  <aside class="toc" aria-label="目录">
+    <h4>目录</h4>
+    <a href="#overview">总览与许可矩阵</a>
+    <a href="#realtime">实时数据接口</a>
+    <a class="sub" href="#usgs">USGS 地震目录</a>
+    <a class="sub" href="#eonet">NASA EONET</a>
+    <a class="sub" href="#nws">NOAA / NWS 预警</a>
+    <a href="#history">历史灾害摘编</a>
+    <a class="sub" href="#ncei">NOAA / NCEI</a>
+    <a class="sub" href="#gvp">Smithsonian GVP</a>
+    <a class="sub" href="#emdat">EM-DAT 引用</a>
+    <a href="#base">底图、地理与影像</a>
+    <a href="#software">软件依赖</a>
+    <a href="#processing">本项目做了哪些加工</a>
+    <a href="#limits">接口限制与请求频率</a>
+    <a href="#redistribute">再分发注意事项</a>
+    <a href="#scope">免责声明与适用边界</a>
+    <a href="#todo">待核实与整改清单</a>
+    <div class="sep"></div>
+    <a href="index.html">← 返回地球页面</a>
+  </aside>
+
+  <div class="content">
+
+    <section class="hero" id="top">
+      <div class="eyebrow">Data Provenance</div>
+      <h1>数据来源与许可</h1>
+      <p class="lede">本页逐项列出页面实际使用的数据与素材，说明<b>官方出处、许可类型、法律要求、本项目所做加工</b>与<b>再分发注意</b>。实时数据只做可视化，历史数据为人工摘编而非全量编年；所有本地素材均可离线读取，页面不依赖第三方 CDN。</p>
+      <div class="meta-row">
+        <span class="chip">实时源 <b>3</b></span>
+        <span class="chip">历史摘编 <b>168 条</b></span>
+        <span class="chip">本地依赖 <b>4</b></span>
+        <span class="chip">待核实项 <b>2</b></span>
+        <span class="chip">最后更新 <b>2026-11-06</b></span>
+      </div>
+    </section>
+
+    <section id="overview">
+      <div class="sec-head"><span class="no">01</span><h2>总览与许可矩阵</h2></div>
+      <p class="sec-note">先给结论：大部分数据来自美国政府机构，属公有领域，可再分发但需注明来源与获取时间；软件依赖为 MIT / ISC，需保留许可声明；Smithsonian GVP 与 EM-DAT 有各自的引用与授权条件；夜光贴图的版本出处尚待核实。下表可直接作为再分发前的核查清单。</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>来源</th><th>类别</th><th>许可 / 条款</th><th>需要署名</th><th>可否再分发</th><th>本项目用法</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>USGS 地震目录</b></td><td>实时接口</td>
+              <td>美国联邦政府作品 · 公有领域（17 U.S.C. §105）</td>
+              <td>建议注明来源与时间</td>
+              <td><span class="tag ok">可以</span></td>
+              <td>GeoJSON 目录，页面内加工后显示</td>
+            </tr>
+            <tr>
+              <td><b>NASA EONET v3</b></td><td>实时接口</td>
+              <td>NASA 开放数据 / 媒体使用指南</td>
+              <td>建议注明 NASA EONET</td>
+              <td><span class="tag ok">可以</span></td>
+              <td>事件点、风暴路径、多边形质心</td>
+            </tr>
+            <tr>
+              <td><b>NOAA / NWS 预警</b></td><td>实时接口</td>
+              <td>美国联邦政府作品 · 公有领域</td>
+              <td>建议注明 NWS 与时间</td>
+              <td><span class="tag ok">可以</span></td>
+              <td>仅取海啸类预警，点/面质心</td>
+            </tr>
+            <tr>
+              <td><b>NOAA / NCEI 目录</b></td><td>历史参考</td>
+              <td>美国联邦政府作品 · 公有领域</td>
+              <td>建议引用数据集 DOI</td>
+              <td><span class="tag ok">可以</span></td>
+              <td>人工摘编，未批量下载</td>
+            </tr>
+            <tr>
+              <td><b>Smithsonian GVP</b></td><td>历史参考</td>
+              <td>Smithsonian 版权 · 教育/研究引用需标注</td>
+              <td>必须注明 GVP</td>
+              <td><span class="tag warn">有条件</span></td>
+              <td>人工摘编 20 条喷发</td>
+            </tr>
+            <tr>
+              <td><b>EM-DAT（CRED）</b></td><td>历史参考</td>
+              <td>注册制数据库 · 未经许可不得再分发原始记录</td>
+              <td>按 EM-DAT 引用格式</td>
+              <td><span class="tag bad">不建议</span></td>
+              <td>仅在文案中引用公开区间数字</td>
+            </tr>
+            <tr>
+              <td><b>Natural Earth</b></td><td>地理底图</td>
+              <td>公有领域，无署名义务</td>
+              <td>不强制，建议致谢</td>
+              <td><span class="tag ok">可以</span></td>
+              <td>1:110m 国界，本地 TopoJSON</td>
+            </tr>
+            <tr>
+              <td><b>Three.js r149</b></td><td>软件依赖</td>
+              <td>MIT</td>
+              <td>保留版权与许可声明</td>
+              <td><span class="tag ok">可以</span></td>
+              <td>本地文件，未修改源码</td>
+            </tr>
+            <tr>
+              <td><b>topojson-client 3.1.0</b></td><td>软件依赖</td>
+              <td>ISC</td>
+              <td>保留版权与许可全文</td>
+              <td><span class="tag ok">可以</span></td>
+              <td>本地文件，仅用于国界三角化</td>
+            </tr>
+            <tr>
+              <td><b>白昼地球贴图</b></td><td>影像素材</td>
+              <td>NASA Blue Marble · 公有领域</td>
+              <td>建议注明 NASA</td>
+              <td><span class="tag ok">可以</span></td>
+              <td>2048×1024，内嵌 base64</td>
+            </tr>
+            <tr>
+              <td><b>夜光贴图</b></td><td>影像素材</td>
+              <td>文件内元数据不足，具体版本待核实</td>
+              <td>—</td>
+              <td><span class="tag bad">待核实</span></td>
+              <td>夜间混合，仅作演示</td>
+            </tr>
+            <tr>
+              <td><b>历史摘编文本</b></td><td>本项目内容</td>
+              <td>事实不受版权保护；编排、译文与注释由本项目生成</td>
+              <td>建议保留上游链接</td>
+              <td><span class="tag ok">可以</span></td>
+              <td>168 条事件，逐条标注来源</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout neutral">
+        <b>一句话原则：</b>本页只做“事实 + 自有表述”的摘编，不复制上游数据库的成段文本，也不把不同机构的数字合并成单一结论。凡涉及古代伤亡，均以区间或原文口径标注。
+      </div>
+    </section>
+
+    <section id="realtime">
+      <div class="sec-head"><span class="no">02</span><h2>实时数据接口</h2></div>
+      <p class="sec-note">三个接口均在浏览器端直接请求，无自建后端、无第三方代理。请求失败时优先读取 <code>localStorage</code> 缓存并明确标注“缓存”，无缓存则显示“不可用”，不会用示例数据冒充实时数据。</p>
+
+      <article class="src pd" id="usgs">
+        <div class="src-top">
+          <h3>USGS 地震目录<span class="en">U.S. Geological Survey</span></h3>
+          <a class="url" href="https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php" target="_blank" rel="noopener">earthquake.usgs.gov/earthquakes/feed/v1.0</a>
+        </div>
+        <div class="badges">
+          <span class="badge b-pd">公有领域</span>
+          <span class="badge b-neutral">无需 API Key</span>
+          <span class="badge b-neutral">GeoJSON</span>
+        </div>
+        <dl class="fields">
+          <dt>许可类型</dt>
+          <dd>美国联邦政府作品，依 <b>17 U.S.C. §105</b> 不受版权保护；USGS 数据政策允许自由使用与再分发，不要求书面许可。</dd>
+          <dt>法律要求</dt>
+          <dd>USGS 不保证数据的完整性、准确性或时效性；使用时不得暗示 USGS 对本项目背书。官方建议注明数据来源与获取时间。</dd>
+          <dt>本项目加工</dt>
+          <dd>
+            <ul>
+              <li>按时间窗选择 <code>all_hour</code> / <code>all_day</code> / <code>all_week</code> / <code>all_month</code> 四个目录；</li>
+              <li>仅保留 <code>type=earthquake</code> 且有震级的事件，剔除爆炸、采石等非天然事件；</li>
+              <li>坐标、震级、深度、发震时刻原样使用，不做平滑或插值；</li>
+              <li>震级映射为颜色与波纹半径（<code>severity = mag / 8 × 100</code>，仅用于视觉分级）；</li>
+              <li>英文地名做中文对照翻译，未收录地名保留原文；</li>
+              <li>渲染上限 4200 条，超出时按震级降序截断并在数据源弹窗中注明。</li>
+            </ul>
+          </dd>
+          <dt>再分发注意</dt>
+          <dd>可直接再分发。建议保留 <code>properties.url</code> 原始事件链接与获取时间；若二次加工，应说明“基于 USGS 数据加工”，不得删除免责说明。</dd>
+        </dl>
+      </article>
+
+      <article class="src pd" id="eonet">
+        <div class="src-top">
+          <h3>NASA EONET v3<span class="en">Earth Observatory Natural Event Tracker</span></h3>
+          <a class="url" href="https://eonet.gsfc.nasa.gov/docs/v3" target="_blank" rel="noopener">eonet.gsfc.nasa.gov/api/v3</a>
+        </div>
+        <div class="badges">
+          <span class="badge b-pd">NASA 开放数据</span>
+          <span class="badge b-neutral">无需 API Key</span>
+          <span class="badge b-neutral">可自由使用</span>
+        </div>
+        <dl class="fields">
+          <dt>许可类型</dt>
+          <dd>NASA 开放数据，通常不受版权保护，可自由使用；须遵守 NASA 媒体使用指南，不得暗示 NASA 背书。</dd>
+          <dt>法律要求</dt>
+          <dd>EONET 是<b>聚合层</b>：台风路径、火山、洪水、滑坡、野火等事件由上游机构提供（如 JTWC、USGS、地方气象部门）。上游数据的许可可能不同，事件对象中的 <code>sources[].url</code> 指向原始出处，引用时应一并保留。</dd>
+          <dt>本项目加工</dt>
+          <dd>
+            <ul>
+              <li>类目映射：<code>severeStorms → 台风</code>、<code>volcanoes → 火山</code>、<code>floods → 洪水</code>、<code>landslides → 滑坡泥石流</code>、<code>wildfires → 野火</code>；</li>
+              <li>每个事件只取最新几何；面要素取质心作为标记点，并计算包围盒半径用于影响范围示意；</li>
+              <li>风暴类保留历史轨迹点，未来路径为<b>趋势外推示意</b>，不是官方预报；</li>
+              <li>只保留最近 30 天内有更新的开放事件，再做时间窗过滤；</li>
+              <li>地名中文翻译与单位换算（节 / 千米每小时 / 米每秒）。</li>
+            </ul>
+          </dd>
+          <dt>再分发注意</dt>
+          <dd>标注“NASA EONET”并保留上游 <code>sources</code> 链接；不要把外推路径描述为官方预报；单个坐标点不代表完整影响范围。</dd>
+        </dl>
+      </article>
+
+      <article class="src pd" id="nws">
+        <div class="src-top">
+          <h3>NOAA / NWS 海啸预警<span class="en">National Weather Service · api.weather.gov</span></h3>
+          <a class="url" href="https://www.weather.gov/documentation/services-web-api" target="_blank" rel="noopener">api.weather.gov/alerts/active</a>
+        </div>
+        <div class="badges">
+          <span class="badge b-pd">公有领域</span>
+          <span class="badge b-neutral">无需 API Key</span>
+          <span class="badge b-restrict">仅覆盖美国</span>
+        </div>
+        <dl class="fields">
+          <dt>许可类型</dt>
+          <dd>美国联邦政府作品，公有领域。NWS 公开 API 允许程序化读取，但要求合理使用、避免高频轮询。</dd>
+          <dt>法律要求</dt>
+          <dd>NWS 要求客户端提供<b>可识别的 User-Agent（含应用名称与联系方式）</b>；本项目目前依赖浏览器默认 User-Agent，<span class="warn">未设置自定义标识，属于待改进项</span>。预警数据<b>不得用于生命安全保障</b>，官方发布渠道优先。</dd>
+          <dt>本项目加工</dt>
+          <dd>
+            <ul>
+              <li>分别查询 <code>Tsunami Warning</code>、<code>Tsunami Watch</code>、<code>Tsunami Advisory</code> 三类活动预警；</li>
+              <li>映射为“海啸预警 / 海啸观察 / 海啸提示”，并据此设定视觉等级；</li>
+              <li>面要素取质心作点标记，原文区域描述保留在字段中；</li>
+              <li>接口通常不提供波高，页面<b>不编造波高</b>；示例动画中的波高已明确标注为演示参数。</li>
+            </ul>
+          </dd>
+          <dt>再分发注意</dt>
+          <dd>可再分发，但必须注明“NWS 原始预警”与获取时间，并提示以 <a href="https://www.tsunami.gov/" target="_blank" rel="noopener">tsunami.gov</a> 为准；不得把页面视觉当作官方预警产品。</dd>
+        </dl>
+      </article>
+    </section>
+
+    <section id="history">
+      <div class="sec-head"><span class="no">03</span><h2>历史灾害摘编</h2></div>
+      <p class="sec-note">历史库共 <b>168 条</b>，时间跨度 <b>公元前 464 年 – 公元 2024 年</b>，按类型：地震 50、海啸 24、火山 20、台风 19、洪水 22、滑坡泥石流 15、野火 18。全部为人工摘编的代表性事件，<b>不是全量编年</b>，不随页面实时更新。</p>
+
+      <article class="src pd" id="ncei">
+        <div class="src-top">
+          <h3>NOAA / NCEI 历史目录<span class="en">Significant Earthquake &amp; Global Tsunami Databases</span></h3>
+          <a class="url" href="https://www.ncei.noaa.gov/products/significant-earthquake-database" target="_blank" rel="noopener">ncei.noaa.gov/products/significant-earthquake-database</a>
+        </div>
+        <div class="badges">
+          <span class="badge b-pd">公有领域</span>
+          <span class="badge b-neutral">人工摘编</span>
+          <span class="badge b-neutral">建议引用 DOI</span>
+        </div>
+        <dl class="fields">
+          <dt>许可类型</dt>
+          <dd>美国联邦政府作品，公有领域；NCEI 建议在学术使用时引用数据集 DOI 与版本。</dd>
+          <dt>法律要求</dt>
+          <dd>无强制署名义务，但不得暗示 NOAA/NCEI 认可本项目；历史目录本身存在缺漏与年代误差，引用时需保留其不确定性说明。</dd>
+          <dt>本项目加工</dt>
+          <dd>
+            <ul>
+              <li>人工挑选有代表性的显著地震与海啸事件，逐条重写影响说明，不复制原文段落；</li>
+              <li>按现有三级体系标注坐标精度：点级（约 10–50 千米）、区域级（约 100–200 千米）、推测级（约 300–800 千米）；</li>
+              <li>古代伤亡数字保留“估计 / 存疑 / 史料差异极大”等限定语，有争议时给区间；</li>
+              <li>古代震级标注为现代研究反演估算，而非仪器记录。</li>
+            </ul>
+          </dd>
+          <dt>再分发注意</dt>
+          <dd>可再分发；建议在每条事件旁保留上游链接与精度等级。摘编的选择与译文受本项目版权约束，批量转载需注明出处。</dd>
+        </dl>
+      </article>
+
+      <article class="src restrict" id="gvp">
+        <div class="src-top">
+          <h3>Smithsonian GVP<span class="en">Global Volcanism Program</span></h3>
+          <a class="url" href="https://volcano.si.edu/" target="_blank" rel="noopener">volcano.si.edu</a>
+        </div>
+        <div class="badges">
+          <span class="badge b-restrict">需按条款引用</span>
+          <span class="badge b-neutral">非商业引用</span>
+          <span class="badge b-restrict">批量再分发需许可</span>
+        </div>
+        <dl class="fields">
+          <dt>许可类型</dt>
+          <dd>Smithsonian 机构版权。网站允许教育、研究用途的引用与少量摘录，须注明 “Smithsonian Global Volcanism Program”；<b>批量抓取、整库再分发或商业使用需另行取得许可</b>。</dd>
+          <dt>法律要求</dt>
+          <dd>不得把 GVP 数据整体复制为竞争数据库；引用具体喷发时建议附 Volcanoes of the World 版本信息。</dd>
+          <dt>本项目加工</dt>
+          <dd>仅人工摘编约 20 条重大喷发（公元 79 年维苏威至 2022 年汤加），使用年份、位置、喷发规模等事实信息，影响描述为本项目自行撰写；<b>未下载或镜像 GVP 数据库</b>。</dd>
+          <dt>再分发注意</dt>
+          <dd>随页面文本引用并保留链接通常可行；若要把历史事件库导出为独立数据集发布，应先核对 GVP 最新条款或取得书面许可。</dd>
+        </dl>
+      </article>
+
+      <article class="src restrict" id="emdat">
+        <div class="src-top">
+          <h3>EM-DAT（CRED / UCLouvain）<span class="en">Emergency Events Database</span></h3>
+          <a class="url" href="https://www.emdat.be/" target="_blank" rel="noopener">emdat.be</a>
+        </div>
+        <div class="badges">
+          <span class="badge b-restrict">注册制</span>
+          <span class="badge b-restrict">禁止再分发原始记录</span>
+          <span class="badge b-neutral">仅作背景引用</span>
+        </div>
+        <dl class="fields">
+          <dt>许可类型</dt>
+          <dd>CRED 版权数据库，需注册并接受使用条款；免费权限通常限于非商业研究与教学，<b>未经许可不得再分发原始记录或批量导出</b>。</dd>
+          <dt>法律要求</dt>
+          <dd>发表成果须按 EM-DAT 指定格式引用；不得将数据库整体或实质部分提供给第三方。</dd>
+          <dt>本项目加工</dt>
+          <dd>页面<b>未下载、未解析、未缓存</b> EM-DAT 数据库；仅在少量历史事件的文案中引用公开报道中常见的量级区间，并标注“估计”，不作为独立数据层。</dd>
+          <dt>再分发注意</dt>
+          <dd>当前用法风险较低；若后续接入 EM-DAT 记录，必须先取得授权，并在再分发时移除或替换受限制字段。</dd>
+        </dl>
+      </article>
+
+      <article class="src open" id="chronicles">
+        <div class="src-top">
+          <h3>公开史料与学术研究<span class="en">Historical chronicles &amp; peer-reviewed studies</span></h3>
+          <span class="url">逐条事件内标注</span>
+        </div>
+        <div class="badges">
+          <span class="badge b-open">混合版权</span>
+          <span class="badge b-neutral">仅用事实信息</span>
+          <span class="badge b-neutral">自行改写</span>
+        </div>
+        <dl class="fields">
+          <dt>许可类型</dt>
+          <dd>古代编年史多已进入公有领域；现代论文受期刊版权保护，但<b>事实、数据与结论本身不受版权保护</b>，受保护的是原文表达。</dd>
+          <dt>法律要求</dt>
+          <dd>不得成段翻译或复制论文原文；引用具体研究结论时应给出可追溯出处。本项目采用“读取事实 → 自行撰写中文说明”的方式，避免复制表达。</dd>
+          <dt>本项目加工</dt>
+          <dd>将年份、地点、灾害类型、影响等信息重写为简短中文说明；对存在争议的数字使用区间；每条事件保留 <code>source</code> 与 <code>sourceUrl</code> 字段。</dd>
+          <dt>再分发注意</dt>
+          <dd>事实可自由使用；本项目的译文、注释与编排建议以 <b>CC BY 4.0</b> 发布（需在仓库中补充 LICENSE 声明），并保留上游链接。</dd>
+        </dl>
+      </article>
+    </section>
+
+    <section id="base">
+      <div class="sec-head"><span class="no">04</span><h2>底图、地理与影像</h2></div>
+      <p class="sec-note">这一部分最容易在再分发时被忽略：底图与贴图虽然多为公有领域，但仍涉及“不得暗示背书”和“来源可追溯”的要求。</p>
+
+      <article class="src pd" id="naturalearth">
+        <div class="src-top">
+          <h3>Natural Earth<span class="en">1:110m Admin 0 Countries</span></h3>
+          <a class="url" href="https://www.naturalearthdata.com/about/terms-of-use/" target="_blank" rel="noopener">naturalearthdata.com/about/terms-of-use</a>
+        </div>
+        <div class="badges">
+          <span class="badge b-pd">公有领域</span>
+          <span class="badge b-neutral">无署名义务</span>
+          <span class="badge b-neutral">可修改</span>
+        </div>
+        <dl class="fields">
+          <dt>许可类型</dt>
+          <dd>Natural Earth 全部数据置于公有领域，官方明确“无需许可、无署名要求”，可自由用于商业与非商业用途。</dd>
+          <dt>法律要求</dt>
+          <dd>无强制法律义务；官方仅建议致谢。不得暗示 Natural Earth 参与或认可本项目。</dd>
+          <dt>本项目加工</dt>
+          <dd>使用 1:110m 国界数据，经 world-atlas 转换为 TopoJSON 后内嵌为本地文件；运行时仅提取国界与海岸线网格用于描边，<b>未修改几何形状</b>，未做政治边界重新解释。</dd>
+          <dt>再分发注意</dt>
+          <dd>可自由再分发；若替换为更高精度数据，应同步更新本页说明。国界表达仅用于可视化，不代表本项目对任何边界主张的立场。</dd>
+        </dl>
+      </article>
+
+      <div class="grid-2">
+        <article class="src pd" id="daytex">
+          <div class="src-top">
+            <h3>白昼地球贴图<span class="en">NASA Blue Marble</span></h3>
+          </div>
+          <div class="badges">
+            <span class="badge b-pd">公有领域</span>
+            <span class="badge b-neutral">2048×1024</span>
+            <span class="badge b-neutral">内嵌 base64</span>
+          </div>
+          <div class="src-url"><a href="https://visibleearth.nasa.gov/collection/1484/blue-marble" target="_blank" rel="noopener">visibleearth.nasa.gov/collection/1484/blue-marble</a></div>
+          <dl class="fields">
+            <dt>许可类型</dt>
+            <dd>NASA 地球影像，通常不受版权保护；须遵守 NASA 媒体使用指南。</dd>
+            <dt>法律要求</dt>
+            <dd>不得暗示 NASA 背书；不得将 NASA 标识用于本项目品牌。</dd>
+            <dt>本项目加工</dt>
+            <dd>压缩为 JPEG 并以 data URI 内嵌，着色器中做昼夜混合与色调调整，未改地理配准。</dd>
+            <dt>再分发注意</dt>
+            <dd>可再分发；建议注明 “NASA Blue Marble / Visible Earth”。</dd>
+          </dl>
+        </article>
+
+        <article class="src tbd" id="nighttex">
+          <div class="src-top">
+            <h3>夜光贴图<span class="en">Night lights</span></h3>
+          </div>
+          <div class="badges">
+            <span class="badge b-tbd">版本待核实</span>
+            <span class="badge b-neutral">2048×1024</span>
+            <span class="badge b-neutral">内嵌 base64</span>
+          </div>
+          <dl class="fields">
+            <dt>许可类型</dt>
+            <dd class="tbd">文件内仅能读到 GIMP 2.6.7 于 2010 年导出的 EXIF，<b>无法确认具体数据集版本与作者</b>。此类夜光图常见来源为 NASA Earth Observatory 与 NOAA DMSP 的城市灯光合成。</dd>
+            <dt>法律要求</dt>
+            <dd class="tbd">在确认出处前，不应对外宣称其许可状态；不得把该素材单独作为可再分发资产提供。</dd>
+            <dt>本项目加工</dt>
+            <dd>仅用于夜间面的灯光混合，作为演示视觉；不影响任何数据结论。</dd>
+            <dt>再分发注意</dt>
+            <dd class="tbd">正式发布前应替换为可追溯的 NASA / NOAA 原始文件，并在此页补全版本与链接。</dd>
+          </dl>
+        </article>
+      </div>
+
+      <div class="callout danger">
+        <b>影像素材的唯一高风险项：</b>夜光贴图的出处未能从现有文件确认。页面可继续离线使用，但若要公开发布或再分发资源包，请先完成替换，避免把来源不明的素材打包出去。
+      </div>
+    </section>
+
+    <section id="software">
+      <div class="sec-head"><span class="no">05</span><h2>软件依赖</h2></div>
+      <p class="sec-note">全部依赖以本地文件形式随页面提供，不加载 CDN，因此离线可用；代价是再分发时必须自行满足各许可证的“保留声明”义务。</p>
+
+      <article class="src open" id="threejs">
+        <div class="src-top">
+          <h3>Three.js r149<span class="en">WebGL 渲染引擎</span></h3>
+          <a class="url" href="https://threejs.org/" target="_blank" rel="noopener">threejs.org</a>
+        </div>
+        <div class="badges">
+          <span class="badge b-open">MIT</span>
+          <span class="badge b-neutral">本地文件</span>
+          <span class="badge b-neutral">未修改</span>
+        </div>
+        <dl class="fields">
+          <dt>许可类型</dt>
+          <dd>MIT License，允许商用、修改与再分发。</dd>
+          <dt>法律要求</dt>
+          <dd>再分发时须保留版权声明与许可全文。本项目使用的 <code>assets/three.min.js</code> 顶部已保留 <code>@license / SPDX-License-Identifier: MIT</code> 头。</dd>
+          <dt>本项目加工</dt>
+          <dd>未修改引擎源码；通过自定义 ShaderMaterial、InstancedMesh 与后处理实现灾害形态。</dd>
+          <dt>再分发注意</dt>
+          <dd>随包附带 MIT 许可文本即可；不得移除文件头。</dd>
+        </dl>
+      </article>
+
+      <article class="src open" id="topojson">
+        <div class="src-top">
+          <h3>topojson-client 3.1.0<span class="en">TopoJSON 解析</span></h3>
+          <a class="url" href="https://github.com/topojson/topojson-client" target="_blank" rel="noopener">github.com/topojson/topojson-client</a>
+        </div>
+        <div class="badges">
+          <span class="badge b-open">ISC</span>
+          <span class="badge b-neutral">本地文件</span>
+        </div>
+        <dl class="fields">
+          <dt>许可类型</dt>
+          <dd>ISC License，允许商用、修改与再分发。</dd>
+          <dt>法律要求</dt>
+          <dd>再分发时须保留版权声明与 ISC 许可全文。当前压缩文件仅保留版权行，<b class="warn">未附许可全文，属待补项</b>。</dd>
+          <dt>本项目加工</dt>
+          <dd>仅调用 <code>topojson.mesh</code> 生成国界与海岸线网格，未修改库代码。</dd>
+          <dt>再分发注意</dt>
+          <dd>在资源目录中补充 <code>LICENSES/topojson-client.txt</code>，或在页面内提供许可全文链接。</dd>
+        </dl>
+      </article>
+
+      <div class="grid-2">
+        <div class="mini">
+          <h5>字体</h5>
+          <p>不内嵌任何 Web 字体，使用系统字体栈（Segoe UI / PingFang SC / Microsoft YaHei / Noto Sans SC）。不涉及字体再分发许可。</p>
+        </div>
+        <div class="mini">
+          <h5>图标与插图</h5>
+          <p>界面图标为项目内联 SVG 路径，随本项目代码发布；未使用第三方图标库或插画素材。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="processing">
+      <div class="sec-head"><span class="no">06</span><h2>本项目做了哪些加工</h2></div>
+      <p class="sec-note">加工方式决定了再分发时的义务边界。以下六类加工均可在源代码中核对，不含隐藏的数据改写。</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>加工类型</th><th>具体做法</th><th>对许可的影响</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><b>聚合</b></td>
+              <td>把 USGS、EONET、NWS 三类事件归一到统一字段（类型、坐标、时间、来源、严重度），不做跨源去重合并。</td>
+              <td>产生的新字段由本项目生成；原始字段仍受上游条款约束。</td>
+            </tr>
+            <tr>
+              <td><b>抽样与截断</b></td>
+              <td>地震渲染上限 4200 条，超出按震级降序保留；历史库为人工挑选的代表性事件。</td>
+              <td>属于选择性编排，不能宣称“全量”；再分发时须保留该说明。</td>
+            </tr>
+            <tr>
+              <td><b>坐标精度分级</b></td>
+              <td>历史事件按点级 / 区域级 / 推测级三档标注，估算古代坐标范围；实时事件保留原始坐标，面要素取质心。</td>
+              <td>精度标签为本项目原创，再分发时应一并保留，避免读者误判。</td>
+            </tr>
+            <tr>
+              <td><b>地名与术语翻译</b></td>
+              <td>建立常见地名中英对照表；未收录地名保留原文，避免生造译名；单位做中文换算。</td>
+              <td>译文受本项目版权保护；原文地名仍属事实信息。</td>
+            </tr>
+            <tr>
+              <td><b>伤亡与影响表述</b></td>
+              <td>有争议的数字给区间或“人数不明”；不把不同来源合并为单一结论；古代数字注明口径不明。</td>
+              <td>属于本项目表述与判断，再分发时不得删去限定语。</td>
+            </tr>
+            <tr>
+              <td><b>示例数据</b></td>
+              <td>无实时事件的灾种展示琥珀色示例动画，标题含“示例”“非真实事件”，不计入实时统计，不参与时间窗。</td>
+              <td>完全由本项目生成，可自由再分发；但不得移除“示例”标注。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="limits">
+      <div class="sec-head"><span class="no">07</span><h2>接口限制与请求频率</h2></div>
+      <p class="sec-note">页面是纯静态前端，所有请求由访问者浏览器直接发出。刷新循环为 <b>90 秒</b>，仅在标签页可见时执行；配合本地缓存，实际网络请求远低于轮询上限。</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>接口</th><th>端点</th><th>触发频率</th><th>本地缓存</th><th>覆盖与限制</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><b>USGS</b></td>
+              <td class="mono">/feed/v1.0/summary/all_day.geojson</td>
+              <td>每 90 秒触发一次；缓存命中时不发请求</td>
+              <td>≤24 小时窗口 90 秒；7/30 天窗口 300 秒</td>
+              <td>全球，但各区域检测能力不均；小震可能缺失；无官方硬性配额</td>
+            </tr>
+            <tr>
+              <td><b>NASA EONET</b></td>
+              <td class="mono">/api/v3/events?status=open&amp;days=30</td>
+              <td>每 90 秒触发；缓存 300 秒</td>
+              <td>300 秒</td>
+              <td>近实时聚合，存在上游延迟；部分事件仅单点坐标；无 Key</td>
+            </tr>
+            <tr>
+              <td><b>NWS</b></td>
+              <td class="mono">/alerts/active?event=Tsunami…</td>
+              <td>每轮 3 个查询（预警 / 观察 / 提示）</td>
+              <td>失败时回退上一次成功响应</td>
+              <td>仅美国 NWS 辖区；不提供波高；要求可识别 User-Agent</td>
+            </tr>
+            <tr>
+              <td><b>GDACS / NHC</b></td>
+              <td class="mono">rss.xml / CurrentStorms.json</td>
+              <td>未接入</td>
+              <td>—</td>
+              <td>缺少 CORS 响应头，浏览器直连被拦截；不使用第三方代理规避</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="grid-2">
+        <div class="mini">
+          <h5>估算请求量</h5>
+          <p>每轮约 5 个请求（USGS 1、EONET 1、NWS 3），90 秒一轮；考虑缓存后约 <b>120–160 次/小时/客户端</b>。打开多个标签页会成倍增加，建议只保留一个。</p>
+        </div>
+        <div class="mini">
+          <h5>失败与降级</h5>
+          <p>请求失败时读取 <code>localStorage</code> 缓存并标注“缓存”；无缓存则显示“不可用”。页面不会用示例数据填补实时空缺，示例层始终单独标注。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="redistribute">
+      <div class="sec-head"><span class="no">08</span><h2>再分发注意事项</h2></div>
+      <p class="sec-note">如果要把本项目（或其中素材）发布到公开仓库、教学平台或产品中，请按下面四条执行。</p>
+
+      <div class="callout">
+        <b>1. 保留来源与时间。</b>实时事件保留原始链接与获取时间；历史事件保留 <code>source</code> / <code>sourceUrl</code> 与精度等级。删除来源会让数据无法核验，也会削弱公有领域数据的使用正当性。
+      </div>
+      <div class="callout">
+        <b>2. 不要打包来源不明的素材。</b>夜光贴图在确认出处前不应单独抽出再分发；若要整体打包，先替换为可追溯的 NASA / NOAA 原始文件。
+      </div>
+      <div class="callout">
+        <b>3. 软件许可要随包。</b>Three.js 的 MIT 头已保留；topojson-client 需补充 ISC 许可全文。两者都允许商用，但都要求保留声明。
+      </div>
+      <div class="callout">
+        <b>4. 不要暗示官方背书。</b>USGS、NASA、NOAA、Smithsonian、Natural Earth 均未参与本项目；界面与文案不得使用其标识或“官方合作”等表述。
+      </div>
+    </section>
+
+    <section id="scope">
+      <div class="sec-head"><span class="no">09</span><h2>免责声明与适用边界</h2></div>
+
+      <div class="callout danger">
+        <b>不是预警系统，不可用于应急决策。</b>
+        <p>本页面是公开监测数据的可视化演示，不是自研探测系统，也不是任何机构的官方发布渠道。数据存在延迟、缺漏、定位误差与解析错误；海啸、台风等场景请以当地官方预警为准。</p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>维度</th><th>说明</th></tr></thead>
+          <tbody>
+            <tr><td><b>适用场景</b></td><td>科普展示、课堂讲解、数据可视化交流、界面与交互演示。</td></tr>
+            <tr><td><b>不适用场景</b></td><td>应急指挥、人员疏散、航空航海决策、保险理赔、工程选址、法律取证。</td></tr>
+            <tr><td><b>实时性</b></td><td>90 秒刷新循环 + 上游延迟；USGS/EONET/NWS 均非秒级推送。</td></tr>
+            <tr><td><b>完整性</b></td><td>历史库为 168 条代表性摘编，非全量编年；“有记载 ≠ 发生过”，缺记不等于未发生。</td></tr>
+            <tr><td><b>准确性</b></td><td>古代坐标多为区域级或推测级；古代伤亡数字口径混杂，页面以区间呈现，不做单一结论。</td></tr>
+            <tr><td><b>责任</b></td><td>本项目不对因使用本页面产生的任何直接或间接损失承担责任。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="todo">
+      <div class="sec-head"><span class="no">10</span><h2>待核实与整改清单</h2></div>
+      <p class="sec-note">以下是当前仍不满足“可公开发布”标准的两项，以及三项建议改进。完成前，本页会保留对应标注，不把不确定项写成确定结论。</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>优先级</th><th>事项</th><th>现状</th><th>建议动作</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><span class="tag bad">高</span></td>
+              <td><b>夜光贴图出处</b></td>
+              <td>仅有 2010 年 GIMP 导出元数据，无法确认数据集版本</td>
+              <td>替换为 NASA Earth Observatory / NOAA 可追溯文件，并在此页补链接</td>
+            </tr>
+            <tr>
+              <td><span class="tag bad">高</span></td>
+              <td><b>NWS User-Agent</b></td>
+              <td>依赖浏览器默认 UA，未附应用标识与联系方式</td>
+              <td>若改为自建代理，设置 <code>User-Agent: app-name (contact)</code></td>
+            </tr>
+            <tr>
+              <td><span class="tag warn">中</span></td>
+              <td><b>ISC 许可全文</b></td>
+              <td>topojson-client 压缩文件仅保留版权行</td>
+              <td>在资源目录补充许可全文或在页面提供链接</td>
+            </tr>
+            <tr>
+              <td><span class="tag warn">中</span></td>
+              <td><b>项目自身 LICENSE</b></td>
+              <td>仓库未声明代码与摘编文本的许可</td>
+              <td>代码建议 MIT，摘编文本建议 CC BY 4.0，并注明上游限制</td>
+            </tr>
+            <tr>
+              <td><span class="tag">低</span></td>
+              <td><b>GVP 条款复核</b></td>
+              <td>当前为少量引用，风险较低</td>
+              <td>若导出历史事件库，先核对 GVP 最新使用条款</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="foot">
+        <b>页面版本</b> v1.0 · 2026-11-06 · 与 <a href="index.html">全球自然灾害 3D 地球监测</a> 主页面同源发布<br/>
+        <b>本页性质</b> 来源与许可说明文档，不加载任何外部资源；所列官方链接仅在点击时跳转。<br/>
+        <b>维护约定</b> 新增数据源或替换素材时，必须同步更新本页的许可矩阵与“待核实”清单，否则视为未完成接入。
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<script>
+(function () {
+  'use strict';
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a[href^="#"]'));
+  var map = {};
+  links.forEach(function (a) {
+    var id = a.getAttribute('href').slice(1);
+    var el = document.getElementById(id);
+    if (el) map[id] = a;
+  });
+  var ids = Object.keys(map);
+  if (!ids.length || !('IntersectionObserver' in window)) return;
+  var visible = {};
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      visible[en.target.id] = en.isIntersecting ? en.intersectionRatio : 0;
+    });
+    var best = null, bestRatio = 0;
+    ids.forEach(function (id) {
+      if ((visible[id] || 0) > bestRatio) { bestRatio = visible[id]; best = id; }
+    });
+    if (!best) return;
+    links.forEach(function (a) { a.classList.remove('on'); });
+    map[best].classList.add('on');
+  }, { rootMargin: '-88px 0px -55% 0px', threshold: [0, .12, .4, .8] });
+  ids.forEach(function (id) { io.observe(document.getElementById(id)); });
+})();
+</script>
+</body>
+</html>

@@ -81,6 +81,8 @@ button:focus-visible,.opt-row:focus-visible{outline:1px solid var(--brass);outli
 .ghost-btn:active{transform:translateY(1px)}
 .ghost-btn.icon-btn{width:32px;padding:0;display:grid;place-items:center}
 .ghost-btn.icon-btn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.6}
+a.ghost-btn{display:inline-flex;align-items:center;text-decoration:none}
+.nav-short{display:none}
 
 /* ---------- panels ---------- */
 .panel{position:fixed;z-index:15;background:linear-gradient(160deg,rgba(24,30,41,.88),rgba(10,14,21,.92));
@@ -430,6 +432,10 @@ input[type=range]::-moz-range-thumb{width:11px;height:11px;border:1px solid var(
   #intro .hint-grid{grid-template-columns:1fr}
   #toast{bottom:170px}
 }
+@media (max-width:720px){
+  .nav-full{display:none}
+  .nav-short{display:inline}
+}
 @media (max-width:640px){
   #topbar{padding:0 14px;gap:10px}
   .brand .mark{width:30px;height:30px}
@@ -482,6 +488,9 @@ input[type=range]::-moz-range-thumb{width:11px;height:11px;border:1px solid var(
   <div class="top-actions">
     <button class="ghost-btn" id="sourcesBtn">数据源</button>
     <button class="ghost-btn" id="helpBtn">说明</button>
+    <a class="ghost-btn" id="licenseBtn" href="sources.html" title="数据来源、许可与再分发说明">
+      <span class="nav-full">来源与许可</span><span class="nav-short">许可</span>
+    </a>
     <button class="ghost-btn icon-btn" id="fsBtn" title="全屏显示" aria-label="全屏显示">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/></svg>
     </button>

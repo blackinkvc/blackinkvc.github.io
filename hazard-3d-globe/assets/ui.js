@@ -1202,7 +1202,8 @@
       '5. 页面为静态前端，无后端代理，因此无法接入未开放 CORS 的 GDACS / NHC 接口。</div>';
 
     html += '<div class="footnote">底图：NASA「蓝色弹珠」地球影像（Three.js 示例纹理，已内嵌为数据 URI，离线可用）；国界：Natural Earth 1:1.1 亿比例尺（TopoJSON，本地文件）。' +
-      '<br/>渲染：Three.js r149（本地文件 assets/three.min.js）。页面可离线启动，但实时数据需联网。</div>';
+      '<br/>渲染：Three.js r149（本地文件 assets/three.min.js）。页面可离线启动，但实时数据需联网。' +
+      '<br/><a href="sources.html" style="color:#f2cd98">查看完整的来源清单、许可条款与再分发说明 →</a></div>';
 
     $('#modalBody').innerHTML = html;
   }
